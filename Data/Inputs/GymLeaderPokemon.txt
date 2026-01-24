@@ -1,5 +1,3 @@
-=== [gen5draft] PWT/Volkner PWT ===
-
 Electivire @ Salac Berry
 Ability: Motor Drive
 Level: 50
@@ -10,7 +8,7 @@ Adamant Nature
 - Ice Punch
 - Bulldoze
 
-Luxray @ Liechi Berry
+|Luxray @ Liechi Berry
 Ability: Intimidate
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -20,7 +18,7 @@ Adamant Nature
 - Superpower
 - Thunder Wave
 
-Raichu @ Grass Gem
+|Raichu @ Grass Gem
 Ability: Static
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -31,7 +29,7 @@ IVs: 0 Atk
 - Grass Knot
 - Charge
 
-Rotom-Fan @ King's Rock
+|Rotom-Fan @ King's Rock
 Ability: Levitate
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -42,7 +40,7 @@ IVs: 0 Atk
 - Pain Split
 - Substitute
 
-Jolteon @ Air Balloon
+|Jolteon @ Air Balloon
 Ability: Volt Absorb
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -53,7 +51,7 @@ IVs: 0 Atk
 - Charm
 - Wish
 
-Electrode @ Electric Gem
+|Electrode @ Electric Gem
 Ability: Soundproof
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -65,9 +63,7 @@ IVs: 0 Atk
 - Torment
 
 
-=== [gen5draft] PWT/Tate PWT ===
-
-Solrock @ Passho Berry
+|Solrock @ Passho Berry
 Ability: Levitate
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -77,7 +73,7 @@ Brave Nature
 - Earthquake
 - Zen Headbutt
 
-Xatu @ Focus Sash
+|Xatu @ Focus Sash
 Ability: Synchronize
 Level: 50
 EVs: 244 HP / 252 SpA / 12 SpD
@@ -88,7 +84,7 @@ IVs: 0 Atk
 - Shadow Ball
 - Trick Room
 
-Bronzong @ Lum Berry
+|Bronzong @ Lum Berry
 Ability: Levitate
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -99,7 +95,7 @@ IVs: 0 Spe
 - Zen Headbutt
 - Trick Room
 
-Reuniclus @ Life Orb
+|Reuniclus @ Life Orb
 Ability: Overcoat
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -110,7 +106,7 @@ IVs: 0 Atk
 - Focus Blast
 - Trick Room
 
-Gallade @ Scope Lens
+|Gallade @ Scope Lens
 Ability: Steadfast
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -120,7 +116,7 @@ Jolly Nature
 - Close Combat
 - Ice Punch
 
-Claydol @ Kasib Berry
+|Claydol @ Kasib Berry
 Ability: Levitate
 Level: 50
 EVs: 252 HP / 4 Atk / 252 SpD
@@ -131,9 +127,7 @@ Sassy Nature
 - Light Screen
 
 
-=== [gen5draft] PWT/Winona PWT ===
-
-Altaria @ Power Herb
+|Altaria @ Power Herb
 Ability: Natural Cure
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -143,7 +137,7 @@ Adamant Nature
 - Dragon Dance
 - Earthquake
 
-Sigilyph @ Life Orb
+|Sigilyph @ Life Orb
 Ability: Wonder Skin
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -154,7 +148,7 @@ IVs: 0 Atk
 - Ancient Power
 - Thunder Wave
 
-Gyarados @ Leftovers
+|Gyarados @ Leftovers
 Ability: Intimidate
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -164,7 +158,7 @@ Adamant Nature
 - Waterfall
 - Ice Fang
 
-Skarmory @ Rocky Helmet
+|Skarmory @ Rocky Helmet
 Ability: Sturdy
 Level: 50
 EVs: 232 HP / 252 Atk / 24 Spe
@@ -174,7 +168,7 @@ Adamant Nature
 - Steel Wing
 - Aerial Ace
 
-Tropius @ Yache Berry
+|Tropius @ Yache Berry
 Ability: Chlorophyll
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -185,7 +179,7 @@ IVs: 0 Atk
 - Solar Beam
 - Attract
 
-Honchkrow @ Dark Gem
+|Honchkrow @ Dark Gem
 Ability: Insomnia
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpA
@@ -196,9 +190,7 @@ Lonely Nature
 - Icy Wind
 
 
-=== [gen5draft] PWT/Nate PWT ===
-
-Emboar @ Expert Belt
+|Emboar @ Expert Belt
 Ability: Blaze
 Level: 50
 EVs: 252 Atk / 4 Def / 252 Spe
@@ -208,7 +200,7 @@ Adamant Nature
 - Wild Charge
 - Head Smash
 
-Cobalion @ Leftovers
+|Cobalion @ Leftovers
 Ability: Justified
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -218,7 +210,7 @@ Jolly Nature
 - Stone Edge
 - Swords Dance
 
-Haxorus @ Life Orb
+|Haxorus @ Life Orb
 Ability: Mold Breaker
 Level: 50
 Shiny: Yes
@@ -229,7 +221,7 @@ Adamant Nature
 - Dragon Claw
 - Dragon Dance
 
-Zoroark @ Focus Sash
+|Zoroark @ Focus Sash
 Ability: Illusion
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -239,7 +231,7 @@ Timid Nature
 - Focus Blast
 - Nasty Plot
 
-Crustle @ Sitrus Berry
+|Crustle @ Sitrus Berry
 Ability: Sturdy
 Level: 50
 EVs: 252 Atk / 4 Def / 252 Spe
@@ -249,7 +241,7 @@ Adamant Nature
 - Stone Edge
 - Earthquake
 
-Jellicent @ Colbur Berry
+|Jellicent @ Colbur Berry
 Ability: Damp
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -261,9 +253,7 @@ IVs: 0 Atk
 - Will-O-Wisp
 
 
-=== [gen5draft] PWT/Norman PWT ===
-
-Slaking @ Eject Button
+|Slaking @ Eject Button
 Ability: Truant
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -273,7 +263,7 @@ Jolly Nature
 - Earthquake
 - Hammer Arm
 
-Ambipom @ Normal Gem
+|Ambipom @ Normal Gem
 Ability: Technician
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -283,7 +273,7 @@ Jolly Nature
 - Fire Punch
 - Acrobatics
 
-Bouffalant @ Life Orb
+|Bouffalant @ Life Orb
 Ability: Reckless
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -293,7 +283,7 @@ Adamant Nature
 - Megahorn
 - Revenge
 
-Staraptor @ Choice Band
+|Staraptor @ Choice Band
 Ability: Intimidate
 Level: 50
 EVs: 4 HP / 252 Atk / 252 Spe
@@ -303,7 +293,7 @@ Jolly Nature
 - Quick Attack
 - Final Gambit
 
-Exploud @ Expert Belt
+|Exploud @ Expert Belt
 Ability: Soundproof
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -314,7 +304,7 @@ IVs: 0 Atk
 - Blizzard
 - Focus Blast
 
-Sawsbuck-Summer @ Chesto Berry
+|Sawsbuck-Summer @ Chesto Berry
 Ability: Sap Sipper
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -325,9 +315,7 @@ Jolly Nature
 - Rest
 
 
-=== [gen5draft] PWT/Flannery PWT ===
-
-Torkoal @ Leftovers
+|Torkoal @ Leftovers
 Ability: White Smoke
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpA
@@ -337,7 +325,7 @@ Brave Nature
 - Stone Edge
 - Yawn
 
-Camerupt @ Passho Berry
+|Camerupt @ Passho Berry
 Ability: Magma Armor
 Level: 50
 EVs: 252 HP / 252 SpD / 4 Spe
@@ -348,7 +336,7 @@ IVs: 0 Atk
 - Will-O-Wisp
 - Flamethrower
 
-Chandelure @ Focus Sash
+|Chandelure @ Focus Sash
 Ability: Flame Body
 Level: 50
 EVs: 4 Atk / 252 SpA / 252 Spe
@@ -358,7 +346,7 @@ Hasty Nature
 - Shadow Ball
 - Calm Mind
 
-Blaziken @ Air Balloon
+|Blaziken @ Air Balloon
 Ability: Blaze
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -368,7 +356,7 @@ Jolly Nature
 - Flame Charge
 - Stone Edge
 
-Houndoom @ Life Orb
+|Houndoom @ Life Orb
 Ability: Early Bird
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -378,7 +366,7 @@ Hasty Nature
 - Flame Charge
 - Will-O-Wisp
 
-Magmortar @ Shuca Berry
+|Magmortar @ Shuca Berry
 Ability: Flame Body
 Level: 50
 EVs: 4 Atk / 252 SpA / 252 Spe
@@ -389,9 +377,7 @@ Hasty Nature
 - Psychic
 
 
-=== [gen5draft] PWT/Wattson PWT ===
-
-Manectric @ Life Orb
+|Manectric @ Life Orb
 Ability: Static
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -402,7 +388,7 @@ IVs: 0 Atk
 - Thunder Wave
 - Double Team
 
-Magnezone @ Leftovers
+|Magnezone @ Leftovers
 Ability: Sturdy
 Level: 50
 EVs: 252 HP / 252 Def / 4 SpA
@@ -413,7 +399,7 @@ IVs: 0 Atk
 - Protect
 - Flash Cannon
 
-Electrode @ Air Balloon
+|Electrode @ Air Balloon
 Ability: Soundproof
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -424,7 +410,7 @@ IVs: 0 Atk
 - Swagger
 - Thunder Wave
 
-Rotom-Wash @ Wide Lens
+|Rotom-Wash @ Wide Lens
 Ability: Levitate
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -435,7 +421,7 @@ IVs: 0 Atk
 - Hex
 - Will-O-Wisp
 
-Ampharos @ Expert Belt
+|Ampharos @ Expert Belt
 Ability: Static
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -445,7 +431,7 @@ Adamant Nature
 - Bulldoze
 - Brick Break
 
-Raichu @ Focus Sash
+|Raichu @ Focus Sash
 Ability: Static
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -457,9 +443,7 @@ IVs: 0 Atk
 - Swagger
 
 
-=== [gen5draft] PWT/Brawly PWT ===
-
-Hariyama @ Chesto Berry
+|Hariyama @ Chesto Berry
 Ability: Thick Fat
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -469,7 +453,7 @@ Adamant Nature
 - Revenge
 - Stone Edge
 
-Scrafty @ Leftovers
+|Scrafty @ Leftovers
 Ability: Moxie
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -479,7 +463,7 @@ Adamant Nature
 - Dragon Tail
 - Amnesia
 
-Breloom @ Focus Sash
+|Breloom @ Focus Sash
 Ability: Effect Spore
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -489,7 +473,7 @@ Jolly Nature
 - Seed Bomb
 - Stone Edge
 
-Machamp @ Choice Band
+|Machamp @ Choice Band
 Ability: Guts
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -499,7 +483,7 @@ Adamant Nature
 - Fire Punch
 - Earthquake
 
-Mienshao @ Life Orb
+|Mienshao @ Life Orb
 Ability: Inner Focus
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -509,7 +493,7 @@ Jolly Nature
 - Aerial Ace
 - Drain Punch
 
-Heracross @ Choice Scarf
+|Heracross @ Choice Scarf
 Ability: Swarm
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -520,9 +504,7 @@ Jolly Nature
 - Aerial Ace
 
 
-=== [gen5draft] PWT/Roxanne PWT ===
-
-Probopass @ Air Balloon
+|Probopass @ Air Balloon
 Ability: Sturdy
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -533,7 +515,7 @@ IVs: 0 Atk
 - Pain Split
 - Thunderbolt
 
-Armaldo @ Lum Berry
+|Armaldo @ Lum Berry
 Ability: Battle Armor
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -543,7 +525,7 @@ Adamant Nature
 - Earthquake
 - X-Scissor
 
-Cradily @ Leftovers
+|Cradily @ Leftovers
 Ability: Suction Cups
 Level: 50
 EVs: 252 HP / 4 Atk / 252 SpD
@@ -553,7 +535,7 @@ Sassy Nature
 - Amnesia
 - Rock Slide
 
-Aggron @ Focus Sash
+|Aggron @ Focus Sash
 Ability: Rock Head
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -563,7 +545,7 @@ Adamant Nature
 - Avalanche
 - Head Smash
 
-Carracosta @ Water Gem
+|Carracosta @ Water Gem
 Ability: Solid Rock
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -573,7 +555,7 @@ Adamant Nature
 - Rock Slide
 - Aqua Jet
 
-Golem @ Ground Gem
+|Golem @ Ground Gem
 Ability: Sturdy
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -584,9 +566,7 @@ Adamant Nature
 - Fire Punch
 
 
-=== [gen5draft] PWT/Clair PWT ===
-
-Kingdra @ Chesto Berry
+|Kingdra @ Chesto Berry
 Ability: Sniper
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -596,7 +576,7 @@ Adamant Nature
 - Waterfall
 - Rest
 
-Dragonite @ Yache Berry
+|Dragonite @ Yache Berry
 Ability: Inner Focus
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -606,7 +586,7 @@ Hasty Nature
 - Extreme Speed
 - Outrage
 
-Altaria @ Leftovers
+|Altaria @ Leftovers
 Ability: Natural Cure
 Level: 50
 EVs: 252 HP / 4 SpA / 252 SpD
@@ -617,7 +597,7 @@ IVs: 0 Atk
 - Double Team
 - Fire Blast
 
-Salamence @ Dragon Gem
+|Salamence @ Dragon Gem
 Ability: Intimidate
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -627,7 +607,7 @@ Hasty Nature
 - Rock Slide
 - Earthquake
 
-Druddigon @ Rocky Helmet
+|Druddigon @ Rocky Helmet
 Ability: Rough Skin
 Level: 50
 EVs: 244 HP / 252 Atk / 12 SpD
@@ -637,7 +617,7 @@ Adamant Nature
 - Glare
 - Dragon Claw
 
-Garchomp @ Focus Sash
+|Garchomp @ Focus Sash
 Ability: Sand Veil
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -648,9 +628,7 @@ Jolly Nature
 - Swords Dance
 
 
-=== [gen5draft] PWT/Pryce PWT ===
-
-Mamoswine @ Focus Sash
+|Mamoswine @ Focus Sash
 Ability: Oblivious
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -660,7 +638,7 @@ Jolly Nature
 - Icicle Spear
 - Endeavor
 
-Jynx @ Psychic Gem
+|Jynx @ Psychic Gem
 Ability: Forewarn
 Level: 50
 EVs: 4 HP / 252 SpA / 252 Spe
@@ -671,7 +649,7 @@ IVs: 0 Atk
 - Psyshock
 - Lovely Kiss
 
-Dewgong @ Lum Berry
+|Dewgong @ Lum Berry
 Ability: Thick Fat
 Level: 50
 EVs: 252 HP / 4 Atk / 252 SpD
@@ -681,7 +659,7 @@ Sassy Nature
 - Sleep Talk
 - Rest
 
-Cloyster @ King's Rock
+|Cloyster @ King's Rock
 Ability: Skill Link
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -691,7 +669,7 @@ Adamant Nature
 - Explosion
 - Rock Blast
 
-Lapras @ Chesto Berry
+|Lapras @ Chesto Berry
 Ability: Water Absorb
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -702,7 +680,7 @@ IVs: 0 Atk
 - Thunderbolt
 - Rest
 
-Weavile @ Ice Gem
+|Weavile @ Ice Gem
 Ability: Pressure
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -713,9 +691,7 @@ Jolly Nature
 - Fake Out
 
 
-=== [gen5draft] PWT/Jasmine PWT ===
-
-Steelix @ Rocky Helmet
+|Steelix @ Rocky Helmet
 Ability: Sturdy
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -726,7 +702,7 @@ IVs: 0 Spe
 - Stealth Rock
 - Curse
 
-Magnezone @ Quick Claw
+|Magnezone @ Quick Claw
 Ability: Magnet Pull
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -737,7 +713,7 @@ IVs: 0 Atk
 - Mirror Coat
 - Magnet Rise
 
-Forretress @ Iron Ball
+|Forretress @ Iron Ball
 Ability: Sturdy
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -748,7 +724,7 @@ IVs: 0 Spe
 - Toxic
 - Explosion
 
-Skarmory @ Leftovers
+|Skarmory @ Leftovers
 Ability: Keen Eye
 Level: 50
 EVs: 252 HP / 232 Def / 24 Spe
@@ -758,7 +734,7 @@ Impish Nature
 - Aerial Ace
 - Stealth Rock
 
-Metagross @ Air Balloon
+|Metagross @ Air Balloon
 Ability: Clear Body
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -768,7 +744,7 @@ Adamant Nature
 - Earthquake
 - Explosion
 
-Lucario @ Life Orb
+|Lucario @ Life Orb
 Ability: Steadfast
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -779,9 +755,7 @@ Hasty Nature
 - Stone Edge
 
 
-=== [gen5draft] PWT/Chuck PWT ===
-
-Poliwrath @ Sitrus Berry
+|Poliwrath @ Sitrus Berry
 Ability: Water Absorb
 Level: 50
 EVs: 4 HP / 252 Atk / 252 Spe
@@ -791,7 +765,7 @@ Jolly Nature
 - Rock Slide
 - Hypnosis
 
-Machamp @ Choice Band
+|Machamp @ Choice Band
 Ability: No Guard
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -801,7 +775,7 @@ Adamant Nature
 - Ice Punch
 - Earthquake
 
-Hitmontop @ Wide Lens
+|Hitmontop @ Wide Lens
 Ability: Intimidate
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -811,7 +785,7 @@ Adamant Nature
 - Triple Kick
 - Bullet Punch
 
-Hitmonchan @ Leftovers
+|Hitmonchan @ Leftovers
 Ability: Iron Fist
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -821,7 +795,7 @@ Adamant Nature
 - Ice Punch
 - Double Team
 
-Hitmonlee @ Life Orb
+|Hitmonlee @ Life Orb
 Ability: Limber
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -831,7 +805,7 @@ Jolly Nature
 - Bulldoze
 - Stone Edge
 
-Conkeldurr @ Fighting Gem
+|Conkeldurr @ Fighting Gem
 Ability: Sheer Force
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -842,9 +816,7 @@ Adamant Nature
 - Earthquake
 
 
-=== [gen5draft] PWT/Morty PWT ===
-
-Gengar @ Wide Lens
+|Gengar @ Wide Lens
 Ability: Levitate
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -855,7 +827,7 @@ IVs: 0 Atk
 - Giga Drain
 - Thunderbolt
 
-Mismagius @ Sitrus Berry
+|Mismagius @ Sitrus Berry
 Ability: Levitate
 Level: 50
 EVs: 252 HP / 4 SpD / 252 Spe
@@ -866,7 +838,7 @@ IVs: 0 Atk
 - Will-O-Wisp
 - Confuse Ray
 
-Banette @ Ghost Gem
+|Banette @ Ghost Gem
 Ability: Insomnia
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -876,7 +848,7 @@ Adamant Nature
 - Destiny Bond
 - Gunk Shot
 
-Dusknoir @ Leftovers
+|Dusknoir @ Leftovers
 Ability: Pressure
 Level: 50
 EVs: 252 HP / 4 Atk / 252 SpD
@@ -886,7 +858,7 @@ Careful Nature
 - Protect
 - Fire Punch
 
-Chandelure @ Life Orb
+|Chandelure @ Life Orb
 Ability: Flash Fire
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -897,7 +869,7 @@ IVs: 0 Atk
 - Energy Ball
 - Psychic
 
-Froslass @ Focus Sash
+|Froslass @ Focus Sash
 Ability: Snow Cloak
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -909,9 +881,7 @@ IVs: 0 Atk
 - Destiny Bond
 
 
-=== [gen5draft] PWT/Whitney PWT ===
-
-Miltank @ Lum Berry
+|Miltank @ Lum Berry
 Ability: Thick Fat
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -921,7 +891,7 @@ Adamant Nature
 - Brick Break
 - Milk Drink
 
-Blissey @ Leftovers
+|Blissey @ Leftovers
 Ability: Serene Grace
 Level: 50
 EVs: 252 HP / 252 Def / 4 SpA
@@ -932,7 +902,7 @@ IVs: 0 Atk
 - Grass Knot
 - Toxic
 
-Tauros @ Life Orb
+|Tauros @ Life Orb
 Ability: Intimidate
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -942,7 +912,7 @@ Jolly Nature
 - Rock Slide
 - Protect
 
-Ambipom @ Focus Sash
+|Ambipom @ Focus Sash
 Ability: Technician
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -952,7 +922,7 @@ Jolly Nature
 - Low Sweep
 - Ice Punch
 
-Ursaring @ Toxic Orb
+|Ursaring @ Toxic Orb
 Ability: Guts
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -962,7 +932,7 @@ Adamant Nature
 - Crunch
 - Rock Slide
 
-Lopunny @ Chople Berry
+|Lopunny @ Chople Berry
 Ability: Klutz
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -973,9 +943,7 @@ Jolly Nature
 - Encore
 
 
-=== [gen5draft] PWT/Bugsy PWT ===
-
-Scizor @ Sitrus Berry
+|Scizor @ Sitrus Berry
 Ability: Technician
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -985,7 +953,7 @@ Adamant Nature
 - Swords Dance
 - Acrobatics
 
-Shuckle @ Rocky Helmet
+|Shuckle @ Rocky Helmet
 Ability: Sturdy
 Level: 50
 EVs: 252 HP / 4 Atk / 252 SpD
@@ -995,7 +963,7 @@ Careful Nature
 - Earthquake
 - Toxic
 
-Heracross @ Choice Band
+|Heracross @ Choice Band
 Ability: Swarm
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1005,7 +973,7 @@ Jolly Nature
 - Close Combat
 - Shadow Claw
 
-Pinsir @ Life Orb
+|Pinsir @ Life Orb
 Ability: Hyper Cutter
 Level: 50
 EVs: 4 HP / 252 Atk / 252 Spe
@@ -1015,7 +983,7 @@ Jolly Nature
 - Guillotine
 - Protect
 
-Armaldo @ Quick Claw
+|Armaldo @ Quick Claw
 Ability: Battle Armor
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -1025,7 +993,7 @@ Adamant Nature
 - X-Scissor
 - Swords Dance
 
-Yanmega @ Focus Sash
+|Yanmega @ Focus Sash
 Ability: Speed Boost
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -1037,9 +1005,7 @@ IVs: 0 Atk
 - Giga Drain
 
 
-=== [gen5draft] PWT/Falkner PWT ===
-
-Pidgeot @ Life Orb
+|Pidgeot @ Life Orb
 Ability: Keen Eye
 Level: 50
 EVs: 252 HP / 4 Atk / 252 Spe
@@ -1049,7 +1015,7 @@ Naive Nature
 - Double Team
 - Air Slash
 
-Crobat @ Red Card
+|Crobat @ Red Card
 Ability: Inner Focus
 Level: 50
 EVs: 244 HP / 12 Atk / 252 Spe
@@ -1059,7 +1025,7 @@ Jolly Nature
 - Acrobatics
 - Confuse Ray
 
-Aerodactyl @ Focus Sash
+|Aerodactyl @ Focus Sash
 Ability: Rock Head
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1069,7 +1035,7 @@ Jolly Nature
 - Rock Slide
 - Protect
 
-Honchkrow @ Choice Scarf
+|Honchkrow @ Choice Scarf
 Ability: Insomnia
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -1079,7 +1045,7 @@ Hasty Nature
 - Heat Wave
 - Icy Wind
 
-Xatu @ Leftovers
+|Xatu @ Leftovers
 Ability: Synchronize
 Level: 50
 EVs: 252 HP / 252 Def / 4 SpA
@@ -1090,7 +1056,7 @@ IVs: 0 Atk
 - Stored Power
 - Roost
 
-Swellow @ Flame Orb
+|Swellow @ Flame Orb
 Ability: Guts
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1101,9 +1067,7 @@ Jolly Nature
 - Aerial Ace
 
 
-=== [gen5draft] PWT/Giovanni PWT ===
-
-Rhyperior @ Life Orb
+|Rhyperior @ Life Orb
 Ability: Lightning Rod
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -1113,7 +1077,7 @@ Adamant Nature
 - Ice Punch
 - Hammer Arm
 
-Hippowdon @ Quick Claw
+|Hippowdon @ Quick Claw
 Ability: Sand Stream
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -1123,7 +1087,7 @@ Adamant Nature
 - Ice Fang
 - Stone Edge
 
-Garchomp @ Choice Scarf
+|Garchomp @ Choice Scarf
 Ability: Sand Veil
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1133,7 +1097,7 @@ Jolly Nature
 - Rock Slide
 - Brick Break
 
-Krookodile @ Expert Belt
+|Krookodile @ Expert Belt
 Ability: Intimidate
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -1143,7 +1107,7 @@ Hasty Nature
 - Fire Fang
 - Grass Knot
 
-Nidoking @ Choice Specs
+|Nidoking @ Choice Specs
 Ability: Poison Point
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -1154,7 +1118,7 @@ IVs: 0 Atk
 - Flamethrower
 - Thunderbolt
 
-Gliscor @ Flying Gem
+|Gliscor @ Flying Gem
 Ability: Hyper Cutter
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1165,9 +1129,7 @@ Jolly Nature
 - Tailwind
 
 
-=== [gen5draft] PWT/Blaine PWT ===
-
-Arcanine @ Focus Sash
+|Arcanine @ Focus Sash
 Ability: Intimidate
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -1177,7 +1139,7 @@ Hasty Nature
 - Extreme Speed
 - Bulldoze
 
-Ninetales @ Charti Berry
+|Ninetales @ Charti Berry
 Ability: Flash Fire
 Level: 50
 EVs: 4 HP / 252 SpA / 252 Spe
@@ -1188,7 +1150,7 @@ IVs: 0 Atk
 - Psyshock
 - Will-O-Wisp
 
-Charizard @ Life Orb
+|Charizard @ Life Orb
 Ability: Blaze
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -1199,7 +1161,7 @@ IVs: 0 Atk
 - Focus Blast
 - Dragon Pulse
 
-Magmortar @ Choice Scarf
+|Magmortar @ Choice Scarf
 Ability: Flame Body
 Level: 50
 EVs: 4 Atk / 252 SpA / 252 Spe
@@ -1209,7 +1171,7 @@ Hasty Nature
 - Thunderbolt
 - Rock Slide
 
-Flareon @ Passho Berry
+|Flareon @ Passho Berry
 Ability: Flash Fire
 Level: 50
 EVs: 244 HP / 12 Atk / 252 SpD
@@ -1219,7 +1181,7 @@ Gentle Nature
 - Overheat
 - Toxic
 
-Rotom-Heat @ Flame Orb
+|Rotom-Heat @ Flame Orb
 Ability: Levitate
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -1231,9 +1193,7 @@ IVs: 0 Atk
 - Pain Split
 
 
-=== [gen5draft] PWT/Sabrina PWT ===
-
-Alakazam @ Kasib Berry
+|Alakazam @ Kasib Berry
 Ability: Synchronize
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -1244,7 +1204,7 @@ IVs: 0 Atk
 - Focus Blast
 - Charge Beam
 
-Metagross @ Expert Belt
+|Metagross @ Expert Belt
 Ability: Clear Body
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -1255,7 +1215,7 @@ IVs: 0 Atk
 - Signal Beam
 - Grass Knot
 
-Exeggutor @ Tanga Berry
+|Exeggutor @ Tanga Berry
 Ability: Chlorophyll
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -1266,7 +1226,7 @@ IVs: 0 Atk
 - Sleep Powder
 - Dream Eater
 
-Slowking @ Choice Specs
+|Slowking @ Choice Specs
 Ability: Oblivious
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -1277,7 +1237,7 @@ IVs: 0 Atk
 - Shadow Ball
 - Focus Blast
 
-Espeon @ Leftovers
+|Espeon @ Leftovers
 Ability: Synchronize
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -1288,7 +1248,7 @@ IVs: 0 Atk
 - Psychic
 - Calm Mind
 
-Sigilyph @ Life Orb
+|Sigilyph @ Life Orb
 Ability: Magic Guard
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -1300,9 +1260,7 @@ IVs: 0 Atk
 - Light Screen
 
 
-=== [gen5draft] PWT/Janine PWT ===
-
-Venomoth @ Wide Lens
+|Venomoth @ Wide Lens
 Ability: Shield Dust
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -1313,7 +1271,7 @@ IVs: 0 Atk
 - Bug Buzz
 - Psychic
 
-Weezing @ Rocky Helmet
+|Weezing @ Rocky Helmet
 Ability: Levitate
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -1324,7 +1282,7 @@ IVs: 0 Atk
 - Sludge Bomb
 - Flamethrower
 
-Nidoqueen @ Life Orb
+|Nidoqueen @ Life Orb
 Ability: Poison Point
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -1335,7 +1293,7 @@ IVs: 0 Atk
 - Earth Power
 - Thunderbolt
 
-Crobat @ Black Sludge
+|Crobat @ Black Sludge
 Ability: Inner Focus
 Level: 50
 EVs: 252 HP / 4 Atk / 252 Spe
@@ -1345,7 +1303,7 @@ Jolly Nature
 - Toxic
 - Protect
 
-Roserade @ Leftovers
+|Roserade @ Leftovers
 Ability: Poison Point
 Level: 50
 EVs: 248 HP / 8 SpA / 252 SpD
@@ -1356,7 +1314,7 @@ IVs: 0 Atk
 - Leech Seed
 - Sleep Powder
 
-Tentacruel @ Chesto Berry
+|Tentacruel @ Chesto Berry
 Ability: Clear Body
 Level: 50
 EVs: 240 HP / 252 SpA / 16 Spe
@@ -1368,9 +1326,7 @@ IVs: 0 Atk
 - Rest
 
 
-=== [gen5draft] PWT/Erika PWT ===
-
-Vileplume @ Black Sludge
+|Vileplume @ Black Sludge
 Ability: Chlorophyll
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1380,7 +1336,7 @@ Adamant Nature
 - Synthesis
 - Sleep Powder
 
-Venusaur @ Expert Belt
+|Venusaur @ Expert Belt
 Ability: Overgrow
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -1390,7 +1346,7 @@ Hasty Nature
 - Earthquake
 - Outrage
 
-Cradily @ Leftovers
+|Cradily @ Leftovers
 Ability: Suction Cups
 Level: 50
 EVs: 252 HP / 4 Atk / 252 SpD
@@ -1400,7 +1356,7 @@ Careful Nature
 - Seed Bomb
 - Curse
 
-Exeggutor @ Tanga Berry
+|Exeggutor @ Tanga Berry
 Ability: Chlorophyll
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -1411,7 +1367,7 @@ IVs: 0 Atk
 - Leaf Storm
 - Ancient Power
 
-Tangrowth @ Power Herb
+|Tangrowth @ Power Herb
 Ability: Leaf Guard
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -1422,7 +1378,7 @@ IVs: 0 Atk
 - Focus Blast
 - Synthesis
 
-Abomasnow @ Focus Sash
+|Abomasnow @ Focus Sash
 Ability: Snow Warning
 Level: 50
 EVs: 252 HP / 4 SpA / 252 SpD
@@ -1434,9 +1390,7 @@ IVs: 0 Atk
 - Sheer Cold
 
 
-=== [gen5draft] PWT/Lt Surge PWT ===
-
-Raichu @ Life Orb
+|Raichu @ Life Orb
 Ability: Static
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1446,7 +1400,7 @@ Jolly Nature
 - Focus Punch
 - Thunder Wave
 
-Electrode @ Focus Sash
+|Electrode @ Focus Sash
 Ability: Soundproof
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -1457,7 +1411,7 @@ IVs: 0 Atk
 - Thunder Wave
 - Double Team
 
-Magnezone @ Air Balloon
+|Magnezone @ Air Balloon
 Ability: Sturdy
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -1468,7 +1422,7 @@ IVs: 0 Atk
 - Signal Beam
 - Magnet Rise
 
-Electivire @ Expert Belt
+|Electivire @ Expert Belt
 Ability: Motor Drive
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1478,7 +1432,7 @@ Adamant Nature
 - Cross Chop
 - Ice Punch
 
-Jolteon @ Shuca Berry
+|Jolteon @ Shuca Berry
 Ability: Volt Absorb
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1488,7 +1442,7 @@ Jolly Nature
 - Double Team
 - Volt Switch
 
-Lanturn @ Wide Lens
+|Lanturn @ Wide Lens
 Ability: Volt Absorb
 Level: 50
 IVs: 0 Atk
@@ -1498,9 +1452,7 @@ IVs: 0 Atk
 - Signal Beam
 
 
-=== [gen5draft] PWT/Misty PWT ===
-
-Starmie @ Choice Scarf
+|Starmie @ Choice Scarf
 Ability: Natural Cure
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -1511,7 +1463,7 @@ IVs: 0 Atk
 - Thunderbolt
 - Ice Beam
 
-Lanturn @ Sitrus Berry
+|Lanturn @ Sitrus Berry
 Ability: Volt Absorb
 Level: 50
 EVs: 244 HP / 252 Def / 12 SpA
@@ -1522,7 +1474,7 @@ IVs: 0 Atk
 - Ice Beam
 - Toxic
 
-Jellicent @ Leftovers
+|Jellicent @ Leftovers
 Ability: Water Absorb
 Level: 50
 EVs: 252 HP / 4 SpA / 252 SpD
@@ -1533,7 +1485,7 @@ IVs: 0 Atk
 - Shadow Ball
 - Will-O-Wisp
 
-Lapras @ Zoom Lens
+|Lapras @ Zoom Lens
 Ability: Shell Armor
 Level: 50
 EVs: 252 HP / 4 Atk / 252 SpA
@@ -1543,7 +1495,7 @@ Quiet Nature
 - Ice Shard
 - Sheer Cold
 
-Quagsire @ Focus Sash
+|Quagsire @ Focus Sash
 Ability: Damp
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -1553,7 +1505,7 @@ Adamant Nature
 - Earthquake
 - Rain Dance
 
-Blastoise @ Salac Berry
+|Blastoise @ Salac Berry
 Ability: Torrent
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -1564,9 +1516,7 @@ Hasty Nature
 - Iron Defense
 
 
-=== [gen5draft] PWT/Brock PWT ===
-
-Onix @ Eviolite
+|Onix @ Eviolite
 Ability: Sturdy
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -1576,7 +1526,7 @@ Adamant Nature
 - Iron Head
 - Sandstorm
 
-Golem @ Lum Berry
+|Golem @ Lum Berry
 Ability: Rock Head
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1586,7 +1536,7 @@ Adamant Nature
 - Rock Polish
 - Sucker Punch
 
-Kabutops @ Focus Sash
+|Kabutops @ Focus Sash
 Ability: Battle Armor
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1596,7 +1546,7 @@ Jolly Nature
 - X-Scissor
 - Swords Dance
 
-Tyranitar @ Chople Berry
+|Tyranitar @ Chople Berry
 Ability: Sand Stream
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -1606,7 +1556,7 @@ Adamant Nature
 - Thunder Punch
 - Ice Punch
 
-Aerodactyl @ Choice Scarf
+|Aerodactyl @ Choice Scarf
 Ability: Pressure
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1616,7 +1566,7 @@ Jolly Nature
 - Fire Fang
 - Ice Fang
 
-Rhyperior @ Expert Belt
+|Rhyperior @ Expert Belt
 Ability: Lightning Rod
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -1627,9 +1577,7 @@ Adamant Nature
 - Avalanche
 
 
-=== [gen5draft] PWT/Brycen PWT ===
-
-Cryogonal @ Wide Lens
+|Cryogonal @ Wide Lens
 Ability: Levitate
 Level: 50
 EVs: 4 Atk / 252 SpA / 252 Spe
@@ -1639,7 +1587,7 @@ Hasty Nature
 - Sheer Cold
 - Ice Shard
 
-Beartic @ Bright Powder
+|Beartic @ Bright Powder
 Ability: Snow Cloak
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -1649,7 +1597,7 @@ Adamant Nature
 - Substitute
 - Swords Dance
 
-Vanilluxe @ Leftovers
+|Vanilluxe @ Leftovers
 Ability: Ice Body
 Level: 50
 EVs: 252 HP / 4 SpA / 252 SpD
@@ -1660,7 +1608,7 @@ IVs: 0 Atk
 - Weather Ball
 - Hail
 
-Weavile @ Focus Sash
+|Weavile @ Focus Sash
 Ability: Pressure
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1670,7 +1618,7 @@ Jolly Nature
 - Fake Out
 - Brick Break
 
-Dewgong @ Life Orb
+|Dewgong @ Life Orb
 Ability: Thick Fat
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -1680,7 +1628,7 @@ Hasty Nature
 - Drill Run
 - Fake Out
 
-Walrein @ Expert Belt
+|Walrein @ Expert Belt
 Ability: Thick Fat
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -1691,9 +1639,7 @@ Adamant Nature
 - Avalanche
 
 
-=== [gen5draft] PWT/Lenora PWT ===
-
-Watchog @ Focus Sash
+|Watchog @ Focus Sash
 Ability: Keen Eye
 Level: 50
 EVs: 252 HP / 4 Atk / 252 Spe
@@ -1703,7 +1649,7 @@ Jolly Nature
 - Confuse Ray
 - Hypnosis
 
-Cinccino @ Life Orb
+|Cinccino @ Life Orb
 Ability: Cute Charm
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -1714,7 +1660,7 @@ IVs: 0 Atk
 - Grass Knot
 - Thunderbolt
 
-Braviary @ Power Herb
+|Braviary @ Power Herb
 Ability: Sheer Force
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1724,7 +1670,7 @@ Jolly Nature
 - U-turn
 - Tailwind
 
-Sawsbuck @ Choice Scarf
+|Sawsbuck @ Choice Scarf
 Ability: Sap Sipper
 EVs: 252 Atk / 4 SpD / 252 Spe
 Jolly Nature
@@ -1733,7 +1679,7 @@ Jolly Nature
 - Megahorn
 - Wild Charge
 
-Kangaskhan @ Chople Berry
+|Kangaskhan @ Chople Berry
 Ability: Early Bird
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1743,7 +1689,7 @@ Jolly Nature
 - Hammer Arm
 - Sucker Punch
 
-Lickilicky @ Expert Belt
+|Lickilicky @ Expert Belt
 Ability: Own Tempo
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -1755,9 +1701,7 @@ IVs: 0 Atk
 - Thunderbolt
 
 
-=== [gen5draft] PWT/Cilan PWT ===
-
-Simisage @ Grass Gem
+|Simisage @ Grass Gem
 Ability: Gluttony
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1767,7 +1711,7 @@ Jolly Nature
 - Acrobatics
 - Crunch
 
-Ferrothorn @ Choice Band
+|Ferrothorn @ Choice Band
 Ability: Iron Barbs
 Level: 50
 EVs: 248 HP / 252 Atk / 8 SpD
@@ -1778,7 +1722,7 @@ IVs: 0 Spe
 - Bulldoze
 - Explosion
 
-Serperior @ Leftovers
+|Serperior @ Leftovers
 Ability: Overgrow
 Level: 50
 EVs: 252 HP / 4 Atk / 252 Spe
@@ -1788,7 +1732,7 @@ Jolly Nature
 - Aerial Ace
 - Leaf Blade
 
-Jumpluff @ Focus Sash
+|Jumpluff @ Focus Sash
 Ability: Chlorophyll
 Level: 50
 EVs: 252 HP / 4 SpA / 252 Spe
@@ -1799,7 +1743,7 @@ IVs: 0 Atk
 - Giga Drain
 - Sleep Powder
 
-Whimsicott @ Mental Herb
+|Whimsicott @ Mental Herb
 Ability: Prankster
 Level: 50
 EVs: 252 HP / 252 Def / 4 SpA
@@ -1810,7 +1754,7 @@ IVs: 0 Atk
 - Hurricane
 - Leech Seed
 
-Lilligant @ Miracle Seed
+|Lilligant @ Miracle Seed
 Ability: Own Tempo
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -1822,9 +1766,7 @@ IVs: 0 Atk
 - Dream Eater
 
 
-=== [gen5draft] PWT/Cress PWT ===
-
-Simipour @ Water Gem
+|Simipour @ Water Gem
 Ability: Gluttony
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -1834,7 +1776,7 @@ Hasty Nature
 - Acrobatics
 - Crunch
 
-Crawdaunt @ Choice Scarf
+|Crawdaunt @ Choice Scarf
 Ability: Hyper Cutter
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1844,7 +1786,7 @@ Jolly Nature
 - Brick Break
 - Guillotine
 
-Samurott @ Leftovers
+|Samurott @ Leftovers
 Ability: Torrent
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -1854,7 +1796,7 @@ Adamant Nature
 - Aqua Jet
 - Revenge
 
-Azumarill @ Choice Band
+|Azumarill @ Choice Band
 Ability: Huge Power
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -1864,7 +1806,7 @@ Adamant Nature
 - Superpower
 - Giga Impact
 
-Seismitoad @ Rindo Berry
+|Seismitoad @ Rindo Berry
 Ability: Swift Swim
 Level: 50
 EVs: 4 Atk / 252 SpA / 252 Spe
@@ -1874,7 +1816,7 @@ Mild Nature
 - Earth Power
 - Rain Dance
 
-Slowking @ Expert Belt
+|Slowking @ Expert Belt
 Ability: Oblivious
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -1886,9 +1828,7 @@ IVs: 0 Atk
 - Nasty Plot
 
 
-=== [gen5draft] PWT/Chili PWT ===
-
-Simisear @ Fire Gem
+|Simisear @ Fire Gem
 Ability: Gluttony
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -1898,7 +1838,7 @@ Hasty Nature
 - Acrobatics
 - Crunch
 
-Camerupt @ Shuca Berry
+|Camerupt @ Shuca Berry
 Ability: Magma Armor
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpA
@@ -1908,7 +1848,7 @@ Brave Nature
 - Earthquake
 - Explosion
 
-Heatmor @ Focus Sash
+|Heatmor @ Focus Sash
 Ability: Flash Fire
 Level: 50
 EVs: 244 HP / 12 Atk / 252 SpA
@@ -1918,7 +1858,7 @@ Quiet Nature
 - Focus Blast
 - Sunny Day
 
-Darmanitan @ Life Orb
+|Darmanitan @ Life Orb
 Ability: Sheer Force
 Level: 50
 EVs: 4 HP / 252 Atk / 252 Spe
@@ -1928,7 +1868,7 @@ Jolly Nature
 - Stone Edge
 - U-turn
 
-Arcanine @ Power Herb
+|Arcanine @ Power Herb
 Ability: Intimidate
 Level: 50
 EVs: 4 Atk / 252 SpA / 252 Spe
@@ -1938,7 +1878,7 @@ Hasty Nature
 - Solar Beam
 - Extreme Speed
 
-Emboar @ Expert Belt
+|Emboar @ Expert Belt
 Ability: Blaze
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -1949,9 +1889,7 @@ Adamant Nature
 - Wild Charge
 
 
-=== [gen5draft] PWT/Marlon PWT ===
-
-Jellicent @ Expert Belt
+|Jellicent @ Expert Belt
 Ability: Cursed Body
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -1962,7 +1900,7 @@ IVs: 0 Atk
 - Shadow Ball
 - Psychic
 
-Carracosta @ Lum Berry
+|Carracosta @ Lum Berry
 Ability: Solid Rock
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -1972,7 +1910,7 @@ Adamant Nature
 - Aqua Jet
 - Shell Smash
 
-Starmie @ Focus Sash
+|Starmie @ Focus Sash
 Ability: Natural Cure
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -1983,7 +1921,7 @@ IVs: 0 Atk
 - Reflect
 - Thunderbolt
 
-Quagsire @ Rindo Berry
+|Quagsire @ Rindo Berry
 Ability: Damp
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -1993,7 +1931,7 @@ Adamant Nature
 - Waterfall
 - Counter
 
-Cloyster @ King's Rock
+|Cloyster @ King's Rock
 Ability: Shell Armor
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2003,7 +1941,7 @@ Adamant Nature
 - Icicle Spear
 - Shell Smash
 
-Wailord @ Choice Scarf
+|Wailord @ Choice Scarf
 Ability: Water Veil
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -2014,9 +1952,7 @@ Hasty Nature
 - Bounce
 
 
-=== [gen5draft] PWT/Drayden PWT ===
-
-Haxorus @ Focus Sash
+|Haxorus @ Focus Sash
 Ability: Mold Breaker
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2026,7 +1962,7 @@ Adamant Nature
 - Brick Break
 - Dragon Dance
 
-Druddigon @ Rocky Helmet
+|Druddigon @ Rocky Helmet
 Ability: Rough Skin
 Level: 50
 EVs: 244 HP / 252 Atk / 12 SpD
@@ -2036,7 +1972,7 @@ Adamant Nature
 - Glare
 - Rest
 
-Hydreigon @ Choice Specs
+|Hydreigon @ Choice Specs
 Ability: Levitate
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -2047,7 +1983,7 @@ IVs: 0 Atk
 - Fire Blast
 - Focus Blast
 
-Flygon @ Wide Lens
+|Flygon @ Wide Lens
 Ability: Levitate
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -2057,7 +1993,7 @@ Timid Nature
 - Fire Blast
 - U-turn
 
-Altaria @ Yache Berry
+|Altaria @ Yache Berry
 Ability: Natural Cure
 Level: 50
 EVs: 252 HP / 4 SpA / 252 SpD
@@ -2068,7 +2004,7 @@ IVs: 0 Atk
 - Perish Song
 - Cotton Guard
 
-Salamence @ White Herb
+|Salamence @ White Herb
 Ability: Intimidate
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -2080,9 +2016,7 @@ IVs: 0 Atk
 - Tailwind
 
 
-=== [gen5draft] PWT/Skyla PWT ===
-
-Swanna @ Focus Sash
+|Swanna @ Focus Sash
 Ability: Keen Eye
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -2093,7 +2027,7 @@ IVs: 0 Atk
 - Ice Beam
 - Tailwind
 
-Jumpluff @ Flying Gem
+|Jumpluff @ Flying Gem
 Ability: Chlorophyll
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2103,7 +2037,7 @@ Adamant Nature
 - Bullet Seed
 - U-turn
 
-Drifblim @ Expert Belt
+|Drifblim @ Expert Belt
 Ability: Aftermath
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -2114,7 +2048,7 @@ IVs: 0 Atk
 - Psychic
 - Icy Wind
 
-Mandibuzz @ Salac Berry
+|Mandibuzz @ Salac Berry
 Ability: Big Pecks
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -2125,7 +2059,7 @@ IVs: 0 Atk
 - Nasty Plot
 - Roost
 
-Archeops @ Sitrus Berry
+|Archeops @ Sitrus Berry
 Ability: Defeatist
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2135,7 +2069,7 @@ Jolly Nature
 - Earthquake
 - Dragon Claw
 
-Braviary @ White Herb
+|Braviary @ White Herb
 Ability: Sheer Force
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2146,9 +2080,7 @@ Jolly Nature
 - U-turn
 
 
-=== [gen5draft] PWT/Clay PWT ===
-
-Excadrill @ Focus Sash
+|Excadrill @ Focus Sash
 Ability: Sand Rush
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2158,7 +2090,7 @@ Adamant Nature
 - Submission
 - Swords Dance
 
-Flygon @ Liechi Berry
+|Flygon @ Liechi Berry
 Ability: Levitate
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -2168,7 +2100,7 @@ Hasty Nature
 - Fire Blast
 - Stone Edge
 
-Krookodile @ Choice Band
+|Krookodile @ Choice Band
 Ability: Intimidate
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2178,7 +2110,7 @@ Jolly Nature
 - Stone Edge
 - Aqua Tail
 
-Seismitoad @ Life Orb
+|Seismitoad @ Life Orb
 Ability: Swift Swim
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -2189,7 +2121,7 @@ IVs: 0 Atk
 - Focus Blast
 - Grass Knot
 
-Mamoswine @ Ice Gem
+|Mamoswine @ Ice Gem
 Ability: Oblivious
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2199,7 +2131,7 @@ Jolly Nature
 - Stone Edge
 - Fissure
 
-Golurk @ Leftovers
+|Golurk @ Leftovers
 Ability: Iron Fist
 Level: 50
 EVs: 244 HP / 252 Atk / 12 SpD
@@ -2210,9 +2142,7 @@ Adamant Nature
 - Focus Punch
 
 
-=== [gen5draft] PWT/Elesa PWT ===
-
-Zebstrika @ Life Orb
+|Zebstrika @ Life Orb
 Ability: Motor Drive
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -2222,7 +2152,7 @@ Lonely Nature
 - Return
 - Quick Attack
 
-Ampharos @ Shuca Berry
+|Ampharos @ Shuca Berry
 Ability: Static
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -2233,7 +2163,7 @@ IVs: 0 Atk
 - Power Gem
 - Focus Blast
 
-Luxray @ Expert Belt
+|Luxray @ Expert Belt
 Ability: Intimidate
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -2243,7 +2173,7 @@ Adamant Nature
 - Ice Fang
 - Quick Attack
 
-Emolga @ Flying Gem
+|Emolga @ Flying Gem
 Ability: Static
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2253,7 +2183,7 @@ Jolly Nature
 - Acrobatics
 - Charm
 
-Eelektross @ Choice Band
+|Eelektross @ Choice Band
 Ability: Levitate
 Level: 50
 EVs: 244 HP / 252 Atk / 12 SpD
@@ -2263,7 +2193,7 @@ Adamant Nature
 - Dragon Claw
 - Brick Break
 
-Stunfisk @ Sitrus Berry
+|Stunfisk @ Sitrus Berry
 Ability: Limber
 Level: 50
 EVs: 244 HP / 252 SpA / 12 SpD
@@ -2275,9 +2205,7 @@ IVs: 0 Atk
 - Foul Play
 
 
-=== [gen5draft] PWT/Burgh PWT ===
-
-Leavanny @ Focus Sash
+|Leavanny @ Focus Sash
 Ability: Swarm
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2287,7 +2215,7 @@ Jolly Nature
 - Aerial Ace
 - Swords Dance
 
-Vespiquen @ Leftovers
+|Vespiquen @ Leftovers
 Ability: Pressure
 Level: 50
 EVs: 252 HP / 4 Atk / 252 SpD
@@ -2297,7 +2225,7 @@ Careful Nature
 - Roost
 - Toxic
 
-Crustle @ Salac Berry
+|Crustle @ Salac Berry
 Ability: Sturdy
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2307,7 +2235,7 @@ Adamant Nature
 - Earthquake
 - Shell Smash
 
-Heracross @ Choice Scarf
+|Heracross @ Choice Scarf
 Ability: Guts
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2317,7 +2245,7 @@ Jolly Nature
 - Shadow Claw
 - Stone Edge
 
-Accelgor @ Bright Powder
+|Accelgor @ Bright Powder
 Ability: Sticky Hold
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -2328,7 +2256,7 @@ IVs: 0 Atk
 - Giga Drain
 - Double Team
 
-Durant @ Wide Lens
+|Durant @ Wide Lens
 Ability: Hustle
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2339,9 +2267,7 @@ Jolly Nature
 - Guillotine
 
 
-=== [gen5draft] PWT/Roxie PWT ===
-
-Scolipede @ Choice Scarf
+|Scolipede @ Choice Scarf
 Ability: Poison Point
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2351,7 +2277,7 @@ Jolly Nature
 - Earthquake
 - Rock Slide
 
-Toxicroak @ Focus Sash
+|Toxicroak @ Focus Sash
 Ability: Anticipation
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2361,7 +2287,7 @@ Jolly Nature
 - Drain Punch
 - Protect
 
-Garbodor @ Expert Belt
+|Garbodor @ Expert Belt
 Ability: Weak Armor
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -2372,7 +2298,7 @@ IVs: 0 Atk
 - Focus Blast
 - Protect
 
-Crobat @ Psychic Gem
+|Crobat @ Psychic Gem
 Ability: Inner Focus
 Level: 50
 EVs: 4 HP / 252 Atk / 252 Spe
@@ -2382,7 +2308,7 @@ Jolly Nature
 - Tailwind
 - Brave Bird
 
-Drapion @ Scope Lens
+|Drapion @ Scope Lens
 Ability: Sniper
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2392,7 +2318,7 @@ Jolly Nature
 - Ice Fang
 - Protect
 
-Amoonguss @ Black Sludge
+|Amoonguss @ Black Sludge
 Ability: Effect Spore
 Level: 50
 EVs: 252 HP / 4 SpA / 252 SpD
@@ -2404,9 +2330,7 @@ IVs: 0 Atk
 - Protect
 
 
-=== [gen5draft] PWT/Cheren PWT ===
-
-Stoutland @ Focus Sash
+|Stoutland @ Focus Sash
 Ability: Intimidate
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2416,7 +2340,7 @@ Jolly Nature
 - Ice Fang
 - Reversal
 
-Cinccino @ King's Rock
+|Cinccino @ King's Rock
 Ability: Cute Charm
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2426,7 +2350,7 @@ Jolly Nature
 - Bullet Seed
 - Aqua Tail
 
-Lickilicky @ Expert Belt
+|Lickilicky @ Expert Belt
 Ability: Own Tempo
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpA
@@ -2436,7 +2360,7 @@ Brave Nature
 - Thunder
 - Ice Punch
 
-Castform @ Lum Berry
+|Castform @ Lum Berry
 Ability: Forecast
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -2447,7 +2371,7 @@ IVs: 0 Atk
 - Rain Dance
 - Thunder
 
-Bouffalant @ Leftovers
+|Bouffalant @ Leftovers
 Ability: Reckless
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -2457,7 +2381,7 @@ Adamant Nature
 - Wild Charge
 - Revenge
 
-Porygon-Z @ Chople Berry
+|Porygon-Z @ Chople Berry
 Ability: Adaptability
 Level: 50
 EVs: 4 HP / 252 SpA / 252 Spe
@@ -2469,9 +2393,7 @@ IVs: 0 Atk
 - Thunder
 
 
-=== [gen5draft] PWT/Roark PWT ===
-
-Rampardos @ Focus Sash
+|Rampardos @ Focus Sash
 Ability: Mold Breaker
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -2481,7 +2403,7 @@ Adamant Nature
 - Superpower
 - Avalanche
 
-Probopass @ Air Balloon
+|Probopass @ Air Balloon
 Ability: Sturdy
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -2492,7 +2414,7 @@ IVs: 0 Atk
 - Discharge
 - Pain Split
 
-Archeops @ Life Orb
+|Archeops @ Life Orb
 Ability: Defeatist
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -2502,7 +2424,7 @@ Hasty Nature
 - Focus Blast
 - Quick Attack
 
-Crustle @ Power Herb
+|Crustle @ Power Herb
 Ability: Sturdy
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -2512,7 +2434,7 @@ Naughty Nature
 - Solar Beam
 - Shell Smash
 
-Golem @ Choice Band
+|Golem @ Choice Band
 Ability: Rock Head
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -2522,7 +2444,7 @@ Adamant Nature
 - Sucker Punch
 - Explosion
 
-Relicanth @ Liechi Berry
+|Relicanth @ Liechi Berry
 Ability: Rock Head
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2533,9 +2455,7 @@ Adamant Nature
 - Yawn
 
 
-=== [gen5draft] PWT/Juan PWT ===
-
-Kingdra @ Haban Berry
+|Kingdra @ Haban Berry
 Ability: Sniper
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -2546,7 +2466,7 @@ IVs: 0 Atk
 - Ice Beam
 - Rain Dance
 
-Walrein @ Leftovers
+|Walrein @ Leftovers
 Ability: Thick Fat
 Level: 50
 EVs: 252 HP / 4 SpA / 252 SpD
@@ -2557,7 +2477,7 @@ IVs: 0 Atk
 - Super Fang
 - Sheer Cold
 
-Crawdaunt @ Life Orb
+|Crawdaunt @ Life Orb
 Ability: Hyper Cutter
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -2567,7 +2487,7 @@ Adamant Nature
 - Rain Dance
 - Guillotine
 
-Whiscash @ Chesto Berry
+|Whiscash @ Chesto Berry
 Ability: Oblivious
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -2577,7 +2497,7 @@ Adamant Nature
 - Spark
 - Rest
 
-Relicanth @ Damp Rock
+|Relicanth @ Damp Rock
 Ability: Swift Swim
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2587,7 +2507,7 @@ Adamant Nature
 - Waterfall
 - Earthquake
 
-Politoed @ Wide Lens
+|Politoed @ Wide Lens
 Ability: Water Absorb
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -2599,9 +2519,7 @@ IVs: 0 Atk
 - Ice Beam
 
 
-=== [gen5draft] PWT/Liza PWT ===
-
-Lunatone @ Expert Belt
+|Lunatone @ Expert Belt
 Ability: Levitate
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -2612,7 +2530,7 @@ IVs: 0 Atk
 - Trick Room
 - Signal Beam
 
-Xatu @ Focus Sash
+|Xatu @ Focus Sash
 Ability: Synchronize
 Level: 50
 EVs: 244 HP / 252 Atk / 12 SpD
@@ -2622,7 +2540,7 @@ Brave Nature
 - U-turn
 - Trick Room
 
-Bronzong @ Rocky Helmet
+|Bronzong @ Rocky Helmet
 Ability: Heatproof
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -2632,7 +2550,7 @@ Brave Nature
 - Earthquake
 - Trick Room
 
-Gothitelle @ Leftovers
+|Gothitelle @ Leftovers
 Ability: Frisk
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -2643,7 +2561,7 @@ IVs: 0 Atk
 - Calm Mind
 - Trick Room
 
-Gardevoir @ Lum Berry
+|Gardevoir @ Lum Berry
 Ability: Synchronize
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -2654,7 +2572,7 @@ IVs: 0 Atk
 - Will-O-Wisp
 - Thunderbolt
 
-Claydol @ Sitrus Berry
+|Claydol @ Sitrus Berry
 Ability: Levitate
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -2666,9 +2584,7 @@ IVs: 0 Atk
 - Psyshock
 
 
-=== [gen5draft] PWT/Gardenia PWT ===
-
-Roserade @ Choice Scarf
+|Roserade @ Choice Scarf
 Ability: Natural Cure
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -2679,7 +2595,7 @@ IVs: 0 Atk
 - Weather Ball
 - Sludge Bomb
 
-Tropius @ Heat Rock
+|Tropius @ Heat Rock
 Ability: Chlorophyll
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -2690,7 +2606,7 @@ IVs: 0 Atk
 - Synthesis
 - Sunny Day
 
-Breloom @ Focus Sash
+|Breloom @ Focus Sash
 Ability: Effect Spore
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -2700,7 +2616,7 @@ Adamant Nature
 - Mach Punch
 - Stone Edge
 
-Tangrowth @ Salac Berry
+|Tangrowth @ Salac Berry
 Ability: Leaf Guard
 Level: 50
 EVs: 4 Atk / 252 SpA / 252 Spe
@@ -2710,7 +2626,7 @@ Naive Nature
 - Sludge Bomb
 - Earthquake
 
-Leafeon @ Yache Berry
+|Leafeon @ Yache Berry
 Ability: Leaf Guard
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2720,7 +2636,7 @@ Jolly Nature
 - Quick Attack
 - Swords Dance
 
-Torterra @ Choice Band
+|Torterra @ Choice Band
 Ability: Overgrow
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -2731,9 +2647,7 @@ Adamant Nature
 - Stone Edge
 
 
-=== [gen5draft] PWT/Byron PWT ===
-
-Bastiodon @ Air Balloon
+|Bastiodon @ Air Balloon
 Ability: Sturdy
 Level: 50
 EVs: 252 HP / 4 SpA / 252 SpD
@@ -2744,7 +2658,7 @@ IVs: 0 Atk
 - Stealth Rock
 - Iron Defense
 
-Excadrill @ Life Orb
+|Excadrill @ Life Orb
 Ability: Sand Rush
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2754,7 +2668,7 @@ Adamant Nature
 - Rock Slide
 - Submission
 
-Bronzong @ Iron Ball
+|Bronzong @ Iron Ball
 Ability: Levitate
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -2765,7 +2679,7 @@ IVs: 0 Spe
 - Earthquake
 - Trick Room
 
-Magnezone @ Shuca Berry
+|Magnezone @ Shuca Berry
 Ability: Magnet Pull
 Level: 50
 EVs: 252 HP / 4 Atk / 252 Def
@@ -2775,7 +2689,7 @@ Impish Nature
 - Protect
 - Reflect
 
-Aggron @ Choice Band
+|Aggron @ Choice Band
 Ability: Sturdy
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -2785,7 +2699,7 @@ Adamant Nature
 - Fire Punch
 - Dragon Rush
 
-Forretress @ Light Clay
+|Forretress @ Light Clay
 Ability: Sturdy
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -2797,9 +2711,7 @@ IVs: 0 Spe
 - Reflect
 
 
-=== [gen5draft] PWT/Crasher Wake PWT ===
-
-Floatzel @ Life Orb
+|Floatzel @ Life Orb
 Ability: Swift Swim
 Level: 50
 EVs: 4 HP / 252 Atk / 252 Spe
@@ -2809,7 +2721,7 @@ Naughty Nature
 - Focus Blast
 - Bulk Up
 
-Empoleon @ Petaya Berry
+|Empoleon @ Petaya Berry
 Ability: Torrent
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -2820,7 +2732,7 @@ IVs: 0 Atk
 - Grass Knot
 - Feather Dance
 
-Ludicolo @ Leftovers
+|Ludicolo @ Leftovers
 Ability: Rain Dish
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -2831,7 +2743,7 @@ IVs: 0 Atk
 - Focus Blast
 - Rain Dance
 
-Gastrodon @ Rindo Berry
+|Gastrodon @ Rindo Berry
 Ability: Storm Drain
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -2842,7 +2754,7 @@ IVs: 0 Atk
 - Blizzard
 - Counter
 
-Poliwrath @ Salac Berry
+|Poliwrath @ Salac Berry
 Ability: Water Absorb
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2852,7 +2764,7 @@ Jolly Nature
 - Ice Punch
 - Hypnosis
 
-Gyarados @ Wacan Berry
+|Gyarados @ Wacan Berry
 Ability: Intimidate
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2863,9 +2775,7 @@ Adamant Nature
 - Dragon Dance
 
 
-=== [gen5draft] PWT/Candice PWT ===
-
-Froslass @ Petaya Berry
+|Froslass @ Petaya Berry
 Ability: Snow Cloak
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -2876,7 +2786,7 @@ IVs: 0 Atk
 - Psychic
 - Hail
 
-Abomasnow @ Occa Berry
+|Abomasnow @ Occa Berry
 Ability: Snow Warning
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpA
@@ -2886,7 +2796,7 @@ Brave Nature
 - Earthquake
 - Ingrain
 
-Weavile @ Chople Berry
+|Weavile @ Chople Berry
 Ability: Pressure
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2896,7 +2806,7 @@ Jolly Nature
 - Brick Break
 - Torment
 
-Glaceon @ Life Orb
+|Glaceon @ Life Orb
 Ability: Snow Cloak
 Level: 50
 EVs: 244 HP / 12 Atk / 252 SpA
@@ -2906,7 +2816,7 @@ Quiet Nature
 - Signal Beam
 - Ice Shard
 
-Mamoswine @ Salac Berry
+|Mamoswine @ Salac Berry
 Ability: Oblivious
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2916,7 +2826,7 @@ Jolly Nature
 - Superpower
 - Rock Tomb
 
-Glalie @ Rock Gem
+|Glalie @ Rock Gem
 Ability: Ice Body
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -2927,9 +2837,7 @@ Hasty Nature
 - Hail
 
 
-=== [gen5draft] PWT/Fantina PWT ===
-
-Mismagius @ Salac Berry
+|Mismagius @ Salac Berry
 Ability: Levitate
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -2940,7 +2848,7 @@ IVs: 0 Atk
 - Calm Mind
 - Pain Split
 
-Drifblim @ Flying Gem
+|Drifblim @ Flying Gem
 Ability: Aftermath
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -2950,7 +2858,7 @@ Jolly Nature
 - Will-O-Wisp
 - Sucker Punch
 
-Spiritomb @ Sitrus Berry
+|Spiritomb @ Sitrus Berry
 Ability: Pressure
 Level: 50
 EVs: 252 HP / 4 Atk / 252 SpA
@@ -2960,7 +2868,7 @@ Quiet Nature
 - Sucker Punch
 - Nasty Plot
 
-Dusknoir @ Apicot Berry
+|Dusknoir @ Apicot Berry
 Ability: Pressure
 Level: 50
 EVs: 244 HP / 12 Atk / 252 SpD
@@ -2970,7 +2878,7 @@ Careful Nature
 - Pain Split
 - Will-O-Wisp
 
-Jellicent @ Ghost Gem
+|Jellicent @ Ghost Gem
 Ability: Water Absorb
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -2981,7 +2889,7 @@ IVs: 0 Atk
 - Recover
 - Water Spout
 
-Gengar @ Focus Sash
+|Gengar @ Focus Sash
 Ability: Levitate
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -2993,9 +2901,7 @@ IVs: 0 Atk
 - Nightmare
 
 
-=== [gen5draft] PWT/Maylene PWT ===
-
-Lucario @ Focus Sash
+|Lucario @ Focus Sash
 Ability: Steadfast
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -3005,7 +2911,7 @@ Jolly Nature
 - Extreme Speed
 - Swords Dance
 
-Infernape @ Fire Gem
+|Infernape @ Fire Gem
 Ability: Blaze
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -3015,7 +2921,7 @@ Jolly Nature
 - Mach Punch
 - Bulk Up
 
-Toxicroak @ Payapa Berry
+|Toxicroak @ Payapa Berry
 Ability: Anticipation
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -3025,7 +2931,7 @@ Jolly Nature
 - Substitute
 - Bulk Up
 
-Gallade @ Coba Berry
+|Gallade @ Coba Berry
 Ability: Steadfast
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -3035,7 +2941,7 @@ Jolly Nature
 - Leaf Blade
 - Bulk Up
 
-Medicham @ Choice Scarf
+|Medicham @ Choice Scarf
 Ability: Pure Power
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -3045,7 +2951,7 @@ Jolly Nature
 - Thunder Punch
 - Ice Punch
 
-Machamp @ Scope Lens
+|Machamp @ Scope Lens
 Ability: Guts
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -3056,9 +2962,7 @@ Adamant Nature
 - Bullet Punch
 
 
-=== [gen5draft] PWT/Iris's Team ===
-
-Haxorus (F) @ Focus Sash
+|Haxorus (F) @ Focus Sash
 Ability: Mold Breaker
 Level: 78
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -3079,7 +2983,7 @@ IVs: 0 Atk
 - Dragon Pulse
 - Surf
 
-Druddigon @ Life Orb
+|Druddigon @ Life Orb
 Ability: Sheer Force
 Level: 76
 EVs: 252 HP / 248 Atk / 8 SpA
@@ -3121,9 +3025,7 @@ IVs: 0 Atk
 - Sing
 
 
-=== [gen5ubers] PWT/Alder's Team ===
-
-Volcarona @ Charti Berry
+|Volcarona @ Charti Berry
 Ability: Flame Body
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -3134,7 +3036,7 @@ IVs: 0 Atk
 - Psychic
 - Quiver Dance
 
-Conkeldurr @ Life Orb
+|Conkeldurr @ Life Orb
 Ability: Guts
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -3144,7 +3046,7 @@ Adamant Nature
 - Stone Edge
 - Mach Punch
 
-Reuniclus @ Leftovers
+|Reuniclus @ Leftovers
 Ability: Overcoat
 Level: 50
 EVs: 252 HP / 4 SpA / 252 SpD
@@ -3155,7 +3057,7 @@ IVs: 0 Atk
 - Light Screen
 - Toxic
 
-Krookodile @ Expert Belt
+|Krookodile @ Expert Belt
 Ability: Moxie
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -3165,7 +3067,7 @@ Jolly Nature
 - Stone Edge
 - Outrage
 
-Chandelure @ Choice Scarf
+|Chandelure @ Choice Scarf
 Ability: Flash Fire
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -3176,7 +3078,7 @@ IVs: 0 Atk
 - Psychic
 - Energy Ball
 
-Braviary @ Choice Band
+|Braviary @ Choice Band
 Ability: Keen Eye
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -3187,9 +3089,7 @@ Jolly Nature
 - U-turn
 
 
-=== [gen5ubers] PWT/Wallace's Team ===
-
-Milotic @ Rocky Helmet
+|Milotic @ Rocky Helmet
 Ability: Marvel Scale
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -3200,7 +3100,7 @@ IVs: 0 Atk
 - Rest
 - Sleep Talk
 
-Sharpedo @ Focus Sash
+|Sharpedo @ Focus Sash
 Ability: Rough Skin
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -3210,7 +3110,7 @@ Hasty Nature
 - Zen Headbutt
 - Aqua Jet
 
-Walrein @ Leftovers
+|Walrein @ Leftovers
 Ability: Thick Fat
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -3221,7 +3121,7 @@ IVs: 0 Atk
 - Blizzard
 - Sheer Cold
 
-Ludicolo @ Life Orb
+|Ludicolo @ Life Orb
 Ability: Rain Dish
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -3232,7 +3132,7 @@ IVs: 0 Atk
 - Giga Drain
 - Rain Dance
 
-Swampert @ Rindo Berry
+|Swampert @ Rindo Berry
 Ability: Torrent
 Level: 50
 EVs: 252 HP / 252 SpA / 4 SpD
@@ -3243,7 +3143,7 @@ IVs: 0 Atk
 - Ice Beam
 - Focus Blast
 
-Starmie @ Expert Belt
+|Starmie @ Expert Belt
 Ability: Natural Cure
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -3255,9 +3155,7 @@ IVs: 0 Atk
 - Signal Beam
 
 
-=== [gen5ubers] PWT/Steven's Team ===
-
-Metagross @ Occa Berry
+|Metagross @ Occa Berry
 Ability: Clear Body
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -3267,7 +3165,7 @@ Adamant Nature
 - Earthquake
 - Bullet Punch
 
-Aggron @ Air Balloon
+|Aggron @ Air Balloon
 Ability: Rock Head
 Level: 50
 EVs: 248 HP / 252 Atk / 8 SpD
@@ -3277,7 +3175,7 @@ Adamant Nature
 - Earthquake
 - Metal Burst
 
-Excadrill @ Focus Sash
+|Excadrill @ Focus Sash
 Ability: Sand Rush
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -3287,7 +3185,7 @@ Adamant Nature
 - X-Scissor
 - Sandstorm
 
-Archeops @ Sitrus Berry
+|Archeops @ Sitrus Berry
 Ability: Defeatist
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -3297,7 +3195,7 @@ Jolly Nature
 - Earthquake
 - Quick Attack
 
-Cradily @ Expert Belt
+|Cradily @ Expert Belt
 Ability: Suction Cups
 Level: 50
 EVs: 248 HP / 252 Atk / 8 SpD
@@ -3307,7 +3205,7 @@ Adamant Nature
 - Seed Bomb
 - Sandstorm
 
-Armaldo @ White Herb
+|Armaldo @ White Herb
 Ability: Battle Armor
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -3318,9 +3216,7 @@ Adamant Nature
 - Superpower
 
 
-=== [gen5ubers] PWT/Blues Team ===
-
-Aerodactyl (M) @ Choice Band
+|Aerodactyl (M) @ Choice Band
 Ability: Rock Head
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -3330,7 +3226,7 @@ Hasty Nature
 - Ice Fang
 - Fire Blast
 
-Alakazam @ Focus Sash
+|Alakazam @ Focus Sash
 Ability: Synchronize
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -3341,7 +3237,7 @@ IVs: 0 Atk
 - Shadow Ball
 - Reflect
 
-Machamp @ White Herb
+|Machamp @ White Herb
 Ability: No Guard
 Level: 50
 EVs: 248 HP / 252 Atk / 8 SpD
@@ -3351,7 +3247,7 @@ Adamant Nature
 - Fire Punch
 - Bullet Punch
 
-Exeggutor @ Life Orb
+|Exeggutor @ Life Orb
 Ability: Chlorophyll
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -3361,7 +3257,7 @@ Naughty Nature
 - Zen Headbutt
 - Leech Seed
 
-Arcanine @ Expert Belt
+|Arcanine @ Expert Belt
 Ability: Flash Fire
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -3371,7 +3267,7 @@ Jolly Nature
 - Wild Charge
 - Extreme Speed
 
-Gyarados @ King's Rock
+|Gyarados @ King's Rock
 Ability: Intimidate
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -3382,9 +3278,7 @@ Jolly Nature
 - Outrage
 
 
-=== [gen5draft] PWT/Reds Team ===
-
-Pikachu @ Light Ball
+|Pikachu @ Light Ball
 Ability: Static
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -3394,7 +3288,7 @@ Jolly Nature
 - Brick Break
 - Fake Out
 
-Snorlax @ Quick Claw
+|Snorlax @ Quick Claw
 Ability: Thick Fat
 Level: 50
 EVs: 252 HP / 252 Atk / 4 SpD
@@ -3404,7 +3298,7 @@ Adamant Nature
 - Crunch
 - Seed Bomb
 
-Lapras @ Sitrus Berry
+|Lapras @ Sitrus Berry
 Ability: Water Absorb
 Level: 50
 EVs: 248 HP / 8 Atk / 252 SpA
@@ -3414,7 +3308,7 @@ Quiet Nature
 - Ice Shard
 - Thunderbolt
 
-Venusaur @ White Herb
+|Venusaur @ White Herb
 Ability: Overgrow
 Level: 50
 EVs: 4 Atk / 252 SpA / 252 Spe
@@ -3424,7 +3318,7 @@ Hasty Nature
 - Earthquake
 - Sleep Powder
 
-Blastoise @ Choice Scarf
+|Blastoise @ Choice Scarf
 Ability: Torrent
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -3435,7 +3329,7 @@ IVs: 0 Atk
 - Blizzard
 - Focus Blast
 
-Charizard @ Focus Sash
+|Charizard @ Focus Sash
 Ability: Blaze
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -3447,9 +3341,7 @@ IVs: 0 Atk
 - Dragon Pulse
 
 
-=== [gen5ubers] PWT/Cynthia's Team ===
-
-Garchomp @ Focus Sash
+|Garchomp @ Focus Sash
 Ability: Sand Veil
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -3459,7 +3351,7 @@ Jolly Nature
 - Stone Edge
 - Swords Dance
 
-Spiritomb @ Rocky Helmet
+|Spiritomb @ Rocky Helmet
 Ability: Pressure
 Level: 50
 EVs: 248 HP / 8 Atk / 252 SpD
@@ -3469,7 +3361,7 @@ Careful Nature
 - Will-O-Wisp
 - Pain Split
 
-Roserade @ White Herb
+|Roserade @ White Herb
 Ability: Poison Point
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -3480,7 +3372,7 @@ IVs: 0 Atk
 - Shadow Ball
 - Sleep Powder
 
-Togekiss @ Leftovers
+|Togekiss @ Leftovers
 Ability: Serene Grace
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -3491,7 +3383,7 @@ IVs: 0 Atk
 - Shadow Ball
 - Grass Knot
 
-Lucario @ Life Orb
+|Lucario @ Life Orb
 Ability: Steadfast
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -3501,7 +3393,7 @@ Hasty Nature
 - Stone Edge
 - Extreme Speed
 
-Glaceon @ Choice Scarf
+|Glaceon @ Choice Scarf
 Ability: Snow Cloak
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -3513,9 +3405,7 @@ IVs: 0 Atk
 - Water Pulse
 
 
-=== [gen5ubers] PWT/Lances Team ===
-
-Dragonite @ Focus Sash
+|Dragonite @ Focus Sash
 Ability: Inner Focus
 Level: 50
 EVs: 252 Atk / 4 SpA / 252 Spe
@@ -3525,7 +3415,7 @@ Hasty Nature
 - Fire Punch
 - Draco Meteor
 
-Salamence @ Expert Belt
+|Salamence @ Expert Belt
 Ability: Intimidate
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -3535,7 +3425,7 @@ Jolly Nature
 - Stone Edge
 - Crunch
 
-Kingdra @ Scope Lens
+|Kingdra @ Scope Lens
 Ability: Sniper
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -3546,7 +3436,7 @@ IVs: 0 Atk
 - Ice Beam
 - Flash Cannon
 
-Haxorus @ Choice Scarf
+|Haxorus @ Choice Scarf
 Ability: Mold Breaker
 Level: 50
 EVs: 252 Atk / 4 SpD / 252 Spe
@@ -3556,7 +3446,7 @@ Jolly Nature
 - Earthquake
 - Rock Slide
 
-Hydreigon @ White Herb
+|Hydreigon @ White Herb
 Ability: Levitate
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
@@ -3567,7 +3457,7 @@ IVs: 0 Atk
 - Fire Blast
 - Earth Power
 
-Flygon @ Power Herb
+|Flygon @ Power Herb
 Ability: Levitate
 Level: 50
 EVs: 252 SpA / 4 SpD / 252 Spe
