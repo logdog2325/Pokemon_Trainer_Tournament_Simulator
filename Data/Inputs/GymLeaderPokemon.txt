@@ -1,1 +1,1866 @@
-Replace this with your own builds, see the example files in videos for formatting
+=== [gen7draft] Alola Challengers/Dexio ===
+
+Espeon (M)
+Ability: Synchronize
+Level: 63
+EVs: 252 SpA / 8 SpD / 248 Spe
+Timid Nature
+- Psychic
+- Shadow Ball
+- Dazzling Gleam
+- Power Swap
+
+Raichu-Alola (F)
+Ability: Surge Surfer
+Level: 63
+EVs: 8 HP / 248 SpA / 4 SpD / 248 Spe
+Timid Nature
+- Psychic
+- Thunderbolt
+- Light Screen
+- Reflect
+
+Slowking (M)
+Ability: Own Tempo
+Level: 63
+EVs: 248 HP / 252 SpA / 8 SpD
+Modest Nature
+- Psychic
+- Power Gem
+- Ice Beam
+- Flamethrower
+
+Metagross
+Ability: Clear Body
+Level: 63
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Meteor Mash
+- Zen Headbutt
+- Bullet Punch
+- Brick Break
+
+Alakazam (M)
+Ability: Synchronize
+Level: 63
+EVs: 252 SpA / 252 Spe
+Timid Nature
+- Psychic
+- Psyshock
+- Focus Blast
+- Energy Ball
+
+Zygarde-10%
+Ability: Aura Break
+Level: 63
+EVs: 4 HP / 252 Atk / 252 Spe
+Hasty Nature
+- Crunch
+- Earthquake
+- Camouflage
+- Dragon Pulse
+
+
+=== [gen9] Alola Challengers/Kahili ===
+
+Braviary
+Ability: Sheer Force
+Level: 66
+Tera Type: Normal
+EVs: 4 HP / 252 Atk / 252 Spe
+Hasty Nature
+- Brave Bird
+- Crush Claw
+- Air Slash
+- Scary Face
+
+Hawlucha
+Ability: Unburden
+Level: 66
+Tera Type: Fighting
+EVs: 252 Atk / 4 SpD / 248 Spe
+Adamant Nature
+- Flying Press
+- Throat Chop
+- Poison Jab
+- Dual Chop
+
+Oricorio
+Ability: Dancer
+Level: 66
+Tera Type: Fire
+EVs: 252 SpA / 8 SpD / 248 Spe
+Timid Nature
+- Revelation Dance
+- Air Slash
+- Teeter Dance
+- Feather Dance
+
+Mandibuzz
+Ability: Overcoat
+Level: 66
+Tera Type: Dark
+EVs: 252 HP / 248 Atk / 8 SpA
+Brave Nature
+- Brave Bird
+- Dark Pulse
+- Bone Rush
+- Roost
+
+Toucannon @ Flyinium Z
+Ability: Skill Link
+Level: 66
+Tera Type: Normal
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Beak Blast
+- Bullet Seed
+- Rock Blast
+- Brick Break
+
+
+=== [gen7draft] Alola Challengers/Acerola ===
+
+Banette
+Ability: Cursed Body
+Level: 66
+EVs: 252 HP / 252 SpD
+Careful Nature
+- Shadow Claw
+- Knock Off
+- Will-O-Wisp
+- Screech
+
+Drifblim
+Ability: Aftermath
+Level: 66
+EVs: 248 HP / 8 SpA / 252 SpD
+Calm Nature
+- Ominous Wind
+- Focus Energy
+- Amnesia
+- Baton Pass
+
+Dhelmise
+Ability: Steelworker
+Level: 66
+EVs: 252 HP / 248 Atk / 8 SpD
+Adamant Nature
+- Anchor Shot
+- Power Whip
+- Shadow Claw
+- Brick Break
+
+Froslass
+Ability: Snow Cloak
+Level: 66
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Shadow Ball
+- Blizzard
+- Confuse Ray
+- Draining Kiss
+
+Palossand @ Ghostium Z
+Ability: Water Compaction
+Level: 66
+EVs: 252 HP / 252 SpA / 4 SpD
+Modest Nature
+- Shadow Ball
+- Earth Power
+- Psychic
+- Energy Ball
+
+
+=== [gen7draft] Alola Challengers/Olivia ===
+
+Armaldo
+Ability: Battle Armor
+Level: 66
+EVs: 252 HP / 252 Atk / 4 Spe
+Adamant Nature
+- Crush Claw
+- X-Scissor
+- Stone Edge
+- Liquidation
+
+Cradily
+Ability: Suction Cups
+Level: 66
+EVs: 252 HP / 248 Atk / 4 SpA
+Brave Nature
+- Stone Edge
+- Seed Bomb
+- Sludge Wave
+- Earth Power
+
+Gigalith
+Ability: Sand Stream
+Level: 66
+EVs: 252 HP / 252 Atk / 4 Spe
+Adamant Nature
+- Stone Edge
+- Earthquake
+- Iron Head
+- Throat Chop
+
+Probopass
+Ability: Sturdy
+Level: 66
+EVs: 252 HP / 252 SpA / 4 SpD
+Modest Nature
+- Earth Power
+- Power Gem
+- Dazzling Gleam
+- Flash Cannon
+
+Lycanroc-Midnight @ Rockium Z
+Ability: No Guard
+Level: 66
+EVs: 4 HP / 248 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Crunch
+- Stone Edge
+- Fire Punch
+- Rock Climb
+
+
+=== [gen7draft] Alola Challengers/Molayne ===
+
+Klefki
+Ability: Prankster
+Level: 66
+EVs: 252 HP / 252 Def / 4 Spe
+Bold Nature
+- Spikes
+- Thunder Wave
+- Flash Cannon
+- Reflect
+
+Bisharp
+Ability: Defiant
+Level: 66
+EVs: 248 HP / 252 Atk / 8 SpD
+Adamant Nature
+- Night Slash
+- Iron Head
+- X-Scissor
+- Poison Jab
+
+Magnezone
+Ability: Sturdy
+Level: 66
+EVs: 252 HP / 252 SpA / 4 Spe
+Modest Nature
+- Flash Cannon
+- Thunderbolt
+- Tri Attack
+- Signal Beam
+
+Metagross
+Ability: Clear Body
+Level: 66
+EVs: 252 HP / 252 Atk / 4 Spe
+Adamant Nature
+- Hammer Arm
+- Meteor Mash
+- Bullet Punch
+- Zen Headbutt
+
+Dugtrio-Alola @ Steelium Z
+Ability: Tangling Hair
+Level: 66
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Earthquake
+- Iron Head
+- Sucker Punch
+- Stone Edge
+
+
+=== [gen7draft] Alola Challengers/Archie RR ===
+
+Mightyena (M)
+Ability: Intimidate
+Level: 64
+EVs: 252 Atk / 4 SpD / 248 Spe
+Jolly Nature
+- Crunch
+- Fire Fang
+- Thunder Fang
+- Ice Fang
+
+Crobat (M)
+Ability: Inner Focus
+Level: 64
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Air Slash
+- Toxic
+- Dark Pulse
+- Sludge Bomb
+
+Muk (M)
+Ability: Poison Touch
+Level: 64
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Gunk Shot
+- Fire Punch
+- Thunder Punch
+- Ice Punch
+
+Sharpedo (M)
+Ability: Rough Skin
+Level: 54
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Night Slash
+- Liquidation
+- Ice Fang
+- Poison Fang
+
+Kyogre
+Ability: Drizzle
+Level: 66
+EVs: 252 SpA / 8 SpD / 248 Spe
+Timid Nature
+IVs: 0 Atk
+- Hydro Pump
+- Ice Beam
+- Ancient Power
+- Thunder
+
+
+=== [gen7draft] Alola Challengers/Maxie RR ===
+
+Mightyena (M)
+Ability: Intimidate
+Level: 64
+EVs: 252 Atk / 4 SpD / 248 Spe
+Jolly Nature
+- Crunch
+- Fire Fang
+- Thunder Fang
+- Ice Fang
+
+Crobat (M)
+Ability: Inner Focus
+Level: 64
+EVs: 248 SpA / 8 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Air Slash
+- Toxic
+- Dark Pulse
+- Sludge Bomb
+
+Weezing (M)
+Ability: Levitate
+Level: 64
+EVs: 252 HP / 248 SpA / 4 SpD / 4 Spe
+Modest Nature
+IVs: 0 Atk
+- Sludge Bomb
+- Thunderbolt
+- Shadow Ball
+- Pain Split
+
+Camerupt (M)
+Ability: Magma Armor
+Level: 64
+EVs: 248 HP / 8 Atk / 252 SpA
+Quiet Nature
+- Earthquake
+- Stone Edge
+- Flamethrower
+- Flash Cannon
+
+Groudon
+Ability: Drought
+Level: 66
+EVs: 4 Atk / 252 SpA / 248 Spe
+Naive Nature
+- Earthquake
+- Flamethrower
+- Ancient Power
+- Solar Beam
+
+
+=== [gen7draft] Alola Challengers/Cyrus RR US ===
+
+Houndoom
+Ability: Flash Fire
+Level: 65
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Fire Blast
+- Dark Pulse
+- Sludge Bomb
+- Shadow Ball
+
+Honchkrow
+Ability: Super Luck
+Level: 65
+EVs: 252 HP / 252 Atk / 4 SpA
+Lonely Nature
+- Night Slash
+- Sky Attack
+- Heat Wave
+- Icy Wind
+
+Crobat
+Ability: Inner Focus
+Level: 65
+EVs: 252 Atk / 252 Spe
+Jolly Nature
+- Cross Poison
+- Zen Headbutt
+- X-Scissor
+- Super Fang
+
+Weavile
+Ability: Pressure
+Level: 65
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Night Slash
+- Quick Attack
+- Ice Punch
+- Brick Break
+
+Dialga
+Ability: Pressure
+Level: 67
+EVs: 248 SpA / 8 SpD / 252 Spe
+Timid Nature
+- Roar of Time
+- Flash Cannon
+- Earth Power
+- Thunderbolt
+
+
+=== [gen7draft] Alola Challengers/Cyrus RR UM ===
+
+Houndoom
+Ability: Flash Fire
+Level: 65
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+- Fire Blast
+- Dark Pulse
+- Sludge Bomb
+- Shadow Ball
+
+Honchkrow
+Ability: Super Luck
+Level: 65
+EVs: 252 HP / 252 Atk / 4 SpA
+Lonely Nature
+- Night Slash
+- Sky Attack
+- Heat Wave
+- Icy Wind
+
+Crobat
+Ability: Inner Focus
+Level: 65
+EVs: 252 Atk / 252 Spe
+Jolly Nature
+- Cross Poison
+- Zen Headbutt
+- X-Scissor
+- Super Fang
+
+Weavile
+Ability: Pressure
+Level: 65
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Night Slash
+- Quick Attack
+- Ice Punch
+- Brick Break
+
+Palkia
+Ability: Pressure
+Level: 67
+EVs: 248 SpA / 12 SpD / 248 Spe
+Timid Nature
+- Spacial Rend
+- Surf
+- Earth Power
+- Thunderbolt
+
+
+=== [gen7draft] Alola Challengers/Lysandre US RR ===
+
+Mienshao
+Ability: Reckless
+Level: 65
+EVs: 252 Atk / 252 Spe
+Jolly Nature
+- Fake Out
+- Dual Chop
+- High Jump Kick
+- U-turn
+
+Pyroar
+Ability: Unnerve
+Level: 65
+EVs: 248 SpA / 8 SpD / 248 Spe
+Timid Nature
+- Flamethrower
+- Hyper Voice
+- Snarl
+- Will-O-Wisp
+
+Honchkrow
+Ability: Super Luck
+Level: 65
+EVs: 252 HP / 252 SpA / 4 SpD
+Modest Nature
+- Dark Pulse
+- Heat Wave
+- Psychic
+- Shadow Ball
+
+Gyarados @ Gyaradosite
+Ability: Intimidate
+Level: 65
+EVs: 252 Atk / 252 Spe
+Jolly Nature
+- Crunch
+- Waterfall
+- Earthquake
+- Stone Edge
+
+Xerneas
+Ability: Fairy Aura
+Level: 67
+EVs: 248 HP / 252 SpA / 8 SpD
+Modest Nature
+- Geomancy
+- Moonblast
+- Thunderbolt
+- Psyshock
+
+
+=== [gen7draft] Alola Challengers/Lysandre UM RR ===
+
+Mienshao
+Ability: Reckless
+Level: 65
+EVs: 252 Atk / 252 Spe
+Jolly Nature
+- Fake Out
+- Dual Chop
+- High Jump Kick
+- U-turn
+
+Pyroar
+Ability: Unnerve
+Level: 65
+EVs: 248 SpA / 8 SpD / 248 Spe
+Timid Nature
+- Flamethrower
+- Hyper Voice
+- Snarl
+- Will-O-Wisp
+
+Honchkrow
+Ability: Super Luck
+Level: 65
+EVs: 252 HP / 252 SpA / 4 SpD
+Modest Nature
+- Dark Pulse
+- Heat Wave
+- Psychic
+- Shadow Ball
+
+Gyarados @ Gyaradosite
+Ability: Intimidate
+Level: 65
+EVs: 252 Atk / 252 Spe
+Jolly Nature
+- Crunch
+- Waterfall
+- Earthquake
+- Stone Edge
+
+Yveltal
+Ability: Dark Aura
+Level: 67
+EVs: 252 SpA / 252 Spe
+Timid Nature
+- Oblivion Wing
+- Air Slash
+- Psychic
+- Shadow Ball
+
+
+=== [gen7draft] Alola Challengers/Ghetsis US RR ===
+
+Cofagrigus
+Ability: Mummy
+Level: 66
+EVs: 252 HP / 4 SpA / 252 SpD
+Calm Nature
+- Will-O-Wisp
+- Shadow Ball
+- Power Split
+- Dark Pulse
+
+Bouffalant
+Ability: Reckless
+Level: 66
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Head Charge
+- Poison Jab
+- Earthquake
+- Megahorn
+
+Bisharp
+Ability: Defiant
+Level: 66
+EVs: 248 HP / 252 Atk / 8 SpD
+Adamant Nature
+- Iron Head
+- Night Slash
+- Stone Edge
+- X-Scissor
+
+Hydreigon
+Ability: Levitate
+Level: 66
+EVs: 252 SpA / 252 Spe
+Timid Nature
+- Dragon Pulse
+- Hyper Voice
+- Dark Pulse
+- Surf
+
+Zekrom
+Ability: Teravolt
+Level: 68
+EVs: 248 Atk / 8 SpA / 252 Spe
+Naive Nature
+- Bolt Strike
+- Hyper Voice
+- Dragon Claw
+- Zen Headbutt
+
+
+=== [gen7draft] Alola Challengers/Ghetsis UM RR ===
+
+Cofagrigus
+Ability: Mummy
+Level: 66
+EVs: 252 HP / 4 SpA / 252 SpD
+Calm Nature
+- Will-O-Wisp
+- Shadow Ball
+- Power Split
+- Dark Pulse
+
+Bouffalant
+Ability: Reckless
+Level: 66
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Head Charge
+- Poison Jab
+- Earthquake
+- Megahorn
+
+Bisharp
+Ability: Defiant
+Level: 66
+EVs: 248 HP / 252 Atk / 8 SpD
+Adamant Nature
+- Iron Head
+- Night Slash
+- Stone Edge
+- X-Scissor
+
+Hydreigon
+Ability: Levitate
+Level: 66
+EVs: 252 SpA / 252 Spe
+Timid Nature
+- Dragon Pulse
+- Hyper Voice
+- Dark Pulse
+- Surf
+
+Reshiram
+Ability: Turboblaze
+Level: 68
+EVs: 8 Atk / 248 SpA / 252 Spe
+Hasty Nature
+- Blue Flare
+- Hyper Voice
+- Dragon Claw
+- Zen Headbutt
+
+
+=== [gen7draft] Alola Challengers/Giovanni US RR ===
+
+Dugtrio @ Smooth Rock
+Ability: Sand Veil
+Level: 68
+EVs: 248 Atk / 8 SpD / 252 Spe
+Jolly Nature
+- Sandstorm
+- Earthquake
+- Sucker Punch
+- Stealth Rock
+
+Nidoking
+Ability: Sheer Force
+Level: 68
+EVs: 252 Atk / 252 Spe
+Jolly Nature
+- Earthquake
+- Poison Jab
+- Throat Chop
+- Aqua Tail
+
+Nidoqueen
+Ability: Sheer Force
+Level: 68
+EVs: 248 HP / 248 SpA / 8 SpD / 4 Spe
+Modest Nature
+- Surf
+- Sludge Wave
+- Earth Power
+- Flamethrower
+
+Rhyperior
+Ability: Solid Rock
+Level: 68
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Megahorn
+- Earthquake
+- Stone Edge
+- Thunder Punch
+
+Mewtwo @ Mewtwonite X
+Ability: Pressure
+Level: 70
+EVs: 248 Atk / 8 SpD / 248 Spe
+Jolly Nature
+- Zen Headbutt
+- Earthquake
+- Stone Edge
+- Drain Punch
+
+
+=== [gen7draft] Alola Challengers/Giovanni RR UM ===
+
+Dugtrio (M) @ Smooth Rock
+Ability: Sand Veil
+Level: 68
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Sandstorm
+- Earthquake
+- Sucker Punch
+- Stealth Rock
+
+Nidoking
+Ability: Poison Point
+Level: 68
+EVs: 252 Atk / 252 Spe
+Jolly Nature
+- Earthquake
+- Poison Jab
+- Throat Chop
+- Aqua Tail
+
+Nidoqueen
+Ability: Poison Point
+Level: 68
+EVs: 248 HP / 248 SpA / 8 SpD / 4 Spe
+Modest Nature
+IVs: 0 Atk
+- Surf
+- Sludge Wave
+- Earth Power
+- Flamethrower
+
+Rhyperior (M)
+Ability: Lightning Rod
+Level: 68
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Megahorn
+- Earthquake
+- Stone Edge
+- Thunder Punch
+
+Mewtwo @ Mewtwonite Y
+Ability: Pressure
+Level: 70
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Psystrike
+- Aura Sphere
+- Psychic
+- Ice Beam
+
+
+=== [gen7draft] Alola Challengers/Blue initial team USUM ===
+
+Alakazam (M)
+Ability: Synchronize
+Level: 69
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Psychic
+- Future Sight
+- Shadow Ball
+- Reflect
+
+Aerodactyl (M)
+Ability: Pressure
+Level: 69
+EVs: 248 Atk / 8 SpD / 252 Spe
+Jolly Nature
+- Rock Slide
+- Crunch
+- Iron Head
+- Sky Drop
+
+Arcanine (M)
+Ability: Intimidate
+Level: 69
+EVs: 4 HP / 252 Atk / 4 SpD / 248 Spe
+Jolly Nature
+- Extreme Speed
+- Flare Blitz
+- Thunder Fang
+- Bulldoze
+
+Gyarados (M)
+Ability: Intimidate
+Level: 69
+EVs: 252 Atk / 4 SpD / 252 Spe
+Adamant Nature
+- Aqua Tail
+- Crunch
+- Ice Fang
+- Dragon Dance
+
+Machamp (M)
+Ability: Guts
+Level: 69
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Cross Chop
+- Bulk Up
+- Knock Off
+- Poison Jab
+
+Exeggutor (M)
+Ability: Chlorophyll
+Level: 69
+EVs: 252 SpA / 8 SpD / 248 Spe
+Modest Nature
+- Leaf Storm
+- Psychic
+- Sludge Bomb
+- Hypnosis
+
+
+=== [gen7draft] Alola Challengers/Red Initial encounter USUM ===
+
+Pikachu (M) @ Light Ball
+Ability: Static
+Level: 74
+EVs: 248 Atk / 12 SpD / 248 Spe
+Jolly Nature
+- Volt Tackle
+- Quick Attack
+- Light Screen
+- Nuzzle
+
+Venusaur (M)
+Ability: Overgrow
+Level: 70
+EVs: 12 Atk / 248 SpA / 248 Spe
+Hasty Nature
+- Earthquake
+- Leech Seed
+- Leaf Storm
+- Sludge Bomb
+
+Charizard (M)
+Ability: Blaze
+Level: 70
+EVs: 4 HP / 252 SpA / 4 SpD / 248 Spe
+Timid Nature
+- Will-O-Wisp
+- Fire Blast
+- Air Slash
+- Focus Blast
+
+Blastoise (M)
+Ability: Torrent
+Level: 70
+EVs: 244 HP / 248 SpA / 16 SpD
+Modest Nature
+- Hydro Pump
+- Flash Cannon
+- Dark Pulse
+- Ice Beam
+
+Lapras (F)
+Ability: Water Absorb
+Level: 69
+EVs: 252 HP / 4 Atk / 252 SpA
+Quiet Nature
+- Surf
+- Blizzard
+- Ice Shard
+- Psychic
+
+Snorlax (M)
+Ability: Thick Fat
+Level: 69
+EVs: 252 HP / 252 Atk / 4 Spe
+Adamant Nature
+- Crunch
+- Heavy Slam
+- High Horsepower
+- Body Slam
+
+
+=== [gen7draft] Alola Challengers/Tristan ===
+
+Emolga
+Ability: Static
+Level: 66
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Volt Switch
+- Quick Attack
+- Acrobatics
+- Thunder Wave
+
+Sharpedo
+Ability: Rough Skin
+Level: 66
+EVs: 252 Atk / 252 Spe
+Jolly Nature
+- Aqua Jet
+- Night Slash
+- Waterfall
+- Ice Fang
+
+Exeggutor-Alola
+Ability: Frisk
+Level: 66
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Wood Hammer
+- Dragon Hammer
+- Earthquake
+- Brutal Swing
+
+Magmortar
+Ability: Flame Body
+Level: 66
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Flamethrower
+- Focus Blast
+- Thunderbolt
+- Will-O-Wisp
+
+Tauros @ Normalium Z
+Ability: Intimidate
+Level: 66
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Giga Impact
+- Rock Slide
+- Earthquake
+- Pursuit
+
+
+=== [gen7draft] Alola Challengers/Gladion Venusaur ===
+
+Crobat
+Ability: Inner Focus
+Level: 68
+EVs: 252 Atk / 8 SpD / 248 Spe
+Jolly Nature
+- Acrobatics
+- Cross Poison
+- X-Scissor
+- Steel Wing
+
+Zoroark @ Darkinium Z
+Ability: Illusion
+Level: 68
+EVs: 252 SpA / 8 SpD / 248 Spe
+Timid Nature
+- Night Daze
+- Hyper Voice
+- Grass Knot
+- Foul Play
+
+Porygon-Z
+Ability: Adaptability
+Level: 68
+EVs: 252 SpA / 252 Spe
+Timid Nature
+- Tri Attack
+- Dark Pulse
+- Ice Beam
+- Thunderbolt
+
+Lucario
+Ability: Steadfast
+Level: 68
+EVs: 4 Atk / 252 SpA / 252 Spe
+Hasty Nature
+- Aura Sphere
+- Flash Cannon
+- Extreme Speed
+- Psychic
+
+Venusaur
+Ability: Overgrow
+Level: 68
+EVs: 252 Atk / 8 SpA / 248 Spe
+Hasty Nature
+- Petal Blizzard
+- Sludge Bomb
+- Earthquake
+- Outrage
+
+Silvally-Fire @ Fire Memory
+Ability: RKS System
+Level: 70
+EVs: 248 Atk / 8 SpD / 248 Spe
+Jolly Nature
+- Crunch
+- Crush Claw
+- X-Scissor
+- Multi-Attack
+
+
+=== [gen7draft] Alola Challengers/Gladion Charizard ===
+
+Crobat
+Ability: Inner Focus
+Level: 68
+EVs: 252 Atk / 8 SpD / 248 Spe
+Jolly Nature
+- Acrobatics
+- Cross Poison
+- X-Scissor
+- Steel Wing
+
+Zoroark @ Darkinium Z
+Ability: Illusion
+Level: 68
+EVs: 252 SpA / 8 SpD / 248 Spe
+Timid Nature
+- Night Daze
+- Hyper Voice
+- Grass Knot
+- Foul Play
+
+Porygon-Z
+Ability: Adaptability
+Level: 68
+EVs: 252 SpA / 252 Spe
+Timid Nature
+- Tri Attack
+- Dark Pulse
+- Ice Beam
+- Thunderbolt
+
+Lucario
+Ability: Steadfast
+Level: 68
+EVs: 4 Atk / 252 SpA / 252 Spe
+Hasty Nature
+- Aura Sphere
+- Flash Cannon
+- Extreme Speed
+- Psychic
+
+Charizard
+Ability: Blaze
+Level: 68
+EVs: 4 Atk / 252 SpA / 248 Spe
+Hasty Nature
+- Air Slash
+- Flamethrower
+- Earthquake
+- Outrage
+
+Silvally-Water @ Water Memory
+Ability: RKS System
+Level: 70
+EVs: 248 Atk / 8 SpD / 248 Spe
+Jolly Nature
+- Crunch
+- Crush Claw
+- X-Scissor
+- Multi-Attack
+
+
+=== [gen7draft] Alola Challengers/Gladion Blastoise ===
+
+Crobat
+Ability: Inner Focus
+Level: 68
+EVs: 252 Atk / 8 SpD / 248 Spe
+Jolly Nature
+- Acrobatics
+- Cross Poison
+- X-Scissor
+- Steel Wing
+
+Zoroark @ Darkinium Z
+Ability: Illusion
+Level: 68
+EVs: 252 SpA / 8 SpD / 248 Spe
+Timid Nature
+- Night Daze
+- Hyper Voice
+- Grass Knot
+- Foul Play
+
+Porygon-Z
+Ability: Adaptability
+Level: 68
+EVs: 252 SpA / 252 Spe
+Timid Nature
+- Tri Attack
+- Dark Pulse
+- Ice Beam
+- Thunderbolt
+
+Lucario
+Ability: Steadfast
+Level: 68
+EVs: 4 Atk / 252 SpA / 252 Spe
+Hasty Nature
+- Aura Sphere
+- Flash Cannon
+- Extreme Speed
+- Psychic
+
+Blastoise
+Ability: Torrent
+Level: 68
+EVs: 252 HP / 4 Atk / 252 SpA
+Quiet Nature
+- Surf
+- Ice Beam
+- Earthquake
+- Outrage
+
+Silvally-Grass @ Grass Memory
+Ability: RKS System
+Level: 70
+EVs: 248 Atk / 8 SpD / 248 Spe
+Jolly Nature
+- Crunch
+- Crush Claw
+- X-Scissor
+- Multi-Attack
+
+
+=== [gen7draft] Alola Challengers/Kukui Decidueye ===
+
+Lycanroc
+Ability: Keen Eye
+Level: 69
+EVs: 252 Atk / 252 Spe
+Jolly Nature
+- Stone Edge
+- Accelerock
+- Crunch
+- Stealth Rock
+
+Ninetales-Alola
+Ability: Snow Cloak
+Level: 68
+EVs: 252 SpA / 252 Spe
+Hasty Nature
+- Dazzling Gleam
+- Blizzard
+- Ice Shard
+- Safeguard
+
+Braviary
+Ability: Keen Eye
+Level: 68
+EVs: 252 Atk / 8 SpD / 248 Spe
+Jolly Nature
+- Crush Claw
+- Brave Bird
+- Whirlwind
+- Tailwind
+
+Magnezone
+Ability: Sturdy
+Level: 68
+EVs: 252 HP / 248 SpA / 4 SpD / 4 Spe
+Modest Nature
+- Thunderbolt
+- Flash Cannon
+- Thunder Wave
+- Mirror Coat
+
+Snorlax
+Ability: Immunity
+Level: 68
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Body Slam
+- Crunch
+- Heavy Slam
+- High Horsepower
+
+Decidueye @ Grassium Z
+Ability: Overgrow
+Level: 68
+EVs: 248 HP / 252 Atk / 8 SpD
+Adamant Nature
+- Leaf Blade
+- Spirit Shackle
+- Brave Bird
+- Sucker Punch
+
+
+=== [gen7draft] Alola Challengers/Kukui Primarina ===
+
+Lycanroc
+Ability: Keen Eye
+Level: 69
+EVs: 252 Atk / 252 Spe
+Jolly Nature
+- Stone Edge
+- Accelerock
+- Crunch
+- Stealth Rock
+
+Ninetales-Alola
+Ability: Snow Cloak
+Level: 68
+EVs: 252 SpA / 252 Spe
+Hasty Nature
+- Dazzling Gleam
+- Blizzard
+- Ice Shard
+- Safeguard
+
+Braviary
+Ability: Keen Eye
+Level: 68
+EVs: 252 Atk / 8 SpD / 248 Spe
+Jolly Nature
+- Crush Claw
+- Brave Bird
+- Whirlwind
+- Tailwind
+
+Magnezone
+Ability: Sturdy
+Level: 68
+EVs: 252 HP / 248 SpA / 4 SpD / 4 Spe
+Modest Nature
+- Thunderbolt
+- Flash Cannon
+- Thunder Wave
+- Mirror Coat
+
+Snorlax
+Ability: Immunity
+Level: 68
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Body Slam
+- Crunch
+- Heavy Slam
+- High Horsepower
+
+Primarina @ Waterium Z
+Ability: Torrent
+Level: 68
+EVs: 248 HP / 8 Atk / 252 SpA
+Quiet Nature
+- Sparkling Aria
+- Moonblast
+- Aqua Jet
+- Hyper Voice
+
+
+=== [gen7draft] Alola Challengers/Kukui Incineroar ===
+
+Lycanroc
+Ability: Keen Eye
+Level: 69
+EVs: 252 Atk / 252 Spe
+Jolly Nature
+- Stone Edge
+- Accelerock
+- Crunch
+- Stealth Rock
+
+Ninetales-Alola
+Ability: Snow Cloak
+Level: 68
+EVs: 252 SpA / 252 Spe
+Hasty Nature
+- Dazzling Gleam
+- Blizzard
+- Ice Shard
+- Safeguard
+
+Braviary
+Ability: Keen Eye
+Level: 68
+EVs: 252 Atk / 8 SpD / 248 Spe
+Jolly Nature
+- Crush Claw
+- Brave Bird
+- Whirlwind
+- Tailwind
+
+Magnezone
+Ability: Sturdy
+Level: 68
+EVs: 252 HP / 248 SpA / 4 SpD / 4 Spe
+Modest Nature
+- Thunderbolt
+- Flash Cannon
+- Thunder Wave
+- Mirror Coat
+
+Snorlax
+Ability: Immunity
+Level: 68
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Body Slam
+- Crunch
+- Heavy Slam
+- High Horsepower
+
+Incineroar @ Firium Z
+Ability: Blaze
+Level: 68
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Flare Blitz
+- Darkest Lariat
+- Outrage
+- Cross Chop
+
+
+=== [gen7draft] Alola Challengers/Hau Primarina ===
+
+Raichu-Alola
+Ability: Surge Surfer
+Level: 69
+EVs: 8 Atk / 248 SpA / 252 Spe
+Hasty Nature
+- Thunderbolt
+- Quick Attack
+- Psychic
+- Focus Blast
+
+Flareon
+Ability: Flash Fire
+Level: 68
+EVs: 252 HP / 248 Atk / 8 SpD
+Adamant Nature
+- Flare Blitz
+- Quick Attack
+- Charm
+- Baby-Doll Eyes
+
+Tauros
+Ability: Intimidate
+Level: 68
+EVs: 248 Atk / 8 SpD / 252 Spe
+Jolly Nature
+- Zen Headbutt
+- Iron Head
+- Earthquake
+- Double-Edge
+
+Noivern
+Ability: Frisk
+Level: 68
+EVs: 248 SpA / 8 SpD / 252 Spe
+Timid Nature
+- Dragon Pulse
+- Air Slash
+- Dark Pulse
+- Super Fang
+
+Crabominable
+Ability: Hyper Cutter
+Level: 69
+EVs: 248 HP / 252 Atk / 8 SpD
+Adamant Nature
+- Power-Up Punch
+- Ice Hammer
+- Stone Edge
+- Dizzy Punch
+
+Primarina @ Primarium Z
+Ability: Torrent
+Level: 70
+- Sparkling Aria
+- Moonblast
+- Hyper Voice
+
+
+=== [gen7draft] Alola Challengers/Hau Decidueye ===
+
+Raichu-Alola
+Ability: Surge Surfer
+Level: 69
+EVs: 8 Atk / 248 SpA / 252 Spe
+Hasty Nature
+- Thunderbolt
+- Quick Attack
+- Psychic
+- Focus Blast
+
+Vaporeon
+Ability: Water Absorb
+Level: 68
+EVs: 248 HP / 4 Atk / 252 SpD / 4 Spe
+Gentle Nature
+- Hydro Pump
+- Quick Attack
+- Charm
+- Baby-Doll Eyes
+
+Tauros
+Ability: Intimidate
+Level: 68
+EVs: 248 Atk / 8 SpD / 252 Spe
+Jolly Nature
+- Zen Headbutt
+- Iron Head
+- Earthquake
+- Double-Edge
+
+Noivern
+Ability: Frisk
+Level: 68
+EVs: 248 SpA / 8 SpD / 252 Spe
+Timid Nature
+- Dragon Pulse
+- Air Slash
+- Dark Pulse
+- Super Fang
+
+Crabominable
+Ability: Hyper Cutter
+Level: 69
+EVs: 248 HP / 252 Atk / 8 SpD
+Adamant Nature
+- Power-Up Punch
+- Ice Hammer
+- Stone Edge
+- Dizzy Punch
+
+Decidueye @ Decidium Z
+Ability: Overgrow
+Level: 70
+- Spirit Shackle
+- Leaf Blade
+- Smack Down
+
+
+=== [gen7draft] Alola Challengers/Hau Incineroar ===
+
+Raichu-Alola
+Ability: Surge Surfer
+Level: 69
+EVs: 8 Atk / 248 SpA / 252 Spe
+Hasty Nature
+- Thunderbolt
+- Quick Attack
+- Psychic
+- Focus Blast
+
+Leafeon
+Ability: Leaf Guard
+Level: 68
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Leaf Blade
+- Quick Attack
+- Charm
+- Baby-Doll Eyes
+
+Tauros
+Ability: Intimidate
+Level: 68
+EVs: 248 Atk / 8 SpD / 252 Spe
+Jolly Nature
+- Zen Headbutt
+- Iron Head
+- Earthquake
+- Double-Edge
+
+Noivern
+Ability: Frisk
+Level: 68
+EVs: 248 SpA / 8 SpD / 252 Spe
+Timid Nature
+- Dragon Pulse
+- Air Slash
+- Dark Pulse
+- Super Fang
+
+Crabominable
+Ability: Hyper Cutter
+Level: 69
+EVs: 248 HP / 252 Atk / 8 SpD
+Adamant Nature
+- Power-Up Punch
+- Ice Hammer
+- Stone Edge
+- Dizzy Punch
+
+Incineroar @ Incinium Z
+Ability: Blaze
+Level: 70
+- Darkest Lariat
+- Flare Blitz
+- Earthquake
+
+
+=== [gen7draft] Alola Challengers/Hapu ===
+
+Golurk
+Ability: Iron Fist
+Level: 68
+EVs: 248 HP / 252 Atk / 8 SpD
+Adamant Nature
+- Dynamic Punch
+- Earthquake
+- Phantom Force
+- Stone Edge
+
+Gastrodon
+Ability: Storm Drain
+Level: 68
+EVs: 248 HP / 252 SpA / 4 SpD
+Modest Nature
+- Muddy Water
+- Mud Bomb
+- Sludge Wave
+- Ice Beam
+
+Krookodile
+Ability: Intimidate
+Level: 68
+EVs: 252 Atk / 252 Spe
+Jolly Nature
+- Earthquake
+- Crunch
+- Dragon Claw
+- Aerial Ace
+
+Flygon
+Ability: Levitate
+Level: 68
+EVs: 248 Atk / 8 SpD / 248 Spe
+Jolly Nature
+- Dragon Rush
+- Earthquake
+- Stone Edge
+- Steel Wing
+
+Mudsdale @ Groundium Z
+Ability: Stamina
+Level: 69
+EVs: 248 HP / 252 Atk / 8 SpD
+Adamant Nature
+- Heavy Slam
+- Earthquake
+- Payback
+- Rock Slide
+
+
+=== [gen7draft] Alola Challengers/Plumeria ===
+
+Gengar
+Ability: Cursed Body
+Level: 67
+EVs: 252 SpA / 252 Spe
+Timid Nature
+- Shadow Ball
+- Dark Pulse
+- Sludge Bomb
+- Dazzling Gleam
+
+Muk-Alola
+Ability: Poison Touch
+Level: 67
+EVs: 244 HP / 16 Atk / 248 SpD
+Sassy Nature
+- Venoshock
+- Brick Break
+- Toxic
+- Rock Slide
+
+Crobat
+Ability: Inner Focus
+Level: 67
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Leech Life
+- Fly
+- Poison Fang
+- Protect
+
+Toxapex
+Ability: Merciless
+Level: 67
+EVs: 248 HP / 8 Atk / 252 Def
+Impish Nature
+- Liquidation
+- Baneful Bunker
+- Recover
+- Poison Jab
+
+Salazzle @ Poisonium Z
+Ability: Corrosion
+Level: 67
+EVs: 4 HP / 248 SpA / 8 SpD / 248 Spe
+Timid Nature
+- Sludge Bomb
+- Flamethrower
+- Dragon Pulse
+- Protect
+
+
+=== [gen7draft] Alola Challengers/Ryuki ===
+
+Garchomp
+Ability: Sand Veil
+Level: 67
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Dragon Claw
+- Crunch
+- Earthquake
+- Poison Jab
+
+Drampa
+Ability: Berserk
+Level: 67
+EVs: 252 HP / 248 SpA / 8 SpD
+Modest Nature
+- Dragon Pulse
+- Hyper Voice
+- Blizzard
+- Thunder
+
+Turtonator
+Ability: Shell Armor
+Level: 67
+EVs: 244 HP / 248 SpA / 16 SpD
+Modest Nature
+- Overheat
+- Dragon Pulse
+- Fire Blast
+- Focus Blast
+
+Dragonite
+Ability: Inner Focus
+Level: 67
+EVs: 252 Atk / 4 SpA / 252 Spe
+Hasty Nature
+- Hurricane
+- Dragon Rush
+- Fire Punch
+- Thunder Punch
+
+Kommo-o
+Ability: Bulletproof
+Level: 67
+EVs: 248 SpA / 12 SpD / 248 Spe
+Timid Nature
+- Clanging Scales
+- Focus Blast
+- Flash Cannon
+- Flamethrower
+
+
+=== [gen7draft] Alola Challengers/Guzma ===
+
+Golisopod
+Ability: Emergency Exit
+Level: 68
+EVs: 248 HP / 248 Atk / 12 SpD
+Adamant Nature
+- Sucker Punch
+- Waterfall
+- First Impression
+- Brick Break
+
+Vikavolt
+Ability: Levitate
+Level: 68
+EVs: 252 HP / 252 SpA / 4 Spe
+Modest Nature
+- Flash Cannon
+- Thunderbolt
+- Bug Buzz
+- Energy Ball
+
+Pinsir
+Ability: Hyper Cutter
+Level: 68
+EVs: 248 Atk / 8 SpD / 252 Spe
+Jolly Nature
+- Throat Chop
+- Storm Throw
+- X-Scissor
+- Stone Edge
+
+Masquerain
+Ability: Intimidate
+Level: 68
+EVs: 8 HP / 248 SpA / 4 SpD / 248 Spe
+Timid Nature
+- Air Slash
+- Bug Buzz
+- Ice Beam
+- Energy Ball
+
+Scizor
+Ability: Technician
+Level: 68
+EVs: 252 HP / 248 Atk / 8 SpD
+Adamant Nature
+- X-Scissor
+- Iron Head
+- Night Slash
+- Bullet Punch
+
+
+=== [gen7draft] Alola Challengers/Lusamine ===
+
+Clefable
+Ability: Magic Guard
+Level: 68
+EVs: 252 HP / 252 SpA / 4 SpD
+Modest Nature
+- Moonblast
+- Charm
+- Psychic
+- Hyper Voice
+
+Lilligant
+Ability: Own Tempo
+Level: 68
+- Petal Dance
+- Teeter Dance
+- Stun Spore
+
+Lopunny
+Ability: Cute Charm
+Level: 68
+EVs: 252 Atk / 8 SpD / 248 Spe
+Jolly Nature
+- Dizzy Punch
+- Thunder Punch
+- Ice Punch
+- Fire Punch
+
+Milotic
+Ability: Marvel Scale
+Level: 68
+EVs: 8 Atk / 248 SpA / 252 Spe
+Hasty Nature
+- Hydro Pump
+- Icy Wind
+- Flail
+- Dragon Pulse
+
+Bewear
+Ability: Fluffy
+Level: 68
+EVs: 252 HP / 248 Atk / 8 SpD
+Adamant Nature
+- Zen Headbutt
+- Drain Punch
+- Take Down
+- Dual Chop
+
+
+=== [gen7draft] Alola Challengers/Sophocles ===
+
+Togedemaru
+Ability: Iron Barbs
+Level: 67
+EVs: 4 HP / 252 Atk / 252 Spe
+Jolly Nature
+- Electric Terrain
+- Zing Zap
+- Spiky Shield
+- Fell Stinger
+
+Magnezone
+Ability: Sturdy
+Level: 67
+EVs: 248 HP / 252 SpA / 4 SpD
+Modest Nature
+- Flash Cannon
+- Discharge
+- Tri Attack
+- Reflect
+
+Electivire
+Ability: Motor Drive
+Level: 67
+EVs: 248 Atk / 8 SpD / 252 Spe
+Adamant Nature
+- Thunder Punch
+- Giga Impact
+- Fire Punch
+- Quick Attack
+
+Vikavolt
+Ability: Levitate
+Level: 67
+EVs: 252 HP / 4 Atk / 252 SpA
+Quiet Nature
+- Bug Buzz
+- Thunderbolt
+- Air Slash
+- Guillotine
+
+Golem-Alola
+Ability: Galvanize
+Level: 67
+EVs: 252 HP / 248 Atk / 8 SpD
+Adamant Nature
+- Stone Edge
+- Steamroller
+- Thunder Punch
+- Heavy Slam
