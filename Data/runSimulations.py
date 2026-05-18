@@ -59,7 +59,7 @@ def runSimulation(matchup, threadNo, filename, teamNumbers, setLevel):
         RetryCount = 0
         while True:
             #mycommand = "cd ../pokemon-showdown && node build && node ./dist/sim/examples/battle-stream-example"
-            mycommand = "cd ../pokemon-showdown && node ./dist/sim/examples/Simulation-test-1 " + threadNo + " " + str(team1No) + " " + str(team2No)
+            mycommand = f"cd ../pokemon-showdown && node ./dist/sim/examples/Simulation-test-1 {threadNo} \"{team1No}\" \"{team2No}\""
             result = subprocess.getoutput(mycommand)
             # if the battle fails we retry, sometimes showdown fails for some unexpected reason
             if not (result.startswith("node:internal") or result.startswith("TypeError") or result.startswith("runtime") or re.search(r'Node\.js\s+v\d+\.\d+\.\d+$', result[-30:])):
