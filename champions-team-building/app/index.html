@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1">
+<meta name="theme-color" content="#15172e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Champions Team Builder</title>
+<style>
+:root{color-scheme:dark;--bg:#0f1020;--card:#1a1c34;--card2:#23264a;--line:#2c2f55;--txt:#e9eaf6;--mut:#9aa0c8;--good:#3ad29f;--bad:#ff6b8a;--accent:#7c8cff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.35 system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:env(safe-area-inset-bottom)}
+header{position:sticky;top:0;z-index:20;background:#15172e;border-bottom:1px solid var(--line);padding:max(10px,env(safe-area-inset-top)) 14px 10px;display:flex;align-items:center;gap:10px}
+header h1{font-size:16px;margin:0;font-weight:700;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{background:var(--card2);color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font:inherit;font-weight:600;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#0b0d1f}
+.btn:active{transform:scale(.97)}
+.btn:disabled{opacity:.4}
+.wrap{padding:12px;max-width:760px;margin:0 auto}
+input.search{width:100%;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--txt);font:inherit;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:6px}
+.mon{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 4px;text-align:center;cursor:pointer}
+.mon:active{background:var(--card2)}
+.mon img{width:72px;height:72px;object-fit:contain;display:block;margin:0 auto}
+.mon .nm{font-size:11px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.types{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-top:2px}
+.tt{font-size:9px;padding:1px 5px;border-radius:6px;font-weight:700;color:#0b0d1f}
+.hidden{display:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px}
+.rolecard{cursor:pointer}.rolecard:active{background:var(--card2)}
+.rolecard h3{margin:0 0 4px;font-size:15px}
+.muted{color:var(--mut);font-size:13px}
+.row{display:flex;align-items:center;gap:10px}
+.statbars{margin-top:8px}
+.statbars div{display:flex;align-items:center;gap:8px;font-size:12px;margin:2px 0}
+.statbars .lab{width:34px;color:var(--mut)}
+.statbars .bar{flex:1;height:8px;background:var(--card2);border-radius:4px;overflow:hidden}
+.statbars .bar i{display:block;height:100%;background:var(--accent)}
+.teambar{position:sticky;top:54px;z-index:15;background:#13152c;border-bottom:1px solid var(--line);padding:8px 10px;display:flex;gap:6px;overflow-x:auto}
+.slot{min-width:58px;height:58px;border-radius:10px;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;position:relative;flex:0 0 auto}
+.slot img{width:50px;height:50px;object-fit:contain}
+.slot .x{position:absolute;top:-6px;right:-6px;background:var(--bad);color:#fff;border-radius:50%;width:18px;height:18px;font-size:12px;line-height:18px;text-align:center;border:none}
+.slot.empty{color:var(--mut);font-size:11px;border-style:dashed}
+.wk{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0}
+.wk span{font-size:10px;padding:2px 6px;border-radius:6px;font-weight:700}
+.wk .x4{background:#7a1226;color:#ffd0da}.wk .x2{background:#5a2030;color:#ffc2cf}.wk .stk{outline:2px solid var(--bad)}
+.candrow{display:flex;align-items:center;gap:10px;padding:8px;border:1px solid var(--line);border-radius:12px;margin-bottom:6px;background:var(--card)}
+.candrow img{width:52px;height:52px;object-fit:contain;flex:0 0 auto}
+.candrow .meta{flex:1;min-width:0}
+.candrow .meta .nm{font-weight:700;font-size:14px}
+.candrow .tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:3px}
+.tag{font-size:9px;padding:1px 5px;border-radius:5px;background:var(--card2);color:var(--mut);font-weight:600}
+.tag.good{background:#143a2c;color:var(--good)}.tag.bad{background:#3a1422;color:var(--bad)}
+.scorebadge{flex:0 0 auto;text-align:center;min-width:46px}
+.scorebadge b{font-size:20px}.scorebadge small{display:block;color:var(--mut);font-size:9px}
+.brk{font-size:10px;color:var(--mut);margin-top:2px}
+.needs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.need{font-size:11px;padding:3px 8px;border-radius:8px;background:#3a2a14;color:#ffd9a0;font-weight:600}
+pre.paste{white-space:pre-wrap;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;font:12px/1.4 ui-monospace,monospace}
+.seg{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.seg button{flex:1;min-width:80px}
+</style>
+</head>
+<body>
+<header>
+  <button id="back" class="btn hidden">‹ Back</button>
+  <h1 id="title">Champions Team Builder</h1>
+  <button id="exportBtn" class="btn primary hidden">Export</button>
+</header>
+<div id="teambar" class="teambar hidden"></div>
+<div id="app" class="wrap"></div>
+<script src="dex-data.js"></script>
+<script src="app.js"></script>
+<script src="ui.js"></script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}</script>
+</body>
+</html>
