@@ -97,7 +97,16 @@ function detectRoles(e){
   if(pv.length && bv>=240) roles.push({key:"pivot",label:"Bulky pivot",note:`Pivots with ${pv.join(" / ")}.`});
   if(bv>=280 && (sup.length||RECOVERY.some(m=>e.moves.includes(m)))) roles.push({key:"wall",label:"Defensive wall",note:`Bulky support / staller.`});
   if(!roles.length) roles.push({key:"breaker",label:"Attacker",note:`General offensive role.`});
-  const seen=new Set();return roles.filter(r=>!seen.has(r.key)&&seen.add(r.key));
+  const seen=new Set();let out=roles.filter(r=>!seen.has(r.key)&&seen.add(r.key));
+  // surface the REAL most-used Reg M-B build first, when Pikalytics has data for this mon
+  const u=usageOf(e);
+  if(u&&u.moves&&u.moves.length){
+    const desc=metaDescriptor(e,u);
+    const rk=u.rank!=null?` · #${u.rank} used`:"";
+    out.unshift({key:"meta",label:`Meta set — ${desc}`,meta:true,
+      note:`Most-used Reg M-B build${rk}${u.teammates&&u.teammates.length?`. Common partners: ${u.teammates.slice(0,4).join(", ")}`:"."}`});
+  }
+  return out;
 }
 
 /* ---------- team analysis ---------- */
@@ -230,6 +239,50 @@ const ITEMS=["Life Orb","Leftovers","Focus Sash","Sitrus Berry","Choice Scarf","
 const GOOD_AB={"Intimidate":13,"Unburden":12,"Parental Bond":15,"Adaptability":12,"Technician":11,"Huge Power":14,"Pure Power":14,"Speed Boost":13,"Magic Bounce":11,"Regenerator":11,"Levitate":9,"Flash Fire":8,"Lightning Rod":9,"Good as Gold":12,"Sharpness":11,"Tough Claws":10,"No Guard":11,"Mold Breaker":8,"Dry Skin":9,"Thick Fat":9,"Sand Rush":9,"Swift Swim":9,"Chlorophyll":9,"Protosynthesis":11,"Quark Drive":11,"Contrary":12,"Prankster":11,"Water Absorb":9,"Volt Absorb":9,"Storm Drain":9,"Sap Sipper":9,"Drought":11,"Drizzle":11,"Sand Stream":11,"Snow Warning":11};
 function moveInfo(n){return (window.MOVES&&window.MOVES[n])||{t:null,c:"",bp:0,pri:0};}
 function recommendAbility(e){let best=(e.abilities||[])[0]||"",sc=-1;for(const a of(e.abilities||[])){const v=GOOD_AB[a]||5;if(v>sc){sc=v;best=a;}}return best;}
+
+/* ---------- Pikalytics usage data (Reg M-B doubles) ---------- */
+const USAGE=window.USAGE_SETS||{};
+function usageOf(e){return e&&USAGE[e.name]||null;}
+// meta-relevance: how proven is this mon on the current ladder? (lower rank = more used)
+function metaRankBonus(e){
+  const u=usageOf(e); if(!u||u.rank==null) return u?1:0;
+  const r=u.rank;
+  if(r<=8)return 13; if(r<=16)return 11; if(r<=28)return 9; if(r<=45)return 7;
+  if(r<=70)return 5; if(r<=110)return 3; return 1;
+}
+function parseSpread(s){const p=(s||"").split("/").map(n=>parseInt(n,10));if(p.length!==6||p.some(n=>isNaN(n)))return null;return {hp:p[0],atk:p[1],def:p[2],spa:p[3],spd:p[4],spe:p[5]};}
+// short tag describing what the real set actually does (for the role label)
+function metaDescriptor(e,u){
+  const mv=u.moves||[], it=(u.items||[])[0]||"", ab=(u.abilities||[])[0]||"";
+  const choice=it==="Choice Scarf"?"Choice Scarf ":it==="Choice Specs"?"Choice Specs ":it==="Choice Band"?"Choice Band ":"";
+  if(WEATHER_ABIL[ab]) return WEATHER_ABIL[ab].charAt(0).toUpperCase()+WEATHER_ABIL[ab].slice(1)+" setter";
+  if(mv.includes("Trick Room")) return "Trick Room";
+  if(mv.includes("Tailwind")) return "Tailwind / speed control";
+  if(mv.some(m=>REDIR.includes(m))) return "Redirection support";
+  if(mv.includes("Eruption")) return choice+"Eruption (sun)";
+  if(mv.includes("Water Spout")) return choice+"Water Spout (rain)";
+  if(e.megaStones&&e.megaStones.includes(it)){const i=e.megaStones.indexOf(it);const lab=(e.mega&&e.mega[i]&&e.mega[i].label)||"Mega";return lab;}
+  if(choice) return choice.trim();
+  if(it==="Assault Vest") return "Assault Vest pivot";
+  if(mv.includes("Fake Out")) return "Fake Out tempo";
+  const su=SETUP.find(m=>mv.includes(m)); if(su) return "Setup ("+su+")";
+  if(RECOVERY.some(m=>mv.includes(m))) return "Bulky support";
+  return "Standard build";
+}
+// build the real most-used set; auto-selects the Mega form if the item is that mon's stone
+function metaSet(e){
+  const u=usageOf(e); if(!u||!u.moves||!u.moves.length) return null;
+  let moves=u.moves.filter(m=>e.moves.includes(m));
+  if(moves.length<4){for(const m of recommendMoves(e,"breaker")){if(moves.length<4&&!moves.includes(m))moves.push(m);}}
+  moves=moves.slice(0,4); while(moves.length<4) moves.push("");
+  const item=(u.items||[])[0]||"Leftovers";
+  let formIndex=-1;
+  if(e.megaStones&&e.megaStones.includes(item)) formIndex=Math.max(0,e.megaStones.indexOf(item));
+  const ability=(u.abilities||[]).find(a=>(e.abilities||[]).includes(a))||recommendAbility(e);
+  let nature=(u.natures||[]).find(n=>NATURES.includes(n))||"Modest";
+  const points=parseSpread((u.spreads||[])[0])||recommendSpread(e,"breaker").points;
+  return {ability,item,nature,points,moves,formIndex,desc:metaDescriptor(e,u),rank:u.rank};
+}
 const BAD_MOVES=new Set(["Giga Impact","Hyper Beam","Frenzy Plant","Blast Burn","Hydro Cannon","Roar of Time","Prismatic Laser","Eternabeam","Self-Destruct","Explosion","Misty Explosion","Last Resort","Focus Punch","Sky Attack","Razor Wind","Skull Bash","Solar Beam","Solar Blade","Synchronoise","Belch","Spit Up","Bide","Dream Eater","Bounce","Dig","Dive","Fly","Wood Hammer"]);
 const goodMove=m=>{const i=moveInfo(m);return (i.c==="Phys"||i.c==="Spec")&&i.bp>=55&&!BAD_MOVES.has(m);};
 function recommendMoves(e,roleKey){
@@ -252,7 +305,7 @@ function recommendMoves(e,roleKey){
   add(mp.includes("Protect")?"Protect":null);
   // priority/STAB filler for wallbreakers, else best remaining damaging move
   if(picked.length<4){const rest=mp.filter(goodMove).sort((a,b)=>moveInfo(b).bp-moveInfo(a).bp);for(const m of rest)add(m);}
-  if(picked.length<4)for(const m of mp)add(m);
+  if(picked.length<4)for(const m of mp){if(!BAD_MOVES.has(m))add(m);}  // never fall back to charge/recharge junk
   return picked.slice(0,4);
 }
 function recommendSpread(e,roleKey){
@@ -273,7 +326,9 @@ function recommendItem(e,roleKey){
   if(["sweeper","breaker","tr"].includes(roleKey))return "Life Orb";
   return "Sitrus Berry";
 }
-function recommendSet(e,roleKey){const sp=recommendSpread(e,roleKey);return {ability:recommendAbility(e),item:recommendItem(e,roleKey),nature:sp.nature,points:sp.points,moves:recommendMoves(e,roleKey)};}
+function recommendSet(e,roleKey){
+  if(roleKey==="meta"){const ms=metaSet(e);if(ms)return ms;}
+  const sp=recommendSpread(e,roleKey);return {ability:recommendAbility(e),item:recommendItem(e,roleKey),nature:sp.nature,points:sp.points,moves:recommendMoves(e,roleKey),formIndex:-1};}
 
 /* ---------- model phases: needs plan (3), threat map (4), stress test (6), legality (7) ---------- */
 function planForLead(lead,roleKey){
@@ -287,7 +342,8 @@ function planForLead(lead,roleKey){
     redir:[["special","Win condition it enables"],["physical","Win condition it enables"],["speed","Speed control"],["fakeout","Fake Out"]],
     fakeout:[["special","Win condition"],["physical","Win condition"],["speed","Speed control"],["redir","Redirection"]],
     pivot:[["special","Win condition"],["physical","Win condition"],["speed","Speed control"],["intimidate","Glue"]],
-    wall:[["special","Win condition"],["physical","Win condition"],["speed","Speed control"],["priority","Priority"]]
+    wall:[["special","Win condition"],["physical","Win condition"],["speed","Speed control"],["priority","Priority"]],
+    meta:[["speed","Speed control"],["redir","Redirection / free turn"],[second,"Partner covering its checks"],["priority","Priority"],["intimidate","Defensive glue"]]
   };
   return P[roleKey]||P.breaker;
 }
@@ -369,11 +425,13 @@ function offCoverageBonus(e,team){
 function scoreForSlot(e,team,slot){
   const b=scoreCandidate(e,team), exe=roleExecution(e,slot);
   const lead=team[0]&&team[0].entry, leadCov=leadCoverageBonus(e,lead), offCov=offCoverageBonus(e,team);
+  const meta=metaRankBonus(e);  // is this a proven meta pick, or off-meta?
   // "this team" fit: typing synergy + need coverage + weather + covering the lead's checks + new offensive coverage
   const teamFit=b.typing+Math.min(18,b.cov)+b.weather+leadCov+offCov;
-  const total=Math.min(100,Math.round(teamFit*0.7+exe));
-  return {...b,exe,leadCov,offCov,total};
+  const total=Math.min(100,Math.round(teamFit*0.7+exe+meta));
+  const u=usageOf(e);
+  return {...b,exe,leadCov,offCov,meta,rank:u&&u.rank!=null?u.rank:null,total};
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,metaRankBonus};

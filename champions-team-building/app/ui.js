@@ -141,10 +141,11 @@ function candRow(c,danger){
   if(s.weather)tags.push(["+"+s.weatherType,"good"]);
   s.covers.forEach(t=>tags.push(["covers "+t,"good"]));
   s.dangerStacks.forEach(t=>tags.push(["stacks "+t,"bad"]));
+  if(s.rank!=null)tags.unshift(["#"+s.rank+" meta","good"]);  // proven on the Reg M-B ladder
   return `<div class="candrow" data-n="${e.name}">${img(e)}
     <div class="meta"><div class="nm">${e.name} ${tbadges(e.types)}</div>
       <div class="tags">${tags.slice(0,6).map(([t,c])=>`<span class="tag ${c}">${t}</span>`).join("")}</div>
-      <div class="brk">typing ${s.typing}/25 · role-fit ${s.exe!=null?s.exe:'–'}/40 · ability ${s.ability}/15${s.weather?' · weather +'+s.weather:''}${cav?' · ⚠ caveat':''}</div></div>
+      <div class="brk">typing ${s.typing}/25 · role-fit ${s.exe!=null?s.exe:'–'}/40 · ability ${s.ability}/15${s.meta?' · meta +'+s.meta:''}${s.weather?' · weather +'+s.weather:''}${cav?' · ⚠ caveat':''}</div></div>
     <div class="scorebadge"><b style="color:${s.total>=70?'var(--good)':s.total>=55?'var(--txt)':'var(--mut)'}">${s.total}</b><small>fit</small></div></div>`;
 }
 function bindCands(){app.querySelectorAll(".candrow").forEach(r=>r.onclick=()=>{openEditor(mkMember(E.byName[r.dataset.n]),-1);});}
@@ -166,7 +167,7 @@ function showExport(){
 /* ---------------- SET EDITOR ---------------- */
 function spreadStr(p){const o=[["HP","hp"],["Atk","atk"],["Def","def"],["SpA","spa"],["SpD","spd"],["Spe","spe"]];const s=o.filter(([l,k])=>p[k]).map(([l,k])=>p[k]+" "+l).join(" / ");return s||"no investment";}
 function moveChip(m){const i=E.moveInfo(m);const c=TCOL[i.t]||'#555';return `<span class="tag" style="background:${i.t?c+'33':'var(--card2)'};color:${i.t?'#fff':'var(--mut)'}">${m}</span>`;}
-function mkMember(e,roleKey){roleKey=roleKey||((E.detectRoles(e)[0]||{key:"breaker"}).key);const set=E.recommendSet(e,roleKey);while(set.moves.length<4)set.moves.push("");return {entry:e,formIndex:-1,roleKey,set};}
+function mkMember(e,roleKey){roleKey=roleKey||((E.detectRoles(e)[0]||{key:"breaker"}).key);const set=E.recommendSet(e,roleKey);while(set.moves.length<4)set.moves.push("");return {entry:e,formIndex:(set.formIndex!=null?set.formIndex:-1),roleKey,set};}
 function openEditor(member,slotIndex){const m={entry:member.entry,formIndex:(member.formIndex==null?-1:member.formIndex),roleKey:member.roleKey,set:JSON.parse(JSON.stringify(member.set))};while(m.set.moves.length<4)m.set.moves.push("");STATE.editing={member:m,slotIndex};go("editor");}
 function effForm(M){const e=M.entry;if(M.formIndex>=0&&e.mega&&e.mega[M.formIndex]&&e.mega[M.formIndex].baseStats){const mg=e.mega[M.formIndex];return {types:mg.type||e.types,baseStats:mg.baseStats,ability:mg.ability,isMega:true,label:mg.label||"Mega"};}return {types:e.types,baseStats:e.baseStats,ability:M.set.ability,isMega:false,label:"Base"};}
 function moveOpt(name,sel){const i=E.moveInfo(name);const tag=i.t?` (${i.t}·${i.c}${i.bp?'·'+i.bp:''})`:'';return `<option value="${name}" ${name===sel?'selected':''}>${name}${tag}</option>`;}

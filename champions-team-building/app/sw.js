@@ -1,7 +1,7 @@
 /* Minimal service worker: cache the app shell for offline / installability.
    Sprites are cross-origin hotlinks and are left to the network. */
-const CACHE = "ctb-v1";
-const ASSETS = ["./","./index.html","./app.js","./ui.js","./dex-data.js","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
+const CACHE = "ctb-v2";
+const ASSETS = ["./","./index.html","./app.js","./ui.js","./dex-data.js","./moves-data.js","./usage-data.js","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener("fetch", e => {
