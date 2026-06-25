@@ -81,34 +81,44 @@ function offense(e){return Math.max(e.baseStats.atk,e.baseStats.spa);}
 function isPhysical(e){return e.baseStats.atk>=e.baseStats.spa;}
 function bulk(e){const s=e.baseStats;return s.hp+s.def+s.spd;}
 
+const RECOVERY=["Recover","Roost","Synthesis","Slack Off","Soft-Boiled","Moonlight","Morning Sun","Wish","Strength Sap","Milk Drink","Shore Up","Rest"];
 function detectRoles(e){
-  const roles=[]; const sp=e.baseStats.spe; const off=offense(e);
+  const roles=[]; const sp=e.baseStats.spe, off=offense(e);
   const setup=has(e,SETUP), sc=has(e,SPEEDCTRL), rd=has(e,REDIR), fo=e.moves.includes("Fake Out"),
-        pv=has(e,PIVOT), dis=has(e,DISRUPT), pr=has(e,PRIORITY), hz=has(e,HAZARD), sup=has(e,SUPPORT);
-  const weatherA=(e.abilities||[]).find(a=>WEATHER_ABIL[a]);
-  if(setup.length && off>=95) roles.push({key:"sweeper",label:"Setup sweeper",note:`Sets up with ${setup[0]} then sweeps.`,moves:setup});
-  if(sp<=55 && off>=100) roles.push({key:"tr",label:"Trick Room attacker",note:`Slow + hard-hitting — wants Trick Room up.`,moves:has(e,["Trick Room"])});
-  if(sc.length) roles.push({key:"speed",label:"Speed control",note:`Provides ${sc.join(" / ")}.`,moves:sc});
-  if(rd.length) roles.push({key:"redir",label:"Redirection support",note:`Pulls aggro with ${rd.join(" / ")}.`,moves:rd});
-  if(fo) roles.push({key:"fakeout",label:"Fake Out "+(off>=100?"attacker":"support"),note:`Fake Out tempo`+((e.abilities||[]).includes("Intimidate")?" + Intimidate":"")+".",moves:["Fake Out"].concat(dis)});
-  if(weatherA) roles.push({key:"weather",label:`Weather setter (${WEATHER_ABIL[weatherA]})`,note:`${weatherA} sets ${WEATHER_ABIL[weatherA]} on entry.`,moves:[]});
-  if(pv.length && (bulk(e)>=240||e.tags&&e.tags.includes("pivot"))) roles.push({key:"pivot",label:"Defensive pivot",note:`Pivots with ${pv.join(" / ")}.`,moves:pv});
-  if(bulk(e)>=270 && (sup.length||e.moves.includes("Recover")||e.moves.includes("Roost"))) roles.push({key:"wall",label:"Defensive wall / support",note:`Bulky support.`,moves:sup});
-  if(off>=110 && !setup.length) roles.push({key:"breaker",label:"Immediate attacker / breaker",note:`Hits hard without setup.`,moves:pr});
-  if(!roles.length) roles.push({key:"breaker",label:"Attacker",note:`General offensive role.`,moves:[]});
-  // dedupe by key
+        pv=has(e,PIVOT), sup=has(e,SUPPORT); const weatherA=(e.abilities||[]).find(a=>WEATHER_ABIL[a]); const bv=bulk(e);
+  // a mon can legitimately fill several offensive roles at once (Emboar = sweeper + breaker + TR breaker)
+  if(setup.length && off>=95) roles.push({key:"sweeper",label:"Setup sweeper",note:`Boosts with ${setup[0]}, then sweeps.`});
+  if(off>=105) roles.push({key:"breaker",label:"Wallbreaker",note:`Hits hard immediately — Tailwind/offense friendly.`});
+  if(off>=100 && sp<=70) roles.push({key:"tr",label:"Trick Room wallbreaker",note:`Slow + huge offense — scary under Trick Room.`});
+  if(sc.length) roles.push({key:"speed",label:"Speed control",note:`Provides ${sc.join(" / ")}.`});
+  if(rd.length) roles.push({key:"redir",label:"Redirection support",note:`Pulls aggro with ${rd.join(" / ")}.`});
+  if(fo) roles.push({key:"fakeout",label:"Fake Out "+(off>=100?"attacker":"support"),note:`Fake Out tempo`+((e.abilities||[]).includes("Intimidate")?" + Intimidate":"")+`.`});
+  if(weatherA) roles.push({key:"weather",label:`Weather setter (${WEATHER_ABIL[weatherA]})`,note:`${weatherA} sets ${WEATHER_ABIL[weatherA]} on entry.`});
+  if(pv.length && bv>=240) roles.push({key:"pivot",label:"Bulky pivot",note:`Pivots with ${pv.join(" / ")}.`});
+  if(bv>=280 && (sup.length||RECOVERY.some(m=>e.moves.includes(m)))) roles.push({key:"wall",label:"Defensive wall",note:`Bulky support / staller.`});
+  if(!roles.length) roles.push({key:"breaker",label:"Attacker",note:`General offensive role.`});
   const seen=new Set();return roles.filter(r=>!seen.has(r.key)&&seen.add(r.key));
 }
 
 /* ---------- team analysis ---------- */
+/* resolve a team member to its effective battle form (Mega applies its type/ability/stats) */
+function effOf(m){
+  const e=m.entry;
+  if(m && m.formIndex>=0 && e.mega && e.mega[m.formIndex] && e.mega[m.formIndex].baseStats){
+    const mg=e.mega[m.formIndex];
+    return {name:e.name+" (Mega)",types:mg.type||e.types,abilities:[mg.ability],baseStats:mg.baseStats,moves:e.moves,mega:[]};
+  }
+  const ab=(m&&m.set&&m.set.ability)?[m.set.ability]:(m&&m.ability?[m.ability]:(e.abilities||[]));
+  return {name:e.name,types:e.types,abilities:ab,baseStats:e.baseStats,moves:e.moves,mega:e.mega,megaStones:e.megaStones};
+}
 function teamWeakTally(team){
-  const tally={}; // type -> {count, max}
-  for(const m of team){ const w=weaknessesOf(m.entry,m.ability); for(const [t,mult] of w.weak){ tally[t]=tally[t]||{count:0,max:1}; tally[t].count++; tally[t].max=Math.max(tally[t].max,mult);} }
+  const tally={};
+  for(const m of team){ const ef=effOf(m); const w=weaknessesOf(ef,ef.abilities[0]); for(const [t,mult] of w.weak){ tally[t]=tally[t]||{count:0,max:1}; tally[t].count++; tally[t].max=Math.max(tally[t].max,mult);} }
   return tally;
 }
 function teamNeeds(team){
   const flat=team.flatMap(m=>m.entry.moves);
-  const ab=team.flatMap(m=>m.entry.abilities||[]);
+  const ab=team.flatMap(m=>effOf(m).abilities);
   return {
     speed: !flat.some(m=>SPEEDCTRL.includes(m)),
     redir: !flat.some(m=>REDIR.includes(m)),
@@ -129,7 +139,7 @@ const WEATHER_BENEFIT_ABIL={
   snow:["Slush Rush","Snow Cloak","Ice Body","Snow Warning","Ice Face"]
 };
 function teamWeather(team){
-  for(const m of team) for(const a of (m.entry.abilities||[])) if(WEATHER_ABIL[a]) return WEATHER_ABIL[a];
+  for(const m of team) for(const a of effOf(m).abilities) if(WEATHER_ABIL[a]) return WEATHER_ABIL[a];
   return null;
 }
 function weatherBonus(e,weather){
@@ -201,5 +211,68 @@ function scoreCandidate(e, team){
     covers:w.res.map(x=>x[0]).concat(w.imm).filter(t=>danger.includes(t))};
 }
 
+/* ---------- recommended sets / editor data ---------- */
+const NATURE_MOD={Hardy:null,Adamant:["atk","spa"],Modest:["spa","atk"],Jolly:["spe","spa"],Timid:["spe","atk"],
+  Brave:["atk","spe"],Quiet:["spa","spe"],Bold:["def","atk"],Calm:["spd","atk"],Careful:["spd","spa"],
+  Impish:["def","spa"],Relaxed:["def","spe"],Sassy:["spd","spe"],Naive:["spe","spd"],Hasty:["spe","def"],
+  Lonely:["atk","def"],Mild:["spa","def"],Rash:["spa","spd"],Gentle:["spd","def"],Naughty:["atk","spd"]};
+const NATURES=Object.keys(NATURE_MOD);
+const ITEMS=["Life Orb","Leftovers","Focus Sash","Sitrus Berry","Choice Scarf","Assault Vest","Mystic Water","Charcoal",
+  "Black Glasses","Black Belt","Magnet","Miracle Seed","Never-Melt Ice","Poison Barb","Soft Sand","Sharp Beak","Silk Scarf",
+  "Silver Powder","Hard Stone","Spell Tag","Twisted Spoon","Dragon Fang","Metal Coat","Fairy Feather","Light Ball",
+  "Expert Belt","Muscle Band","Wise Glasses","Bright Powder","Wide Lens","Zoom Lens","Scope Lens","Quick Claw","King's Rock",
+  "Mental Herb","White Herb","Shell Bell","Focus Band","Iron Ball","Shed Shell","Metronome","Big Root","Light Clay",
+  "Heat Rock","Damp Rock","Smooth Rock","Icy Rock",
+  "Charti Berry","Occa Berry","Passho Berry","Shuca Berry","Wacan Berry","Yache Berry","Chople Berry","Kebia Berry",
+  "Coba Berry","Payapa Berry","Tanga Berry","Colbur Berry","Haban Berry","Kasib Berry","Babiri Berry","Roseli Berry",
+  "Chilan Berry","Rindo Berry","Lum Berry","Oran Berry","Cheri Berry","Chesto Berry","Pecha Berry","Rawst Berry","Aspear Berry","Persim Berry","Leppa Berry"];
+const GOOD_AB={"Intimidate":13,"Unburden":12,"Parental Bond":15,"Adaptability":12,"Technician":11,"Huge Power":14,"Pure Power":14,"Speed Boost":13,"Magic Bounce":11,"Regenerator":11,"Levitate":9,"Flash Fire":8,"Lightning Rod":9,"Good as Gold":12,"Sharpness":11,"Tough Claws":10,"No Guard":11,"Mold Breaker":8,"Dry Skin":9,"Thick Fat":9,"Sand Rush":9,"Swift Swim":9,"Chlorophyll":9,"Protosynthesis":11,"Quark Drive":11,"Contrary":12,"Prankster":11,"Water Absorb":9,"Volt Absorb":9,"Storm Drain":9,"Sap Sipper":9,"Drought":11,"Drizzle":11,"Sand Stream":11,"Snow Warning":11};
+function moveInfo(n){return (window.MOVES&&window.MOVES[n])||{t:null,c:"",bp:0,pri:0};}
+function recommendAbility(e){let best=(e.abilities||[])[0]||"",sc=-1;for(const a of(e.abilities||[])){const v=GOOD_AB[a]||5;if(v>sc){sc=v;best=a;}}return best;}
+const BAD_MOVES=new Set(["Giga Impact","Hyper Beam","Frenzy Plant","Blast Burn","Hydro Cannon","Roar of Time","Prismatic Laser","Eternabeam","Self-Destruct","Explosion","Misty Explosion","Last Resort","Focus Punch","Sky Attack","Razor Wind","Skull Bash","Solar Beam","Solar Blade","Synchronoise","Belch","Spit Up","Bide","Dream Eater","Bounce","Dig","Dive","Fly","Wood Hammer"]);
+const goodMove=m=>{const i=moveInfo(m);return (i.c==="Phys"||i.c==="Spec")&&i.bp>=55&&!BAD_MOVES.has(m);};
+function recommendMoves(e,roleKey){
+  const mp=e.moves,picked=[],phys=isPhysical(e),pref=phys?"Phys":"Spec";
+  const add=m=>{if(m&&mp.includes(m)&&!picked.includes(m)&&picked.length<4)picked.push(m);};
+  const setupMoves=SETUP.filter(m=>mp.includes(m));
+  if(roleKey==="sweeper"&&setupMoves.length)add(setupMoves[0]);
+  if(roleKey==="speed")add(mp.includes("Tailwind")?"Tailwind":"Trick Room");
+  if(roleKey==="redir")add(mp.includes("Rage Powder")?"Rage Powder":"Follow Me");
+  if(roleKey==="fakeout")add("Fake Out");
+  if(roleKey==="pivot")add(PIVOT.find(m=>mp.includes(m)));
+  for(const ty of e.types){
+    const c=mp.filter(m=>moveInfo(m).t===ty&&goodMove(m))
+      .sort((a,b)=>{const A=moveInfo(a),B=moveInfo(b);return ((B.c===pref)-(A.c===pref))||(B.bp-A.bp);});
+    if(c.length)add(c[0]);
+  }
+  const have=new Set(picked.map(m=>moveInfo(m).t));
+  const cov=mp.filter(m=>moveInfo(m).c===pref&&goodMove(m)&&!have.has(moveInfo(m).t)).sort((a,b)=>moveInfo(b).bp-moveInfo(a).bp);
+  if(cov.length)add(cov[0]);
+  add(mp.includes("Protect")?"Protect":null);
+  // priority/STAB filler for wallbreakers, else best remaining damaging move
+  if(picked.length<4){const rest=mp.filter(goodMove).sort((a,b)=>moveInfo(b).bp-moveInfo(a).bp);for(const m of rest)add(m);}
+  if(picked.length<4)for(const m of mp)add(m);
+  return picked.slice(0,4);
+}
+function recommendSpread(e,roleKey){
+  const phys=isPhysical(e),off=phys?"atk":"spa",slow=roleKey==="tr"||e.baseStats.spe<=55;
+  const support=["speed","redir","fakeout","wall","pivot","weather"].includes(roleKey)&&offense(e)<100;
+  let pts={hp:0,atk:0,def:0,spa:0,spd:0,spe:0},nature;
+  if(support){pts.hp=32;pts.def=16;pts.spd=16;nature=phys?"Impish":"Calm";}
+  else if(slow){pts.hp=32;pts[off]=32;pts.def=2;nature=phys?"Brave":"Quiet";}
+  else{pts[off]=32;pts.spe=32;pts.hp=2;nature=phys?"Jolly":"Timid";}
+  return {nature,points:pts};
+}
+function recommendItem(e,roleKey){
+  const fourxRock=weaknessesOf(e).weak.some(([t,m])=>t==="Rock"&&m>=4);
+  if(fourxRock&&["sweeper","tr","breaker"].includes(roleKey))return "Charti Berry";
+  if(roleKey==="weather"){const a=(e.abilities||[]).find(x=>WEATHER_ABIL[x]);const r={sun:"Heat Rock",rain:"Damp Rock",sand:"Smooth Rock",snow:"Icy Rock"};return r[WEATHER_ABIL[a]]||"Leftovers";}
+  if(["speed","redir","fakeout","pivot"].includes(roleKey))return "Focus Sash";
+  if(roleKey==="wall")return "Leftovers";
+  if(["sweeper","breaker","tr"].includes(roleKey))return "Life Orb";
+  return "Sitrus Berry";
+}
+function recommendSet(e,roleKey){const sp=recommendSpread(e,roleKey);return {ability:recommendAbility(e),item:recommendItem(e,roleKey),nature:sp.nature,points:sp.points,moves:recommendMoves(e,roleKey)};}
+
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,scoreCandidate,offense,isPhysical,statSum,has,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves};

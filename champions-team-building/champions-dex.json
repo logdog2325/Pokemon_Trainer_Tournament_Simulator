@@ -96,7 +96,10 @@
 ],
 "dex": 3,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/3.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/venusaur.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/venusaur.png",
+"megaStones": [
+"Venusaurite"
+]
 },
 {
 "name": "Charizard",
@@ -226,7 +229,11 @@
 ],
 "dex": 6,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/6.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/charizard.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/charizard.png",
+"megaStones": [
+"Charizardite X",
+"Charizardite Y"
+]
 },
 {
 "name": "Blastoise",
@@ -339,7 +346,10 @@
 ],
 "dex": 9,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/9.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/blastoise.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/blastoise.png",
+"megaStones": [
+"Blastoisinite"
+]
 },
 {
 "name": "Beedrill",
@@ -434,7 +444,10 @@
 ],
 "dex": 15,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/15.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/beedrill.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/beedrill.png",
+"megaStones": [
+"Beedrillite"
+]
 },
 {
 "name": "Pidgeot",
@@ -508,7 +521,10 @@
 ],
 "dex": 18,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/18.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/pidgeot.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/pidgeot.png",
+"megaStones": [
+"Pidgeotite"
+]
 },
 {
 "name": "Arbok",
@@ -808,7 +824,11 @@
 ],
 "dex": 26,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/26.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/raichu.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/raichu.png",
+"megaStones": [
+"Raichunite X",
+"Raichunite Y"
+]
 },
 {
 "name": "Raichu-Alola",
@@ -1039,7 +1059,10 @@
 ],
 "dex": 36,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/36.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/clefable.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/clefable.png",
+"megaStones": [
+"Clefablite"
+]
 },
 {
 "name": "Ninetales",
@@ -1571,7 +1594,10 @@
 ],
 "dex": 65,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/65.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/alakazam.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/alakazam.png",
+"megaStones": [
+"Alakazite"
+]
 },
 {
 "name": "Machamp",
@@ -1763,7 +1789,10 @@
 ],
 "dex": 71,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/71.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/victreebel.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/victreebel.png",
+"megaStones": [
+"Victreebelite"
+]
 },
 {
 "name": "Slowbro",
@@ -1884,7 +1913,10 @@
 ],
 "dex": 80,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/80.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/slowbro.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/slowbro.png",
+"megaStones": [
+"Slowbronite"
+]
 },
 {
 "name": "Slowbro-Galar",
@@ -2119,7 +2151,10 @@
 ],
 "dex": 94,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/94.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/gengar.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/gengar.png",
+"megaStones": [
+"Gengarite"
+]
 },
 {
 "name": "Kangaskhan",
@@ -2227,7 +2262,10 @@
 ],
 "dex": 115,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/115.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/kangaskhan.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/kangaskhan.png",
+"megaStones": [
+"Kangaskhanite"
+]
 },
 {
 "name": "Starmie",
@@ -2332,7 +2370,10 @@
 ],
 "dex": 121,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/121.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/starmie.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/starmie.png",
+"megaStones": [
+"Starminite"
+]
 },
 {
 "name": "Pinsir",
@@ -2427,7 +2468,10 @@
 ],
 "dex": 127,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/127.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/pinsir.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/pinsir.png",
+"megaStones": [
+"Pinsirite"
+]
 },
 {
 "name": "Tauros",
@@ -2706,7 +2750,10 @@
 ],
 "dex": 130,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/130.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/gyarados.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/gyarados.png",
+"megaStones": [
+"Gyaradosite"
+]
 },
 {
 "name": "Ditto",
@@ -3079,7 +3126,10 @@
 ],
 "dex": 142,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/142.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/aerodactyl.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/aerodactyl.png",
+"megaStones": [
+"Aerodactylite"
+]
 },
 {
 "name": "Snorlax",
@@ -3312,7 +3362,10 @@
 ],
 "dex": 149,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/149.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/dragonite.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/dragonite.png",
+"megaStones": [
+"Dragoninite"
+]
 },
 {
 "name": "Meganium",
@@ -3414,7 +3467,10 @@
 ],
 "dex": 154,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/154.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/meganium.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/meganium.png",
+"megaStones": [
+"Meganiumite"
+]
 },
 {
 "name": "Typhlosion",
@@ -3715,7 +3771,10 @@
 ],
 "dex": 160,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/160.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/feraligatr.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/feraligatr.png",
+"megaStones": [
+"Feraligite"
+]
 },
 {
 "name": "Ariados",
@@ -3913,7 +3972,10 @@
 ],
 "dex": 181,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/181.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/ampharos.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/ampharos.png",
+"megaStones": [
+"Ampharosite"
+]
 },
 {
 "name": "Azumarill",
@@ -4689,7 +4751,10 @@
 ],
 "dex": 208,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/208.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/steelix.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/steelix.png",
+"megaStones": [
+"Steelixite"
+]
 },
 {
 "name": "Qwilfish",
@@ -4886,7 +4951,10 @@
 ],
 "dex": 212,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/212.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/scizor.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/scizor.png",
+"megaStones": [
+"Scizorite"
+]
 },
 {
 "name": "Heracross",
@@ -4995,7 +5063,10 @@
 ],
 "dex": 214,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/214.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/heracross.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/heracross.png",
+"megaStones": [
+"Heracronite"
+]
 },
 {
 "name": "Skarmory",
@@ -5089,7 +5160,10 @@
 ],
 "dex": 227,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/227.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/skarmory.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/skarmory.png",
+"megaStones": [
+"Skarmorite"
+]
 },
 {
 "name": "Houndoom",
@@ -5199,7 +5273,10 @@
 ],
 "dex": 229,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/229.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/houndoom.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/houndoom.png",
+"megaStones": [
+"Houndoominite"
+]
 },
 {
 "name": "Tyranitar",
@@ -5333,7 +5410,10 @@
 ],
 "dex": 248,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/248.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/tyranitar.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/tyranitar.png",
+"megaStones": [
+"Tyranitarite"
+]
 },
 {
 "name": "Sceptile",
@@ -5451,7 +5531,10 @@
 ],
 "dex": 254,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/254.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/sceptile.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/sceptile.png",
+"megaStones": [
+"Sceptilite"
+]
 },
 {
 "name": "Blaziken",
@@ -5571,7 +5654,10 @@
 ],
 "dex": 257,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/257.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/blaziken.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/blaziken.png",
+"megaStones": [
+"Blazikenite"
+]
 },
 {
 "name": "Swampert",
@@ -5690,7 +5776,10 @@
 ],
 "dex": 260,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/260.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/swampert.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/swampert.png",
+"megaStones": [
+"Swampertite"
+]
 },
 {
 "name": "Pelipper",
@@ -5892,7 +5981,10 @@
 ],
 "dex": 282,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/282.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/gardevoir.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/gardevoir.png",
+"megaStones": [
+"Gardevoirite"
+]
 },
 {
 "name": "Sableye",
@@ -6023,7 +6115,10 @@
 ],
 "dex": 302,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/302.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/sableye.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/sableye.png",
+"megaStones": [
+"Sablenite"
+]
 },
 {
 "name": "Mawile",
@@ -6137,7 +6232,10 @@
 ],
 "dex": 303,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/303.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/mawile.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/mawile.png",
+"megaStones": [
+"Mawilite"
+]
 },
 {
 "name": "Aggron",
@@ -6262,7 +6360,10 @@
 ],
 "dex": 306,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/306.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/aggron.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/aggron.png",
+"megaStones": [
+"Aggronite"
+]
 },
 {
 "name": "Medicham",
@@ -6381,7 +6482,10 @@
 ],
 "dex": 308,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/308.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/medicham.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/medicham.png",
+"megaStones": [
+"Medichamite"
+]
 },
 {
 "name": "Manectric",
@@ -6471,7 +6575,10 @@
 ],
 "dex": 310,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/310.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/manectric.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/manectric.png",
+"megaStones": [
+"Manectite"
+]
 },
 {
 "name": "Sharpedo",
@@ -6570,7 +6677,10 @@
 ],
 "dex": 319,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/319.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/sharpedo.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/sharpedo.png",
+"megaStones": [
+"Sharpedonite"
+]
 },
 {
 "name": "Camerupt",
@@ -6680,7 +6790,10 @@
 ],
 "dex": 323,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/323.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/camerupt.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/camerupt.png",
+"megaStones": [
+"Cameruptite"
+]
 },
 {
 "name": "Torkoal",
@@ -6869,7 +6982,10 @@
 ],
 "dex": 334,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/334.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/altaria.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/altaria.png",
+"megaStones": [
+"Altarianite"
+]
 },
 {
 "name": "Milotic",
@@ -7122,7 +7238,10 @@
 ],
 "dex": 354,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/354.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/banette.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/banette.png",
+"megaStones": [
+"Banettite"
+]
 },
 {
 "name": "Chimecho",
@@ -7227,7 +7346,10 @@
 ],
 "dex": 358,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/358.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/chimecho.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/chimecho.png",
+"megaStones": [
+"Chimechite"
+]
 },
 {
 "name": "Absol",
@@ -7339,7 +7461,10 @@
 ],
 "dex": 359,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/359.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/absol.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/absol.png",
+"megaStones": [
+"Absolite"
+]
 },
 {
 "name": "Glalie",
@@ -7434,7 +7559,10 @@
 ],
 "dex": 362,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/362.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/glalie.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/glalie.png",
+"megaStones": [
+"Glalitite"
+]
 },
 {
 "name": "Metagross",
@@ -7544,7 +7672,10 @@
 ],
 "dex": 376,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/376.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/metagross.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/metagross.png",
+"megaStones": [
+"Metagrossite"
+]
 },
 {
 "name": "Torterra",
@@ -7938,7 +8069,10 @@
 ],
 "dex": 398,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/398.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/staraptor.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/staraptor.png",
+"megaStones": [
+"Staraptite"
+]
 },
 {
 "name": "Luxray",
@@ -8402,7 +8536,10 @@
 ],
 "dex": 428,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/428.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/lopunny.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/lopunny.png",
+"megaStones": [
+"Lopunnite"
+]
 },
 {
 "name": "Spiritomb",
@@ -8581,7 +8718,10 @@
 ],
 "dex": 445,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/445.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/garchomp.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/garchomp.png",
+"megaStones": [
+"Garchompite"
+]
 },
 {
 "name": "Lucario",
@@ -8707,7 +8847,10 @@
 ],
 "dex": 448,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/448.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/lucario.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/lucario.png",
+"megaStones": [
+"Lucarionite"
+]
 },
 {
 "name": "Hippowdon",
@@ -8996,7 +9139,10 @@
 ],
 "dex": 460,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/460.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/abomasnow.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/abomasnow.png",
+"megaStones": [
+"Abomasite"
+]
 },
 {
 "name": "Weavile",
@@ -9711,7 +9857,10 @@
 ],
 "dex": 475,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/475.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/gallade.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/gallade.png",
+"megaStones": [
+"Galladite"
+]
 },
 {
 "name": "Froslass",
@@ -9821,7 +9970,10 @@
 ],
 "dex": 478,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/478.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/froslass.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/froslass.png",
+"megaStones": [
+"Froslassite"
+]
 },
 {
 "name": "Rotom",
@@ -10090,7 +10242,10 @@
 ],
 "dex": 500,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/500.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/emboar.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/emboar.png",
+"megaStones": [
+"Emboarite"
+]
 },
 {
 "name": "Samurott",
@@ -10829,7 +10984,10 @@
 ],
 "dex": 530,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/530.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/excadrill.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/excadrill.png",
+"megaStones": [
+"Excadrite"
+]
 },
 {
 "name": "Audino",
@@ -10940,7 +11098,10 @@
 ],
 "dex": 531,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/531.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/audino.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/audino.png",
+"megaStones": [
+"Audinite"
+]
 },
 {
 "name": "Conkeldurr",
@@ -11122,7 +11283,10 @@
 ],
 "dex": 545,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/545.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/scolipede.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/scolipede.png",
+"megaStones": [
+"Scolipite"
+]
 },
 {
 "name": "Whimsicott",
@@ -11432,7 +11596,10 @@
 ],
 "dex": 560,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/560.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/scrafty.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/scrafty.png",
+"megaStones": [
+"Scraftinite"
+]
 },
 {
 "name": "Cofagrigus",
@@ -12119,7 +12286,10 @@
 ],
 "dex": 604,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/604.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/eelektross.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/eelektross.png",
+"megaStones": [
+"Eelektrossite"
+]
 },
 {
 "name": "Chandelure",
@@ -12216,7 +12386,10 @@
 ],
 "dex": 609,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/609.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/chandelure.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/chandelure.png",
+"megaStones": [
+"Chandelurite"
+]
 },
 {
 "name": "Beartic",
@@ -12587,7 +12760,10 @@
 ],
 "dex": 623,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/623.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/golurk.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/golurk.png",
+"megaStones": [
+"Golurkite"
+]
 },
 {
 "name": "Hydreigon",
@@ -12900,7 +13076,10 @@
 ],
 "dex": 652,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/652.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/chesnaught.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/chesnaught.png",
+"megaStones": [
+"Chesnaughtite"
+]
 },
 {
 "name": "Delphox",
@@ -13014,7 +13193,10 @@
 ],
 "dex": 655,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/655.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/delphox.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/delphox.png",
+"megaStones": [
+"Delphoxite"
+]
 },
 {
 "name": "Greninja",
@@ -13121,7 +13303,10 @@
 ],
 "dex": 658,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/658.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/greninja.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/greninja.png",
+"megaStones": [
+"Greninjite"
+]
 },
 {
 "name": "Diggersby",
@@ -13441,7 +13626,10 @@
 ],
 "dex": 668,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/668.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/pyroar.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/pyroar.png",
+"megaStones": [
+"Pyroarite"
+]
 },
 {
 "name": "Floette",
@@ -13522,7 +13710,10 @@
 ],
 "dex": 670,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/670.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/floette.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/floette.png",
+"megaStones": [
+"Floettite"
+]
 },
 {
 "name": "Florges",
@@ -13864,7 +14055,10 @@
 ],
 "dex": 678,
 "spritePrimary": "https://play.pokemonshowdown.com/sprites/home/meowstic.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/meowstic.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/meowstic.png",
+"megaStones": [
+"Meowsticite"
+]
 },
 {
 "name": "Aegislash",
@@ -14192,7 +14386,10 @@
 ],
 "dex": 687,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/687.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/malamar.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/malamar.png",
+"megaStones": [
+"Malamarite"
+]
 },
 {
 "name": "Barbaracle",
@@ -14304,7 +14501,10 @@
 ],
 "dex": 689,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/689.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/barbaracle.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/barbaracle.png",
+"megaStones": [
+"Barbaracite"
+]
 },
 {
 "name": "Dragalge",
@@ -14398,7 +14598,10 @@
 ],
 "dex": 691,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/691.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/dragalge.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/dragalge.png",
+"megaStones": [
+"Dragalgite"
+]
 },
 {
 "name": "Clawitzer",
@@ -14924,7 +15127,10 @@
 ],
 "dex": 701,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/701.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/hawlucha.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/hawlucha.png",
+"megaStones": [
+"Hawluchanite"
+]
 },
 {
 "name": "Dedenne",
@@ -16240,7 +16446,10 @@
 ],
 "dex": 740,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/740.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/crabominable.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/crabominable.png",
+"megaStones": [
+"Crabominite"
+]
 },
 {
 "name": "Lycanroc-Midday",
@@ -17104,7 +17313,10 @@
 ],
 "dex": 780,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/780.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/drampa.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/drampa.png",
+"megaStones": [
+"Drampanite"
+]
 },
 {
 "name": "Kommo-o",
@@ -18130,7 +18342,10 @@
 ],
 "dex": 870,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/870.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/falinks.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/falinks.png",
+"megaStones": [
+"Falinksite"
+]
 },
 {
 "name": "Morpeko",
@@ -19452,7 +19667,10 @@
 ],
 "dex": 952,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/952.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/scovillain.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/scovillain.png",
+"megaStones": [
+"Scovillainite"
+]
 },
 {
 "name": "Espathra",
@@ -19856,7 +20074,10 @@
 ],
 "dex": 970,
 "spritePrimary": "https://www.serebii.net/pokemonhome/pokemon/970.png",
-"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/glimmora.png"
+"spriteFallback": "https://play.pokemonshowdown.com/sprites/home/glimmora.png",
+"megaStones": [
+"Glimmoranite"
+]
 },
 {
 "name": "Houndstone",

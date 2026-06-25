@@ -62,6 +62,11 @@ input.search{width:100%;padding:11px 14px;border-radius:12px;border:1px solid va
 pre.paste{white-space:pre-wrap;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;font:12px/1.4 ui-monospace,monospace}
 .seg{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
 .seg button{flex:1;min-width:80px}
+select,input[type=number]{background:var(--card2);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:9px;font:inherit;width:100%}
+.field{margin:8px 0}.field>label{font-size:12px;color:var(--mut);display:block;margin-bottom:3px}
+.sp{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.sp input{text-align:center}
+.formsel{display:flex;gap:6px;margin:8px 0}.formsel button.active{background:var(--accent);color:#0b0d1f;border-color:var(--accent)}
+.total{font-weight:700}.slot{cursor:pointer}
 </style>
 </head>
 <body>
@@ -73,6 +78,7 @@ pre.paste{white-space:pre-wrap;background:var(--card);border:1px solid var(--lin
 <div id="teambar" class="teambar hidden"></div>
 <div id="app" class="wrap"></div>
 <script src="dex-data.js"></script>
+<script src="moves-data.js"></script>
 <script src="app.js"></script>
 <script src="ui.js"></script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}</script>
