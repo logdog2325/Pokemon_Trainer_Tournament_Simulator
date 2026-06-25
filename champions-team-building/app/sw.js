@@ -1,12 +1,19 @@
-/* Minimal service worker: cache the app shell for offline / installability.
-   Sprites are cross-origin hotlinks and are left to the network. */
-const CACHE = "ctb-v3";
+/* Service worker: cache the app shell for offline / installability, and cache
+   sprite images at runtime so they show offline after you've seen them once. */
+const CACHE = "ctb-v4";
+const IMG = "ctb-img-v1";
 const ASSETS = ["./","./index.html","./app.js","./ui.js","./dex-data.js","./moves-data.js","./usage-data.js","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting())); });
-self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
+self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE && k !== IMG).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener("fetch", e => {
   const u = new URL(e.request.url);
   if (u.origin === location.origin) {
+    // app shell: cache-first
     e.respondWith(caches.match(e.request).then(r => r || fetch(e.request)));
+  } else if (e.request.destination === "image" || /\.(png|jpe?g|gif|webp|svg)$/i.test(u.pathname)) {
+    // cross-origin sprites: cache-first, fill the runtime cache as they load
+    e.respondWith(caches.open(IMG).then(c => c.match(e.request).then(hit =>
+      hit || fetch(e.request).then(resp => { try { c.put(e.request, resp.clone()); } catch (x) {} return resp; }).catch(() => hit)
+    )));
   }
 });

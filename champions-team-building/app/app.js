@@ -102,9 +102,8 @@ function detectRoles(e){
   const u=usageOf(e);
   if(u&&u.moves&&u.moves.length){
     const desc=metaDescriptor(e,u);
-    const rk=u.rank!=null?` · #${u.rank} used`:"";
     out.unshift({key:"meta",label:`Meta set — ${desc}`,meta:true,
-      note:`Most-used Reg M-B build${rk}${u.teammates&&u.teammates.length?`. Common partners: ${u.teammates.slice(0,4).join(", ")}`:"."}`});
+      note:`The standard Reg M-B build for this role${u.teammates&&u.teammates.length?`. Common partners: ${u.teammates.slice(0,4).join(", ")}`:"."}`});
   }
   return out;
 }

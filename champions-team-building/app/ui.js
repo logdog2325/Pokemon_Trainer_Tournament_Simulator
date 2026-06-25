@@ -157,7 +157,6 @@ function candRow(c,danger){
   if(s.weather)tags.push(["+"+s.weatherType,"good"]);
   s.covers.forEach(t=>tags.push(["covers "+t,"good"]));
   s.dangerStacks.forEach(t=>tags.push(["stacks "+t,"bad"]));
-  if(s.rank!=null)tags.push(["used #"+s.rank,""]);  // info only — usage rank does NOT affect the score
   return `<div class="candrow" data-n="${e.name}">${img(e)}
     <div class="meta"><div class="nm">${e.name} ${tbadges(e.types)}</div>
       <div class="tags">${tags.slice(0,6).map(([t,c])=>`<span class="tag ${c}">${t}</span>`).join("")}</div>
@@ -235,7 +234,7 @@ function renderStress(){
 function speedRow(r){
   return `<div class="row" style="padding:5px 8px;border-radius:8px;margin:1px 0;${r.mine?'background:var(--card2);outline:1px solid var(--accent)':''}">
     <b style="width:40px;text-align:right;color:${r.mine?'var(--accent)':'var(--txt)'}">${r.spe}</b>
-    <div style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;${r.mine?'font-weight:700':''}">${r.name} ${r.rank?`<span class="muted" style="font-size:10px">#${r.rank}</span>`:''}</div>
+    <div style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;${r.mine?'font-weight:700':''}">${r.name}</div>
     <div class="tags">${(r.tags||[]).map(t=>`<span class="tag">${t}</span>`).join("")}</div></div>`;
 }
 function renderSpeed(){
@@ -254,7 +253,7 @@ function renderSpeed(){
 function calcDefenders(){
   const list=STATE.team.map((m,i)=>({key:"team:"+i,label:m.entry.name+(m.formIndex>=0?" (Mega)":"")+" — yours",member:m}));
   const seen=new Set(STATE.team.map(m=>m.entry.name));
-  E.metaBenchmarks(30).forEach(b=>{if(seen.has(b.name))return;seen.add(b.name);const mem=E.benchMember(b.name);if(mem)list.push({key:"meta:"+b.name,label:b.name+(mem.formIndex>=0?" (Mega)":"")+" · #"+b.rank,member:mem});});
+  E.metaBenchmarks(30).forEach(b=>{if(seen.has(b.name))return;seen.add(b.name);const mem=E.benchMember(b.name);if(mem)list.push({key:"meta:"+b.name,label:b.name+(mem.formIndex>=0?" (Mega)":""),member:mem});});
   return list;
 }
 function renderCalc(){
