@@ -319,5 +319,31 @@ function stressTest(team){
 }
 function itemClause(team){const items=team.map(m=>m.set&&m.set.item).filter(Boolean);const seen={},dups=new Set();for(const it of items){if(seen[it])dups.add(it);seen[it]=1;}return [...dups];}
 
+/* ---------- slot-role-aware scoring (rank by how GOOD a mon is at the role, not raw BST) ---------- */
+const SUPPORT_KIT=["Encore","Light Screen","Reflect","Aurora Veil","Helping Hand","Fake Out","Rage Powder","Follow Me","Taunt","Will-O-Wisp","Thunder Wave","Icy Wind","Electroweb","Parting Shot","Heal Pulse","Life Dew","Coaching","Snarl","Pollen Puff","Wide Guard"];
+function roleExecution(e,slot){
+  const ab=e.abilities||[], mv=e.moves, off=offense(e), bv=bulk(e), sp=e.baseStats.spe;
+  const kit=mv.filter(m=>SUPPORT_KIT.includes(m)).length;
+  const bulkPts=Math.max(0,Math.min(12,Math.round((bv-210)/12)));
+  switch(slot){
+    case "speed": {let s=6;if(ab.includes("Prankster"))s+=18;s+=bulkPts;s+=Math.min(10,kit*3);return Math.min(40,s);}      // Tailwind setter
+    case "trsetter": {let s=6;s+=bulkPts+2;if(sp<=55)s+=10;s+=Math.min(8,kit*2);return Math.min(40,s);}
+    case "redir": {let s=8;if(ab.includes("Prankster"))s+=8;if(ab.includes("Friend Guard")||ab.includes("Hospitality"))s+=12;s+=bulkPts;s+=Math.min(6,kit*2);return Math.min(40,s);}
+    case "fakeout": {let s=8;if(ab.includes("Intimidate"))s+=12;s+=Math.min(8,bulkPts);if(mv.some(m=>PIVOT.includes(m)))s+=4;s+=Math.min(8,Math.round((off-80)/12));return Math.min(40,s);}
+    case "intimidate": {let s=ab.includes("Intimidate")?20:2;s+=bulkPts;s+=Math.min(8,Math.round((off-70)/12));return Math.min(40,s);}
+    case "pivot": {let s=6;if(mv.some(m=>PIVOT.includes(m)))s+=10;s+=Math.min(16,bulkPts+4);return Math.min(40,s);}
+    case "wall": {let s=Math.min(22,Math.round((bv-250)/8));if(RECOVERY.some(m=>mv.includes(m)))s+=12;return Math.min(40,s);}
+    case "weather": return 22;
+    default: return Math.min(40,Math.max(0,Math.round((off-70)/3.5)));  // offense roles reward offense
+  }
+}
+function scoreForSlot(e,team,slot){
+  const b=scoreCandidate(e,team), exe=roleExecution(e,slot);
+  const support=["speed","trsetter","redir","fakeout","intimidate","pivot","wall","weather"].includes(slot);
+  const total=support ? Math.min(100,b.typing+exe+Math.min(18,b.cov)+b.weather)
+                      : Math.min(100,Math.round(b.total*0.6+exe*0.5));
+  return {...b,exe,total:Math.round(total)};
+}
+
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause};

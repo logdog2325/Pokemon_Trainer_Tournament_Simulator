@@ -6,7 +6,7 @@ const $=s=>document.querySelector(s), app=$("#app"), titleEl=$("#title"), backBt
 let STATE={screen:"start",lead:null,role:null,team:[],q:"",slotRole:null};
 const BULK=e=>e.baseStats.hp+e.baseStats.def+e.baseStats.spd;
 const SLOT_ROLES=[
- {key:"speed",label:"Speed control",need:"speed",fill:e=>e.moves.some(m=>E.SPEEDCTRL.includes(m))},
+ {key:"speed",label:"Speed control (Tailwind)",need:"speed",fill:e=>e.moves.includes("Tailwind")},
  {key:"trsetter",label:"Trick Room setter",fill:e=>e.moves.includes("Trick Room")},
  {key:"redir",label:"Redirection",need:"redir",fill:e=>e.moves.some(m=>E.REDIR.includes(m))},
  {key:"fakeout",label:"Fake Out",need:"fakeout",fill:e=>e.moves.includes("Fake Out")},
@@ -118,7 +118,7 @@ function renderBuilder(){
   const roleDef=SLOT_ROLES.find(r=>r.key===STATE.slotRole)||SLOT_ROLES[SLOT_ROLES.length-1];
   const teamNames=new Set(STATE.team.map(m=>m.entry.name));
   const score=()=>E.DEX.filter(e=>!teamNames.has(e.name)&&roleDef.fill(e)&&e.name.toLowerCase().includes(STATE.q.toLowerCase()))
-    .map(e=>({e,s:E.scoreCandidate(e,STATE.team)})).sort((a,b)=>b.s.total-a.s.total);
+    .map(e=>({e,s:E.scoreForSlot(e,STATE.team,STATE.slotRole)})).sort((a,b)=>b.s.total-a.s.total);
   const cands=score();
   app.innerHTML=weakCard(tally,null)+
     `<div class="card"><div class="row"><b style="flex:1">Filling: ${roleDef.label} · ${cands.length} fit</b><button class="btn" id="chg">↺ Change</button></div></div>
@@ -144,7 +144,7 @@ function candRow(c,danger){
   return `<div class="candrow" data-n="${e.name}">${img(e)}
     <div class="meta"><div class="nm">${e.name} ${tbadges(e.types)}</div>
       <div class="tags">${tags.slice(0,6).map(([t,c])=>`<span class="tag ${c}">${t}</span>`).join("")}</div>
-      <div class="brk">typing ${s.typing}/25 · stats ${s.stats}/20 · ability ${s.ability}/15 · cov ${s.cov}/30${s.weather?' · weather +'+s.weather:''}${cav?' · ⚠ caveat':''}</div></div>
+      <div class="brk">typing ${s.typing}/25 · role-fit ${s.exe!=null?s.exe:'–'}/40 · ability ${s.ability}/15${s.weather?' · weather +'+s.weather:''}${cav?' · ⚠ caveat':''}</div></div>
     <div class="scorebadge"><b style="color:${s.total>=70?'var(--good)':s.total>=55?'var(--txt)':'var(--mut)'}">${s.total}</b><small>fit</small></div></div>`;
 }
 function bindCands(){app.querySelectorAll(".candrow").forEach(r=>r.onclick=()=>{openEditor(mkMember(E.byName[r.dataset.n]),-1);});}
