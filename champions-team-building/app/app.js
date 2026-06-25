@@ -467,5 +467,93 @@ function speedRows(team,opts){
   return {rows,weather};
 }
 
+/* ---------- stat math (general) ---------- */
+function statAt(base,pts,natKey,statKey){ // non-HP stat at L50 in Champions points
+  pts=Math.max(0,Math.min(32,pts||0));
+  const m=NATURE_MOD[natKey]; let mod=1; if(m){ if(m[0]===statKey)mod=1.1; else if(m[1]===statKey)mod=0.9; }
+  return Math.floor((Math.floor((2*base+31)/2)+5+pts)*mod);
+}
+function hpAt(base,pts){pts=Math.max(0,Math.min(32,pts||0));return Math.floor((2*base+31)/2)+pts+60;}
+// final stats for a built member (respects mega form)
+function finalStats(m){
+  const ef=effOf(m), b=ef.baseStats, p=(m.set&&m.set.points)||{}, nat=(m.set&&m.set.nature)||"Hardy";
+  return {hp:hpAt(b.hp,p.hp),atk:statAt(b.atk,p.atk,nat,"atk"),def:statAt(b.def,p.def,nat,"def"),
+    spa:statAt(b.spa,p.spa,nat,"spa"),spd:statAt(b.spd,p.spd,nat,"spd"),spe:statAt(b.spe,p.spe,nat,"spe")};
+}
+
+/* ---------- pokepaste / Showdown import ---------- */
+function dexLookup(species){
+  if(!species) return null;
+  if(byName[species]) return byName[species];
+  let s=species.replace(/-Mega(-[XY])?$/i,"").replace(/-Gmax$/i,"").trim();
+  if(byName[s]) return byName[s];
+  const al={"-F":"-Female","-M":"-Male"};
+  for(const k in al){ if(s.endsWith(k)&&byName[s.slice(0,-k.length)+al[k]]) return byName[s.slice(0,-k.length)+al[k]]; }
+  // base of a male/female line typed bare -> default to -Male
+  if(byName[s+"-Male"]) return byName[s+"-Male"];
+  // case-insensitive fallback
+  const lc=s.toLowerCase(); for(const e of DEX) if(e.name.toLowerCase()===lc) return e;
+  return null;
+}
+function parsePaste(text){
+  const blocks=(text||"").replace(/\r/g,"").split(/\n\s*\n/).map(b=>b.trim()).filter(Boolean);
+  const out=[];
+  for(const blk of blocks){
+    const lines=blk.split("\n").map(l=>l.trim()).filter(Boolean);
+    if(!lines.length) continue;
+    let head=lines[0], item="";
+    const at=head.lastIndexOf(" @ "); if(at>=0){item=head.slice(at+3).trim();head=head.slice(0,at).trim();}
+    head=head.replace(/\s*\((M|F)\)\s*$/,"");                 // gender
+    const pm=head.match(/^(.*?)\s*\(([^)]+)\)\s*$/);           // Nickname (Species)
+    let species=pm?pm[2].trim():head.trim();
+    const e=dexLookup(species); if(!e) continue;
+    const set={ability:(e.abilities||[])[0]||"",item:item||"",nature:"Hardy",points:{hp:0,atk:0,def:0,spa:0,spd:0,spe:0},moves:[]};
+    let formIndex=-1;
+    if(e.megaStones&&e.megaStones.includes(item)) formIndex=Math.max(0,e.megaStones.indexOf(item));
+    else if(/-Mega-Y$/i.test(species)&&e.megaStones) formIndex=e.megaStones.findIndex(s=>/Y$/.test(s));
+    else if(/-Mega(-X)?$/i.test(species)&&e.mega&&e.mega.length) formIndex=0;
+    const SK={hp:"hp",atk:"atk",def:"def",spa:"spa",spd:"spd",spe:"spe",HP:"hp",Atk:"atk",Def:"def",SpA:"spa",SpD:"spd",Spe:"spe"};
+    for(const ln of lines.slice(1)){
+      let mt;
+      if(/^Ability:/i.test(ln)) set.ability=ln.split(":")[1].trim();
+      else if((mt=ln.match(/^(?:EVs|Stat Points):\s*(.+)$/i))){
+        const ev=/^EVs/i.test(ln); // EVs (0-252) -> points; Stat Points already 0-32
+        mt[1].split("/").forEach(part=>{const m2=part.trim().match(/(\d+)\s*([A-Za-z]+)/);if(m2&&SK[m2[2]]!=null){let v=+m2[1];if(ev)v=Math.round(v/8);set.points[SK[m2[2]]]=Math.max(0,Math.min(32,v));}});
+      }
+      else if((mt=ln.match(/^(\w+)\s+Nature$/i))) set.nature=mt[1];
+      else if(/^-\s*/.test(ln)){const mv=ln.replace(/^-\s*/,"").split("/")[0].replace(/\s*\[[^\]]*\]/,"").trim();if(mv&&set.moves.length<4)set.moves.push(mv);}
+      // Level / IVs / Tera Type / Shiny etc. ignored (Champions: L50, no IVs/Tera)
+    }
+    while(set.moves.length<4) set.moves.push("");
+    out.push({entry:e,formIndex,roleKey:"meta",set});
+  }
+  return out;
+}
+function exportPaste(team){
+  const SP=[["HP","hp"],["Atk","atk"],["Def","def"],["SpA","spa"],["SpD","spd"],["Spe","spe"]];
+  return team.map(m=>{const e=m.entry,s=m.set,ab=s.ability||(e.abilities||[])[0]||"";
+    const pts=SP.filter(([l,k])=>s.points[k]).map(([l,k])=>s.points[k]+" "+l).join(" / ");
+    const mv=(s.moves||[]).filter(Boolean).map(x=>"- "+x).join("\n");
+    return `${e.name} @ ${s.item||""}\nAbility: ${ab}\nLevel: 50\n${s.nature} Nature\nStat Points: ${pts||"none"}\n${mv}`;}).join("\n\n");
+}
+
+/* ---------- shareable team URL ---------- */
+function encodeTeam(team){
+  const arr=team.map(m=>[m.entry.name,m.formIndex,m.set.item||"",m.set.ability||"",m.set.nature||"",
+    ["hp","atk","def","spa","spd","spe"].map(k=>m.set.points[k]||0),(m.set.moves||[]).filter(Boolean)]);
+  try{return btoa(unescape(encodeURIComponent(JSON.stringify(arr)))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");}catch(e){return"";}
+}
+function decodeTeam(str){
+  try{
+    let b=str.replace(/-/g,"+").replace(/_/g,"/"); while(b.length%4)b+="=";
+    const arr=JSON.parse(decodeURIComponent(escape(atob(b))));
+    return arr.map(a=>{const e=byName[a[0]];if(!e)return null;
+      const pk=["hp","atk","def","spa","spd","spe"],pts={};pk.forEach((k,i)=>pts[k]=(a[5]||[])[i]||0);
+      const moves=(a[6]||[]).slice(0,4);while(moves.length<4)moves.push("");
+      return {entry:e,formIndex:a[1]==null?-1:a[1],roleKey:"meta",set:{item:a[2]||"",ability:a[3]||"",nature:a[4]||"Hardy",points:pts,moves}};
+    }).filter(Boolean);
+  }catch(e){return null;}
+}
+
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam};

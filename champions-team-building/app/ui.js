@@ -42,8 +42,10 @@ function renderStart(){
   titleEl.textContent="Pick your core Pokémon";
   backBtn.classList.add("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
   const list=E.DEX.filter(e=>e.name.toLowerCase().includes(STATE.q.toLowerCase())).sort((a,b)=>a.name.localeCompare(b.name));
-  app.innerHTML=`<input class="search" id="q" placeholder="Search ${E.DEX.length} Pokémon…" value="${STATE.q}">
+  app.innerHTML=`<button class="btn" id="imp" style="width:100%;margin-bottom:10px">📋 Import / paste a team</button>
+    <input class="search" id="q" placeholder="Search ${E.DEX.length} Pokémon…" value="${STATE.q}">
     <div class="grid">${list.slice(0,400).map(e=>`<div class="mon" data-n="${e.name}">${img(e)}<div class="nm">${e.name}</div>${tbadges(e.types)}</div>`).join("")}</div>`;
+  $("#imp").onclick=()=>go("import");
   const q=$("#q"); q.oninput=()=>{STATE.q=q.value;const g=app.querySelector(".grid");const l=E.DEX.filter(e=>e.name.toLowerCase().includes(STATE.q.toLowerCase())).sort((a,b)=>a.name.localeCompare(b.name));g.innerHTML=l.slice(0,400).map(e=>`<div class="mon" data-n="${e.name}">${img(e)}<div class="nm">${e.name}</div>${tbadges(e.types)}</div>`).join("");bindMons();};
   bindMons();
 }
@@ -154,15 +156,13 @@ function bindCands(){app.querySelectorAll(".candrow").forEach(r=>r.onclick=()=>{
 
 /* ---------------- EXPORT ---------------- */
 function showExport(){
-  const SP=[["HP","hp"],["Atk","atk"],["Def","def"],["SpA","spa"],["SpD","spd"],["Spe","spe"]];
-  const paste=STATE.team.map(m=>{const e=m.entry,s=m.set;const ab=s.ability||(e.abilities||[])[0]||"";
-    const pts=SP.filter(([l,k])=>s.points[k]).map(([l,k])=>s.points[k]+" "+l).join(" / ");
-    const mv=(s.moves||[]).filter(Boolean).map(x=>"- "+x).join("\n");
-    return `${e.name} @ ${s.item||""}\nAbility: ${ab}\nLevel: 50\n${s.nature} Nature\nStat Points: ${pts||"none"}\n${mv}`;}).join("\n\n");
+  const paste=E.exportPaste(STATE.team);
   titleEl.textContent="Export"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden");
   app.innerHTML=`<div class="card"><b>Team (${STATE.team.length})</b><div class="grid" style="margin-top:8px">${STATE.team.map(m=>`<div class="mon">${img(m.entry)}<div class="nm">${m.entry.name}${m.formIndex>=0?' (Mega)':''}</div></div>`).join("")}</div></div>
+    <div class="card"><b>Share</b> <button class="btn" id="share">🔗 Copy share link</button><div class="muted" id="shareInfo" style="margin-top:6px">A link that reopens this exact team.</div></div>
     <div class="card"><b>Set list</b> <button class="btn" id="cp">Copy</button><pre class="paste" id="pst">${paste.replace(/</g,"&lt;")}</pre></div>`;
   $("#cp").onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText(paste);$("#cp").textContent="Copied ✓";};
+  $("#share").onclick=()=>{const url=location.origin+location.pathname+"#t="+E.encodeTeam(STATE.team);navigator.clipboard&&navigator.clipboard.writeText(url);$("#share").textContent="Copied ✓";$("#shareInfo").textContent=url.length>90?url.slice(0,90)+"…":url;};
   backBtn.onclick=()=>go("builder");
 }
 
@@ -238,13 +238,40 @@ function renderSpeed(){
   app.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{STATE.spd[b.dataset.k]=!STATE.spd[b.dataset.k];renderSpeed();});
   backBtn.onclick=()=>go("builder");
 }
+/* ---------------- IMPORT ---------------- */
+function renderImport(){
+  titleEl.textContent="Import team"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
+  app.innerHTML=`
+    <div class="card"><div class="muted">Paste a Showdown export / pokepaste text — or a pokepast.es link — to load and analyse a full team. Showdown EVs are converted to Champions points.</div>
+      <textarea id="pastein" style="width:100%;height:180px;margin-top:10px;background:var(--card2);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:10px;font:12px/1.4 ui-monospace,monospace" placeholder="Tauros-Paldea-Aqua @ ...&#10;Ability: Intimidate&#10;- Close Combat&#10;...&#10;&#10;or  https://pokepast.es/abc123def456..."></textarea>
+      <button class="btn primary" id="load" style="width:100%;margin-top:8px">Load team</button>
+      <div class="muted" id="impmsg" style="margin-top:8px"></div></div>`;
+  $("#load").onclick=async()=>{
+    let text=$("#pastein").value.trim(); const msg=$("#impmsg");
+    if(!text){msg.textContent="Paste a team first.";return;}
+    const urlm=text.match(/https?:\/\/pokepast\.es\/[0-9a-f]+/i);
+    if(urlm){msg.textContent="Fetching pokepaste…";try{const r=await fetch(urlm[0].replace(/\/raw$/,"")+"/raw");text=await r.text();}catch(e){msg.textContent="Couldn't fetch that link (network/CORS). Paste the text instead.";return;}}
+    const team=E.parsePaste(text);
+    if(!team.length){msg.textContent="No Pokémon recognised. Check the species names.";return;}
+    STATE.team=team.slice(0,6); STATE.lead=team[0].entry; STATE.role=null; STATE.slotRole=null; STATE.q="";
+    go("builder");
+  };
+  backBtn.onclick=()=>go("start");
+}
 function render(){
-  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(STATE.screen==="role")go("start"); else if(STATE.screen==="editor"||STATE.screen==="stress"||STATE.screen==="speed")go("builder"); };
-  if(STATE.screen==="start")renderStart();
+  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(STATE.screen==="role"||STATE.screen==="import")go("start"); else if(STATE.screen==="editor"||STATE.screen==="stress"||STATE.screen==="speed")go("builder"); };
+  if(STATE.screen==="import")renderImport();
+  else if(STATE.screen==="start")renderStart();
   else if(STATE.screen==="role")renderRole();
   else if(STATE.screen==="builder")renderBuilder();
   else if(STATE.screen==="editor")renderEditor();
   else if(STATE.screen==="stress")renderStress();
   else if(STATE.screen==="speed")renderSpeed();
 }
+// open a shared team from the URL (#t=...), if present
+(function bootFromHash(){
+  const m=(location.hash||"").match(/[#&]t=([^&]+)/);
+  if(m){const t=E.decodeTeam(decodeURIComponent(m[1]));if(t&&t.length){STATE.team=t.slice(0,6);STATE.lead=t[0].entry;STATE.screen="builder";}
+    try{history.replaceState(null,"",location.pathname);}catch(e){}}
+})();
 render();
