@@ -95,12 +95,13 @@ function candRow(c,danger){
   if(e.moves.some(m=>E.PRIORITY.includes(m)))tags.push(["Priority","good"]);
   if((e.abilities||[]).includes("Intimidate"))tags.push(["Intimidate","good"]);
   if(e.mega&&e.mega.length)tags.push(["Mega",""]);
+  if(s.weather)tags.push(["+"+s.weatherType,"good"]);
   s.covers.forEach(t=>tags.push(["covers "+t,"good"]));
   s.dangerStacks.forEach(t=>tags.push(["stacks "+t,"bad"]));
   return `<div class="candrow" data-n="${e.name}">${img(e)}
     <div class="meta"><div class="nm">${e.name} ${tbadges(e.types)}</div>
       <div class="tags">${tags.slice(0,6).map(([t,c])=>`<span class="tag ${c}">${t}</span>`).join("")}</div>
-      <div class="brk">typing ${s.typing}/25 · stats ${s.stats}/20 · ability ${s.ability}/15 · coverage ${s.cov}/30${cav?' · ⚠ Prankster vs Dark':''}</div></div>
+      <div class="brk">typing ${s.typing}/25 · stats ${s.stats}/20 · ability ${s.ability}/15 · cov ${s.cov}/30${s.weather?' · weather +'+s.weather:''}${cav?' · ⚠ caveat':''}</div></div>
     <div class="scorebadge"><b style="color:${s.total>=70?'var(--good)':s.total>=55?'var(--txt)':'var(--mut)'}">${s.total}</b><small>fit</small></div></div>`;
 }
 function bindCands(){app.querySelectorAll(".candrow").forEach(r=>r.onclick=()=>{const e=E.byName[r.dataset.n];STATE.team.push({entry:e,ability:E.bestDefAbility(e)});STATE.q="";renderBuilder();window.scrollTo(0,0);});}

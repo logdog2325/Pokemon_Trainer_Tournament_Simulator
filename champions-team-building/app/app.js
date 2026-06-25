@@ -121,6 +121,32 @@ function teamNeeds(team){
   };
 }
 
+/* ---------- weather synergy (Gen 9) ---------- */
+const WEATHER_BENEFIT_ABIL={
+  sun:["Chlorophyll","Solar Power","Flower Gift","Leaf Guard","Drought","Orichalcum Pulse","Protosynthesis"],
+  rain:["Swift Swim","Rain Dish","Hydration","Dry Skin","Drizzle","Primordial Sea"],
+  sand:["Sand Rush","Sand Force","Sand Veil","Sand Stream"],
+  snow:["Slush Rush","Snow Cloak","Ice Body","Snow Warning","Ice Face"]
+};
+function teamWeather(team){
+  for(const m of team) for(const a of (m.entry.abilities||[])) if(WEATHER_ABIL[a]) return WEATHER_ABIL[a];
+  return null;
+}
+function weatherBonus(e,weather){
+  if(!weather) return 0;
+  let b=0; const ab=e.abilities||[], ty=e.types;
+  if(weather==="snow"&&ty.includes("Ice")) b+=6;          // 1.5x Def
+  if(weather==="sand"&&ty.includes("Rock")) b+=6;         // 1.5x SpD
+  if(weather==="sand"&&(ty.includes("Ground")||ty.includes("Steel"))) b+=2; // chip-immune
+  if(weather==="sun"&&ty.includes("Fire")) b+=5;          // 1.5x Fire STAB
+  if(weather==="rain"&&ty.includes("Water")) b+=5;        // 1.5x Water STAB
+  if(ab.some(a=>WEATHER_BENEFIT_ABIL[weather].includes(a))) b+=6;  // speed/heal abilities
+  if(weather==="snow"&&(e.moves.includes("Blizzard")||e.moves.includes("Aurora Veil"))) b+=3;
+  if(weather==="rain"&&(e.moves.includes("Thunder")||e.moves.includes("Hurricane"))) b+=3;
+  if(weather==="sun"&&e.moves.includes("Solar Beam")) b+=2;
+  return Math.min(12,b);
+}
+
 /* ---------- the scoring formula ---------- */
 function scoreCandidate(e, team){
   const tally=teamWeakTally(team);
@@ -159,8 +185,13 @@ function scoreCandidate(e, team){
   if(needs.physical && isPhysical(e)&&off>=100) cov+=6;
   if(needs.special && !isPhysical(e)&&off>=100) cov+=6;
   cov=Math.min(30,cov);
-  const total=typing+stats+ability+cov;
-  return {total:Math.round(total),typing:Math.round(typing),stats,ability,cov,dangerStacks:w.weak.filter(([t])=>tally[t]).map(x=>x[0]),covers:w.res.map(x=>x[0]).concat(w.imm).filter(t=>danger.includes(t))};
+  // Weather synergy bonus (only when the team runs a weather setter)
+  const weather=teamWeather(team);
+  const wb=weatherBonus(e,weather);
+  const total=Math.min(100,typing+stats+ability+cov+wb);
+  return {total:Math.round(total),typing:Math.round(typing),stats,ability,cov,weather:wb,weatherType:weather,
+    dangerStacks:w.weak.filter(([t])=>tally[t]).map(x=>x[0]),
+    covers:w.res.map(x=>x[0]).concat(w.imm).filter(t=>danger.includes(t))};
 }
 
 /* expose for ui.js */
