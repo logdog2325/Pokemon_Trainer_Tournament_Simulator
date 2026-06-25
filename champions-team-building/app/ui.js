@@ -21,6 +21,16 @@ const SLOT_ROLES=[
 ];
 
 function img(e){return `<img loading="lazy" src="${e.spritePrimary||e.spriteFallback}" onerror="this.onerror=null;this.src='${e.spriteFallback}'" alt="${e.name}">`;}
+// form-aware sprite: Mega art when a Mega form is selected, falling back to the base sprite
+function megaSpriteOf(e,fi){return (fi>=0&&e.mega&&e.mega[fi]&&e.mega[fi].sprite)||e.spritePrimary||e.spriteFallback;}
+function imgF(e,fi){return `<img loading="lazy" src="${megaSpriteOf(e,fi)}" onerror="this.onerror=null;this.src='${e.spriteFallback}'" alt="${e.name}">`;}
+// best recommended set for a specific form (Mega index >=0, or base)
+function formSet(e,fi){
+  if(fi>=0) return E.recommendSet(e,"mega"+fi);
+  const meta=E.recommendSet(e,"meta"); if(meta&&meta.formIndex<0&&E.usageOf(e)) return meta;
+  const roles=E.detectRoles(e).filter(r=>r.key!=="meta"&&!/^mega/.test(r.key));
+  return E.recommendSet(e,roles[0]?roles[0].key:"breaker");
+}
 function tbadges(types){return `<div class="types">${types.map(t=>`<span class="tt" style="background:${TCOL[t]||'#888'}">${t}</span>`).join("")}</div>`;}
 const POWDER=["Rage Powder","Spore","Sleep Powder","Stun Spore","Poison Powder","Cotton Spore","Powder","Magic Powder"];
 function caveats(e){
@@ -74,7 +84,7 @@ function renderRole(){
 function renderTeambar(){
   teambar.classList.remove("hidden"); teambar.innerHTML="";
   for(let i=0;i<6;i++){const m=STATE.team[i];const d=document.createElement("div");d.className="slot"+(m?"":" empty");d.dataset.i=i;
-    if(m){d.innerHTML=img(m.entry)+`<button class="x" data-i="${i}">×</button>`;}else d.textContent="+";
+    if(m){d.innerHTML=imgF(m.entry,m.formIndex)+`<button class="x" data-i="${i}">×</button>`;}else d.textContent="+";
     teambar.appendChild(d);}
   teambar.querySelectorAll(".slot").forEach(s=>s.onclick=()=>{const i=+s.dataset.i;if(STATE.team[i])openEditor(STATE.team[i],i);});
   teambar.querySelectorAll(".x").forEach(b=>b.onclick=ev=>{ev.stopPropagation();STATE.team.splice(+b.dataset.i,1);renderBuilder();});
@@ -169,7 +179,7 @@ function bindCands(){app.querySelectorAll(".candrow").forEach(r=>r.onclick=()=>{
 function showExport(){
   const paste=E.exportPaste(STATE.team);
   titleEl.textContent="Export"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden");
-  app.innerHTML=`<div class="card"><b>Team (${STATE.team.length})</b><div class="grid" style="margin-top:8px">${STATE.team.map(m=>`<div class="mon">${img(m.entry)}<div class="nm">${m.entry.name}${m.formIndex>=0?' (Mega)':''}</div></div>`).join("")}</div></div>
+  app.innerHTML=`<div class="card"><b>Team (${STATE.team.length})</b><div class="grid" style="margin-top:8px">${STATE.team.map(m=>`<div class="mon">${imgF(m.entry,m.formIndex)}<div class="nm">${m.entry.name}${m.formIndex>=0?' (Mega)':''}</div></div>`).join("")}</div></div>
     <div class="card"><b>Share</b> <button class="btn" id="share">🔗 Copy share link</button><div class="muted" id="shareInfo" style="margin-top:6px">A link that reopens this exact team.</div></div>
     <div class="card"><b>Set list</b> <button class="btn" id="cp">Copy</button><pre class="paste" id="pst">${paste.replace(/</g,"&lt;")}</pre></div>`;
   $("#cp").onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText(paste);$("#cp").textContent="Copied ✓";};
@@ -192,8 +202,8 @@ function renderEditor(){
   const ms=[...e.moves].sort();
   const itemOpts=E.ITEMS.concat(ef.isMega&&e.megaStones?e.megaStones:[]).filter((v,i,a)=>a.indexOf(v)===i);
   app.innerHTML=`
-    <div class="card"><div class="row">${img(e)}<div style="flex:1">${tbadges(ef.types)}
-      <div class="muted" style="margin-top:4px">${ef.isMega?'Ability: '+ef.ability+' (Mega)':''}</div></div></div>
+    <div class="card"><div class="row">${imgF(e,M.formIndex)}<div style="flex:1">${tbadges(ef.types)}
+      <div class="muted" style="margin-top:4px">${ef.isMega?ef.label+' · Ability: '+ef.ability:''}</div></div></div>
       ${megaBtns}${statBars(ef.baseStats)}</div>
     <div class="card">
       ${ef.isMega?'':`<div class="field"><label>Ability</label><select id="ab">${(e.abilities||[]).map(a=>`<option ${a===M.set.ability?'selected':''}>${a}</option>`).join("")}</select></div>`}
@@ -204,7 +214,11 @@ function renderEditor(){
         <div class="sp">${[["HP","hp"],["Atk","atk"],["Def","def"],["SpA","spa"],["SpD","spd"],["Spe","spe"]].map(([l,k])=>`<div class="field"><label>${l}</label><input type="number" class="pt" data-k="${k}" min="0" max="32" value="${M.set.points[k]||0}"></div>`).join("")}</div></div>
       <button class="btn primary" id="save" style="width:100%">${STATE.editing.slotIndex<0?'Add to team':'Save changes'}</button>
     </div>`;
-  app.querySelectorAll(".formsel button").forEach(b=>b.onclick=()=>{const f=+b.dataset.f;M.formIndex=f;if(f>=0&&e.megaStones){M.set.item=e.megaStones[f]||e.megaStones[0];}else{M.set.item=E.recommendSet(e,M.roleKey).item;}renderEditor();});
+  // tapping Base <-> Mega loads that form's recommended set (moves/item/nature/spread) and art
+  app.querySelectorAll(".formsel button").forEach(b=>b.onclick=()=>{const f=+b.dataset.f;M.formIndex=f;
+    const ns=formSet(e,f);
+    if(ns){M.set={ability:ns.ability,item:ns.item,nature:ns.nature,points:Object.assign({},ns.points),moves:(ns.moves||[]).slice()};while(M.set.moves.length<4)M.set.moves.push("");}
+    renderEditor();});
   const ab=$("#ab");if(ab)ab.onchange=()=>M.set.ability=ab.value;
   $("#it").onchange=()=>M.set.item=$("#it").value;
   $("#na").onchange=()=>M.set.nature=$("#na").value;
