@@ -426,6 +426,30 @@ function scoreForSlot(e,team,slot){
   return {...b,exe,leadCov,offCov,rank:u&&u.rank!=null?u.rank:null,total};
 }
 
+/* ---------- live team health score ---------- */
+function teamHealth(team){
+  if(!team||!team.length) return {score:0,grade:"–",flags:[],tally:{}};
+  const tally=teamWeakTally(team), needs=teamNeeds(team), off=teamOffense(team), n=team.length;
+  let score=100; const flags=[];
+  for(const [t,v] of Object.entries(tally)){
+    const answer=teamResists(team,t);            // a switch-in that resists softens the liability
+    const k=answer?0.5:1, sfx=answer?" (have a resist)":"";
+    if(v.count>=3){score-=12*k;flags.push({sev:answer?1:2,msg:`${v.count} members weak to ${t}${sfx}`});}
+    else if(v.count>=2){score-=5*k;flags.push({sev:answer?0:1,msg:`${v.count} members weak to ${t}${sfx}`});}
+    if(v.max>=4){score-=4*k;flags.push({sev:answer?1:2,msg:`4× ${t} weakness${sfx}`});}
+  }
+  if(n>=3&&off.gaps.length){score-=Math.min(15,off.gaps.length*4);flags.push({sev:2,msg:`No super-effective hit on ${off.gaps.join(", ")}`});}
+  if(n>=3&&off.se.length<10) score-=(10-off.se.length)*1.5;
+  const needLabels={speed:"speed control",redir:"redirection",fakeout:"Fake Out",intimidate:"Intimidate",priority:"priority",pivot:"pivot"};
+  if(n>=4) for(const k in needLabels){ if(needs[k]){ const w=(k==="speed"||k==="priority")?6:3; score-=w; flags.push({sev:0,msg:`missing ${needLabels[k]}`}); } }
+  const dups=itemClause(team); if(dups.length){score-=10;flags.push({sev:2,msg:`item clause: ${dups.join(", ")}`});}
+  if(new Set(team.map(m=>m.entry.name)).size!==n){score-=10;flags.push({sev:2,msg:"duplicate species"});}
+  score=Math.max(0,Math.min(100,Math.round(score)));
+  const grade=score>=82?"A":score>=68?"B":score>=52?"C":score>=38?"D":"F";
+  flags.sort((a,b)=>b.sev-a.sev);
+  return {score,grade,flags,tally,off,needs};
+}
+
 /* ---------- speed tiers (Champions: L50, 0-32 points, no IVs, natures apply) ---------- */
 // verified vs mainline L50: 32 points ≈ 252 EVs, so this reproduces known speeds (Jolly Garchomp 169).
 const SPEED_ABIL={Chlorophyll:"sun","Swift Swim":"rain","Sand Rush":"sand","Slush Rush":"snow"};
@@ -620,4 +644,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth};

@@ -80,6 +80,15 @@ function renderTeambar(){
   teambar.querySelectorAll(".x").forEach(b=>b.onclick=ev=>{ev.stopPropagation();STATE.team.splice(+b.dataset.i,1);renderBuilder();});
 }
 function needLabels(needs){const map={speed:"Speed control",redir:"Redirection",fakeout:"Fake Out",pivot:"Pivot",intimidate:"Intimidate",physical:"Physical attacker",special:"Special attacker",priority:"Priority"};return Object.entries(needs).filter(([k,v])=>v).map(([k])=>map[k]);}
+function healthCard(team){
+  if(!team.length)return"";
+  const h=E.teamHealth(team);
+  const col=h.score>=82?'var(--good)':h.score>=52?'#ffd9a0':'var(--bad)';
+  const flags=h.flags.slice(0,5).map(f=>`<span class="wk"><span class="${f.sev>=2?'x4':f.sev>=1?'x2':''}" style="${f.sev<1?'background:#3a2a14;color:#ffd9a0':''}">${f.msg}</span></span>`).join("");
+  return `<div class="card"><div class="row"><div style="flex:1"><b>Team Health</b><div class="muted">live score as you build</div></div>
+    <div class="scorebadge"><b style="font-size:30px;color:${col}">${h.score}</b><small>${h.grade}</small></div></div>
+    ${h.flags.length?`<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px">${flags}</div>`:`<div class="muted good" style="margin-top:4px">No red flags ✓</div>`}</div>`;
+}
 function weakCard(tally,needs){
   return `<div class="card"><b>Team weaknesses</b>
     <div class="wk">${Object.entries(tally).sort((a,b)=>b[1].count-a[1].count||b[1].max-a[1].max).map(([t,v])=>`<span class="${v.max>=4?'x4':'x2'} ${v.count>=2?'stk':''}">${t} ${v.count>1?'×'+v.count:''}${v.max>=4?' (4×)':''}</span>`).join("")||'<span class="muted">none yet</span>'}</div>
@@ -93,7 +102,7 @@ function renderBuilder(){
   const danger=Object.entries(tally).filter(([t,v])=>v.count>=2||v.max>=4).map(([t])=>t);
   const needs=E.teamNeeds(STATE.team);
   if(STATE.team.length>=6){
-    app.innerHTML=weakCard(tally,needs)+`<div class="card"><b>Team complete.</b>
+    app.innerHTML=healthCard(STATE.team)+weakCard(tally,needs)+`<div class="card"><b>Team complete.</b>
       <div class="seg" style="margin-top:10px"><button class="btn primary" id="exp2">Export / Share</button><button class="btn" id="spd6">⚡ Speed</button><button class="btn" id="calc6">🧮 Calc</button><button class="btn" id="stress6">Stress test</button></div></div>`;
     $("#exp2").onclick=showExport; $("#spd6").onclick=()=>go("speed"); $("#calc6").onclick=()=>go("calc"); $("#stress6").onclick=()=>go("stress"); return;
   }
@@ -106,7 +115,7 @@ function renderBuilder(){
     const filledBy=k=>{const rd=SLOT_ROLES.find(r=>r.key===k);if(!rd)return false;return STATE.team.some(m=>{const ef=E.effOf(m);return rd.fill({types:ef.types,baseStats:ef.baseStats,abilities:ef.abilities,moves:(m.set&&m.set.moves)?m.set.moves.filter(Boolean):ef.moves});});};
     const planBtns=plan.map(([k,lab])=>{const done=filledBy(k);return `<button class="btn rolepick ${done?'':'primary'}" data-r="${k}">${done?'✓ ':''}${lab}</button>`;}).join("");
     const others=SLOT_ROLES.filter(r=>!planned.has(r.key)).map(r=>`<button class="btn rolepick" data-r="${r.key}">${r.label}</button>`).join("");
-    app.innerHTML=threatCard+weakCard(tally,null)+
+    app.innerHTML=healthCard(STATE.team)+threatCard+weakCard(tally,null)+
       `<div class="card"><b>Slot ${STATE.team.length+1} — the plan (Phase 3)</b>
         <div class="muted">Your ${STATE.role?STATE.role.label:'lead'} needs these. Pick one to fill (✓ = covered).</div>
         <div class="seg" style="flex-wrap:wrap;margin-top:10px">${planBtns}</div>
