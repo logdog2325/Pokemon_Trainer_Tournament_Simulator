@@ -98,6 +98,7 @@ function detectRoles(e){
   if(bv>=280 && (sup.length||RECOVERY.some(m=>e.moves.includes(m)))) roles.push({key:"wall",label:"Defensive wall",note:`Bulky support / staller.`});
   if(!roles.length) roles.push({key:"breaker",label:"Attacker",note:`General offensive role.`});
   const seen=new Set();let out=roles.filter(r=>!seen.has(r.key)&&seen.add(r.key));
+  out.forEach(r=>r._form=-1);   // base-form roles
   // a Mega-form option for any mon that Mega-Evolves (so it's offered even without usage data)
   if(e.mega&&e.mega.length){
     const megaRoles=e.mega.map((mg,i)=>({key:"mega"+i,_form:i,
@@ -111,7 +112,7 @@ function detectRoles(e){
     const ms=metaSet(e), metaForm=ms?ms.formIndex:-1;
     if(metaForm>=0) out=out.filter(r=>r._form!==metaForm);   // the meta set already IS that Mega
     const desc=metaDescriptor(e,u);
-    out.unshift({key:"meta",label:`Meta set — ${desc}`,meta:true,
+    out.unshift({key:"meta",_form:metaForm,label:`Meta set — ${desc}`,meta:true,
       note:`The standard Reg M-B build for this role${u.teammates&&u.teammates.length?`. Common partners: ${u.teammates.slice(0,4).join(", ")}`:"."}`});
   }
   return out;
@@ -290,10 +291,24 @@ const goodMove=m=>{const i=moveInfo(m);return (i.c==="Phys"||i.c==="Spec")&&i.bp
 const RECOIL_MV=new Set(["Flare Blitz","Brave Bird","Wood Hammer","Head Smash","Double-Edge","Wild Charge","Take Down","Submission","Volt Tackle","Light of Ruin","Chloroblast","Wave Crash"]);
 const DRAIN_MV=new Set(["Drain Punch","Giga Drain","Leech Life","Horn Leech","Draining Kiss","Bitter Blade","Parabolic Charge","Bouncy Bubble","Oblivion Wing","Matcha Gotcha","Dream Eater"]);
 const SELFDROP_MV=new Set(["Close Combat","Superpower","Draco Meteor","Overheat","Leaf Storm","Fleur Cannon","Make It Rain","V-create","Hammer Arm","Psycho Boost"]);
+// lock-in moves: in doubles you can't pick the target and you're stuck 2-3 turns (can hit your ally / an immune mon)
+const LOCK_MV=new Set(["Outrage","Petal Dance","Thrash","Raging Fury","Uproar"]);
+// shaky-accuracy attacks (~<=80%) — prefer the reliable option unless No Guard makes them hit
+const RISKY_MV=new Set(["Dragon Rush","Stone Edge","Cross Chop","Iron Tail","Hydro Pump","Focus Blast","Thunder","Blizzard","Hurricane","Zap Cannon","Dynamic Punch","Gunk Shot","Inferno","Megahorn","Fire Blast","Sing","Will-O-Wisp","Mud Bomb"]);
+// setup-move preference: [boosts atk/spa/both, score] — speed-boosting setups rank highest for sweepers
+const SETUP_INFO={"Dragon Dance":["atk",10],"Shift Gear":["atk",10],"Victory Dance":["atk",9],"Tidy Up":["atk",7],"Swords Dance":["atk",7],"Bulk Up":["atk",6],"Coil":["atk",6],"Hone Claws":["atk",5],"Howl":["atk",4],"Curse":["atk",3],
+  "Quiver Dance":["spa",10],"Tail Glow":["spa",10],"Geomancy":["spa",10],"Nasty Plot":["spa",7],"Calm Mind":["spa",6],"Take Heart":["spa",6],
+  "Shell Smash":["both",9],"Clangorous Soul":["both",9],"Work Up":["both",5],"Growth":["both",4]};
+function bestSetup(e,phys){
+  const want=phys?"atk":"spa";
+  const cand=(e.moves||[]).filter(m=>SETUP_INFO[m]&&(SETUP_INFO[m][0]===want||SETUP_INFO[m][0]==="both")).sort((a,b)=>SETUP_INFO[b][1]-SETUP_INFO[a][1]);
+  return cand[0]||SETUP.find(m=>(e.moves||[]).includes(m));   // fall back to any setup move
+}
 function recommendMoves(e,roleKey){
   const mp=e.moves,picked=[],phys=isPhysical(e),pref=phys?"Phys":"Spec";
   const bulky=["sweeper","tr","wall","pivot","redir"].includes(roleKey);
   const rockHead=(e.abilities||[]).includes("Rock Head");
+  const noGuard=(e.abilities||[]).includes("No Guard");
   const add=m=>{if(m&&mp.includes(m)&&!picked.includes(m)&&picked.length<4){picked.push(m);return true;}return false;};
   const hasRecoil=()=>picked.some(m=>RECOIL_MV.has(m));
   // quality score for a damaging move in this role/context
@@ -302,14 +317,15 @@ function recommendMoves(e,roleKey){
     if(e.types.includes(i.t))s+=25;                                  // STAB
     if(i.c===pref)s+=6; else if(!mixed)s-=30;                        // off-category move wastes the unused stat
     if(i.t==="Normal"&&!e.types.includes("Normal"))s-=25;            // Normal "coverage" hits nothing super-effectively
+    if(RISKY_MV.has(m)&&!noGuard)s-=22;                             // shaky accuracy (unless No Guard makes it 100%)
     if(DRAIN_MV.has(m))s+=bulky?25:8;                                // recovery — huge on setup/bulky
     if(RECOIL_MV.has(m))s-=(hasRecoil()&&!rockHead)?55:(rockHead?0:6); // don't stack recoil
-    if(SELFDROP_MV.has(m))s-=(roleKey==="sweeper"||roleKey==="tr"||roleKey==="wall")?25:7; // stat drops fight setup
+    if(SELFDROP_MV.has(m))s-=(roleKey==="sweeper"||roleKey==="tr"||roleKey==="wall")?40:7; // stat drops undo setup
+    if(LOCK_MV.has(m))s-=45;                                         // lock-in is bad in doubles (no target choice)
     return s;};
   const damaging=m=>{const i=moveInfo(m);return (i.c==="Phys"||i.c==="Spec")&&i.bp>=55&&!BAD_MOVES.has(m);};
   // 1) role utility move
-  const setupMoves=SETUP.filter(m=>mp.includes(m));
-  if(roleKey==="sweeper"&&setupMoves.length)add(setupMoves[0]);
+  if(roleKey==="sweeper")add(bestSetup(e,phys));
   if(roleKey==="tr"&&mp.includes("Trick Room"))add("Trick Room");
   if(roleKey==="speed")add(mp.includes("Tailwind")?"Tailwind":"Trick Room");
   if(roleKey==="redir")add(mp.includes("Rage Powder")?"Rage Powder":"Follow Me");

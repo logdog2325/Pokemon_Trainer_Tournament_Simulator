@@ -59,25 +59,43 @@ function renderStart(){
   const q=$("#q"); q.oninput=()=>{STATE.q=q.value;const g=app.querySelector(".grid");const l=E.DEX.filter(e=>e.name.toLowerCase().includes(STATE.q.toLowerCase())).sort((a,b)=>a.name.localeCompare(b.name));g.innerHTML=l.slice(0,400).map(e=>`<div class="mon" data-n="${e.name}">${img(e)}<div class="nm">${e.name}</div>${tbadges(e.types)}</div>`).join("");bindMons();};
   bindMons();
 }
-function bindMons(){app.querySelectorAll(".mon").forEach(m=>m.onclick=()=>{STATE.lead=E.byName[m.dataset.n];STATE.role=null;STATE.team=[];STATE.q="";go("role");});}
+function bindMons(){app.querySelectorAll(".mon").forEach(m=>m.onclick=()=>{STATE.lead=E.byName[m.dataset.n];STATE.role=null;STATE.team=[];STATE.q="";STATE.roleForm=null;go("role");});}
 
 /* ---------------- ROLE ---------------- */
 function statBars(s){const order=[["HP","hp"],["Atk","atk"],["Def","def"],["SpA","spa"],["SpD","spd"],["Spe","spe"]];return `<div class="statbars">${order.map(([l,k])=>`<div><span class="lab">${l}</span><span class="bar"><i style="width:${Math.min(100,s[k]/2)}%"></i></span><span style="width:30px;text-align:right">${s[k]}</span></div>`).join("")}</div>`;}
+// view of a chosen form: types/stats/ability/weaknesses (base when fi<0, else Mega fi)
+function formView(e,fi){
+  if(fi>=0&&e.mega&&e.mega[fi]){const mg=e.mega[fi];const ability=mg.ability,types=mg.type||e.types;
+    return {types,baseStats:mg.baseStats,ability,isMega:true,label:mg.label||"Mega",weak:E.weaknessesOf({types,abilities:[ability],baseStats:mg.baseStats},ability)};}
+  return {types:e.types,baseStats:e.baseStats,ability:(e.abilities||[])[0],isMega:false,label:"Base",weak:E.weaknessesOf(e)};
+}
 function renderRole(){
   const e=STATE.lead; titleEl.textContent=e.name; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
-  const w=E.weaknessesOf(e); const roles=E.detectRoles(e); const cav=pranksterCaveat(e);
-  app.innerHTML=`<div class="card"><div class="row">${img(e)}<div style="flex:1">${tbadges(e.types)}
-      <div class="muted" style="margin-top:4px">${(e.abilities||[]).join(", ")}</div></div></div>
-      ${statBars(e.baseStats)}
-      ${e.transformedStats?`<div class="muted" style="margin-top:6px">⚡ Transforms: ${Object.values(e.transformedStats).join("/")} (${(e.tags||[]).join(", ")})</div>`:""}
-      <div class="wk">${w.weak.map(([t,m])=>`<span class="${m>=4?'x4':'x2'}">${t} ×${m}</span>`).join("")}
-        ${w.imm.map(t=>`<span style="background:#143a2c;color:#3ad29f">${t} immune</span>`).join("")}</div>
+  const roles=E.detectRoles(e); const cav=pranksterCaveat(e);
+  const forms=[...new Set(roles.map(r=>r._form))];               // forms that actually have sets
+  if(STATE.roleForm==null || !forms.includes(STATE.roleForm)) STATE.roleForm=roles[0]._form;  // default to the top role's form
+  const fi=STATE.roleForm, fv=formView(e,fi);
+  // Base / Mega / Mega X / Mega Y … toggle (only when this mon Mega-Evolves)
+  let formBtns="";
+  if(e.mega&&e.mega.length){
+    const order=[-1].concat(e.mega.map((m,i)=>i)).filter(f=>forms.includes(f));
+    formBtns=`<div class="formsel" style="margin-bottom:10px">`+order.map(f=>`<button class="btn ${f===fi?'active':''}" data-rf="${f}">${f<0?"Base":(e.mega[f].label||"Mega")}</button>`).join("")+`</div>`;
+  }
+  const shown=roles.map((r,i)=>({r,i})).filter(x=>x.r._form===fi);
+  app.innerHTML=`${formBtns}
+    <div class="card"><div class="row">${imgF(e,fi)}<div style="flex:1">${tbadges(fv.types)}
+      <div class="muted" style="margin-top:4px">${fv.isMega?fv.label+' · '+fv.ability:(e.abilities||[]).join(", ")}</div></div></div>
+      ${statBars(fv.baseStats)}
+      ${e.transformedStats&&fi<0?`<div class="muted" style="margin-top:6px">⚡ Transforms: ${Object.values(e.transformedStats).join("/")} (${(e.tags||[]).join(", ")})</div>`:""}
+      <div class="wk">${fv.weak.weak.map(([t,m])=>`<span class="${m>=4?'x4':'x2'}">${t} ×${m}</span>`).join("")}
+        ${fv.weak.imm.map(t=>`<span style="background:#143a2c;color:#3ad29f">${t} immune</span>`).join("")}</div>
       ${cav?`<div class="muted" style="color:#ffd9a0">⚠ ${cav}</div>`:""}</div>
-    <h3 style="margin:6px 2px">Possible roles — pick one (you get a suggested set to tweak)</h3>
-    ${roles.map((r,i)=>{const set=E.recommendSet(e,r.key);return `<div class="card rolecard" data-i="${i}"><h3>${r.label}</h3><div class="muted">${r.note}</div>
+    <h3 style="margin:6px 2px">${fv.isMega?fv.label+" sets":"Possible roles"} — pick one (you get a suggested set to tweak)</h3>
+    ${shown.map(({r,i})=>{const set=E.recommendSet(e,r.key);return `<div class="card rolecard" data-i="${i}"><h3>${r.label}</h3><div class="muted">${r.note}</div>
       <div class="muted" style="margin-top:6px"><b>Item:</b> ${set.item} · <b>${set.nature}</b> · ${spreadStr(set.points)}</div>
       <div style="margin-top:4px">${set.moves.filter(Boolean).map(m=>moveChip(m)).join(" ")}</div></div>`;}).join("")}`;
-  app.querySelectorAll(".rolecard").forEach(c=>c.onclick=()=>{STATE.role=roles[+c.dataset.i];STATE.team=[mkMember(e,roles[+c.dataset.i].key)];STATE.q="";go("builder");});
+  app.querySelectorAll("[data-rf]").forEach(b=>b.onclick=()=>{STATE.roleForm=+b.dataset.rf;renderRole();window.scrollTo(0,0);});
+  app.querySelectorAll(".rolecard").forEach(c=>c.onclick=()=>{STATE.role=roles[+c.dataset.i];STATE.team=[mkMember(e,roles[+c.dataset.i].key)];STATE.q="";STATE.roleForm=null;go("builder");});
 }
 
 /* ---------------- BUILDER ---------------- */
