@@ -141,11 +141,11 @@ function candRow(c,danger){
   if(s.weather)tags.push(["+"+s.weatherType,"good"]);
   s.covers.forEach(t=>tags.push(["covers "+t,"good"]));
   s.dangerStacks.forEach(t=>tags.push(["stacks "+t,"bad"]));
-  if(s.rank!=null)tags.unshift(["#"+s.rank+" meta","good"]);  // proven on the Reg M-B ladder
+  if(s.rank!=null)tags.push(["used #"+s.rank,""]);  // info only — usage rank does NOT affect the score
   return `<div class="candrow" data-n="${e.name}">${img(e)}
     <div class="meta"><div class="nm">${e.name} ${tbadges(e.types)}</div>
       <div class="tags">${tags.slice(0,6).map(([t,c])=>`<span class="tag ${c}">${t}</span>`).join("")}</div>
-      <div class="brk">typing ${s.typing}/25 · role-fit ${s.exe!=null?s.exe:'–'}/40 · ability ${s.ability}/15${s.meta?' · meta +'+s.meta:''}${s.weather?' · weather +'+s.weather:''}${cav?' · ⚠ caveat':''}</div></div>
+      <div class="brk">typing ${s.typing}/25 · role-fit ${s.exe!=null?s.exe:'–'}/40 · ability ${s.ability}/15${s.weather?' · weather +'+s.weather:''}${cav?' · ⚠ caveat':''}</div></div>
     <div class="scorebadge"><b style="color:${s.total>=70?'var(--good)':s.total>=55?'var(--txt)':'var(--mut)'}">${s.total}</b><small>fit</small></div></div>`;
 }
 function bindCands(){app.querySelectorAll(".candrow").forEach(r=>r.onclick=()=>{openEditor(mkMember(E.byName[r.dataset.n]),-1);});}

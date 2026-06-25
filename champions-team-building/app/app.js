@@ -243,13 +243,6 @@ function recommendAbility(e){let best=(e.abilities||[])[0]||"",sc=-1;for(const a
 /* ---------- Pikalytics usage data (Reg M-B doubles) ---------- */
 const USAGE=window.USAGE_SETS||{};
 function usageOf(e){return e&&USAGE[e.name]||null;}
-// meta-relevance: how proven is this mon on the current ladder? (lower rank = more used)
-function metaRankBonus(e){
-  const u=usageOf(e); if(!u||u.rank==null) return u?1:0;
-  const r=u.rank;
-  if(r<=8)return 13; if(r<=16)return 11; if(r<=28)return 9; if(r<=45)return 7;
-  if(r<=70)return 5; if(r<=110)return 3; return 1;
-}
 function parseSpread(s){const p=(s||"").split("/").map(n=>parseInt(n,10));if(p.length!==6||p.some(n=>isNaN(n)))return null;return {hp:p[0],atk:p[1],def:p[2],spa:p[3],spd:p[4],spe:p[5]};}
 // short tag describing what the real set actually does (for the role label)
 function metaDescriptor(e,u){
@@ -425,13 +418,13 @@ function offCoverageBonus(e,team){
 function scoreForSlot(e,team,slot){
   const b=scoreCandidate(e,team), exe=roleExecution(e,slot);
   const lead=team[0]&&team[0].entry, leadCov=leadCoverageBonus(e,lead), offCov=offCoverageBonus(e,team);
-  const meta=metaRankBonus(e);  // is this a proven meta pick, or off-meta?
-  // "this team" fit: typing synergy + need coverage + weather + covering the lead's checks + new offensive coverage
+  // Score is purely about fit: how well it executes the role + how it supports THIS team.
+  // Usage/popularity is NOT a factor — `rank` is returned only as an informational label.
   const teamFit=b.typing+Math.min(18,b.cov)+b.weather+leadCov+offCov;
-  const total=Math.min(100,Math.round(teamFit*0.7+exe+meta));
+  const total=Math.min(100,Math.round(teamFit*0.7+exe));
   const u=usageOf(e);
-  return {...b,exe,leadCov,offCov,meta,rank:u&&u.rank!=null?u.rank:null,total};
+  return {...b,exe,leadCov,offCov,rank:u&&u.rank!=null?u.rank:null,total};
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,metaRankBonus};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet};
