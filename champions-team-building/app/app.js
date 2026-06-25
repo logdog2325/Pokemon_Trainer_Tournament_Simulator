@@ -98,9 +98,18 @@ function detectRoles(e){
   if(bv>=280 && (sup.length||RECOVERY.some(m=>e.moves.includes(m)))) roles.push({key:"wall",label:"Defensive wall",note:`Bulky support / staller.`});
   if(!roles.length) roles.push({key:"breaker",label:"Attacker",note:`General offensive role.`});
   const seen=new Set();let out=roles.filter(r=>!seen.has(r.key)&&seen.add(r.key));
+  // a Mega-form option for any mon that Mega-Evolves (so it's offered even without usage data)
+  if(e.mega&&e.mega.length){
+    const megaRoles=e.mega.map((mg,i)=>({key:"mega"+i,_form:i,
+      label:"Mega set"+(e.mega.length>1?" — "+(mg.label||("Mega "+(i+1))):""),
+      note:`Mega-Evolves → ${(mg.type||e.types).join("/")} · ${mg.ability}.`}));
+    out=megaRoles.concat(out);
+  }
   // surface the REAL most-used Reg M-B build first, when Pikalytics has data for this mon
   const u=usageOf(e);
   if(u&&u.moves&&u.moves.length){
+    const ms=metaSet(e), metaForm=ms?ms.formIndex:-1;
+    if(metaForm>=0) out=out.filter(r=>r._form!==metaForm);   // the meta set already IS that Mega
     const desc=metaDescriptor(e,u);
     out.unshift({key:"meta",label:`Meta set — ${desc}`,meta:true,
       note:`The standard Reg M-B build for this role${u.teammates&&u.teammates.length?`. Common partners: ${u.teammates.slice(0,4).join(", ")}`:"."}`});
@@ -277,27 +286,52 @@ function metaSet(e){
 }
 const BAD_MOVES=new Set(["Giga Impact","Hyper Beam","Frenzy Plant","Blast Burn","Hydro Cannon","Roar of Time","Prismatic Laser","Eternabeam","Self-Destruct","Explosion","Misty Explosion","Last Resort","Focus Punch","Sky Attack","Razor Wind","Skull Bash","Solar Beam","Solar Blade","Synchronoise","Belch","Spit Up","Bide","Dream Eater","Bounce","Dig","Dive","Fly","Wood Hammer"]);
 const goodMove=m=>{const i=moveInfo(m);return (i.c==="Phys"||i.c==="Spec")&&i.bp>=55&&!BAD_MOVES.has(m);};
+// move-quality tables: recovery attacks are great on bulky/setup sets; recoil shouldn't stack; stat-drop moves fight setup
+const RECOIL_MV=new Set(["Flare Blitz","Brave Bird","Wood Hammer","Head Smash","Double-Edge","Wild Charge","Take Down","Submission","Volt Tackle","Light of Ruin","Chloroblast","Wave Crash"]);
+const DRAIN_MV=new Set(["Drain Punch","Giga Drain","Leech Life","Horn Leech","Draining Kiss","Bitter Blade","Parabolic Charge","Bouncy Bubble","Oblivion Wing","Matcha Gotcha","Dream Eater"]);
+const SELFDROP_MV=new Set(["Close Combat","Superpower","Draco Meteor","Overheat","Leaf Storm","Fleur Cannon","Make It Rain","V-create","Hammer Arm","Psycho Boost"]);
 function recommendMoves(e,roleKey){
   const mp=e.moves,picked=[],phys=isPhysical(e),pref=phys?"Phys":"Spec";
-  const add=m=>{if(m&&mp.includes(m)&&!picked.includes(m)&&picked.length<4)picked.push(m);};
+  const bulky=["sweeper","tr","wall","pivot","redir"].includes(roleKey);
+  const rockHead=(e.abilities||[]).includes("Rock Head");
+  const add=m=>{if(m&&mp.includes(m)&&!picked.includes(m)&&picked.length<4){picked.push(m);return true;}return false;};
+  const hasRecoil=()=>picked.some(m=>RECOIL_MV.has(m));
+  // quality score for a damaging move in this role/context
+  const mixed=Math.abs(e.baseStats.atk-e.baseStats.spa)<=10;        // genuine mixed attacker?
+  const score=m=>{const i=moveInfo(m);let s=i.bp||0;
+    if(e.types.includes(i.t))s+=25;                                  // STAB
+    if(i.c===pref)s+=6; else if(!mixed)s-=30;                        // off-category move wastes the unused stat
+    if(i.t==="Normal"&&!e.types.includes("Normal"))s-=25;            // Normal "coverage" hits nothing super-effectively
+    if(DRAIN_MV.has(m))s+=bulky?25:8;                                // recovery — huge on setup/bulky
+    if(RECOIL_MV.has(m))s-=(hasRecoil()&&!rockHead)?55:(rockHead?0:6); // don't stack recoil
+    if(SELFDROP_MV.has(m))s-=(roleKey==="sweeper"||roleKey==="tr"||roleKey==="wall")?25:7; // stat drops fight setup
+    return s;};
+  const damaging=m=>{const i=moveInfo(m);return (i.c==="Phys"||i.c==="Spec")&&i.bp>=55&&!BAD_MOVES.has(m);};
+  // 1) role utility move
   const setupMoves=SETUP.filter(m=>mp.includes(m));
   if(roleKey==="sweeper"&&setupMoves.length)add(setupMoves[0]);
+  if(roleKey==="tr"&&mp.includes("Trick Room"))add("Trick Room");
   if(roleKey==="speed")add(mp.includes("Tailwind")?"Tailwind":"Trick Room");
   if(roleKey==="redir")add(mp.includes("Rage Powder")?"Rage Powder":"Follow Me");
   if(roleKey==="fakeout")add("Fake Out");
   if(roleKey==="pivot")add(PIVOT.find(m=>mp.includes(m)));
+  // 2) best STAB per type (quality-scored, not just BP)
   for(const ty of e.types){
-    const c=mp.filter(m=>moveInfo(m).t===ty&&goodMove(m))
-      .sort((a,b)=>{const A=moveInfo(a),B=moveInfo(b);return ((B.c===pref)-(A.c===pref))||(B.bp-A.bp);});
+    const c=mp.filter(m=>damaging(m)&&moveInfo(m).t===ty).sort((a,b)=>score(b)-score(a));
     if(c.length)add(c[0]);
   }
+  // 3) a priority move for physical attackers (revenge / chip) — allow low-BP priority like Mach Punch/Bullet Punch
+  if(phys&&picked.length<4){const pr=mp.filter(m=>PRIORITY.includes(m)&&moveInfo(m).bp>0&&!BAD_MOVES.has(m)).sort((a,b)=>score(b)-score(a));if(pr.length)add(pr[0]);}
+  // 4) a recovery attack on bulky/setup sets if not already in
+  if(bulky&&picked.length<4){const dr=mp.filter(m=>DRAIN_MV.has(m)&&damaging(m)).sort((a,b)=>score(b)-score(a));if(dr.length)add(dr[0]);}
+  // 5) coverage: best damaging move of a new type
   const have=new Set(picked.map(m=>moveInfo(m).t));
-  const cov=mp.filter(m=>moveInfo(m).c===pref&&goodMove(m)&&!have.has(moveInfo(m).t)).sort((a,b)=>moveInfo(b).bp-moveInfo(a).bp);
+  const cov=mp.filter(m=>damaging(m)&&!have.has(moveInfo(m).t)).sort((a,b)=>score(b)-score(a));
   if(cov.length)add(cov[0]);
-  add(mp.includes("Protect")?"Protect":null);
-  // priority/STAB filler for wallbreakers, else best remaining damaging move
-  if(picked.length<4){const rest=mp.filter(goodMove).sort((a,b)=>moveInfo(b).bp-moveInfo(a).bp);for(const m of rest)add(m);}
-  if(picked.length<4)for(const m of mp){if(!BAD_MOVES.has(m))add(m);}  // never fall back to charge/recharge junk
+  // 6) Protect for doubles, then best remaining (never junk)
+  if(picked.length<4)add(mp.includes("Protect")?"Protect":null);
+  if(picked.length<4){const rest=mp.filter(damaging).sort((a,b)=>score(b)-score(a));for(const m of rest)add(m);}
+  if(picked.length<4)for(const m of mp){if(!BAD_MOVES.has(m))add(m);}
   return picked.slice(0,4);
 }
 function recommendSpread(e,roleKey){
@@ -318,8 +352,18 @@ function recommendItem(e,roleKey){
   if(["sweeper","breaker","tr"].includes(roleKey))return "Life Orb";
   return "Sitrus Berry";
 }
+// heuristic set for a Mega form (used when there's no Pikalytics usage to copy)
+function megaFormSet(e,idx){
+  const mg=e.mega&&e.mega[idx]; if(!mg||!mg.baseStats)return null;
+  const pseudo={name:e.name,types:mg.type||e.types,abilities:[mg.ability],baseStats:mg.baseStats,moves:e.moves,mega:[],megaStones:e.megaStones};
+  const hasSetup=SETUP.some(m=>e.moves.includes(m));
+  const role=hasSetup?"sweeper":(mg.baseStats.spe<=55?"tr":"breaker");
+  const sp=recommendSpread(pseudo,role);
+  return {ability:mg.ability,item:(e.megaStones&&(e.megaStones[idx]||e.megaStones[0]))||"",nature:sp.nature,points:sp.points,moves:recommendMoves(pseudo,role),formIndex:idx};
+}
 function recommendSet(e,roleKey){
   if(roleKey==="meta"){const ms=metaSet(e);if(ms)return ms;}
+  const mm=/^mega(\d+)$/.exec(roleKey||""); if(mm){const ms=megaFormSet(e,+mm[1]);if(ms)return ms;}
   const sp=recommendSpread(e,roleKey);return {ability:recommendAbility(e),item:recommendItem(e,roleKey),nature:sp.nature,points:sp.points,moves:recommendMoves(e,roleKey),formIndex:-1};}
 
 /* ---------- model phases: needs plan (3), threat map (4), stress test (6), legality (7) ---------- */
