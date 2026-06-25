@@ -116,8 +116,9 @@ function teamWeakTally(team){
   for(const m of team){ const ef=effOf(m); const w=weaknessesOf(ef,ef.abilities[0]); for(const [t,mult] of w.weak){ tally[t]=tally[t]||{count:0,max:1}; tally[t].count++; tally[t].max=Math.max(tally[t].max,mult);} }
   return tally;
 }
+function setMovesOf(m){return (m&&m.set&&m.set.moves)?m.set.moves.filter(Boolean):(m&&m.entry?m.entry.moves:[]);}
 function teamNeeds(team){
-  const flat=team.flatMap(m=>m.entry.moves);
+  const flat=team.flatMap(m=>setMovesOf(m));
   const ab=team.flatMap(m=>effOf(m).abilities);
   return {
     speed: !flat.some(m=>SPEEDCTRL.includes(m)),
@@ -274,5 +275,49 @@ function recommendItem(e,roleKey){
 }
 function recommendSet(e,roleKey){const sp=recommendSpread(e,roleKey);return {ability:recommendAbility(e),item:recommendItem(e,roleKey),nature:sp.nature,points:sp.points,moves:recommendMoves(e,roleKey)};}
 
+/* ---------- model phases: needs plan (3), threat map (4), stress test (6), legality (7) ---------- */
+function planForLead(lead,roleKey){
+  const second=isPhysical(lead)?"special":"physical";
+  const P={
+    sweeper:[["redir","Free setup turn — redirection"],["speed","Speed control"],[second,"Secondary breaker"],["priority","Revenge / priority"],["fakeout","Disruption / Fake Out"]],
+    tr:[["trsetter","Trick Room setter"],["redir","Redirection / heal to survive setup"],[second,"2nd Trick Room attacker"],["intimidate","Defensive glue"]],
+    breaker:[["speed","Speed control"],["redir","Free turn / disruption"],[second,"Partner that covers its checks"],["priority","Priority"]],
+    weather:[[isPhysical(lead)?"physical":"special","Weather abuser"],["speed","Speed control"],["redir","Free turn"],["intimidate","Glue"]],
+    speed:[["physical","Win condition"],["special","Win condition"],["redir","Free turn"],["priority","Priority"]],
+    redir:[["special","Win condition it enables"],["physical","Win condition it enables"],["speed","Speed control"],["fakeout","Fake Out"]],
+    fakeout:[["special","Win condition"],["physical","Win condition"],["speed","Speed control"],["redir","Redirection"]],
+    pivot:[["special","Win condition"],["physical","Win condition"],["speed","Speed control"],["intimidate","Glue"]],
+    wall:[["special","Win condition"],["physical","Win condition"],["speed","Speed control"],["priority","Priority"]]
+  };
+  return P[roleKey]||P.breaker;
+}
+function archetypeThreats(lead){
+  const m=Object.fromEntries(weaknessesOf(lead).weak); const out=[];
+  if(m.Rock) out.push((m.Rock>=4?"4× ":"")+"Sand / Rock (Tyranitar, Aerodactyl)");
+  if(m.Water) out.push("Rain (Water spam)");
+  if(m.Fire) out.push("Sun (Fire)");
+  if(m.Ice) out.push("Snow / Ice");
+  if(m.Fairy) out.push("Fairy");
+  if(m.Flying) out.push("Flying offense");
+  if(m.Electric) out.push("Electric");
+  if(lead.baseStats.spe>=100) out.push("priority users");
+  return out;
+}
+function teamResists(team,atk){return team.some(mm=>{const ef=effOf(mm);return effTable(ef,ef.abilities[0])[atk]<1;});}
+function teamAtk(team,types){return team.some(mm=>setMovesOf(mm).some(mv=>{const i=moveInfo(mv);return types.includes(i.t)&&i.bp>=55;}));}
+function stressTest(team){
+  const prio=team.some(mm=>setMovesOf(mm).some(x=>PRIORITY.includes(x)));
+  return [
+    {a:"Rain",ok:teamResists(team,"Water")||teamAtk(team,["Grass","Electric"]),why:"resist Water or Grass/Electric offense"},
+    {a:"Sun",ok:teamResists(team,"Fire")||teamAtk(team,["Water","Rock"]),why:"resist Fire or Water/Rock offense"},
+    {a:"Sand (Tyranitar)",ok:teamResists(team,"Rock")||teamAtk(team,["Fighting","Ground","Water","Grass","Steel","Fairy"]),why:"resist Rock or hit it super-effectively"},
+    {a:"Snow / Ice",ok:teamResists(team,"Ice")||teamAtk(team,["Fire","Fighting","Rock","Steel"]),why:"resist Ice or hit Ice SE"},
+    {a:"Fairy",ok:teamResists(team,"Fairy")||teamAtk(team,["Steel","Poison"]),why:"resist Fairy or Steel/Poison offense"},
+    {a:"Opposing Trick Room",ok:team.some(mm=>setMovesOf(mm).includes("Taunt"))||prio,why:"Taunt or priority to function under it"},
+    {a:"Opposing Tailwind HO",ok:prio||team.some(mm=>setMovesOf(mm).some(x=>SPEEDCTRL.includes(x))),why:"your own speed control or priority"}
+  ];
+}
+function itemClause(team){const items=team.map(m=>m.set&&m.set.item).filter(Boolean);const seen={},dups=new Set();for(const it of items){if(seen[it])dups.add(it);seen[it]=1;}return [...dups];}
+
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause};

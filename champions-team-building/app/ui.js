@@ -94,12 +94,24 @@ function renderBuilder(){
     app.innerHTML=weakCard(tally,needs)+`<div class="card"><b>Team complete.</b> <button class="btn primary" id="exp2">Export</button></div>`;
     $("#exp2").onclick=showExport; return;
   }
-  // STEP 1: choose what this slot should do
+  // STEP 1: choose what this slot does — driven by the role's needs plan (Phase 3) + threat map (Phase 4)
   if(!STATE.slotRole){
-    app.innerHTML=weakCard(tally,needs)+`<div class="card"><b>Slot ${STATE.team.length+1} — what should it do?</b>
-      <div class="muted">Pick a role and I'll score only the Pokémon that fit it, against the core so far.</div>
-      <div class="seg" style="flex-wrap:wrap;margin-top:10px">${SLOT_ROLES.map(r=>`<button class="btn rolepick ${r.need&&needs[r.need]?'primary':''}" data-r="${r.key}">${r.label}${r.need&&needs[r.need]?' ◀ needed':''}</button>`).join("")}</div></div>`;
+    const threats=E.archetypeThreats(STATE.lead);
+    const threatCard=`<div class="card"><b>${STATE.lead.name} — threat map (Phase 4)</b><div class="muted">Loses to: ${threats.join(" · ")||"nothing major"}</div></div>`;
+    const plan=E.planForLead(STATE.lead,STATE.role?STATE.role.key:"breaker");
+    const planned=new Set(plan.map(p=>p[0]));
+    const filledBy=k=>{const rd=SLOT_ROLES.find(r=>r.key===k);if(!rd)return false;return STATE.team.some(m=>{const ef=E.effOf(m);return rd.fill({types:ef.types,baseStats:ef.baseStats,abilities:ef.abilities,moves:(m.set&&m.set.moves)?m.set.moves.filter(Boolean):ef.moves});});};
+    const planBtns=plan.map(([k,lab])=>{const done=filledBy(k);return `<button class="btn rolepick ${done?'':'primary'}" data-r="${k}">${done?'✓ ':''}${lab}</button>`;}).join("");
+    const others=SLOT_ROLES.filter(r=>!planned.has(r.key)).map(r=>`<button class="btn rolepick" data-r="${r.key}">${r.label}</button>`).join("");
+    app.innerHTML=threatCard+weakCard(tally,null)+
+      `<div class="card"><b>Slot ${STATE.team.length+1} — the plan (Phase 3)</b>
+        <div class="muted">Your ${STATE.role?STATE.role.label:'lead'} needs these. Pick one to fill (✓ = covered).</div>
+        <div class="seg" style="flex-wrap:wrap;margin-top:10px">${planBtns}</div>
+        <div class="muted" style="margin-top:10px">Other roles</div>
+        <div class="seg" style="flex-wrap:wrap;margin-top:4px">${others}</div>
+        ${STATE.team.length>=3?`<button class="btn" id="stress" style="width:100%;margin-top:12px">Stress-test the team ▸ (Phase 6)</button>`:""}</div>`;
     app.querySelectorAll(".rolepick").forEach(b=>b.onclick=()=>{STATE.slotRole=b.dataset.r;STATE.q="";renderBuilder();window.scrollTo(0,0);});
+    const st=$("#stress");if(st)st.onclick=()=>go("stress");
     return;
   }
   // STEP 2: candidates that fill the chosen role, scored vs the core
@@ -186,11 +198,26 @@ function renderEditor(){
   app.querySelectorAll(".pt").forEach(inp=>inp.oninput=()=>{const v=Math.max(0,Math.min(32,+inp.value||0));M.set.points[inp.dataset.k]=v;const t=Object.values(M.set.points).reduce((a,b)=>a+(+b||0),0);const tt=$("#tot");tt.textContent=t+"/66";tt.style.color=t>66?'var(--bad)':'var(--good)';});
   $("#save").onclick=()=>{const si=STATE.editing.slotIndex;if(si<0){STATE.team.push(M);STATE.slotRole=null;}else STATE.team[si]=M;STATE.q="";go("builder");};
 }
+/* ---------------- STRESS TEST (Phase 6) + LEGALITY (Phase 7) ---------------- */
+function renderStress(){
+  titleEl.textContent="Stress test"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
+  const res=E.stressTest(STATE.team); const dups=E.itemClause(STATE.team);
+  const speciesUnique=new Set(STATE.team.map(m=>m.entry.name)).size===STATE.team.length;
+  app.innerHTML=`
+    <div class="card"><b>Phase 6 — vs the meta archetypes</b>
+      ${res.map(r=>`<div class="row" style="margin:7px 0"><span style="width:26px;font-size:18px">${r.ok?'✅':'⚠️'}</span><div><b>${r.a}</b><div class="muted">${r.ok?'Covered — '+r.why:'Risky — no '+r.why}</div></div></div>`).join("")}</div>
+    <div class="card"><b>Phase 7 — legality</b>
+      <div class="row" style="margin:7px 0"><span style="width:26px;font-size:18px">${dups.length?'⚠️':'✅'}</span><div>Item Clause${dups.length?': duplicate items — '+dups.join(", "):' — all items unique'}</div></div>
+      <div class="row" style="margin:7px 0"><span style="width:26px;font-size:18px">${speciesUnique?'✅':'⚠️'}</span><div>Species Clause — ${speciesUnique?'all unique':'DUPLICATE species'}</div></div>
+      <div class="muted">Megas: you may carry several stones but evolve only one per battle.</div></div>`;
+  backBtn.onclick=()=>go("builder");
+}
 function render(){
-  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(STATE.screen==="role")go("start"); else if(STATE.screen==="editor")go("builder"); };
+  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(STATE.screen==="role")go("start"); else if(STATE.screen==="editor"||STATE.screen==="stress")go("builder"); };
   if(STATE.screen==="start")renderStart();
   else if(STATE.screen==="role")renderRole();
   else if(STATE.screen==="builder")renderBuilder();
   else if(STATE.screen==="editor")renderEditor();
+  else if(STATE.screen==="stress")renderStress();
 }
 render();
