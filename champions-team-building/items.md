@@ -1,34 +1,52 @@
-# Champions Held Items (limited pool)
+# Champions Held Items — VERIFIED
 
-Source: Serebii Champions item dex (2026). Matters for **Item Clause** (every item on a team unique).
-Verify/append as needed.
+Source: **Serebii** (https://www.serebii.net/pokemonchampions/items.shtml), fetched 2026-06.
+Matters for **Item Clause** (every item on a team must be unique).
 
-## Type-boosting (×1.2 that type)
-Big Root · Black Belt (Fighting) · Black Glasses (Dark) · Charcoal (Fire) · Dragon Fang (Dragon) ·
-Fairy Feather (Fairy) · Hard Stone (Rock) · Light Ball (Pikachu) · Magnet (Electric) ·
-Metal Coat (Steel) · Miracle Seed (Grass) · Mystic Water (Water) · Never-Melt Ice (Ice) ·
-Poison Barb (Poison) · Sharp Beak (Flying) · Silk Scarf (Normal) · Silver Powder (Bug) ·
-Soft Sand (Ground) · Spell Tag (Ghost) · Twisted Spoon (Psychic)
+## Standard hold items (45)
+Big Root, Black Belt, Black Glasses, Bright Powder, Charcoal, Choice Scarf, Damp Rock, Dragon Fang,
+Expert Belt, Fairy Feather, Focus Band, Focus Sash, Hard Stone, Heat Rock, Icy Rock, Iron Ball,
+King's Rock, Leftovers, Life Orb, Light Ball, Light Clay, Magnet, Mental Herb, Metal Coat, Metronome,
+Miracle Seed, Muscle Band, Mystic Water, Never-Melt Ice, Poison Barb, Quick Claw, Scope Lens, Sharp Beak,
+Shed Shell, Shell Bell, Silk Scarf, Silver Powder, Smooth Rock, Soft Sand, Spell Tag, Twisted Spoon,
+White Herb, Wide Lens, Wise Glasses, Zoom Lens
 
-## Stat / battle-effect
-Bright Powder · Choice Scarf · Expert Belt (×1.2 on super-effective) · Focus Band · Focus Sash ·
-Iron Ball · King's Rock · Leftovers · Life Orb (×1.3, 10% recoil) · Light Clay (8-turn screens) ·
-Mental Herb · Metronome · Quick Claw · Scope Lens · Shed Shell · Shell Bell · White Herb ·
-Wide Lens · Wise Glasses (×1.1 special) · Zoom Lens · Muscle Band (×1.1 physical)
+Quick reference:
+- Type-boost ×1.2: Charcoal(Fire), Mystic Water(Water), Miracle Seed(Grass), Magnet(Electric),
+  Never-Melt Ice(Ice), Black Belt(Fight), Poison Barb(Poison), Soft Sand(Ground), Sharp Beak(Flying),
+  Twisted Spoon(Psy), Silver Powder(Bug), Hard Stone(Rock), Spell Tag(Ghost), Dragon Fang(Dragon),
+  Black Glasses(Dark), Metal Coat(Steel), Silk Scarf(Normal), Fairy Feather(Fairy), Light Ball(Pikachu)
+- Damage: Life Orb(×1.3, recoil), Expert Belt(×1.2 if SE), Muscle Band(×1.1 phys), Wise Glasses(×1.1 spec)
+- Defensive/utility: Leftovers, Focus Sash, Focus Band, Shell Bell, White Herb, Mental Herb, Shed Shell,
+  Iron Ball, King's Rock, Bright Powder, Scope Lens, Wide Lens, Zoom Lens, Quick Claw, Metronome
+- Weather rocks (8 turns): Heat Rock(sun), Damp Rock(rain), Icy Rock(snow), Smooth Rock(sand)
+- Speed: Choice Scarf
 
-## Weather rocks (extend weather to 8 turns)
-Damp Rock (rain) · Heat Rock (sun) · Icy Rock (snow) · Smooth Rock (sand)
+## Berries (28)
+Aspear, Babiri, Charti, Cheri, Chesto, Chilan, Chople, Coba, Colbur, Haban, Kasib, Kebia, Leppa, Lum,
+Occa, Oran, Passho, Payapa, Pecha, Persim, Rawst, Rindo, Roseli, Shuca, Sitrus, Tanga, Wacan, Yache
+- Type-resist (halve one super-effective hit): Babiri(Steel), Charti(Rock), Chilan(Normal), Chople(Fight),
+  Coba(Flying), Colbur(Dark), Haban(Dragon), Kasib(Ghost), Kebia(Poison), Occa(Fire), Passho(Water),
+  Payapa(Psy), Rindo(Grass), Roseli(Fairy), Shuca(Ground), Tanga(Bug), Wacan(Electric), Yache(Ice)
+- Pinch/status: Sitrus, Oran, Lum, Leppa, Cheri, Chesto, Pecha, Rawst, Aspear, Persim
 
-## Berries
-- **Pinch / stat**: Sitrus, Oran, Leppa, Lum, Persim, Aspear, Cheri, Chesto, Pecha, Rawst
-- **Type-resist (halve one super-effective hit)**: Babiri (Steel) · Charti (Rock) · Chilan (Normal) ·
-  Chople (Fighting) · Coba (Flying) · Colbur (Dark) · Haban (Dragon) · Kasib (Ghost) · Kebia (Poison) ·
-  Occa (Fire) · Passho (Water) · Payapa (Psychic) · Rindo (Grass) · Roseli (Fairy) · Shuca (Ground) ·
-  Tanga (Bug) · Wacan (Electric) · Yache (Ice)
+## Mega Stones (76) — exact names
+Abomasite, Absolite, Aerodactylite, Aggronite, Alakazite, Altarianite, Ampharosite, Audinite, Banettite,
+Barbaracite, Beedrillite, Blastoisinite, Blazikenite, Cameruptite, Chandelurite, Charizardite X,
+Charizardite Y, Chesnaughtite, Chimechite, Clefablite, Crabominite, Delphoxite, Dragalgite, Dragoninite,
+Drampanite, Eelektrossite, Emboarite, Excadrite, Falinksite, Feraligite, Floettite, Froslassite, Galladite,
+Garchompite, Gardevoirite, Gengarite, Glalitite, **Glimmoranite**, Golurkite, Greninjite, Gyaradosite,
+Hawluchanite, Heracronite, Houndoominite, Kangaskhanite, Lopunnite, Lucarionite, Malamarite, Manectite,
+Mawilite, Medichamite, Meganiumite, Meowsticite, Metagrossite, Pidgeotite, Pinsirite, Pyroarite,
+**Raichunite X**, **Raichunite Y**, Sablenite, Sceptilite, Scizorite, Scolipite, Scovillainite,
+**Scraftinite**, Sharpedonite, Skarmorite, Slowbronite, **Staraptite**, Starminite, Steelixite,
+Swampertite, Tyranitarite, Venusaurite, Victreebelite
 
-## Mega Stones
-100+ available (one per Mega-capable species). Each counts as that Pokémon's held item.
-A team may hold multiple stones but only ONE Mega evolves per battle.
+> ⚠️ Stone-name gotchas (I've gotten these wrong): **Scraftinite** (not Scraftite),
+> **Staraptite** (not Staraptorite), **Glimmoranite** (not Glimmorite).
 
-## Confirmed NOT present
-- Clear Amulet (user-confirmed). Assault Vest unconfirmed — verify before use.
+## NOT in Champions (do not build around these)
+Assault Vest · Choice Band · Choice Specs · Rocky Helmet · Throat Spray · Booster Energy · Clear Amulet ·
+Covert Cloak · Safety Goggles · Mirror Herb · Loaded Dice · the Seeds (Grassy/Electric/Psychic/Misty) ·
+Eviolite · Weakness Policy · Ability/stat-restoring herbs beyond White/Mental.
+(If an item isn't in the lists above, assume it's absent until verified.)

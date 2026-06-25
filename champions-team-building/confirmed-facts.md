@@ -31,9 +31,19 @@ Web sources have repeatedly been WRONG about Champions (see corrections). Append
 - **Sinistcha** runs **Rage Powder** (99.2% usage — its #1 move), plus Trick Room, Matcha Gotcha, Strength Sap, Life Dew. Ability **Hospitality** (heals partner on switch-in).
 - **Volcarona**: ability **Flame Body** (97%). Movepool incl. Quiver Dance, Heat Wave, Giga Drain, Fiery Dance, Bug Buzz, **Rage Powder**, **Tailwind**, Struggle Bug, Will-O-Wisp.
 
-## Items confirmed present / absent
-- Present: Mystic Water, Wise Glasses (×1.1 special), Life Orb, Expert Belt, Soft Sand, Charti Berry (Rock-resist), Focus Sash, Black Glasses, Leftovers, Sitrus, Charcoal, weather rocks, etc. (full list in items.md)
-- **NOT in Champions: Clear Amulet** (user-confirmed).
+## Items confirmed present / absent  (full verified list in items.md)
+- Present: Mystic Water, Wise Glasses (×1.1 special), Life Orb, Expert Belt, Soft Sand, Charti Berry (Rock-resist), Focus Sash, Black Glasses, Leftovers, Sitrus, Charcoal, weather rocks, etc.
+- **NOT in Champions** (verified vs Serebii): Clear Amulet, Assault Vest, Choice Band, Choice Specs,
+  Rocky Helmet, Throat Spray, Covert Cloak, Safety Goggles, the Seeds, Booster Energy, Loaded Dice.
+  The item pool is more restrictive than standard VGC — only Choice **Scarf** exists (no Band/Specs).
+- **Mega Stone name gotchas** (Serebii spellings): **Scraftinite** (not Scraftite — user was right),
+  **Staraptite** (not Staraptorite), **Glimmoranite** (not Glimmorite). Chandelurite, Garchompite,
+  Raichunite X/Y are correct as written.
+
+## Roster + items verified
+roster.md and items.md were verified against Serebii 2026-06 (the authoritative source). The earlier
+web-scraped seed was incomplete/spotty; the current files are trustworthy. Count: ~210 base+regional
+species, 76 Mega-capable.
 
 ## Worked examples (teams we built)
 1. **Samurott (Unovan) — Snow Trick Room.** Role: mixed special TR attacker. Final team:
