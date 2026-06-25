@@ -1,33 +1,71 @@
-# Champions Move Legality — key support moves → legal users
+# Champions Move Legality — key support/setup moves → legal users
 
-Authoritative source: **Serebii attackdex** (https://www.serebii.net/attackdex-champions/).
-These are the moves I keep guessing wrong. **Only build around a user that appears here.**
+Source: **Serebii Champions attackdex** (2026). **Only build around a user listed here.**
+Check this file before proposing any candidate for a move-dependent role.
 
-## Fake Out  (verified 2026-06)
-Blastoise, Pikachu, Raichu (X & Y), Kangaskhan, Sableye, Medicham, Infernape, Lopunny, Toxicroak,
-Weavile, Liepard, Simisage, Simisear, Simipour, Scrafty, Meowstic, Incineroar, Salazzle, Grimmsnarl,
-Mr. Rime, Morpeko, Sneasler, Tinkaton
+## Speed control / room
+- **Tailwind**: Pidgeot, Aerodactyl, Dragonite, Scizor, Skarmory, Pelipper, Altaria, Staraptor, Gliscor, Whimsicott, Hydreigon, Volcarona, Talonflame, Vivillon, Noivern, Decidueye (+ Hisuian), Toucannon, Corviknight, Kleavor
+- **Trick Room**: Alakazam, Slowbro (+Galar), Gengar, Starmie, Espeon, Slowking (+Galar), Gardevoir, Medicham, Banette, Chimecho, Spiritomb, Gallade, Musharna, Audino, Whimsicott, Cofagrigus, Reuniclus, Chandelure, Delphox, Meowstic (M&F), Aromatisse, Malamar, Klefki, Trevenant, Gourgeist, Oranguru, Mimikyu, Polteageist, Hatterene, Mr. Rime, Runerigus, Wyrdeer, Meowscarada, Armarouge, Espathra, Farigiraf, Sinistcha
+- **Icy Wind**: Blastoise, Clefable, Ninetales, Slowbro, Gengar, Kangaskhan, Starmie, Tauros, Gyarados, Vaporeon, Snorlax, Dragonite, Feraligatr, Azumarill, Politoed, Slowking, Qwilfish, Skarmory, Tyranitar, Swampert, Pelipper, Gardevoir, Sableye, Mawile, Aggron, Sharpedo, Milotic, Banette, Chimecho, Absol, Glalie, Metagross, Empoleon, Spiritomb, Toxicroak, Abomasnow, Weavile, Rhyperior, Glaceon, Mamoswine, Gallade, Froslass, Samurott, Simipour, Audino, Zoroark, Vanilluxe, Beartic, Golurk, Greninja, Barbaracle, Dragalge, Clawitzer, Aurorus, Avalugg, Primarina, Crabominable, Toxapex, Araquanid, Drampa, Basculegion, Overqwil, Quaquaval, Palafin
+- **Electroweb**: Beedrill, Pikachu, Raichu, Jolteon, Ariados, Ampharos, Luxray, Rotom, Emolga, Eelektross, Stunfisk, Heliolisk, Dedenne, Passimian, Morpeko, Bellibolt
 
-> ❌ NOT legal Fake Out users (I've guessed these wrong): **Lucario, Meowscarada.**
+## Redirection
+- **Rage Powder**: Ariados, Volcarona, Vivillon, Scovillain, Sinistcha
+- **Follow Me**: Maushold, Clefable  (others TBD — verify)
 
-## Rage Powder  (verified 2026-06 — only 5)
-Ariados, Volcarona, Vivillon, Scovillain, Sinistcha
+## Disruption / status
+- **Fake Out**: Blastoise, Pikachu, Raichu (X & Y), Kangaskhan, Sableye, Medicham, Infernape, Lopunny, Toxicroak, Weavile, Liepard, Simisage, Simisear, Simipour, Scrafty, Meowstic, Incineroar, Salazzle, Grimmsnarl, Mr. Rime, Morpeko, Sneasler, Tinkaton
+- **Taunt**: Alakazam, Gengar, Gyarados, Aerodactyl, Umbreon, Slowking, Steelix, Qwilfish, Skarmory, Houndoom, Tyranitar, Gardevoir, Sableye, Mawile, Aggron, Medicham, Sharpedo, Banette, Chimecho, Absol, Glalie, Infernape, Bastiodon, Spiritomb, Toxicroak, Weavile, Gallade, Froslass, Serperior, Emboar, Samurott, Liepard, Simisage, Simisear, Simipour, Conkeldurr, Whimsicott, Krookodile, Scrafty, Zoroark, Vanilluxe, Emolga, Chandelure, Beartic, Hydreigon, Chesnaught, Greninja, Talonflame, Pyroar, Pangoro, Malamar, Barbaracle, Hawlucha, Noivern, Decidueye, Incineroar, Lycanroc, Salazzle, Tsareena, Oranguru, Passimian, Mimikyu, Kommo-o, Corviknight, Grimmsnarl, Mr. Rime, Runerigus, Morpeko, Sneasler, Overqwil, Meowscarada, Quaquaval, Maushold, Armarouge, Ceruledge, Palafin, Annihilape, Kingambit
+- **Encore**: Pikachu, Raichu, Clefable, Ninetales, Alakazam, Machamp, Victreebel, Snorlax, Meganium, Azumarill, Politoed, Gardevoir, Sableye, Banette, Chimecho, Infernape, Lopunny, Toxicroak, Gallade, Samurott, Liepard, Audino, Whimsicott, Scrafty, Zoroark, Reuniclus, Emolga, Beartic, Delphox, Aromatisse, Aurorus, Hawlucha, Primarina, Toucannon, Salazzle, Oranguru, Mr. Rime, Alcremie, Skeledirge, Quaquaval, Maushold, Tinkaton, Palafin, Annihilape
+- **Will-O-Wisp**: Charizard, Ninetales, Arcanine, Gengar, Tauros, Flareon, Typhlosion, Houndoom, Blaziken, Gardevoir, Sableye, Camerupt, Torkoal, Altaria, Banette, Absol, Infernape, Spiritomb, Gallade, Froslass, Rotom, Emboar, Simisear, Cofagrigus, Zoroark, Chandelure, Volcarona, Delphox, Talonflame, Pyroar, Trevenant, Gourgeist, Incineroar, Salazzle, Mimikyu, Polteageist, Runerigus, Dragapult, Skeledirge, Armarouge, Ceruledge, Scovillain, Houndstone
+- **Spore**: NONE
+- **Sleep Powder**: Venusaur, Vileplume, Victreebel, Roserade, Vivillon
+- **Yawn**: Blastoise, Slowbro, Vaporeon, Jolteon, Flareon, Snorlax, Espeon, Umbreon, Slowking, Swampert, Camerupt, Torkoal, Chimecho, Empoleon, Hippowdon, Leafeon, Glaceon, Emboar, Liepard, Simisear, Musharna, Audino, Beartic, Stunfisk, Pyroar, Meowstic, Slurpuff, Sylveon, Oranguru, Skeledirge, Houndstone, Hydrapple
+- **Snarl**: Arbok, Ninetales, Arcanine, Feraligatr, Umbreon, Slowking, Houndoom, Tyranitar, Sableye, Manectric, Sharpedo, Chimecho, Absol, Luxray, Spiritomb, Weavile, Samurott, Liepard, Krookodile, Scrafty, Zoroark, Beartic, Hydreigon, Pyroar, Pangoro, Furfrou, Incineroar, Lycanroc, Drampa, Morpeko, Skeledirge, Houndstone, Kingambit, Archaludon
 
-## Follow Me  (partial — verify full list)
-Maushold, Clefable  _(others TBD — user to provide serebii list)_
+## Setup
+- **Quiver Dance**: Volcarona, Vivillon
+- **Swords Dance**: Venusaur, Charizard, Beedrill, Vileplume, Victreebel, Pinsir, Meganium, Feraligatr, Ariados, Qwilfish, Scizor, Heracross, Skarmory, Sceptile, Blaziken, Mawile, Banette, Absol, Torterra, Infernape, Empoleon, Roserade, Rampardos, Lopunny, Garchomp, Lucario, Toxicroak, Abomasnow, Weavile, Rhyperior, Leafeon, Gliscor, Gallade, Serperior, Samurott, Watchog, Excadrill, Scolipede, Scrafty, Zoroark, Beartic, Chesnaught, Greninja, Diggersby, Talonflame, Pangoro, Aegislash, Barbaracle, Clawitzer, Hawlucha, Decidueye, Incineroar, Toucannon, Lycanroc, Mimikyu, Kommo-o, Hatterene, Falinks, Kleavor, Sneasler, Overqwil, Quaquaval, Ceruledge, Tinkaton, Kingambit, Archaludon
+- **Dragon Dance**: Charizard, Gyarados, Aerodactyl, Dragonite, Feraligatr, Steelix, Tyranitar, Sceptile, Altaria, Milotic, Scrafty, Hydreigon, Tyrantrum, Noivern, Salazzle, Drampa, Kommo-o, Flapple, Dragapult
+- **Nasty Plot**: Pikachu, Raichu, Ninetales, Alakazam, Slowbro, Gengar, Slowking, Houndoom, Sableye, Banette, Infernape, Spiritomb, Lucario, Toxicroak, Weavile, Froslass, Rotom, Watchog, Liepard, Simisage, Simisear, Simipour, Cofagrigus, Zoroark, Hydreigon, Delphox, Meowstic, Aromatisse, Malamar, Gourgeist, Decidueye, Incineroar, Salazzle, Oranguru, Corviknight, Polteageist, Grimmsnarl, Mr. Rime, Runerigus, Morpeko, Sneasler, Meowscarada, Farigiraf, Gholdengo, Sinistcha, Hydrapple
+- **Calm Mind**: Raichu, Clefable, Ninetales, Alakazam, Slowbro, Vaporeon, Jolteon, Flareon, Typhlosion, Espeon, Umbreon, Slowking, Gardevoir, Sableye, Medicham, Banette, Chimecho, Absol, Infernape, Spiritomb, Lucario, Weavile, Leafeon, Glaceon, Gallade, Serperior, Musharna, Audino, Cofagrigus, Zoroark, Reuniclus, Chandelure, Volcarona, Delphox, Vivillon, Floette, Florges, Meowstic, Aromatisse, Slurpuff, Malamar, Aurorus, Sylveon, Klefki, Trevenant, Primarina, Oranguru, Drampa, Polteageist, Hatterene, Mr. Rime, Runerigus, Alcremie, Wyrdeer, Sneasler, Armarouge, Espathra, Farigiraf, Sinistcha
+- **Shell Smash**: Blastoise, Torkoal, Torterra, Barbaracle, Polteageist
+- **Bulk Up**: Machamp, Starmie, Pinsir, Tauros, Heracross, Blaziken, Swampert, Sableye, Medicham, Infernape, Staraptor, Lucario, Toxicroak, Gallade, Emboar, Conkeldurr, Krookodile, Scrafty, Eelektross, Beartic, Chesnaught, Diggersby, Talonflame, Pangoro, Barbaracle, Hawlucha, Decidueye, Incineroar, Crabominable, Lycanroc, Passimian, Mimikyu, Kommo-o, Corviknight, Grimmsnarl, Falinks, Sneasler, Quaquaval, Ceruledge, Palafin, Annihilape
 
-## Tailwind  (verified 2026-06)
-Pidgeot, Aerodactyl, Dragonite, Scizor, Skarmory, Pelipper, Altaria, Staraptor, Gliscor, Whimsicott,
-Hydreigon, Volcarona, Talonflame, Vivillon, Noivern, Decidueye (+ Hisuian), Toucannon, Corviknight, Kleavor
+## Priority
+- **Sucker Punch**: Arbok, Victreebel, Gengar, Kangaskhan, Ariados, Houndoom, Sableye, Mawile, Banette, Absol, Spiritomb, Toxicroak, Emboar, Samurott, Liepard, Zoroark, Stunfisk, Furfrou, Meowstic, Trevenant, Decidueye, Lycanroc, Flapple, Appletun, Polteageist, Grimmsnarl, Mr. Rime, Dragapult, Meowscarada, Bellibolt, Kingambit, Hydrapple
+- **Bullet Punch**: Machamp, Scizor, Medicham, Metagross, Lucario, Toxicroak, Pangoro
+- **Aqua Jet**: Blastoise, Starmie, Tauros, Dragonite, Feraligatr, Azumarill, Qwilfish, Sharpedo, Empoleon, Samurott, Beartic, Clawitzer, Primarina, Basculegion, Overqwil, Quaquaval, Palafin
+- **Ice Shard**: Ninetales, Glalie, Abomasnow, Weavile, Glaceon, Mamoswine, Froslass, Vanilluxe, Mr. Rime
+- **Shadow Sneak**: Ariados, Gardevoir, Sableye, Banette, Absol, Spiritomb, Gallade, Zoroark, Greninja, Aegislash, Gourgeist, Decidueye, Mimikyu, Ceruledge, Houndstone
+- **Extreme Speed**: Arcanine, Arcanine (Hisuian Form), Dragonite, Lucario
+- **Mach Punch**: Infernape, Lopunny, Conkeldurr, Crabominable
 
-## Trick Room  (verified 2026-06)
-Alakazam, Slowbro (+ Galarian), Gengar, Starmie, Espeon, Slowking (+ Galarian), Gardevoir, Medicham,
-Banette, Chimecho, Spiritomb, Gallade, Musharna, Audino, Whimsicott, Cofagrigus, Reuniclus, Chandelure,
-Delphox, Meowstic (M & F), Aromatisse, Malamar, Klefki, Trevenant, Gourgeist, Oranguru, Mimikyu,
-Polteageist, Hatterene, Mr. Rime, Runerigus, Wyrdeer, Meowscarada, Armarouge, Espathra, Farigiraf, Sinistcha
+## Pivot
+- **U-turn**: Beedrill, Pidgeot, Scizor, Blaziken, Pelipper, Infernape, Staraptor, Lopunny, Gliscor, Liepard, Whimsicott, Zoroark, Emolga, Eelektross, Hydreigon, Volcarona, Greninja, Diggersby, Talonflame, Vivillon, Furfrou, Clawitzer, Heliolisk, Hawlucha, Dedenne, Noivern, Decidueye, Toucannon, Tsareena, Passimian, Corviknight, Flapple, Dragapult, Kleavor, Sneasler, Meowscarada, Quaquaval, Maushold, Espathra, Annihilape
+- **Volt Switch**: Pikachu, Raichu, Jolteon, Ampharos, Forretress, Manectric, Luxray, Rotom, Emolga, Eelektross, Heliolisk, Dedenne, Morpeko, Bellibolt
+- **Flip Turn**: Blastoise, Starmie, Vaporeon, Feraligatr, Qwilfish, Swampert, Sharpedo, Milotic, Empoleon, Samurott, Simipour, Greninja, Dragalge, Clawitzer, Primarina, Basculegion, Quaquaval, Palafin
+- **Parting Shot**: Pangoro, Incineroar, Grimmsnarl, Morpeko
+
+## Protection / support
+- **Wide Guard**: Machamp, Aerodactyl, Steelix, Swampert, Pelipper, Torterra, Bastiodon, Gallade, Conkeldurr, Chesnaught, Aegislash, Avalugg, Crabominable, Toxapex, Araquanid, Garganacl, Armarouge
+- **Helping Hand**: Venusaur, Charizard, Blastoise, Pikachu, Raichu, Clefable, Ninetales, Vileplume, Arcanine, Machamp, Slowbro, Kangaskhan, Pinsir, Tauros, Gyarados, Vaporeon, Jolteon, Flareon, Snorlax, Dragonite, Meganium, Typhlosion, Feraligatr, Ampharos, Azumarill, Politoed, Espeon, Umbreon, Slowking, Forretress, Scizor, Heracross, Houndoom, Tyranitar, Sceptile, Blaziken, Swampert, Pelipper, Gardevoir, Sableye, Mawile, Medicham, Camerupt, Torkoal, Altaria, Milotic, Banette, Chimecho, Glalie, Infernape, Empoleon, Staraptor, Luxray, Lopunny, Spiritomb, Garchomp, Lucario, Hippowdon, Toxicroak, Abomasnow, Weavile, Rhyperior, Leafeon, Glaceon, Gallade, Froslass, Rotom, Serperior, Emboar, Samurott, Watchog, Simisage, Simisear, Simipour, Musharna, Excadrill, Audino, Conkeldurr, Whimsicott, Krookodile, Scrafty, Zoroark, Reuniclus, Emolga, Golurk, Hydreigon, Chesnaught, Delphox, Greninja, Pyroar, Floette, Florges, Pangoro, Furfrou, Meowstic, Aromatisse, Slurpuff, Malamar, Barbaracle, Clawitzer, Sylveon, Hawlucha, Dedenne, Decidueye, Incineroar, Primarina, Toucannon, Crabominable, Lycanroc, Salazzle, Tsareena, Drampa, Kommo-o, Appletun, Hatterene, Mr. Rime, Alcremie, Falinks, Dragapult, Wyrdeer, Kleavor, Meowscarada, Skeledirge, Quaquaval, Maushold, Garganacl, Armarouge, Ceruledge, Scovillain, Espathra, Tinkaton, Palafin, Orthworm, Houndstone, Annihilape, Farigiraf
+- **Aurora Veil**: Ninetales, Abomasnow, Froslass, Vanilluxe, Aurorus, Avalugg
+- **Reflect**: Pikachu, Raichu, Clefable, Alakazam, Victreebel, Starmie, Meganium, Ampharos, Espeon, Umbreon, Slowking, Forretress, Gardevoir, Sableye, Medicham, Chimecho, Metagross, Torterra, Bastiodon, Weavile, Mamoswine, Gallade, Froslass, Rotom, Serperior, Musharna, Audino, Reuniclus, Golurk, Hydreigon, Chesnaught, Delphox, Meowstic, Aegislash, Aromatisse, Malamar, Aurorus, Sylveon, Klefki, Trevenant, Primarina, Araquanid, Tsareena, Oranguru, Corviknight, Appletun, Polteageist, Hatterene, Grimmsnarl, Mr. Rime, Dragapult, Wyrdeer, Armarouge, Ceruledge, Bellibolt, Espathra, Tinkaton, Glimmora, Farigiraf, Gholdengo, Sinistcha, Archaludon, Hydrapple
+- **Light Screen**: Venusaur, Pikachu, Raichu, Clefable, Alakazam, Machamp, Slowbro, Starmie, Jolteon, Dragonite, Meganium, Ampharos, Azumarill, Espeon, Umbreon, Slowking, Forretress, Scizor, Gardevoir, Sableye, Medicham, Manectric, Milotic, Chimecho, Glalie, Metagross, Torterra, Luxray, Gallade, Froslass, Rotom, Serperior, Watchog, Musharna, Audino, Whimsicott, Reuniclus, Vanilluxe, Emolga, Eelektross, Volcarona, Delphox, Vivillon, Floette, Florges, Meowstic, Aromatisse, Slurpuff, Malamar, Heliolisk, Aurorus, Sylveon, Dedenne, Klefki, Gourgeist, Decidueye, Primarina, Toxapex, Tsareena, Oranguru, Mimikyu, Drampa, Corviknight, Appletun, Polteageist, Hatterene, Grimmsnarl, Mr. Rime, Alcremie, Dragapult, Wyrdeer, Kleavor, Armarouge, Ceruledge, Bellibolt, Espathra, Tinkaton, Glimmora, Farigiraf, Gholdengo, Archaludon
+- **Decorate**: Alcremie
+- **Coaching**: Machamp, Heracross, Blaziken, Medicham, Infernape, Lucario, Toxicroak, Gallade, Emboar, Conkeldurr, Scrafty, Chesnaught, Pangoro, Hawlucha, Decidueye, Crabominable, Passimian, Kommo-o, Falinks, Sneasler, Quaquaval, Annihilape
+- **Life Dew**: Blastoise, Clefable, Gardevoir, Milotic, Roserade, Lucario, Gallade, Audino, Goodra, Primarina, Hatterene, Sinistcha
+- **Pollen Puff**: Beedrill, Vileplume, Meganium, Vivillon, Floette, Florges, Meowscarada, Hydrapple
+- **Heal Pulse**: Clefable, Slowbro, Meganium, Slowking, Gardevoir, Chimecho, Lucario, Gallade, Audino, Aromatisse, Clawitzer, Hatterene
+- **Beat Up**: Charizard, Arbok, Kangaskhan, Houndoom, Weavile, Whimsicott, Krookodile, Scrafty, Vanilluxe, Hydreigon, Pangoro, Barbaracle, Salazzle, Passimian, Mimikyu, Falinks, Dragapult, Maushold, Annihilape, Farigiraf
+
+## Utility
+- **Knock Off**: Venusaur, Beedrill, Arbok, Pikachu, Raichu, Clefable, Machamp, Victreebel, Gengar, Meganium, Ariados, Azumarill, Scizor, Heracross, Tyranitar, Blaziken, Swampert, Pelipper, Gardevoir, Sableye, Mawile, Banette, Chimecho, Absol, Infernape, Empoleon, Toxicroak, Weavile, Leafeon, Gliscor, Mamoswine, Gallade, Serperior, Emboar, Samurott, Liepard, Conkeldurr, Krookodile, Scrafty, Zoroark, Reuniclus, Eelektross, Golurk, Chesnaught, Pangoro, Malamar, Goodra, Trevenant, Decidueye, Toucannon, Crabominable, Lycanroc, Salazzle, Tsareena, Oranguru, Passimian, Falinks, Morpeko, Meowscarada, Quaquaval, Tinkaton
+- **Stealth Rock**: Clefable, Arcanine, Pinsir, Aerodactyl, Forretress, Steelix, Skarmory, Tyranitar, Swampert, Mawile, Aggron, Camerupt, Torkoal, Metagross, Torterra, Infernape, Empoleon, Rampardos, Bastiodon, Garchomp, Hippowdon, Rhyperior, Gliscor, Mamoswine, Excadrill, Krookodile, Stunfisk, Golurk, Hydreigon, Barbaracle, Tyrantrum, Aurorus, Avalugg, Lycanroc, Mudsdale, Kommo-o, Sandaconda, Runerigus, Kleavor, Garganacl, Tinkaton, Orthworm, Glimmora, Annihilape, Kingambit, Archaludon
 
 ---
-## Process note
-When a slot depends on a specific support move (Fake Out, redirection, speed control, TR),
-**check this file first**, then the Serebii attackdex, before proposing any candidate.
-Redirection is genuinely scarce: Rage Powder = 5 mons, Follow Me ≈ a handful.
+## Notable scarcities (build-relevant)
+- **Spore: NONE** — no sleep-via-Spore in Champions.
+- **Quiver Dance: Volcarona, Vivillon only.**  **Shell Smash: Blastoise, Torkoal, Torterra, Barbaracle, Polteageist.**
+- **Redirection is scarce** — Rage Powder = 5, Follow Me = a handful.
