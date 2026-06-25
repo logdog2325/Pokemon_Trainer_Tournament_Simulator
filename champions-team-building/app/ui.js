@@ -93,8 +93,9 @@ function renderBuilder(){
   const danger=Object.entries(tally).filter(([t,v])=>v.count>=2||v.max>=4).map(([t])=>t);
   const needs=E.teamNeeds(STATE.team);
   if(STATE.team.length>=6){
-    app.innerHTML=weakCard(tally,needs)+`<div class="card"><b>Team complete.</b> <button class="btn primary" id="exp2">Export</button></div>`;
-    $("#exp2").onclick=showExport; return;
+    app.innerHTML=weakCard(tally,needs)+`<div class="card"><b>Team complete.</b>
+      <div class="seg" style="margin-top:10px"><button class="btn primary" id="exp2">Export / Share</button><button class="btn" id="spd6">⚡ Speed</button><button class="btn" id="calc6">🧮 Calc</button><button class="btn" id="stress6">Stress test</button></div></div>`;
+    $("#exp2").onclick=showExport; $("#spd6").onclick=()=>go("speed"); $("#calc6").onclick=()=>go("calc"); $("#stress6").onclick=()=>go("stress"); return;
   }
   // STEP 1: choose what this slot does — driven by the role's needs plan (Phase 3) + threat map (Phase 4)
   if(!STATE.slotRole){
@@ -112,10 +113,12 @@ function renderBuilder(){
         <div class="muted" style="margin-top:10px">Other roles</div>
         <div class="seg" style="flex-wrap:wrap;margin-top:4px">${others}</div>
         ${STATE.team.length>=1?`<button class="btn" id="spd" style="width:100%;margin-top:8px">⚡ Speed tiers vs the meta</button>`:""}
+        ${STATE.team.length>=1?`<button class="btn" id="calc" style="width:100%;margin-top:8px">🧮 Damage calc</button>`:""}
         ${STATE.team.length>=3?`<button class="btn" id="stress" style="width:100%;margin-top:8px">Stress-test the team ▸ (Phase 6)</button>`:""}</div>`;
     app.querySelectorAll(".rolepick").forEach(b=>b.onclick=()=>{STATE.slotRole=b.dataset.r;STATE.q="";renderBuilder();window.scrollTo(0,0);});
     const st=$("#stress");if(st)st.onclick=()=>go("stress");
     const sp=$("#spd");if(sp)sp.onclick=()=>go("speed");
+    const cl=$("#calc");if(cl)cl.onclick=()=>go("calc");
     return;
   }
   // STEP 2: candidates that fill the chosen role, scored vs the core
@@ -238,6 +241,52 @@ function renderSpeed(){
   app.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{STATE.spd[b.dataset.k]=!STATE.spd[b.dataset.k];renderSpeed();});
   backBtn.onclick=()=>go("builder");
 }
+/* ---------------- DAMAGE CALC ---------------- */
+function calcDefenders(){
+  const list=STATE.team.map((m,i)=>({key:"team:"+i,label:m.entry.name+(m.formIndex>=0?" (Mega)":"")+" — yours",member:m}));
+  const seen=new Set(STATE.team.map(m=>m.entry.name));
+  E.metaBenchmarks(30).forEach(b=>{if(seen.has(b.name))return;seen.add(b.name);const mem=E.benchMember(b.name);if(mem)list.push({key:"meta:"+b.name,label:b.name+(mem.formIndex>=0?" (Mega)":"")+" · #"+b.rank,member:mem});});
+  return list;
+}
+function renderCalc(){
+  titleEl.textContent="Damage calc"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
+  if(!STATE.team.length){app.innerHTML=`<div class="card muted">Add a Pokémon first.</div>`;backBtn.onclick=()=>go("builder");return;}
+  const C=STATE.calc=STATE.calc||{attIdx:0,move:null,defKey:null,weather:null,spread:false,intimidate:false,burn:false,atkStage:0};
+  if(C.attIdx>=STATE.team.length)C.attIdx=0;
+  const att=STATE.team[C.attIdx];
+  const moves=(att.set.moves||[]).filter(m=>{const i=E.moveInfo(m);return m&&(i.c==="Phys"||i.c==="Spec")&&i.bp;});
+  if(!moves.includes(C.move))C.move=moves[0]||null;
+  const defs=calcDefenders();
+  if(!defs.find(d=>d.key===C.defKey))C.defKey=defs.find(d=>!d.key.startsWith("team:"+C.attIdx))?.key||defs[0].key;
+  if(C.weather===null)C.weather=E.teamWeather(STATE.team)||"";
+  const def=defs.find(d=>d.key===C.defKey).member;
+  const res=C.move?E.calcDamage(att,C.move,def,{weather:C.weather,spread:C.spread,intimidate:C.intimidate,burn:C.burn,atkStage:C.atkStage}):null;
+  const opt=(v,sel,lab)=>`<option value="${v}" ${v===sel?'selected':''}>${lab||v}</option>`;
+  const tog=(on,lab,key)=>`<button class="btn ${on?'primary':''}" data-tog="${key}">${lab}</button>`;
+  let resHtml='<div class="muted">Pick a damaging move.</div>';
+  if(res&&res.immune)resHtml=`<b style="color:var(--good)">Immune</b> — ${def.entry.name} takes 0 from ${C.move} (${res.type}).`;
+  else if(res){const col=res.minPct>=100?'var(--good)':res.maxPct>=100?'#ffd9a0':res.minPct>=50?'#ffd9a0':'var(--bad)';
+    resHtml=`<div style="font-size:26px;font-weight:800;color:${col}">${res.minPct}–${res.maxPct}%</div>
+      <div style="font-weight:700;color:${col}">${res.ko}</div>
+      <div class="muted" style="margin-top:4px">${res.min}–${res.max} dmg of ${res.hp} HP · ${C.move} ×${res.eff} effective</div>`;}
+  app.innerHTML=`
+    <div class="card"><div class="field"><label>Attacker (your team)</label><select id="att">${STATE.team.map((m,i)=>opt(i,C.attIdx,m.entry.name+(m.formIndex>=0?" (Mega)":""))).join("")}</select></div>
+      <div class="field"><label>Move</label><select id="mv">${moves.length?moves.map(m=>{const mi=E.moveInfo(m);return opt(m,C.move,m+" ("+mi.t+"·"+mi.bp+")");}).join(""):'<option>— no damaging move —</option>'}</select></div></div>
+    <div class="card"><div class="field"><label>Defender</label><select id="def">${defs.map(d=>opt(d.key,C.defKey,d.label)).join("")}</select></div></div>
+    <div class="card"><label class="muted">Field</label>
+      <div class="field"><label>Weather</label><select id="wx">${[["","none"],["sun","Sun"],["rain","Rain"],["sand","Sand"],["snow","Snow"]].map(([v,l])=>opt(v,C.weather,l)).join("")}</select></div>
+      <div class="seg" style="margin-top:4px">${tog(C.spread,'Spread move',"spread")}${tog(C.intimidate,'Intimidate (−1)',"intimidate")}${tog(C.burn,'Burned',"burn")}</div>
+      <div class="field" style="margin-top:8px"><label>Attacker boost: +${C.atkStage}</label><div class="seg">${[0,1,2,6].map(s=>`<button class="btn ${C.atkStage===s?'primary':''}" data-boost="${s}">+${s}</button>`).join("")}</div></div></div>
+    <div class="card">${resHtml}</div>`;
+  $("#att").onchange=()=>{C.attIdx=+$("#att").value;C.move=null;renderCalc();};
+  $("#mv").onchange=()=>{C.move=$("#mv").value;renderCalc();};
+  $("#def").onchange=()=>{C.defKey=$("#def").value;renderCalc();};
+  $("#wx").onchange=()=>{C.weather=$("#wx").value;renderCalc();};
+  app.querySelectorAll("[data-tog]").forEach(b=>b.onclick=()=>{C[b.dataset.tog]=!C[b.dataset.tog];renderCalc();});
+  app.querySelectorAll("[data-boost]").forEach(b=>b.onclick=()=>{C.atkStage=+b.dataset.boost;renderCalc();});
+  backBtn.onclick=()=>go("builder");
+}
+
 /* ---------------- IMPORT ---------------- */
 function renderImport(){
   titleEl.textContent="Import team"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
@@ -259,8 +308,9 @@ function renderImport(){
   backBtn.onclick=()=>go("start");
 }
 function render(){
-  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(STATE.screen==="role"||STATE.screen==="import")go("start"); else if(STATE.screen==="editor"||STATE.screen==="stress"||STATE.screen==="speed")go("builder"); };
+  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(STATE.screen==="role"||STATE.screen==="import")go("start"); else if(STATE.screen==="editor"||STATE.screen==="stress"||STATE.screen==="speed"||STATE.screen==="calc")go("builder"); };
   if(STATE.screen==="import")renderImport();
+  else if(STATE.screen==="calc")renderCalc();
   else if(STATE.screen==="start")renderStart();
   else if(STATE.screen==="role")renderRole();
   else if(STATE.screen==="builder")renderBuilder();

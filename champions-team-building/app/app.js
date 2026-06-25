@@ -481,6 +481,70 @@ function finalStats(m){
     spa:statAt(b.spa,p.spa,nat,"spa"),spd:statAt(b.spd,p.spd,nat,"spd"),spe:statAt(b.spe,p.spe,nat,"spe")};
 }
 
+/* ---------- damage calculator (Gen 9 doubles, practical estimate) ---------- */
+const TYPE_ITEM={"Charcoal":"Fire","Mystic Water":"Water","Magnet":"Electric","Miracle Seed":"Grass","Never-Melt Ice":"Ice","Black Belt":"Fighting","Poison Barb":"Poison","Soft Sand":"Ground","Sharp Beak":"Flying","Twisted Spoon":"Psychic","Silver Powder":"Bug","Hard Stone":"Rock","Spell Tag":"Ghost","Dragon Fang":"Dragon","Black Glasses":"Dark","Metal Coat":"Steel","Silk Scarf":"Normal","Fairy Feather":"Fairy"};
+function stageMul(s){s=Math.max(-6,Math.min(6,s||0));return s>=0?(2+s)/2:2/(2-s);}
+function pokeRound(x){return (x-Math.floor(x))>0.5?Math.ceil(x):Math.floor(x);} // round half down
+function koText(min,max,hp){
+  if(min>=hp)return "guaranteed OHKO";
+  if(max>=hp)return "possible OHKO";
+  if(2*min>=hp)return "guaranteed 2HKO";
+  if(2*max>=hp)return "possible 2HKO";
+  if(3*min>=hp)return "guaranteed 3HKO";
+  if(3*max>=hp)return "possible 3HKO";
+  return Math.max(4,Math.ceil(hp/max))+"HKO";
+}
+// build a member from a mon name at its meta set (for the defender dropdown)
+function benchMember(name){const e=byName[name];if(!e)return null;const set=recommendSet(e,"meta");return {entry:e,formIndex:(set.formIndex!=null?set.formIndex:-1),set};}
+function calcDamage(att,move,def,field){
+  field=field||{};
+  const mi=moveInfo(move); if(!mi.bp||!(mi.c==="Phys"||mi.c==="Spec"))return null;
+  const phys=mi.c==="Phys", wt=mi.t;
+  const aEf=effOf(att),dEf=effOf(def),aS=finalStats(att),dS=finalStats(def);
+  const aAb=(aEf.abilities||[])[0]||"",dAb=(dEf.abilities||[])[0]||"";
+  const aItem=(att.set&&att.set.item)||"",dItem=(def.set&&def.set.item)||"";
+  const eff=effTable(dEf,dAb)[wt]; if(eff===0)return {immune:true,move,type:wt};
+  let A=phys?aS.atk:aS.spa, D=phys?dS.def:dS.spd;
+  if((aAb==="Huge Power"||aAb==="Pure Power")&&phys)A*=2;
+  if(aItem==="Choice Band"&&phys)A=Math.floor(A*1.5);
+  if(aItem==="Choice Specs"&&!phys)A=Math.floor(A*1.5);
+  let atkStage=field.atkStage||0; if(field.intimidate&&phys)atkStage-=1;
+  A=Math.floor(A*stageMul(atkStage));
+  D=Math.floor(D*stageMul(field.defStage||0));
+  if(dItem==="Assault Vest"&&!phys)D=Math.floor(D*1.5);
+  if(field.weather==="sand"&&dEf.types.includes("Rock")&&!phys)D=Math.floor(D*1.5);
+  if(field.weather==="snow"&&dEf.types.includes("Ice")&&phys)D=Math.floor(D*1.5);
+  let bp=mi.bp; if(aAb==="Technician"&&bp<=60)bp=Math.floor(bp*1.5);
+  const base=Math.floor(Math.floor(22*bp*A/D)/50)+2;
+  let weatherMod=1;
+  if(field.weather==="sun"){if(wt==="Fire")weatherMod=1.5;if(wt==="Water")weatherMod=0.5;}
+  if(field.weather==="rain"){if(wt==="Water")weatherMod=1.5;if(wt==="Fire")weatherMod=0.5;}
+  const spreadMod=field.spread?0.75:1;
+  const stab=aEf.types.includes(wt)?(aAb==="Adaptability"?2:1.5):1;
+  let fm=1;
+  if(aItem==="Life Orb")fm*=1.3;
+  if(aItem==="Expert Belt"&&eff>1)fm*=1.2;
+  if(aItem==="Muscle Band"&&phys)fm*=1.1;
+  if(aItem==="Wise Glasses"&&!phys)fm*=1.1;
+  if(TYPE_ITEM[aItem]===wt)fm*=1.2;
+  if(dAb==="Multiscale"&&field.fullHP!==false)fm*=0.5;
+  if((dAb==="Filter"||dAb==="Solid Rock"||dAb==="Prism Armor")&&eff>1)fm*=0.75;
+  if(field.burn&&phys&&aAb!=="Guts")fm*=0.5;
+  const rolls=[];
+  for(let r=85;r<=100;r++){
+    let d=base;
+    d=pokeRound(d*spreadMod); d=pokeRound(d*weatherMod);
+    d=Math.floor(d*r/100);
+    d=pokeRound(d*stab);
+    d=Math.floor(d*eff);
+    d=pokeRound(d*fm);
+    rolls.push(Math.max(1,d));
+  }
+  const hp=dS.hp,min=rolls[0],max=rolls[15];
+  return {min,max,hp,eff,phys,type:wt,move,
+    minPct:Math.round(min/hp*1000)/10,maxPct:Math.round(max/hp*1000)/10,ko:koText(min,max,hp)};
+}
+
 /* ---------- pokepaste / Showdown import ---------- */
 function dexLookup(species){
   if(!species) return null;
@@ -556,4 +620,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember};
