@@ -82,14 +82,24 @@ function isPhysical(e){return e.baseStats.atk>=e.baseStats.spa;}
 function bulk(e){const s=e.baseStats;return s.hp+s.def+s.spd;}
 
 const RECOVERY=["Recover","Roost","Synthesis","Slack Off","Soft-Boiled","Moonlight","Morning Sun","Wish","Strength Sap","Milk Drink","Shore Up","Rest"];
-function detectRoles(e){
-  const roles=[]; const sp=e.baseStats.spe, off=offense(e);
+const INTIM_BOOST=["Defiant","Competitive","Guard Dog","Contrary"];      // Intimidate becomes a free +Atk/+SpA
+const INTIM_IMMUNE=["Inner Focus","Oblivious","Own Tempo","Scrappy","Clear Body","White Smoke","Full Metal Body","Hyper Cutter","Guard Dog"]; // Attack never drops
+const ANTI_INTIM=[...new Set(INTIM_BOOST.concat(INTIM_IMMUNE))];        // anything that beats Intimidate
+// the offensive/support archetypes a (base or Mega) stat line can fill
+function archetypeRoles(e){
+  const roles=[]; const sp=e.baseStats.spe, off=offense(e), phys=isPhysical(e);
   const setup=has(e,SETUP), sc=has(e,SPEEDCTRL), rd=has(e,REDIR), fo=e.moves.includes("Fake Out"),
         pv=has(e,PIVOT), sup=has(e,SUPPORT); const weatherA=(e.abilities||[]).find(a=>WEATHER_ABIL[a]); const bv=bulk(e);
-  // a mon can legitimately fill several offensive roles at once (Emboar = sweeper + breaker + TR breaker)
-  if(setup.length && off>=95) roles.push({key:"sweeper",label:"Setup sweeper",note:`Boosts with ${setup[0]}, then sweeps.`});
+  const ab0=e.abilities||[];
+  // physical: Defiant/Guard Dog/immune all help; special: only Competitive (Intimidate -> +SpA)
+  const physBoost=ab0.find(a=>["Defiant","Guard Dog","Contrary"].includes(a));
+  const physAnti=phys && (physBoost||ab0.some(a=>INTIM_IMMUNE.includes(a)));
+  const specAnti=!phys && ab0.includes("Competitive");
+  const antiNote=specAnti?"Competitive turns opposing Intimidate into a free Special Attack boost.":physBoost?`${physBoost} turns opposing Intimidate into a free Attack boost.`:`${ab0.find(a=>INTIM_IMMUNE.includes(a))} ignores Intimidate — its attack never drops.`;
+  if(setup.length && off>=95) roles.push({key:"sweeper",label:"Setup sweeper",note:`Boosts with ${bestSetup(e,phys)||setup[0]}, then sweeps.`});
   if(off>=105) roles.push({key:"breaker",label:"Wallbreaker",note:`Hits hard immediately — Tailwind/offense friendly.`});
   if(off>=100 && sp<=70) roles.push({key:"tr",label:"Trick Room wallbreaker",note:`Slow + huge offense — scary under Trick Room.`});
+  if((physAnti||specAnti) && off>=95) roles.push({key:"antiintim",label:"Anti-Intimidate attacker",note:antiNote});
   if(sc.length) roles.push({key:"speed",label:"Speed control",note:`Provides ${sc.join(" / ")}.`});
   if(rd.length) roles.push({key:"redir",label:"Redirection support",note:`Pulls aggro with ${rd.join(" / ")}.`});
   if(fo) roles.push({key:"fakeout",label:"Fake Out "+(off>=100?"attacker":"support"),note:`Fake Out tempo`+((e.abilities||[]).includes("Intimidate")?" + Intimidate":"")+`.`});
@@ -97,20 +107,22 @@ function detectRoles(e){
   if(pv.length && bv>=240) roles.push({key:"pivot",label:"Bulky pivot",note:`Pivots with ${pv.join(" / ")}.`});
   if(bv>=280 && (sup.length||RECOVERY.some(m=>e.moves.includes(m)))) roles.push({key:"wall",label:"Defensive wall",note:`Bulky support / staller.`});
   if(!roles.length) roles.push({key:"breaker",label:"Attacker",note:`General offensive role.`});
-  const seen=new Set();let out=roles.filter(r=>!seen.has(r.key)&&seen.add(r.key));
-  out.forEach(r=>r._form=-1);   // base-form roles
-  // a Mega-form option for any mon that Mega-Evolves (so it's offered even without usage data)
+  const seen=new Set();return roles.filter(r=>!seen.has(r.key)&&seen.add(r.key));
+}
+function detectRoles(e){
+  let out=archetypeRoles(e); out.forEach(r=>r._form=-1);   // base-form roles
+  // for every Mega form, offer 2-3 sets covering the archetypes that form can run
   if(e.mega&&e.mega.length){
-    const megaRoles=e.mega.map((mg,i)=>({key:"mega"+i,_form:i,
-      label:"Mega set"+(e.mega.length>1?" — "+(mg.label||("Mega "+(i+1))):""),
-      note:`Mega-Evolves → ${(mg.type||e.types).join("/")} · ${mg.ability}.`}));
-    out=megaRoles.concat(out);
+    e.mega.forEach((mg,i)=>{
+      const lbl=e.mega.length>1?(mg.label||("Mega "+(i+1))):"Mega";
+      const pseudo={name:e.name,types:mg.type||e.types,abilities:[mg.ability],baseStats:mg.baseStats,moves:e.moves};
+      archetypeRoles(pseudo).slice(0,3).forEach(r=>out.push({key:"mega"+i+":"+r.key,_form:i,label:lbl+" · "+r.label,note:`Mega-Evolves → ${(mg.type||e.types).join("/")} · ${mg.ability}. ${r.note}`}));
+    });
   }
   // surface the REAL most-used Reg M-B build first, when Pikalytics has data for this mon
   const u=usageOf(e);
   if(u&&u.moves&&u.moves.length){
     const ms=metaSet(e), metaForm=ms?ms.formIndex:-1;
-    if(metaForm>=0) out=out.filter(r=>r._form!==metaForm);   // the meta set already IS that Mega
     const desc=metaDescriptor(e,u);
     out.unshift({key:"meta",_form:metaForm,label:`Meta set — ${desc}`,meta:true,
       note:`The standard Reg M-B build for this role${u.teammates&&u.teammates.length?`. Common partners: ${u.teammates.slice(0,4).join(", ")}`:"."}`});
@@ -369,17 +381,16 @@ function recommendItem(e,roleKey){
   return "Sitrus Berry";
 }
 // heuristic set for a Mega form (used when there's no Pikalytics usage to copy)
-function megaFormSet(e,idx){
+function megaFormSet(e,idx,roleKey){
   const mg=e.mega&&e.mega[idx]; if(!mg||!mg.baseStats)return null;
   const pseudo={name:e.name,types:mg.type||e.types,abilities:[mg.ability],baseStats:mg.baseStats,moves:e.moves,mega:[],megaStones:e.megaStones};
-  const hasSetup=SETUP.some(m=>e.moves.includes(m));
-  const role=hasSetup?"sweeper":(mg.baseStats.spe<=55?"tr":"breaker");
+  const role=roleKey||(SETUP.some(m=>e.moves.includes(m))?"sweeper":(mg.baseStats.spe<=55?"tr":"breaker"));
   const sp=recommendSpread(pseudo,role);
   return {ability:mg.ability,item:(e.megaStones&&(e.megaStones[idx]||e.megaStones[0]))||"",nature:sp.nature,points:sp.points,moves:recommendMoves(pseudo,role),formIndex:idx};
 }
 function recommendSet(e,roleKey){
   if(roleKey==="meta"){const ms=metaSet(e);if(ms)return ms;}
-  const mm=/^mega(\d+)$/.exec(roleKey||""); if(mm){const ms=megaFormSet(e,+mm[1]);if(ms)return ms;}
+  const mm=/^mega(\d+)(?::(.+))?$/.exec(roleKey||""); if(mm){const ms=megaFormSet(e,+mm[1],mm[2]);if(ms)return ms;}
   const sp=recommendSpread(e,roleKey);return {ability:recommendAbility(e),item:recommendItem(e,roleKey),nature:sp.nature,points:sp.points,moves:recommendMoves(e,roleKey),formIndex:-1};}
 
 /* ---------- model phases: needs plan (3), threat map (4), stress test (6), legality (7) ---------- */
@@ -395,9 +406,14 @@ function planForLead(lead,roleKey){
     fakeout:[["special","Win condition"],["physical","Win condition"],["speed","Speed control"],["redir","Redirection"]],
     pivot:[["special","Win condition"],["physical","Win condition"],["speed","Speed control"],["intimidate","Glue"]],
     wall:[["special","Win condition"],["physical","Win condition"],["speed","Speed control"],["priority","Priority"]],
+    antiintim:[["speed","Speed control"],["redir","Free turn / disruption"],[second,"Partner that covers its checks"],["priority","Priority"]],
     meta:[["speed","Speed control"],["redir","Redirection / free turn"],[second,"Partner covering its checks"],["priority","Priority"],["intimidate","Defensive glue"]]
   };
-  return P[roleKey]||P.breaker;
+  let plan=P[roleKey]||P.breaker;
+  // physical-attacker teams want a Defiant/Competitive answer so opposing Intimidate doesn't sap them
+  if(isPhysical(lead) && ["sweeper","breaker","tr","antiintim","meta"].includes(roleKey) && !plan.some(p=>p[0]==="antiintim"))
+    plan=plan.concat([["antiintim","Anti-Intimidate (Defiant / Competitive)"]]);
+  return plan;
 }
 function archetypeThreats(lead){
   const m=Object.fromEntries(weaknessesOf(lead).weak); const out=[];
@@ -439,6 +455,7 @@ function roleExecution(e,slot){
     case "redir": {let s=8;if(ab.includes("Prankster"))s+=8;if(ab.includes("Friend Guard")||ab.includes("Hospitality"))s+=12;s+=bulkPts;s+=Math.min(6,kit*2);return Math.min(40,s);}
     case "fakeout": {let s=8;if(ab.includes("Intimidate"))s+=12;s+=Math.min(8,bulkPts);if(mv.some(m=>PIVOT.includes(m)))s+=4;s+=Math.min(8,Math.round((off-80)/12));return Math.min(40,s);}
     case "intimidate": {let s=ab.includes("Intimidate")?20:2;s+=bulkPts;s+=Math.min(8,Math.round((off-70)/12));return Math.min(40,s);}
+    case "antiintim": {let s=ab.some(a=>INTIM_BOOST.includes(a))?24:ab.some(a=>INTIM_IMMUNE.includes(a))?14:2;s+=Math.min(12,Math.round((off-70)/6))+Math.min(4,bulkPts);return Math.min(40,s);}  // Defiant/Competitive > immune
     case "pivot": {let s=6;if(mv.some(m=>PIVOT.includes(m)))s+=10;s+=Math.min(16,bulkPts+4);return Math.min(40,s);}
     case "wall": {let s=Math.min(22,Math.round((bv-250)/8));if(RECOVERY.some(m=>mv.includes(m)))s+=12;return Math.min(40,s);}
     case "weather": return 22;
@@ -703,4 +720,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM};

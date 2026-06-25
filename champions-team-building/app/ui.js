@@ -11,6 +11,7 @@ const SLOT_ROLES=[
  {key:"redir",label:"Redirection",need:"redir",fill:e=>e.moves.some(m=>E.REDIR.includes(m))},
  {key:"fakeout",label:"Fake Out",need:"fakeout",fill:e=>e.moves.includes("Fake Out")},
  {key:"intimidate",label:"Intimidate",need:"intimidate",fill:e=>(e.abilities||[]).includes("Intimidate")},
+ {key:"antiintim",label:"Anti-Intimidate (Defiant/Competitive)",fill:e=>(e.abilities||[]).some(a=>E.ANTI_INTIM.includes(a))},
  {key:"physical",label:"Physical attacker",need:"physical",fill:e=>E.isPhysical(e)&&E.offense(e)>=100},
  {key:"special",label:"Special attacker",need:"special",fill:e=>!E.isPhysical(e)&&E.offense(e)>=100},
  {key:"priority",label:"Priority",need:"priority",fill:e=>e.moves.some(m=>E.PRIORITY.includes(m))},
