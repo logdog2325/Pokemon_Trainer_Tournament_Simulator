@@ -334,16 +334,46 @@ function roleExecution(e,slot){
     case "pivot": {let s=6;if(mv.some(m=>PIVOT.includes(m)))s+=10;s+=Math.min(16,bulkPts+4);return Math.min(40,s);}
     case "wall": {let s=Math.min(22,Math.round((bv-250)/8));if(RECOVERY.some(m=>mv.includes(m)))s+=12;return Math.min(40,s);}
     case "weather": return 22;
-    default: return Math.min(40,Math.max(0,Math.round((off-70)/3.5)));  // offense roles reward offense
+    case "priority": {let s=4;if(mv.some(m=>PRIORITY.includes(m)))s+=16;if(ab.includes("Gale Wings")||ab.includes("Triage"))s+=14;s+=Math.min(14,Math.round((off-70)/8));if(ab.includes("Technician"))s+=4;return Math.min(40,s);}
+    default: { // physical / special / breaker / any: offense + coverage breadth + speed
+      const covT=new Set(mv.filter(m=>moveInfo(m).bp>=70).map(m=>moveInfo(m).t)).size;
+      let s=Math.max(0,Math.round((off-70)/4)); s+=Math.min(8,covT*2); if(sp>=95)s+=4; return Math.min(40,s);
+    }
   }
+}
+// does this candidate offensively threaten the things that beat the lead? (covers the lead's checks)
+function leadCoverageBonus(e,lead){
+  if(!lead) return 0;
+  const leadWeak=weaknessesOf(lead).weak.map(x=>x[0]);
+  const myAtk=new Set(e.moves.filter(m=>moveInfo(m).bp>=55).map(m=>moveInfo(m).t));
+  let b=0;
+  for(const wt of leadWeak){ for(const at of myAtk){ if(CHART[at]&&CHART[at][wt]>1){ b+=2; break; } } }
+  return Math.min(8,b);
+}
+// which defending types does the team's actual attacking moves hit super-effectively?
+function teamOffense(team){
+  const atk=new Set();
+  for(const m of team) for(const mv of setMovesOf(m)){const i=moveInfo(mv); if(i.bp>=55&&i.t) atk.add(i.t);}
+  const best={};
+  for(const dt of TYPES){let b=0; for(const at of atk){const x=(CHART[at]&&CHART[at][dt]!=null)?CHART[at][dt]:1; b=Math.max(b,x);} best[dt]=b;}
+  return {atk:[...atk], se:TYPES.filter(t=>best[t]>=2), neutralOrBetter:TYPES.filter(t=>best[t]>=1), gaps:TYPES.filter(t=>best[t]<1)};
+}
+// does adding this candidate give the team NEW super-effective coverage (STAB proxy)?
+function offCoverageBonus(e,team){
+  const cur=new Set();
+  for(const m of team){const ef=effOf(m);for(const t of ef.types)for(const dt of TYPES)if(CHART[t]&&CHART[t][dt]>=2)cur.add(dt);}
+  const added=new Set();
+  for(const t of e.types)for(const dt of TYPES)if(CHART[t]&&CHART[t][dt]>=2&&!cur.has(dt))added.add(dt);
+  return Math.min(8,added.size*1.5);
 }
 function scoreForSlot(e,team,slot){
   const b=scoreCandidate(e,team), exe=roleExecution(e,slot);
-  const support=["speed","trsetter","redir","fakeout","intimidate","pivot","wall","weather"].includes(slot);
-  const total=support ? Math.min(100,b.typing+exe+Math.min(18,b.cov)+b.weather)
-                      : Math.min(100,Math.round(b.total*0.6+exe*0.5));
-  return {...b,exe,total:Math.round(total)};
+  const lead=team[0]&&team[0].entry, leadCov=leadCoverageBonus(e,lead), offCov=offCoverageBonus(e,team);
+  // "this team" fit: typing synergy + need coverage + weather + covering the lead's checks + new offensive coverage
+  const teamFit=b.typing+Math.min(18,b.cov)+b.weather+leadCov+offCov;
+  const total=Math.min(100,Math.round(teamFit*0.7+exe));
+  return {...b,exe,leadCov,offCov,total};
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense};

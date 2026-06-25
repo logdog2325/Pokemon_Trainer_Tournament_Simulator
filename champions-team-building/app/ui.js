@@ -117,12 +117,12 @@ function renderBuilder(){
   // STEP 2: candidates that fill the chosen role, scored vs the core
   const roleDef=SLOT_ROLES.find(r=>r.key===STATE.slotRole)||SLOT_ROLES[SLOT_ROLES.length-1];
   const teamNames=new Set(STATE.team.map(m=>m.entry.name));
-  const score=()=>E.DEX.filter(e=>!teamNames.has(e.name)&&roleDef.fill(e)&&e.name.toLowerCase().includes(STATE.q.toLowerCase()))
-    .map(e=>({e,s:E.scoreForSlot(e,STATE.team,STATE.slotRole)})).sort((a,b)=>b.s.total-a.s.total);
+  const score=()=>{const q=STATE.q.toLowerCase();return E.DEX.filter(e=>!teamNames.has(e.name)&&e.name.toLowerCase().includes(q)&&(q?true:roleDef.fill(e)))
+    .map(e=>({e,s:E.scoreForSlot(e,STATE.team,STATE.slotRole)})).sort((a,b)=>b.s.total-a.s.total);};
   const cands=score();
   app.innerHTML=weakCard(tally,null)+
     `<div class="card"><div class="row"><b style="flex:1">Filling: ${roleDef.label} · ${cands.length} fit</b><button class="btn" id="chg">↺ Change</button></div></div>
-     <input class="search" id="q" placeholder="Filter…" value="${STATE.q}">
+     <input class="search" id="q" placeholder="Search ANY Pokémon to add it (ignores the role filter)…" value="${STATE.q}">
      <div id="cands">${cands.slice(0,50).map(c=>candRow(c,danger)).join("")||'<div class="card muted">No Pokémon fit this role.</div>'}</div>`;
   $("#chg").onclick=()=>{STATE.slotRole=null;STATE.q="";renderBuilder();window.scrollTo(0,0);};
   const q=$("#q"); q.oninput=()=>{STATE.q=q.value;$("#cands").innerHTML=score().slice(0,50).map(c=>candRow(c,danger)).join("");bindCands();};
@@ -201,11 +201,15 @@ function renderEditor(){
 /* ---------------- STRESS TEST (Phase 6) + LEGALITY (Phase 7) ---------------- */
 function renderStress(){
   titleEl.textContent="Stress test"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
-  const res=E.stressTest(STATE.team); const dups=E.itemClause(STATE.team);
+  const res=E.stressTest(STATE.team); const dups=E.itemClause(STATE.team); const off=E.teamOffense(STATE.team);
   const speciesUnique=new Set(STATE.team.map(m=>m.entry.name)).size===STATE.team.length;
   app.innerHTML=`
     <div class="card"><b>Phase 6 — vs the meta archetypes</b>
       ${res.map(r=>`<div class="row" style="margin:7px 0"><span style="width:26px;font-size:18px">${r.ok?'✅':'⚠️'}</span><div><b>${r.a}</b><div class="muted">${r.ok?'Covered — '+r.why:'Risky — no '+r.why}</div></div></div>`).join("")}</div>
+    <div class="card"><b>Offensive coverage</b>
+      <div class="muted">Attacking types: ${off.atk.join(", ")||"none yet"}</div>
+      <div class="muted" style="margin-top:4px">Hits super-effectively: <b style="color:${off.se.length>=12?'var(--good)':'var(--txt)'}">${off.se.length}/18</b> types</div>
+      ${off.gaps.length?`<div class="wk" style="margin-top:6px">${off.gaps.map(t=>`<span class="x2">${t}</span>`).join("")}</div><div class="muted">↑ resisted by your whole team — coverage holes a wall of these types exploits.</div>`:`<div class="muted good" style="margin-top:4px">No type resists your entire team ✓</div>`}</div>
     <div class="card"><b>Phase 7 — legality</b>
       <div class="row" style="margin:7px 0"><span style="width:26px;font-size:18px">${dups.length?'⚠️':'✅'}</span><div>Item Clause${dups.length?': duplicate items — '+dups.join(", "):' — all items unique'}</div></div>
       <div class="row" style="margin:7px 0"><span style="width:26px;font-size:18px">${speciesUnique?'✅':'⚠️'}</span><div>Species Clause — ${speciesUnique?'all unique':'DUPLICATE species'}</div></div>
