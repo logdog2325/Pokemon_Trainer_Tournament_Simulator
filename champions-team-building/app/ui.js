@@ -109,9 +109,11 @@ function renderBuilder(){
         <div class="seg" style="flex-wrap:wrap;margin-top:10px">${planBtns}</div>
         <div class="muted" style="margin-top:10px">Other roles</div>
         <div class="seg" style="flex-wrap:wrap;margin-top:4px">${others}</div>
-        ${STATE.team.length>=3?`<button class="btn" id="stress" style="width:100%;margin-top:12px">Stress-test the team ▸ (Phase 6)</button>`:""}</div>`;
+        ${STATE.team.length>=1?`<button class="btn" id="spd" style="width:100%;margin-top:8px">⚡ Speed tiers vs the meta</button>`:""}
+        ${STATE.team.length>=3?`<button class="btn" id="stress" style="width:100%;margin-top:8px">Stress-test the team ▸ (Phase 6)</button>`:""}</div>`;
     app.querySelectorAll(".rolepick").forEach(b=>b.onclick=()=>{STATE.slotRole=b.dataset.r;STATE.q="";renderBuilder();window.scrollTo(0,0);});
     const st=$("#stress");if(st)st.onclick=()=>go("stress");
+    const sp=$("#spd");if(sp)sp.onclick=()=>go("speed");
     return;
   }
   // STEP 2: candidates that fill the chosen role, scored vs the core
@@ -217,12 +219,32 @@ function renderStress(){
       <div class="muted">Megas: you may carry several stones but evolve only one per battle.</div></div>`;
   backBtn.onclick=()=>go("builder");
 }
+/* ---------------- SPEED TIERS ---------------- */
+function speedRow(r){
+  return `<div class="row" style="padding:5px 8px;border-radius:8px;margin:1px 0;${r.mine?'background:var(--card2);outline:1px solid var(--accent)':''}">
+    <b style="width:40px;text-align:right;color:${r.mine?'var(--accent)':'var(--txt)'}">${r.spe}</b>
+    <div style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;${r.mine?'font-weight:700':''}">${r.name} ${r.rank?`<span class="muted" style="font-size:10px">#${r.rank}</span>`:''}</div>
+    <div class="tags">${(r.tags||[]).map(t=>`<span class="tag">${t}</span>`).join("")}</div></div>`;
+}
+function renderSpeed(){
+  titleEl.textContent="Speed tiers"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
+  STATE.spd=STATE.spd||{tailwind:false,trickRoom:false};
+  const {rows,weather}=E.speedRows(STATE.team,{tailwind:STATE.spd.tailwind,trickRoom:STATE.spd.trickRoom});
+  const chip=(on,lab,key)=>`<button class="btn ${on?'primary':''}" data-k="${key}">${lab}</button>`;
+  app.innerHTML=`
+    <div class="card"><div class="muted">Your team (highlighted) placed against the meta at its most-common spreads — Level 50${weather?', '+weather+' up':''}. Choice Scarf and weather-speed abilities are auto-applied.${STATE.spd.trickRoom?' <b>Trick Room:</b> top of the list moves FIRST.':''}</div>
+      <div class="seg" style="margin-top:10px">${chip(STATE.spd.tailwind,'My Tailwind ×2',"tailwind")}${chip(STATE.spd.trickRoom,'Trick Room',"trickRoom")}</div></div>
+    <div class="card" style="padding:6px">${rows.map(speedRow).join("")||'<div class="muted">Add a Pokémon first.</div>'}</div>`;
+  app.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{STATE.spd[b.dataset.k]=!STATE.spd[b.dataset.k];renderSpeed();});
+  backBtn.onclick=()=>go("builder");
+}
 function render(){
-  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(STATE.screen==="role")go("start"); else if(STATE.screen==="editor"||STATE.screen==="stress")go("builder"); };
+  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(STATE.screen==="role")go("start"); else if(STATE.screen==="editor"||STATE.screen==="stress"||STATE.screen==="speed")go("builder"); };
   if(STATE.screen==="start")renderStart();
   else if(STATE.screen==="role")renderRole();
   else if(STATE.screen==="builder")renderBuilder();
   else if(STATE.screen==="editor")renderEditor();
   else if(STATE.screen==="stress")renderStress();
+  else if(STATE.screen==="speed")renderSpeed();
 }
 render();

@@ -426,5 +426,46 @@ function scoreForSlot(e,team,slot){
   return {...b,exe,leadCov,offCov,rank:u&&u.rank!=null?u.rank:null,total};
 }
 
+/* ---------- speed tiers (Champions: L50, 0-32 points, no IVs, natures apply) ---------- */
+// verified vs mainline L50: 32 points ≈ 252 EVs, so this reproduces known speeds (Jolly Garchomp 169).
+const SPEED_ABIL={Chlorophyll:"sun","Swift Swim":"rain","Sand Rush":"sand","Slush Rush":"snow"};
+function spdNatureMod(nat){const m=NATURE_MOD[nat];if(!m)return 1;if(m[0]==="spe")return 1.1;if(m[1]==="spe")return 0.9;return 1;}
+function rawSpeed(base,pts,nat){pts=Math.max(0,Math.min(32,pts||0));return Math.floor((Math.floor((2*base+31)/2)+5+pts)*spdNatureMod(nat));}
+function memberSpeed(m,opts){
+  opts=opts||{};
+  const ef=effOf(m), base=ef.baseStats.spe, pts=(m.set&&m.set.points&&m.set.points.spe)||0, nat=(m.set&&m.set.nature)||"Hardy";
+  let spe=rawSpeed(base,pts,nat); const tags=[];
+  if(m.set&&m.set.item==="Choice Scarf"){spe=Math.floor(spe*1.5);tags.push("Scarf");}
+  const ab=ef.abilities&&ef.abilities[0];
+  if(ab&&SPEED_ABIL[ab]&&opts.weather===SPEED_ABIL[ab]){spe=Math.floor(spe*2);tags.push(ab);}
+  if(opts.tailwind){spe=Math.floor(spe*2);tags.push("Tailwind");}
+  if(opts.para){spe=Math.floor(spe*0.5);tags.push("PAR");}
+  return {spe,base,nat,tags};
+}
+// meta benchmarks straight from usage data: top-ranked mons at their most-common spread
+function metaBenchmarks(maxRank){
+  maxRank=maxRank||45; const out=[];
+  for(const name in USAGE){const u=USAGE[name]; if(u.rank==null||u.rank>maxRank)continue; const e=byName[name]; if(!e)continue;
+    let base=e.baseStats.spe, mega=null; const item=(u.items||[])[0]||"";
+    if(e.megaStones&&e.megaStones.includes(item)&&e.mega){const fi=e.megaStones.indexOf(item);if(e.mega[fi]&&e.mega[fi].baseStats){base=e.mega[fi].baseStats.spe;mega=e.mega[fi].label||"Mega";}}
+    const sp=parseSpread((u.spreads||[])[0]); const pts=sp?sp.spe:0; const nat=(u.natures||[]).find(n=>NATURES.includes(n))||"Hardy";
+    let spe=rawSpeed(base,pts,nat); const tags=[];
+    if(item==="Choice Scarf"){spe=Math.floor(spe*1.5);tags.push("Scarf");}
+    out.push({name,spe,base,rank:u.rank,mega,tags});
+  }
+  return out.sort((a,b)=>b.spe-a.spe);
+}
+function speedRows(team,opts){
+  opts=opts||{}; const weather=teamWeather(team);
+  const mine=team.map(m=>{const s=memberSpeed(m,{tailwind:opts.tailwind,para:false,weather});
+    return {name:m.entry.name+(m.formIndex>=0?" (Mega)":""),spe:s.spe,base:s.base,mine:true,tags:s.tags};});
+  const teamNames=new Set(team.map(m=>m.entry.name));
+  const bench=metaBenchmarks(opts.maxRank||45).filter(b=>!teamNames.has(b.name))
+    .map(b=>({name:b.name+(b.mega?" ("+b.mega+")":""),spe:b.spe,base:b.base,mine:false,rank:b.rank,tags:b.tags}));
+  let rows=mine.concat(bench).sort((a,b)=>b.spe-a.spe||(a.mine?-1:1));
+  if(opts.trickRoom)rows=rows.slice().reverse();
+  return {rows,weather};
+}
+
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks};
