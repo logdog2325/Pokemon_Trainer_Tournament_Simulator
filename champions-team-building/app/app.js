@@ -144,7 +144,14 @@ function weatherBonus(e,weather){
   if(weather==="snow"&&(e.moves.includes("Blizzard")||e.moves.includes("Aurora Veil"))) b+=3;
   if(weather==="rain"&&(e.moves.includes("Thunder")||e.moves.includes("Hurricane"))) b+=3;
   if(weather==="sun"&&e.moves.includes("Solar Beam")) b+=2;
-  return Math.min(12,b);
+  // incoming-move mitigation: Sun halves Water, Rain halves Fire -> soften those weaknesses
+  const wk=new Set(weaknessesOf(e).weak.map(x=>x[0]));
+  if(weather==="sun"&&wk.has("Water")) b+=3;
+  if(weather==="rain"&&wk.has("Fire")) b+=3;
+  // offensive flip: Sun halves Water STAB, Rain halves Fire STAB -> penalize that attacker
+  if(weather==="sun"&&e.types.includes("Water")) b-=4;
+  if(weather==="rain"&&e.types.includes("Fire")) b-=4;
+  return Math.max(-6,Math.min(14,b));
 }
 
 /* ---------- the scoring formula ---------- */

@@ -32,7 +32,7 @@ function renderStart(){
   const q=$("#q"); q.oninput=()=>{STATE.q=q.value;const g=app.querySelector(".grid");const l=E.DEX.filter(e=>e.name.toLowerCase().includes(STATE.q.toLowerCase())).sort((a,b)=>a.name.localeCompare(b.name));g.innerHTML=l.slice(0,400).map(e=>`<div class="mon" data-n="${e.name}">${img(e)}<div class="nm">${e.name}</div>${tbadges(e.types)}</div>`).join("");bindMons();};
   bindMons();
 }
-function bindMons(){app.querySelectorAll(".mon").forEach(m=>m.onclick=()=>{STATE.lead=E.byName[m.dataset.n];STATE.role=null;STATE.team=[];go("role");});}
+function bindMons(){app.querySelectorAll(".mon").forEach(m=>m.onclick=()=>{STATE.lead=E.byName[m.dataset.n];STATE.role=null;STATE.team=[];STATE.q="";go("role");});}
 
 /* ---------------- ROLE ---------------- */
 function statBars(s){const order=[["HP","hp"],["Atk","atk"],["Def","def"],["SpA","spa"],["SpD","spd"],["Spe","spe"]];return `<div class="statbars">${order.map(([l,k])=>`<div><span class="lab">${l}</span><span class="bar"><i style="width:${Math.min(100,s[k]/2)}%"></i></span><span style="width:30px;text-align:right">${s[k]}</span></div>`).join("")}</div>`;}
@@ -49,7 +49,7 @@ function renderRole(){
     <h3 style="margin:6px 2px">Possible roles — pick the team's direction</h3>
     ${roles.map((r,i)=>`<div class="card rolecard" data-i="${i}"><h3>${r.label}</h3><div class="muted">${r.note}</div>
       ${r.moves&&r.moves.length?`<div class="muted" style="margin-top:4px">Key moves: ${r.moves.slice(0,5).join(", ")}</div>`:""}</div>`).join("")}`;
-  app.querySelectorAll(".rolecard").forEach(c=>c.onclick=()=>{STATE.role=roles[+c.dataset.i];STATE.team=[{entry:e,ability:E.bestDefAbility(e)}];go("builder");});
+  app.querySelectorAll(".rolecard").forEach(c=>c.onclick=()=>{STATE.role=roles[+c.dataset.i];STATE.team=[{entry:e,ability:E.bestDefAbility(e)}];STATE.q="";go("builder");});
 }
 
 /* ---------------- BUILDER ---------------- */
