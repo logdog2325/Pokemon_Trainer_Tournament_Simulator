@@ -280,13 +280,19 @@ function renderStress(){
   titleEl.textContent="Stress test"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
   const res=E.stressTest(STATE.team); const dups=E.itemClause(STATE.team); const off=E.teamOffense(STATE.team);
   const speciesUnique=new Set(STATE.team.map(m=>m.entry.name)).size===STATE.team.length;
-  const mu=E.threatMatchups(STATE.team), wc=E.winConRealism(STATE.team), ck=E.archetypeChecklist(STATE.team);
+  const wc=E.winConRealism(STATE.team), ck=E.archetypeChecklist(STATE.team);
+  STATE.threatN=STATE.threatN||"key";
+  const list=STATE.threatN==="key"?null:E.metaThreatList(STATE.threatN===50?50:20);
+  const mu=E.threatMatchups(STATE.team,list);
   const TIER={3:["✅","var(--good)"],2:["✅","var(--good)"],1:["🟡","#ffd9a0"],0:["⚠️","var(--bad)"]};
+  const ntog=(v,l)=>`<button class="btn ${STATE.threatN===v?'primary':''}" data-tn="${v}">${l}</button>`;
   app.innerHTML=`
     <div class="card"><b>Archetype skeleton — ${ck.arche}</b> <span class="muted">(${ck.complete}/${ck.total})</span>
       ${ck.items.map(i=>`<div class="row" style="margin:4px 0"><span style="width:22px">${i.ok?'✅':'⬜'}</span><div class="${i.ok?'':'muted'}">${i.label}</div></div>`).join("")}</div>
     <div class="card"><b>Meta matchups — viability</b> <span class="muted">(a check survives its best hit & KOs back)</span>
-      <div class="muted" style="margin-top:4px"><b style="color:var(--good)">${mu.checked} checked</b> · <b style="color:#ffd9a0">${mu.neutral} soft/neutral</b> · <b style="color:${mu.uncovered?'var(--bad)':'var(--good)'}">${mu.uncovered} uncovered</b> of ${mu.total} top threats.${mu.uncovered?' Fix the ⚠️ rows — they run through you.':' No threat runs through your team ✓'}</div>
+      <div class="seg" style="margin-top:6px">${ntog("key","Key threats")}${ntog(20,"Top 20 used")}${ntog(50,"Top 50 used")}</div>
+      <div class="muted" style="margin-top:6px;font-size:11px">${STATE.threatN==="key"?"Curated Reg M-B offensive threat list.":"Top "+STATE.threatN+" most-used Pokémon in Champions Reg M-B (Pikalytics doubles)."}</div>
+      <div class="muted" style="margin-top:4px"><b style="color:var(--good)">${mu.checked} checked</b> · <b style="color:#ffd9a0">${mu.neutral} soft/neutral</b> · <b style="color:${mu.uncovered?'var(--bad)':'var(--good)'}">${mu.uncovered} uncovered</b> of ${mu.total}.${mu.uncovered?' Fix the ⚠️ rows — they run through you.':' No threat runs through your team ✓'}</div>
       <div style="margin-top:6px">${mu.rows.map(r=>{const[ic,cl]=TIER[r.tier];return `<div class="row" style="margin:3px 0"><span style="width:22px">${ic}</span><div style="flex:1">${r.name}</div><div class="muted" style="font-size:11px;color:${cl}">${r.by?r.by+' — '+r.note:'no check'}</div></div>`;}).join("")}</div>
       <div class="muted" style="margin-top:6px;font-size:11px">✅ real check (walls + KOs, or outspeeds + OHKOs) · 🟡 soft (survives or trades, no clean KO) · ⚠️ uncovered. Use 🎯 Optimize → Full spread to EV a check.</div></div>
     <div class="card"><b>Win-condition power</b> <span class="muted">(% of the meta it OHKO/2HKOs)</span>
@@ -302,6 +308,7 @@ function renderStress(){
       <div class="row" style="margin:7px 0"><span style="width:26px;font-size:18px">${dups.length?'⚠️':'✅'}</span><div>Item Clause${dups.length?': duplicate items — '+dups.join(", "):' — all items unique'}</div></div>
       <div class="row" style="margin:7px 0"><span style="width:26px;font-size:18px">${speciesUnique?'✅':'⚠️'}</span><div>Species Clause — ${speciesUnique?'all unique':'DUPLICATE species'}</div></div>
       <div class="muted">Megas: you may carry several stones but evolve only one per battle.</div></div>`;
+  app.querySelectorAll("[data-tn]").forEach(b=>b.onclick=()=>{const v=b.dataset.tn;STATE.threatN=(v==="key"?"key":+v);renderStress();window.scrollTo(0,0);});
   backBtn.onclick=()=>go("builder");
 }
 /* ---------------- SPEED TIERS ---------------- */

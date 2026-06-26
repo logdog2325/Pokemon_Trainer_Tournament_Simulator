@@ -711,10 +711,20 @@ function memberKOon(att,def,field){let mn=0,mx=0;for(const mv of setMovesOf(att)
 // Matchup viability vs each top meta threat. A "check" (VGC sense) = a member that survives the threat's
 // strongest hit AND reliably KOs back (≥2HKO), or that outspeeds it and OHKOs it. Tiers:
 //   3 hard check (walls it + KOs back) · 2 offensive check (faster + OHKOs) · 1 neutral/soft · 0 uncovered.
-function threatMatchups(team){
+// top-N most-used Reg M-B mons straight from Pikalytics usage ranks (cached per N)
+const _threatCache={};
+function metaThreatList(n){
+  n=n||20;
+  if(_threatCache[n]) return _threatCache[n];
+  const ranked=Object.keys(USAGE).filter(name=>USAGE[name].rank!=null&&byName[name])
+    .sort((a,b)=>USAGE[a].rank-USAGE[b].rank).slice(0,n);
+  return _threatCache[n]=ranked.map(name=>benchMember(name)).filter(Boolean);
+}
+// `list` (optional) = explicit threat members, e.g. metaThreatList(20)/(50). Default = curated key threats.
+function threatMatchups(team,list){
   if(!team||!team.length) return {rows:[],checked:0,neutral:0,uncovered:0,uncoveredNames:[],total:0};
   const weather=teamWeather(team);
-  const rows=threatMembers().map(t=>{
+  const rows=(list&&list.length?list:threatMembers()).map(t=>{
     const tSpe=memberSpeed(t,{weather});
     let tier=0,by=null,note="";
     for(const d of team){
@@ -1049,4 +1059,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,speedFit,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,speedFit,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread};
