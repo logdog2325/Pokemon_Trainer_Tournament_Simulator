@@ -116,13 +116,30 @@ function healthCard(team){
   const flags=h.flags.slice(0,5).map(f=>`<span class="wk"><span class="${f.sev>=2?'x4':f.sev>=1?'x2':''}" style="${f.sev<1?'background:#3a2a14;color:#ffd9a0':''}">${f.msg}</span></span>`).join("");
   const ML={tailwind:"Tailwind",trickroom:"Trick Room",priority:"Priority offense",none:"⚠ no speed plan",open:""};
   const arche=team.length>=2&&ML[h.mode]?`<span class="tag good">${ML[h.mode]}</span>`:"";
+  // meta-matchup block: Key / Top 20 / Top 50 toggle + expandable per-threat checked/uncovered list
+  STATE.threatN=STATE.threatN||"key";
+  const list=STATE.threatN==="key"?null:E.metaThreatList(STATE.threatN===50?50:20);
+  const m=E.threatMatchups(team,list), open=STATE.muOpen;
+  const ntog=(v,l)=>`<button class="btn" style="padding:5px 9px;font-size:12px" data-tn="${v}">${STATE.threatN===v?'● ':''}${l}</button>`;
+  const TIER={3:["✅","var(--good)"],2:["✅","var(--good)"],1:["🟡","#ffd9a0"],0:["⚠️","var(--bad)"]};
+  const lab=STATE.threatN==="key"?"key threats":"top "+STATE.threatN+" used";
   let muLine="";
-  if(h.mu&&h.mu.total){const m=h.mu, ucol=m.uncovered?'var(--bad)':m.neutral?'#ffd9a0':'var(--good)';
-    muLine=`<div class="muted" style="margin-top:6px">Meta matchups: <b style="color:var(--good)">${m.checked} checked</b> · <b style="color:#ffd9a0">${m.neutral} soft</b> · <b style="color:${ucol}">${m.uncovered} uncovered</b>${m.uncovered?` — <span style="color:var(--bad)">${m.uncoveredNames.slice(0,3).join(", ")}${m.uncoveredNames.length>3?"…":""}</span>`:""}</div>`;}
+  if(m.total){const ucol=m.uncovered?'var(--bad)':m.neutral?'#ffd9a0':'var(--good)';
+    const rows=open?`<div style="margin-top:6px">${m.rows.map(r=>{const[ic,cl]=TIER[r.tier];return `<div class="row" style="margin:2px 0"><span style="width:20px">${ic}</span><div style="flex:1;font-size:13px">${r.name}</div><div class="muted" style="font-size:10px;color:${cl};text-align:right">${r.by?r.by+' — '+r.note:'no check'}</div></div>`;}).join("")}<div class="muted" style="font-size:10px;margin-top:4px">✅ check (walls+KOs / outspeeds+OHKOs) · 🟡 soft · ⚠️ uncovered</div></div>`:"";
+    muLine=`<div style="margin-top:8px">
+      <div class="row" data-muopen="1" style="cursor:pointer"><div style="flex:1"><b>Meta matchups</b> <span class="muted">vs ${lab}</span></div><div class="muted">${open?'▾ hide':'▸ details'}</div></div>
+      <div class="muted" style="margin-top:2px"><b style="color:var(--good)">${m.checked} checked</b> · <b style="color:#ffd9a0">${m.neutral} soft</b> · <b style="color:${ucol}">${m.uncovered} uncovered</b> of ${m.total}${m.uncovered?` — <span style="color:var(--bad)">${m.uncoveredNames.slice(0,3).join(", ")}${m.uncoveredNames.length>3?"…":""}</span>`:""}</div>
+      <div class="seg" style="margin-top:6px;flex-wrap:wrap">${ntog("key","Key 13")}${ntog(20,"Top 20")}${ntog(50,"Top 50")}</div>
+      ${rows}</div>`;}
   return `<div class="card"><div class="row"><div style="flex:1"><b>Team Health</b> ${arche}<div class="muted">Reg M-B synergy · live as you build</div></div>
     <div class="scorebadge"><b style="font-size:30px;color:${col}">${h.score}</b><small>${h.grade}</small></div></div>
     ${muLine}
-    ${h.flags.length?`<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px">${flags}</div>`:`<div class="muted good" style="margin-top:4px">No red flags ✓</div>`}</div>`;
+    ${h.flags.length?`<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px">${flags}</div>`:`<div class="muted good" style="margin-top:4px">No red flags ✓</div>`}</div>`;
+}
+// wire the meta-matchup toggle + expand control inside any screen that renders healthCard
+function bindHealthCard(){
+  app.querySelectorAll("[data-tn]").forEach(b=>b.onclick=ev=>{ev.stopPropagation();const v=b.dataset.tn;STATE.threatN=(v==="key"?"key":+v);renderBuilder();window.scrollTo(0,0);});
+  const mo=app.querySelector("[data-muopen]");if(mo)mo.onclick=()=>{STATE.muOpen=!STATE.muOpen;renderBuilder();window.scrollTo(0,0);};
 }
 function weakCard(tally,needs){
   return `<div class="card"><b>Team weaknesses</b>
@@ -139,7 +156,7 @@ function renderBuilder(){
   if(STATE.team.length>=6){
     app.innerHTML=healthCard(STATE.team)+weakCard(tally,needs)+`<div class="card"><b>Team complete.</b>
       <div class="seg" style="margin-top:10px;flex-wrap:wrap"><button class="btn primary" id="exp2">Export / Share</button><button class="btn" id="spd6">⚡ Speed</button><button class="btn" id="calc6">🧮 Calc</button><button class="btn" id="opt6">🎯 Optimize</button><button class="btn" id="stress6">Stress test</button></div></div>`;
-    $("#exp2").onclick=showExport; $("#spd6").onclick=()=>go("speed"); $("#calc6").onclick=()=>go("calc"); $("#opt6").onclick=()=>go("optimize"); $("#stress6").onclick=()=>go("stress"); return;
+    $("#exp2").onclick=showExport; $("#spd6").onclick=()=>go("speed"); $("#calc6").onclick=()=>go("calc"); $("#opt6").onclick=()=>go("optimize"); $("#stress6").onclick=()=>go("stress"); bindHealthCard(); return;
   }
   // STEP 1: choose what this slot does — driven by the role's needs plan (Phase 3) + threat map (Phase 4)
   if(!STATE.slotRole){
@@ -165,6 +182,7 @@ function renderBuilder(){
     const sp=$("#spd");if(sp)sp.onclick=()=>go("speed");
     const cl=$("#calc");if(cl)cl.onclick=()=>go("calc");
     const op=$("#opt");if(op)op.onclick=()=>go("optimize");
+    bindHealthCard();
     return;
   }
   // STEP 2: candidates that fill the chosen role, scored vs the core
