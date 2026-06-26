@@ -52,3 +52,12 @@ archetype-aware (`teamSpeedMode`) and weights shared-weakness penalties by `SPRE
 
 Sources: VGC Guide, MetaVGC, StrataDex, Pokeventurer, Smogon VGC, Victory Road, Trainer Tower,
 Nimbasa City Post, Pikalytics, Limitless VGC, RK9.
+
+## Archetype taxonomy (validated against ~70 real top-cut teams, 2015–2025)
+From a comprehensive top-cut survey (Worlds/EUIC/NAIC, RK9 + cut-explorer + official pages).
+Detected archetypes: **Tailwind**, **Trick Room (hard vs semi)**, **Sun / Rain / Sand / Snow (Aurora Veil)**,
+**Dual-screens hyper-offense** (Light Screen+Reflect / Aurora Veil + Light Clay + fast frail),
+**Belly Drum offense**, **Priority hyper-offense**, **Redirection-setup**, **Balance / goodstuff**.
+- Terrain offense is NOT reproducible in Champions (no Grassy/Psychic/Misty Surge setters; only niche Electric via Raichu-Mega-X) → omitted.
+- Restricted-pair archetypes (CHALK, Big 6, Double Primal, Calyrex/Koraidon/Miraidon cores) are out of scope (box legendaries banned in Champions).
+- Correction: Wolfe Glick's **2016 Worlds-winning team** = Mega Rayquaza / Primal Kyogre / Mega Gengar / Hitmontop / Raichu / Bronzong (verified vs pokemon.com, Nimbasa City Post, Limitless).

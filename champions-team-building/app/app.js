@@ -618,16 +618,23 @@ function archetypeChecklist(team){
   const slow=team.filter(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe<=55).length;
   const prio=team.filter(m=>setMovesOf(m).some(x=>PRIORITY.includes(x))).length;
   const items=[], add=(label,ok)=>items.push({label,ok});
+  const screens=(tm.includes("Light Screen")&&tm.includes("Reflect"))||tm.includes("Aurora Veil");
+  const lightClay=team.some(m=>m.set&&m.set.item==="Light Clay");
+  const bellyDrum=team.some(m=>setMovesOf(m).includes("Belly Drum"));
+  const weatherAbuser=weather&&team.some(m=>{const e=m.entry;return (e.abilities||[]).some(a=>WEATHER_BENEFIT_ABIL[weather]&&WEATHER_BENEFIT_ABIL[weather].includes(a))||(weather==="sun"&&e.types.includes("Fire"))||(weather==="rain"&&e.types.includes("Water"));});
   let arche="Balance";
   add("2+ win conditions",wins>=2);
   add("Fake Out (≈90% of top teams)",!needs.fakeout);
-  if(mode==="tailwind"){arche="Tailwind offense"; add("Tailwind setter",tm.includes("Tailwind")); add("2+ fast attackers",fast>=2); add("a priority move",!needs.priority);}
-  else if(mode==="trickroom"){arche="Trick Room"; add("Trick Room setter",tm.includes("Trick Room")); add("2+ slow attackers (Spe ≤55)",slow>=2); add("redirection or Fake Out to set up safely",!needs.redir||!needs.fakeout); add("a non-TR priority/Scarf fallback",prio>=1);}
-  else if(mode==="priority"){arche="Priority hyper-offense"; add("2+ priority users",prio>=2); add("2+ fast attackers",fast>=2);}
-  else if(weather){const ab=weather.charAt(0).toUpperCase()+weather.slice(1); arche=ab+" offense";
-    add(ab+" setter",true);
-    add(ab+" abuser",team.some(m=>{const e=m.entry;return (e.abilities||[]).some(a=>WEATHER_BENEFIT_ABIL[weather]&&WEATHER_BENEFIT_ABIL[weather].includes(a))||(weather==="sun"&&e.types.includes("Fire"))||(weather==="rain"&&e.types.includes("Water"));}));
-    if(weather==="snow")add("Aurora Veil",tm.includes("Aurora Veil"));}
+  const snowVeil=tm.includes("Aurora Veil")&&team.some(m=>(m.entry.abilities||[]).includes("Snow Warning"));
+  if(weather&&weatherAbuser){const ab=weather.charAt(0).toUpperCase()+weather.slice(1); arche=ab+" offense";
+    add(ab+" setter",true); add(ab+" abuser",weatherAbuser); if(weather==="snow")add("Aurora Veil",tm.includes("Aurora Veil"));}
+  else if(snowVeil){arche="Snow / Aurora Veil offense"; add("Snow Warning setter",true); add("Aurora Veil",true); add("Light Clay",lightClay); add("2+ fast attackers",fast>=2);}
+  else if(bellyDrum){arche="Belly Drum offense"; add("Belly Drum sweeper",true); add("priority to cash in the boost",prio>=1); add("redirection / Fake Out / screens to land it",!needs.redir||!needs.fakeout||screens);}
+  else if(screens&&fast>=2&&mode!=="trickroom"){arche="Dual-screens hyper-offense";
+    add("dual screens (Light Screen + Reflect / Aurora Veil)",screens); add("Light Clay to extend screens",lightClay); add("2+ fast attackers",fast>=2); add("priority to close games",!needs.priority);}
+  else if(mode==="trickroom"){arche=(slow>=3&&fast===0)?"Trick Room (hard)":"Trick Room (semi)"; add("Trick Room setter",tm.includes("Trick Room")); add("2+ slow attackers (Spe ≤55)",slow>=2); add("redirection or Fake Out to set up safely",!needs.redir||!needs.fakeout); add("a non-TR priority/Scarf fallback",prio>=1);}
+  else if(mode==="tailwind"){arche="Tailwind offense"; add("Tailwind setter",tm.includes("Tailwind")); add("2+ fast attackers",fast>=2); add("a priority move",!needs.priority);}
+  else if(mode==="priority"){arche=bellyDrum?"Belly Drum / priority offense":"Priority hyper-offense"; add("2+ priority users",prio>=2); add("2+ fast attackers",fast>=2); if(bellyDrum)add("redirection/Fake Out to land Belly Drum",!needs.redir||!needs.fakeout);}
   else {arche="Balance / no speed mode"; add("a speed-control mode (Tailwind / Trick Room)",mode!=="none"); add("a priority move",!needs.priority);}
   add("redirection if a setup sweeper is present", !(team.some(m=>has(m.entry,SETUP).length&&offense(m.entry)>=95)) || !needs.redir);
   add("Intimidate glue (optional)",!needs.intimidate);
