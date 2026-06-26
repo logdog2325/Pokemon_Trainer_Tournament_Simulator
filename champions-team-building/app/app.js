@@ -706,8 +706,17 @@ function winConRealism(team){
   }).sort((a,b)=>b.frac-a.frac);
   return {wins:out,best:out[0]?out[0].frac:0};
 }
-// best guaranteed/possible KO our member lands on a defender (min roll = guaranteed, max roll = possible)
-function memberKOon(att,def,field){let mn=0,mx=0;for(const mv of setMovesOf(att)){const r=calcDamage(att,mv,def,field||{});if(r&&!r.immune){if(r.minPct>mn)mn=r.minPct;if(r.maxPct>mx)mx=r.maxPct;}}return {mn,mx};}
+// best KO our member lands on a defender: the move with the highest guaranteed (min-roll) damage.
+function memberKOon(att,def,field){
+  let best={mn:0,mx:0,move:null};
+  for(const mv of setMovesOf(att)){const r=calcDamage(att,mv,def,field||{});
+    if(r&&!r.immune&&r.minPct>best.mn) best={mn:r.minPct,mx:r.maxPct,move:mv};}
+  if(!best.move){for(const mv of setMovesOf(att)){const r=calcDamage(att,mv,def,field||{});  // fallback: hardest max-roll move
+    if(r&&!r.immune&&r.maxPct>best.mx) best={mn:r.minPct,mx:r.maxPct,move:mv};}}
+  return best;
+}
+// the attacker's single hardest hit on a defender: {pct (max roll), move}
+function worstHit(att,def,field){let best={pct:0,move:null};for(const mv of setMovesOf(att)){const r=calcDamage(att,mv,def,field||{});if(r&&!r.immune&&r.maxPct>best.pct)best={pct:r.maxPct,move:mv};}return best;}
 // Matchup viability vs each top meta threat. A "check" (VGC sense) = a member that survives the threat's
 // strongest hit AND reliably KOs back (≥2HKO), or that outspeeds it and OHKOs it. Tiers:
 //   3 hard check (walls it + KOs back) · 2 offensive check (faster + OHKOs) · 1 neutral/soft · 0 uncovered.
@@ -726,21 +735,27 @@ function threatMatchups(team,list){
   const weather=teamWeather(team);
   const rows=(list&&list.length?list:threatMembers()).map(t=>{
     const tSpe=memberSpeed(t,{weather});
-    let tier=0,by=null,note="";
+    let tier=0,by=null,note="",det=null;
+    let lowInc=999,lowBy=null,lowMove=null;                // best (least-OHKO'd) wall, for the uncovered case
     for(const d of team){
-      const inc=bestHitPct(t,d,{weather});               // threat's max% on us (worst case)
-      const ko=memberKOon(d,t,{weather,spread:false});   // our KO on the threat
+      const take=worstHit(t,d,{weather});                  // threat's hardest hit on us {pct,move}
+      const inc=take.pct;
+      const ko=memberKOon(d,t,{weather,spread:false});     // our best KO on the threat {mn,mx,move}
       const survives=inc<100, faster=memberSpeed(d,{weather})>tSpe;
-      const ohko=ko.mn>=100, twohko=ko.mn>=50;           // guaranteed (min-roll) KOs
+      const ohko=ko.mn>=100, twohko=ko.mn>=50;             // guaranteed (min-roll) KOs
+      if(inc<lowInc){lowInc=inc;lowBy=d.entry.name;lowMove=take.move;}
       let tr=0,nt="";
-      if(survives&&twohko){tr=3;nt=(by=d.entry.name)&&((ohko?"walls + OHKOs":"walls + 2HKOs"));}
+      if(survives&&twohko){tr=3;nt=ohko?"walls + OHKOs":"walls + 2HKOs";}
       else if(faster&&ohko){tr=2;nt="outspeeds + OHKOs";}
       else if(survives&&ko.mx>=50){tr=1;nt="survives, soft (rolls a 2HKO)";}
       else if(survives){tr=1;nt="walls but can't KO it";}
       else if(twohko){tr=1;nt="revenge-KOs but is OHKO'd (frail trade)";}
-      if(tr>tier){tier=tr;by=d.entry.name;note=nt;}
+      if(tr>tier){tier=tr;by=d.entry.name;note=nt;det={byMove:ko.move,deal:Math.round(ko.mn),dealMax:Math.round(ko.mx),take:Math.round(inc),takeMove:take.move};}
     }
-    return {name:t.entry.name+(t.formIndex>=0?" (Mega)":""),tier,by,note};
+    const base={name:t.entry.name+(t.formIndex>=0?" (Mega)":""),tier,by,note};
+    if(det) Object.assign(base,det);
+    else base.bestWall=lowBy, base.take=lowInc<999?Math.round(lowInc):null, base.takeMove=lowMove;  // uncovered: who tanks it best
+    return base;
   });
   const uncovered=rows.filter(r=>r.tier===0);
   return {rows,checked:rows.filter(r=>r.tier>=2).length,neutral:rows.filter(r=>r.tier===1).length,

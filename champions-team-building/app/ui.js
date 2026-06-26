@@ -125,7 +125,7 @@ function healthCard(team){
   const lab=STATE.threatN==="key"?"key threats":"top "+STATE.threatN+" used";
   let muLine="";
   if(m.total){const ucol=m.uncovered?'var(--bad)':m.neutral?'#ffd9a0':'var(--good)';
-    const rows=open?`<div style="margin-top:6px">${m.rows.map(r=>{const[ic,cl]=TIER[r.tier];return `<div class="row" style="margin:2px 0"><span style="width:20px">${ic}</span><div style="flex:1;font-size:13px">${r.name}</div><div class="muted" style="font-size:10px;color:${cl};text-align:right">${r.by?r.by+' — '+r.note:'no check'}</div></div>`;}).join("")}<div class="muted" style="font-size:10px;margin-top:4px">✅ check (walls+KOs / outspeeds+OHKOs) · 🟡 soft · ⚠️ uncovered</div></div>`:"";
+    const rows=open?`<div style="margin-top:6px">${m.rows.map(matchupRow).join("")}<div class="muted" style="font-size:10px;margin-top:4px">✅ check (walls+KOs / outspeeds+OHKOs) · 🟡 soft · ⚠️ uncovered. % = guaranteed (min-roll) damage.</div></div>`:"";
     muLine=`<div style="margin-top:8px">
       <div class="row" data-muopen="1" style="cursor:pointer"><div style="flex:1"><b>Meta matchups</b> <span class="muted">vs ${lab}</span></div><div class="muted">${open?'▾ hide':'▸ details'}</div></div>
       <div class="muted" style="margin-top:2px"><b style="color:var(--good)">${m.checked} checked</b> · <b style="color:#ffd9a0">${m.neutral} soft</b> · <b style="color:${ucol}">${m.uncovered} uncovered</b> of ${m.total}${m.uncovered?` — <span style="color:var(--bad)">${m.uncoveredNames.slice(0,3).join(", ")}${m.uncoveredNames.length>3?"…":""}</span>`:""}</div>
@@ -135,6 +135,22 @@ function healthCard(team){
     <div class="scorebadge"><b style="font-size:30px;color:${col}">${h.score}</b><small>${h.grade}</small></div></div>
     ${muLine}
     ${h.flags.length?`<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px">${flags}</div>`:`<div class="muted good" style="margin-top:4px">No red flags ✓</div>`}</div>`;
+}
+// one threat row with the move used + damage numbers (deals back X% / takes Y%)
+const TIER_ICON={3:["✅","var(--good)"],2:["✅","var(--good)"],1:["🟡","#ffd9a0"],0:["⚠️","var(--bad)"]};
+function matchupRow(r){
+  const [ic,cl]=TIER_ICON[r.tier];
+  let dmg;
+  if(r.by){
+    const range=(r.deal!=null&&r.dealMax!=null&&r.dealMax!==r.deal)?r.deal+"–"+r.dealMax+"%":(r.deal!=null?r.deal+"%":"");
+    const back=r.byMove?`${r.byMove} ${range}`:range;
+    dmg=`${r.note}${back?' · hits back '+back:''}${r.take!=null?' · takes '+r.take+'%'+(r.takeMove?' '+r.takeMove:''):''}`;
+  } else {
+    dmg=`no check — ${r.bestWall?r.bestWall+' tanks it best, still takes '+r.take+'%'+(r.takeMove?' '+r.takeMove:''):"OHKO'd by everything"}`;
+  }
+  return `<div style="margin:5px 0">
+    <div class="row"><span style="width:22px">${ic}</span><div style="flex:1;font-size:13px">${r.name}</div><div style="font-size:11px;color:${cl}">${r.by||'—'}</div></div>
+    <div class="muted" style="font-size:10px;margin-left:22px;color:${cl}">${dmg}</div></div>`;
 }
 // wire the meta-matchup toggle + expand control inside any screen that renders healthCard
 function bindHealthCard(){
@@ -311,8 +327,8 @@ function renderStress(){
       <div class="seg" style="margin-top:6px">${ntog("key","Key threats")}${ntog(20,"Top 20 used")}${ntog(50,"Top 50 used")}</div>
       <div class="muted" style="margin-top:6px;font-size:11px">${STATE.threatN==="key"?"Curated Reg M-B offensive threat list.":"Top "+STATE.threatN+" most-used Pokémon in Champions Reg M-B (Pikalytics doubles)."}</div>
       <div class="muted" style="margin-top:4px"><b style="color:var(--good)">${mu.checked} checked</b> · <b style="color:#ffd9a0">${mu.neutral} soft/neutral</b> · <b style="color:${mu.uncovered?'var(--bad)':'var(--good)'}">${mu.uncovered} uncovered</b> of ${mu.total}.${mu.uncovered?' Fix the ⚠️ rows — they run through you.':' No threat runs through your team ✓'}</div>
-      <div style="margin-top:6px">${mu.rows.map(r=>{const[ic,cl]=TIER[r.tier];return `<div class="row" style="margin:3px 0"><span style="width:22px">${ic}</span><div style="flex:1">${r.name}</div><div class="muted" style="font-size:11px;color:${cl}">${r.by?r.by+' — '+r.note:'no check'}</div></div>`;}).join("")}</div>
-      <div class="muted" style="margin-top:6px;font-size:11px">✅ real check (walls + KOs, or outspeeds + OHKOs) · 🟡 soft (survives or trades, no clean KO) · ⚠️ uncovered. Use 🎯 Optimize → Full spread to EV a check.</div></div>
+      <div style="margin-top:6px">${mu.rows.map(matchupRow).join("")}</div>
+      <div class="muted" style="margin-top:6px;font-size:11px">✅ real check (walls + KOs, or outspeeds + OHKOs) · 🟡 soft (survives or trades, no clean KO) · ⚠️ uncovered. % = guaranteed (min-roll) damage. Use 🎯 Optimize → Full spread to EV a check.</div></div>
     <div class="card"><b>Win-condition power</b> <span class="muted">(% of the meta it OHKO/2HKOs)</span>
       ${wc.wins.length?wc.wins.slice(0,4).map(w=>`<div class="row" style="margin:5px 0"><b style="width:46px;color:${w.frac>=70?'var(--good)':w.frac>=45?'#ffd9a0':'var(--bad)'}">${w.frac}%</b><div>${w.name}</div></div>`).join(""):`<div class="muted">Add an attacker.</div>`}
       <div class="muted" style="margin-top:4px">Computed in your team's state (weather applied). A real win-con clears ≥60% of the meta.</div></div>
