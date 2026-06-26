@@ -608,14 +608,18 @@ function teamHealth(team){
   const tally=teamWeakTally(team), needs=teamNeeds(team), off=teamOffense(team), n=team.length;
   const mode=teamSpeedMode(team), tm=team.flatMap(m=>setMovesOf(m));
   let score=100; const flags=[];
-  // defensive: shared weaknesses, weighted by how scary that type is as a Reg M-B spread move
+  // defensive: shared weaknesses weighted by how scary that type is as a Reg M-B spread move.
+  // This is a SOFT proxy — the damage-aware matchup check below is the real signal — so it's capped,
+  // and a weakness the team has a resist/immunity to is downgraded to info (you can pivot into it).
+  let defPen=0;
   for(const [t,v] of Object.entries(tally)){
     const answer=teamResists(team,t), threat=0.6+(SPREAD_THREAT[t]||0)*0.6;   // Ground/Rock/Fire/Fairy hurt more
-    const k=(answer?0.5:1)*threat, sfx=answer?" (have a resist)":"";
-    if(v.count>=3){score-=12*k;flags.push({sev:answer?1:2,msg:`${v.count} members weak to ${t}${sfx}`});}
-    else if(v.count>=2){score-=5*k;flags.push({sev:answer?0:1,msg:`${v.count} members weak to ${t}${sfx}`});}
-    if(v.max>=4){score-=4*k;flags.push({sev:answer?1:2,msg:`4× ${t} weakness${sfx}`});}
+    const k=(answer?0.3:1)*threat, sfx=answer?` — but ${t} is resisted on the team`:"";
+    if(v.count>=3){defPen+=7*k;flags.push({sev:answer?0:2,msg:`${v.count} members weak to ${t}${sfx}`});}
+    else if(v.count>=2){defPen+=3*k;flags.push({sev:answer?0:1,msg:`${v.count} members weak to ${t}${sfx}`});}
+    if(v.max>=4&&!answer){defPen+=3*threat;flags.push({sev:2,msg:`4× ${t} weakness, no resist`});}     // 4× only stings with no answer
   }
+  score-=Math.min(20,defPen);   // cap the abstract type penalty; matchup viability carries the real weight
   if(n>=3&&off.gaps.length){score-=Math.min(15,off.gaps.length*4);flags.push({sev:2,msg:`No super-effective hit on ${off.gaps.join(", ")}`});}
   if(n>=3&&off.se.length<10) score-=(10-off.se.length)*1.5;
   // role backbone — calibrated to Champions top-cut frequencies (Intimidate is OPTIONAL, never required)
