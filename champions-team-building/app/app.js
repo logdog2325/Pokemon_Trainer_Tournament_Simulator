@@ -122,8 +122,11 @@ function archetypeRoles(e){
   const specAnti=!phys && ab0.includes("Competitive");
   const antiNote=specAnti?"Competitive turns opposing Intimidate into a free Special Attack boost.":physBoost?`${physBoost} turns opposing Intimidate into a free Attack boost.`:`${ab0.find(a=>INTIM_IMMUNE.includes(a))} ignores Intimidate — its attack never drops.`;
   if(setup.length && off>=95) roles.push({key:"sweeper",label:"Setup sweeper",note:`Boosts with ${bestSetup(e,phys)||setup[0]}, then sweeps.`});
-  if(off>=105){const t=speedTierOf(sp);roles.push({key:"breaker",label:"Wallbreaker",note:`Hits hard immediately — ${t==="slow"?"best under Trick Room":t==="fast"?"Tailwind / offense friendly":"works under Tailwind or Trick Room"}.`});}
-  if(off>=100 && sp<=70) roles.push({key:"tr",label:"Trick Room wallbreaker",note:`Slow + huge offense — scary under Trick Room.`});
+  if(off>=105){const t=speedTierOf(sp);
+    // a heavy hitter that isn't fast leans Trick Room even in the "mid" band — Tailwind only doubles it so far
+    const note=t==="slow"?"best under Trick Room":t==="fast"?"Tailwind / offense friendly":(off>=110&&sp<=78?"a strong Trick Room wallbreaker, also workable under Tailwind":"works under Tailwind or Trick Room");
+    roles.push({key:"breaker",label:"Wallbreaker",note:`Hits hard immediately — ${note}.`});}
+  if(off>=100 && sp<=80) roles.push({key:"tr",label:"Trick Room wallbreaker",note:`Slow + huge offense — scary under Trick Room.`});
   if((physAnti||specAnti) && off>=95) roles.push({key:"antiintim",label:"Anti-Intimidate attacker",note:antiNote});
   if(sc.length){const rec=recommendSpeedCtrl(e);
     roles.push({key:"speed",label:"Speed control",note:rec?`Provides ${sc.join(" / ")} — run ${rec.mode==="either"?"Tailwind or Trick Room":rec.move} (${rec.why}).`:`Provides ${sc.join(" / ")}.`});}
