@@ -134,8 +134,8 @@ function renderBuilder(){
   const needs=E.teamNeeds(STATE.team);
   if(STATE.team.length>=6){
     app.innerHTML=healthCard(STATE.team)+weakCard(tally,needs)+`<div class="card"><b>Team complete.</b>
-      <div class="seg" style="margin-top:10px"><button class="btn primary" id="exp2">Export / Share</button><button class="btn" id="spd6">⚡ Speed</button><button class="btn" id="calc6">🧮 Calc</button><button class="btn" id="stress6">Stress test</button></div></div>`;
-    $("#exp2").onclick=showExport; $("#spd6").onclick=()=>go("speed"); $("#calc6").onclick=()=>go("calc"); $("#stress6").onclick=()=>go("stress"); return;
+      <div class="seg" style="margin-top:10px;flex-wrap:wrap"><button class="btn primary" id="exp2">Export / Share</button><button class="btn" id="spd6">⚡ Speed</button><button class="btn" id="calc6">🧮 Calc</button><button class="btn" id="opt6">🎯 Optimize</button><button class="btn" id="stress6">Stress test</button></div></div>`;
+    $("#exp2").onclick=showExport; $("#spd6").onclick=()=>go("speed"); $("#calc6").onclick=()=>go("calc"); $("#opt6").onclick=()=>go("optimize"); $("#stress6").onclick=()=>go("stress"); return;
   }
   // STEP 1: choose what this slot does — driven by the role's needs plan (Phase 3) + threat map (Phase 4)
   if(!STATE.slotRole){
@@ -154,11 +154,13 @@ function renderBuilder(){
         <div class="seg" style="flex-wrap:wrap;margin-top:4px">${others}</div>
         ${STATE.team.length>=1?`<button class="btn" id="spd" style="width:100%;margin-top:8px">⚡ Speed tiers vs the meta</button>`:""}
         ${STATE.team.length>=1?`<button class="btn" id="calc" style="width:100%;margin-top:8px">🧮 Damage calc</button>`:""}
+        ${STATE.team.length>=1?`<button class="btn" id="opt" style="width:100%;margin-top:8px">🎯 Point optimizer (outspeed / survive)</button>`:""}
         ${STATE.team.length>=3?`<button class="btn" id="stress" style="width:100%;margin-top:8px">Stress-test the team ▸ (Phase 6)</button>`:""}</div>`;
     app.querySelectorAll(".rolepick").forEach(b=>b.onclick=()=>{STATE.slotRole=b.dataset.r;STATE.q="";renderBuilder();window.scrollTo(0,0);});
     const st=$("#stress");if(st)st.onclick=()=>go("stress");
     const sp=$("#spd");if(sp)sp.onclick=()=>go("speed");
     const cl=$("#calc");if(cl)cl.onclick=()=>go("calc");
+    const op=$("#opt");if(op)op.onclick=()=>go("optimize");
     return;
   }
   // STEP 2: candidates that fill the chosen role, scored vs the core
@@ -371,6 +373,51 @@ function loadSample(s){
   STATE.team=s.mons.map(([n,f])=>{const e=E.byName[n];if(!e)return null;const set=E.recommendSet(e,f>=0?"mega"+f:"meta");while(set.moves.length<4)set.moves.push("");return {entry:e,formIndex:(set.formIndex!=null?set.formIndex:f),roleKey:"meta",set};}).filter(Boolean);
   STATE.lead=STATE.team[0]&&STATE.team[0].entry; STATE.role=null; STATE.slotRole=null; STATE.q=""; go("builder");
 }
+/* ---------------- OPTIMIZER (outspeed / survive) ---------------- */
+function renderOptimize(){
+  titleEl.textContent="Point optimizer"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
+  if(!STATE.team.length){app.innerHTML=`<div class="card muted">Add a Pokémon first.</div>`;backBtn.onclick=()=>go("builder");return;}
+  const O=STATE.opt=STATE.opt||{mode:"outspeed",mi:0,bench:null,move:null,tailwind:false,scarf:false,weather:""};
+  if(O.mi>=STATE.team.length)O.mi=0;
+  const me=STATE.team[O.mi];
+  const benches=E.metaBenchmarks(40).map(b=>({label:b.name+" ("+b.spe+" Spe)",name:b.name,spe:b.spe})).filter(b=>E.byName[b.name]);
+  if(!benches.find(b=>b.name===O.bench))O.bench=benches[0]&&benches[0].name;
+  const opt=(v,sel,l)=>`<option value="${v}" ${v===sel?'selected':''}>${l||v}</option>`;
+  const tog=(on,l,k)=>`<button class="btn ${on?'primary':''}" data-tog="${k}">${l}</button>`;
+  const tgt=benches.find(b=>b.name===O.bench)||benches[0];
+  let res="";
+  if(O.mode==="outspeed"&&tgt){
+    const r=E.optimizeOutspeed(me,tgt.spe,{tailwind:O.tailwind,scarf:O.scarf});
+    res=r.possible
+      ? `<div style="font-size:22px;font-weight:800;color:var(--good)">${r.points} Spe ${r.plusNature?'+ a +Spe nature':'(any nature)'}</div><div class="muted">reaches ${r.achieved} Spe — outspeeds ${tgt.name} (${tgt.spe})${O.tailwind?' under Tailwind':''}${O.scarf?' + Scarf':''}.</div>`
+      : `<div style="font-size:18px;font-weight:700;color:var(--bad)">Can't outspeed ${tgt.name}</div><div class="muted">maxes at ${r.achieved} Spe vs their ${tgt.spe}. Use Tailwind, a Scarf, or priority.</div>`;
+  } else if(O.mode==="survive"&&tgt){
+    const att=E.benchMember(tgt.name);
+    const moves=att?E.DEX&&(att.set.moves||[]).filter(m=>{const i=E.moveInfo(m);return m&&(i.c==="Phys"||i.c==="Spec")&&i.bp;}):[];
+    if(!moves.includes(O.move))O.move=moves[0]||null;
+    if(att&&O.move){
+      const r=E.optimizeSurvive(me,att,O.move,{weather:O.weather});
+      const SK={def:"Def",spd:"SpD"};
+      res=(`<div class="field"><label>${tgt.name}'s move</label><select id="omv">${moves.map(m=>opt(m,O.move,m)).join("")}</select></div>`)+(
+        r.immune?`<div style="color:var(--good);font-weight:700">Immune — takes 0.</div>`:
+        r.possible?`<div style="font-size:22px;font-weight:800;color:var(--good)">${r.total===0?'0 investment':r.hp+' HP / '+r.def+' '+SK[r.defStat]}</div><div class="muted">survives ${tgt.name}'s ${O.move} (worst roll ${r.maxPct}% of HP)${O.weather?' in '+O.weather:''}.</div>`:
+        `<div style="font-size:18px;font-weight:700;color:var(--bad)">Can't survive</div><div class="muted">${tgt.name}'s ${O.move} still does ${r.maxPct}% at max bulk. It's an OHKO.</div>`);
+    }
+  }
+  app.innerHTML=`
+    <div class="card"><div class="seg">${tog(O.mode==="outspeed",'Outspeed',"_outspeed")}${tog(O.mode==="survive",'Survive',"_survive")}</div>
+      <div class="field"><label>Your Pokémon</label><select id="ome">${STATE.team.map((m,i)=>opt(i,O.mi,m.entry.name+(m.formIndex>=0?" (Mega)":""))).join("")}</select></div>
+      <div class="field"><label>${O.mode==="outspeed"?"Outspeed target":"Incoming attacker"}</label><select id="obench">${benches.map(b=>opt(b.name,O.bench,b.label)).join("")}</select></div>
+      ${O.mode==="outspeed"?`<div class="seg">${tog(O.tailwind,'Tailwind',"tailwind")}${tog(O.scarf,'Choice Scarf',"scarf")}</div>`:
+        `<div class="field"><label>Weather</label><select id="owx">${[["","none"],["sun","Sun"],["rain","Rain"],["sand","Sand"],["snow","Snow"]].map(([v,l])=>opt(v,O.weather,l)).join("")}</select></div>`}</div>
+    <div class="card">${res||'<div class="muted">…</div>'}</div>`;
+  $("#ome").onchange=()=>{O.mi=+$("#ome").value;O.move=null;renderOptimize();};
+  $("#obench").onchange=()=>{O.bench=$("#obench").value;O.move=null;renderOptimize();};
+  const wx=$("#owx");if(wx)wx.onchange=()=>{O.weather=wx.value;renderOptimize();};
+  const omv=$("#omv");if(omv)omv.onchange=()=>{O.move=omv.value;renderOptimize();};
+  app.querySelectorAll("[data-tog]").forEach(b=>b.onclick=()=>{const k=b.dataset.tog;if(k==="_outspeed")O.mode="outspeed";else if(k==="_survive")O.mode="survive";else O[k]=!O[k];renderOptimize();});
+  backBtn.onclick=()=>go("builder");
+}
 /* ---------------- IMPORT ---------------- */
 function renderImport(){
   titleEl.textContent="Import team"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
@@ -395,8 +442,9 @@ function renderImport(){
   backBtn.onclick=()=>go("start");
 }
 function render(){
-  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(STATE.screen==="role"||STATE.screen==="import")go("start"); else if(STATE.screen==="editor"||STATE.screen==="stress"||STATE.screen==="speed"||STATE.screen==="calc")go("builder"); };
+  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(STATE.screen==="role"||STATE.screen==="import")go("start"); else if(["editor","stress","speed","calc","optimize"].includes(STATE.screen))go("builder"); };
   if(STATE.screen==="import")renderImport();
+  else if(STATE.screen==="optimize")renderOptimize();
   else if(STATE.screen==="calc")renderCalc();
   else if(STATE.screen==="start")renderStart();
   else if(STATE.screen==="role")renderRole();

@@ -663,6 +663,40 @@ function winConRealism(team){
   return {wins:out,best:out[0]?out[0].frac:0};
 }
 
+/* ---------- point optimizer (outspeed / survive) ---------- */
+// min Speed points (+ whether a +Spe nature is needed) for `m` to outspeed targetSpe
+function optimizeOutspeed(m,targetSpe,opt){
+  opt=opt||{}; const base=effOf(m).baseStats.spe;
+  for(const nat of [null,"Timid"]){           // try neutral, then +Spe
+    for(let p=0;p<=32;p++){
+      let s=rawSpeed(base,p,nat||"Hardy");
+      if(opt.tailwind)s*=2; if(opt.scarf)s=Math.floor(s*1.5);
+      if(s>targetSpe) return {possible:true,points:p,plusNature:!!nat,achieved:s};
+    }
+  }
+  let mx=rawSpeed(base,32,"Timid"); if(opt.tailwind)mx*=2; if(opt.scarf)mx=Math.floor(mx*1.5);
+  return {possible:false,achieved:mx};
+}
+// min HP+defense points for `def` to survive `att`'s `move` (max roll < 100% HP)
+function optimizeSurvive(def,att,move,opt){
+  opt=opt||{}; const phys=moveInfo(move).c==="Phys", dk=phys?"def":"spd";
+  for(let tot=0;tot<=64;tot++){
+    for(let hp=0;hp<=Math.min(32,tot);hp++){
+      const dp=tot-hp; if(dp>32) continue;
+      const pts={hp,atk:0,def:0,spa:0,spd:0,spe:0}; pts[dk]=dp;
+      const d={entry:def.entry,formIndex:def.formIndex,set:Object.assign({},def.set,{points:pts})};
+      const r=calcDamage(att,move,d,{weather:opt.weather,spread:opt.spread});
+      if(!r) return {possible:false,immune:false};
+      if(r.immune) return {possible:true,immune:true,hp:0,def:0,total:0,maxPct:0};
+      if(r.maxPct<100) return {possible:true,hp,def:dp,defStat:dk,total:tot,maxPct:r.maxPct};
+    }
+  }
+  // not survivable even at 32/32
+  const d={entry:def.entry,formIndex:def.formIndex,set:Object.assign({},def.set,{points:{hp:32,atk:0,def:phys?32:0,spa:0,spd:phys?0:32,spe:0}})};
+  const r=calcDamage(att,move,d,{weather:opt.weather,spread:opt.spread});
+  return {possible:false,maxPct:r?r.maxPct:999};
+}
+
 /* ---------- speed tiers (Champions: L50, 0-32 points, no IVs, natures apply) ---------- */
 // verified vs mainline L50: 32 points ≈ 252 EVs, so this reproduces known speeds (Jolly Garchomp 169).
 const SPEED_ABIL={Chlorophyll:"sun","Swift Swim":"rain","Sand Rush":"sand","Slush Rush":"snow"};
@@ -857,4 +891,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,speedFit,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,archetypeChecklist};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,speedFit,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,archetypeChecklist,optimizeOutspeed,optimizeSurvive};
