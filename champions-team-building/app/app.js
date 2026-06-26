@@ -857,14 +857,15 @@ function threatMatchups(team,list,opts){
       const inc=take.pct;
       const ko=memberKOon(d,t,{weather,spread:false});     // our best KO on the threat {mn,mx,move}
       const sd=memberSpeed(d,{weather}).spe;
-      const faster = mode==="trickroom" ? sd<tSpe : mode==="tailwind" ? sd*2>tSpe : sd>tSpe;
+      // "both" = a two-mode team that can bring up whichever speed mode is favorable for this matchup
+      const faster = mode==="both" ? (sd*2>tSpe||sd<tSpe) : mode==="trickroom" ? sd<tSpe : mode==="tailwind" ? sd*2>tSpe : sd>tSpe;
       const survives=inc<100;
       const ohko=ko.mn>=100, twohko=ko.mn>=50;             // guaranteed (min-roll) KOs
       const revenge=ko.mx>=100&&ko.mn>=75;                 // OHKOs on most rolls — enough to revenge-kill if faster
       if(inc<lowInc){lowInc=inc;lowBy=d.entry.name;lowMove=take.move;}
       let tr=0,nt="";
       if(survives&&twohko){tr=3;nt=ohko?"walls + OHKOs":"walls + 2HKOs";}
-      else if(faster&&revenge){tr=2;nt=(mode==="trickroom"?"underspeeds (TR) + OHKOs":mode==="tailwind"?"outspeeds (Tailwind) + OHKOs":"outspeeds + OHKOs");}
+      else if(faster&&revenge){tr=2;nt=(mode==="trickroom"?"underspeeds (TR) + OHKOs":mode==="tailwind"?"outspeeds (Tailwind) + OHKOs":mode==="both"?"outspeeds (Tailwind/TR) + OHKOs":"outspeeds + OHKOs");}
       else if(survives&&ko.mx>=50){tr=1;nt="survives, soft (rolls a 2HKO)";}
       else if(survives){tr=1;nt="walls but can't KO it";}
       else if(revenge){tr=1;nt="OHKOs it but is outsped (needs speed control)";}

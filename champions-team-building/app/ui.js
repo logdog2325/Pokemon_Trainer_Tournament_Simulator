@@ -124,10 +124,10 @@ function healthCard(team){
   const ntog=(v,l)=>`<button class="btn" style="padding:5px 9px;font-size:12px" data-tn="${v}">${STATE.threatN===v?'● ':''}${l}</button>`;
   const mtog=(v,l)=>`<button class="btn" style="padding:5px 9px;font-size:12px" data-mm="${v}">${STATE.muMode===v?'● ':''}${l}</button>`;
   const lab=STATE.threatN==="key"?"key threats":"top "+STATE.threatN+" used";
-  const modeLab={none:"no speed control",tailwind:"Tailwind up",trickroom:"Trick Room up"}[STATE.muMode];
+  const modeLab={none:"no speed control",tailwind:"Tailwind up",trickroom:"Trick Room up",both:"Tailwind or Trick Room"}[STATE.muMode];
   let muLine="";
   if(m.total){const ucol=m.uncovered?'var(--bad)':m.neutral?'#ffd9a0':'var(--good)';
-    const rows=open?`<div class="muted" style="margin-top:6px;font-size:11px">Speed mode:</div><div class="seg" style="margin-top:3px;flex-wrap:wrap">${mtog("none","No speed ctrl")}${mtog("tailwind","Tailwind")}${mtog("trickroom","Trick Room")}</div><div style="margin-top:6px">${m.rows.map(matchupRow).join("")}<div class="muted" style="font-size:10px;margin-top:4px">✅ check (walls+KOs / outspeeds+OHKOs) · 🟡 soft · ⚠️ uncovered. % = guaranteed (min-roll) damage. Speed checks evaluated with ${modeLab}.</div></div>`:"";
+    const rows=open?`<div class="muted" style="margin-top:6px;font-size:11px">Speed mode:</div><div class="seg" style="margin-top:3px;flex-wrap:wrap">${mtog("none","No speed ctrl")}${mtog("tailwind","Tailwind")}${mtog("trickroom","Trick Room")}${mtog("both","Both")}</div><div style="margin-top:6px">${m.rows.map(matchupRow).join("")}<div class="muted" style="font-size:10px;margin-top:4px">✅ check (walls+KOs / outspeeds+OHKOs) · 🟡 soft · ⚠️ uncovered. % = guaranteed (min-roll) damage. Speed checks evaluated with ${modeLab}.</div></div>`:"";
     muLine=`<div style="margin-top:8px">
       <div class="row" data-muopen="1" style="cursor:pointer"><div style="flex:1"><b>Meta matchups</b> <span class="muted">vs ${lab} · ${modeLab}</span></div><div class="muted">${open?'▾ hide':'▸ details'}</div></div>
       <div class="muted" style="margin-top:2px"><b style="color:var(--good)">${m.checked} checked</b> · <b style="color:#ffd9a0">${m.neutral} soft</b> · <b style="color:${ucol}">${m.uncovered} uncovered</b> of ${m.total}${m.uncovered?` — <span style="color:var(--bad)">${m.uncoveredNames.slice(0,3).join(", ")}${m.uncoveredNames.length>3?"…":""}</span>`:""}</div>
@@ -338,14 +338,14 @@ function renderStress(){
   const mu=E.threatMatchups(STATE.team,list,{mode:STATE.muMode});
   const ntog=(v,l)=>`<button class="btn ${STATE.threatN===v?'primary':''}" data-tn="${v}">${l}</button>`;
   const mtog=(v,l)=>`<button class="btn ${STATE.muMode===v?'primary':''}" data-mm="${v}">${l}</button>`;
-  const modeLab={none:"no speed control",tailwind:"Tailwind up",trickroom:"Trick Room up"}[STATE.muMode];
+  const modeLab={none:"no speed control",tailwind:"Tailwind up",trickroom:"Trick Room up",both:"Tailwind or Trick Room"}[STATE.muMode];
   app.innerHTML=`
     <div class="card"><b>Archetype skeleton — ${ck.arche}</b> <span class="muted">(${ck.complete}/${ck.total})</span>
       ${ck.items.map(i=>`<div class="row" style="margin:4px 0"><span style="width:22px">${i.ok?'✅':'⬜'}</span><div class="${i.ok?'':'muted'}">${i.label}</div></div>`).join("")}</div>
     <div class="card"><b>Meta matchups — viability</b> <span class="muted">(a check survives its best hit & KOs back)</span>
       <div class="seg" style="margin-top:6px;flex-wrap:wrap">${ntog("key","Key threats")}${ntog(20,"Top 20 used")}${ntog(50,"Top 50 used")}</div>
       <div class="muted" style="margin-top:6px;font-size:11px">Speed mode (who outspeeds for offensive checks):</div>
-      <div class="seg" style="margin-top:3px;flex-wrap:wrap">${mtog("none","No speed ctrl")}${mtog("tailwind","Tailwind")}${mtog("trickroom","Trick Room")}</div>
+      <div class="seg" style="margin-top:3px;flex-wrap:wrap">${mtog("none","No speed ctrl")}${mtog("tailwind","Tailwind")}${mtog("trickroom","Trick Room")}${mtog("both","Both")}</div>
       <div class="muted" style="margin-top:6px;font-size:11px">${STATE.threatN==="key"?"Curated Reg M-B offensive threat list":"Top "+STATE.threatN+" most-used in Champions Reg M-B (Pikalytics doubles)"} · speed checks with ${modeLab}.</div>
       <div class="muted" style="margin-top:4px"><b style="color:var(--good)">${mu.checked} checked</b> · <b style="color:#ffd9a0">${mu.neutral} soft/neutral</b> · <b style="color:${mu.uncovered?'var(--bad)':'var(--good)'}">${mu.uncovered} uncovered</b> of ${mu.total}.${mu.uncovered?' Fix the ⚠️ rows — they run through you.':' No threat runs through your team ✓'}</div>
       <div style="margin-top:6px">${mu.rows.map(matchupRow).join("")}</div>
