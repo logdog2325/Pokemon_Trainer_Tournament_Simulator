@@ -85,6 +85,21 @@ const RECOVERY=["Recover","Roost","Synthesis","Slack Off","Soft-Boiled","Moonlig
 const INTIM_BOOST=["Defiant","Competitive","Guard Dog","Contrary"];      // Intimidate becomes a free +Atk/+SpA
 const INTIM_IMMUNE=["Inner Focus","Oblivious","Own Tempo","Scrappy","Clear Body","White Smoke","Full Metal Body","Hyper Cutter","Guard Dog"]; // Attack never drops
 const ANTI_INTIM=[...new Set(INTIM_BOOST.concat(INTIM_IMMUNE))];        // anything that beats Intimidate
+// which speed-control mode a Pokémon's own Speed wants, and (constrained to what it can learn) which to run:
+//   slow (≤55) -> Trick Room (it moves first under TR; Tailwind does nothing for it)
+//   fast (≥80) -> Tailwind (Tailwind doubles it past the field; Trick Room would hurt it)
+//   middling (56–79) -> EITHER — it can abuse Tailwind or Trick Room.
+function speedTierOf(sp){return sp<=55?"slow":sp>=80?"fast":"mid";}
+function speedModeWant(sp){const t=speedTierOf(sp);return t==="slow"?"trickroom":t==="fast"?"tailwind":"either";}
+function recommendSpeedCtrl(e){
+  const sp=e.baseStats.spe, mv=e.moves||[], hasTW=mv.includes("Tailwind"), hasTR=mv.includes("Trick Room");
+  if(!hasTW&&!hasTR) return null;
+  const want=speedModeWant(sp);
+  if(want==="trickroom") return hasTR?{move:"Trick Room",mode:"trickroom",why:"slow — wants Trick Room"}:{move:"Tailwind",mode:"tailwind",why:"only learns Tailwind"};
+  if(want==="tailwind") return hasTW?{move:"Tailwind",mode:"tailwind",why:"fast — wants Tailwind"}:{move:"Trick Room",mode:"trickroom",why:"only learns Trick Room"};
+  if(hasTW&&hasTR) return {move:"Tailwind",mode:"either",why:"middling Speed — works under Tailwind or Trick Room"};
+  return hasTW?{move:"Tailwind",mode:"tailwind",why:"middling Speed — Tailwind"}:{move:"Trick Room",mode:"trickroom",why:"middling Speed — Trick Room"};
+}
 // the offensive/support archetypes a (base or Mega) stat line can fill
 function archetypeRoles(e){
   const roles=[]; const sp=e.baseStats.spe, off=offense(e), phys=isPhysical(e);
@@ -97,10 +112,11 @@ function archetypeRoles(e){
   const specAnti=!phys && ab0.includes("Competitive");
   const antiNote=specAnti?"Competitive turns opposing Intimidate into a free Special Attack boost.":physBoost?`${physBoost} turns opposing Intimidate into a free Attack boost.`:`${ab0.find(a=>INTIM_IMMUNE.includes(a))} ignores Intimidate — its attack never drops.`;
   if(setup.length && off>=95) roles.push({key:"sweeper",label:"Setup sweeper",note:`Boosts with ${bestSetup(e,phys)||setup[0]}, then sweeps.`});
-  if(off>=105) roles.push({key:"breaker",label:"Wallbreaker",note:`Hits hard immediately — Tailwind/offense friendly.`});
+  if(off>=105){const t=speedTierOf(sp);roles.push({key:"breaker",label:"Wallbreaker",note:`Hits hard immediately — ${t==="slow"?"best under Trick Room":t==="fast"?"Tailwind / offense friendly":"works under Tailwind or Trick Room"}.`});}
   if(off>=100 && sp<=70) roles.push({key:"tr",label:"Trick Room wallbreaker",note:`Slow + huge offense — scary under Trick Room.`});
   if((physAnti||specAnti) && off>=95) roles.push({key:"antiintim",label:"Anti-Intimidate attacker",note:antiNote});
-  if(sc.length) roles.push({key:"speed",label:"Speed control",note:`Provides ${sc.join(" / ")}.`});
+  if(sc.length){const rec=recommendSpeedCtrl(e);
+    roles.push({key:"speed",label:"Speed control",note:rec?`Provides ${sc.join(" / ")} — run ${rec.mode==="either"?"Tailwind or Trick Room":rec.move} (${rec.why}).`:`Provides ${sc.join(" / ")}.`});}
   if(rd.length) roles.push({key:"redir",label:"Redirection support",note:`Pulls aggro with ${rd.join(" / ")}.`});
   if(fo) roles.push({key:"fakeout",label:"Fake Out "+(off>=100?"attacker":"support"),note:`Fake Out tempo`+((e.abilities||[]).includes("Intimidate")?" + Intimidate":"")+`.`});
   if(weatherA) roles.push({key:"weather",label:`Weather setter (${WEATHER_ABIL[weatherA]})`,note:`${weatherA} sets ${WEATHER_ABIL[weatherA]} on entry.`});
@@ -339,7 +355,7 @@ function recommendMoves(e,roleKey){
   // 1) role utility move
   if(roleKey==="sweeper")add(bestSetup(e,phys));
   if(roleKey==="tr"&&mp.includes("Trick Room"))add("Trick Room");
-  if(roleKey==="speed")add(mp.includes("Tailwind")?"Tailwind":"Trick Room");
+  if(roleKey==="speed"){const rec=recommendSpeedCtrl(e);add(rec?rec.move:(mp.includes("Tailwind")?"Tailwind":"Trick Room"));}
   if(roleKey==="redir")add(mp.includes("Rage Powder")?"Rage Powder":"Follow Me");
   if(roleKey==="fakeout")add("Fake Out");
   if(roleKey==="pivot")add(PIVOT.find(m=>mp.includes(m)));
