@@ -610,6 +610,30 @@ function teamHealth(team){
   return {score,grade,flags,tally,off,needs,mode};
 }
 
+/* ---------- archetype skeleton checklist (is the team a complete <archetype>?) ---------- */
+function archetypeChecklist(team){
+  const mode=teamSpeedMode(team), needs=teamNeeds(team), weather=teamWeather(team), tm=team.flatMap(m=>setMovesOf(m));
+  const wins=team.filter(m=>offense(m.entry)>=105||m.formIndex>=0||has(m.entry,SETUP).length).length;
+  const fast=team.filter(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe>=85).length;
+  const slow=team.filter(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe<=55).length;
+  const prio=team.filter(m=>setMovesOf(m).some(x=>PRIORITY.includes(x))).length;
+  const items=[], add=(label,ok)=>items.push({label,ok});
+  let arche="Balance";
+  add("2+ win conditions",wins>=2);
+  add("Fake Out (≈90% of top teams)",!needs.fakeout);
+  if(mode==="tailwind"){arche="Tailwind offense"; add("Tailwind setter",tm.includes("Tailwind")); add("2+ fast attackers",fast>=2); add("a priority move",!needs.priority);}
+  else if(mode==="trickroom"){arche="Trick Room"; add("Trick Room setter",tm.includes("Trick Room")); add("2+ slow attackers (Spe ≤55)",slow>=2); add("redirection or Fake Out to set up safely",!needs.redir||!needs.fakeout); add("a non-TR priority/Scarf fallback",prio>=1);}
+  else if(mode==="priority"){arche="Priority hyper-offense"; add("2+ priority users",prio>=2); add("2+ fast attackers",fast>=2);}
+  else if(weather){const ab=weather.charAt(0).toUpperCase()+weather.slice(1); arche=ab+" offense";
+    add(ab+" setter",true);
+    add(ab+" abuser",team.some(m=>{const e=m.entry;return (e.abilities||[]).some(a=>WEATHER_BENEFIT_ABIL[weather]&&WEATHER_BENEFIT_ABIL[weather].includes(a))||(weather==="sun"&&e.types.includes("Fire"))||(weather==="rain"&&e.types.includes("Water"));}));
+    if(weather==="snow")add("Aurora Veil",tm.includes("Aurora Veil"));}
+  else {arche="Balance / no speed mode"; add("a speed-control mode (Tailwind / Trick Room)",mode!=="none"); add("a priority move",!needs.priority);}
+  add("redirection if a setup sweeper is present", !(team.some(m=>has(m.entry,SETUP).length&&offense(m.entry)>=95)) || !needs.redir);
+  add("Intimidate glue (optional)",!needs.intimidate);
+  return {arche,items,complete:items.filter(i=>i.ok).length,total:items.length};
+}
+
 /* ---------- damage-aware meta analysis (Reg M-B threat list) ---------- */
 const MB_OFFENSE=["Garchomp","Basculegion-Male","Kingambit","Charizard","Floette","Sneasler","Metagross","Archaludon","Swampert","Aerodactyl","Sylveon","Gholdengo","Mawile"];
 function threatMembers(){return MB_OFFENSE.map(n=>benchMember(n)).filter(Boolean);}
@@ -833,4 +857,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,speedFit,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,speedFit,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,archetypeChecklist};
