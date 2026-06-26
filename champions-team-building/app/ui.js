@@ -16,6 +16,7 @@ const SLOT_ROLES=[
  {key:"special",label:"Special attacker",need:"special",fill:e=>!E.isPhysical(e)&&E.offense(e)>=100},
  {key:"priority",label:"Priority",need:"priority",fill:e=>e.moves.some(m=>E.PRIORITY.includes(m))},
  {key:"pivot",label:"Pivot",need:"pivot",fill:e=>e.moves.some(m=>E.PIVOT.includes(m))},
+ {key:"support",label:"Team support (Coaching/Helping Hand)",fill:e=>e.moves.includes("Coaching")||e.moves.includes("Helping Hand")},
  {key:"weather",label:"Weather setter",fill:e=>(e.abilities||[]).some(a=>E.WEATHER_ABIL[a])},
  {key:"wall",label:"Bulky wall",fill:e=>BULK(e)>=290},
  {key:"any",label:"Best overall",fill:e=>true},
@@ -228,6 +229,7 @@ function candRow(c,danger){
   if((e.abilities||[]).includes("Intimidate"))tags.push(["Intimidate","good"]);
   if(e.mega&&e.mega.length)tags.push(["Mega",""]);
   if(s.chk>0)tags.push(["checks a threat","good"]);
+  const flexRole=E.flexSpeedRole(e,STATE.team); if(flexRole)tags.push([flexRole,"good"]);
   if(s.weather)tags.push(["+"+s.weatherType,"good"]);
   s.covers.forEach(t=>tags.push(["covers "+t,"good"]));
   s.dangerStacks.forEach(t=>tags.push(["stacks "+t,"bad"]));

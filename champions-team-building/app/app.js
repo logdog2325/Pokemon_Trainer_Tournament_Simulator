@@ -119,6 +119,8 @@ function archetypeRoles(e){
     roles.push({key:"speed",label:"Speed control",note:rec?`Provides ${sc.join(" / ")} — run ${rec.mode==="either"?"Tailwind or Trick Room":rec.move} (${rec.why}).`:`Provides ${sc.join(" / ")}.`});}
   if(rd.length) roles.push({key:"redir",label:"Redirection support",note:`Pulls aggro with ${rd.join(" / ")}.`});
   if(fo) roles.push({key:"fakeout",label:"Fake Out "+(off>=100?"attacker":"support"),note:`Fake Out tempo`+((e.abilities||[]).includes("Intimidate")?" + Intimidate":"")+`.`});
+  if(e.moves.includes("Coaching")||e.moves.includes("Helping Hand")){const sm=["Coaching","Helping Hand"].filter(m=>e.moves.includes(m));
+    roles.push({key:"support",label:"Team support",note:`Buffs a partner with ${sm.join(" / ")}${fo?" + Fake Out":""}.`});}
   if(weatherA) roles.push({key:"weather",label:`Weather setter (${WEATHER_ABIL[weatherA]})`,note:`${weatherA} sets ${WEATHER_ABIL[weatherA]} on entry.`});
   if(pv.length && bv>=240) roles.push({key:"pivot",label:"Bulky pivot",note:`Pivots with ${pv.join(" / ")}.`});
   if(bv>=280 && (sup.length||RECOVERY.some(m=>e.moves.includes(m)))) roles.push({key:"wall",label:"Defensive wall",note:`Bulky support / staller.`});
@@ -358,6 +360,7 @@ function recommendMoves(e,roleKey){
   if(roleKey==="speed"){const rec=recommendSpeedCtrl(e);add(rec?rec.move:(mp.includes("Tailwind")?"Tailwind":"Trick Room"));}
   if(roleKey==="redir")add(mp.includes("Rage Powder")?"Rage Powder":"Follow Me");
   if(roleKey==="fakeout")add("Fake Out");
+  if(roleKey==="support"){add(mp.includes("Coaching")?"Coaching":"Helping Hand"); if(mp.includes("Fake Out"))add("Fake Out"); if(mp.includes("Protect"))add("Protect");}
   if(roleKey==="pivot")add(PIVOT.find(m=>mp.includes(m)));
   // 2) best STAB per type (quality-scored, not just BP)
   for(const ty of e.types){
@@ -473,6 +476,7 @@ function roleExecution(e,slot){
     case "intimidate": {let s=ab.includes("Intimidate")?20:2;s+=bulkPts;s+=Math.min(8,Math.round((off-70)/12));return Math.min(40,s);}
     case "antiintim": {let s=ab.some(a=>INTIM_BOOST.includes(a))?24:ab.some(a=>INTIM_IMMUNE.includes(a))?14:2;s+=Math.min(12,Math.round((off-70)/6))+Math.min(4,bulkPts);return Math.min(40,s);}  // Defiant/Competitive > immune
     case "pivot": {let s=6;if(mv.some(m=>PIVOT.includes(m)))s+=10;s+=Math.min(16,bulkPts+4);return Math.min(40,s);}
+    case "support": {let s=8;if(mv.includes("Coaching"))s+=12;if(mv.includes("Helping Hand"))s+=8;if(mv.includes("Fake Out"))s+=4;if(ab.includes("Intimidate"))s+=6;s+=Math.min(8,bulkPts);return Math.min(40,s);}
     case "wall": {let s=Math.min(22,Math.round((bv-250)/8));if(RECOVERY.some(m=>mv.includes(m)))s+=12;return Math.min(40,s);}
     case "weather": return 22;
     case "priority": {let s=4;if(mv.some(m=>PRIORITY.includes(m)))s+=16;if(ab.includes("Gale Wings")||ab.includes("Triage"))s+=14;s+=Math.min(14,Math.round((off-70)/8));if(ab.includes("Technician"))s+=4;return Math.min(40,s);}
@@ -531,13 +535,36 @@ function teamSpeedMode(team){
 // how well does the candidate fit the team's committed speed plan?
 function speedFit(e,team){
   const mode=teamSpeedMode(team), spe=e.baseStats.spe, off=offense(e), prio=e.moves.some(m=>PRIORITY.includes(m));
+  // counts of existing on/off-mode ATTACKERS, so the FIRST off-mode piece reads as flex, not a mistake
+  const slowN=team.filter(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe<=55).length;   // slow (TR-abusing) attackers
+  const fastN=team.filter(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe>=90).length;   // fast cleaners
   switch(mode){
-    case "tailwind": if(e.moves.includes("Tailwind"))return 7; if(spe>=80||prio)return 6; if(off>=95&&spe<60&&!prio)return -5; return 1;
-    case "trickroom": if(e.moves.includes("Trick Room"))return 7; if(spe<=55&&off>=95)return 7; if(spe>=90&&off>=95&&!prio)return -6; return 1;
+    case "tailwind":
+      if(e.moves.includes("Tailwind"))return 7;
+      if(spe>=80||prio)return 6;
+      // a slow attacker is the FLEX piece — it relishes the opponent's Trick Room. Reward the first; a 2nd is a liability.
+      if(off>=95&&spe<=55)return slowN===0?3:-5;
+      return 1;
+    case "trickroom":
+      if(e.moves.includes("Trick Room"))return 7;
+      if(spe<=55&&off>=95)return 7;
+      // a fast attacker is the CLEANER — it mops up once TR ends or the setter falls. Reward the first; a 2nd undercuts TR.
+      if(spe>=90&&off>=95&&!prio)return fastN===0?3:-6;
+      return 1;
     case "priority": if(prio)return 6; if(spe>=95)return 4; if(off>=95&&spe<60&&!prio)return -3; return 1;
     case "none": if(e.moves.includes("Tailwind")||e.moves.includes("Trick Room"))return 8; if(prio)return 4; return 0; // team has no speed plan yet — adding one is valuable
     default: return e.moves.includes("Tailwind")||e.moves.includes("Trick Room")?4:0;
   }
+}
+// is THIS candidate the team's flex/off-mode piece (for a UI tag only — scoring lives in speedFit)?
+function flexSpeedRole(e,team){
+  if(team.length<3) return null;
+  const mode=teamSpeedMode(team), spe=e.baseStats.spe, off=offense(e), prio=e.moves.some(m=>PRIORITY.includes(m));
+  const slowN=team.filter(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe<=55).length;
+  const fastN=team.filter(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe>=90).length;
+  if(mode==="tailwind"&&off>=95&&spe<=55&&!prio&&slowN===0) return "flex vs Trick Room";
+  if(mode==="trickroom"&&off>=95&&spe>=90&&!prio&&fastN===0) return "fast cleaner";
+  return null;
 }
 // does the candidate complete an enabler→payoff core (the single highest-value synergy signal)?
 function enablerBonus(e,team){
@@ -1118,4 +1145,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,speedFit,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,speedFit,flexSpeedRole,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread};
