@@ -652,13 +652,15 @@ function teamHealth(team){
     // a non-hard Trick Room team needs fast cleaners for when the room ends or the setter is KO'd
     if(mode==="trickroom"){const hardTR=slowN>=3&&fastN===0;
       if(!hardTR&&fastN===0){score-=4;flags.push({sev:1,msg:"Trick Room team with no fast Pokémon — add 1–2 fast cleaners for when the room ends or the setter falls"});}}
-    // mixed fast+slow attackers: a second speed mode covers the off-matchup (legit insurance, not hedging)
+    // mixed fast+slow attackers: you can relish whichever speed mode is up — yours OR the opponent's
     if(fastN>=1&&slowN>=1&&(mode==="tailwind"||mode==="trickroom"))
-      flags.push({sev:0,msg:`mixed Speed — a 2nd speed-control option (${mode==="tailwind"?"a Trick Room setter":"a Tailwind setter"}) would cover the off-matchup`});
+      flags.push({sev:0,msg:mode==="tailwind"
+        ? "flex Speed — your slow attacker also capitalizes when the opponent sets Trick Room"
+        : "flex Speed — your fast attacker(s) punish opposing Tailwind and clean up once Trick Room ends"});
   }
-  // two speed modes can be a deliberate primary + insurance split (the user's TR-insurance pattern) — info, not a penalty
+  // running both Tailwind AND Trick Room is a legit two-mode team (primary + insurance), not hedging — info, no penalty
   if(tm.includes("Tailwind")&&tm.includes("Trick Room"))
-    flags.push({sev:0,msg:"running both Tailwind and Trick Room — fine as a primary + insurance split; keep one as the clear plan A"});
+    flags.push({sev:0,msg:"two-mode team (Tailwind + Trick Room) — fine; keep one as the clear plan A and the other as the matchup flex"});
   // Intimidate discipline: never double-stacked in Champions top cut
   const intimN=team.filter(m=>effOf(m).abilities.includes("Intimidate")).length;
   if(intimN>=2){score-=6;flags.push({sev:1,msg:`${intimN} Intimidate users — top teams run at most one`});}
