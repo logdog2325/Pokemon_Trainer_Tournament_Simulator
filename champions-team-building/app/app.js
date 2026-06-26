@@ -559,18 +559,46 @@ function intimidateDiscipline(e,team){
   if(!(e.abilities||[]).includes("Intimidate")) return 0;
   return team.some(m=>effOf(m).abilities.includes("Intimidate"))?-5:0;
 }
+// Damage-aware: does this candidate PATCH a meta threat the team currently can't check?
+// Memoised on the team's matchup state so it's computed once per scoring pass, not per candidate.
+let _muMemo={sig:null,mu:null,tm:null};
+function teamMatchupState(team){
+  const sig=team.map(m=>m.entry.name+":"+m.formIndex+":"+(m.set&&m.set.nature||"")+":"+JSON.stringify(m.set&&m.set.points||{})+":"+(m.set&&m.set.item||"")).join("|");
+  if(_muMemo.sig!==sig){_muMemo={sig,mu:threatMatchups(team),tm:threatMembers()};}
+  return _muMemo;
+}
+function checkCoverageBonus(e,team,slot){
+  if(team.length<1) return 0;
+  const {mu,tm}=teamMatchupState(team);
+  if(!mu.uncovered&&!mu.neutral) return 0;             // already check everything → no patch available
+  const weather=teamWeather(team);
+  const set=recommendSet(e,slot&&slot.key?slot.key:"meta");
+  const cm={entry:e,formIndex:(set.formIndex!=null?set.formIndex:-1),set};
+  let b=0;
+  mu.rows.forEach((row,i)=>{
+    if(row.tier>=2) return;                             // already a check — nothing to patch
+    const t=tm[i]; if(!t) return;
+    const inc=bestHitPct(t,cm,{weather});               // threat's max% on the candidate
+    const ko=memberKOon(cm,t,{weather,spread:false});   // candidate's KO on the threat
+    const survives=inc<100, faster=memberSpeed(cm,{weather})>memberSpeed(t,{weather});
+    const becomesCheck=(survives&&ko.mn>=50)||(faster&&ko.mn>=100);
+    if(becomesCheck) b+=row.tier===0?7:2;              // patching an UNCOVERED threat >> upgrading a soft one
+  });
+  return Math.min(16,Math.round(b));
+}
 function scoreForSlot(e,team,slot){
   const b=scoreCandidate(e,team), exe=roleExecution(e,slot);
   const lead=team[0]&&team[0].entry, leadCov=leadCoverageBonus(e,lead), offCov=offCoverageBonus(e,team);
   // synergy layer (Champions Reg M-B calibrated): speed-mode fit, enabler→payoff cores, threat answers, Intimidate discipline
   const spd=speedFit(e,team), enab=enablerBonus(e,team), threat=threatAnswerBonus(e,team), intim=intimidateDiscipline(e,team);
+  const chk=checkCoverageBonus(e,team,slot);   // damage-aware: patches an uncovered/soft top threat
   // Score is purely about fit: how well it executes the role + how it supports THIS team.
   // Usage/popularity is NOT a factor — `rank` is returned only as an informational label.
   const teamFit=b.typing+Math.min(18,b.cov)+b.weather+leadCov+offCov;
-  const synergy=spd+enab+threat+intim;   // Reg M-B synergy layer
+  const synergy=spd+enab+threat+intim+chk;   // Reg M-B synergy layer
   const total=Math.max(0,Math.min(100,Math.round(teamFit*0.62+exe+synergy)));
   const u=usageOf(e);
-  return {...b,exe,leadCov,offCov,spd,enab,threat,intim,synergy,rank:u&&u.rank!=null?u.rank:null,total};
+  return {...b,exe,leadCov,offCov,spd,enab,threat,intim,chk,synergy,rank:u&&u.rank!=null?u.rank:null,total};
 }
 
 /* ---------- live team health score ---------- */

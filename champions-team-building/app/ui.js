@@ -191,13 +191,14 @@ function candRow(c,danger){
   if(e.moves.some(m=>E.PRIORITY.includes(m)))tags.push(["Priority","good"]);
   if((e.abilities||[]).includes("Intimidate"))tags.push(["Intimidate","good"]);
   if(e.mega&&e.mega.length)tags.push(["Mega",""]);
+  if(s.chk>0)tags.push(["checks a threat","good"]);
   if(s.weather)tags.push(["+"+s.weatherType,"good"]);
   s.covers.forEach(t=>tags.push(["covers "+t,"good"]));
   s.dangerStacks.forEach(t=>tags.push(["stacks "+t,"bad"]));
   return `<div class="candrow" data-n="${e.name}">${img(e)}
     <div class="meta"><div class="nm">${e.name} ${tbadges(e.types)}</div>
       <div class="tags">${tags.slice(0,6).map(([t,c])=>`<span class="tag ${c}">${t}</span>`).join("")}</div>
-      <div class="brk">role-fit ${s.exe!=null?s.exe:'–'}/40 · typing ${s.typing}/25${s.synergy?' · synergy '+(s.synergy>0?'+':'')+s.synergy:''}${s.enab?' · core +'+s.enab:''}${s.spd<0?' · ⚠ off-speed '+s.spd:''}${cav?' · ⚠ caveat':''}</div></div>
+      <div class="brk">role-fit ${s.exe!=null?s.exe:'–'}/40 · typing ${s.typing}/25${s.synergy?' · synergy '+(s.synergy>0?'+':'')+s.synergy:''}${s.enab?' · core +'+s.enab:''}${s.chk?' · checks +'+s.chk:''}${s.spd<0?' · ⚠ off-speed '+s.spd:''}${cav?' · ⚠ caveat':''}</div></div>
     <div class="scorebadge"><b style="color:${s.total>=70?'var(--good)':s.total>=55?'var(--txt)':'var(--mut)'}">${s.total}</b><small>fit</small></div></div>`;
 }
 function bindCands(){app.querySelectorAll(".candrow").forEach(r=>r.onclick=()=>{openEditor(mkMember(E.byName[r.dataset.n]),-1);});}
