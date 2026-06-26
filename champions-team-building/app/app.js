@@ -85,6 +85,16 @@ const RECOVERY=["Recover","Roost","Synthesis","Slack Off","Soft-Boiled","Moonlig
 const INTIM_BOOST=["Defiant","Competitive","Guard Dog","Contrary"];      // Intimidate becomes a free +Atk/+SpA
 const INTIM_IMMUNE=["Inner Focus","Oblivious","Own Tempo","Scrappy","Clear Body","White Smoke","Full Metal Body","Hyper Cutter","Guard Dog"]; // Attack never drops
 const ANTI_INTIM=[...new Set(INTIM_BOOST.concat(INTIM_IMMUNE))];        // anything that beats Intimidate
+// dedicated team-support moves (buff an ally / cripple a foe for a partner). Dragon Cheer wants Dragon allies.
+const TEAM_SUPPORT_MV=["Coaching","Decorate","Helping Hand","Dragon Cheer","Aromatic Mist","Fake Tears","Screech","Psych Up","Howl"];
+function bestSupportMove(e){
+  const mv=e.moves||[], dragon=(e.types||[]).includes("Dragon");
+  // Dragon Cheer leaps up the priority for Dragon types (it crit-boosts Dragon allies the most)
+  const order=dragon
+    ? ["Coaching","Decorate","Dragon Cheer","Helping Hand","Fake Tears","Screech","Aromatic Mist","Psych Up","Howl"]
+    : ["Coaching","Decorate","Helping Hand","Fake Tears","Screech","Aromatic Mist","Dragon Cheer","Psych Up","Howl"];
+  return order.find(m=>mv.includes(m))||null;
+}
 // which speed-control mode a Pokémon's own Speed wants, and (constrained to what it can learn) which to run:
 //   slow (≤55) -> Trick Room (it moves first under TR; Tailwind does nothing for it)
 //   fast (≥80) -> Tailwind (Tailwind doubles it past the field; Trick Room would hurt it)
@@ -119,7 +129,7 @@ function archetypeRoles(e){
     roles.push({key:"speed",label:"Speed control",note:rec?`Provides ${sc.join(" / ")} — run ${rec.mode==="either"?"Tailwind or Trick Room":rec.move} (${rec.why}).`:`Provides ${sc.join(" / ")}.`});}
   if(rd.length) roles.push({key:"redir",label:"Redirection support",note:`Pulls aggro with ${rd.join(" / ")}.`});
   if(fo) roles.push({key:"fakeout",label:"Fake Out "+(off>=100?"attacker":"support"),note:`Fake Out tempo`+((e.abilities||[]).includes("Intimidate")?" + Intimidate":"")+`.`});
-  if(e.moves.includes("Coaching")||e.moves.includes("Helping Hand")){const sm=["Coaching","Helping Hand"].filter(m=>e.moves.includes(m));
+  if(e.moves.some(m=>TEAM_SUPPORT_MV.includes(m))){const sm=TEAM_SUPPORT_MV.filter(m=>e.moves.includes(m)).slice(0,3);
     roles.push({key:"support",label:"Team support",note:`Buffs a partner with ${sm.join(" / ")}${fo?" + Fake Out":""}.`});}
   if(weatherA) roles.push({key:"weather",label:`Weather setter (${WEATHER_ABIL[weatherA]})`,note:`${weatherA} sets ${WEATHER_ABIL[weatherA]} on entry.`});
   if(pv.length && bv>=240) roles.push({key:"pivot",label:"Bulky pivot",note:`Pivots with ${pv.join(" / ")}.`});
@@ -335,14 +345,21 @@ function bestSetup(e,phys){
   return cand[0]||SETUP.find(m=>(e.moves||[]).includes(m));   // fall back to any setup move
 }
 function recommendMoves(e,roleKey){
-  const mp=e.moves,picked=[],phys=isPhysical(e),pref=phys?"Phys":"Spec";
+  const mp=e.moves,picked=[],phys=isPhysical(e);
   const bulky=["sweeper","tr","wall","pivot","redir"].includes(roleKey);
   const rockHead=(e.abilities||[]).includes("Rock Head");
   const noGuard=(e.abilities||[]).includes("No Guard");
   const add=m=>{if(m&&mp.includes(m)&&!picked.includes(m)&&picked.length<4){picked.push(m);return true;}return false;};
   const hasRecoil=()=>picked.some(m=>RECOIL_MV.has(m));
+  // If this set runs a single-category setup (Swords Dance / Dragon Dance -> Atk; Nasty Plot / Calm Mind -> SpA),
+  // commit the WHOLE offensive moveset to that category — a +Atk boost does nothing for special moves and vice versa.
+  const setupMove=(roleKey==="sweeper")?bestSetup(e,phys):null;
+  const setupCat=setupMove&&SETUP_INFO[setupMove]?SETUP_INFO[setupMove][0]:null;   // "atk" | "spa" | "both"
+  let pref=phys?"Phys":"Spec";
+  let mixed=Math.abs(e.baseStats.atk-e.baseStats.spa)<=10;          // genuine mixed attacker?
+  if(setupCat==="atk"){pref="Phys";mixed=false;}                    // Swords/Dragon Dance set -> physical only
+  else if(setupCat==="spa"){pref="Spec";mixed=false;}              // Nasty Plot/Calm Mind set -> special only
   // quality score for a damaging move in this role/context
-  const mixed=Math.abs(e.baseStats.atk-e.baseStats.spa)<=10;        // genuine mixed attacker?
   const score=m=>{const i=moveInfo(m);let s=i.bp||0;
     if(e.types.includes(i.t))s+=25;                                  // STAB
     if(i.c===pref)s+=6; else if(!mixed)s-=30;                        // off-category move wastes the unused stat
@@ -353,14 +370,16 @@ function recommendMoves(e,roleKey){
     if(SELFDROP_MV.has(m))s-=(roleKey==="sweeper"||roleKey==="tr"||roleKey==="wall")?40:7; // stat drops undo setup
     if(LOCK_MV.has(m))s-=45;                                         // lock-in is bad in doubles (no target choice)
     return s;};
-  const damaging=m=>{const i=moveInfo(m);return (i.c==="Phys"||i.c==="Spec")&&i.bp>=55&&!BAD_MOVES.has(m);};
+  // a category-locked set (Swords/Dragon Dance/Bulk Up -> Phys; Nasty Plot/Calm Mind -> Spec) takes ONLY that category
+  const categoryLocked=setupCat==="atk"||setupCat==="spa";
+  const damaging=m=>{const i=moveInfo(m);return (i.c==="Phys"||i.c==="Spec")&&i.bp>=55&&!BAD_MOVES.has(m)&&(!categoryLocked||i.c===pref);};
   // 1) role utility move
   if(roleKey==="sweeper")add(bestSetup(e,phys));
   if(roleKey==="tr"&&mp.includes("Trick Room"))add("Trick Room");
   if(roleKey==="speed"){const rec=recommendSpeedCtrl(e);add(rec?rec.move:(mp.includes("Tailwind")?"Tailwind":"Trick Room"));}
   if(roleKey==="redir")add(mp.includes("Rage Powder")?"Rage Powder":"Follow Me");
   if(roleKey==="fakeout")add("Fake Out");
-  if(roleKey==="support"){add(mp.includes("Coaching")?"Coaching":"Helping Hand"); if(mp.includes("Fake Out"))add("Fake Out"); if(mp.includes("Protect"))add("Protect");}
+  if(roleKey==="support"){add(bestSupportMove(e)); if(mp.includes("Fake Out"))add("Fake Out"); if(mp.includes("Protect"))add("Protect");}
   if(roleKey==="pivot")add(PIVOT.find(m=>mp.includes(m)));
   // 2) best STAB per type (quality-scored, not just BP)
   for(const ty of e.types){
@@ -368,7 +387,7 @@ function recommendMoves(e,roleKey){
     if(c.length)add(c[0]);
   }
   // 3) a priority move for physical attackers (revenge / chip) — allow low-BP priority like Mach Punch/Bullet Punch
-  if(phys&&picked.length<4){const pr=mp.filter(m=>PRIORITY.includes(m)&&moveInfo(m).bp>0&&!BAD_MOVES.has(m)).sort((a,b)=>score(b)-score(a));if(pr.length)add(pr[0]);}
+  if(phys&&picked.length<4){const pr=mp.filter(m=>PRIORITY.includes(m)&&moveInfo(m).bp>0&&!BAD_MOVES.has(m)&&(!categoryLocked||moveInfo(m).c===pref)).sort((a,b)=>score(b)-score(a));if(pr.length)add(pr[0]);}
   // 4) a recovery attack on bulky/setup sets if not already in
   if(bulky&&picked.length<4){const dr=mp.filter(m=>DRAIN_MV.has(m)&&damaging(m)).sort((a,b)=>score(b)-score(a));if(dr.length)add(dr[0]);}
   // 5) coverage: best damaging move of a new type
@@ -378,7 +397,7 @@ function recommendMoves(e,roleKey){
   // 6) Protect for doubles, then best remaining (never junk)
   if(picked.length<4)add(mp.includes("Protect")?"Protect":null);
   if(picked.length<4){const rest=mp.filter(damaging).sort((a,b)=>score(b)-score(a));for(const m of rest)add(m);}
-  if(picked.length<4)for(const m of mp){if(!BAD_MOVES.has(m))add(m);}
+  if(picked.length<4)for(const m of mp){const i=moveInfo(m);const offCat=categoryLocked&&(i.c==="Phys"||i.c==="Spec")&&i.c!==pref;if(!BAD_MOVES.has(m)&&!offCat)add(m);}
   return picked.slice(0,4);
 }
 function recommendSpread(e,roleKey){
@@ -476,7 +495,7 @@ function roleExecution(e,slot){
     case "intimidate": {let s=ab.includes("Intimidate")?20:2;s+=bulkPts;s+=Math.min(8,Math.round((off-70)/12));return Math.min(40,s);}
     case "antiintim": {let s=ab.some(a=>INTIM_BOOST.includes(a))?24:ab.some(a=>INTIM_IMMUNE.includes(a))?14:2;s+=Math.min(12,Math.round((off-70)/6))+Math.min(4,bulkPts);return Math.min(40,s);}  // Defiant/Competitive > immune
     case "pivot": {let s=6;if(mv.some(m=>PIVOT.includes(m)))s+=10;s+=Math.min(16,bulkPts+4);return Math.min(40,s);}
-    case "support": {let s=8;if(mv.includes("Coaching"))s+=12;if(mv.includes("Helping Hand"))s+=8;if(mv.includes("Fake Out"))s+=4;if(ab.includes("Intimidate"))s+=6;s+=Math.min(8,bulkPts);return Math.min(40,s);}
+    case "support": {let s=8;if(mv.includes("Coaching")||mv.includes("Decorate"))s+=12;else if(mv.some(m=>TEAM_SUPPORT_MV.includes(m)))s+=8;if(mv.includes("Fake Out"))s+=4;if(ab.includes("Intimidate"))s+=6;s+=Math.min(8,bulkPts);return Math.min(40,s);}
     case "wall": {let s=Math.min(22,Math.round((bv-250)/8));if(RECOVERY.some(m=>mv.includes(m)))s+=12;return Math.min(40,s);}
     case "weather": return 22;
     case "priority": {let s=4;if(mv.some(m=>PRIORITY.includes(m)))s+=16;if(ab.includes("Gale Wings")||ab.includes("Triage"))s+=14;s+=Math.min(14,Math.round((off-70)/8));if(ab.includes("Technician"))s+=4;return Math.min(40,s);}
