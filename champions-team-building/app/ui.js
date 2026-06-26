@@ -201,11 +201,32 @@ function showExport(){
   const paste=E.exportPaste(STATE.team);
   titleEl.textContent="Export"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden");
   app.innerHTML=`<div class="card"><b>Team (${STATE.team.length})</b><div class="grid" style="margin-top:8px">${STATE.team.map(m=>`<div class="mon">${imgF(m.entry,m.formIndex)}<div class="nm">${m.entry.name}${m.formIndex>=0?' (Mega)':''}</div></div>`).join("")}</div></div>
-    <div class="card"><b>Share</b> <button class="btn" id="share">🔗 Copy share link</button><div class="muted" id="shareInfo" style="margin-top:6px">A link that reopens this exact team.</div></div>
+    <div class="card"><b>Share</b> <button class="btn" id="share">🔗 Copy link</button> <button class="btn" id="imgbtn">🖼️ Team image</button><div class="muted" id="shareInfo" style="margin-top:6px">A link reopens this exact team. The image is a shareable team sheet.</div></div>
     <div class="card"><b>Set list</b> <button class="btn" id="cp">Copy</button><pre class="paste" id="pst">${paste.replace(/</g,"&lt;")}</pre></div>`;
   $("#cp").onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText(paste);$("#cp").textContent="Copied ✓";};
   $("#share").onclick=()=>{const url=location.origin+location.pathname+"#t="+E.encodeTeam(STATE.team);navigator.clipboard&&navigator.clipboard.writeText(url);$("#share").textContent="Copied ✓";$("#shareInfo").textContent=url.length>90?url.slice(0,90)+"…":url;};
+  $("#imgbtn").onclick=()=>teamImage();
   backBtn.onclick=()=>go("builder");
+}
+// render a clean, sprite-free (CORS-safe) team-sheet PNG and download it
+function teamImage(){
+  const W=720, rowH=92, H=70+STATE.team.length*rowH+20, c=document.createElement("canvas"); c.width=W; c.height=H;
+  const x=c.getContext("2d");
+  x.fillStyle="#15172e"; x.fillRect(0,0,W,H);
+  x.fillStyle="#e9eaf6"; x.font="bold 24px system-ui,sans-serif"; x.fillText("Champions Team",20,40);
+  const h=E.teamHealth(STATE.team); x.fillStyle="#9aa0c8"; x.font="14px system-ui,sans-serif";
+  x.fillText((E.archetypeChecklist(STATE.team).arche)+"  ·  Health "+h.score+" "+h.grade,20,60);
+  STATE.team.forEach((m,i)=>{
+    const y=72+i*rowH, ef=E.effOf(m);
+    x.fillStyle="#1a1c34"; x.fillRect(16,y,W-32,rowH-10);
+    // type chips
+    let tx=28; (ef.types||m.entry.types).forEach(t=>{const w=x.measureText(t).width+16;x.fillStyle=TCOL[t]||"#888";x.fillRect(tx,y+12,w,18);x.fillStyle="#0b0d1f";x.font="bold 11px system-ui";x.fillText(t.toUpperCase(),tx+8,y+25);tx+=w+6;});
+    x.fillStyle="#e9eaf6"; x.font="bold 18px system-ui"; x.fillText(m.entry.name+(m.formIndex>=0?" ("+(m.entry.mega&&m.entry.mega[m.formIndex]&&m.entry.mega[m.formIndex].label||"Mega")+")":""),28,y+50);
+    x.fillStyle="#9aa0c8"; x.font="13px system-ui"; x.fillText("@ "+(m.set.item||"—")+"  ·  "+m.set.nature,28,y+70);
+    const mv=(m.set.moves||[]).filter(Boolean).join(" / "); x.font="13px system-ui"; x.fillStyle="#c7cbe8";
+    x.fillText(mv.length>62?mv.slice(0,62)+"…":mv,360,y+50);
+  });
+  c.toBlob(b=>{const u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download="champions-team.png";a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);$("#imgbtn").textContent="Saved ✓";});
 }
 
 /* ---------------- SET EDITOR ---------------- */
@@ -340,14 +361,27 @@ function renderCalc(){
   backBtn.onclick=()=>go("builder");
 }
 
+/* proven Reg M-B skeletons to start from (built from the real meta cores) */
+const SAMPLE_TEAMS=[
+  {name:"Tailwind Balance",note:"M-B's #1 core",mons:[["Garchomp",-1],["Charizard",1],["Kingambit",-1],["Basculegion-Male",-1],["Whimsicott",-1],["Floette",-1]]},
+  {name:"Rain Offense",note:"Pelipper + Swampert",mons:[["Pelipper",-1],["Swampert",0],["Archaludon",-1],["Metagross",-1],["Sinistcha",-1],["Incineroar",-1]]},
+  {name:"Trick Room",note:"Sinistcha setter",mons:[["Sinistcha",-1],["Mawile",0],["Sylveon",-1],["Gholdengo",-1],["Farigiraf",-1],["Incineroar",-1]]},
+];
+function loadSample(s){
+  STATE.team=s.mons.map(([n,f])=>{const e=E.byName[n];if(!e)return null;const set=E.recommendSet(e,f>=0?"mega"+f:"meta");while(set.moves.length<4)set.moves.push("");return {entry:e,formIndex:(set.formIndex!=null?set.formIndex:f),roleKey:"meta",set};}).filter(Boolean);
+  STATE.lead=STATE.team[0]&&STATE.team[0].entry; STATE.role=null; STATE.slotRole=null; STATE.q=""; go("builder");
+}
 /* ---------------- IMPORT ---------------- */
 function renderImport(){
   titleEl.textContent="Import team"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
   app.innerHTML=`
-    <div class="card"><div class="muted">Paste a Showdown export / pokepaste text — or a pokepast.es link — to load and analyse a full team. Showdown EVs are converted to Champions points.</div>
-      <textarea id="pastein" style="width:100%;height:180px;margin-top:10px;background:var(--card2);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:10px;font:12px/1.4 ui-monospace,monospace" placeholder="Tauros-Paldea-Aqua @ ...&#10;Ability: Intimidate&#10;- Close Combat&#10;...&#10;&#10;or  https://pokepast.es/abc123def456..."></textarea>
+    <div class="card"><b>Start from a proven Reg M-B skeleton</b>
+      <div style="margin-top:8px">${SAMPLE_TEAMS.map((s,i)=>`<button class="btn" data-sample="${i}" style="width:100%;margin-bottom:6px;text-align:left">▸ ${s.name} <span class="muted">— ${s.note}</span></button>`).join("")}</div></div>
+    <div class="card"><div class="muted">…or paste a Showdown export / pokepaste text — or a pokepast.es link — to load and analyse any team. Showdown EVs are converted to Champions points.</div>
+      <textarea id="pastein" style="width:100%;height:160px;margin-top:10px;background:var(--card2);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:10px;font:12px/1.4 ui-monospace,monospace" placeholder="Tauros-Paldea-Aqua @ ...&#10;Ability: Intimidate&#10;- Close Combat&#10;...&#10;&#10;or  https://pokepast.es/abc123def456..."></textarea>
       <button class="btn primary" id="load" style="width:100%;margin-top:8px">Load team</button>
       <div class="muted" id="impmsg" style="margin-top:8px"></div></div>`;
+  app.querySelectorAll("[data-sample]").forEach(b=>b.onclick=()=>loadSample(SAMPLE_TEAMS[+b.dataset.sample]));
   $("#load").onclick=async()=>{
     let text=$("#pastein").value.trim(); const msg=$("#impmsg");
     if(!text){msg.textContent="Paste a team first.";return;}
