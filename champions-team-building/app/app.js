@@ -491,39 +491,123 @@ function offCoverageBonus(e,team){
   for(const t of e.types)for(const dt of TYPES)if(CHART[t]&&CHART[t][dt]>=2&&!cur.has(dt))added.add(dt);
   return Math.min(8,added.size*1.5);
 }
+
+/* ---------- format-meta (Champions Reg M-B, calibrated from NAIC/Indianapolis/Global-Challenge/Smogon-Major top cut) ---------- */
+// the offensive types the format punishes most via common spread/strong moves (weight = how scary a shared weakness is)
+const SPREAD_THREAT={Ground:1.0,Rock:1.0,Fire:.9,Fairy:.85,Water:.7,Ice:.5,Flying:.5,Steel:.45,Dark:.4,Electric:.4,Ghost:.4};
+const REDIR_MV=["Follow Me","Rage Powder"];
+const WEATHER_SET_ABIL={Drought:"sun",Drizzle:"rain","Sand Stream":"sand","Snow Warning":"snow","Orichalcum Pulse":"sun"};
+const STAT_DROP_SUPPORT=["Fake Tears","Charm","Tickle","Screech","Metal Sound","Parting Shot","Snarl"]; // open KO ranges for a partner
+/* which "speed mode" is this team committed to? tailwind / trickroom / priority-HO / none / open(early) */
+function teamSpeedMode(team){
+  if(!team.length) return "open";
+  const mv=team.flatMap(m=>setMovesOf(m));
+  const tw=mv.includes("Tailwind"), tr=mv.includes("Trick Room");
+  const atk=team.filter(m=>offense(m.entry)>=95);
+  const fast=atk.filter(m=>effOf(m).baseStats.spe>=80).length, slow=atk.filter(m=>effOf(m).baseStats.spe<=55).length;
+  const prio=team.filter(m=>setMovesOf(m).some(x=>PRIORITY.includes(x))).length;
+  if(tr&&!tw) return "trickroom";
+  if(tw&&!tr) return "tailwind";
+  if(tw&&tr) return slow>fast?"trickroom":"tailwind";
+  if(prio>=2&&fast>=2) return "priority";                 // priority hyper-offense — a real ~25% Champions archetype
+  return team.length>=4?"none":"open";
+}
+// how well does the candidate fit the team's committed speed plan?
+function speedFit(e,team){
+  const mode=teamSpeedMode(team), spe=e.baseStats.spe, off=offense(e), prio=e.moves.some(m=>PRIORITY.includes(m));
+  switch(mode){
+    case "tailwind": if(e.moves.includes("Tailwind"))return 7; if(spe>=80||prio)return 6; if(off>=95&&spe<60&&!prio)return -5; return 1;
+    case "trickroom": if(e.moves.includes("Trick Room"))return 7; if(spe<=55&&off>=95)return 7; if(spe>=90&&off>=95&&!prio)return -6; return 1;
+    case "priority": if(prio)return 6; if(spe>=95)return 4; if(off>=95&&spe<60&&!prio)return -3; return 1;
+    case "none": if(e.moves.includes("Tailwind")||e.moves.includes("Trick Room"))return 8; if(prio)return 4; return 0; // team has no speed plan yet — adding one is valuable
+    default: return e.moves.includes("Tailwind")||e.moves.includes("Trick Room")?4:0;
+  }
+}
+// does the candidate complete an enabler→payoff core (the single highest-value synergy signal)?
+function enablerBonus(e,team){
+  let b=0; const tm=team.flatMap(m=>setMovesOf(m)), tAb=team.flatMap(m=>effOf(m).abilities);
+  const eSetupSweeper=has(e,SETUP).length&&offense(e)>=95, eRedir=e.moves.some(m=>REDIR_MV.includes(m));
+  const teamRedir=tm.some(m=>REDIR_MV.includes(m)), teamSetupSweeper=team.some(m=>has(m.entry,SETUP).length&&offense(m.entry)>=95);
+  if(teamRedir&&eSetupSweeper)b+=8;                       // existing redirection protects a new setup sweeper
+  if(teamSetupSweeper&&eRedir)b+=8;                       // new redirection protects an existing setup sweeper
+  if(tm.includes("Beat Up")&&e.moves.includes("Rage Fist"))b+=8;
+  if(team.some(m=>m.entry.moves.includes("Rage Fist"))&&e.moves.includes("Beat Up"))b+=8;
+  if(tm.some(m=>STAT_DROP_SUPPORT.includes(m))&&offense(e)>=110)b+=4;   // -SpD/-Atk support opens KOs for a big attacker
+  if(e.moves.some(m=>STAT_DROP_SUPPORT.includes(m))&&team.some(m=>offense(m.entry)>=110))b+=4;
+  // weather setter <-> abuser
+  const eWeather=(e.abilities||[]).map(a=>WEATHER_SET_ABIL[a]).find(Boolean);
+  const teamWeatherSet=tAb.map(a=>WEATHER_SET_ABIL[a]).find(Boolean);
+  const abuses=(mon,w)=>(mon.abilities||[]).some(a=>WEATHER_BENEFIT_ABIL[w]&&WEATHER_BENEFIT_ABIL[w].includes(a))||(w==="sun"&&mon.types.includes("Fire"))||(w==="rain"&&mon.types.includes("Water"));
+  if(teamWeatherSet&&abuses(e,teamWeatherSet))b+=6;
+  if(eWeather&&team.some(m=>abuses(m.entry,eWeather)))b+=6;
+  return Math.min(14,b);
+}
+// does the candidate answer an M-B threat the team is currently weak to (resists a scary spread type the team stacks)?
+function threatAnswerBonus(e,team){
+  if(team.length<2) return 0;
+  const tally=teamWeakTally(team); let b=0;
+  const ef={types:e.types,abilities:e.abilities,baseStats:e.baseStats};
+  const tbl=effTable(ef,(e.abilities||[])[0]);
+  for(const [t,v] of Object.entries(tally)){
+    const w=SPREAD_THREAT[t]||0; if(!w) continue;
+    if((v.count>=2||v.max>=4)&&tbl[t]<1) b+=6*w;          // team stacks a scary type AND candidate resists/immune it
+  }
+  return Math.min(12,Math.round(b));
+}
+// reward the 1st Intimidate, penalize stacking a 2nd (top Champions teams never double-Intimidate)
+function intimidateDiscipline(e,team){
+  if(!(e.abilities||[]).includes("Intimidate")) return 0;
+  return team.some(m=>effOf(m).abilities.includes("Intimidate"))?-5:0;
+}
 function scoreForSlot(e,team,slot){
   const b=scoreCandidate(e,team), exe=roleExecution(e,slot);
   const lead=team[0]&&team[0].entry, leadCov=leadCoverageBonus(e,lead), offCov=offCoverageBonus(e,team);
+  // synergy layer (Champions Reg M-B calibrated): speed-mode fit, enabler→payoff cores, threat answers, Intimidate discipline
+  const spd=speedFit(e,team), enab=enablerBonus(e,team), threat=threatAnswerBonus(e,team), intim=intimidateDiscipline(e,team);
   // Score is purely about fit: how well it executes the role + how it supports THIS team.
   // Usage/popularity is NOT a factor — `rank` is returned only as an informational label.
   const teamFit=b.typing+Math.min(18,b.cov)+b.weather+leadCov+offCov;
-  const total=Math.min(100,Math.round(teamFit*0.7+exe));
+  const synergy=spd+enab+threat+intim;   // Reg M-B synergy layer
+  const total=Math.max(0,Math.min(100,Math.round(teamFit*0.62+exe+synergy)));
   const u=usageOf(e);
-  return {...b,exe,leadCov,offCov,rank:u&&u.rank!=null?u.rank:null,total};
+  return {...b,exe,leadCov,offCov,spd,enab,threat,intim,synergy,rank:u&&u.rank!=null?u.rank:null,total};
 }
 
 /* ---------- live team health score ---------- */
+const MODE_LABEL={tailwind:"Tailwind",trickroom:"Trick Room",priority:"Priority offense",none:"No speed plan",open:"—"};
 function teamHealth(team){
-  if(!team||!team.length) return {score:0,grade:"–",flags:[],tally:{}};
+  if(!team||!team.length) return {score:0,grade:"–",flags:[],tally:{},mode:"open"};
   const tally=teamWeakTally(team), needs=teamNeeds(team), off=teamOffense(team), n=team.length;
+  const mode=teamSpeedMode(team), tm=team.flatMap(m=>setMovesOf(m));
   let score=100; const flags=[];
+  // defensive: shared weaknesses, weighted by how scary that type is as a Reg M-B spread move
   for(const [t,v] of Object.entries(tally)){
-    const answer=teamResists(team,t);            // a switch-in that resists softens the liability
-    const k=answer?0.5:1, sfx=answer?" (have a resist)":"";
+    const answer=teamResists(team,t), threat=0.6+(SPREAD_THREAT[t]||0)*0.6;   // Ground/Rock/Fire/Fairy hurt more
+    const k=(answer?0.5:1)*threat, sfx=answer?" (have a resist)":"";
     if(v.count>=3){score-=12*k;flags.push({sev:answer?1:2,msg:`${v.count} members weak to ${t}${sfx}`});}
     else if(v.count>=2){score-=5*k;flags.push({sev:answer?0:1,msg:`${v.count} members weak to ${t}${sfx}`});}
     if(v.max>=4){score-=4*k;flags.push({sev:answer?1:2,msg:`4× ${t} weakness${sfx}`});}
   }
   if(n>=3&&off.gaps.length){score-=Math.min(15,off.gaps.length*4);flags.push({sev:2,msg:`No super-effective hit on ${off.gaps.join(", ")}`});}
   if(n>=3&&off.se.length<10) score-=(10-off.se.length)*1.5;
-  const needLabels={speed:"speed control",redir:"redirection",fakeout:"Fake Out",intimidate:"Intimidate",priority:"priority",pivot:"pivot"};
-  if(n>=4) for(const k in needLabels){ if(needs[k]){ const w=(k==="speed"||k==="priority")?6:3; score-=w; flags.push({sev:0,msg:`missing ${needLabels[k]}`}); } }
+  // role backbone — calibrated to Champions top-cut frequencies (Intimidate is OPTIONAL, never required)
+  if(n>=4){
+    if(mode==="none"){score-=12;flags.push({sev:2,msg:"no speed-control plan (Tailwind / Trick Room / priority)"});}
+    if(needs.fakeout){score-=4;flags.push({sev:1,msg:"no Fake Out (≈90% of top teams run one)"});}
+    if(needs.priority){score-=5;flags.push({sev:1,msg:"no priority move"});}
+    if(needs.redir && team.some(m=>has(m.entry,SETUP).length&&offense(m.entry)>=95)){score-=4;flags.push({sev:1,msg:"setup sweeper with no redirection to protect it"});}
+  }
+  // speed-mode discipline: top cuts commit to ONE mode (9/9 at the 6k-player Grand Champions Festival)
+  if(tm.includes("Tailwind")&&tm.includes("Trick Room")){score-=6;flags.push({sev:1,msg:"hedging Tailwind AND Trick Room — top teams commit to one"});}
+  // Intimidate discipline: never double-stacked in Champions top cut
+  const intimN=team.filter(m=>effOf(m).abilities.includes("Intimidate")).length;
+  if(intimN>=2){score-=6;flags.push({sev:1,msg:`${intimN} Intimidate users — top teams run at most one`});}
   const dups=itemClause(team); if(dups.length){score-=10;flags.push({sev:2,msg:`item clause: ${dups.join(", ")}`});}
   if(new Set(team.map(m=>m.entry.name)).size!==n){score-=10;flags.push({sev:2,msg:"duplicate species"});}
   score=Math.max(0,Math.min(100,Math.round(score)));
   const grade=score>=82?"A":score>=68?"B":score>=52?"C":score>=38?"D":"F";
   flags.sort((a,b)=>b.sev-a.sev);
-  return {score,grade,flags,tally,off,needs};
+  return {score,grade,flags,tally,off,needs,mode};
 }
 
 /* ---------- speed tiers (Champions: L50, 0-32 points, no IVs, natures apply) ---------- */
@@ -720,4 +804,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,speedFit,enablerBonus,threatAnswerBonus};

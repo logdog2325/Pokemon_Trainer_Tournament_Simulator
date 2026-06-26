@@ -114,7 +114,9 @@ function healthCard(team){
   const h=E.teamHealth(team);
   const col=h.score>=82?'var(--good)':h.score>=52?'#ffd9a0':'var(--bad)';
   const flags=h.flags.slice(0,5).map(f=>`<span class="wk"><span class="${f.sev>=2?'x4':f.sev>=1?'x2':''}" style="${f.sev<1?'background:#3a2a14;color:#ffd9a0':''}">${f.msg}</span></span>`).join("");
-  return `<div class="card"><div class="row"><div style="flex:1"><b>Team Health</b><div class="muted">live score as you build</div></div>
+  const ML={tailwind:"Tailwind",trickroom:"Trick Room",priority:"Priority offense",none:"⚠ no speed plan",open:""};
+  const arche=team.length>=2&&ML[h.mode]?`<span class="tag good">${ML[h.mode]}</span>`:"";
+  return `<div class="card"><div class="row"><div style="flex:1"><b>Team Health</b> ${arche}<div class="muted">Reg M-B synergy · live as you build</div></div>
     <div class="scorebadge"><b style="font-size:30px;color:${col}">${h.score}</b><small>${h.grade}</small></div></div>
     ${h.flags.length?`<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px">${flags}</div>`:`<div class="muted good" style="margin-top:4px">No red flags ✓</div>`}</div>`;
 }
@@ -189,7 +191,7 @@ function candRow(c,danger){
   return `<div class="candrow" data-n="${e.name}">${img(e)}
     <div class="meta"><div class="nm">${e.name} ${tbadges(e.types)}</div>
       <div class="tags">${tags.slice(0,6).map(([t,c])=>`<span class="tag ${c}">${t}</span>`).join("")}</div>
-      <div class="brk">typing ${s.typing}/25 · role-fit ${s.exe!=null?s.exe:'–'}/40 · ability ${s.ability}/15${s.weather?' · weather +'+s.weather:''}${cav?' · ⚠ caveat':''}</div></div>
+      <div class="brk">role-fit ${s.exe!=null?s.exe:'–'}/40 · typing ${s.typing}/25${s.synergy?' · synergy '+(s.synergy>0?'+':'')+s.synergy:''}${s.enab?' · core +'+s.enab:''}${s.spd<0?' · ⚠ off-speed '+s.spd:''}${cav?' · ⚠ caveat':''}</div></div>
     <div class="scorebadge"><b style="color:${s.total>=70?'var(--good)':s.total>=55?'var(--txt)':'var(--mut)'}">${s.total}</b><small>fit</small></div></div>`;
 }
 function bindCands(){app.querySelectorAll(".candrow").forEach(r=>r.onclick=()=>{openEditor(mkMember(E.byName[r.dataset.n]),-1);});}
