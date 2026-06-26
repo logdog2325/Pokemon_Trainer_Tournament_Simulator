@@ -604,10 +604,19 @@ function teamHealth(team){
   if(intimN>=2){score-=6;flags.push({sev:1,msg:`${intimN} Intimidate users — top teams run at most one`});}
   const dups=itemClause(team); if(dups.length){score-=10;flags.push({sev:2,msg:`item clause: ${dups.join(", ")}`});}
   if(new Set(team.map(m=>m.entry.name)).size!==n){score-=10;flags.push({sev:2,msg:"duplicate species"});}
+  // viability vs the top meta threats: do you have a real check, a soft/neutral matchup, or nothing?
+  let mu=null;
+  if(n>=3){
+    mu=threatMatchups(team);
+    if(mu.uncovered){score-=Math.min(24,mu.uncovered*5);
+      flags.push({sev:2,msg:`no check for ${mu.uncovered} top threat${mu.uncovered>1?"s":""}: ${mu.uncoveredNames.slice(0,4).join(", ")}${mu.uncoveredNames.length>4?"…":""}`});}
+    if(mu.neutral){score-=Math.min(8,mu.neutral*1.5);
+      flags.push({sev:1,msg:`only a soft/neutral matchup into ${mu.neutral} threat${mu.neutral>1?"s":""} (survive or trade, not a clean check)`});}
+  }
   score=Math.max(0,Math.min(100,Math.round(score)));
   const grade=score>=82?"A":score>=68?"B":score>=52?"C":score>=38?"D":"F";
   flags.sort((a,b)=>b.sev-a.sev);
-  return {score,grade,flags,tally,off,needs,mode};
+  return {score,grade,flags,tally,off,needs,mode,mu};
 }
 
 /* ---------- archetype skeleton checklist (is the team a complete <archetype>?) ---------- */
@@ -669,6 +678,36 @@ function winConRealism(team){
   }).sort((a,b)=>b.frac-a.frac);
   return {wins:out,best:out[0]?out[0].frac:0};
 }
+// best guaranteed/possible KO our member lands on a defender (min roll = guaranteed, max roll = possible)
+function memberKOon(att,def,field){let mn=0,mx=0;for(const mv of setMovesOf(att)){const r=calcDamage(att,mv,def,field||{});if(r&&!r.immune){if(r.minPct>mn)mn=r.minPct;if(r.maxPct>mx)mx=r.maxPct;}}return {mn,mx};}
+// Matchup viability vs each top meta threat. A "check" (VGC sense) = a member that survives the threat's
+// strongest hit AND reliably KOs back (≥2HKO), or that outspeeds it and OHKOs it. Tiers:
+//   3 hard check (walls it + KOs back) · 2 offensive check (faster + OHKOs) · 1 neutral/soft · 0 uncovered.
+function threatMatchups(team){
+  if(!team||!team.length) return {rows:[],checked:0,neutral:0,uncovered:0,uncoveredNames:[],total:0};
+  const weather=teamWeather(team);
+  const rows=threatMembers().map(t=>{
+    const tSpe=memberSpeed(t,{weather});
+    let tier=0,by=null,note="";
+    for(const d of team){
+      const inc=bestHitPct(t,d,{weather});               // threat's max% on us (worst case)
+      const ko=memberKOon(d,t,{weather,spread:false});   // our KO on the threat
+      const survives=inc<100, faster=memberSpeed(d,{weather})>tSpe;
+      const ohko=ko.mn>=100, twohko=ko.mn>=50;           // guaranteed (min-roll) KOs
+      let tr=0,nt="";
+      if(survives&&twohko){tr=3;nt=(by=d.entry.name)&&((ohko?"walls + OHKOs":"walls + 2HKOs"));}
+      else if(faster&&ohko){tr=2;nt="outspeeds + OHKOs";}
+      else if(survives&&ko.mx>=50){tr=1;nt="survives, soft (rolls a 2HKO)";}
+      else if(survives){tr=1;nt="walls but can't KO it";}
+      else if(twohko){tr=1;nt="revenge-KOs but is OHKO'd (frail trade)";}
+      if(tr>tier){tier=tr;by=d.entry.name;note=nt;}
+    }
+    return {name:t.entry.name+(t.formIndex>=0?" (Mega)":""),tier,by,note};
+  });
+  const uncovered=rows.filter(r=>r.tier===0);
+  return {rows,checked:rows.filter(r=>r.tier>=2).length,neutral:rows.filter(r=>r.tier===1).length,
+    uncovered:uncovered.length,uncoveredNames:uncovered.map(r=>r.name),total:rows.length};
+}
 
 /* ---------- point optimizer (outspeed / survive) ---------- */
 // min Speed points (+ whether a +Spe nature is needed) for `m` to outspeed targetSpe
@@ -702,6 +741,90 @@ function optimizeSurvive(def,att,move,opt){
   const d={entry:def.entry,formIndex:def.formIndex,set:Object.assign({},def.set,{points:{hp:32,atk:0,def:phys?32:0,spa:0,spd:phys?0:32,spe:0}})};
   const r=calcDamage(att,move,d,{weather:opt.weather,spread:opt.spread});
   return {possible:false,maxPct:r?r.maxPct:999};
+}
+// min attacking points so `m` (with nature) reaches a KO benchmark on a meta defender.
+// ko: "ohko" => guaranteed OHKO (min roll ≥ 100%); "2hko" => guaranteed 2HKO (min roll ≥ 50%).
+function optimizeKO(m,nature,atkK,def,ko,weather,fixedMove){
+  const thr=ko==="2hko"?50:100;
+  // pick the move: explicit, else whichever hits this defender hardest at full investment
+  let mv=fixedMove;
+  if(!mv){
+    let bp=-1; const fp={hp:0,atk:0,def:0,spa:0,spd:0,spe:0}; fp[atkK]=32;
+    const fa={entry:m.entry,formIndex:m.formIndex,set:Object.assign({},m.set,{points:fp,nature})};
+    for(const c of setMovesOf(fa)){const r=calcDamage(fa,c,def,{weather,spread:false});if(r&&!r.immune&&r.minPct>bp){bp=r.minPct;mv=c;}}
+  }
+  if(!mv) return {possible:false,move:null};
+  for(let p=0;p<=32;p++){
+    const pts={hp:0,atk:0,def:0,spa:0,spd:0,spe:0}; pts[atkK]=p;
+    const fa={entry:m.entry,formIndex:m.formIndex,set:Object.assign({},m.set,{points:pts,nature})};
+    const r=calcDamage(fa,mv,def,{weather,spread:false});
+    if(r&&!r.immune&&r.minPct>=thr) return {possible:true,points:p,move:mv,pct:r.minPct};
+  }
+  // not reachable even at 32 — report the best we can do
+  const fp={hp:0,atk:0,def:0,spa:0,spd:0,spe:0}; fp[atkK]=32;
+  const fa={entry:m.entry,formIndex:m.formIndex,set:Object.assign({},m.set,{points:fp,nature})};
+  const r=calcDamage(fa,mv,def,{weather,spread:false});
+  return {possible:false,move:mv,pct:r?r.minPct:0};
+}
+// full 66-point spread that satisfies a speed benchmark + survival constraints + KO benchmarks at once.
+// Offense is NOT a leftover dump: it invests exactly enough to OHKO/2HKO the requested meta threats;
+// only points beyond every constraint (speed + survive + KO) spill into extra bulk.
+function optimizeSpread(m,goals){
+  goals=goals||{}; const e=m.entry, phys=isPhysical(e), atkK=phys?"atk":"spa";
+  // 1) speed: min points; decide whether a +Spe nature is required
+  let speP=0,plusSpe=false,speOK=true,speTxt="";
+  if(goals.speed&&goals.speedTargetSpe!=null){
+    const r=optimizeOutspeed(m,goals.speedTargetSpe,{tailwind:goals.speedTW,scarf:goals.speedScarf});
+    if(r.possible){speP=r.points;plusSpe=r.plusNature;speTxt="outspeed "+goals.speedName+" ("+r.achieved+" Spe)";}
+    else {speOK=false;speTxt="outspeed "+goals.speedName+" (impossible — maxes "+r.achieved+")";}
+  }
+  const nature=plusSpe?(phys?"Jolly":"Timid"):(phys?"Adamant":"Modest");   // +Spe vs offensive nature
+  // 2) survival: share HP across all constraints; find the HP allocation that minimises total defensive points
+  const survs=(goals.survivals||[]).map(s=>({att:benchMember(s.benchName),move:s.move,weather:s.weather,name:s.benchName})).filter(s=>s.att&&s.move);
+  let best={hp:0,def:0,spd:0,tot:0,fails:survs.map(s=>s.name+"|"+s.move)};
+  for(let hp=0;hp<=32;hp++){
+    let needDef=0,needSpd=0,fails=[];
+    for(const s of survs){
+      const pm=moveInfo(s.move).c==="Phys"; let ok=false,p=0;
+      for(p=0;p<=32;p++){
+        const pts={hp,atk:0,def:pm?p:0,spa:0,spd:pm?0:p,spe:0};
+        const d={entry:e,formIndex:m.formIndex,set:Object.assign({},m.set,{points:pts,nature})};
+        const r=calcDamage(s.att,s.move,d,{weather:s.weather});
+        if(!r||r.immune||r.maxPct<100){ok=true;break;}
+      }
+      if(!ok)fails.push(s.name+"|"+s.move); else if(pm)needDef=Math.max(needDef,p); else needSpd=Math.max(needSpd,p);
+    }
+    const tot=hp+needDef+needSpd;
+    if(fails.length<best.fails.length||(fails.length===best.fails.length&&tot<best.tot)) best={hp,def:needDef,spd:needSpd,tot,fails};
+  }
+  // 3) offense: invest exactly enough to hit the requested KO/2HKO benchmarks (max across targets)
+  const kos=(goals.kos||[]).map(k=>({def:benchMember(k.benchName),ko:k.ko||"ohko",move:k.move,weather:k.weather,name:k.benchName})).filter(k=>k.def);
+  let needAtk=0; const koAch=[],koFail=[];
+  for(const k of kos){
+    const r=optimizeKO(m,nature,atkK,k.def,k.ko,k.weather,k.move);
+    const label=(k.ko==="2hko"?"2HKO ":"OHKO ")+k.name+(r.move?" with "+r.move:"");
+    if(r.possible){needAtk=Math.max(needAtk,r.points);koAch.push(label);}
+    else koFail.push(label+(r.pct!=null?" (max "+r.pct+"%)":""));
+  }
+  // 4) assemble within 66. Constraints fixed; leftover spills into offense (no KO goal) or bulk (KO met).
+  const pts={hp:best.hp,atk:0,def:best.def,spa:0,spd:best.spd,spe:speP};
+  pts[atkK]=needAtk;
+  let used=pts.hp+pts.def+pts.spd+pts.spe+pts[atkK];
+  let left=Math.max(0,66-used);
+  if(left>0){
+    if(!kos.length){ const a=Math.min(32-pts[atkK],left); pts[atkK]+=a; left-=a; }   // classic: max the attack
+    // remaining (or all, when KO already satisfied) goes to bulk: HP first, then the lighter defense
+    const ah=Math.min(32-pts.hp,left); pts.hp+=ah; left-=ah;
+    if(left>0){const ad=Math.min(32-pts.def,left);pts.def+=ad;left-=ad;}
+    if(left>0){const as=Math.min(32-pts.spd,left);pts.spd+=as;left-=as;}
+  }
+  const required=best.hp+best.def+best.spd+speP+needAtk;   // points the constraints demand
+  const achieves=[],failures=[];
+  if(goals.speed){(speOK?achieves:failures).push(speTxt);}
+  for(const s of survs){const key=s.name+"|"+s.move; (best.fails.includes(key)?failures:achieves).push("survive "+s.name+"'s "+s.move);}
+  koAch.forEach(x=>achieves.push(x)); koFail.forEach(x=>failures.push(x));
+  return {points:pts,nature,achieves,failures,offensePts:pts[atkK],required,
+    feasible:speOK&&best.fails.length===0&&koFail.length===0&&required<=66};
 }
 
 /* ---------- speed tiers (Champions: L50, 0-32 points, no IVs, natures apply) ---------- */
@@ -898,4 +1021,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,speedFit,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,archetypeChecklist,optimizeOutspeed,optimizeSurvive};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,speedFit,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread};

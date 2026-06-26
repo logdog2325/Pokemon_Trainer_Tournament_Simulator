@@ -116,8 +116,12 @@ function healthCard(team){
   const flags=h.flags.slice(0,5).map(f=>`<span class="wk"><span class="${f.sev>=2?'x4':f.sev>=1?'x2':''}" style="${f.sev<1?'background:#3a2a14;color:#ffd9a0':''}">${f.msg}</span></span>`).join("");
   const ML={tailwind:"Tailwind",trickroom:"Trick Room",priority:"Priority offense",none:"⚠ no speed plan",open:""};
   const arche=team.length>=2&&ML[h.mode]?`<span class="tag good">${ML[h.mode]}</span>`:"";
+  let muLine="";
+  if(h.mu&&h.mu.total){const m=h.mu, ucol=m.uncovered?'var(--bad)':m.neutral?'#ffd9a0':'var(--good)';
+    muLine=`<div class="muted" style="margin-top:6px">Meta matchups: <b style="color:var(--good)">${m.checked} checked</b> · <b style="color:#ffd9a0">${m.neutral} soft</b> · <b style="color:${ucol}">${m.uncovered} uncovered</b>${m.uncovered?` — <span style="color:var(--bad)">${m.uncoveredNames.slice(0,3).join(", ")}${m.uncoveredNames.length>3?"…":""}</span>`:""}</div>`;}
   return `<div class="card"><div class="row"><div style="flex:1"><b>Team Health</b> ${arche}<div class="muted">Reg M-B synergy · live as you build</div></div>
     <div class="scorebadge"><b style="font-size:30px;color:${col}">${h.score}</b><small>${h.grade}</small></div></div>
+    ${muLine}
     ${h.flags.length?`<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px">${flags}</div>`:`<div class="muted good" style="margin-top:4px">No red flags ✓</div>`}</div>`;
 }
 function weakCard(tally,needs){
@@ -275,14 +279,15 @@ function renderStress(){
   titleEl.textContent="Stress test"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
   const res=E.stressTest(STATE.team); const dups=E.itemClause(STATE.team); const off=E.teamOffense(STATE.team);
   const speciesUnique=new Set(STATE.team.map(m=>m.entry.name)).size===STATE.team.length;
-  const ta=E.threatAnswers(STATE.team), wc=E.winConRealism(STATE.team), ck=E.archetypeChecklist(STATE.team);
-  const taOk=ta.rows.filter(r=>r.answered).length;
+  const mu=E.threatMatchups(STATE.team), wc=E.winConRealism(STATE.team), ck=E.archetypeChecklist(STATE.team);
+  const TIER={3:["✅","var(--good)"],2:["✅","var(--good)"],1:["🟡","#ffd9a0"],0:["⚠️","var(--bad)"]};
   app.innerHTML=`
     <div class="card"><b>Archetype skeleton — ${ck.arche}</b> <span class="muted">(${ck.complete}/${ck.total})</span>
       ${ck.items.map(i=>`<div class="row" style="margin:4px 0"><span style="width:22px">${i.ok?'✅':'⬜'}</span><div class="${i.ok?'':'muted'}">${i.label}</div></div>`).join("")}</div>
-    <div class="card"><b>Meta threat answers</b> <span class="muted">(a switch-in that survives a hit)</span>
-      <div class="muted" style="margin-top:4px">Answers <b style="color:${taOk>=ta.rows.length-1?'var(--good)':taOk>=ta.rows.length-4?'#ffd9a0':'var(--bad)'}">${taOk}/${ta.rows.length}</b> of the Reg M-B meta's top attackers.</div>
-      <div style="margin-top:6px">${ta.rows.map(r=>`<div class="row" style="margin:3px 0"><span style="width:22px">${r.answered?'✅':'⚠️'}</span><div style="flex:1">${r.name}</div><div class="muted" style="font-size:11px">${r.answered?r.by+' takes '+r.margin+'%':'no safe switch-in'}</div></div>`).join("")}</div></div>
+    <div class="card"><b>Meta matchups — viability</b> <span class="muted">(a check survives its best hit & KOs back)</span>
+      <div class="muted" style="margin-top:4px"><b style="color:var(--good)">${mu.checked} checked</b> · <b style="color:#ffd9a0">${mu.neutral} soft/neutral</b> · <b style="color:${mu.uncovered?'var(--bad)':'var(--good)'}">${mu.uncovered} uncovered</b> of ${mu.total} top threats.${mu.uncovered?' Fix the ⚠️ rows — they run through you.':' No threat runs through your team ✓'}</div>
+      <div style="margin-top:6px">${mu.rows.map(r=>{const[ic,cl]=TIER[r.tier];return `<div class="row" style="margin:3px 0"><span style="width:22px">${ic}</span><div style="flex:1">${r.name}</div><div class="muted" style="font-size:11px;color:${cl}">${r.by?r.by+' — '+r.note:'no check'}</div></div>`;}).join("")}</div>
+      <div class="muted" style="margin-top:6px;font-size:11px">✅ real check (walls + KOs, or outspeeds + OHKOs) · 🟡 soft (survives or trades, no clean KO) · ⚠️ uncovered. Use 🎯 Optimize → Full spread to EV a check.</div></div>
     <div class="card"><b>Win-condition power</b> <span class="muted">(% of the meta it OHKO/2HKOs)</span>
       ${wc.wins.length?wc.wins.slice(0,4).map(w=>`<div class="row" style="margin:5px 0"><b style="width:46px;color:${w.frac>=70?'var(--good)':w.frac>=45?'#ffd9a0':'var(--bad)'}">${w.frac}%</b><div>${w.name}</div></div>`).join(""):`<div class="muted">Add an attacker.</div>`}
       <div class="muted" style="margin-top:4px">Computed in your team's state (weather applied). A real win-con clears ≥60% of the meta.</div></div>
@@ -374,6 +379,14 @@ function loadSample(s){
   STATE.lead=STATE.team[0]&&STATE.team[0].entry; STATE.role=null; STATE.slotRole=null; STATE.q=""; go("builder");
 }
 /* ---------------- OPTIMIZER (outspeed / survive) ---------------- */
+// the move a meta attacker hits `def` hardest with (for "check this threat" survival)
+function worstIncoming(attName,def,weather){
+  const att=E.benchMember(attName); if(!att)return null;
+  let bm=null,bp=-1;
+  for(const mv of (att.set.moves||[])){const i=E.moveInfo(mv);if(!mv||!(i.c==="Phys"||i.c==="Spec")||!i.bp)continue;
+    const r=E.calcDamage(att,mv,def,{weather});if(r&&!r.immune&&r.maxPct>bp){bp=r.maxPct;bm=mv;}}
+  return bm;
+}
 function renderOptimize(){
   titleEl.textContent="Point optimizer"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
   if(!STATE.team.length){app.innerHTML=`<div class="card muted">Add a Pokémon first.</div>`;backBtn.onclick=()=>go("builder");return;}
@@ -386,6 +399,7 @@ function renderOptimize(){
   const tog=(on,l,k)=>`<button class="btn ${on?'primary':''}" data-tog="${k}">${l}</button>`;
   const tgt=benches.find(b=>b.name===O.bench)||benches[0];
   let res="";
+  if(O.mode==="spread"){ renderSpreadMode(O,me,benches,opt,tog); return; }
   if(O.mode==="outspeed"&&tgt){
     const r=E.optimizeOutspeed(me,tgt.spe,{tailwind:O.tailwind,scarf:O.scarf});
     res=r.possible
@@ -405,7 +419,7 @@ function renderOptimize(){
     }
   }
   app.innerHTML=`
-    <div class="card"><div class="seg">${tog(O.mode==="outspeed",'Outspeed',"_outspeed")}${tog(O.mode==="survive",'Survive',"_survive")}</div>
+    <div class="card"><div class="seg">${tog(O.mode==="outspeed",'Outspeed',"_outspeed")}${tog(O.mode==="survive",'Survive',"_survive")}${tog(O.mode==="spread",'Full spread',"_spread")}</div>
       <div class="field"><label>Your Pokémon</label><select id="ome">${STATE.team.map((m,i)=>opt(i,O.mi,m.entry.name+(m.formIndex>=0?" (Mega)":""))).join("")}</select></div>
       <div class="field"><label>${O.mode==="outspeed"?"Outspeed target":"Incoming attacker"}</label><select id="obench">${benches.map(b=>opt(b.name,O.bench,b.label)).join("")}</select></div>
       ${O.mode==="outspeed"?`<div class="seg">${tog(O.tailwind,'Tailwind',"tailwind")}${tog(O.scarf,'Choice Scarf',"scarf")}</div>`:
@@ -415,7 +429,84 @@ function renderOptimize(){
   $("#obench").onchange=()=>{O.bench=$("#obench").value;O.move=null;renderOptimize();};
   const wx=$("#owx");if(wx)wx.onchange=()=>{O.weather=wx.value;renderOptimize();};
   const omv=$("#omv");if(omv)omv.onchange=()=>{O.move=omv.value;renderOptimize();};
-  app.querySelectorAll("[data-tog]").forEach(b=>b.onclick=()=>{const k=b.dataset.tog;if(k==="_outspeed")O.mode="outspeed";else if(k==="_survive")O.mode="survive";else O[k]=!O[k];renderOptimize();});
+  app.querySelectorAll("[data-tog]").forEach(b=>b.onclick=()=>{const k=b.dataset.tog;if(k==="_outspeed")O.mode="outspeed";else if(k==="_survive")O.mode="survive";else if(k==="_spread")O.mode="spread";else O[k]=!O[k];renderOptimize();});
+  backBtn.onclick=()=>go("builder");
+}
+// Full-spread mode: build a real competitive spread from goals.
+// Headline flow = "check a threat": survive its best hit AND OHKO/2HKO it back — exactly EV'd to check it.
+// Plus optional independent speed goal and a second survive target.
+// the meta threat this mon is naturally best suited to check: lowest incoming hit it can still hit back
+function naturalCheck(me,benches,weather){
+  let best=null,bestScore=1e9;
+  for(const b of benches){
+    const inc=worstIncoming(b.name,me,weather); if(!inc)continue;
+    const att=E.benchMember(b.name); const ir=E.calcDamage(att,inc,me,{weather});
+    const incPct=ir&&!ir.immune?ir.maxPct:0;
+    // how hard can we hit them back (best of our set)
+    let outPct=0;for(const mv of (me.set.moves||[])){const r=E.calcDamage(me,mv,att,{weather,spread:false});if(r&&!r.immune&&r.minPct>outPct)outPct=r.minPct;}
+    // prefer threats we survive AND can pressure: penalise being OHKO'd, reward our return damage
+    const score=incPct-(outPct>=50?20:outPct>=100?40:0);
+    if(incPct<100&&score<bestScore){bestScore=score;best=b.name;}
+  }
+  return best||(benches[0]&&benches[0].name);
+}
+function renderSpreadMode(O,me,benches,opt,tog){
+  if(O._checkMi!==O.mi){O.check=naturalCheck(me,benches,O.weather);O._checkMi=O.mi;}   // role-aware default per mon
+  if(O.check===undefined)O.check=naturalCheck(me,benches,O.weather);
+  O.koMode=O.koMode||"2hko";
+  if(O.sSpeed===undefined)O.sSpeed=false;
+  O.sBench=O.sBench||(benches[0]&&benches[0].name);
+  const goals={weather:O.weather};
+  // check-threat: derive a survive (their worst hit) + a KO back, both on the same threat
+  const survivals=[], kos=[];
+  if(O.check){
+    const inc=worstIncoming(O.check,me,O.weather);
+    if(inc)survivals.push({benchName:O.check,move:inc,weather:O.weather});
+    kos.push({benchName:O.check,ko:O.koMode,weather:O.weather});
+  }
+  // optional independent speed goal
+  let speBench=null;
+  if(O.sSpeed){speBench=benches.find(b=>b.name===O.sBench)||benches[0];}
+  const r=E.optimizeSpread(me,{
+    speed:O.sSpeed&&!!speBench, speedTargetSpe:speBench?speBench.spe:null, speedName:speBench?speBench.name:"",
+    speedTW:O.tailwind, speedScarf:O.scarf,
+    survivals, kos
+  });
+  const SK={hp:"HP",atk:"Atk",def:"Def",spa:"SpA",spd:"SpD",spe:"Spe"};
+  const p=r.points, order=["hp","atk","def","spa","spd","spe"];
+  const spreadStr=order.filter(k=>p[k]>0).map(k=>p[k]+" "+SK[k]).join(" / ")||"0 (all neutral)";
+  const total=order.reduce((s,k)=>s+p[k],0);
+  const line=(arr,cls,mark)=>arr.map(x=>`<div style="color:var(--${cls})">${mark} ${x}</div>`).join("");
+  const inc=O.check?worstIncoming(O.check,me,O.weather):null;
+  app.innerHTML=`
+    <div class="card"><div class="seg">${tog(false,'Outspeed',"_outspeed")}${tog(false,'Survive',"_survive")}${tog(true,'Full spread',"_spread")}</div>
+      <div class="field"><label>Your Pokémon</label><select id="ome">${STATE.team.map((m,i)=>opt(i,O.mi,m.entry.name+(m.formIndex>=0?" (Mega)":""))).join("")}</select></div>
+      <div class="field"><label>Check this meta threat — survive its best hit & KO back</label><select id="ocheck">${[["","(none)"]].concat(benches.map(b=>[b.name,b.name])).map(([v,l])=>opt(v,O.check,l)).join("")}</select></div>
+      <div class="seg">${tog(O.koMode==="ohko",'OHKO it',"_ohko")}${tog(O.koMode==="2hko",'2HKO it',"_2hko")}</div>
+      <div class="field"><label>Weather</label><select id="owx">${[["","none"],["sun","Sun"],["rain","Rain"],["sand","Sand"],["snow","Snow"]].map(([v,l])=>opt(v,O.weather,l)).join("")}</select></div>
+      <div class="seg">${tog(O.sSpeed,'+ Outspeed goal',"sSpeed")}</div>
+      ${O.sSpeed?`<div class="field"><label>Outspeed target</label><select id="osb">${benches.map(b=>opt(b.name,O.sBench,b.label)).join("")}</select></div><div class="seg">${tog(O.tailwind,'Tailwind',"tailwind")}${tog(O.scarf,'Choice Scarf',"scarf")}</div>`:""}
+    </div>
+    <div class="card">
+      ${inc?`<div class="muted" style="margin-bottom:6px">vs ${O.check}: its hardest hit on you is <b>${inc}</b>.</div>`:""}
+      <div style="font-size:13px;color:var(--muted)">${me.entry.name}${me.formIndex>=0?" (Mega)":""} — ${r.nature}</div>
+      <div style="font-size:20px;font-weight:800;color:${r.feasible?'var(--good)':'var(--bad)'}">${spreadStr}</div>
+      <div class="muted" style="margin-bottom:8px">${total}/66 points used${r.feasible?'':' — over budget or a goal failed'}</div>
+      ${line(r.achieves,"good","✓")}
+      ${line(r.failures,"bad","✗")}
+      <button class="btn primary" id="oapply" style="margin-top:10px;width:100%">Apply this spread to ${me.entry.name}</button>
+    </div>`;
+  $("#ome").onchange=()=>{O.mi=+$("#ome").value;renderOptimize();};
+  $("#ocheck").onchange=()=>{O.check=$("#ocheck").value;renderOptimize();};
+  const wx=$("#owx");if(wx)wx.onchange=()=>{O.weather=wx.value;renderOptimize();};
+  const sb=$("#osb");if(sb)sb.onchange=()=>{O.sBench=sb.value;renderOptimize();};
+  $("#oapply").onclick=()=>{
+    me.set.points=Object.assign({},r.points); me.set.nature=r.nature;
+    go("builder");
+  };
+  app.querySelectorAll("[data-tog]").forEach(b=>b.onclick=()=>{const k=b.dataset.tog;
+    if(k==="_outspeed")O.mode="outspeed";else if(k==="_survive")O.mode="survive";else if(k==="_spread")O.mode="spread";
+    else if(k==="_ohko")O.koMode="ohko";else if(k==="_2hko")O.koMode="2hko";else O[k]=!O[k];renderOptimize();});
   backBtn.onclick=()=>go("builder");
 }
 /* ---------------- IMPORT ---------------- */
