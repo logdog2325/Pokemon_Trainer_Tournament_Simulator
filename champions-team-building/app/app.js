@@ -634,7 +634,9 @@ function teamHealth(team){
   // Intimidate discipline: never double-stacked in Champions top cut
   const intimN=team.filter(m=>effOf(m).abilities.includes("Intimidate")).length;
   if(intimN>=2){score-=6;flags.push({sev:1,msg:`${intimN} Intimidate users — top teams run at most one`});}
-  const dups=itemClause(team); if(dups.length){score-=10;flags.push({sev:2,msg:`item clause: ${dups.join(", ")}`});}
+  // Item Clause is a legality rule (Champions enforces it) — warn to swap the item, but it's not a
+  // measure of team QUALITY, so it does NOT dock the health score.
+  const dups=itemClause(team); if(dups.length){flags.push({sev:2,msg:`Item Clause: change a duplicate ${dups.join(", ")} — every Pokémon needs a unique item`});}
   if(new Set(team.map(m=>m.entry.name)).size!==n){score-=10;flags.push({sev:2,msg:"duplicate species"});}
   // viability vs the top meta threats: do you have a real check, a soft/neutral matchup, or nothing?
   let mu=null;
