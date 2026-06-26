@@ -6,7 +6,7 @@ const $=s=>document.querySelector(s), app=$("#app"), titleEl=$("#title"), backBt
 let STATE={screen:"start",lead:null,role:null,team:[],q:"",slotRole:null};
 const BULK=e=>e.baseStats.hp+e.baseStats.def+e.baseStats.spd;
 const SLOT_ROLES=[
- {key:"speed",label:"Speed control (Tailwind)",need:"speed",fill:e=>e.moves.includes("Tailwind")},
+ {key:"speed",label:"Speed control",need:"speed",fill:e=>e.moves.includes("Tailwind")||e.moves.includes("Trick Room")},
  {key:"trsetter",label:"Trick Room setter",fill:e=>e.moves.includes("Trick Room")},
  {key:"redir",label:"Redirection",need:"redir",fill:e=>e.moves.some(m=>E.REDIR.includes(m))},
  {key:"fakeout",label:"Fake Out",need:"fakeout",fill:e=>e.moves.includes("Fake Out")},
@@ -207,11 +207,17 @@ function renderBuilder(){
   // STEP 2: candidates that fill the chosen role, scored vs the core
   const roleDef=SLOT_ROLES.find(r=>r.key===STATE.slotRole)||SLOT_ROLES[SLOT_ROLES.length-1];
   const teamNames=new Set(STATE.team.map(m=>m.entry.name));
-  const score=()=>{const q=STATE.q.toLowerCase();return E.DEX.filter(e=>!teamNames.has(e.name)&&e.name.toLowerCase().includes(q)&&(q?true:roleDef.fill(e)))
+  // speed-control slot: which setters appear depends on what the team has committed to
+  let fillFn=roleDef.fill, fillLabel=roleDef.label;
+  if(STATE.slotRole==="speed"){const pref=E.speedSetterPref(STATE.team);
+    if(pref==="trickroom"){fillFn=e=>e.moves.includes("Trick Room");fillLabel="Speed control (Trick Room)";}
+    else if(pref==="tailwind"){fillFn=e=>e.moves.includes("Tailwind");fillLabel="Speed control (Tailwind)";}
+    else{fillFn=e=>e.moves.includes("Tailwind")||e.moves.includes("Trick Room");fillLabel="Speed control (Tailwind / Trick Room)";}}
+  const score=()=>{const q=STATE.q.toLowerCase();return E.DEX.filter(e=>!teamNames.has(e.name)&&e.name.toLowerCase().includes(q)&&(q?true:fillFn(e)))
     .map(e=>({e,s:E.scoreForSlot(e,STATE.team,STATE.slotRole)})).sort((a,b)=>b.s.total-a.s.total);};
   const cands=score();
   app.innerHTML=weakCard(tally,null)+
-    `<div class="card"><div class="row"><b style="flex:1">Filling: ${roleDef.label} · ${cands.length} fit</b><button class="btn" id="chg">↺ Change</button></div></div>
+    `<div class="card"><div class="row"><b style="flex:1">Filling: ${fillLabel} · ${cands.length} fit</b><button class="btn" id="chg">↺ Change</button></div></div>
      <input class="search" id="q" placeholder="Search ANY Pokémon to add it (ignores the role filter)…" value="${STATE.q}">
      <div id="cands">${cands.slice(0,50).map(c=>candRow(c,danger)).join("")||'<div class="card muted">No Pokémon fit this role.</div>'}</div>`;
   $("#chg").onclick=()=>{STATE.slotRole=null;STATE.q="";renderBuilder();window.scrollTo(0,0);};
@@ -239,7 +245,15 @@ function candRow(c,danger){
       <div class="brk">role-fit ${s.exe!=null?s.exe:'–'}/40 · typing ${s.typing}/25${s.synergy?' · synergy '+(s.synergy>0?'+':'')+s.synergy:''}${s.enab?' · core +'+s.enab:''}${s.chk?' · checks +'+s.chk:''}${s.spd<0?' · ⚠ off-speed '+s.spd:''}${cav?' · ⚠ caveat':''}</div></div>
     <div class="scorebadge"><b style="color:${s.total>=70?'var(--good)':s.total>=55?'var(--txt)':'var(--mut)'}">${s.total}</b><small>fit</small></div></div>`;
 }
-function bindCands(){app.querySelectorAll(".candrow").forEach(r=>r.onclick=()=>{openEditor(mkMember(E.byName[r.dataset.n]),-1);});}
+function bindCands(){app.querySelectorAll(".candrow").forEach(r=>r.onclick=()=>{
+  const e=E.byName[r.dataset.n];
+  if(STATE.slotRole==="speed"){                       // a COMMITTED mode overrides the setter's move; else its own
+    const pref=E.speedSetterPref(STATE.team);
+    const lean=(pref==="trickroom"||pref==="tailwind")?pref:null;
+    const set=E.recommendSet(e,"speed",lean); while(set.moves.length<4)set.moves.push("");
+    openEditor({entry:e,formIndex:(set.formIndex!=null?set.formIndex:-1),roleKey:"speed",set},-1);
+  } else openEditor(mkMember(e),-1);
+});}
 
 /* ---------------- EXPORT ---------------- */
 function showExport(){

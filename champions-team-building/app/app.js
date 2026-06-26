@@ -101,9 +101,12 @@ function bestSupportMove(e){
 //   middling (56–79) -> EITHER — it can abuse Tailwind or Trick Room.
 function speedTierOf(sp){return sp<=55?"slow":sp>=80?"fast":"mid";}
 function speedModeWant(sp){const t=speedTierOf(sp);return t==="slow"?"trickroom":t==="fast"?"tailwind":"either";}
-function recommendSpeedCtrl(e){
+function recommendSpeedCtrl(e,lean){
   const sp=e.baseStats.spe, mv=e.moves||[], hasTW=mv.includes("Tailwind"), hasTR=mv.includes("Trick Room");
   if(!hasTW&&!hasTR) return null;
+  // a committed team mode overrides the setter's own Speed (a setter serves the TEAM, not itself)
+  if(lean==="trickroom"&&hasTR) return {move:"Trick Room",mode:"trickroom",why:"team is going Trick Room"};
+  if(lean==="tailwind"&&hasTW) return {move:"Tailwind",mode:"tailwind",why:"team is going Tailwind"};
   const want=speedModeWant(sp);
   if(want==="trickroom") return hasTR?{move:"Trick Room",mode:"trickroom",why:"slow — wants Trick Room"}:{move:"Tailwind",mode:"tailwind",why:"only learns Tailwind"};
   if(want==="tailwind") return hasTW?{move:"Tailwind",mode:"tailwind",why:"fast — wants Tailwind"}:{move:"Trick Room",mode:"trickroom",why:"only learns Trick Room"};
@@ -347,7 +350,7 @@ function bestSetup(e,phys){
   const cand=(e.moves||[]).filter(m=>SETUP_INFO[m]&&(SETUP_INFO[m][0]===want||SETUP_INFO[m][0]==="both")).sort((a,b)=>SETUP_INFO[b][1]-SETUP_INFO[a][1]);
   return cand[0]||SETUP.find(m=>(e.moves||[]).includes(m));   // fall back to any setup move
 }
-function recommendMoves(e,roleKey){
+function recommendMoves(e,roleKey,lean){
   const mp=e.moves,picked=[],phys=isPhysical(e);
   const bulky=["sweeper","tr","wall","pivot","redir"].includes(roleKey);
   const rockHead=(e.abilities||[]).includes("Rock Head");
@@ -379,7 +382,7 @@ function recommendMoves(e,roleKey){
   // 1) role utility move
   if(roleKey==="sweeper")add(bestSetup(e,phys));
   if(roleKey==="tr"&&mp.includes("Trick Room"))add("Trick Room");
-  if(roleKey==="speed"){const rec=recommendSpeedCtrl(e);add(rec?rec.move:(mp.includes("Tailwind")?"Tailwind":"Trick Room"));}
+  if(roleKey==="speed"){const rec=recommendSpeedCtrl(e,lean);add(rec?rec.move:(mp.includes("Tailwind")?"Tailwind":"Trick Room"));}
   if(roleKey==="redir")add(mp.includes("Rage Powder")?"Rage Powder":"Follow Me");
   if(roleKey==="fakeout")add("Fake Out");
   if(roleKey==="support"){add(bestSupportMove(e)); if(mp.includes("Fake Out"))add("Fake Out"); if(mp.includes("Protect"))add("Protect");}
@@ -429,10 +432,21 @@ function megaFormSet(e,idx,roleKey){
   const sp=recommendSpread(pseudo,role);
   return {ability:mg.ability,item:(e.megaStones&&(e.megaStones[idx]||e.megaStones[0]))||"",nature:sp.nature,points:sp.points,moves:recommendMoves(pseudo,role),formIndex:idx};
 }
-function recommendSet(e,roleKey){
+function recommendSet(e,roleKey,lean){
   if(roleKey==="meta"){const ms=metaSet(e);if(ms)return ms;}
   const mm=/^mega(\d+)(?::(.+))?$/.exec(roleKey||""); if(mm){const ms=megaFormSet(e,+mm[1],mm[2]);if(ms)return ms;}
-  const sp=recommendSpread(e,roleKey);return {ability:recommendAbility(e),item:recommendItem(e,roleKey),nature:sp.nature,points:sp.points,moves:recommendMoves(e,roleKey),formIndex:-1};}
+  const sp=recommendSpread(e,roleKey);return {ability:recommendAbility(e),item:recommendItem(e,roleKey),nature:sp.nature,points:sp.points,moves:recommendMoves(e,roleKey,lean),formIndex:-1};}
+// which speed-control setters belong in the speed slot, by what the team has COMMITTED to:
+//   "tr" (a Trick Room move or TR-wallbreaker role is on the team) · "tailwind" (a Tailwind move) · "both" (uncommitted).
+function speedSetterPref(team){
+  if(!team||!team.length) return "both";
+  const tm=team.flatMap(m=>setMovesOf(m));
+  const trCommit=tm.includes("Trick Room")||team.some(m=>/(^|:)tr$/.test(m.roleKey||""));
+  const twCommit=tm.includes("Tailwind");
+  if(trCommit&&!twCommit) return "trickroom";
+  if(twCommit&&!trCommit) return "tailwind";
+  return "both";
+}
 
 /* ---------- model phases: needs plan (3), threat map (4), stress test (6), legality (7) ---------- */
 function planForLead(lead,roleKey){
@@ -554,9 +568,21 @@ function teamSpeedMode(team){
   if(prio>=2&&fast>=2) return "priority";                 // priority hyper-offense — a real ~25% Champions archetype
   return team.length>=4?"none":"open";
 }
+// suggestion-time speed LEAN: if no setter is committed yet, infer Tailwind vs Trick Room from the attacker
+// speed profile + any Trick Room role already chosen — so the speed-control slot offers the right setters early.
+function teamSpeedLean(team){
+  const base=teamSpeedMode(team);
+  if(base==="tailwind"||base==="trickroom"||base==="priority") return base;   // a real plan is already committed
+  const trRole=team.some(m=>/(^|:)tr$/.test(m.roleKey||""));                  // a Trick Room wallbreaker was picked
+  const slow=team.filter(m=>offense(m.entry)>=100&&effOf(m).baseStats.spe<=75).length;   // slow heavy hitters
+  const fast=team.filter(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe>=80).length;    // fast attackers
+  if(trRole||slow>fast) return "trickroom";
+  if(fast>slow) return "tailwind";
+  return base;
+}
 // how well does the candidate fit the team's committed speed plan?
 function speedFit(e,team){
-  const mode=teamSpeedMode(team), spe=e.baseStats.spe, off=offense(e), prio=e.moves.some(m=>PRIORITY.includes(m));
+  const mode=teamSpeedLean(team), spe=e.baseStats.spe, off=offense(e), prio=e.moves.some(m=>PRIORITY.includes(m));
   // counts of existing on/off-mode ATTACKERS, so the FIRST off-mode piece reads as flex, not a mistake
   const slowN=team.filter(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe<=55).length;   // slow (TR-abusing) attackers
   const fastN=team.filter(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe>=90).length;   // fast cleaners
@@ -581,7 +607,7 @@ function speedFit(e,team){
 // is THIS candidate the team's flex/off-mode piece (for a UI tag only — scoring lives in speedFit)?
 function flexSpeedRole(e,team){
   if(team.length<3) return null;
-  const mode=teamSpeedMode(team), spe=e.baseStats.spe, off=offense(e), prio=e.moves.some(m=>PRIORITY.includes(m));
+  const mode=teamSpeedLean(team), spe=e.baseStats.spe, off=offense(e), prio=e.moves.some(m=>PRIORITY.includes(m));
   const slowN=team.filter(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe<=55).length;
   const fastN=team.filter(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe>=90).length;
   if(mode==="tailwind"&&off>=95&&spe<=55&&!prio&&slowN===0) return "flex vs Trick Room";
@@ -1167,4 +1193,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,speedFit,flexSpeedRole,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,teamSpeedLean,speedSetterPref,speedFit,flexSpeedRole,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread};
