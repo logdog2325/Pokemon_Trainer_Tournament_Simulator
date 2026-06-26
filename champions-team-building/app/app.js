@@ -610,6 +610,35 @@ function teamHealth(team){
   return {score,grade,flags,tally,off,needs,mode};
 }
 
+/* ---------- damage-aware meta analysis (Reg M-B threat list) ---------- */
+const MB_OFFENSE=["Garchomp","Basculegion-Male","Kingambit","Charizard","Floette","Sneasler","Metagross","Archaludon","Swampert","Aerodactyl","Sylveon","Gholdengo","Mawile"];
+function threatMembers(){return MB_OFFENSE.map(n=>benchMember(n)).filter(Boolean);}
+// highest % an attacker's set can deal to a defender (single-target worst case)
+function bestHitPct(att,def,field){let mx=0;for(const mv of setMovesOf(att)){const r=calcDamage(att,mv,def,field||{});if(r&&!r.immune&&r.maxPct>mx)mx=r.maxPct;}return mx;}
+// for each meta threat, does the team have a switch-in that is never OHKO'd by it?
+function threatAnswers(team){
+  if(!team.length) return {rows:[],frac:0,unanswered:[]};
+  const rows=threatMembers().map(t=>{
+    let best=999,by=null;
+    for(const d of team){const mx=bestHitPct(t,d,{});if(mx<best){best=mx;by=d;}}
+    return {name:t.entry.name+(t.formIndex>=0?" (Mega)":""),answered:best<100,margin:Math.round(best),by:by&&by.entry.name};
+  });
+  return {rows,frac:rows.filter(r=>r.answered).length/Math.max(1,rows.length),unanswered:rows.filter(r=>!r.answered).map(r=>r.name)};
+}
+// how much of the meta does each win-condition actually KO, in the team's enabled state?
+function winConRealism(team){
+  if(!team.length) return {wins:[],best:0};
+  const threats=threatMembers(), weather=teamWeather(team);
+  const wins=team.filter(m=>{const e=m.entry;return offense(e)>=110||m.formIndex>=0||has(e,SETUP).length;});
+  const out=wins.map(w=>{
+    let ko=0;
+    for(const t of threats){let best=0;for(const mv of setMovesOf(w)){const r=calcDamage(w,mv,t,{weather,spread:false});if(r&&!r.immune&&r.maxPct>best)best=r.maxPct;}
+      if(best>=100)ko+=1; else if(best>=50)ko+=0.5;}
+    return {name:w.entry.name+(w.formIndex>=0?" (Mega)":""),frac:Math.round(ko/threats.length*100)};
+  }).sort((a,b)=>b.frac-a.frac);
+  return {wins:out,best:out[0]?out[0].frac:0};
+}
+
 /* ---------- speed tiers (Champions: L50, 0-32 points, no IVs, natures apply) ---------- */
 // verified vs mainline L50: 32 points ≈ 252 EVs, so this reproduces known speeds (Jolly Garchomp 169).
 const SPEED_ABIL={Chlorophyll:"sun","Swift Swim":"rain","Sand Rush":"sand","Slush Rush":"snow"};
@@ -804,4 +833,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,speedFit,enablerBonus,threatAnswerBonus};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,speedFit,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism};

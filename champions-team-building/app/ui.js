@@ -252,7 +252,15 @@ function renderStress(){
   titleEl.textContent="Stress test"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
   const res=E.stressTest(STATE.team); const dups=E.itemClause(STATE.team); const off=E.teamOffense(STATE.team);
   const speciesUnique=new Set(STATE.team.map(m=>m.entry.name)).size===STATE.team.length;
+  const ta=E.threatAnswers(STATE.team), wc=E.winConRealism(STATE.team);
+  const taOk=ta.rows.filter(r=>r.answered).length;
   app.innerHTML=`
+    <div class="card"><b>Meta threat answers</b> <span class="muted">(do you have a switch-in?)</span>
+      <div class="muted" style="margin-top:4px">Survives a hit from <b style="color:${taOk>=ta.rows.length-1?'var(--good)':taOk>=ta.rows.length-4?'#ffd9a0':'var(--bad)'}">${taOk}/${ta.rows.length}</b> of the Reg M-B meta's top attackers.</div>
+      ${ta.unanswered.length?`<div class="muted" style="margin-top:4px">No safe switch-in to:</div><div class="wk">${ta.unanswered.map(t=>`<span class="x2">${t}</span>`).join("")}</div>`:`<div class="muted good" style="margin-top:4px">A switch-in to every top threat ✓</div>`}</div>
+    <div class="card"><b>Win-condition power</b> <span class="muted">(% of the meta it OHKO/2HKOs)</span>
+      ${wc.wins.length?wc.wins.slice(0,4).map(w=>`<div class="row" style="margin:5px 0"><b style="width:46px;color:${w.frac>=70?'var(--good)':w.frac>=45?'#ffd9a0':'var(--bad)'}">${w.frac}%</b><div>${w.name}</div></div>`).join(""):`<div class="muted">Add an attacker.</div>`}
+      <div class="muted" style="margin-top:4px">Computed in your team's state (weather applied). A real win-con clears ≥60% of the meta.</div></div>
     <div class="card"><b>Phase 6 — vs the meta archetypes</b>
       ${res.map(r=>`<div class="row" style="margin:7px 0"><span style="width:26px;font-size:18px">${r.ok?'✅':'⚠️'}</span><div><b>${r.a}</b><div class="muted">${r.ok?'Covered — '+r.why:'Risky — no '+r.why}</div></div></div>`).join("")}</div>
     <div class="card"><b>Offensive coverage</b>
