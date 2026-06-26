@@ -580,7 +580,7 @@ function checkCoverageBonus(e,team,slot){
     const t=tm[i]; if(!t) return;
     const inc=bestHitPct(t,cm,{weather});               // threat's max% on the candidate
     const ko=memberKOon(cm,t,{weather,spread:false});   // candidate's KO on the threat
-    const survives=inc<100, faster=memberSpeed(cm,{weather})>memberSpeed(t,{weather});
+    const survives=inc<100, faster=memberSpeed(cm,{weather}).spe>memberSpeed(t,{weather}).spe;
     const becomesCheck=(survives&&ko.mn>=50)||(faster&&ko.mn>=100);
     if(becomesCheck) b+=row.tier===0?7:2;              // patching an UNCOVERED threat >> upgrading a soft one
   });
@@ -730,25 +730,30 @@ function metaThreatList(n){
   return _threatCache[n]=ranked.map(name=>benchMember(name)).filter(Boolean);
 }
 // `list` (optional) = explicit threat members, e.g. metaThreatList(20)/(50). Default = curated key threats.
-function threatMatchups(team,list){
-  if(!team||!team.length) return {rows:[],checked:0,neutral:0,uncovered:0,uncoveredNames:[],total:0};
-  const weather=teamWeather(team);
+// opts.mode: "none" (raw speed) · "tailwind" (our Speed ×2, theirs not) · "trickroom" (lower Speed acts first).
+function threatMatchups(team,list,opts){
+  if(!team||!team.length) return {rows:[],checked:0,neutral:0,uncovered:0,uncoveredNames:[],total:0,mode:(opts&&opts.mode)||"none"};
+  const weather=teamWeather(team), mode=(opts&&opts.mode)||"none";
   const rows=(list&&list.length?list:threatMembers()).map(t=>{
-    const tSpe=memberSpeed(t,{weather});
+    const tSpe=memberSpeed(t,{weather}).spe;
     let tier=0,by=null,note="",det=null;
     let lowInc=999,lowBy=null,lowMove=null;                // best (least-OHKO'd) wall, for the uncovered case
     for(const d of team){
       const take=worstHit(t,d,{weather});                  // threat's hardest hit on us {pct,move}
       const inc=take.pct;
       const ko=memberKOon(d,t,{weather,spread:false});     // our best KO on the threat {mn,mx,move}
-      const survives=inc<100, faster=memberSpeed(d,{weather})>tSpe;
+      const sd=memberSpeed(d,{weather}).spe;
+      const faster = mode==="trickroom" ? sd<tSpe : mode==="tailwind" ? sd*2>tSpe : sd>tSpe;
+      const survives=inc<100;
       const ohko=ko.mn>=100, twohko=ko.mn>=50;             // guaranteed (min-roll) KOs
+      const revenge=ko.mx>=100&&ko.mn>=75;                 // OHKOs on most rolls — enough to revenge-kill if faster
       if(inc<lowInc){lowInc=inc;lowBy=d.entry.name;lowMove=take.move;}
       let tr=0,nt="";
       if(survives&&twohko){tr=3;nt=ohko?"walls + OHKOs":"walls + 2HKOs";}
-      else if(faster&&ohko){tr=2;nt="outspeeds + OHKOs";}
+      else if(faster&&revenge){tr=2;nt=(mode==="trickroom"?"underspeeds (TR) + OHKOs":mode==="tailwind"?"outspeeds (Tailwind) + OHKOs":"outspeeds + OHKOs");}
       else if(survives&&ko.mx>=50){tr=1;nt="survives, soft (rolls a 2HKO)";}
       else if(survives){tr=1;nt="walls but can't KO it";}
+      else if(revenge){tr=1;nt="OHKOs it but is outsped (needs speed control)";}
       else if(twohko){tr=1;nt="revenge-KOs but is OHKO'd (frail trade)";}
       if(tr>tier){tier=tr;by=d.entry.name;note=nt;det={byMove:ko.move,deal:Math.round(ko.mn),dealMax:Math.round(ko.mx),take:Math.round(inc),takeMove:take.move};}
     }
@@ -759,7 +764,7 @@ function threatMatchups(team,list){
   });
   const uncovered=rows.filter(r=>r.tier===0);
   return {rows,checked:rows.filter(r=>r.tier>=2).length,neutral:rows.filter(r=>r.tier===1).length,
-    uncovered:uncovered.length,uncoveredNames:uncovered.map(r=>r.name),total:rows.length};
+    uncovered:uncovered.length,uncoveredNames:uncovered.map(r=>r.name),total:rows.length,mode};
 }
 
 /* ---------- point optimizer (outspeed / survive) ---------- */

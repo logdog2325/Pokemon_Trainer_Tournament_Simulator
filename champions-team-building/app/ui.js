@@ -117,17 +117,18 @@ function healthCard(team){
   const ML={tailwind:"Tailwind",trickroom:"Trick Room",priority:"Priority offense",none:"⚠ no speed plan",open:""};
   const arche=team.length>=2&&ML[h.mode]?`<span class="tag good">${ML[h.mode]}</span>`:"";
   // meta-matchup block: Key / Top 20 / Top 50 toggle + expandable per-threat checked/uncovered list
-  STATE.threatN=STATE.threatN||"key";
+  STATE.threatN=STATE.threatN||"key"; STATE.muMode=STATE.muMode||"none";
   const list=STATE.threatN==="key"?null:E.metaThreatList(STATE.threatN===50?50:20);
-  const m=E.threatMatchups(team,list), open=STATE.muOpen;
+  const m=E.threatMatchups(team,list,{mode:STATE.muMode}), open=STATE.muOpen;
   const ntog=(v,l)=>`<button class="btn" style="padding:5px 9px;font-size:12px" data-tn="${v}">${STATE.threatN===v?'● ':''}${l}</button>`;
-  const TIER={3:["✅","var(--good)"],2:["✅","var(--good)"],1:["🟡","#ffd9a0"],0:["⚠️","var(--bad)"]};
+  const mtog=(v,l)=>`<button class="btn" style="padding:5px 9px;font-size:12px" data-mm="${v}">${STATE.muMode===v?'● ':''}${l}</button>`;
   const lab=STATE.threatN==="key"?"key threats":"top "+STATE.threatN+" used";
+  const modeLab={none:"no speed control",tailwind:"Tailwind up",trickroom:"Trick Room up"}[STATE.muMode];
   let muLine="";
   if(m.total){const ucol=m.uncovered?'var(--bad)':m.neutral?'#ffd9a0':'var(--good)';
-    const rows=open?`<div style="margin-top:6px">${m.rows.map(matchupRow).join("")}<div class="muted" style="font-size:10px;margin-top:4px">✅ check (walls+KOs / outspeeds+OHKOs) · 🟡 soft · ⚠️ uncovered. % = guaranteed (min-roll) damage.</div></div>`:"";
+    const rows=open?`<div class="muted" style="margin-top:6px;font-size:11px">Speed mode:</div><div class="seg" style="margin-top:3px;flex-wrap:wrap">${mtog("none","No speed ctrl")}${mtog("tailwind","Tailwind")}${mtog("trickroom","Trick Room")}</div><div style="margin-top:6px">${m.rows.map(matchupRow).join("")}<div class="muted" style="font-size:10px;margin-top:4px">✅ check (walls+KOs / outspeeds+OHKOs) · 🟡 soft · ⚠️ uncovered. % = guaranteed (min-roll) damage. Speed checks evaluated with ${modeLab}.</div></div>`:"";
     muLine=`<div style="margin-top:8px">
-      <div class="row" data-muopen="1" style="cursor:pointer"><div style="flex:1"><b>Meta matchups</b> <span class="muted">vs ${lab}</span></div><div class="muted">${open?'▾ hide':'▸ details'}</div></div>
+      <div class="row" data-muopen="1" style="cursor:pointer"><div style="flex:1"><b>Meta matchups</b> <span class="muted">vs ${lab} · ${modeLab}</span></div><div class="muted">${open?'▾ hide':'▸ details'}</div></div>
       <div class="muted" style="margin-top:2px"><b style="color:var(--good)">${m.checked} checked</b> · <b style="color:#ffd9a0">${m.neutral} soft</b> · <b style="color:${ucol}">${m.uncovered} uncovered</b> of ${m.total}${m.uncovered?` — <span style="color:var(--bad)">${m.uncoveredNames.slice(0,3).join(", ")}${m.uncoveredNames.length>3?"…":""}</span>`:""}</div>
       <div class="seg" style="margin-top:6px;flex-wrap:wrap">${ntog("key","Key 13")}${ntog(20,"Top 20")}${ntog(50,"Top 50")}</div>
       ${rows}</div>`;}
@@ -155,6 +156,7 @@ function matchupRow(r){
 // wire the meta-matchup toggle + expand control inside any screen that renders healthCard
 function bindHealthCard(){
   app.querySelectorAll("[data-tn]").forEach(b=>b.onclick=ev=>{ev.stopPropagation();const v=b.dataset.tn;STATE.threatN=(v==="key"?"key":+v);renderBuilder();window.scrollTo(0,0);});
+  app.querySelectorAll("[data-mm]").forEach(b=>b.onclick=ev=>{ev.stopPropagation();STATE.muMode=b.dataset.mm;renderBuilder();window.scrollTo(0,0);});
   const mo=app.querySelector("[data-muopen]");if(mo)mo.onclick=()=>{STATE.muOpen=!STATE.muOpen;renderBuilder();window.scrollTo(0,0);};
 }
 function weakCard(tally,needs){
@@ -315,17 +317,20 @@ function renderStress(){
   const res=E.stressTest(STATE.team); const dups=E.itemClause(STATE.team); const off=E.teamOffense(STATE.team);
   const speciesUnique=new Set(STATE.team.map(m=>m.entry.name)).size===STATE.team.length;
   const wc=E.winConRealism(STATE.team), ck=E.archetypeChecklist(STATE.team);
-  STATE.threatN=STATE.threatN||"key";
+  STATE.threatN=STATE.threatN||"key"; STATE.muMode=STATE.muMode||"none";
   const list=STATE.threatN==="key"?null:E.metaThreatList(STATE.threatN===50?50:20);
-  const mu=E.threatMatchups(STATE.team,list);
-  const TIER={3:["✅","var(--good)"],2:["✅","var(--good)"],1:["🟡","#ffd9a0"],0:["⚠️","var(--bad)"]};
+  const mu=E.threatMatchups(STATE.team,list,{mode:STATE.muMode});
   const ntog=(v,l)=>`<button class="btn ${STATE.threatN===v?'primary':''}" data-tn="${v}">${l}</button>`;
+  const mtog=(v,l)=>`<button class="btn ${STATE.muMode===v?'primary':''}" data-mm="${v}">${l}</button>`;
+  const modeLab={none:"no speed control",tailwind:"Tailwind up",trickroom:"Trick Room up"}[STATE.muMode];
   app.innerHTML=`
     <div class="card"><b>Archetype skeleton — ${ck.arche}</b> <span class="muted">(${ck.complete}/${ck.total})</span>
       ${ck.items.map(i=>`<div class="row" style="margin:4px 0"><span style="width:22px">${i.ok?'✅':'⬜'}</span><div class="${i.ok?'':'muted'}">${i.label}</div></div>`).join("")}</div>
     <div class="card"><b>Meta matchups — viability</b> <span class="muted">(a check survives its best hit & KOs back)</span>
-      <div class="seg" style="margin-top:6px">${ntog("key","Key threats")}${ntog(20,"Top 20 used")}${ntog(50,"Top 50 used")}</div>
-      <div class="muted" style="margin-top:6px;font-size:11px">${STATE.threatN==="key"?"Curated Reg M-B offensive threat list.":"Top "+STATE.threatN+" most-used Pokémon in Champions Reg M-B (Pikalytics doubles)."}</div>
+      <div class="seg" style="margin-top:6px;flex-wrap:wrap">${ntog("key","Key threats")}${ntog(20,"Top 20 used")}${ntog(50,"Top 50 used")}</div>
+      <div class="muted" style="margin-top:6px;font-size:11px">Speed mode (who outspeeds for offensive checks):</div>
+      <div class="seg" style="margin-top:3px;flex-wrap:wrap">${mtog("none","No speed ctrl")}${mtog("tailwind","Tailwind")}${mtog("trickroom","Trick Room")}</div>
+      <div class="muted" style="margin-top:6px;font-size:11px">${STATE.threatN==="key"?"Curated Reg M-B offensive threat list":"Top "+STATE.threatN+" most-used in Champions Reg M-B (Pikalytics doubles)"} · speed checks with ${modeLab}.</div>
       <div class="muted" style="margin-top:4px"><b style="color:var(--good)">${mu.checked} checked</b> · <b style="color:#ffd9a0">${mu.neutral} soft/neutral</b> · <b style="color:${mu.uncovered?'var(--bad)':'var(--good)'}">${mu.uncovered} uncovered</b> of ${mu.total}.${mu.uncovered?' Fix the ⚠️ rows — they run through you.':' No threat runs through your team ✓'}</div>
       <div style="margin-top:6px">${mu.rows.map(matchupRow).join("")}</div>
       <div class="muted" style="margin-top:6px;font-size:11px">✅ real check (walls + KOs, or outspeeds + OHKOs) · 🟡 soft (survives or trades, no clean KO) · ⚠️ uncovered. % = guaranteed (min-roll) damage. Use 🎯 Optimize → Full spread to EV a check.</div></div>
@@ -343,6 +348,7 @@ function renderStress(){
       <div class="row" style="margin:7px 0"><span style="width:26px;font-size:18px">${speciesUnique?'✅':'⚠️'}</span><div>Species Clause — ${speciesUnique?'all unique':'DUPLICATE species'}</div></div>
       <div class="muted">Megas: you may carry several stones but evolve only one per battle.</div></div>`;
   app.querySelectorAll("[data-tn]").forEach(b=>b.onclick=()=>{const v=b.dataset.tn;STATE.threatN=(v==="key"?"key":+v);renderStress();window.scrollTo(0,0);});
+  app.querySelectorAll("[data-mm]").forEach(b=>b.onclick=()=>{STATE.muMode=b.dataset.mm;renderStress();window.scrollTo(0,0);});
   backBtn.onclick=()=>go("builder");
 }
 /* ---------------- SPEED TIERS ---------------- */
