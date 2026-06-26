@@ -453,7 +453,7 @@ function stressTest(team){
     {a:"Sand (Tyranitar)",ok:teamResists(team,"Rock")||teamAtk(team,["Fighting","Ground","Water","Grass","Steel","Fairy"]),why:"resist Rock or hit it super-effectively"},
     {a:"Snow / Ice",ok:teamResists(team,"Ice")||teamAtk(team,["Fire","Fighting","Rock","Steel"]),why:"resist Ice or hit Ice SE"},
     {a:"Fairy",ok:teamResists(team,"Fairy")||teamAtk(team,["Steel","Poison"]),why:"resist Fairy or Steel/Poison offense"},
-    {a:"Opposing Trick Room",ok:team.some(mm=>setMovesOf(mm).includes("Taunt"))||prio,why:"Taunt or priority to function under it"},
+    {a:"Opposing Trick Room",ok:team.some(mm=>setMovesOf(mm).includes("Taunt"))||team.some(mm=>setMovesOf(mm).includes("Trick Room"))||team.some(mm=>offense(mm.entry)>=95&&effOf(mm).baseStats.spe<=55)||prio,why:"Taunt or your own Trick Room to take it down, a slow attacker to abuse it, or priority"},
     {a:"Opposing Tailwind HO",ok:prio||team.some(mm=>setMovesOf(mm).some(x=>SPEEDCTRL.includes(x))),why:"your own speed control or priority"}
   ];
 }
@@ -623,6 +623,9 @@ function teamHealth(team){
   if(!team||!team.length) return {score:0,grade:"–",flags:[],tally:{},mode:"open"};
   const tally=teamWeakTally(team), needs=teamNeeds(team), off=teamOffense(team), n=team.length;
   const mode=teamSpeedMode(team), tm=team.flatMap(m=>setMovesOf(m));
+  const fastN=team.filter(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe>=80).length;   // fast attackers
+  const slowN=team.filter(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe<=55).length;   // slow (TR-abusing) attackers
+  const trAnswer=tm.includes("Taunt")||tm.includes("Trick Room")||slowN>=1;              // can interact with opposing TR
   let score=100; const flags=[];
   // defensive: shared weaknesses weighted by how scary that type is as a Reg M-B spread move.
   // This is a SOFT proxy — the damage-aware matchup check below is the real signal — so it's capped,
@@ -644,9 +647,18 @@ function teamHealth(team){
     if(needs.fakeout){score-=4;flags.push({sev:1,msg:"no Fake Out (≈90% of top teams run one)"});}
     if(needs.priority){score-=5;flags.push({sev:1,msg:"no priority move"});}
     if(needs.redir && team.some(m=>has(m.entry,SETUP).length&&offense(m.entry)>=95)){score-=4;flags.push({sev:1,msg:"setup sweeper with no redirection to protect it"});}
+    // Trick Room matchup: every team should be able to interact with opposing Trick Room
+    if(!trAnswer){score-=4;flags.push({sev:1,msg:"no answer to opposing Trick Room — run Taunt, your own Trick Room, or a slow attacker to abuse it"});}
+    // a non-hard Trick Room team needs fast cleaners for when the room ends or the setter is KO'd
+    if(mode==="trickroom"){const hardTR=slowN>=3&&fastN===0;
+      if(!hardTR&&fastN===0){score-=4;flags.push({sev:1,msg:"Trick Room team with no fast Pokémon — add 1–2 fast cleaners for when the room ends or the setter falls"});}}
+    // mixed fast+slow attackers: a second speed mode covers the off-matchup (legit insurance, not hedging)
+    if(fastN>=1&&slowN>=1&&(mode==="tailwind"||mode==="trickroom"))
+      flags.push({sev:0,msg:`mixed Speed — a 2nd speed-control option (${mode==="tailwind"?"a Trick Room setter":"a Tailwind setter"}) would cover the off-matchup`});
   }
-  // speed-mode discipline: top cuts commit to ONE mode (9/9 at the 6k-player Grand Champions Festival)
-  if(tm.includes("Tailwind")&&tm.includes("Trick Room")){score-=6;flags.push({sev:1,msg:"hedging Tailwind AND Trick Room — top teams commit to one"});}
+  // two speed modes can be a deliberate primary + insurance split (the user's TR-insurance pattern) — info, not a penalty
+  if(tm.includes("Tailwind")&&tm.includes("Trick Room"))
+    flags.push({sev:0,msg:"running both Tailwind and Trick Room — fine as a primary + insurance split; keep one as the clear plan A"});
   // Intimidate discipline: never double-stacked in Champions top cut
   const intimN=team.filter(m=>effOf(m).abilities.includes("Intimidate")).length;
   if(intimN>=2){score-=6;flags.push({sev:1,msg:`${intimN} Intimidate users — top teams run at most one`});}
@@ -691,8 +703,11 @@ function archetypeChecklist(team){
   else if(bellyDrum){arche="Belly Drum offense"; add("Belly Drum sweeper",true); add("priority to cash in the boost",prio>=1); add("redirection / Fake Out / screens to land it",!needs.redir||!needs.fakeout||screens);}
   else if(screens&&fast>=2&&mode!=="trickroom"){arche="Dual-screens hyper-offense";
     add("dual screens (Light Screen + Reflect / Aurora Veil)",screens); add("Light Clay to extend screens",lightClay); add("2+ fast attackers",fast>=2); add("priority to close games",!needs.priority);}
-  else if(mode==="trickroom"){arche=(slow>=3&&fast===0)?"Trick Room (hard)":"Trick Room (semi)"; add("Trick Room setter",tm.includes("Trick Room")); add("2+ slow attackers (Spe ≤55)",slow>=2); add("redirection or Fake Out to set up safely",!needs.redir||!needs.fakeout); add("a non-TR priority/Scarf fallback",prio>=1);}
-  else if(mode==="tailwind"){arche="Tailwind offense"; add("Tailwind setter",tm.includes("Tailwind")); add("2+ fast attackers",fast>=2); add("a priority move",!needs.priority);}
+  else if(mode==="trickroom"){const hardTR=slow>=3&&fast===0; arche=hardTR?"Trick Room (hard)":"Trick Room (semi)"; add("Trick Room setter",tm.includes("Trick Room")); add("2+ slow attackers (Spe ≤55)",slow>=2); add("redirection or Fake Out to set up safely",!needs.redir||!needs.fakeout);
+    if(hardTR)add("a non-TR priority/Scarf fallback",prio>=1);
+    else add("1–2 fast Pokémon to clean up if the setter falls / after TR ends",fast>=1);}
+  else if(mode==="tailwind"){arche="Tailwind offense"; add("Tailwind setter",tm.includes("Tailwind")); add("2+ fast attackers",fast>=2); add("a priority move",!needs.priority);
+    add("an answer to opposing Trick Room (Taunt / your own TR / a slow attacker)", tm.includes("Taunt")||tm.includes("Trick Room")||team.some(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe<=55));}
   else if(mode==="priority"){arche=bellyDrum?"Belly Drum / priority offense":"Priority hyper-offense"; add("2+ priority users",prio>=2); add("2+ fast attackers",fast>=2); if(bellyDrum)add("redirection/Fake Out to land Belly Drum",!needs.redir||!needs.fakeout);}
   else {arche="Balance / no speed mode"; add("a speed-control mode (Tailwind / Trick Room)",mode!=="none"); add("a priority move",!needs.priority);}
   add("redirection if a setup sweeper is present", !(team.some(m=>has(m.entry,SETUP).length&&offense(m.entry)>=95)) || !needs.redir);
