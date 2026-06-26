@@ -1,0 +1,59 @@
+name: Weekly meta refresh (Pikalytics usage)
+
+# Pulls the latest Champions Reg M-B (doubles) usage from Pikalytics, regenerates usage-data.js,
+# writes a "meta shifts" report diffing it against the previous week, and commits — but ONLY if the
+# scrape produced a sane dataset (the scraper's guard aborts otherwise, so a bad scrape never commits).
+#
+# NOTE: GitHub only fires `schedule` triggers from the workflow file on the DEFAULT branch. For the weekly
+# run to fire, this file must exist on `main`. `workflow_dispatch` works from any branch via the Actions UI.
+
+on:
+  schedule:
+    - cron: "0 9 * * 1"        # Mondays 09:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: meta-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # If this step exits non-zero (the scraper's guard tripped), the job fails here and nothing is committed.
+      - name: Scrape latest usage → /tmp/new-usage.js
+        run: node champions-team-building/tools/refresh-usage.mjs /tmp/new-usage.js --debug
+
+      - name: Build meta-shifts report (previous vs new)
+        run: |
+          node champions-team-building/tools/meta-shifts.mjs \
+            champions-team-building/app/usage-data.js /tmp/new-usage.js \
+            champions-team-building/meta-shifts.md | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Install new usage data + bump service-worker cache
+        run: |
+          cp /tmp/new-usage.js champions-team-building/app/usage-data.js
+          node -e "const f='champions-team-building/app/sw.js',fs=require('fs');let s=fs.readFileSync(f,'utf8');s=s.replace(/ctb-v(\d+)/,(m,n)=>'ctb-v'+(+n+1));fs.writeFileSync(f,s);"
+
+      - name: Commit & push if anything changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add champions-team-building/app/usage-data.js champions-team-building/app/sw.js champions-team-building/meta-shifts.md
+          if git diff --cached --quiet; then
+            echo "No usage changes this week — nothing to commit."
+            exit 0
+          fi
+          git commit -m "Weekly meta refresh: update Pikalytics usage + meta-shifts report"
+          git push origin HEAD:${{ github.ref_name }}
