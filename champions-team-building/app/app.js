@@ -124,7 +124,8 @@ function archetypeRoles(e){
   const physAnti=phys && (physBoost||ab0.some(a=>INTIM_IMMUNE.includes(a)));
   const specAnti=!phys && ab0.includes("Competitive");
   const antiNote=specAnti?"Competitive turns opposing Intimidate into a free Special Attack boost.":physBoost?`${physBoost} turns opposing Intimidate into a free Attack boost.`:`${ab0.find(a=>INTIM_IMMUNE.includes(a))} ignores Intimidate — its attack never drops.`;
-  if(setup.length && off>=95) roles.push({key:"sweeper",label:"Setup sweeper",note:`Boosts with ${bestSetup(e,phys)||setup[0]}, then sweeps.`});
+  const sweepSetup=bestSetup(e,phys);   // a SAME-CATEGORY setup (null if its only setup is off-category)
+  if(sweepSetup && off>=95) roles.push({key:"sweeper",label:"Setup sweeper",note:`Boosts with ${sweepSetup}, then sweeps.`});
   if(off>=105){const t=speedTierOf(sp);
     // a heavy hitter that isn't fast leans Trick Room even in the "mid" band — Tailwind only doubles it so far
     const note=t==="slow"?"best under Trick Room":t==="fast"?"Tailwind / offense friendly":(off>=110&&sp<=78?"a strong Trick Room wallbreaker, also workable under Tailwind":"works under Tailwind or Trick Room");
@@ -348,7 +349,7 @@ const SETUP_INFO={"Dragon Dance":["atk",10],"Shift Gear":["atk",10],"Victory Dan
 function bestSetup(e,phys){
   const want=phys?"atk":"spa";
   const cand=(e.moves||[]).filter(m=>SETUP_INFO[m]&&(SETUP_INFO[m][0]===want||SETUP_INFO[m][0]==="both")).sort((a,b)=>SETUP_INFO[b][1]-SETUP_INFO[a][1]);
-  return cand[0]||SETUP.find(m=>(e.moves||[]).includes(m));   // fall back to any setup move
+  return cand[0]||null;   // no off-category fallback: a +Atk setup is useless on a special set (and vice versa)
 }
 function recommendMoves(e,roleKey,lean){
   const mp=e.moves,picked=[],phys=isPhysical(e);
@@ -625,6 +626,21 @@ function enablerBonus(e,team){
   if(team.some(m=>m.entry.moves.includes("Rage Fist"))&&e.moves.includes("Beat Up"))b+=8;
   if(tm.some(m=>STAT_DROP_SUPPORT.includes(m))&&offense(e)>=110)b+=4;   // -SpD/-Atk support opens KOs for a big attacker
   if(e.moves.some(m=>STAT_DROP_SUPPORT.includes(m))&&team.some(m=>offense(m.entry)>=110))b+=4;
+  // Lightning Rod / Storm Drain self-boost engine: an ally's SPREAD move feeds the absorber +1 SpA each turn
+  // while still hitting both opponents — e.g. Mega Sceptile (Lightning Rod) + a fast Discharge user.
+  const ELEC_SPREAD=["Discharge","Electroweb","Parabolic Charge"], WATER_SPREAD=["Surf","Muddy Water","Sparkling Aria"];
+  const abilsOf=m=>(effOf(m).abilities||[]).concat((m.entry.mega||[]).map(x=>x.ability));   // active + any mega ability
+  const specialMon=m=>Math.max(m.entry.baseStats.spa,...(m.entry.mega||[]).map(x=>x.baseStats.spa||0))>=m.entry.baseStats.atk;
+  const eAb=(e.abilities||[]).concat((e.mega||[]).map(x=>x.ability));
+  const eSpecial=Math.max(e.baseStats.spa,...(e.mega||[]).map(x=>x.baseStats.spa||0))>=e.baseStats.atk;
+  const eFeedsElec=e.moves.some(m=>ELEC_SPREAD.includes(m)), eFeedsWater=e.moves.some(m=>WATER_SPREAD.includes(m));
+  const teamFeedsElec=tm.some(m=>ELEC_SPREAD.includes(m)), teamFeedsWater=tm.some(m=>WATER_SPREAD.includes(m));
+  const teamLR=team.some(m=>abilsOf(m).includes("Lightning Rod")&&specialMon(m));
+  const teamSD=team.some(m=>abilsOf(m).includes("Storm Drain")&&specialMon(m));
+  if(eAb.includes("Lightning Rod")&&eSpecial&&teamFeedsElec)b+=9;   // special Lightning Rod mon + an ally's spread Electric
+  if(eFeedsElec&&teamLR)b+=9;                                       // spread-Electric ally feeds a Lightning Rod attacker
+  if(eAb.includes("Storm Drain")&&eSpecial&&teamFeedsWater)b+=8;    // Storm Drain equivalent with spread Water
+  if(eFeedsWater&&teamSD)b+=8;
   // weather setter <-> abuser
   const eWeather=(e.abilities||[]).map(a=>WEATHER_SET_ABIL[a]).find(Boolean);
   const teamWeatherSet=tAb.map(a=>WEATHER_SET_ABIL[a]).find(Boolean);
