@@ -393,6 +393,7 @@ function recommendMoves(e,roleKey,lean){
   if(roleKey==="redir")add(mp.includes("Rage Powder")?"Rage Powder":"Follow Me");
   if(roleKey==="fakeout")add("Fake Out");
   if(roleKey==="support"){add(bestSupportMove(e)); if(mp.includes("Fake Out"))add("Fake Out"); if(mp.includes("Protect"))add("Protect");}
+  if(roleKey==="lrfeeder")add(["Discharge","Parabolic Charge","Electroweb"].find(m=>mp.includes(m)));
   if(roleKey==="pivot")add(PIVOT.find(m=>mp.includes(m)));
   // 2) best STAB per type (quality-scored, not just BP)
   for(const ty of e.types){
@@ -472,6 +473,14 @@ function planForLead(lead,roleKey){
     meta:[["speed","Speed control"],["redir","Redirection / free turn"],[second,"Partner covering its checks"],["priority","Priority"],["intimidate","Defensive glue"]]
   };
   let plan=P[roleKey]||P.breaker;
+  // Lightning Rod self-boost core: a special Lightning Rod lead wants a spread-Electric (Discharge) feeder;
+  // a Discharge lead wants a Lightning Rod absorber to soak it for the free +SpA.
+  const megaAbil=(lead.mega||[]).map(m=>m.ability);
+  const leadLR=(lead.abilities||[]).includes("Lightning Rod")||megaAbil.includes("Lightning Rod");
+  const leadSpecial=Math.max(lead.baseStats.spa,...(lead.mega||[]).map(m=>m.baseStats.spa||0))>=lead.baseStats.atk;
+  const leadFeeds=(lead.moves||[]).some(m=>["Discharge","Electroweb","Parabolic Charge"].includes(m));
+  if(leadLR&&leadSpecial) plan=[["lrfeeder","Discharge partner — feeds its Lightning Rod (+SpA each turn)"]].concat(plan);
+  else if(leadFeeds) plan=[["lrabsorber","Lightning Rod partner to soak your Discharge for a free +SpA"]].concat(plan);
   // physical-attacker teams want a Defiant/Competitive answer so opposing Intimidate doesn't sap them
   if(isPhysical(lead) && ["sweeper","breaker","tr","antiintim","meta"].includes(roleKey) && !plan.some(p=>p[0]==="antiintim"))
     plan=plan.concat([["antiintim","Anti-Intimidate (Defiant / Competitive)"]]);
