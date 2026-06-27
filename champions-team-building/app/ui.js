@@ -19,6 +19,7 @@ const SLOT_ROLES=[
  {key:"support",label:"Team support (Coaching/Dragon Cheer/etc.)",fill:e=>e.moves.some(m=>["Coaching","Decorate","Helping Hand","Dragon Cheer","Aromatic Mist","Fake Tears","Screech","Psych Up","Howl"].includes(m))},
  {key:"lrfeeder",label:"Discharge partner (feeds Lightning Rod)",fill:e=>e.moves.some(m=>["Discharge","Electroweb","Parabolic Charge"].includes(m))},
  {key:"lrabsorber",label:"Lightning Rod absorber",fill:e=>((e.abilities||[]).includes("Lightning Rod")||(e.mega||[]).some(m=>m.ability==="Lightning Rod"))},
+ {key:"safedischarge",label:"Safe Discharge backup (Electric-immune)",fill:e=>E.electricImmune(e)},
  {key:"weather",label:"Weather setter",fill:e=>(e.abilities||[]).some(a=>E.WEATHER_ABIL[a])},
  {key:"wall",label:"Bulky wall",fill:e=>BULK(e)>=290},
  {key:"any",label:"Best overall",fill:e=>true},

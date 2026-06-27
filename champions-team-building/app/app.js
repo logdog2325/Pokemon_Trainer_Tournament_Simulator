@@ -113,6 +113,13 @@ function recommendSpeedCtrl(e,lean){
   if(hasTW&&hasTR) return {move:"Tailwind",mode:"either",why:"middling Speed — works under Tailwind or Trick Room"};
   return hasTW?{move:"Tailwind",mode:"tailwind",why:"middling Speed — Tailwind"}:{move:"Trick Room",mode:"trickroom",why:"middling Speed — Trick Room"};
 }
+// immune to Electric (so a Scarf-locked Discharge ally never chips it): Ground type, or Volt Absorb /
+// Lightning Rod / Motor Drive. These are the "safe Discharge partners" a Lightning Rod core wants as backup.
+function electricImmune(e){
+  if((e.types||[]).includes("Ground")) return true;
+  const abs=(e.abilities||[]).concat((e.mega||[]).map(m=>m.ability||""));
+  return abs.some(a=>["Volt Absorb","Lightning Rod","Motor Drive"].includes(a));
+}
 // the offensive/support archetypes a (base or Mega) stat line can fill
 function archetypeRoles(e){
   const roles=[]; const sp=e.baseStats.spe, off=offense(e), phys=isPhysical(e);
@@ -479,8 +486,8 @@ function planForLead(lead,roleKey){
   const leadLR=(lead.abilities||[]).includes("Lightning Rod")||megaAbil.includes("Lightning Rod");
   const leadSpecial=Math.max(lead.baseStats.spa,...(lead.mega||[]).map(m=>m.baseStats.spa||0))>=lead.baseStats.atk;
   const leadFeeds=(lead.moves||[]).some(m=>["Discharge","Electroweb","Parabolic Charge"].includes(m));
-  if(leadLR&&leadSpecial) plan=[["lrfeeder","Discharge partner — feeds its Lightning Rod (+SpA each turn)"]].concat(plan);
-  else if(leadFeeds) plan=[["lrabsorber","Lightning Rod partner to soak your Discharge for a free +SpA"]].concat(plan);
+  if(leadLR&&leadSpecial) plan=[["lrfeeder","Discharge partner — feeds its Lightning Rod (+SpA each turn)"],["safedischarge","Safe Discharge backup — Electric-immune body (Ground, etc.) for the locked Scarf user"]].concat(plan);
+  else if(leadFeeds) plan=[["lrabsorber","Lightning Rod partner to soak your Discharge for a free +SpA"],["safedischarge","Safe Discharge backup — a 2nd Electric-immune body (Ground, etc.)"]].concat(plan);
   // physical-attacker teams want a Defiant/Competitive answer so opposing Intimidate doesn't sap them
   if(isPhysical(lead) && ["sweeper","breaker","tr","antiintim","meta"].includes(roleKey) && !plan.some(p=>p[0]==="antiintim"))
     plan=plan.concat([["antiintim","Anti-Intimidate (Defiant / Competitive)"]]);
@@ -656,6 +663,9 @@ function enablerBonus(e,team){
   if(eFeedsElec&&teamLR)b+=9;                                       // spread-Electric ally feeds a Lightning Rod attacker
   if(eAb.includes("Storm Drain")&&eSpecial&&teamFeedsWater)b+=8;    // Storm Drain equivalent with spread Water
   if(eFeedsWater&&teamSD)b+=8;
+  // safe Discharge backup: with a (often Choice Scarf, locked) Discharge user already on the team, a second
+  // Electric-immune body lets the locked Discharge fire freely when the Lightning Rod absorber isn't out
+  if(teamFeedsElec&&teamLR&&electricImmune(e)&&!eAb.includes("Lightning Rod"))b+=5;
   // weather setter <-> abuser
   const eWeather=(e.abilities||[]).map(a=>WEATHER_SET_ABIL[a]).find(Boolean);
   const teamWeatherSet=tAb.map(a=>WEATHER_SET_ABIL[a]).find(Boolean);
@@ -1225,4 +1235,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,teamSpeedLean,speedSetterPref,speedFit,flexSpeedRole,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,teamSpeedLean,speedSetterPref,speedFit,flexSpeedRole,electricImmune,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread};
