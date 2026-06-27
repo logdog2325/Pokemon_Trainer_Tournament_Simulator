@@ -342,6 +342,8 @@ const SELFDROP_MV=new Set(["Close Combat","Superpower","Draco Meteor","Overheat"
 const LOCK_MV=new Set(["Outrage","Petal Dance","Thrash","Raging Fury","Uproar"]);
 // shaky-accuracy attacks (~<=80%) — prefer the reliable option unless No Guard makes them hit
 const RISKY_MV=new Set(["Dragon Rush","Stone Edge","Cross Chop","Iron Tail","Hydro Pump","Focus Blast","Thunder","Blizzard","Hurricane","Zap Cannon","Dynamic Punch","Gunk Shot","Inferno","Megahorn","Fire Blast","Sing","Will-O-Wisp","Mud Bomb"]);
+// the worst offenders (≤70% accuracy, no weather redemption) — penalized harder so an accurate option wins
+const VERY_RISKY=new Set(["Focus Blast","Inferno","Zap Cannon","Dynamic Punch","Sing"]);
 // setup-move preference: [boosts atk/spa/both, score] — speed-boosting setups rank highest for sweepers
 const SETUP_INFO={"Dragon Dance":["atk",10],"Shift Gear":["atk",10],"Victory Dance":["atk",9],"Tidy Up":["atk",7],"Swords Dance":["atk",7],"Bulk Up":["atk",6],"Coil":["atk",6],"Hone Claws":["atk",5],"Howl":["atk",4],"Curse":["atk",3],
   "Quiver Dance":["spa",10],"Tail Glow":["spa",10],"Geomancy":["spa",10],"Nasty Plot":["spa",7],"Calm Mind":["spa",6],"Take Heart":["spa",6],
@@ -371,10 +373,14 @@ function recommendMoves(e,roleKey,lean){
     if(e.types.includes(i.t))s+=25;                                  // STAB
     if(i.c===pref)s+=6; else if(!mixed)s-=30;                        // off-category move wastes the unused stat
     if(i.t==="Normal"&&!e.types.includes("Normal"))s-=25;            // Normal "coverage" hits nothing super-effectively
-    if(RISKY_MV.has(m)&&!noGuard)s-=22;                             // shaky accuracy (unless No Guard makes it 100%)
+    if(RISKY_MV.has(m)&&!noGuard)s-=(VERY_RISKY.has(m)?35:22);      // ≤70% accuracy hurts more — misses lose games
     if(DRAIN_MV.has(m))s+=bulky?25:8;                                // recovery — huge on setup/bulky
     if(RECOIL_MV.has(m))s-=(hasRecoil()&&!rockHead)?55:(rockHead?0:6); // don't stack recoil
-    if(SELFDROP_MV.has(m))s-=(roleKey==="sweeper"||roleKey==="tr"||roleKey==="wall")?40:7; // stat drops undo setup
+    if(SELFDROP_MV.has(m)){                                          // -2 stat undoes boosts / cuts staying power
+      // if a reliable same-type alternative exists (Energy Ball vs Leaf Storm), strongly prefer it; you keep the coverage
+      const altSameType=mp.some(x=>x!==m&&moveInfo(x).t===i.t&&moveInfo(x).c===i.c&&moveInfo(x).bp>=70&&!SELFDROP_MV.has(x)&&!BAD_MOVES.has(x));
+      s-= altSameType?60 : (roleKey==="sweeper"||roleKey==="tr"||roleKey==="wall"?40:10);
+    }
     if(LOCK_MV.has(m))s-=45;                                         // lock-in is bad in doubles (no target choice)
     return s;};
   // a category-locked set (Swords/Dragon Dance/Bulk Up -> Phys; Nasty Plot/Calm Mind -> Spec) takes ONLY that category
