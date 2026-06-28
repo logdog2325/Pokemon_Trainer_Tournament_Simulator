@@ -33,16 +33,14 @@
   <div class="sub" id="sub">Pokémon Champions · Reg M-B</div>
   <div id="tiers"></div>
   <div class="legend">
-    <b>Methodology (data-driven, no hand-set cutoffs):</b> each Mega gets one quality score from
-    <b>win rate</b> (the dominant factor, lightly shrunk so flukes can't spike) plus three bonuses:
-    a <b>stepped usage bonus</b> — bringing a Mega to many events is proof players trust it
-    (<b>100+ teams = big boost</b>, 50+ = solid, 10–49 = tiny, <b>under 10 = heavy penalty</b>);
-    an <b>event-win bonus</b> for 1st-place finishes (🏆 in the corner); and a <b>top-cut bonus</b> for
-    top-8 finishes, weighted close to (just under) winning. <b>Both the win and top-cut bonuses are
-    weighted by event size</b> — winning or cutting a 200-player major counts far more than an 8-player
-    side event. So a strong record is rewarded (Floette, 55% → S), volume + big-event results lift the
-    staples (Char-Y won the 898-player major), and fringe one-offs crater (Absol, 1 team, 0% → F). The
-    six tiers are cut by <b>1-D k-means (natural breaks)</b> — the gaps in the score define S–F.
+    <b>Methodology — DOMINANCE / RESULTS-led (win rate still counts):</b> the score is led by how much a
+    Mega actually <i>achieves</i> — <b>event wins</b> + <b>top-cut volume</b> + <b>usage</b> — with
+    <b>win rate kept as a strong secondary factor</b>. Wins and top-cuts are <b>size-weighted</b> (a
+    200-player major counts far more than an 8-player side event), so the most successful Mega rises to #1
+    (Char-Y: most wins 🏆17, most top-cuts, most-used). Usage is a stepped bonus (100+ = big, 50+ = solid,
+    under 10 = heavy penalty), so fringe one-offs crater (Absol, 1 team → F). Win rate still pulls the
+    efficient mons up (Scovillain/Blaziken 56% → S) and sinks losers (Sceptile 36% → C). Tiers are cut by
+    <b>1-D k-means (natural breaks)</b>. 🏆 in the corner = event wins.
     Big number = raw <span class="good">win rate</span>; line below = teams · top-cut.
     <span class="good">≥52%</span> · <span class="mid">46–52%</span> · <span class="bad">≤46%</span>.
   </div>

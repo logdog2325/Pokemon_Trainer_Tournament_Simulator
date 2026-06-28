@@ -251,10 +251,14 @@ function aggregate(standingsList) {
   const usageBonus = t => t >= 100 ? 0.9 : t >= 50 ? 0.7 : t >= 10 ? 0.05 : -2.0;
   for (const r of list) {
     r.wr = (r.a.w + muW * KWR) / (r.games + KWR);
-    r.cut = ((r.a.t8 || 0) + muC * KWR) / (r.teams + KWR);
+    r.wonM = Math.sqrt(r.a.wonW || 0);              // size-weighted event-win VOLUME (dominance)
+    r.cutM = Math.sqrt(r.a.cutW || 0);              // size-weighted top-cut VOLUME (dominance)
   }
-  zscores(list, "wr");
-  list.forEach(r => r.comp = 1.0 * r.z_wr + usageBonus(r.teams) + eventBonus(r.a.wonW || 0) + cutBonus(r.a.cutW || 0));
+  zscores(list, "wr"); zscores(list, "wonM"); zscores(list, "cutM");
+  // DOMINANCE-LED: results volume (event wins + top-cuts + usage) is the primary driver; win rate is
+  // kept as a real factor but no longer leads. Both wins/top-cuts are size-weighted (big events count
+  // far more). This puts the most SUCCESSFUL Mega (Char-Y: most wins, top-cuts, usage) at #1.
+  list.forEach(r => r.comp = 0.80 * r.z_wr + usageBonus(r.teams) + 0.55 * r.z_wonM + 0.45 * r.z_cutM);
   const classify = kmeans1d(list.map(r => r.comp), 6);
   const megaOut = {};
   for (const r of list) {
@@ -277,10 +281,12 @@ function aggregate(standingsList) {
     const pUse = t => t >= 50 ? 0.9 : t >= 20 ? 0.7 : 0.05;     // pairs never get the <8 penalty (already filtered)
     for (const r of plist) {
       r.wr = (r.a.w + muW * KWR) / (r.games + KWR);
-      r.cut = ((r.a.t8 || 0) + muC * KWR) / (r.teams + KWR);
+      r.wonM = Math.sqrt(r.a.wonW || 0);
+      r.cutM = Math.sqrt(r.a.cutW || 0);
     }
-    zscores(plist, "wr");
-    plist.forEach(r => r.comp = 1.0 * r.z_wr + pUse(r.teams) + eventBonus(r.a.wonW || 0) + cutBonus(r.a.cutW || 0));
+    zscores(plist, "wr"); zscores(plist, "wonM"); zscores(plist, "cutM");
+    // same dominance-led model as the single-Mega list: results volume leads, win rate kept.
+    plist.forEach(r => r.comp = 0.80 * r.z_wr + pUse(r.teams) + 0.55 * r.z_wonM + 0.45 * r.z_cutM);
     const pclassify = kmeans1d(plist.map(r => r.comp), 6);
     for (const r of plist) {
       r.f.tier = TN[pclassify(r.comp)];
