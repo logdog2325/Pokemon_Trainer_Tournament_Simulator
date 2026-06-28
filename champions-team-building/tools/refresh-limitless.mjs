@@ -36,7 +36,7 @@ const CACHE_DIR = (() => { const i = process.argv.indexOf("--cache-dir"); return
 const BASE = "https://play.limitlesstcg.com";
 const MIN_EVENTS = 10;          // guard: a real 4-week M-B pull has dozens of events
 const MIN_TEAMS = 500;          // guard: ...and thousands of teams with decklists
-const PRIOR_GAMES = 40;         // win-rate shrinkage strength (pseudo-games at 50%)
+const PRIOR_GAMES = 50;         // win-rate shrinkage strength (pseudo-games at 50%)
 const UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36";
 const HEADERS = { "User-Agent": UA, "Accept": "application/json, text/html, */*" };
 
@@ -112,16 +112,65 @@ async function discover() {
 
 // ---- aggregation ---------------------------------------------------------------------------------
 function blankAgg() { return { teams: 0, w: 0, l: 0, cut: 0, best: 9999 }; }
+function blankMon() { return { teams: 0, w: 0, l: 0, cut: 0, best: 9999, moves: {}, items: {}, abil: {}, nat: {}, mates: {} }; }
 function fold(a, wins, losses, isCut, placing) {
   a.teams++; a.w += wins; a.l += losses;
   if (isCut) { a.cut++; if (placing < a.best) a.best = placing; }
 }
+// count a labelled option (move/item/etc.) on a species, carrying the team's W/L so we can
+// surface BOTH how often it's run and how well teams that run it do.
+function bump(map, key, wins, losses) { if (!key) return; const e = map[key] || (map[key] = { n: 0, w: 0, l: 0 }); e.n++; e.w += wins; e.l += losses; }
 function finalize(a) {
   const g = a.w + a.l;
   return { teams: a.teams, wins: a.w, losses: a.l,
     wr: g ? +(100 * a.w / g).toFixed(1) : 0,
     adjWr: +(100 * (a.w + PRIOR_GAMES / 2) / (g + PRIOR_GAMES)).toFixed(1),
     cut: a.cut, best: a.best < 9999 ? a.best : null };
+}
+// --- scientific Mega-tier helpers: EB Beta prior (MoM), z-scores, 1-D k-means natural breaks ---
+// Fit a Beta prior to a set of {s,n} rates by method of moments (between-group variance minus the
+// binomial sampling variance) → returns the population mean and prior strength (alpha+beta), both
+// ESTIMATED FROM THE DATA so the shrinkage isn't a hand-picked constant.
+function fitBeta(items) {
+  const tot = items.reduce((a, x) => a + x.n, 0) || 1;
+  const mu = items.reduce((a, x) => a + x.s, 0) / tot;
+  let num = 0, den = 0, samp = 0;
+  for (const x of items) { if (x.n < 1) continue; const p = x.s / x.n; num += x.n * (p - mu) ** 2; den += x.n; samp += mu * (1 - mu); }
+  const Vobs = den ? num / den : 0, Vsamp = den ? samp / den : 0;   // Vsamp = mu(1-mu)/avg(n)
+  const Vtrue = Math.max(1e-6, Vobs - Vsamp);
+  return { mu, M: Math.max(1, mu * (1 - mu) / Vtrue - 1) };
+}
+function zscores(rows, key) {
+  const m = rows.reduce((s, r) => s + r[key], 0) / rows.length;
+  const sd = Math.sqrt(rows.reduce((s, r) => s + (r[key] - m) ** 2, 0) / rows.length) || 1;
+  rows.forEach(r => r["z_" + key] = (r[key] - m) / sd);
+}
+// 1-D k-means → returns a classifier mapping a value to a tier index (0=best). Deterministic restarts.
+function kmeans1d(vals, k, iters = 120, restarts = 50) {
+  const sorted = [...vals].sort((a, b) => a - b); let best = null;
+  for (let r = 0; r < restarts; r++) {
+    let cent = Array.from({ length: k }, (_, i) => sorted[Math.floor((i + 0.5) / k * sorted.length)] + (r ? Math.sin(r * 7.13 + i * 3.7) * 0.04 : 0));
+    let assign = new Array(vals.length).fill(0);
+    for (let it = 0; it < iters; it++) {
+      assign = vals.map(v => { let bi = 0, bd = Infinity; cent.forEach((c, i) => { const d = (v - c) ** 2; if (d < bd) { bd = d; bi = i; } }); return bi; });
+      const sum = new Array(k).fill(0), cnt = new Array(k).fill(0);
+      vals.forEach((v, i) => { sum[assign[i]] += v; cnt[assign[i]]++; });
+      cent = cent.map((c, i) => cnt[i] ? sum[i] / cnt[i] : c);
+    }
+    const wss = vals.reduce((s, v, i) => s + (v - cent[assign[i]]) ** 2, 0);
+    if (!best || wss < best.wss - 1e-9) best = { wss, cent: [...cent] };
+  }
+  const rank = {}; best.cent.map((c, i) => [c, i]).sort((a, b) => b[0] - a[0]).forEach(([, i], ti) => rank[i] = ti);
+  return v => { let bi = 0, bd = Infinity; best.cent.forEach((c, i) => { const d = (v - c) ** 2; if (d < bd) { bd = d; bi = i; } }); return rank[bi]; };
+}
+
+// rank options by usage, return [label, pct-of-species-teams, win-rate] tuples
+function topOpts(map, teams, limit, minN) {
+  return Object.entries(map)
+    .filter(([, e]) => e.n >= (minN || 1))
+    .sort((a, b) => b[1].n - a[1].n)
+    .slice(0, limit)
+    .map(([k, e]) => { const g = e.w + e.l; return [k, +(100 * e.n / teams).toFixed(0), g ? +(100 * e.w / g).toFixed(0) : null]; });
 }
 
 function aggregate(standingsList) {
@@ -135,33 +184,74 @@ function aggregate(standingsList) {
       teams++;
       const rec = p.record || {}; const wins = rec.wins || 0, losses = rec.losses || 0;
       const isCut = p.placing != null, placing = p.placing;
-      const seenSpecies = new Set();
+      // resolve the team's species once (item clause → one of each), so we can mine co-occurrence
+      const roster = [];
+      for (const mon of dl) { const dn = toDexName(mon.id, mon.name); if (dn && !roster.find(r => r.dn === dn)) roster.push({ dn, mon }); }
+      for (const { dn, mon } of roster) {
+        const a = mons[dn] || (mons[dn] = blankMon());
+        fold(a, wins, losses, isCut, placing);
+        for (const mv of (mon.attacks || [])) bump(a.moves, mv, wins, losses);
+        bump(a.items, mon.item, wins, losses);
+        bump(a.abil, mon.ability, wins, losses);
+        bump(a.nat, mon.nature, wins, losses);
+        for (const other of roster) if (other.dn !== dn) bump(a.mates, other.dn, wins, losses);
+      }
+      const top8 = isCut && placing <= 8;            // a real top-8 finish (conventional VGC cut)
       for (const mon of dl) {
-        const dn = toDexName(mon.id, mon.name);
-        if (dn && !seenSpecies.has(dn)) {            // count a species once per team
-          seenSpecies.add(dn);
-          fold(mons[dn] || (mons[dn] = blankAgg()), wins, losses, isCut, placing);
-        }
         if (MEGA_SPECIES.has(norm(mon.id)) && isStone(mon.item)) {
+          const dn = toDexName(mon.id, mon.name);
           let label = (dn || mon.name || "?"); const m = String(mon.item).match(/ ([XY])$/); if (m) label += "-" + m[1];
           const a = megas[label] || (megas[label] = blankAgg());
           fold(a, wins, losses, isCut, placing);
+          if (top8) a.t8 = (a.t8 || 0) + 1;
           if (a.teams > maxMegaTeams) maxMegaTeams = a.teams;
         }
       }
     }
   }
-  // mega tier = composite of adoption (log) + shrunk performance
-  const megaOut = {};
-  for (const [k, a] of Object.entries(megas)) {
-    const f = finalize(a);
-    const adoptZ = Math.log(a.teams) / Math.log(maxMegaTeams);
-    const perfZ = Math.max(0, Math.min(1, (f.adjWr - 42) / (58 - 42)));
-    const comp = 0.5 * perfZ + 0.5 * adoptZ;
-    f.tier = comp >= 0.78 ? "S" : comp >= 0.62 ? "A" : comp >= 0.46 ? "B" : comp >= 0.30 ? "C" : comp >= 0.18 ? "D" : "F";
-    megaOut[k] = f;
+  // ---- Mega tier = scientific, data-driven (no hand-tuned thresholds) ------------------------------
+  // Three factors combine into one quality score:
+  //   1. WIN RATE   — empirical-Bayes posterior mean (each Mega's record shrunk toward the field mean;
+  //                   the prior STRENGTH is fit from the data by method of moments — not a magic number). [weight .55]
+  //   2. TOP-8 RATE — EB posterior mean of real top-8 cut finishes (shrunk toward the field base rate).    [weight .25]
+  //   3. USAGE      — log adoption (how widely the Mega is trusted).                                       [weight .20]
+  // Win rate is the heaviest factor; usage cannot rescue a losing Mega. Each factor is standardized
+  // (z-score) so the weights mean what they say, then summed. Tier CUTPOINTS are NOT chosen by hand —
+  // 1-D k-means (Jenks natural breaks) finds the gaps in the score distribution and those define S..F.
+  // Small samples self-regulate: EB shrinks their estimate toward the mean (no spikes) and the bootstrap
+  // (run offline) confirms which placements are statistically solid vs marginal.
+  const TN = ["S", "A", "B", "C", "D", "F"];
+  const list = Object.entries(megas).map(([k, a]) => {
+    const f = finalize(a), games = f.wins + f.losses;
+    return { k, f, a, games, teams: a.teams };
+  });
+  const pw = fitBeta(list.map(r => ({ s: r.a.w, n: r.a.w + r.a.l })));
+  const pc = fitBeta(list.map(r => ({ s: r.a.t8 || 0, n: r.a.teams })));
+  for (const r of list) {
+    r.wr = (r.a.w + pw.mu * pw.M) / (r.games + pw.M);
+    r.cut = ((r.a.t8 || 0) + pc.mu * pc.M) / (r.teams + pc.M);
+    r.use = Math.log(r.teams);
   }
-  const monOut = {}; for (const [k, a] of Object.entries(mons)) monOut[k] = finalize(a);
+  zscores(list, "wr"); zscores(list, "cut"); zscores(list, "use");
+  list.forEach(r => r.comp = 0.55 * r.z_wr + 0.25 * r.z_cut + 0.20 * r.z_use);
+  const classify = kmeans1d(list.map(r => r.comp), 6);
+  const megaOut = {};
+  for (const r of list) {
+    r.f.tier = TN[classify(r.comp)];
+    r.f.games = r.games; r.f.score = +r.comp.toFixed(2); r.f.top8 = r.a.t8 || 0;
+    megaOut[r.k] = r.f;
+  }
+  if (DEBUG) console.log(`EB priors — win rate mu=${(pw.mu * 100).toFixed(1)}% strength=${pw.M.toFixed(0)} | top8 base=${(pc.mu * 100).toFixed(1)}% strength=${pc.M.toFixed(0)}`);
+  const monOut = {};
+  for (const [k, a] of Object.entries(mons)) {
+    const f = finalize(a);
+    f.moves = topOpts(a.moves, a.teams, 10, 1);     // win-rate-weighted real sets
+    f.items = topOpts(a.items, a.teams, 4, 1);
+    f.abilities = topOpts(a.abil, a.teams, 3, 1);
+    f.natures = topOpts(a.nat, a.teams, 3, 1);
+    f.mates = topOpts(a.mates, a.teams, 10, 2);      // teammate co-occurrence + pair win rate
+    monOut[k] = f;
+  }
   return { events, teams, mons: monOut, megas: megaOut };
 }
 

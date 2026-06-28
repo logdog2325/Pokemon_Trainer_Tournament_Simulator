@@ -76,6 +76,17 @@ function formView(e,fi){
     return {types,baseStats:mg.baseStats,ability,isMega:true,label:mg.label||"Mega",weak:E.weaknessesOf({types,abilities:[ability],baseStats:mg.baseStats},ability)};}
   return {types:e.types,baseStats:e.baseStats,ability:(e.abilities||[])[0],isMega:false,label:"Base",weak:E.weaknessesOf(e)};
 }
+// Limitless M-B tournament pedigree for the role screen: species win rate + top-cut, and Mega tier.
+function pedigreeHTML(e,fi){
+  const r=E.resultsFor(e); if(!r||(r.teams||0)<8) return "";
+  const wc=r.adjWr>=52?"#5cc46b":r.adjWr<=46?"#ff7043":"var(--mut)";
+  let mega=""; if(fi>=0&&e.mega){const mt=E.megaTierList().find(t=>t.base===e.name&&(!t.variant||(e.mega[fi].label||"").indexOf(t.variant)>=0))||E.megaTierList().find(t=>t.base===e.name);
+    if(mt)mega=` · <b style="color:${({S:"#ff7043",A:"#f7c948",B:"#5cc46b",C:"#4d8cf5",D:"#9aa0c8",F:"#6b6f86"})[mt.tier]}">${mt.tier}-tier mega</b> (${mt.wr}%)`;}
+  const topMoves=(r.moves||[]).slice(0,4).map(m=>m[0]).join(", ");
+  return `<div class="muted" style="margin-top:6px;border-top:1px solid var(--card2);padding-top:6px">
+    🏆 <b style="color:${wc}">${r.wr}% win rate</b> · ${r.teams} teams · ${r.cut} top-cut${r.best?` · best #${r.best}`:""}${mega}
+    ${topMoves?`<div style="margin-top:2px">Most-run: ${topMoves}</div>`:""}</div>`;
+}
 function renderRole(){
   const e=STATE.lead; titleEl.textContent=e.name; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
   const roles=E.detectRoles(e); const cav=pranksterCaveat(e);
@@ -96,7 +107,8 @@ function renderRole(){
       ${e.transformedStats&&fi<0?`<div class="muted" style="margin-top:6px">⚡ Transforms: ${Object.values(e.transformedStats).join("/")} (${(e.tags||[]).join(", ")})</div>`:""}
       <div class="wk">${fv.weak.weak.map(([t,m])=>`<span class="${m>=4?'x4':'x2'}">${t} ×${m}</span>`).join("")}
         ${fv.weak.imm.map(t=>`<span style="background:#143a2c;color:#3ad29f">${t} immune</span>`).join("")}</div>
-      ${cav?`<div class="muted" style="color:#ffd9a0">⚠ ${cav}</div>`:""}</div>
+      ${cav?`<div class="muted" style="color:#ffd9a0">⚠ ${cav}</div>`:""}
+      ${pedigreeHTML(e,fi)}</div>
     <h3 style="margin:6px 2px">${fv.isMega?fv.label+" sets":"Possible roles"} — pick one (you get a suggested set to tweak)</h3>
     ${shown.map(({r,i})=>{const set=E.recommendSet(e,r.key);return `<div class="card rolecard" data-i="${i}"><h3>${r.label}</h3><div class="muted">${r.note}</div>
       <div class="muted" style="margin-top:6px"><b>Item:</b> ${set.item} · <b>${set.nature}</b> · ${spreadStr(set.points)}</div>
@@ -244,13 +256,14 @@ function candRow(c,danger){
   if(s.weather)tags.push(["+"+s.weatherType,"good"]);
   // tournament pedigree (Limitless M-B): win rate when the sample is meaningful, plus mega tier
   if(s.wr!=null&&s.resTeams>=25)tags.push([s.wr+"% WR",s.adjWr>=52?"good":s.adjWr<=46?"bad":""]);
+  if(s.mate>0)tags.push(["proven core +"+s.mate,"good"]);
   if(e.mega&&e.mega.length){const mt=E.megaTierList().find(t=>t.base===e.name);if(mt)tags.push([mt.tier+"-tier mega",["S","A"].includes(mt.tier)?"good":["D","F"].includes(mt.tier)?"bad":""]);}
   s.covers.forEach(t=>tags.push(["covers "+t,"good"]));
   s.dangerStacks.forEach(t=>tags.push(["stacks "+t,"bad"]));
   return `<div class="candrow" data-n="${e.name}">${img(e)}
     <div class="meta"><div class="nm">${e.name} ${tbadges(e.types)}</div>
       <div class="tags">${tags.slice(0,6).map(([t,c])=>`<span class="tag ${c}">${t}</span>`).join("")}</div>
-      <div class="brk">role-fit ${s.exe!=null?s.exe:'–'}/40 · typing ${s.typing}/25${s.synergy?' · synergy '+(s.synergy>0?'+':'')+s.synergy:''}${s.enab?' · core +'+s.enab:''}${s.chk?' · checks +'+s.chk:''}${s.proven?' · proven '+(s.proven>0?'+':'')+s.proven:''}${s.spd<0?' · ⚠ off-speed '+s.spd:''}${cav?' · ⚠ caveat':''}</div></div>
+      <div class="brk">role-fit ${s.exe!=null?s.exe:'–'}/40 · typing ${s.typing}/25${s.synergy?' · synergy '+(s.synergy>0?'+':'')+s.synergy:''}${s.enab?' · core +'+s.enab:''}${s.chk?' · checks +'+s.chk:''}${s.proven?' · proven '+(s.proven>0?'+':'')+s.proven:''}${s.mate?' · core +'+s.mate:''}${s.spd<0?' · ⚠ off-speed '+s.spd:''}${cav?' · ⚠ caveat':''}</div></div>
     <div class="scorebadge"><b style="color:${s.total>=70?'var(--good)':s.total>=55?'var(--txt)':'var(--mut)'}">${s.total}</b><small>fit</small></div></div>`;
 }
 function bindCands(){app.querySelectorAll(".candrow").forEach(r=>r.onclick=()=>{

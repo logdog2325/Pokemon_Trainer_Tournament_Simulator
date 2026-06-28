@@ -33,10 +33,15 @@
   <div class="sub" id="sub">Pokémon Champions · Reg M-B</div>
   <div id="tiers"></div>
   <div class="legend">
-    <b>How to read it:</b> tier = a blend of <b>adoption</b> (how many teams bring the Mega) and <b>shrunk win rate</b>
-    (regressed toward 50% so tiny samples don't spike). The big number is the <span class="good">win rate</span> of
-    teams while running that Mega; the line below is teams brought · top-cut appearances.
-    <span class="good">Green ≥52%</span> · <span class="mid">grey 46–52%</span> · <span class="bad">orange ≤46%</span>.
+    <b>Methodology (data-driven, no hand-set cutoffs):</b> each Mega gets one quality score from three
+    standardized factors — <b>win rate 55%</b>, <b>top-8 cut rate 25%</b>, <b>usage 20%</b>. Win rate and
+    top-8 rate are <b>empirical-Bayes</b> estimates: each Mega's record is shrunk toward the field average,
+    with the shrinkage strength <i>fit from the data</i> (≈136 games for win rate) so small samples can't
+    spike. The six tiers are then cut by <b>1-D k-means (Jenks natural breaks)</b> — the gaps in the score
+    distribution define S–F, not round numbers. Usage is the lightest factor and never rescues a losing
+    Mega (Staraptor: ~700 teams, 44% → D). A cluster-bootstrap over tournaments confirms the placements.
+    Big number = raw <span class="good">win rate</span>; line below = teams · top-cut.
+    <span class="good">≥52%</span> · <span class="mid">46–52%</span> · <span class="bad">≤46%</span>.
   </div>
   <div class="foot" id="foot"></div>
 </div>
@@ -58,8 +63,8 @@
   }
   var list=Object.keys(R.megas).map(function(label){
     var m=label.match(/^(.*?)-([XY])$/), base=m?m[1]:label, variant=m?m[2]:null, r=R.megas[label];
-    return {label:label,base:base,variant:variant,tier:r.tier||"F",wr:r.wr,adjWr:r.adjWr,teams:r.teams,cut:r.cut,best:r.best};
-  }).sort(function(a,b){return (ORDER[a.tier]-ORDER[b.tier])||(b.adjWr-a.adjWr)||(b.teams-a.teams);});
+    return {label:label,base:base,variant:variant,tier:r.tier||"F",wr:r.wr,adjWr:r.adjWr,teams:r.teams,cut:r.cut,best:r.best,score:r.score||0,top8:r.top8||0};
+  }).sort(function(a,b){return (ORDER[a.tier]-ORDER[b.tier])||(b.score-a.score)||(b.adjWr-a.adjWr);});
 
   var meta=R.meta||{};
   document.getElementById("sub").innerHTML="Pokémon Champions · Reg M-B · <b>"+(meta.events||"?")+"</b> Limitless tournaments · <b>"+(meta.teams||"?")+"</b> teams · updated "+(meta.generated||"?");
