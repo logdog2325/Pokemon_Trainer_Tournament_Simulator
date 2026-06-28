@@ -629,7 +629,7 @@ function renderMegas(){
   const byTier={}; list.forEach(m=>(byTier[m.tier]=byTier[m.tier]||[]).push(m));
   const rowFor=m=>`<div class="candrow" data-n="${m.base}">${m.entry?imgF(m.entry,0):''}
     <div class="meta"><div class="nm">${m.entry?m.entry.label||m.base:m.base}${m.variant?' '+m.variant:''} ${m.entry?tbadges((m.entry.mega&&m.entry.mega[0]&&m.entry.mega[0].type)||m.entry.types):''}</div>
-      <div class="brk">${m.teams} teams · ${m.cut} top-cut${m.won?' · 🏆'+m.won+' won':(m.best?' · best #'+m.best:'')}</div></div>
+      <div class="brk">${m.teams} teams · ${m.top8} top-8 (${m.cutPct}%)${m.won?' · 🏆'+m.won+' won':''}</div></div>
     <div class="scorebadge"><b style="color:${wrCol(m.wr)}">${m.wr}%</b><small>win rate</small></div></div>`;
   app.innerHTML=`<div class="card"><b>Mega Evolutions by tournament results</b>
       <div class="muted" style="margin-top:4px">Champions Reg M-B · ${meta.events||'?'} Limitless tournaments · ${meta.teams||'?'} teams · updated ${meta.generated||'?'}.
@@ -650,7 +650,7 @@ function renderPairs(){
   const sprite=p=>p.entry?`<img loading="lazy" src="${megaSpriteOf(p.entry,(p.entry.mega||[]).findIndex(mg=>!p.variant||(mg.label||"").indexOf(p.variant)>=0))}" onerror="this.onerror=null;this.src='${p.entry.spriteFallback}'" style="width:42px;height:42px;object-fit:contain">`:'';
   const rowFor=m=>`<div class="candrow"><div style="display:flex;align-items:center;gap:1px">${sprite(m.parts[0])}<span class="muted">+</span>${sprite(m.parts[1])}</div>
     <div class="meta"><div class="nm">${m.parts.map(p=>(p.entry?(p.entry.mega&&p.entry.mega[0]&&p.label):m.label)).length?m.parts.map(p=>p.label).join(" + "):m.label}</div>
-      <div class="brk">${m.teams} teams${m.won?' · 🏆'+m.won+' won':(m.best?' · best #'+m.best:'')}</div></div>
+      <div class="brk">${m.teams} teams · ${m.cutPct}% cut${m.won?' · 🏆'+m.won+' won':''}</div></div>
     <div class="scorebadge"><b style="color:${wrCol(m.wr)}">${m.wr}%</b><small>win rate</small></div></div>`;
   app.innerHTML=`<div class="card"><b>Mega pairings by tournament results</b>
       <div class="muted" style="margin-top:4px">~half of M-B teams flex two Mega stones. This ranks how each duo performs together · ${meta.events||'?'} events · updated ${meta.generated||'?'}. Win rate of teams running both. Pairings on 8+ teams only.</div></div>

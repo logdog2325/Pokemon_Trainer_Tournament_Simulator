@@ -64,7 +64,7 @@
   }
   var list=Object.keys(R.megas).map(function(label){
     var m=label.match(/^(.*?)-([XY])$/), base=m?m[1]:label, variant=m?m[2]:null, r=R.megas[label];
-    return {label:label,base:base,variant:variant,tier:r.tier||"F",wr:r.wr,adjWr:r.adjWr,teams:r.teams,cut:r.cut,best:r.best,won:r.won||0,score:r.score||0,top8:r.top8||0};
+    return {label:label,base:base,variant:variant,tier:r.tier||"F",wr:r.wr,adjWr:r.adjWr,teams:r.teams,cut:r.cut,best:r.best,won:r.won||0,score:r.score||0,top8:r.top8||0,cutPct:(r.cutPct!=null?r.cutPct:(r.teams?Math.round(100*(r.top8||0)/r.teams):0))};
   }).sort(function(a,b){return (ORDER[a.tier]-ORDER[b.tier])||(b.score-a.score)||(b.adjWr-a.adjWr);});
 
   var meta=R.meta||{};
@@ -84,7 +84,7 @@
         '<img src="'+sp+'" onerror="this.onerror=null;this.src=\''+fallback(m.base)+'\'" alt="'+nm+'">'+
         '<div class="nm">'+nm+'</div>'+
         '<div class="wr '+wc+'">'+m.wr+'%</div>'+
-        '<div class="ln">'+m.teams+' teams · '+m.cut+' cut</div></div>';
+        '<div class="ln">'+m.teams+' teams · '+m.top8+' top-8 ('+m.cutPct+'%)</div></div>';
     });
     html+='</div></div>';
   });

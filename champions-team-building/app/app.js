@@ -342,14 +342,16 @@ function megaTierList(){
   return Object.entries(RES_MEGAS).map(([label,r])=>{
     const m=label.match(/^(.*?)-([XY])$/), base=m?m[1]:label, variant=m?m[2]:null;
     return {label,base,variant,entry:byName[base]||null,tier:r.tier||"F",
-      teams:r.teams,wr:r.wr,adjWr:r.adjWr,cut:r.cut,best:r.best,won:r.won||0,score:r.score,top8:r.top8};
+      teams:r.teams,wr:r.wr,adjWr:r.adjWr,cut:r.cut,best:r.best,won:r.won||0,score:r.score,top8:r.top8,
+      cutPct:(r.cutPct!=null?r.cutPct:(r.teams?Math.round(100*(r.top8||0)/r.teams):0))};
   }).sort((a,b)=>(_TIER_ORDER[a.tier]-_TIER_ORDER[b.tier])||((b.score||0)-(a.score||0))||(b.adjWr-a.adjWr));
 }
 // Mega-pairing tier list (flex-mega duos): each entry resolves both megas to their base species.
 function megaPairList(){
   return Object.entries(RES_PAIRS).map(([label,r])=>{
     const parts=label.split(" + ").map(p=>{const m=p.match(/^(.*?)-([XY])$/);const base=m?m[1]:p,variant=m?m[2]:null;return {label:p,base,variant,entry:byName[base]||null};});
-    return {label,parts,tier:r.tier||"F",teams:r.teams,wr:r.wr,cut:r.cut,best:r.best,won:r.won||0,score:r.score,top8:r.top8};
+    return {label,parts,tier:r.tier||"F",teams:r.teams,wr:r.wr,cut:r.cut,best:r.best,won:r.won||0,score:r.score,top8:r.top8,
+      cutPct:(r.cutPct!=null?r.cutPct:(r.teams?Math.round(100*(r.top8||0)/r.teams):0))};
   }).sort((a,b)=>(_TIER_ORDER[a.tier]-_TIER_ORDER[b.tier])||((b.score||0)-(a.score||0))||(b.wr-a.wr));
 }
 function parseSpread(s){const p=(s||"").split("/").map(n=>parseInt(n,10));if(p.length!==6||p.some(n=>isNaN(n)))return null;return {hp:p[0],atk:p[1],def:p[2],spa:p[3],spd:p[4],spe:p[5]};}

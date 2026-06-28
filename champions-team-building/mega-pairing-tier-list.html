@@ -58,7 +58,7 @@
     return mg.sprite||fallback(base);}
   function part(p){var m=p.match(/^(.*?)-([XY])$/); return {label:p,base:m?m[1]:p,variant:m?m[2]:null};}
   var list=Object.keys(R.pairs||{}).map(function(label){var r=R.pairs[label];
-    return {label:label,parts:label.split(" + ").map(part),tier:r.tier||"F",wr:r.wr,teams:r.teams,cut:r.cut,best:r.best,won:r.won||0,score:r.score||0};
+    return {label:label,parts:label.split(" + ").map(part),tier:r.tier||"F",wr:r.wr,teams:r.teams,cut:r.cut,best:r.best,won:r.won||0,score:r.score||0,top8:r.top8||0,cutPct:(r.cutPct!=null?r.cutPct:(r.teams?Math.round(100*(r.top8||0)/r.teams):0))};
   }).sort(function(a,b){return (ORDER[a.tier]-ORDER[b.tier])||(b.score-a.score)||(b.wr-a.wr);});
 
   var meta=R.meta||{};
@@ -78,7 +78,7 @@
       html+='<div class="cell"><div class="duo">'+imgs+'</div>'+
         '<div class="nm">'+nm+'</div>'+
         '<div class="wr '+wc+'">'+m.wr+'%</div>'+
-        '<div class="ln">'+m.teams+' teams'+(m.won?' · 🏆'+m.won:(m.best?' · best #'+m.best:''))+'</div></div>';
+        '<div class="ln">'+m.teams+' teams · '+m.cutPct+'% cut'+(m.won?' · 🏆'+m.won:'')+'</div></div>';
     });
     html+='</div></div>';
   });
