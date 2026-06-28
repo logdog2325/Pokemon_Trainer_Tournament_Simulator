@@ -277,9 +277,12 @@ function aggregate(standingsList) {
   if (DEBUG) console.log(`field win rate mu=${(muW * 100).toFixed(1)}% top8 base=${(muC * 100).toFixed(1)}%`);
 
   // ---- Mega PAIRING tiers — same model, usage thresholds scaled down (pairs run smaller samples) ---
-  // Only pairs seen on >= MIN_PAIR teams are tiered (fewer teams = pure noise). Same win-rate-led score
-  // + a stepped usage bonus (50+ pairings big, 20+ solid, 8-19 tiny) + k-means natural breaks.
-  const MIN_PAIR = 8;
+  // Only pairs seen on >= MIN_PAIR teams are tiered. MIN chosen from a split-half reliability study:
+  // win-rate reliability rises gradually with sample (0.26 at 2 teams → 0.39 at 5 → 0.58 at 8). 5 is the
+  // floor where the composite is still trustworthy — its shrinkage + usage/size-weighted-results anchoring
+  // lift the effective reliability above the raw-win-rate number — while ~doubling coverage vs 8. Below 5
+  // you're tiering 2-3 team coincidences (reliability <0.33).
+  const MIN_PAIR = 5;
   const plist = Object.entries(pairs).filter(([, a]) => a.teams >= MIN_PAIR).map(([k, a]) => {
     const f = finalize(a), games = f.wins + f.losses;
     return { k, f, a, games, teams: a.teams };

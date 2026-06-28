@@ -653,7 +653,7 @@ function renderPairs(){
       <div class="brk">${m.teams} teams · ${m.cutPct}% cut${m.won?' · 🏆'+m.won+' won':''}</div></div>
     <div class="scorebadge"><b style="color:${wrCol(m.wr)}">${m.wr}%</b><small>win rate</small></div></div>`;
   app.innerHTML=`<div class="card"><b>Mega pairings by tournament results</b>
-      <div class="muted" style="margin-top:4px">~half of M-B teams flex two Mega stones. This ranks how each duo performs together · ${meta.events||'?'} events · updated ${meta.generated||'?'}. Win rate of teams running both. Pairings on 8+ teams only.</div></div>
+      <div class="muted" style="margin-top:4px">~half of M-B teams flex two Mega stones. This ranks how each duo performs together · ${meta.events||'?'} events · updated ${meta.generated||'?'}. Win rate of teams running both. Pairings on 5+ teams only (reliability floor).</div></div>
     ${["S","A","B","C","D","F"].filter(t=>byTier[t]).map(t=>`<div class="card">
       <b style="color:${TIER_COL[t]}">${t} tier</b> <span class="muted">(${byTier[t].length})</span>
       <div style="margin-top:6px">${byTier[t].map(rowFor).join("")}</div></div>`).join("")}`;

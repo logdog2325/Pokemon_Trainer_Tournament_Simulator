@@ -37,8 +37,9 @@
     <b>What this is:</b> ~half of M-B teams flex <b>two Mega stones</b>. This ranks each Mega <i>pairing</i>
     by the same <b>dominance/results-led</b> model as the single-Mega list — led by <b>event wins + top-cut
     volume + usage</b> (wins/cuts <b>size-weighted</b>, so big events count far more), with <b>win rate kept
-    as a strong secondary factor</b>. Only pairings on <b>8+ teams</b> are ranked
-    (fewer = noise); tiers cut by k-means natural breaks. Big number = the pairing's
+    as a strong secondary factor</b>. Only pairings on <b>5+ teams</b> are ranked — a split-half reliability
+    floor (below ~5 teams win-rate reliability drops under 0.33, i.e. noise). Tiers cut by k-means natural
+    breaks. Big number = the pairing's
     <span class="good">win rate</span>; line below = teams · top-cut.
     <span class="good">≥52%</span> · <span class="mid">46–52%</span> · <span class="bad">≤46%</span>.
   </div>
@@ -63,7 +64,7 @@
 
   var meta=R.meta||{};
   document.getElementById("sub").innerHTML="Pokémon Champions · Reg M-B · <b>"+(meta.events||"?")+"</b> Limitless tournaments · <b>"+(meta.teams||"?")+"</b> teams · updated "+(meta.generated||"?");
-  document.getElementById("foot").textContent="Source: play.limitlesstcg.com completed M-B tournaments. "+list.length+" Mega pairings ranked (8+ teams each). Win rate = record of teams flexing both Megas.";
+  document.getElementById("foot").textContent="Source: play.limitlesstcg.com completed M-B tournaments. "+list.length+" Mega pairings ranked (5+ teams each). Win rate = record of teams flexing both Megas.";
   if(!list.length){document.getElementById("tiers").innerHTML='<div style="color:#9aa0c8">No pairing data loaded.</div>';return;}
 
   var byTier={}; list.forEach(function(m){(byTier[m.tier]=byTier[m.tier]||[]).push(m);});
