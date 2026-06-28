@@ -113,9 +113,10 @@ async function discover() {
 // ---- aggregation ---------------------------------------------------------------------------------
 function blankAgg() { return { teams: 0, w: 0, l: 0, cut: 0, best: 9999 }; }
 function blankMon() { return { teams: 0, w: 0, l: 0, cut: 0, best: 9999, moves: {}, items: {}, abil: {}, nat: {}, mates: {} }; }
-function fold(a, wins, losses, isCut, placing) {
+function fold(a, wins, losses, isCut, placing, fieldSize) {
   a.teams++; a.w += wins; a.l += losses;
-  if (isCut) { a.cut++; if (placing < a.best) a.best = placing; if (placing === 1) a.won = (a.won || 0) + 1; }
+  if (isCut) { a.cut++; if (placing < a.best) a.best = placing;
+    if (placing === 1) { a.won = (a.won || 0) + 1; a.wonW = (a.wonW || 0) + (fieldSize || 1); } }  // wonW = field-size-weighted wins
 }
 // count a labelled option (move/item/etc.) on a species, carrying the team's W/L so we can
 // surface BOTH how often it's run and how well teams that run it do.
@@ -127,9 +128,11 @@ function finalize(a) {
     adjWr: +(100 * (a.w + PRIOR_GAMES / 2) / (g + PRIOR_GAMES)).toFixed(1),
     cut: a.cut, best: a.best < 9999 ? a.best : null, won: a.won || 0 };
 }
-// extra bonus for actually WINNING events (1st place). Rewards proven event-winners, scaled by how
-// many wins, with diminishing returns and a cap so it tops up the score without dominating it.
-function eventBonus(won) { return won ? Math.min(0.6, 0.22 * Math.sqrt(won)) : 0; }
+// extra bonus for actually WINNING events (1st place), weighted by EVENT SIZE so winning a big event
+// counts far more than winning a tiny one. Input is wonW = sum of field sizes over 1st-place finishes
+// (e.g. one 200-player win = 200; one 8-player win = 8). Diminishing returns + a cap so it tops up
+// the score without dominating it.
+function eventBonus(wonW) { return wonW ? Math.min(0.7, 0.045 * Math.sqrt(wonW)) : 0; }
 // --- scientific Mega-tier helpers: EB Beta prior (MoM), z-scores, 1-D k-means natural breaks ---
 // Fit a Beta prior to a set of {s,n} rates by method of moments (between-group variance minus the
 // binomial sampling variance) → returns the population mean and prior strength (alpha+beta), both
@@ -182,6 +185,7 @@ function aggregate(standingsList) {
   for (const data of standingsList) {
     if (!Array.isArray(data) || !data.length) continue;
     events++;
+    const fieldSize = data.filter(p => (p.decklist || []).length).length;   // teams in THIS event (its size)
     for (const p of data) {
       const dl = p.decklist || []; if (!dl.length) continue;
       teams++;
@@ -192,7 +196,7 @@ function aggregate(standingsList) {
       for (const mon of dl) { const dn = toDexName(mon.id, mon.name); if (dn && !roster.find(r => r.dn === dn)) roster.push({ dn, mon }); }
       for (const { dn, mon } of roster) {
         const a = mons[dn] || (mons[dn] = blankMon());
-        fold(a, wins, losses, isCut, placing);
+        fold(a, wins, losses, isCut, placing, fieldSize);
         for (const mv of (mon.attacks || [])) bump(a.moves, mv, wins, losses);
         bump(a.items, mon.item, wins, losses);
         bump(a.abil, mon.ability, wins, losses);
@@ -206,7 +210,7 @@ function aggregate(standingsList) {
           const dn = toDexName(mon.id, mon.name);
           let label = (dn || mon.name || "?"); const m = String(mon.item).match(/ ([XY])$/); if (m) label += "-" + m[1];
           const a = megas[label] || (megas[label] = blankAgg());
-          fold(a, wins, losses, isCut, placing);
+          fold(a, wins, losses, isCut, placing, fieldSize);
           if (top8) a.t8 = (a.t8 || 0) + 1;
           if (a.teams > maxMegaTeams) maxMegaTeams = a.teams;
           teamMegas.push(label);
@@ -217,7 +221,7 @@ function aggregate(standingsList) {
       for (let i = 0; i < uniqMega.length; i++) for (let j = i + 1; j < uniqMega.length; j++) {
         const key = [uniqMega[i], uniqMega[j]].sort().join(" + ");
         const a = pairs[key] || (pairs[key] = blankAgg());
-        fold(a, wins, losses, isCut, placing);
+        fold(a, wins, losses, isCut, placing, fieldSize);
         if (top8) a.t8 = (a.t8 || 0) + 1;
       }
     }
@@ -248,7 +252,7 @@ function aggregate(standingsList) {
     r.cut = ((r.a.t8 || 0) + muC * KWR) / (r.teams + KWR);
   }
   zscores(list, "wr"); zscores(list, "cut");
-  list.forEach(r => r.comp = 0.90 * r.z_wr + 0.10 * r.z_cut + usageBonus(r.teams) + eventBonus(r.a.won || 0));
+  list.forEach(r => r.comp = 0.90 * r.z_wr + 0.10 * r.z_cut + usageBonus(r.teams) + eventBonus(r.a.wonW || 0));
   const classify = kmeans1d(list.map(r => r.comp), 6);
   const megaOut = {};
   for (const r of list) {
@@ -274,7 +278,7 @@ function aggregate(standingsList) {
       r.cut = ((r.a.t8 || 0) + muC * KWR) / (r.teams + KWR);
     }
     zscores(plist, "wr"); zscores(plist, "cut");
-    plist.forEach(r => r.comp = 0.90 * r.z_wr + 0.10 * r.z_cut + pUse(r.teams) + eventBonus(r.a.won || 0));
+    plist.forEach(r => r.comp = 0.90 * r.z_wr + 0.10 * r.z_cut + pUse(r.teams) + eventBonus(r.a.wonW || 0));
     const pclassify = kmeans1d(plist.map(r => r.comp), 6);
     for (const r of plist) {
       r.f.tier = TN[pclassify(r.comp)];
