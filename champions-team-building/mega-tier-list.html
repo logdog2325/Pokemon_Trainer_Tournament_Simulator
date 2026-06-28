@@ -34,17 +34,15 @@
   <div id="tiers"></div>
   <div class="legend">
     <b>Methodology (data-driven, no hand-set cutoffs):</b> each Mega gets one quality score from
-    <b>win rate (90%)</b> + <b>top-8 cut rate (10%)</b> + a <b>stepped usage bonus</b>. Win rate clearly
-    leads; win rate and top-8 are lightly shrunk toward the field average so 1–2 game flukes can't spike.
-    The usage bonus reflects that bringing a Mega to many events is itself proof players trust it:
-    <b>100+ teams = big boost</b>, 50+ = solid, 10–49 = tiny, <b>under 10 = heavy penalty</b> (almost nobody
-    found it worth trying). So volume lifts a proven-popular Mega and fringe one-offs crater (Absol,
-    1 team, 0% → F), while a strong record on few teams is still rewarded (Floette, 55% on 76 teams → S).
-    There's also an <b>event-win bonus</b> — actually winning tournaments is the ultimate proof, so 1st-place
-    finishes (🏆 in the corner) top up the score, <b>weighted by event size</b> so winning a big event counts
-    far more than a small one (Char-Y won the 898-player major; Pyroar's 2 big wins → S).
-    The six tiers are cut by <b>1-D k-means (natural breaks)</b> — the gaps in the score distribution
-    define S–F, not round numbers.
+    <b>win rate</b> (the dominant factor, lightly shrunk so flukes can't spike) plus three bonuses:
+    a <b>stepped usage bonus</b> — bringing a Mega to many events is proof players trust it
+    (<b>100+ teams = big boost</b>, 50+ = solid, 10–49 = tiny, <b>under 10 = heavy penalty</b>);
+    an <b>event-win bonus</b> for 1st-place finishes (🏆 in the corner); and a <b>top-cut bonus</b> for
+    top-8 finishes, weighted close to (just under) winning. <b>Both the win and top-cut bonuses are
+    weighted by event size</b> — winning or cutting a 200-player major counts far more than an 8-player
+    side event. So a strong record is rewarded (Floette, 55% → S), volume + big-event results lift the
+    staples (Char-Y won the 898-player major), and fringe one-offs crater (Absol, 1 team, 0% → F). The
+    six tiers are cut by <b>1-D k-means (natural breaks)</b> — the gaps in the score define S–F.
     Big number = raw <span class="good">win rate</span>; line below = teams · top-cut.
     <span class="good">≥52%</span> · <span class="mid">46–52%</span> · <span class="bad">≤46%</span>.
   </div>
