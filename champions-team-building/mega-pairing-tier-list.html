@@ -36,9 +36,10 @@
   <div class="legend">
     <b>What this is:</b> ~half of M-B teams flex <b>two Mega stones</b>. This ranks how well each Mega
     <i>pairing</i> performs together, by the same model as the single-Mega list — <b>win rate (90%)</b> +
-    <b>top-8 (10%)</b> + a stepped usage bonus (50+ pairings = big, 20+ = solid). Only pairings on
-    <b>8+ teams</b> are ranked (fewer = noise); tiers cut by k-means natural breaks. Big number = the
-    pairing's <span class="good">win rate</span>; line below = teams · top-cut.
+    <b>top-8 (10%)</b> + a stepped usage bonus (50+ pairings = big, 20+ = solid) + an <b>event-win
+    bonus</b> (🏆 = 1st-place finishes by that duo). Only pairings on <b>8+ teams</b> are ranked
+    (fewer = noise); tiers cut by k-means natural breaks. Big number = the pairing's
+    <span class="good">win rate</span>; line below = teams · top-cut.
     <span class="good">≥52%</span> · <span class="mid">46–52%</span> · <span class="bad">≤46%</span>.
   </div>
   <div class="foot" id="foot"></div>
@@ -57,7 +58,7 @@
     return mg.sprite||fallback(base);}
   function part(p){var m=p.match(/^(.*?)-([XY])$/); return {label:p,base:m?m[1]:p,variant:m?m[2]:null};}
   var list=Object.keys(R.pairs||{}).map(function(label){var r=R.pairs[label];
-    return {label:label,parts:label.split(" + ").map(part),tier:r.tier||"F",wr:r.wr,teams:r.teams,cut:r.cut,best:r.best,score:r.score||0};
+    return {label:label,parts:label.split(" + ").map(part),tier:r.tier||"F",wr:r.wr,teams:r.teams,cut:r.cut,best:r.best,won:r.won||0,score:r.score||0};
   }).sort(function(a,b){return (ORDER[a.tier]-ORDER[b.tier])||(b.score-a.score)||(b.wr-a.wr);});
 
   var meta=R.meta||{};
@@ -77,7 +78,7 @@
       html+='<div class="cell"><div class="duo">'+imgs+'</div>'+
         '<div class="nm">'+nm+'</div>'+
         '<div class="wr '+wc+'">'+m.wr+'%</div>'+
-        '<div class="ln">'+m.teams+' teams'+(m.best?' · best #'+m.best:'')+'</div></div>';
+        '<div class="ln">'+m.teams+' teams'+(m.won?' · 🏆'+m.won:(m.best?' · best #'+m.best:''))+'</div></div>';
     });
     html+='</div></div>';
   });

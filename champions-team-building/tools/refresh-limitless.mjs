@@ -115,7 +115,7 @@ function blankAgg() { return { teams: 0, w: 0, l: 0, cut: 0, best: 9999 }; }
 function blankMon() { return { teams: 0, w: 0, l: 0, cut: 0, best: 9999, moves: {}, items: {}, abil: {}, nat: {}, mates: {} }; }
 function fold(a, wins, losses, isCut, placing) {
   a.teams++; a.w += wins; a.l += losses;
-  if (isCut) { a.cut++; if (placing < a.best) a.best = placing; }
+  if (isCut) { a.cut++; if (placing < a.best) a.best = placing; if (placing === 1) a.won = (a.won || 0) + 1; }
 }
 // count a labelled option (move/item/etc.) on a species, carrying the team's W/L so we can
 // surface BOTH how often it's run and how well teams that run it do.
@@ -125,8 +125,11 @@ function finalize(a) {
   return { teams: a.teams, wins: a.w, losses: a.l,
     wr: g ? +(100 * a.w / g).toFixed(1) : 0,
     adjWr: +(100 * (a.w + PRIOR_GAMES / 2) / (g + PRIOR_GAMES)).toFixed(1),
-    cut: a.cut, best: a.best < 9999 ? a.best : null };
+    cut: a.cut, best: a.best < 9999 ? a.best : null, won: a.won || 0 };
 }
+// extra bonus for actually WINNING events (1st place). Rewards proven event-winners, scaled by how
+// many wins, with diminishing returns and a cap so it tops up the score without dominating it.
+function eventBonus(won) { return won ? Math.min(0.6, 0.22 * Math.sqrt(won)) : 0; }
 // --- scientific Mega-tier helpers: EB Beta prior (MoM), z-scores, 1-D k-means natural breaks ---
 // Fit a Beta prior to a set of {s,n} rates by method of moments (between-group variance minus the
 // binomial sampling variance) → returns the population mean and prior strength (alpha+beta), both
@@ -245,7 +248,7 @@ function aggregate(standingsList) {
     r.cut = ((r.a.t8 || 0) + muC * KWR) / (r.teams + KWR);
   }
   zscores(list, "wr"); zscores(list, "cut");
-  list.forEach(r => r.comp = 0.90 * r.z_wr + 0.10 * r.z_cut + usageBonus(r.teams));
+  list.forEach(r => r.comp = 0.90 * r.z_wr + 0.10 * r.z_cut + usageBonus(r.teams) + eventBonus(r.a.won || 0));
   const classify = kmeans1d(list.map(r => r.comp), 6);
   const megaOut = {};
   for (const r of list) {
@@ -271,7 +274,7 @@ function aggregate(standingsList) {
       r.cut = ((r.a.t8 || 0) + muC * KWR) / (r.teams + KWR);
     }
     zscores(plist, "wr"); zscores(plist, "cut");
-    plist.forEach(r => r.comp = 0.90 * r.z_wr + 0.10 * r.z_cut + pUse(r.teams));
+    plist.forEach(r => r.comp = 0.90 * r.z_wr + 0.10 * r.z_cut + pUse(r.teams) + eventBonus(r.a.won || 0));
     const pclassify = kmeans1d(plist.map(r => r.comp), 6);
     for (const r of plist) {
       r.f.tier = TN[pclassify(r.comp)];
