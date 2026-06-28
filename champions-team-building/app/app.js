@@ -306,6 +306,32 @@ function recommendAbility(e){let best=(e.abilities||[])[0]||"",sc=-1;for(const a
 /* ---------- Pikalytics usage data (Reg M-B doubles) ---------- */
 const USAGE=window.USAGE_SETS||{};
 function usageOf(e){return e&&USAGE[e.name]||null;}
+
+/* ---------- Limitless tournament results (Reg M-B): usage / win rate / top-cut ---------- */
+const RESULTS=window.RESULTS||{meta:{},mons:{},megas:{}};
+const RES_MONS=RESULTS.mons||{}, RES_MEGAS=RESULTS.megas||{};
+const RES_MIN_GAMES=25;                          // below this the win rate is too noisy to act on
+function resultsFor(e){return e&&RES_MONS[e.name]||null;}     // per-species tournament record
+// per-Mega record (by held stone). For dual-mega mons pass the form label suffix (e.g. "Y").
+function megaResultsFor(name,variant){const k=variant?name+"-"+variant:name;return RES_MEGAS[k]||RES_MEGAS[name]||null;}
+// tournament-proven score nudge: shrunk win rate vs the 50% field baseline, sample-gated and capped.
+// This is PERFORMANCE (does it win games in real events), distinct from raw usage/popularity.
+function provenBonus(e){
+  const r=resultsFor(e); if(!r) return 0;
+  const games=(r.wins||0)+(r.losses||0); if(games<RES_MIN_GAMES) return 0;
+  const conf=Math.min(1,games/200);              // ramp confidence with sample size
+  return Math.max(-5,Math.min(5,Math.round((r.adjWr-50)*0.55*conf)));
+}
+// Mega tier list from real results, sorted strongest first. Resolves each mega label back to its
+// base species so the UI can show art and the correct mega form.
+const _TIER_ORDER={S:0,A:1,B:2,C:3,D:4,F:5};
+function megaTierList(){
+  return Object.entries(RES_MEGAS).map(([label,r])=>{
+    const m=label.match(/^(.*?)-([XY])$/), base=m?m[1]:label, variant=m?m[2]:null;
+    return {label,base,variant,entry:byName[base]||null,tier:r.tier||"F",
+      teams:r.teams,wr:r.wr,adjWr:r.adjWr,cut:r.cut,best:r.best};
+  }).sort((a,b)=>(_TIER_ORDER[a.tier]-_TIER_ORDER[b.tier])||(b.adjWr-a.adjWr)||(b.teams-a.teams));
+}
 function parseSpread(s){const p=(s||"").split("/").map(n=>parseInt(n,10));if(p.length!==6||p.some(n=>isNaN(n)))return null;return {hp:p[0],atk:p[1],def:p[2],spa:p[3],spd:p[4],spe:p[5]};}
 // short tag describing what the real set actually does (for the role label)
 function metaDescriptor(e,u){
@@ -724,13 +750,16 @@ function scoreForSlot(e,team,slot){
   // synergy layer (Champions Reg M-B calibrated): speed-mode fit, enabler→payoff cores, threat answers, Intimidate discipline
   const spd=speedFit(e,team), enab=enablerBonus(e,team), threat=threatAnswerBonus(e,team), intim=intimidateDiscipline(e,team);
   const chk=checkCoverageBonus(e,team,slot);   // damage-aware: patches an uncovered/soft top threat
+  const proven=provenBonus(e);                  // tournament win rate vs the field (performance, not popularity)
   // Score is purely about fit: how well it executes the role + how it supports THIS team.
-  // Usage/popularity is NOT a factor — `rank` is returned only as an informational label.
+  // Raw usage/popularity is NOT a factor (`rank` is informational); win rate IS, because it measures
+  // whether the Pokémon actually wins games in real M-B events — modest, sample-gated, capped at ±5.
   const teamFit=b.typing+Math.min(18,b.cov)+b.weather+leadCov+offCov;
-  const synergy=spd+enab+threat+intim+chk;   // Reg M-B synergy layer
+  const synergy=spd+enab+threat+intim+chk+proven;   // Reg M-B synergy layer
   const total=Math.max(0,Math.min(100,Math.round(teamFit*0.62+exe+synergy)));
-  const u=usageOf(e);
-  return {...b,exe,leadCov,offCov,spd,enab,threat,intim,chk,synergy,rank:u&&u.rank!=null?u.rank:null,total};
+  const u=usageOf(e), res=resultsFor(e);
+  return {...b,exe,leadCov,offCov,spd,enab,threat,intim,chk,proven,synergy,rank:u&&u.rank!=null?u.rank:null,
+    wr:res?res.wr:null,adjWr:res?res.adjWr:null,cut:res?res.cut:null,best:res?res.best:null,resTeams:res?res.teams:null,total};
 }
 
 /* ---------- live team health score ---------- */
@@ -1235,4 +1264,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,teamSpeedLean,speedSetterPref,speedFit,flexSpeedRole,electricImmune,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,teamSpeedLean,speedSetterPref,speedFit,flexSpeedRole,electricImmune,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread,RESULTS,resultsFor,megaResultsFor,provenBonus,megaTierList};

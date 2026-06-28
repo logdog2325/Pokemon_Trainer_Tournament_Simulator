@@ -35,6 +35,11 @@ jobs:
       - name: Scrape latest usage → /tmp/new-usage.js
         run: node champions-team-building/tools/refresh-usage.mjs /tmp/new-usage.js --debug
 
+      # Pull real tournament results (usage / win rate / top-cut) from Limitless. Its own guard aborts
+      # (non-zero) on a thin scrape, so a bad pull fails the job and nothing is committed.
+      - name: Scrape Limitless tournament results → results-data.js
+        run: node champions-team-building/tools/refresh-limitless.mjs champions-team-building/app/results-data.js --debug
+
       - name: Build meta-shifts report (previous vs new)
         run: |
           node champions-team-building/tools/meta-shifts.mjs \
@@ -50,10 +55,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add champions-team-building/app/usage-data.js champions-team-building/app/sw.js champions-team-building/meta-shifts.md
+          git add champions-team-building/app/usage-data.js champions-team-building/app/results-data.js champions-team-building/app/sw.js champions-team-building/meta-shifts.md
           if git diff --cached --quiet; then
             echo "No usage changes this week — nothing to commit."
             exit 0
           fi
-          git commit -m "Weekly meta refresh: update Pikalytics usage + meta-shifts report"
+          git commit -m "Weekly meta refresh: update Pikalytics usage + Limitless results + meta-shifts report"
           git push origin HEAD:${{ github.ref_name }}

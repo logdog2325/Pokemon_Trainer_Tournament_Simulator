@@ -4,8 +4,12 @@ Calibrated from competitive top-cut data:
 - **Structure** (transfers across formats/eras): Champions Reg M-A NAIC + Indianapolis top-16, the
   6,109-player **Skraw VGC Grand Champions Festival** top cut (≈16 Swiss rounds), the official
   closed-sheet **Global Challenge I**, and ~10 years of Worlds/EUIC/NAIC archetype samples.
-- **Meta / threat list** (M-B specific): Pikalytics `battledataregmbs3` + the Limitless M-B online
-  tournaments (Smogon VGC Major Live, 898 players; INGAGE Frontier #2, 199 players).
+- **Meta / threat list** (M-B specific): Pikalytics `battledataregmbs3` + a real scrape of the
+  Limitless completed M-B tournaments (play.limitlesstcg.com). The latter is now automated:
+  `tools/refresh-limitless.mjs` aggregates every M-B event into `app/results-data.js`
+  (per-species + per-Mega usage, win rate, top-cut). The committed snapshot covers the full M-B
+  era — 74 tournaments / 4,977 teams (e.g. INGAGE Frontier #2, 199 players). The engine's
+  `provenBonus` uses these shrunk win rates (performance, not popularity) in candidate scoring.
 
 ## Quantified structural facts the score encodes
 - **One committed speed mode.** 9/9 Grand-Champions-Festival top-cut teams ran exactly one

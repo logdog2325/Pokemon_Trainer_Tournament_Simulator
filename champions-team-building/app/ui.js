@@ -58,9 +58,11 @@ function renderStart(){
   backBtn.classList.add("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
   const list=E.DEX.filter(e=>e.name.toLowerCase().includes(STATE.q.toLowerCase())).sort((a,b)=>a.name.localeCompare(b.name));
   app.innerHTML=`<button class="btn" id="imp" style="width:100%;margin-bottom:10px">📋 Import / paste a team</button>
+    <button class="btn" id="megabtn" style="width:100%;margin-bottom:10px">🏆 Mega tier list (Limitless M-B)</button>
     <input class="search" id="q" placeholder="Search ${E.DEX.length} Pokémon…" value="${STATE.q}">
     <div class="grid">${list.slice(0,400).map(e=>`<div class="mon" data-n="${e.name}">${img(e)}<div class="nm">${e.name}</div>${tbadges(e.types)}</div>`).join("")}</div>`;
   $("#imp").onclick=()=>go("import");
+  $("#megabtn").onclick=()=>go("megas");
   const q=$("#q"); q.oninput=()=>{STATE.q=q.value;const g=app.querySelector(".grid");const l=E.DEX.filter(e=>e.name.toLowerCase().includes(STATE.q.toLowerCase())).sort((a,b)=>a.name.localeCompare(b.name));g.innerHTML=l.slice(0,400).map(e=>`<div class="mon" data-n="${e.name}">${img(e)}<div class="nm">${e.name}</div>${tbadges(e.types)}</div>`).join("");bindMons();};
   bindMons();
 }
@@ -240,12 +242,15 @@ function candRow(c,danger){
   if(s.chk>0)tags.push(["checks a threat","good"]);
   const flexRole=E.flexSpeedRole(e,STATE.team); if(flexRole)tags.push([flexRole,"good"]);
   if(s.weather)tags.push(["+"+s.weatherType,"good"]);
+  // tournament pedigree (Limitless M-B): win rate when the sample is meaningful, plus mega tier
+  if(s.wr!=null&&s.resTeams>=25)tags.push([s.wr+"% WR",s.adjWr>=52?"good":s.adjWr<=46?"bad":""]);
+  if(e.mega&&e.mega.length){const mt=E.megaTierList().find(t=>t.base===e.name);if(mt)tags.push([mt.tier+"-tier mega",["S","A"].includes(mt.tier)?"good":["D","F"].includes(mt.tier)?"bad":""]);}
   s.covers.forEach(t=>tags.push(["covers "+t,"good"]));
   s.dangerStacks.forEach(t=>tags.push(["stacks "+t,"bad"]));
   return `<div class="candrow" data-n="${e.name}">${img(e)}
     <div class="meta"><div class="nm">${e.name} ${tbadges(e.types)}</div>
       <div class="tags">${tags.slice(0,6).map(([t,c])=>`<span class="tag ${c}">${t}</span>`).join("")}</div>
-      <div class="brk">role-fit ${s.exe!=null?s.exe:'–'}/40 · typing ${s.typing}/25${s.synergy?' · synergy '+(s.synergy>0?'+':'')+s.synergy:''}${s.enab?' · core +'+s.enab:''}${s.chk?' · checks +'+s.chk:''}${s.spd<0?' · ⚠ off-speed '+s.spd:''}${cav?' · ⚠ caveat':''}</div></div>
+      <div class="brk">role-fit ${s.exe!=null?s.exe:'–'}/40 · typing ${s.typing}/25${s.synergy?' · synergy '+(s.synergy>0?'+':'')+s.synergy:''}${s.enab?' · core +'+s.enab:''}${s.chk?' · checks +'+s.chk:''}${s.proven?' · proven '+(s.proven>0?'+':'')+s.proven:''}${s.spd<0?' · ⚠ off-speed '+s.spd:''}${cav?' · ⚠ caveat':''}</div></div>
     <div class="scorebadge"><b style="color:${s.total>=70?'var(--good)':s.total>=55?'var(--txt)':'var(--mut)'}">${s.total}</b><small>fit</small></div></div>`;
 }
 function bindCands(){app.querySelectorAll(".candrow").forEach(r=>r.onclick=()=>{
@@ -599,9 +604,31 @@ function renderImport(){
   };
   backBtn.onclick=()=>go("start");
 }
+/* ---------------- MEGA TIER LIST (Limitless M-B results) ---------------- */
+const TIER_COL={S:"#ff7043",A:"#f7c948",B:"#5cc46b",C:"#4d8cf5",D:"#9aa0c8",F:"#6b6f86"};
+function renderMegas(){
+  titleEl.textContent="Mega tier list"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
+  const meta=(E.RESULTS&&E.RESULTS.meta)||{}, list=E.megaTierList();
+  if(!list.length){app.innerHTML=`<div class="card muted">No tournament results loaded.</div>`;backBtn.onclick=()=>go("start");return;}
+  const wrCol=w=>w>=52?"var(--good)":w<=46?"var(--bad)":"var(--txt)";
+  const byTier={}; list.forEach(m=>(byTier[m.tier]=byTier[m.tier]||[]).push(m));
+  const rowFor=m=>`<div class="candrow" data-n="${m.base}">${m.entry?imgF(m.entry,0):''}
+    <div class="meta"><div class="nm">${m.entry?m.entry.label||m.base:m.base}${m.variant?' '+m.variant:''} ${m.entry?tbadges((m.entry.mega&&m.entry.mega[0]&&m.entry.mega[0].type)||m.entry.types):''}</div>
+      <div class="brk">${m.teams} teams · ${m.cut} top-cut${m.best?' · best #'+m.best:''}</div></div>
+    <div class="scorebadge"><b style="color:${wrCol(m.wr)}">${m.wr}%</b><small>win rate</small></div></div>`;
+  app.innerHTML=`<div class="card"><b>Mega Evolutions by tournament results</b>
+      <div class="muted" style="margin-top:4px">Champions Reg M-B · ${meta.events||'?'} Limitless tournaments · ${meta.teams||'?'} teams · updated ${meta.generated||'?'}.
+      Tier = adoption + shrunk win rate. Win rate is the team's record while running that Mega.</div></div>
+    ${["S","A","B","C","D","F"].filter(t=>byTier[t]).map(t=>`<div class="card">
+      <b style="color:${TIER_COL[t]}">${t} tier</b> <span class="muted">(${byTier[t].length})</span>
+      <div style="margin-top:6px">${byTier[t].map(rowFor).join("")}</div></div>`).join("")}`;
+  app.querySelectorAll(".candrow").forEach(r=>r.onclick=()=>{const e=E.byName[r.dataset.n];if(e){STATE.lead=e;STATE.role=null;STATE.team=[];STATE.q="";STATE.roleForm=null;go("role");}});
+  backBtn.onclick=()=>go("start");
+}
 function render(){
-  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(STATE.screen==="role"||STATE.screen==="import")go("start"); else if(["editor","stress","speed","calc","optimize"].includes(STATE.screen))go("builder"); };
-  if(STATE.screen==="import")renderImport();
+  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(STATE.screen==="role"||STATE.screen==="import"||STATE.screen==="megas")go("start"); else if(["editor","stress","speed","calc","optimize"].includes(STATE.screen))go("builder"); };
+  if(STATE.screen==="megas")renderMegas();
+  else if(STATE.screen==="import")renderImport();
   else if(STATE.screen==="optimize")renderOptimize();
   else if(STATE.screen==="calc")renderCalc();
   else if(STATE.screen==="start")renderStart();
