@@ -174,7 +174,7 @@ function topOpts(map, teams, limit, minN) {
 }
 
 function aggregate(standingsList) {
-  const mons = {}, megas = {};
+  const mons = {}, megas = {}, pairs = {};
   let events = 0, teams = 0, maxMegaTeams = 1;
   for (const data of standingsList) {
     if (!Array.isArray(data) || !data.length) continue;
@@ -197,6 +197,7 @@ function aggregate(standingsList) {
         for (const other of roster) if (other.dn !== dn) bump(a.mates, other.dn, wins, losses);
       }
       const top8 = isCut && placing <= 8;            // a real top-8 finish (conventional VGC cut)
+      const teamMegas = [];
       for (const mon of dl) {
         if (MEGA_SPECIES.has(norm(mon.id)) && isStone(mon.item)) {
           const dn = toDexName(mon.id, mon.name);
@@ -205,15 +206,24 @@ function aggregate(standingsList) {
           fold(a, wins, losses, isCut, placing);
           if (top8) a.t8 = (a.t8 || 0) + 1;
           if (a.teams > maxMegaTeams) maxMegaTeams = a.teams;
+          teamMegas.push(label);
         }
+      }
+      // mega PAIRINGS: every unordered pair of Mega stones a team flexes together (≈half of teams carry 2)
+      const uniqMega = [...new Set(teamMegas)];
+      for (let i = 0; i < uniqMega.length; i++) for (let j = i + 1; j < uniqMega.length; j++) {
+        const key = [uniqMega[i], uniqMega[j]].sort().join(" + ");
+        const a = pairs[key] || (pairs[key] = blankAgg());
+        fold(a, wins, losses, isCut, placing);
+        if (top8) a.t8 = (a.t8 || 0) + 1;
       }
     }
   }
   // ---- Mega tier = data-driven score; tier cutpoints found by k-means (no hand-set thresholds) -----
   // Quality score = win rate + top-8 rate + a stepped usage bonus, combined as:
   //   1. WIN RATE   — lightly-shrunk win rate (record nudged toward the field mean so 1-2 game flukes
-  //                   don't spike), standardized. Heaviest factor.                                      [weight .55]
-  //   2. TOP-8 RATE — lightly-shrunk top-8 cut rate, standardized.                                      [weight .20]
+  //                   don't spike), standardized. By far the heaviest factor.                           [weight .90]
+  //   2. TOP-8 RATE — lightly-shrunk top-8 cut rate, standardized.                                      [weight .10]
   //   3. USAGE      — a STEPPED bonus, because bringing a Mega to many events is itself proof players
   //                   trust it: 100+ teams = big boost, 50+ = solid, 10-49 = tiny, <10 = heavy penalty
   //                   (almost nobody found it worth trying). This lets volume lift a proven-popular Mega
@@ -229,13 +239,13 @@ function aggregate(standingsList) {
   const totW = list.reduce((s, r) => s + r.a.w, 0), totG = list.reduce((s, r) => s + r.games, 0) || 1;
   const totT8 = list.reduce((s, r) => s + (r.a.t8 || 0), 0), totTeams = list.reduce((s, r) => s + r.teams, 0) || 1;
   const muW = totW / totG, muC = totT8 / totTeams;
-  const usageBonus = t => t >= 100 ? 1.6 : t >= 50 ? 0.8 : t >= 10 ? 0.1 : -2.2;
+  const usageBonus = t => t >= 100 ? 0.9 : t >= 50 ? 0.7 : t >= 10 ? 0.05 : -2.0;
   for (const r of list) {
     r.wr = (r.a.w + muW * KWR) / (r.games + KWR);
     r.cut = ((r.a.t8 || 0) + muC * KWR) / (r.teams + KWR);
   }
   zscores(list, "wr"); zscores(list, "cut");
-  list.forEach(r => r.comp = 0.55 * r.z_wr + 0.20 * r.z_cut + usageBonus(r.teams));
+  list.forEach(r => r.comp = 0.90 * r.z_wr + 0.10 * r.z_cut + usageBonus(r.teams));
   const classify = kmeans1d(list.map(r => r.comp), 6);
   const megaOut = {};
   for (const r of list) {
@@ -244,6 +254,32 @@ function aggregate(standingsList) {
     megaOut[r.k] = r.f;
   }
   if (DEBUG) console.log(`field win rate mu=${(muW * 100).toFixed(1)}% top8 base=${(muC * 100).toFixed(1)}%`);
+
+  // ---- Mega PAIRING tiers — same model, usage thresholds scaled down (pairs run smaller samples) ---
+  // Only pairs seen on >= MIN_PAIR teams are tiered (fewer teams = pure noise). Same win-rate-led score
+  // + a stepped usage bonus (50+ pairings big, 20+ solid, 8-19 tiny) + k-means natural breaks.
+  const MIN_PAIR = 8;
+  const plist = Object.entries(pairs).filter(([, a]) => a.teams >= MIN_PAIR).map(([k, a]) => {
+    const f = finalize(a), games = f.wins + f.losses;
+    return { k, f, a, games, teams: a.teams };
+  });
+  const pairOut = {};
+  if (plist.length >= 6) {
+    const pUse = t => t >= 50 ? 0.9 : t >= 20 ? 0.7 : 0.05;     // pairs never get the <8 penalty (already filtered)
+    for (const r of plist) {
+      r.wr = (r.a.w + muW * KWR) / (r.games + KWR);
+      r.cut = ((r.a.t8 || 0) + muC * KWR) / (r.teams + KWR);
+    }
+    zscores(plist, "wr"); zscores(plist, "cut");
+    plist.forEach(r => r.comp = 0.90 * r.z_wr + 0.10 * r.z_cut + pUse(r.teams));
+    const pclassify = kmeans1d(plist.map(r => r.comp), 6);
+    for (const r of plist) {
+      r.f.tier = TN[pclassify(r.comp)];
+      r.f.games = r.games; r.f.score = +r.comp.toFixed(2); r.f.top8 = r.a.t8 || 0;
+      pairOut[r.k] = r.f;
+    }
+  }
+
   const monOut = {};
   for (const [k, a] of Object.entries(mons)) {
     const f = finalize(a);
@@ -254,7 +290,7 @@ function aggregate(standingsList) {
     f.mates = topOpts(a.mates, a.teams, 10, 2);      // teammate co-occurrence + pair win rate
     monOut[k] = f;
   }
-  return { events, teams, mons: monOut, megas: megaOut };
+  return { events, teams, mons: monOut, megas: megaOut, pairs: pairOut };
 }
 
 // ---- main ----------------------------------------------------------------------------------------
@@ -279,7 +315,7 @@ async function main() {
     }
   }
 
-  const { events, teams, mons, megas } = aggregate(standings);
+  const { events, teams, mons, megas, pairs } = aggregate(standings);
 
   // GUARD — never overwrite with a thin/broken scrape
   console.log(`aggregated ${events} events, ${teams} teams (need >= ${MIN_EVENTS} events, >= ${MIN_TEAMS} teams)`);
@@ -293,7 +329,7 @@ async function main() {
     note: "Champions Reg M-B VGC doubles — completed tournaments. wr=win rate, adjWr=shrunk, cut=top-cut entries, best=best finish." };
   const header = "// Limitless tournament results — Pokemon Champions Reg M-B (VGC doubles).\n"
     + `// Auto-refreshed ${generated} from ${events} tournaments / ${teams} teams. Per species + per Mega: usage, win rate, top-cut.\n`;
-  fs.writeFileSync(OUT, header + "window.RESULTS = " + JSON.stringify({ meta, mons, megas }) + ";\n");
-  console.log(`wrote ${OUT} — ${Object.keys(mons).length} species, ${Object.keys(megas).length} megas`);
+  fs.writeFileSync(OUT, header + "window.RESULTS = " + JSON.stringify({ meta, mons, megas, pairs }) + ";\n");
+  console.log(`wrote ${OUT} — ${Object.keys(mons).length} species, ${Object.keys(megas).length} megas, ${Object.keys(pairs).length} pairings`);
 }
 main().catch(e => { console.error("FATAL", e.message); process.exit(1); });

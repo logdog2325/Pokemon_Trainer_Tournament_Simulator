@@ -59,10 +59,12 @@ function renderStart(){
   const list=E.DEX.filter(e=>e.name.toLowerCase().includes(STATE.q.toLowerCase())).sort((a,b)=>a.name.localeCompare(b.name));
   app.innerHTML=`<button class="btn" id="imp" style="width:100%;margin-bottom:10px">📋 Import / paste a team</button>
     <button class="btn" id="megabtn" style="width:100%;margin-bottom:10px">🏆 Mega tier list (Limitless M-B)</button>
+    <button class="btn" id="pairbtn" style="width:100%;margin-bottom:10px">🤝 Mega pairing tier list</button>
     <input class="search" id="q" placeholder="Search ${E.DEX.length} Pokémon…" value="${STATE.q}">
     <div class="grid">${list.slice(0,400).map(e=>`<div class="mon" data-n="${e.name}">${img(e)}<div class="nm">${e.name}</div>${tbadges(e.types)}</div>`).join("")}</div>`;
   $("#imp").onclick=()=>go("import");
   $("#megabtn").onclick=()=>go("megas");
+  $("#pairbtn").onclick=()=>go("pairs");
   const q=$("#q"); q.oninput=()=>{STATE.q=q.value;const g=app.querySelector(".grid");const l=E.DEX.filter(e=>e.name.toLowerCase().includes(STATE.q.toLowerCase())).sort((a,b)=>a.name.localeCompare(b.name));g.innerHTML=l.slice(0,400).map(e=>`<div class="mon" data-n="${e.name}">${img(e)}<div class="nm">${e.name}</div>${tbadges(e.types)}</div>`).join("");bindMons();};
   bindMons();
 }
@@ -638,9 +640,29 @@ function renderMegas(){
   app.querySelectorAll(".candrow").forEach(r=>r.onclick=()=>{const e=E.byName[r.dataset.n];if(e){STATE.lead=e;STATE.role=null;STATE.team=[];STATE.q="";STATE.roleForm=null;go("role");}});
   backBtn.onclick=()=>go("start");
 }
+/* ---------------- MEGA PAIRING TIER LIST ---------------- */
+function renderPairs(){
+  titleEl.textContent="Mega pairing tiers"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
+  const meta=(E.RESULTS&&E.RESULTS.meta)||{}, list=E.megaPairList();
+  if(!list.length){app.innerHTML=`<div class="card muted">No pairing data loaded.</div>`;backBtn.onclick=()=>go("start");return;}
+  const wrCol=w=>w>=52?"var(--good)":w<=46?"var(--bad)":"var(--txt)";
+  const byTier={}; list.forEach(m=>(byTier[m.tier]=byTier[m.tier]||[]).push(m));
+  const sprite=p=>p.entry?`<img loading="lazy" src="${megaSpriteOf(p.entry,(p.entry.mega||[]).findIndex(mg=>!p.variant||(mg.label||"").indexOf(p.variant)>=0))}" onerror="this.onerror=null;this.src='${p.entry.spriteFallback}'" style="width:42px;height:42px;object-fit:contain">`:'';
+  const rowFor=m=>`<div class="candrow"><div style="display:flex;align-items:center;gap:1px">${sprite(m.parts[0])}<span class="muted">+</span>${sprite(m.parts[1])}</div>
+    <div class="meta"><div class="nm">${m.parts.map(p=>(p.entry?(p.entry.mega&&p.entry.mega[0]&&p.label):m.label)).length?m.parts.map(p=>p.label).join(" + "):m.label}</div>
+      <div class="brk">${m.teams} teams${m.best?' · best #'+m.best:''}</div></div>
+    <div class="scorebadge"><b style="color:${wrCol(m.wr)}">${m.wr}%</b><small>win rate</small></div></div>`;
+  app.innerHTML=`<div class="card"><b>Mega pairings by tournament results</b>
+      <div class="muted" style="margin-top:4px">~half of M-B teams flex two Mega stones. This ranks how each duo performs together · ${meta.events||'?'} events · updated ${meta.generated||'?'}. Win rate of teams running both. Pairings on 8+ teams only.</div></div>
+    ${["S","A","B","C","D","F"].filter(t=>byTier[t]).map(t=>`<div class="card">
+      <b style="color:${TIER_COL[t]}">${t} tier</b> <span class="muted">(${byTier[t].length})</span>
+      <div style="margin-top:6px">${byTier[t].map(rowFor).join("")}</div></div>`).join("")}`;
+  backBtn.onclick=()=>go("start");
+}
 function render(){
-  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(STATE.screen==="role"||STATE.screen==="import"||STATE.screen==="megas")go("start"); else if(["editor","stress","speed","calc","optimize"].includes(STATE.screen))go("builder"); };
-  if(STATE.screen==="megas")renderMegas();
+  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(["role","import","megas","pairs"].includes(STATE.screen))go("start"); else if(["editor","stress","speed","calc","optimize"].includes(STATE.screen))go("builder"); };
+  if(STATE.screen==="pairs")renderPairs();
+  else if(STATE.screen==="megas")renderMegas();
   else if(STATE.screen==="import")renderImport();
   else if(STATE.screen==="optimize")renderOptimize();
   else if(STATE.screen==="calc")renderCalc();

@@ -308,8 +308,8 @@ const USAGE=window.USAGE_SETS||{};
 function usageOf(e){return e&&USAGE[e.name]||null;}
 
 /* ---------- Limitless tournament results (Reg M-B): usage / win rate / top-cut ---------- */
-const RESULTS=window.RESULTS||{meta:{},mons:{},megas:{}};
-const RES_MONS=RESULTS.mons||{}, RES_MEGAS=RESULTS.megas||{};
+const RESULTS=window.RESULTS||{meta:{},mons:{},megas:{},pairs:{}};
+const RES_MONS=RESULTS.mons||{}, RES_MEGAS=RESULTS.megas||{}, RES_PAIRS=RESULTS.pairs||{};
 const RES_MIN_GAMES=25;                          // below this the win rate is too noisy to act on
 function resultsFor(e){return e&&RES_MONS[e.name]||null;}     // per-species tournament record
 // per-Mega record (by held stone). For dual-mega mons pass the form label suffix (e.g. "Y").
@@ -344,6 +344,13 @@ function megaTierList(){
     return {label,base,variant,entry:byName[base]||null,tier:r.tier||"F",
       teams:r.teams,wr:r.wr,adjWr:r.adjWr,cut:r.cut,best:r.best,score:r.score,top8:r.top8};
   }).sort((a,b)=>(_TIER_ORDER[a.tier]-_TIER_ORDER[b.tier])||((b.score||0)-(a.score||0))||(b.adjWr-a.adjWr));
+}
+// Mega-pairing tier list (flex-mega duos): each entry resolves both megas to their base species.
+function megaPairList(){
+  return Object.entries(RES_PAIRS).map(([label,r])=>{
+    const parts=label.split(" + ").map(p=>{const m=p.match(/^(.*?)-([XY])$/);const base=m?m[1]:p,variant=m?m[2]:null;return {label:p,base,variant,entry:byName[base]||null};});
+    return {label,parts,tier:r.tier||"F",teams:r.teams,wr:r.wr,cut:r.cut,best:r.best,score:r.score,top8:r.top8};
+  }).sort((a,b)=>(_TIER_ORDER[a.tier]-_TIER_ORDER[b.tier])||((b.score||0)-(a.score||0))||(b.wr-a.wr));
 }
 function parseSpread(s){const p=(s||"").split("/").map(n=>parseInt(n,10));if(p.length!==6||p.some(n=>isNaN(n)))return null;return {hp:p[0],atk:p[1],def:p[2],spa:p[3],spd:p[4],spe:p[5]};}
 // short tag describing what the real set actually does (for the role label)
@@ -1281,4 +1288,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,teamSpeedLean,speedSetterPref,speedFit,flexSpeedRole,electricImmune,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread,RESULTS,resultsFor,megaResultsFor,provenBonus,teammateSynergy,megaTierList};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,teamSpeedLean,speedSetterPref,speedFit,flexSpeedRole,electricImmune,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread,RESULTS,resultsFor,megaResultsFor,provenBonus,teammateSynergy,megaTierList,megaPairList};
