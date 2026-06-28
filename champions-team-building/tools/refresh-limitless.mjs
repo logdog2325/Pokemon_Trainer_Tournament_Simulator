@@ -211,9 +211,12 @@ function aggregate(standingsList) {
       }
       const teamMegas = [];
       for (const mon of dl) {
-        if (MEGA_SPECIES.has(norm(mon.id)) && isStone(mon.item)) {
-          const dn = toDexName(mon.id, mon.name);
-          let label = (dn || mon.name || "?"); const m = String(mon.item).match(/ ([XY])$/); if (m) label += "-" + m[1];
+        // resolve the canonical dex name FIRST, then test mega-capability — form ids like
+        // "floette-eternal" (Eternal Flower Floette) must map to "Floette" before the check, or every
+        // Eternal Flower Floette + Floettite (incl. the 898-player major winner) gets silently dropped.
+        const dn = toDexName(mon.id, mon.name);
+        if (dn && MEGA_SPECIES.has(norm(dn)) && isStone(mon.item)) {
+          let label = dn; const m = String(mon.item).match(/ ([XY])$/); if (m) label += "-" + m[1];
           const a = megas[label] || (megas[label] = blankAgg());
           fold(a, wins, losses, isCut, placing, fieldSize);
           if (a.teams > maxMegaTeams) maxMegaTeams = a.teams;
