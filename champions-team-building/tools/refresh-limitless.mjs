@@ -209,31 +209,33 @@ function aggregate(standingsList) {
       }
     }
   }
-  // ---- Mega tier = scientific, data-driven (no hand-tuned thresholds) ------------------------------
-  // Three factors combine into one quality score:
-  //   1. WIN RATE   — empirical-Bayes posterior mean (each Mega's record shrunk toward the field mean;
-  //                   the prior STRENGTH is fit from the data by method of moments — not a magic number). [weight .55]
-  //   2. TOP-8 RATE — EB posterior mean of real top-8 cut finishes (shrunk toward the field base rate).    [weight .25]
-  //   3. USAGE      — log adoption (how widely the Mega is trusted).                                       [weight .20]
-  // Win rate is the heaviest factor; usage cannot rescue a losing Mega. Each factor is standardized
-  // (z-score) so the weights mean what they say, then summed. Tier CUTPOINTS are NOT chosen by hand —
-  // 1-D k-means (Jenks natural breaks) finds the gaps in the score distribution and those define S..F.
-  // Small samples self-regulate: EB shrinks their estimate toward the mean (no spikes) and the bootstrap
-  // (run offline) confirms which placements are statistically solid vs marginal.
+  // ---- Mega tier = data-driven score; tier cutpoints found by k-means (no hand-set thresholds) -----
+  // Quality score = win rate + top-8 rate + a stepped usage bonus, combined as:
+  //   1. WIN RATE   — lightly-shrunk win rate (record nudged toward the field mean so 1-2 game flukes
+  //                   don't spike), standardized. Heaviest factor.                                      [weight .55]
+  //   2. TOP-8 RATE — lightly-shrunk top-8 cut rate, standardized.                                      [weight .20]
+  //   3. USAGE      — a STEPPED bonus, because bringing a Mega to many events is itself proof players
+  //                   trust it: 100+ teams = big boost, 50+ = solid, 10-49 = tiny, <10 = heavy penalty
+  //                   (almost nobody found it worth trying). This lets volume lift a proven-popular Mega
+  //                   and sinks fringe one-offs, while win rate still leads.
+  // Tier CUTPOINTS are not chosen by hand — 1-D k-means (Jenks natural breaks) finds the gaps in the
+  // score distribution and those define S..F.
   const TN = ["S", "A", "B", "C", "D", "F"];
+  const KWR = 12;                                  // light shrinkage strength (pseudo-games / pseudo-teams)
   const list = Object.entries(megas).map(([k, a]) => {
     const f = finalize(a), games = f.wins + f.losses;
     return { k, f, a, games, teams: a.teams };
   });
-  const pw = fitBeta(list.map(r => ({ s: r.a.w, n: r.a.w + r.a.l })));
-  const pc = fitBeta(list.map(r => ({ s: r.a.t8 || 0, n: r.a.teams })));
+  const totW = list.reduce((s, r) => s + r.a.w, 0), totG = list.reduce((s, r) => s + r.games, 0) || 1;
+  const totT8 = list.reduce((s, r) => s + (r.a.t8 || 0), 0), totTeams = list.reduce((s, r) => s + r.teams, 0) || 1;
+  const muW = totW / totG, muC = totT8 / totTeams;
+  const usageBonus = t => t >= 100 ? 1.6 : t >= 50 ? 0.8 : t >= 10 ? 0.1 : -2.2;
   for (const r of list) {
-    r.wr = (r.a.w + pw.mu * pw.M) / (r.games + pw.M);
-    r.cut = ((r.a.t8 || 0) + pc.mu * pc.M) / (r.teams + pc.M);
-    r.use = Math.log(r.teams);
+    r.wr = (r.a.w + muW * KWR) / (r.games + KWR);
+    r.cut = ((r.a.t8 || 0) + muC * KWR) / (r.teams + KWR);
   }
-  zscores(list, "wr"); zscores(list, "cut"); zscores(list, "use");
-  list.forEach(r => r.comp = 0.55 * r.z_wr + 0.25 * r.z_cut + 0.20 * r.z_use);
+  zscores(list, "wr"); zscores(list, "cut");
+  list.forEach(r => r.comp = 0.55 * r.z_wr + 0.20 * r.z_cut + usageBonus(r.teams));
   const classify = kmeans1d(list.map(r => r.comp), 6);
   const megaOut = {};
   for (const r of list) {
@@ -241,7 +243,7 @@ function aggregate(standingsList) {
     r.f.games = r.games; r.f.score = +r.comp.toFixed(2); r.f.top8 = r.a.t8 || 0;
     megaOut[r.k] = r.f;
   }
-  if (DEBUG) console.log(`EB priors — win rate mu=${(pw.mu * 100).toFixed(1)}% strength=${pw.M.toFixed(0)} | top8 base=${(pc.mu * 100).toFixed(1)}% strength=${pc.M.toFixed(0)}`);
+  if (DEBUG) console.log(`field win rate mu=${(muW * 100).toFixed(1)}% top8 base=${(muC * 100).toFixed(1)}%`);
   const monOut = {};
   for (const [k, a] of Object.entries(mons)) {
     const f = finalize(a);
