@@ -36,6 +36,8 @@ const CACHE_DIR = (() => { const i = process.argv.indexOf("--cache-dir"); return
 const BASE = "https://play.limitlesstcg.com";
 const MIN_EVENTS = 10;          // guard: a real 4-week M-B pull has dozens of events
 const MIN_TEAMS = 500;          // guard: ...and thousands of teams with decklists
+const MB_START = "2026-06-17";  // Reg M-B regulation start. Events before this date are Reg M-A
+                                // (also a Mega format), so a content check alone can't separate them.
 const PRIOR_GAMES = 50;         // win-rate shrinkage strength (pseudo-games at 50%)
 const UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36";
 const HEADERS = { "User-Agent": UA, "Accept": "application/json, text/html, */*" };
@@ -81,31 +83,33 @@ const MEGA_SPECIES = (() => {
 })();
 const isStone = it => { if (!it) return false; it = it.trim(); if (it.toLowerCase() === "eviolite") return false; return /ite( [XY])?$/.test(it); };
 
-// ---- discover completed M-B tournaments ----------------------------------------------------------
+// ---- discover M-B tournaments: pull the FULL VGC listing, then filter by DATE --------------------
+// We do NOT use Limitless's `format=M-B` tag: large M-B events (e.g. the St. Jude charity major) are
+// mis-tagged as generic VGC and get silently dropped by it. Instead we read the whole VGC listing —
+// each row carries data-date / data-players attributes — and keep events dated >= MB_START. A Mega-
+// stone content guard in main() then drops any non-Champions VGC event (Reg H/I carry no Mega stones).
 function parseListing(html) {
   const out = [];
-  for (const tr of html.match(/<tr[\s\S]*?<\/tr>/g) || []) {
-    const idm = tr.match(/\/tournament\/([a-z0-9]+)/);
-    if (!idm) continue;
-    const cells = (tr.match(/<td[^>]*>([\s\S]*?)<\/td>/g) || [])
-      .map(c => c.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&#?\w+;/g, "").trim());
-    const row = cells.join(" | ");
-    if (!/M-?B|Champions|Reg\.?\s*M/i.test(row)) continue;      // M-B only
-    const nums = cells.filter(c => /^\d+$/.test(c));
-    out.push({ id: idm[1], players: nums.length ? +nums[nums.length - 1] : 0, name: cells[0] || "" });
+  for (const tr of html.match(/<tr[^>]*data-date[\s\S]*?<\/tr>/g) || []) {
+    const id = (tr.match(/\/tournament\/([a-z0-9]+)/) || [])[1];
+    const date = (tr.match(/data-date="([^"]+)"/) || [])[1];
+    if (!id || !date) continue;
+    out.push({ id, date: date.slice(0, 10),
+      players: +((tr.match(/data-players="(\d+)"/) || [])[1]) || 0,
+      name: (tr.match(/data-name="([^"]*)"/) || [])[1] || "" });
   }
   return out;
 }
 async function discover() {
-  const urls = [
-    `${BASE}/tournaments/completed?game=VGC&format=M-B&platform=all&type=all&time=all&show=200`,
-    `${BASE}/tournaments/completed?game=VGC&format=M-B&platform=all&type=online&time=4weeks`,
-    `${BASE}/tournaments/completed?game=VGC&show=100`,
-  ];
+  // wide windows so all M-B events are surfaced regardless of how long the reg has run; the
+  // date filter excludes the older Reg M-A events that the wider windows also return.
+  const urls = ["4weeks", "12weeks", "24weeks"].flatMap(t => ["all", "online", "offline"].map(p =>
+    `${BASE}/tournaments/completed?game=VGC&format=all&platform=${p}&type=all&time=${t}&show=400`));
   const byId = {};
   for (const u of urls) {
-    try { for (const t of parseListing(await getText(u))) if (!byId[t.id]) byId[t.id] = t; }
+    try { for (const t of parseListing(await getText(u))) if (t.date >= MB_START && !byId[t.id]) byId[t.id] = t; }
     catch (e) { if (DEBUG) console.error("listing failed:", u, e.message); }
+    await sleep(800);
   }
   return Object.values(byId);
 }
@@ -330,14 +334,20 @@ async function main() {
   } else {
     const events = await discover();
     if (!events.length) { console.error("no M-B tournaments discovered"); process.exit(1); }
-    console.log(`discovered ${events.length} M-B tournaments — fetching standings`);
+    console.log(`discovered ${events.length} M-B-dated tournaments — fetching standings`);
+    // Champions guard: a Reg M-B (Champions) event has Mega stones; a same-dated official VGC
+    // event (Reg H/I) has none. Keep only events where a meaningful share of mons hold a stone.
+    const championsShare = s => { let st = 0, tot = 0;
+      for (const p of s) for (const m of (p.decklist || [])) { tot++; if (isStone(m.item)) st++; }
+      return tot ? st / tot : 0; };
     for (const t of events) {
       try {
         const s = await getJSON(`${BASE}/api/tournaments/${t.id}/standings`);
-        if (Array.isArray(s) && s.length) standings.push(s);
-        else if (DEBUG) console.error("  empty", t.id, t.name);
+        if (!Array.isArray(s) || !s.length) { if (DEBUG) console.error("  empty", t.id, t.name); }
+        else if (championsShare(s) < 0.05) { if (DEBUG) console.error("  non-Champions", t.id, t.name); }
+        else standings.push(s);
       } catch (e) { if (DEBUG) console.error("  skip", t.id, e.message); }
-      await sleep(120);
+      await sleep(900);
     }
   }
 
