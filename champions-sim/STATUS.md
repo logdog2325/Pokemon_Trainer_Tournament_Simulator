@@ -49,14 +49,30 @@ CAVEATS (why Step 3 exists): this is a static damage+speed HEURISTIC. It does no
 attackers over enablers (e.g. it may skip Vivillon). Treat the win% as directional and the best-4/threats
 as a strong starting read — the Step-3 engine sim plays games out for real win-rates.
 
-## ⏳ Step 3 — Smart doubles bot + harness (AFTER)
-- Extend the sim's AI from singles-only to **doubles**: targeting, spread moves, Protect/Fake Out,
-  redirection, and **game-plan awareness** (recognize + set up Tailwind/Trick Room and play to it).
-- **Bring-6-pick-4** selection at Team Preview (evaluate lead/bring combinations).
-- Adapt the Python mass-sim harness (`Data/`) for VGC to output a **matchup win-rate matrix** vs the
-  meta teams and the best bring per matchup.
-- Local server for **human-vs-bot** sparring.
+## Step 3 — Simulation-based analyzer + smart bot
 
-## Meta opponent teams
-Source the top teams from recent results (e.g. The Champions Arena II top 8: Char-Y/Aerodactyl offense,
-Big 6, Delphox/Blastoise control) plus Pikalytics usage for `gen9championsvgc2026regmb`.
+### ✅ Monte Carlo harness (foundation DONE)
+`champions-sim/simulate-matchup.mjs` runs N real offline Reg M-B **doubles** battles between two teams
+and reports the win rate. Verified: **100 games in ~4 seconds.** That speed means we can brute-force
+every bring/lead/mega combo cheaply.
+
+    node champions-sim/simulate-matchup.mjs 100
+
+Currently uses the built-in RandomPlayerAI for both sides, so the win% reflects **raw team power, not
+skilled play** — the game-plan bot below is what makes it a trustworthy matchup read.
+
+### ⏳ Remaining
+- **Game-plan doubles bot** (replaces RandomPlayerAI): recognize + set up **Tailwind / Trick Room** and
+  play to it, sane targeting, Protect/Fake Out, redirection. Bar: beginner-to-intermediate, not Wolfe.
+- **Bring-6 / pick-4 + mega + lead optimizer** (per user spec): for a matchup, run ~100 games for each
+  candidate (which 4 to bring, **which one Pokémon to Mega Evolve** — only one mega per battle! —, and
+  which 2 to lead), and report the **best bring + mega + lead by measured win rate**. The harness above
+  is the inner loop; wrap it in combo enumeration.
+- **Matchup matrix**: your team vs one real team per meta archetype → win-rate table (worst first).
+- **Human-vs-bot** local server for sparring.
+
+## Meta opponent teams (to source)
+One real team **per archetype**, pulled from **Limitless / paste repos** (pokepast.es), e.g. from
+The Champions Arena II top 8: Char-Y/Aerodactyl offense, Big 6, Delphox/Blastoise control. Plus
+Pikalytics usage for `gen9championsvgc2026regmb`. (Current analyzer/harness use hand-built
+approximations of these; swap in the real exported pastes.)
