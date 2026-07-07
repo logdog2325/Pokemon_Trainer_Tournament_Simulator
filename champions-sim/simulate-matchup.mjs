@@ -22,8 +22,13 @@ const require = createRequire(import.meta.url);
 const DIST = path.join(__dirname, '..', 'pokemon-showdown', 'dist');
 const { BattleStream, getPlayerStreams, Teams } = require(path.join(DIST, 'sim'));
 const { RandomPlayerAI } = require(path.join(DIST, 'sim', 'tools', 'random-player-ai'));
+const { GameplanBot } = require(path.join(__dirname, 'gameplan-bot.js'));
 
 const FORMAT = 'gen9championsvgc2026regmb';
+
+function makeBot(kind, stream, bs, side) {
+	return kind === 'smart' ? new GameplanBot(stream, { battle: bs, side }) : new RandomPlayerAI(stream);
+}
 
 // --- teams (Champions point pastes; base ability for megas becomes mega ability) ---
 const TEAM_A_NAME = 'Quivern TR';
@@ -159,11 +164,12 @@ function packOrThrow(paste, who) {
 }
 
 // run a single battle, resolve with 'p1' | 'p2' | 'tie'
-function runOne(packedA, packedB) {
+function runOne(packedA, packedB, botA = 'smart', botB = 'smart') {
 	return new Promise(resolve => {
-		const streams = getPlayerStreams(new BattleStream());
-		new RandomPlayerAI(streams.p1).start();
-		new RandomPlayerAI(streams.p2).start();
+		const bs = new BattleStream();
+		const streams = getPlayerStreams(bs);
+		makeBot(botA, streams.p1, bs, 'p1').start();
+		makeBot(botB, streams.p2, bs, 'p2').start();
 		let done = false;
 		(async () => {
 			for await (const chunk of streams.omniscient) {
@@ -181,25 +187,31 @@ function runOne(packedA, packedB) {
 	});
 }
 
+async function series(N, A, B, botA, botB, label) {
+	let aw = 0, bw = 0, ties = 0;
+	const t0 = Date.now();
+	for (let i = 0; i < N; i++) {
+		const r = await runOne(A, B, botA, botB);
+		if (r === 'p1') aw++; else if (r === 'p2') bw++; else ties++;
+		if ((i + 1) % 10 === 0) process.stdout.write(`  ${label}: ${i + 1}/${N}  (${aw}-${bw}${ties ? `, ${ties}t` : ''})\r`);
+	}
+	const secs = ((Date.now() - t0) / 1000).toFixed(1);
+	return { aw, bw, ties, secs, wr: (100 * aw / (aw + bw || 1)).toFixed(1) };
+}
+
 async function main() {
 	const N = parseInt(process.argv[2] || '50', 10);
 	const A = packOrThrow(TEAM_A, TEAM_A_NAME);
 	const B = packOrThrow(TEAM_B, TEAM_B_NAME);
-	console.log(`\nSimulating ${N} battles:  ${TEAM_A_NAME}  vs  ${TEAM_B_NAME}  (${FORMAT})\n`);
 
-	let aw = 0, bw = 0, ties = 0;
-	const t0 = Date.now();
-	for (let i = 0; i < N; i++) {
-		const r = await runOne(A, B);
-		if (r === 'p1') aw++; else if (r === 'p2') bw++; else ties++;
-		if ((i + 1) % 10 === 0) process.stdout.write(`  ${i + 1}/${N}  (${TEAM_A_NAME} ${aw} - ${bw} ${TEAM_B_NAME}${ties ? `, ${ties} tie` : ''})\r`);
-	}
-	const secs = ((Date.now() - t0) / 1000).toFixed(1);
-	const wr = (100 * aw / (aw + bw || 1)).toFixed(1);
-	console.log(`\n\nResult over ${N} games (${secs}s):`);
-	console.log(`  ${TEAM_A_NAME}:  ${aw} wins  (${wr}%)`);
-	console.log(`  ${TEAM_B_NAME}:  ${bw} wins`);
-	if (ties) console.log(`  ties: ${ties}`);
-	console.log(`\n(RandomPlayerAI both sides — reflects raw team power, not skilled play. Game-plan bot is next.)`);
+	// 1) sanity: does the smart bot actually beat random? (same team both sides, smart=A)
+	console.log(`\n[validation]  ${TEAM_A_NAME}: GameplanBot vs RandomPlayerAI (mirror, ${N} games)`);
+	const v = await series(N, A, A, 'smart', 'random', 'valid');
+	console.log(`\n  GameplanBot won ${v.aw}/${v.aw + v.bw + v.ties}  (${v.wr}%)  [${v.secs}s]  -- >>50% means it plays better than random`);
+
+	// 2) the real matchup, smart vs smart
+	console.log(`\n[matchup]  ${TEAM_A_NAME} vs ${TEAM_B_NAME}  (GameplanBot both sides, ${N} games)`);
+	const m = await series(N, A, B, 'smart', 'smart', 'match');
+	console.log(`\n  ${TEAM_A_NAME}: ${m.aw} wins (${m.wr}%)   ${TEAM_B_NAME}: ${m.bw} wins${m.ties ? `   ties: ${m.ties}` : ''}   [${m.secs}s]`);
 }
-main().catch(e => console.log('ERR:', e.message));
+main().catch(e => console.log('ERR:', e.message, e.stack));
