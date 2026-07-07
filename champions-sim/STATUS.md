@@ -32,11 +32,22 @@ so the Champions integration is captured here as a **reproducible setup script**
 inside the submodule. `.gitmodules` marks the submodule `ignore = dirty` so local engine edits don't
 show as repo changes.
 
-## ⏳ Step 2 — Fast statistical matchup / best-4 analyzer (NEXT)
-Built on the existing in-repo Champions calc engine (`champions-team-building/app` — calcDamage, speed,
-types, usage + tournament data). Estimates, per matchup vs the meta teams: favorability, the KO/speed
-picture, and the **best 4 to bring** + rough win%. Ships fast, offline, laptop-ready for the trip.
-(Estimate from the math, not played-out games — the engine sim in Step 3 is the higher-fidelity version.)
+## ✅ Step 2 — Fast statistical matchup / best-4 analyzer (SHIPPED v1)
+`champions-sim/analyze.mjs` — offline, built on the in-repo Champions calc engine. For your team vs a
+library of meta teams it prints, per matchup: a favorability verdict + rough win%, the **best 4 to bring**,
+the **mode** to play (natural / Trick Room / Tailwind — it picks your best mode per matchup), coverage of
+their team, and the **key threats to watch**. Worst matchups are listed first.
+
+    node champions-sim/analyze.mjs        # edit MY_TEAM / META inside to your teams
+
+Mode-aware (a Trick Room team is evaluated moving first under TR, not on natural speed), and it discounts
+opposing mons you reliably KO before they act. Current sample output for the Quivern TR team: Delphox/
+Blastoise control ~Favorable, Big 6 ~Even, Char-Y/Aerodactyl offense ~Hard (Garchomp flagged as #1 threat).
+
+CAVEATS (why Step 3 exists): this is a static damage+speed HEURISTIC. It does not model turn-by-turn play
+(protects, switches, redirection, double-targets, item/ability procs), and the bring-4 metric favors
+attackers over enablers (e.g. it may skip Vivillon). Treat the win% as directional and the best-4/threats
+as a strong starting read — the Step-3 engine sim plays games out for real win-rates.
 
 ## ⏳ Step 3 — Smart doubles bot + harness (AFTER)
 - Extend the sim's AI from singles-only to **doubles**: targeting, spread moves, Protect/Fake Out,
