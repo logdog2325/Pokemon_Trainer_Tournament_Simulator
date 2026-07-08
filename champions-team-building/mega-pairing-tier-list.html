@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Champions Reg M-B — Mega Pairing Tier List</title>
+<style>
+  :root{--bg:#11132a;--card:#1a1c34;--card2:#23264a;--txt:#e9eaf6;--mut:#9aa0c8;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.4 system-ui,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:22px 16px 60px}
+  h1{font-size:26px;margin:0 0 2px}
+  .sub{color:var(--mut);font-size:13px;margin-bottom:18px}
+  .sub b{color:var(--txt)}
+  .row{display:flex;align-items:stretch;margin-bottom:10px;border-radius:12px;overflow:hidden;background:var(--card)}
+  .label{flex:0 0 84px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:30px;color:#0b0d1f}
+  .label small{font-weight:600;font-size:11px;opacity:.8;margin-top:2px}
+  .cells{flex:1;display:flex;flex-wrap:wrap;gap:8px;padding:10px}
+  .cell{width:150px;background:var(--card2);border-radius:10px;padding:8px 6px 6px;text-align:center;position:relative}
+  .duo{display:flex;justify-content:center;align-items:center;gap:2px}
+  .duo img{width:52px;height:52px;object-fit:contain}
+  .plus{color:var(--mut);font-weight:700;font-size:14px}
+  .cell .nm{font-size:11px;font-weight:600;line-height:1.2;margin-top:2px;min-height:30px;display:flex;align-items:center;justify-content:center}
+  .cell .wr{font-size:14px;font-weight:800}
+  .cell .ln{font-size:10px;color:var(--mut)}
+  .legend{color:var(--mut);font-size:12px;margin-top:16px;line-height:1.6}
+  .good{color:#5cc46b}.bad{color:#ff7043}.mid{color:var(--txt)}
+  .foot{color:var(--mut);font-size:11px;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🤝 Mega Pairing Tier List</h1>
+  <div class="sub" id="sub">Pokémon Champions · Reg M-B</div>
+  <div id="tiers"></div>
+  <div class="legend">
+    <b>What this is:</b> ~half of M-B teams flex <b>two Mega stones</b>. This ranks each Mega <i>pairing</i>
+    by the same <b>dominance/results-led</b> model as the single-Mega list — led by <b>event wins + top-cut
+    volume + usage</b> (wins/cuts <b>size-weighted</b>, so big events count far more), with <b>win rate kept
+    as a strong secondary factor</b>. Only pairings on <b>5+ teams</b> are ranked — a split-half reliability
+    floor (below ~5 teams win-rate reliability drops under 0.33, i.e. noise). Tiers cut by k-means natural
+    breaks. Big number = the pairing's
+    <span class="good">win rate</span>; line below = teams · top-cut.
+    <span class="good">≥52%</span> · <span class="mid">46–52%</span> · <span class="bad">≤46%</span>.
+  </div>
+  <div class="foot" id="foot"></div>
+</div>
+<script src="app/dex-data.js"></script>
+<script src="app/results-data.js"></script>
+<script>
+(function(){
+  var DEX=(window.DEX||[]), R=(window.RESULTS||{meta:{},pairs:{}});
+  var byName={}; DEX.forEach(function(d){byName[d.name]=d;});
+  var TIER_COL={S:"#ff7043",A:"#f7c948",B:"#5cc46b",C:"#4d8cf5",D:"#9aa0c8",F:"#6b6f86"};
+  var ORDER={S:0,A:1,B:2,C:3,D:4,F:5};
+  function fallback(base){var e=byName[base];return e?(e.spriteFallback||e.spritePrimary):"";}
+  function megaSprite(base,variant){var e=byName[base]; if(!e||!e.mega||!e.mega.length) return fallback(base);
+    var mg=variant?e.mega.find(function(m){return m.label&&m.label.indexOf(variant)>=0;}):e.mega[0]; mg=mg||e.mega[0];
+    return mg.sprite||fallback(base);}
+  function part(p){var m=p.match(/^(.*?)-([XY])$/); return {label:p,base:m?m[1]:p,variant:m?m[2]:null};}
+  var list=Object.keys(R.pairs||{}).map(function(label){var r=R.pairs[label];
+    return {label:label,parts:label.split(" + ").map(part),tier:r.tier||"F",wr:r.wr,teams:r.teams,cut:r.cut,best:r.best,won:r.won||0,score:r.score||0,top8:r.top8||0,cutPct:(r.cutPct!=null?r.cutPct:(r.teams?Math.round(100*(r.top8||0)/r.teams):0))};
+  }).sort(function(a,b){return (ORDER[a.tier]-ORDER[b.tier])||(b.score-a.score)||(b.wr-a.wr);});
+
+  var meta=R.meta||{};
+  document.getElementById("sub").innerHTML="Pokémon Champions · Reg M-B · <b>"+(meta.events||"?")+"</b> Limitless tournaments · <b>"+(meta.teams||"?")+"</b> teams · updated "+(meta.generated||"?");
+  document.getElementById("foot").textContent="Source: play.limitlesstcg.com completed M-B tournaments. "+list.length+" Mega pairings ranked (5+ teams each). Win rate = record of teams flexing both Megas.";
+  if(!list.length){document.getElementById("tiers").innerHTML='<div style="color:#9aa0c8">No pairing data loaded.</div>';return;}
+
+  var byTier={}; list.forEach(function(m){(byTier[m.tier]=byTier[m.tier]||[]).push(m);});
+  var html="";
+  ["S","A","B","C","D","F"].forEach(function(t){var arr=byTier[t]; if(!arr) return;
+    html+='<div class="row"><div class="label" style="background:'+TIER_COL[t]+'">'+t+'<small>'+arr.length+'</small></div><div class="cells">';
+    arr.forEach(function(m){
+      var wc=m.wr>=52?"good":m.wr<=46?"bad":"mid";
+      var nm=m.parts.map(function(p){return p.base.replace(/-/g," ")+(p.variant?" "+p.variant:"");}).join(" + ");
+      var imgs=m.parts.map(function(p){var sp=megaSprite(p.base,p.variant);
+        return '<img src="'+sp+'" onerror="this.onerror=null;this.src=\''+fallback(p.base)+'\'" alt="'+p.base+'">';}).join('<span class="plus">+</span>');
+      html+='<div class="cell"><div class="duo">'+imgs+'</div>'+
+        '<div class="nm">'+nm+'</div>'+
+        '<div class="wr '+wc+'">'+m.wr+'%</div>'+
+        '<div class="ln">'+m.teams+' teams · '+m.cutPct+'% cut'+(m.won?' · 🏆'+m.won:'')+'</div></div>';
+    });
+    html+='</div></div>';
+  });
+  document.getElementById("tiers").innerHTML=html;
+})();
+</script>
+</body>
+</html>

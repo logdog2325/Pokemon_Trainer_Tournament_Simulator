@@ -1,0 +1,1770 @@
+{
+"Venusaur": {
+"dex": 3,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/3.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/venusaur.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/3.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/venusaur.png"
+},
+"Charizard": {
+"dex": 6,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/6.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/charizard.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/6.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/charizard.png"
+},
+"Blastoise": {
+"dex": 9,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/9.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/blastoise.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/9.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/blastoise.png"
+},
+"Beedrill": {
+"dex": 15,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/15.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/beedrill.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/15.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/beedrill.png"
+},
+"Pidgeot": {
+"dex": 18,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/18.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/pidgeot.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/18.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/pidgeot.png"
+},
+"Arbok": {
+"dex": 24,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/24.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/arbok.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/24.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/arbok.png"
+},
+"Pikachu": {
+"dex": 25,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/25.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/pikachu.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/25.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/pikachu.png"
+},
+"Raichu": {
+"dex": 26,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/26.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/raichu.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/26.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/raichu.png"
+},
+"Raichu-Alola": {
+"dex": 26,
+"form": true,
+"primary": "https://play.pokemonshowdown.com/sprites/home/raichu-alola.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/raichu-alola.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/26.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/raichu-alola.png"
+},
+"Clefable": {
+"dex": 36,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/36.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/clefable.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/36.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/clefable.png"
+},
+"Ninetales": {
+"dex": 38,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/38.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/ninetales.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/38.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/ninetales.png"
+},
+"Ninetales-Alola": {
+"dex": 38,
+"form": true,
+"primary": "https://play.pokemonshowdown.com/sprites/home/ninetales-alola.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/ninetales-alola.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/38.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/ninetales-alola.png"
+},
+"Vileplume": {
+"dex": 45,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/45.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/vileplume.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/45.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/vileplume.png"
+},
+"Arcanine": {
+"dex": 59,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/59.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/arcanine.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/59.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/arcanine.png"
+},
+"Arcanine-Hisui": {
+"dex": 59,
+"form": true,
+"primary": "https://play.pokemonshowdown.com/sprites/home/arcanine-hisui.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/arcanine-hisui.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/59.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/arcanine-hisui.png"
+},
+"Alakazam": {
+"dex": 65,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/65.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/alakazam.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/65.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/alakazam.png"
+},
+"Machamp": {
+"dex": 68,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/68.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/machamp.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/68.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/machamp.png"
+},
+"Victreebel": {
+"dex": 71,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/71.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/victreebel.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/71.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/victreebel.png"
+},
+"Slowbro": {
+"dex": 80,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/80.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/slowbro.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/80.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/slowbro.png"
+},
+"Slowbro-Galar": {
+"dex": 80,
+"form": true,
+"primary": "https://play.pokemonshowdown.com/sprites/home/slowbro-galar.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/slowbro-galar.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/80.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/slowbro-galar.png"
+},
+"Gengar": {
+"dex": 94,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/94.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/gengar.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/94.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/gengar.png"
+},
+"Kangaskhan": {
+"dex": 115,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/115.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/kangaskhan.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/115.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/kangaskhan.png"
+},
+"Starmie": {
+"dex": 121,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/121.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/starmie.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/121.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/starmie.png"
+},
+"Pinsir": {
+"dex": 127,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/127.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/pinsir.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/127.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/pinsir.png"
+},
+"Tauros": {
+"dex": 128,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/128.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/tauros.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/128.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/tauros.png"
+},
+"Tauros-Paldea": {
+"dex": 128,
+"form": true,
+"primary": "https://play.pokemonshowdown.com/sprites/home/tauros-paldeacombat.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/tauros-paldeacombat.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/128.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/tauros-paldeacombat.png"
+},
+"Gyarados": {
+"dex": 130,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/130.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/gyarados.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/130.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/gyarados.png"
+},
+"Ditto": {
+"dex": 132,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/132.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/ditto.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/132.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/ditto.png"
+},
+"Vaporeon": {
+"dex": 134,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/134.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/vaporeon.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/134.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/vaporeon.png"
+},
+"Jolteon": {
+"dex": 135,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/135.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/jolteon.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/135.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/jolteon.png"
+},
+"Flareon": {
+"dex": 136,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/136.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/flareon.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/136.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/flareon.png"
+},
+"Aerodactyl": {
+"dex": 142,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/142.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/aerodactyl.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/142.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/aerodactyl.png"
+},
+"Snorlax": {
+"dex": 143,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/143.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/snorlax.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/143.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/snorlax.png"
+},
+"Dragonite": {
+"dex": 149,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/149.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/dragonite.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/149.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/dragonite.png"
+},
+"Meganium": {
+"dex": 154,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/154.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/meganium.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/154.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/meganium.png"
+},
+"Typhlosion": {
+"dex": 157,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/157.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/typhlosion.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/157.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/typhlosion.png"
+},
+"Typhlosion-Hisui": {
+"dex": 157,
+"form": true,
+"primary": "https://play.pokemonshowdown.com/sprites/home/typhlosion-hisui.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/typhlosion-hisui.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/157.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/typhlosion-hisui.png"
+},
+"Feraligatr": {
+"dex": 160,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/160.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/feraligatr.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/160.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/feraligatr.png"
+},
+"Ariados": {
+"dex": 168,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/168.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/ariados.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/168.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/ariados.png"
+},
+"Ampharos": {
+"dex": 181,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/181.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/ampharos.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/181.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/ampharos.png"
+},
+"Azumarill": {
+"dex": 184,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/184.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/azumarill.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/184.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/azumarill.png"
+},
+"Politoed": {
+"dex": 186,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/186.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/politoed.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/186.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/politoed.png"
+},
+"Espeon": {
+"dex": 196,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/196.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/espeon.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/196.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/espeon.png"
+},
+"Umbreon": {
+"dex": 197,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/197.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/umbreon.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/197.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/umbreon.png"
+},
+"Slowking": {
+"dex": 199,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/199.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/slowking.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/199.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/slowking.png"
+},
+"Slowking-Galar": {
+"dex": 199,
+"form": true,
+"primary": "https://play.pokemonshowdown.com/sprites/home/slowking-galar.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/slowking-galar.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/199.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/slowking-galar.png"
+},
+"Forretress": {
+"dex": 205,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/205.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/forretress.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/205.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/forretress.png"
+},
+"Steelix": {
+"dex": 208,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/208.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/steelix.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/208.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/steelix.png"
+},
+"Qwilfish": {
+"dex": 211,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/211.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/qwilfish.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/211.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/qwilfish.png"
+},
+"Scizor": {
+"dex": 212,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/212.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/scizor.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/212.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/scizor.png"
+},
+"Heracross": {
+"dex": 214,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/214.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/heracross.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/214.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/heracross.png"
+},
+"Skarmory": {
+"dex": 227,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/227.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/skarmory.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/227.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/skarmory.png"
+},
+"Houndoom": {
+"dex": 229,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/229.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/houndoom.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/229.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/houndoom.png"
+},
+"Tyranitar": {
+"dex": 248,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/248.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/tyranitar.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/248.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/tyranitar.png"
+},
+"Sceptile": {
+"dex": 254,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/254.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/sceptile.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/254.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/sceptile.png"
+},
+"Blaziken": {
+"dex": 257,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/257.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/blaziken.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/257.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/blaziken.png"
+},
+"Swampert": {
+"dex": 260,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/260.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/swampert.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/260.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/swampert.png"
+},
+"Pelipper": {
+"dex": 279,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/279.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/pelipper.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/279.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/pelipper.png"
+},
+"Gardevoir": {
+"dex": 282,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/282.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/gardevoir.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/282.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/gardevoir.png"
+},
+"Sableye": {
+"dex": 302,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/302.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/sableye.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/302.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/sableye.png"
+},
+"Mawile": {
+"dex": 303,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/303.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/mawile.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/303.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/mawile.png"
+},
+"Aggron": {
+"dex": 306,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/306.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/aggron.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/306.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/aggron.png"
+},
+"Medicham": {
+"dex": 308,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/308.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/medicham.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/308.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/medicham.png"
+},
+"Manectric": {
+"dex": 310,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/310.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/manectric.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/310.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/manectric.png"
+},
+"Sharpedo": {
+"dex": 319,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/319.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/sharpedo.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/319.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/sharpedo.png"
+},
+"Camerupt": {
+"dex": 323,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/323.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/camerupt.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/323.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/camerupt.png"
+},
+"Torkoal": {
+"dex": 324,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/324.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/torkoal.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/324.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/torkoal.png"
+},
+"Altaria": {
+"dex": 334,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/334.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/altaria.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/334.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/altaria.png"
+},
+"Milotic": {
+"dex": 350,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/350.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/milotic.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/350.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/milotic.png"
+},
+"Castform": {
+"dex": 351,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/351.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/castform.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/351.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/castform.png"
+},
+"Banette": {
+"dex": 354,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/354.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/banette.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/354.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/banette.png"
+},
+"Chimecho": {
+"dex": 358,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/358.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/chimecho.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/358.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/chimecho.png"
+},
+"Absol": {
+"dex": 359,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/359.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/absol.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/359.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/absol.png"
+},
+"Glalie": {
+"dex": 362,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/362.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/glalie.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/362.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/glalie.png"
+},
+"Metagross": {
+"dex": 376,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/376.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/metagross.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/376.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/metagross.png"
+},
+"Torterra": {
+"dex": 389,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/389.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/torterra.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/389.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/torterra.png"
+},
+"Infernape": {
+"dex": 392,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/392.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/infernape.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/392.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/infernape.png"
+},
+"Empoleon": {
+"dex": 395,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/395.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/empoleon.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/395.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/empoleon.png"
+},
+"Staraptor": {
+"dex": 398,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/398.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/staraptor.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/398.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/staraptor.png"
+},
+"Luxray": {
+"dex": 405,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/405.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/luxray.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/405.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/luxray.png"
+},
+"Roserade": {
+"dex": 407,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/407.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/roserade.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/407.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/roserade.png"
+},
+"Rampardos": {
+"dex": 409,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/409.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/rampardos.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/409.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/rampardos.png"
+},
+"Bastiodon": {
+"dex": 411,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/411.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/bastiodon.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/411.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/bastiodon.png"
+},
+"Lopunny": {
+"dex": 428,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/428.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/lopunny.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/428.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/lopunny.png"
+},
+"Spiritomb": {
+"dex": 442,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/442.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/spiritomb.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/442.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/spiritomb.png"
+},
+"Garchomp": {
+"dex": 445,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/445.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/garchomp.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/445.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/garchomp.png"
+},
+"Lucario": {
+"dex": 448,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/448.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/lucario.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/448.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/lucario.png"
+},
+"Hippowdon": {
+"dex": 450,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/450.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/hippowdon.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/450.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/hippowdon.png"
+},
+"Toxicroak": {
+"dex": 454,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/454.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/toxicroak.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/454.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/toxicroak.png"
+},
+"Abomasnow": {
+"dex": 460,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/460.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/abomasnow.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/460.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/abomasnow.png"
+},
+"Weavile": {
+"dex": 461,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/461.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/weavile.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/461.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/weavile.png"
+},
+"Rhyperior": {
+"dex": 464,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/464.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/rhyperior.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/464.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/rhyperior.png"
+},
+"Leafeon": {
+"dex": 470,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/470.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/leafeon.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/470.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/leafeon.png"
+},
+"Glaceon": {
+"dex": 471,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/471.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/glaceon.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/471.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/glaceon.png"
+},
+"Gliscor": {
+"dex": 472,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/472.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/gliscor.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/472.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/gliscor.png"
+},
+"Mamoswine": {
+"dex": 473,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/473.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/mamoswine.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/473.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/mamoswine.png"
+},
+"Gallade": {
+"dex": 475,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/475.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/gallade.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/475.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/gallade.png"
+},
+"Froslass": {
+"dex": 478,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/478.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/froslass.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/478.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/froslass.png"
+},
+"Rotom": {
+"dex": 479,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/479.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/rotom.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/479.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/rotom.png"
+},
+"Serperior": {
+"dex": 497,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/497.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/serperior.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/497.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/serperior.png"
+},
+"Emboar": {
+"dex": 500,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/500.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/emboar.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/500.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/emboar.png"
+},
+"Samurott": {
+"dex": 503,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/503.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/samurott.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/503.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/samurott.png"
+},
+"Samurott-Hisui": {
+"dex": 503,
+"form": true,
+"primary": "https://play.pokemonshowdown.com/sprites/home/samurott-hisui.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/samurott-hisui.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/503.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/samurott-hisui.png"
+},
+"Watchog": {
+"dex": 505,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/505.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/watchog.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/505.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/watchog.png"
+},
+"Liepard": {
+"dex": 510,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/510.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/liepard.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/510.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/liepard.png"
+},
+"Simisage": {
+"dex": 512,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/512.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/simisage.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/512.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/simisage.png"
+},
+"Simisear": {
+"dex": 514,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/514.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/simisear.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/514.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/simisear.png"
+},
+"Simipour": {
+"dex": 516,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/516.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/simipour.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/516.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/simipour.png"
+},
+"Musharna": {
+"dex": 518,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/518.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/musharna.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/518.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/musharna.png"
+},
+"Excadrill": {
+"dex": 530,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/530.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/excadrill.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/530.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/excadrill.png"
+},
+"Audino": {
+"dex": 531,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/531.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/audino.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/531.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/audino.png"
+},
+"Conkeldurr": {
+"dex": 534,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/534.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/conkeldurr.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/534.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/conkeldurr.png"
+},
+"Scolipede": {
+"dex": 545,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/545.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/scolipede.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/545.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/scolipede.png"
+},
+"Whimsicott": {
+"dex": 547,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/547.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/whimsicott.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/547.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/whimsicott.png"
+},
+"Krookodile": {
+"dex": 553,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/553.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/krookodile.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/553.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/krookodile.png"
+},
+"Scrafty": {
+"dex": 560,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/560.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/scrafty.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/560.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/scrafty.png"
+},
+"Cofagrigus": {
+"dex": 563,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/563.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/cofagrigus.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/563.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/cofagrigus.png"
+},
+"Garbodor": {
+"dex": 569,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/569.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/garbodor.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/569.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/garbodor.png"
+},
+"Zoroark": {
+"dex": 571,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/571.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/zoroark.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/571.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/zoroark.png"
+},
+"Zoroark-Hisui": {
+"dex": 571,
+"form": true,
+"primary": "https://play.pokemonshowdown.com/sprites/home/zoroark-hisui.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/zoroark-hisui.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/571.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/zoroark-hisui.png"
+},
+"Reuniclus": {
+"dex": 579,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/579.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/reuniclus.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/579.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/reuniclus.png"
+},
+"Vanilluxe": {
+"dex": 584,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/584.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/vanilluxe.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/584.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/vanilluxe.png"
+},
+"Emolga": {
+"dex": 587,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/587.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/emolga.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/587.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/emolga.png"
+},
+"Eelektross": {
+"dex": 604,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/604.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/eelektross.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/604.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/eelektross.png"
+},
+"Chandelure": {
+"dex": 609,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/609.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/chandelure.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/609.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/chandelure.png"
+},
+"Beartic": {
+"dex": 614,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/614.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/beartic.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/614.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/beartic.png"
+},
+"Stunfisk": {
+"dex": 618,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/618.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/stunfisk.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/618.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/stunfisk.png"
+},
+"Stunfisk-Galar": {
+"dex": 618,
+"form": true,
+"primary": "https://play.pokemonshowdown.com/sprites/home/stunfisk-galar.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/stunfisk-galar.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/618.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/stunfisk-galar.png"
+},
+"Golurk": {
+"dex": 623,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/623.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/golurk.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/623.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/golurk.png"
+},
+"Hydreigon": {
+"dex": 635,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/635.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/hydreigon.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/635.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/hydreigon.png"
+},
+"Volcarona": {
+"dex": 637,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/637.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/volcarona.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/637.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/volcarona.png"
+},
+"Chesnaught": {
+"dex": 652,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/652.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/chesnaught.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/652.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/chesnaught.png"
+},
+"Delphox": {
+"dex": 655,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/655.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/delphox.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/655.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/delphox.png"
+},
+"Greninja": {
+"dex": 658,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/658.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/greninja.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/658.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/greninja.png"
+},
+"Diggersby": {
+"dex": 660,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/660.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/diggersby.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/660.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/diggersby.png"
+},
+"Talonflame": {
+"dex": 663,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/663.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/talonflame.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/663.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/talonflame.png"
+},
+"Vivillon": {
+"dex": 666,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/666.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/vivillon.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/666.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/vivillon.png"
+},
+"Pyroar": {
+"dex": 668,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/668.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/pyroar.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/668.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/pyroar.png"
+},
+"Floette": {
+"dex": 670,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/670.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/floette.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/670.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/floette.png"
+},
+"Florges": {
+"dex": 671,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/671.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/florges.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/671.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/florges.png"
+},
+"Pangoro": {
+"dex": 675,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/675.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/pangoro.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/675.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/pangoro.png"
+},
+"Furfrou": {
+"dex": 676,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/676.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/furfrou.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/676.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/furfrou.png"
+},
+"Meowstic": {
+"dex": 678,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/678.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/meowstic.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/678.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/meowstic.png"
+},
+"Aegislash": {
+"dex": 681,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/681.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/aegislash.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/681.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/aegislash.png"
+},
+"Aromatisse": {
+"dex": 683,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/683.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/aromatisse.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/683.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/aromatisse.png"
+},
+"Slurpuff": {
+"dex": 685,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/685.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/slurpuff.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/685.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/slurpuff.png"
+},
+"Malamar": {
+"dex": 687,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/687.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/malamar.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/687.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/malamar.png"
+},
+"Barbaracle": {
+"dex": 689,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/689.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/barbaracle.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/689.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/barbaracle.png"
+},
+"Dragalge": {
+"dex": 691,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/691.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/dragalge.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/691.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/dragalge.png"
+},
+"Clawitzer": {
+"dex": 693,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/693.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/clawitzer.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/693.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/clawitzer.png"
+},
+"Heliolisk": {
+"dex": 695,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/695.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/heliolisk.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/695.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/heliolisk.png"
+},
+"Tyrantrum": {
+"dex": 697,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/697.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/tyrantrum.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/697.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/tyrantrum.png"
+},
+"Aurorus": {
+"dex": 699,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/699.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/aurorus.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/699.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/aurorus.png"
+},
+"Sylveon": {
+"dex": 700,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/700.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/sylveon.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/700.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/sylveon.png"
+},
+"Hawlucha": {
+"dex": 701,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/701.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/hawlucha.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/701.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/hawlucha.png"
+},
+"Dedenne": {
+"dex": 702,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/702.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/dedenne.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/702.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/dedenne.png"
+},
+"Goodra": {
+"dex": 706,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/706.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/goodra.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/706.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/goodra.png"
+},
+"Goodra-Hisui": {
+"dex": 706,
+"form": true,
+"primary": "https://play.pokemonshowdown.com/sprites/home/goodra-hisui.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/goodra-hisui.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/706.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/goodra-hisui.png"
+},
+"Klefki": {
+"dex": 707,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/707.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/klefki.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/707.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/klefki.png"
+},
+"Trevenant": {
+"dex": 709,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/709.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/trevenant.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/709.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/trevenant.png"
+},
+"Gourgeist": {
+"dex": 711,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/711.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/gourgeist.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/711.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/gourgeist.png"
+},
+"Avalugg": {
+"dex": 713,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/713.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/avalugg.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/713.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/avalugg.png"
+},
+"Avalugg-Hisui": {
+"dex": 713,
+"form": true,
+"primary": "https://play.pokemonshowdown.com/sprites/home/avalugg-hisui.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/avalugg-hisui.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/713.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/avalugg-hisui.png"
+},
+"Noivern": {
+"dex": 715,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/715.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/noivern.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/715.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/noivern.png"
+},
+"Decidueye": {
+"dex": 724,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/724.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/decidueye.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/724.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/decidueye.png"
+},
+"Decidueye-Hisui": {
+"dex": 724,
+"form": true,
+"primary": "https://play.pokemonshowdown.com/sprites/home/decidueye-hisui.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/decidueye-hisui.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/724.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/decidueye-hisui.png"
+},
+"Incineroar": {
+"dex": 727,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/727.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/incineroar.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/727.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/incineroar.png"
+},
+"Primarina": {
+"dex": 730,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/730.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/primarina.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/730.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/primarina.png"
+},
+"Toucannon": {
+"dex": 733,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/733.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/toucannon.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/733.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/toucannon.png"
+},
+"Crabominable": {
+"dex": 740,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/740.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/crabominable.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/740.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/crabominable.png"
+},
+"Lycanroc": {
+"dex": 745,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/745.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/lycanroc.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/745.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/lycanroc.png"
+},
+"Toxapex": {
+"dex": 748,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/748.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/toxapex.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/748.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/toxapex.png"
+},
+"Mudsdale": {
+"dex": 750,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/750.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/mudsdale.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/750.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/mudsdale.png"
+},
+"Araquanid": {
+"dex": 752,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/752.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/araquanid.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/752.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/araquanid.png"
+},
+"Salazzle": {
+"dex": 758,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/758.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/salazzle.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/758.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/salazzle.png"
+},
+"Tsareena": {
+"dex": 763,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/763.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/tsareena.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/763.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/tsareena.png"
+},
+"Oranguru": {
+"dex": 765,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/765.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/oranguru.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/765.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/oranguru.png"
+},
+"Passimian": {
+"dex": 766,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/766.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/passimian.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/766.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/passimian.png"
+},
+"Mimikyu": {
+"dex": 778,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/778.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/mimikyu.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/778.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/mimikyu.png"
+},
+"Drampa": {
+"dex": 780,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/780.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/drampa.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/780.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/drampa.png"
+},
+"Kommo-o": {
+"dex": 784,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/784.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/kommoo.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/784.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/kommoo.png"
+},
+"Corviknight": {
+"dex": 823,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/823.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/corviknight.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/823.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/corviknight.png"
+},
+"Flapple": {
+"dex": 841,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/841.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/flapple.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/841.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/flapple.png"
+},
+"Appletun": {
+"dex": 842,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/842.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/appletun.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/842.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/appletun.png"
+},
+"Sandaconda": {
+"dex": 844,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/844.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/sandaconda.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/844.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/sandaconda.png"
+},
+"Polteageist": {
+"dex": 855,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/855.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/polteageist.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/855.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/polteageist.png"
+},
+"Hatterene": {
+"dex": 858,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/858.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/hatterene.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/858.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/hatterene.png"
+},
+"Grimmsnarl": {
+"dex": 861,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/861.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/grimmsnarl.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/861.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/grimmsnarl.png"
+},
+"Mr. Rime": {
+"dex": 866,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/866.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/mrrime.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/866.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/mrrime.png"
+},
+"Runerigus": {
+"dex": 867,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/867.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/runerigus.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/867.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/runerigus.png"
+},
+"Alcremie": {
+"dex": 869,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/869.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/alcremie.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/869.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/alcremie.png"
+},
+"Falinks": {
+"dex": 870,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/870.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/falinks.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/870.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/falinks.png"
+},
+"Morpeko": {
+"dex": 877,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/877.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/morpeko.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/877.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/morpeko.png"
+},
+"Dragapult": {
+"dex": 887,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/887.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/dragapult.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/887.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/dragapult.png"
+},
+"Wyrdeer": {
+"dex": 899,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/899.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/wyrdeer.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/899.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/wyrdeer.png"
+},
+"Kleavor": {
+"dex": 900,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/900.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/kleavor.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/900.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/kleavor.png"
+},
+"Basculegion": {
+"dex": 902,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/902.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/basculegion.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/902.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/basculegion.png"
+},
+"Sneasler": {
+"dex": 903,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/903.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/sneasler.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/903.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/sneasler.png"
+},
+"Overqwil": {
+"dex": 904,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/904.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/overqwil.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/904.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/overqwil.png"
+},
+"Meowscarada": {
+"dex": 908,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/908.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/meowscarada.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/908.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/meowscarada.png"
+},
+"Skeledirge": {
+"dex": 911,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/911.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/skeledirge.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/911.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/skeledirge.png"
+},
+"Quaquaval": {
+"dex": 914,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/914.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/quaquaval.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/914.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/quaquaval.png"
+},
+"Maushold": {
+"dex": 925,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/925.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/maushold.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/925.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/maushold.png"
+},
+"Garganacl": {
+"dex": 934,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/934.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/garganacl.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/934.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/garganacl.png"
+},
+"Armarouge": {
+"dex": 936,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/936.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/armarouge.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/936.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/armarouge.png"
+},
+"Ceruledge": {
+"dex": 937,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/937.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/ceruledge.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/937.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/ceruledge.png"
+},
+"Bellibolt": {
+"dex": 939,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/939.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/bellibolt.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/939.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/bellibolt.png"
+},
+"Scovillain": {
+"dex": 952,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/952.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/scovillain.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/952.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/scovillain.png"
+},
+"Espathra": {
+"dex": 956,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/956.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/espathra.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/956.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/espathra.png"
+},
+"Tinkaton": {
+"dex": 959,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/959.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/tinkaton.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/959.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/tinkaton.png"
+},
+"Palafin": {
+"dex": 964,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/964.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/palafin.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/964.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/palafin.png"
+},
+"Orthworm": {
+"dex": 968,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/968.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/orthworm.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/968.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/orthworm.png"
+},
+"Glimmora": {
+"dex": 970,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/970.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/glimmora.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/970.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/glimmora.png"
+},
+"Houndstone": {
+"dex": 972,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/972.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/houndstone.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/972.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/houndstone.png"
+},
+"Annihilape": {
+"dex": 979,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/979.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/annihilape.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/979.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/annihilape.png"
+},
+"Farigiraf": {
+"dex": 981,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/981.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/farigiraf.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/981.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/farigiraf.png"
+},
+"Kingambit": {
+"dex": 983,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/983.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/kingambit.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/983.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/kingambit.png"
+},
+"Gholdengo": {
+"dex": 1000,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/1000.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/gholdengo.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/1000.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/gholdengo.png"
+},
+"Sinistcha": {
+"dex": 1013,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/1013.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/sinistcha.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/1013.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/sinistcha.png"
+},
+"Archaludon": {
+"dex": 1018,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/1018.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/archaludon.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/1018.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/archaludon.png"
+},
+"Hydrapple": {
+"dex": 1019,
+"form": false,
+"primary": "https://www.serebii.net/pokemonhome/pokemon/1019.png",
+"fallback": "https://play.pokemonshowdown.com/sprites/home/hydrapple.png",
+"serebii": "https://www.serebii.net/pokemonhome/pokemon/1019.png",
+"showdown": "https://play.pokemonshowdown.com/sprites/home/hydrapple.png"
+}
+}

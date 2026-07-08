@@ -1,0 +1,4 @@
+node_modules/
+datamap.gen.js
+package.json
+package-lock.json

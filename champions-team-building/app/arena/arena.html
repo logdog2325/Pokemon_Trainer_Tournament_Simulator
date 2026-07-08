@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Champions Arena</title>
+<link rel="stylesheet" href="arena.css">
+</head>
+<body>
+<div id="app">
+	<h1>⚔️ Champions Arena <span class="muted">— offline · Reg M-B doubles · AI opponent</span></h1>
+	<div id="start">
+		<h2>Pick an opponent (AI-piloted meta team)</h2>
+		<p class="muted" style="margin-bottom:10px">You pilot your team. The AI brings &amp; plays its team with the calibrated game-plan bot. Runs entirely on-device.</p>
+		<div id="oppList"><span class="muted">Loading engine…</span></div>
+	</div>
+	<div id="game" style="display:none">
+		<div id="field">
+			<div class="wx" id="wx"></div>
+			<div id="trfx"></div>
+			<div id="trlabel">TRICK ROOM</div>
+			<div class="slot empty" id="p2a"><img alt=""><div class="flash"></div></div>
+			<div class="slot empty" id="p2b"><img alt=""><div class="flash"></div></div>
+			<div class="slot empty" id="p1a"><img alt=""><div class="flash"></div></div>
+			<div class="slot empty" id="p1b"><img alt=""><div class="flash"></div></div>
+			<div class="plate hidden" id="plate-p2a"></div>
+			<div class="plate hidden" id="plate-p2b"></div>
+			<div class="plate hidden" id="plate-p1a"></div>
+			<div class="plate hidden" id="plate-p1b"></div>
+		</div>
+		<div id="log"></div>
+		<div id="controls"></div>
+	</div>
+</div>
+<script src="../sim/sim-client.js"></script>
+<script src="arena.js"></script>
+</body>
+</html>

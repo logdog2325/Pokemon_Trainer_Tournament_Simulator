@@ -1,0 +1,1 @@
+export const process = { env:{NODE_ENV:'production'}, argv:[], platform:'browser', nextTick:(f,...a)=>setTimeout(()=>f(...a),0), version:'v22', versions:{node:'22'}, on(){}, cwd:()=>'/', exit(){}, stdout:{write(){}}, stderr:{write(){}}, hrtime:()=>[0,0] };
