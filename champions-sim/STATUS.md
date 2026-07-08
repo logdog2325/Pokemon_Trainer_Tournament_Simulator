@@ -174,6 +174,25 @@ static file, tells you how to start it. The Arena accepts a custom team via
 The app's paste export uses `Stat Points:`; the server normalizes that to the
 sim's EVs/point field, and `autospread` fills any team that ships without a spread.
 
+### ✅ Baked into the browser — self-contained offline app (SHIPPED)
+The real engine now runs **in the browser** (Web Worker), so the Team Builder needs
+**no server**: Battle Lab + Arena + matrix + optimizer all run on-device.
+- `champions-sim/web/` builds `champions-team-building/app/sim/engine.web.js`
+  (`build-web-engine.sh`); `app/sim/worker.js` + `sim-client.js` drive it.
+- Gauntlet widened to the **full 188-team deduped library** (`meta-teams.mjs` from
+  `gen-meta.mjs`), **usage-ranked** (RESULTS pairing/Mega adoption) so the Battle
+  Lab's Top-24 default is the most-faced archetypes. Sprites cover all 208 species.
+- Arena setup screen: **pick which archetype you pilot (or paste your own)** and
+  which you face (or Random).
+
+### ✅ Mobile / hosting (SHIPPED / one manual step)
+- **Android APK**: `.github/workflows/android-apk.yml` (Capacitor `mobile/`) builds
+  a fully-offline `.apk` on CI and publishes it to the **`android-latest` Release**
+  (permanent, no-login download). Verified: 42 MB, builds clean.
+- **iOS PWA**: `pages.yml` deploys the app to GitHub Pages → open in Safari → Add to
+  Home Screen. Needs the owner to flip **Settings → Pages → Source: "GitHub Actions"**
+  once (the CI token can't create the Pages site itself).
+
 ### ⏳ Remaining / nice-to-have
-- Let the Arena also pick the *opponent's* bring smartly per game (already smart);
-  optional: expose a difficulty toggle.
+- Optional: a difficulty toggle for the Arena AI.
+- iOS: the one-time Pages enablement (owner-only).
