@@ -79,12 +79,26 @@ Strength (`champions-sim/calibrate.mjs`, vs RandomPlayerAI, sides alternated, 15
 **Offense 94.7%, Trick Room 69.3%, avg 82.0%** — clears the bar and executes game plans. Trustworthy
 for the beginner-to-intermediate target, so matchup win-rates are believable.
 
+### ✅ Bring-4 / mega optimizer — BUILT
+`champions-sim/optimizer.mjs` (+ shared `teams.mjs`). The bot's Team-Preview choices are now injectable
+(`config: { order, megaSpecies }`), so the optimizer enumerates every bring-4 × mega choice, runs N
+games of each with the calibrated bot (opponent plays its own best), and reports the **best bring +
+leads + Mega by measured win rate** with runners-up. Verified: for the Quivern TR team it correctly
+recommends *lead Gardevoir + Farigiraf (the setters), back Mudsdale + Torkoal, Mega Gardevoir*.
+
+    node champions-sim/optimizer.mjs 30      # games per config
+
+Caveat: *rankings are trustworthy; absolute win-rates are inflated* right now, because these opponent
+teams carry no TR disruption and the bot doesn't yet play defensively *around* enemy Trick Room
+(Protect through it / sac to preserve) — so TR sweeps unopposed. Fixing that anti-TR defense is the main
+remaining bot-tuning item for realistic absolute numbers.
+
 ### ⏳ Remaining
-- **Bring-6 / pick-4 + mega + lead optimizer** (per user spec): for a matchup, run ~100 games for each
-  candidate (which 4 to bring, **which one Pokémon to Mega Evolve** — only one mega per battle! —, and
-  which 2 to lead), and report the **best bring + mega + lead by measured win rate**. The harness above
-  is the inner loop; wrap it in combo enumeration.
-- **Matchup matrix**: your team vs one real team per meta archetype → win-rate table (worst first).
+- **Real archetype teams**: swap the spread-complete approximations in `teams.mjs` for the actual
+  tournament pastes in `champions-team-building/top-teams-deduped.md` (best team per Mega/pairing),
+  auto-filling role-based point spreads (prep step, TODO).
+- **Anti-TR defensive play** in the bot (for realistic absolute win-rates).
+- **Matchup matrix** view: your team vs one team per archetype → win-rate table (worst first).
 - **Human-vs-bot** local server for sparring.
 
 ## Meta opponent teams (to source)

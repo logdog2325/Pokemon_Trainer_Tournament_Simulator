@@ -24,6 +24,10 @@ class GameplanBot extends RandomPlayerAI {
 		super(playerStream, opts);
 		this._bs = opts.battle || null;      // BattleStream ref, has .battle after start
 		this._sideId = opts.side || 'p1';
+		// optional forced config for the optimizer:
+		//   { order: '1 2 3 4' team-preview order (first 4 brought, first 2 lead),
+		//     megaSpecies: 'Sceptile' (only this mon may Mega) | null (never Mega) | undefined (bot decides) }
+		this._cfg = opts.config || null;
 	}
 
 	get battle() { return this._bs && this._bs.battle; }
@@ -224,6 +228,7 @@ class GameplanBot extends RandomPlayerAI {
 			// --- Mega-evolution timing (one mega per battle) ---
 			if (canMegaEvo && active.canMegaEvo) {
 				const myMon = this.mySide ? this.mySide.active[i] : null;
+				const baseName = (myMon && myMon.species) ? (myMon.species.baseSpecies || myMon.species.name) : '';
 				const myWeather = this.megaWeatherOf(myMon);   // weather my mega would set, or null
 				let doMega = true;
 				if (myWeather) {
@@ -235,6 +240,10 @@ class GameplanBot extends RandomPlayerAI {
 					else if (!cur && foeWeatherThreat) doMega = false;           // HOLD: let them commit, override next
 					else doMega = true;                                          // no threat -> set our weather
 				}
+				// optimizer override: only Mega the designated mon (null = never Mega)
+				if (this._cfg && this._cfg.megaSpecies !== undefined) {
+					doMega = doMega && this._cfg.megaSpecies !== null && baseName === this._cfg.megaSpecies;
+				}
 				if (doMega) { choice += ' mega'; canMegaEvo = false; }
 			}
 			return choice;
@@ -244,6 +253,7 @@ class GameplanBot extends RandomPlayerAI {
 
 	// ---------- bring-6 / pick-4 ----------
 	chooseTeamPreview(team) {
+		if (this._cfg && this._cfg.order) return `team ${this._cfg.order.replace(/\s+/g, '')}`;  // forced by optimizer
 		// Reg M-B brings 4. Pick 4 by simple coverage: keep speed-control + best raw offense.
 		const n = this.battle && this.battle.ruleTable ? (this.battle.ruleTable.pickedTeamSize || 4) : 4;
 		if (!this.battle || team.length <= n) return 'default';
