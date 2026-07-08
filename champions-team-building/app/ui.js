@@ -695,6 +695,7 @@ function labProblem(v){
     <div class="muted" style="margin:6px 0">Parsed <b>${v.count}</b> Pokémon. Champions needs a legal <b>6-mon</b> team (real moves/abilities, one of each item, ≤32 points per stat, no Tera).</div>
     <ul style="margin:6px 0 0 18px">${(v.errors||[]).slice(0,8).map(e=>`<li class="muted" style="font-size:12px">${e.replace(/</g,"&lt;")}</li>`).join("")}</ul></div>`;
 }
+let LAST_MX = null;   // {avg, count} of the previous run, to show how a team tweak moved the average
 async function runMatrix(){
   const paste=$("#labpaste").value.trim(), n=Math.max(2,Math.min(8,+$("#labn").value||3)), count=+$("#labcount").value||24, out=$("#labout");
   if(!paste){out.innerHTML=`<div class="card muted">Paste a team first.</div>`;return;}
@@ -706,7 +707,21 @@ async function runMatrix(){
   let rows; try{ rows=await sim().matrix(paste, n, count, (p)=>{const bar=$("#mxbar"),pr=$("#mxprog");if(bar)bar.style.width=(100*p.done/p.total)+'%';if(pr)pr.textContent=`Finding your best bring… ${Math.round(100*p.done/p.total)}% — ${p.name}`;}); }
   catch(e){ out.innerHTML=`<div class="card" style="color:var(--bad)">Sim failed: ${e.message}</div>`; return; }
   const wrCol=w=>w>=60?"var(--good)":w<40?"var(--bad)":"var(--txt)";
+  // Overall team strength = mean of the per-matchup best-line win rates. Averaging over
+  // ~24 matchups cancels the per-game noise, so this number is stable enough to track as
+  // you make small team changes. Delta vs your last run (same opponent set) shows the effect.
+  const avg = Math.round(rows.reduce((s,r)=>s+r.wr,0)/(rows.length||1));
+  const prev = (LAST_MX && LAST_MX.count===count) ? LAST_MX.avg : null;
+  LAST_MX = { avg, count };
+  const delta = prev==null ? null : avg-prev;
+  const deltaHtml = delta==null
+    ? `<span class="muted" style="font-size:12px">baseline — tweak the team and re-run to see how this moves</span>`
+    : `<span style="font-size:15px;font-weight:800;color:${delta>0?'var(--good)':delta<0?'var(--bad)':'var(--txt)'}">${delta>0?'▲ +'+delta:delta<0?'▼ '+delta:'— 0'} pts</span> <span class="muted" style="font-size:11px">vs last run (${prev}%)</span>`;
+  const summary = `<div style="display:flex;align-items:center;gap:14px;margin:10px 0 4px;padding:11px 13px;background:var(--card2);border-radius:10px">
+      <div style="text-align:center"><div style="font-size:32px;font-weight:800;line-height:1;color:${wrCol(avg)}">${avg}%</div><div class="muted" style="font-size:10px;margin-top:3px">avg vs ${rows.length}</div></div>
+      <div style="flex:1">${deltaHtml}<div class="muted" style="font-size:11px;margin-top:4px">overall win rate playing your best bring into each archetype</div></div></div>`;
   out.innerHTML=banner+`<div class="card"><b>Best-line win rate vs the meta</b> <span class="muted">(worst first · your strongest bring per matchup · top ${count} by usage)</span>
+    ${summary}
     <div style="margin-top:8px">${rows.map(r=>`
       <div class="candrow" style="cursor:default">
         <div class="meta"><div class="nm" style="font-size:13px">${r.name}</div>
