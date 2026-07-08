@@ -81,11 +81,12 @@ async function winRate(myPacked, foePacked, config, N) {
 	return { wr: 100 * w / (g || 1), w, g };
 }
 
-export async function optimize(myPaste, foePaste, foeName, N) {
+export async function optimize(myPaste, foePaste, foeName, N, quiet = false) {
 	const myPacked = Teams.pack(Teams.import(autospread(myPaste)));
 	const foePacked = Teams.pack(Teams.import(autospread(foePaste)));
 	const slots = meta(myPaste);
 	const byName = Object.fromEntries(slots.map(s => [s.slot, s.species]));
+	const log = quiet ? () => {} : (...a) => console.log(...a);
 
 	// build configs EXHAUSTIVELY: every bring-4 × every lead pairing × every Mega choice
 	// (each mega-capable mon in the bring, plus "none"). Truly brute-forced, not heuristic.
@@ -96,24 +97,27 @@ export async function optimize(myPaste, foePaste, foeName, N) {
 			for (const m of megaOpts) configs.push({ order: ord, megaSpecies: m, bring: bring.map(s => s.slot) });
 	}
 
-	console.log(`\n=== vs ${foeName} ===  (${configs.length} configs x ${N} games)`);
+	log(`\n=== vs ${foeName} ===  (${configs.length} configs x ${N} games)`);
 	const results = [];
 	let n = 0;
 	for (const cfg of configs) {
 		const { wr, g } = await winRate(myPacked, foePacked, cfg, N);
 		results.push({ cfg, wr, g });
-		process.stdout.write(`  ${++n}/${configs.length}\r`);
+		if (!quiet) process.stdout.write(`  ${++n}/${configs.length}\r`);
 	}
 	results.sort((a, b) => b.wr - a.wr);
-	const fmt = r => {
-		const leads = r.cfg.order.slice(0, 2).split('').map(d => byName[d]);
-		const back = r.cfg.order.slice(2, 4).split('').map(d => byName[d]);
-		return `${r.wr.toFixed(0)}%  lead ${leads.join(' + ')} / back ${back.join(' + ')}  | Mega: ${r.cfg.megaSpecies || 'none'}`;
-	};
-	console.log(`  BEST:  ${fmt(results[0])}`);
-	console.log(`  runners-up:`);
-	results.slice(1, 4).forEach(r => console.log(`    ${fmt(r)}`));
-	return results[0];
+	const pretty = r => ({
+		wr: Math.round(r.wr), games: r.g,
+		leads: r.cfg.order.slice(0, 2).split('').map(d => byName[d]),
+		back: r.cfg.order.slice(2, 4).split('').map(d => byName[d]),
+		mega: r.cfg.megaSpecies || null,
+	});
+	const fmt = r => { const q = pretty(r); return `${q.wr}%  lead ${q.leads.join(' + ')} / back ${q.back.join(' + ')}  | Mega: ${q.mega || 'none'}`; };
+	log(`  BEST:  ${fmt(results[0])}`);
+	log(`  runners-up:`);
+	results.slice(1, 4).forEach(r => log(`    ${fmt(r)}`));
+	// return an API-friendly object (best + runners-up), still back-compatible via .cfg/.wr
+	return { ...results[0], ...pretty(results[0]), runnersUp: results.slice(1, 4).map(pretty), configs: configs.length };
 }
 
 async function main() {

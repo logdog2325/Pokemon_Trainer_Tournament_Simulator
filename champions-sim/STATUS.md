@@ -155,6 +155,25 @@ move/HP/faint animations, weather + Trick Room overlays, and click-to-choose con
 - Dependency-free Node server bridges the real sim (GameplanBot on p2) to the browser via
   Server-Sent Events; your choices go back over POST. See `arena/README.md`.
 
-### ⏳ Remaining
-- **App integration**: drop a pokepaste into the `champions-team-building` app → see the matrix.
-- (Nice-to-have) let the Arena accept a pasted team for *your* side instead of the built-in one.
+### ✅ App integration — SHIPPED  (unified "Champions Lab" server)
+`champions-sim/server.mjs` is one local server that ties everything together:
+
+    node champions-sim/server.mjs
+      ·  http://localhost:8790/         Team Builder PWA
+      ·  http://localhost:8790/arena/   graphical battle vs the AI
+      ·  /api/matrix, /api/optimize, /api/new|stream|choose   (sim endpoints)
+
+The Team Builder gains a **🧪 Battle Lab** screen (from the start menu or a
+completed team): drop / reuse a pokepaste → it runs the real sim and shows your
+**win rate vs each meta archetype** (worst first), with per-matchup **Optimize**
+(exhaustive best bring/lead/Mega) and **Play ▶** (launches the Arena with your
+team vs that archetype). The app auto-detects the server and, opened as a plain
+static file, tells you how to start it. The Arena accepts a custom team via
+`/arena/?opp=<name>&team=<base64 pokepaste>` (the Battle Lab hand-off).
+
+The app's paste export uses `Stat Points:`; the server normalizes that to the
+sim's EVs/point field, and `autospread` fills any team that ships without a spread.
+
+### ⏳ Remaining / nice-to-have
+- Let the Arena also pick the *opponent's* bring smartly per game (already smart);
+  optional: expose a difficulty toggle.

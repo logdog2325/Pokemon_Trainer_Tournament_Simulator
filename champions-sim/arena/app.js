@@ -25,8 +25,8 @@ function setSprite(slotId, details) {
 	const side = slotId[1] === '1' ? 'ani-back' : 'ani';
 	const img = $('#' + slotId + ' img');
 	const id = spriteFile(details), base = baseId(details);
-	img.onerror = () => { img.onerror = () => { img.style.opacity = 0; }; img.src = `/sprites/${side}/${base}.gif`; };
-	img.src = `/sprites/${side}/${id}.gif`;
+	img.onerror = () => { img.onerror = () => { img.style.opacity = 0; }; img.src = `sprites/${side}/${base}.gif`; };
+	img.src = `sprites/${side}/${id}.gif`;
 	$('#' + slotId).classList.remove('empty', 'fainted');
 }
 
@@ -125,7 +125,7 @@ function setWeather(w, upkeep) {
 
 // ---------- controls ----------
 function clearControls() { $('#controls').innerHTML = ''; $('#field').classList.remove('targeting'); document.querySelectorAll('.slot.pick').forEach(s => s.classList.remove('pick')); }
-function submit(choice) { clearControls(); fetch('/choose', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: battleId, choice }) }); }
+function submit(choice) { clearControls(); fetch('/api/choose', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: battleId, choice }) }); }
 
 function handleRequest(req) {
 	if (req.wait) return;
@@ -234,7 +234,7 @@ function teamPreviewUI(req) {
 	if (roster.p2.length) {
 		c.appendChild(el('div', 'ctrlhead', `Opponent's six <span class="muted">(Open Team Sheets)</span>:`));
 		const opp = el('div', 'opprow');
-		roster.p2.forEach(d => { const s = tpSprite(d); opp.appendChild(el('div', 'oppmon', `<img src="/sprites/ani/${s.id}.gif" onerror="this.onerror=null;this.src='/sprites/ani/${s.base}.gif'"><span>${s.nm}</span>`)); });
+		roster.p2.forEach(d => { const s = tpSprite(d); opp.appendChild(el('div', 'oppmon', `<img src="sprites/ani/${s.id}.gif" onerror="this.onerror=null;this.src='sprites/ani/${s.base}.gif'"><span>${s.nm}</span>`)); });
 		c.appendChild(opp);
 	}
 	c.appendChild(el('div', 'ctrlhead', 'Choose 4 to bring — tap in order, first two are your leads:'));
@@ -243,7 +243,7 @@ function teamPreviewUI(req) {
 	req.side.pokemon.forEach((pm, i) => {
 		const id = SPRITES[pm.details.split(',')[0]] || toId(pm.details.split(',')[0]);
 		const tp = el('div', 'tp');
-		tp.innerHTML = `<span class="pos"></span><img src="/sprites/ani/${id}.gif" onerror="this.src='/sprites/ani/${toId(pm.details.split(',')[0].split('-')[0])}.gif'"><div class="nm2">${pm.details.split(',')[0]}</div><div class="mv2">${(pm.moves || []).slice(0, 4).join(', ')}</div>`;
+		tp.innerHTML = `<span class="pos"></span><img src="sprites/ani/${id}.gif" onerror="this.src='sprites/ani/${toId(pm.details.split(',')[0].split('-')[0])}.gif'"><div class="nm2">${pm.details.split(',')[0]}</div><div class="mv2">${(pm.moves || []).slice(0, 4).join(', ')}</div>`;
 		tp.onclick = () => {
 			const idx = order.indexOf(i);
 			if (idx >= 0) { order.splice(idx, 1); } else if (order.length < 4) { order.push(i); }
@@ -273,12 +273,17 @@ function showRematch(winner) {
 }
 
 let OPPONENTS = [];
+let MY_PASTE = null;   // optional custom team (from the Battle Lab "Play in Arena" hand-off)
 async function boot() {
-	const data = await (await fetch('/teams')).json();
+	const data = await (await fetch('/api/opponents')).json();
 	SPRITES = data.sprites || {};
 	OPPONENTS = data.opponents || [];
+	// hand-off from the builder: ?opp=<name>&team=<base64 pokepaste>
+	const qs = new URLSearchParams(location.search);
+	if (qs.get('team')) { try { MY_PASTE = decodeURIComponent(escape(atob(qs.get('team').replace(/-/g, '+').replace(/_/g, '/')))); } catch { MY_PASTE = null; } }
+	const qOpp = qs.get('opp') && OPPONENTS.find(o => o === qs.get('opp') || o.toLowerCase().includes(qs.get('opp').toLowerCase()));
+	if (qOpp) { startBattle(qOpp); return; }   // auto-start the requested matchup
 	const list = $('#oppList');
-	// Random button first
 	const rnd = el('button', 'opp rnd', '🎲 &nbsp;Random opponent <span class="muted">— face a surprise team</span>');
 	rnd.onclick = () => startBattle(OPPONENTS[Math.floor(Math.random() * OPPONENTS.length)]);
 	list.appendChild(rnd);
@@ -289,10 +294,10 @@ async function boot() {
 	});
 }
 async function startBattle(opponent) {
-	const r = await (await fetch('/new', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ opponent }) })).json();
+	const r = await (await fetch('/api/new', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ opponent, paste: MY_PASTE }) })).json();
 	battleId = r.id;
 	$('#start').style.display = 'none'; $('#game').style.display = '';
-	const es = new EventSource('/stream?id=' + battleId);
+	const es = new EventSource('/api/stream?id=' + battleId);
 	es.onmessage = e => enqueue(e.data);
 }
 boot();

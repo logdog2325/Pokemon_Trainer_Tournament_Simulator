@@ -8,9 +8,14 @@ weather + Trick Room overlays, and click-to-choose controls — no internet need
 ## Run
 
 ```
-node champions-sim/arena/server.mjs
-# then open http://localhost:8790
+node champions-sim/server.mjs      # the unified Champions Lab server
+# Team Builder:  http://localhost:8790/
+# Arena:         http://localhost:8790/arena/
 ```
+
+(`node champions-sim/arena/server.mjs` still works — it just launches the same
+unified server.) The Arena is reachable on its own, and the Team Builder's
+**Battle Lab** links straight into it ("Play ▶") with your current team.
 
 ## What you get
 
