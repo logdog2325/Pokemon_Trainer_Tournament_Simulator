@@ -59,12 +59,14 @@ function renderStart(){
   const list=E.DEX.filter(e=>e.name.toLowerCase().includes(STATE.q.toLowerCase())).sort((a,b)=>a.name.localeCompare(b.name));
   app.innerHTML=`<button class="btn" id="imp" style="width:100%;margin-bottom:10px">📋 Import / paste a team</button>
     <button class="btn" id="labbtn" style="width:100%;margin-bottom:10px">🧪 Battle Lab — simulate matchups vs the meta</button>
+    <button class="btn" id="arenabtn" style="width:100%;margin-bottom:10px">⚔️ Champions Arena — play a battle vs the AI</button>
     <button class="btn" id="megabtn" style="width:100%;margin-bottom:10px">🏆 Mega tier list (Limitless M-B)</button>
     <button class="btn" id="pairbtn" style="width:100%;margin-bottom:10px">🤝 Mega pairing tier list</button>
     <input class="search" id="q" placeholder="Search ${E.DEX.length} Pokémon…" value="${STATE.q}">
     <div class="grid">${list.slice(0,400).map(e=>`<div class="mon" data-n="${e.name}">${img(e)}<div class="nm">${e.name}</div>${tbadges(e.types)}</div>`).join("")}</div>`;
   $("#imp").onclick=()=>go("import");
   $("#labbtn").onclick=()=>go("lab");
+  $("#arenabtn").onclick=()=>{ location.href="arena/arena.html"; };
   $("#megabtn").onclick=()=>go("megas");
   $("#pairbtn").onclick=()=>go("pairs");
   const q=$("#q"); q.oninput=()=>{STATE.q=q.value;const g=app.querySelector(".grid");const l=E.DEX.filter(e=>e.name.toLowerCase().includes(STATE.q.toLowerCase())).sort((a,b)=>a.name.localeCompare(b.name));g.innerHTML=l.slice(0,400).map(e=>`<div class="mon" data-n="${e.name}">${img(e)}<div class="nm">${e.name}</div>${tbadges(e.types)}</div>`).join("");bindMons();};
@@ -687,14 +689,23 @@ function renderLab(){
   sim().ready.then(()=>{ status.innerHTML=`<span style="color:var(--good)">● engine ready</span> <span class="muted">— runs 100% offline, on-device.</span>`; });
   $("#runmx").onclick=()=>runMatrix();
 }
+function labProblem(v){
+  return `<div class="card" style="border-color:var(--bad)"><b style="color:var(--bad)">⚠ Team problem — fix this or the win-rates are meaningless</b>
+    <div class="muted" style="margin:6px 0">Parsed <b>${v.count}</b> Pokémon. Champions needs a legal <b>6-mon</b> team (real moves/abilities, one of each item, ≤32 points per stat, no Tera).</div>
+    <ul style="margin:6px 0 0 18px">${(v.errors||[]).slice(0,8).map(e=>`<li class="muted" style="font-size:12px">${e.replace(/</g,"&lt;")}</li>`).join("")}</ul></div>`;
+}
 async function runMatrix(){
   const paste=$("#labpaste").value.trim(), n=Math.max(6,Math.min(60,+$("#labn").value||20)), count=+$("#labcount").value||24, out=$("#labout");
   if(!paste){out.innerHTML=`<div class="card muted">Paste a team first.</div>`;return;}
-  out.innerHTML=`<div class="card"><div class="muted" id="mxprog">Simulating ${n} games × ${count} archetypes…</div><div class="bar" style="height:8px;background:var(--card2);border-radius:5px;overflow:hidden;margin-top:8px"><i id="mxbar" style="display:block;height:100%;width:0;background:var(--accent);transition:width .2s"></i></div></div>`;
+  out.innerHTML=`<div class="card muted">Checking your team…</div>`;
+  let v; try{ v=await sim().validate(paste); }catch(e){ v={count:0,errors:[e.message]}; }
+  if(v.count===0 || (v.errors&&v.errors.length)){ out.innerHTML=labProblem(v); if(v.count<4) return; }   // hard-broken: don't bother simulating
+  const banner = (v.errors&&v.errors.length) ? labProblem(v) : "";
+  out.innerHTML=banner+`<div class="card"><div class="muted" id="mxprog">Simulating ${n} games × ${count} archetypes…</div><div class="bar" style="height:8px;background:var(--card2);border-radius:5px;overflow:hidden;margin-top:8px"><i id="mxbar" style="display:block;height:100%;width:0;background:var(--accent);transition:width .2s"></i></div></div>`;
   let rows; try{ rows=await sim().matrix(paste, n, count, (p)=>{const bar=$("#mxbar"),pr=$("#mxprog");if(bar)bar.style.width=(100*p.done/p.total)+'%';if(pr)pr.textContent=`Simulating… ${p.done}/${p.total} — ${p.name}`;}); }
   catch(e){ out.innerHTML=`<div class="card" style="color:var(--bad)">Sim failed: ${e.message}</div>`; return; }
   const wrCol=w=>w>=60?"var(--good)":w<40?"var(--bad)":"var(--txt)";
-  out.innerHTML=`<div class="card"><b>Win rate vs the meta</b> <span class="muted">(worst first · ${n} games each · top ${count} by usage)</span>
+  out.innerHTML=banner+`<div class="card"><b>Win rate vs the meta</b> <span class="muted">(worst first · ${n} games each · top ${count} by usage)</span>
     <div style="margin-top:8px">${rows.map(r=>`
       <div class="candrow" style="cursor:default">
         <div class="meta"><div class="nm" style="font-size:13px">${r.name}</div>
@@ -710,15 +721,17 @@ async function runMatrix(){
 async function optimizeVs(opponent,paste,btn){
   const box=[...document.querySelectorAll(".optout")].find(x=>decodeURIComponent(x.dataset.for)===opponent);
   if(!box)return; box.innerHTML=`<div class="muted" id="optp" style="padding:6px 8px">Brute-forcing every bring / lead / Mega…</div>`; btn.disabled=true;
-  let b; try{ b=await sim().optimize(paste, opponent, 12, (p)=>{const el=box.querySelector("#optp");if(el)el.textContent=`Brute-forcing configs… ${p.done}/${p.total}`;}); }
+  let res; try{ res=await sim().optimize(paste, opponent, 12, (p)=>{const el=box.querySelector("#optp");if(el)el.textContent=`Brute-forcing configs… ${p.done}/${p.total}`;}); }
   catch(e){ box.innerHTML=`<div style="color:var(--bad);padding:6px 8px">optimize failed: ${e.message}</div>`; btn.disabled=false; return; }
   btn.disabled=false;
-  const line=r=>`${r.wr}% — lead <b>${r.leads.join(" + ")}</b> / back ${r.back.join(" + ")} · Mega ${r.mega||"none"}`;
-  box.innerHTML=`<div class="card" style="margin-top:6px;background:var(--card2)"><b>Best bring vs ${opponent}</b>
-     <div style="margin-top:4px">${line(b)}</div>
-     <div class="muted" style="margin-top:6px">runners-up</div>
-     ${b.runnersUp.map(r=>`<div class="muted" style="font-size:12px">${line(r)}</div>`).join("")}
-     <button class="btn" id="playbest" style="margin-top:8px;padding:6px 10px;font-size:12px">Play this matchup ▶</button></div>`;
+  const best=res.best, runners=res.runnersUp||[];
+  if(!best||!best.leads){ box.innerHTML=`<div style="color:var(--bad);padding:6px 8px">Couldn't optimize — is the team valid?</div>`; return; }
+  const line=r=>`<b style="color:${r.wr>=60?'var(--good)':r.wr<40?'var(--bad)':'var(--txt)'}">${r.wr}%</b> — lead <b>${r.leads.join(" + ")}</b> · back ${r.back.join(" + ")} · Mega <b>${r.mega||"none"}</b>`;
+  box.innerHTML=`<div class="card" style="margin-top:6px;background:var(--card2)"><b>Best game plan vs ${opponent}</b>
+     <div class="muted" style="font-size:11px;margin:2px 0 6px">bring these 4, lead the first two, Mega as shown — from ${res.configs} tested configs</div>
+     <div>${line(best)}</div>
+     ${runners.length?`<div class="muted" style="margin-top:8px;font-size:11px">other strong lines</div>`+runners.map(r=>`<div class="muted" style="font-size:12px;margin-top:2px">${line(r)}</div>`).join(""):""}
+     <button class="btn" id="playbest" style="margin-top:10px;padding:6px 10px;font-size:12px">Play this matchup ▶</button></div>`;
   const pb=box.querySelector("#playbest"); if(pb)pb.onclick=()=>window.open(`arena/arena.html?opp=${encodeURIComponent(opponent)}&team=${b64paste(paste)}`,"_blank");
 }
 function render(){

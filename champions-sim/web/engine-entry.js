@@ -5,14 +5,45 @@
  * battles. Exposes globalThis.ChampSim; the Web Worker (app/sim/worker.js) drives it.
  */
 const { BattleStream, getPlayerStreams, Teams, Dex } = require('../../pokemon-showdown/dist/sim');
+const { TeamValidator } = require('../../pokemon-showdown/dist/sim/team-validator');
 const { GameplanBot } = require('../gameplan-bot.js');
 const { MY_TEAM, META } = require('../teams.mjs');
 const { autospread } = require('../autospread.mjs');
 const FORMAT = 'gen9championsvgc2026regmb';
 const cdex = Dex.mod('champions');
+const validator = new TeamValidator(FORMAT);
 
-function normalizePaste(p){ return String(p||'').replace(/^[ \t]*Stat Points:[ \t]*none[ \t]*$/gim,'').replace(/^[ \t]*Stat Points:/gim,'EVs:'); }
+// Showdown sometimes exports the Mega forme as the species (e.g. "Gardevoir-Mega @ Gardevoirite"
+// with Ability: Pixilate). In Champions you bring the BASE mon holding the stone and it Mega-Evolves
+// in battle, so rewrite any Mega-forme species back to its base + a legal base ability.
+function demega(paste){
+  return String(paste||'').trim().split(/\n\s*\n/).map(block=>{
+    const lines=block.split('\n'); if(!lines[0]) return block;
+    const at=lines[0].indexOf(' @ ');
+    const name=(at>=0?lines[0].slice(0,at):lines[0]).trim();
+    const sp=cdex.species.get(name);
+    if(sp.exists && sp.forme && /^Mega/i.test(sp.forme) && sp.baseSpecies){
+      lines[0]=sp.baseSpecies+(at>=0?lines[0].slice(at):'');
+      const baseAbil=Object.values(cdex.species.get(sp.baseSpecies).abilities||{})[0]||'';
+      let had=false;
+      for(let i=0;i<lines.length;i++) if(/^\s*Ability:/i.test(lines[i])){ lines[i]='Ability: '+baseAbil; had=true; }
+      if(!had) lines.splice(1,0,'Ability: '+baseAbil);
+    }
+    return lines.join('\n');
+  }).join('\n\n');
+}
+function normalizePaste(p){ return demega(p).replace(/^[ \t]*Stat Points:[ \t]*none[ \t]*$/gim,'').replace(/^[ \t]*Stat Points:/gim,'EVs:'); }
 function pack(paste){ return Teams.pack(Teams.import(autospread(normalizePaste(paste)))); }
+
+// validate a pasted team the same way the matrix builds it (autospread fills point spreads first)
+function validate(paste){
+  let team; try{ team = Teams.import(autospread(normalizePaste(paste))); }
+  catch(e){ return { count:0, errors:['Could not read the paste: '+e.message] }; }
+  const count = team ? team.length : 0;
+  if(!count) return { count:0, errors:['No Pokémon recognized — check the species names / format.'] };
+  const errors = validator.validateTeam(team) || [];
+  return { count, errors };
+}
 
 const SPRITEMAP = (()=>{ const map={}; const add=n=>{const s=cdex.species.get(n);if(s.exists)map[s.name]=s.spriteid;};
   for(const paste of [MY_TEAM, ...Object.values(META)]) for(const block of paste.trim().split(/\n\s*\n/)){
@@ -86,5 +117,5 @@ function startBattle(oppName, myPaste, onLine){
 }
 function choose(id, choice){const rec=battles[id];if(rec&&!rec.done&&typeof choice==='string')rec.streams.p1.write(choice);}
 
-globalThis.ChampSim = { opponents:Object.keys(META), teams:META, sprites:SPRITEMAP, defaultTeam:MY_TEAM, matrix, optimize, startBattle, choose };
+globalThis.ChampSim = { opponents:Object.keys(META), teams:META, sprites:SPRITEMAP, defaultTeam:MY_TEAM, validate, matrix, optimize, startBattle, choose };
 globalThis.simReady = true;
