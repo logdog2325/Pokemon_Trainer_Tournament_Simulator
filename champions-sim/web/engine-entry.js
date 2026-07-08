@@ -32,10 +32,12 @@ function runMatch(myPacked, foePacked, meIsP1){
     s.omniscient.write('>start '+JSON.stringify({formatid:FORMAT})+'\n>player p1 '+JSON.stringify({name:'A',team:meIsP1?myPacked:foePacked})+'\n>player p2 '+JSON.stringify({name:'B',team:meIsP1?foePacked:myPacked}));
   });
 }
-async function matrix(paste, N, onProgress){
-  N=Math.max(4,Math.min(60,N||20)); const my=pack(paste); const rows=[]; let done=0; const total=Object.keys(META).length;
-  for(const [name,foePaste] of Object.entries(META)){
-    const foe=pack(foePaste); let w=0,g=0;
+async function matrix(paste, N, onProgress, oppNames){
+  N=Math.max(4,Math.min(60,N||20)); const my=pack(paste); const rows=[];
+  const names=(oppNames&&oppNames.length)?oppNames.filter(n=>META[n]):Object.keys(META);
+  let done=0; const total=names.length;
+  for(const name of names){
+    const foe=pack(META[name]); let w=0,g=0;
     for(let i=0;i<N;i++){const meIsP1=i%2===0;const winner=await runMatch(my,foe,meIsP1);if(winner==='tie')continue;g++;if(winner===(meIsP1?'A':'B'))w++;}
     rows.push({name,wr:Math.round(100*w/(g||1)),games:g}); done++; onProgress&&onProgress(done,total,name);
   }
@@ -84,5 +86,5 @@ function startBattle(oppName, myPaste, onLine){
 }
 function choose(id, choice){const rec=battles[id];if(rec&&!rec.done&&typeof choice==='string')rec.streams.p1.write(choice);}
 
-globalThis.ChampSim = { opponents:Object.keys(META), sprites:SPRITEMAP, defaultTeam:MY_TEAM, matrix, optimize, startBattle, choose };
+globalThis.ChampSim = { opponents:Object.keys(META), teams:META, sprites:SPRITEMAP, defaultTeam:MY_TEAM, matrix, optimize, startBattle, choose };
 globalThis.simReady = true;

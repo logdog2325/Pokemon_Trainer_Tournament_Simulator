@@ -661,42 +661,41 @@ function renderPairs(){
       <div style="margin-top:6px">${byTier[t].map(rowFor).join("")}</div></div>`).join("")}`;
   backBtn.onclick=()=>go("start");
 }
-/* ---------------- BATTLE LAB (live offline simulation) ---------------- */
+/* ---------------- BATTLE LAB (in-browser offline simulation) ---------------- */
 function b64paste(str){try{return btoa(unescape(encodeURIComponent(str))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}catch(e){return'';}}
+let SIM=null;
+function sim(){ if(!SIM) SIM=new SimClient('sim/worker.js'); return SIM; }
 function renderLab(){
-  titleEl.textContent="Battle Lab — live sim"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
+  titleEl.textContent="Battle Lab"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
   const havePaste=STATE.team&&STATE.team.length>=1;
   const paste0=havePaste?E.exportPaste(STATE.team):"";
   app.innerHTML=`
     <div class="card"><b>Simulated matchups vs the meta</b>
-      <div class="muted" style="margin-top:4px">Plays real offline AI-vs-AI Reg M-B doubles battles (both sides the game-plan bot) and reports your win rate vs one real team per archetype — worst first. Then optimize your bring for a bad one, or play it out in the Arena.</div></div>
-    <div class="card" id="labstatus"><span class="muted">Checking sim server…</span></div>
+      <div class="muted" style="margin-top:4px">Plays real offline AI-vs-AI Reg M-B doubles battles (both sides the game-plan bot) right here in your browser — no server — and reports your win rate vs each archetype, worst first. Then optimize your bring for a bad one, or play it out in the Arena.</div></div>
+    <div class="card" id="labstatus"><span class="muted">Loading engine…</span></div>
     <div class="card"><label class="muted">Your team (pokepaste — from your build; edit freely)</label>
       <textarea id="labpaste" style="width:100%;height:150px;margin-top:8px;background:var(--card2);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:10px;font:12px/1.4 ui-monospace,monospace" placeholder="paste a Showdown export / Champions team…">${paste0.replace(/</g,'&lt;')}</textarea>
-      <div class="field"><label>Games per matchup (more = steadier %, slower)</label><input type="number" id="labn" value="20" min="6" max="60"></div>
-      <button class="btn primary" id="runmx" style="width:100%">▶ Run matchup matrix</button></div>
+      <div class="seg" style="margin-top:8px">
+        <div class="field" style="flex:1;margin:0"><label>Opponents (by usage)</label>
+          <select id="labcount"><option value="24">Top 24 archetypes (fast)</option><option value="60">Top 60</option><option value="188">All 188</option></select></div>
+        <div class="field" style="flex:1;margin:0"><label>Games each</label><input type="number" id="labn" value="20" min="6" max="60"></div>
+      </div>
+      <button class="btn primary" id="runmx" style="width:100%;margin-top:8px">▶ Run matchup matrix</button></div>
     <div id="labout"></div>`;
   backBtn.onclick=()=>go(havePaste?"builder":"start");
   const status=$("#labstatus");
-  fetch('/api/opponents').then(r=>r.ok?r.json():Promise.reject()).then(()=>{
-    status.innerHTML=`<span style="color:var(--good)">● sim server connected</span> <span class="muted">— run matchups &amp; play battles below.</span>`;
-  }).catch(()=>{
-    status.innerHTML=`<b style="color:var(--bad)">Sim server not running.</b><div class="muted" style="margin-top:6px">Start it from the repo and open this app from it:<pre class="paste">node champions-sim/server.mjs
-# then open http://localhost:8790</pre>Opened as a plain file, the live sim can't run (the matchup engine is Node-side).</div>`;
-    const rb=$("#runmx"); if(rb)rb.disabled=true;
-  });
+  sim().ready.then(()=>{ status.innerHTML=`<span style="color:var(--good)">● engine ready</span> <span class="muted">— runs 100% offline, on-device.</span>`; });
   $("#runmx").onclick=()=>runMatrix();
 }
 async function runMatrix(){
-  const paste=$("#labpaste").value.trim(), n=Math.max(6,Math.min(60,+$("#labn").value||20)), out=$("#labout");
+  const paste=$("#labpaste").value.trim(), n=Math.max(6,Math.min(60,+$("#labn").value||20)), count=+$("#labcount").value||24, out=$("#labout");
   if(!paste){out.innerHTML=`<div class="card muted">Paste a team first.</div>`;return;}
-  out.innerHTML=`<div class="card muted">Simulating ${n} games × 5 archetypes…</div>`;
-  let data; try{ data=await (await fetch('/api/matrix',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({paste,n})})).json(); }
-  catch(e){ out.innerHTML=`<div class="card" style="color:var(--bad)">Sim request failed — is the server running?</div>`; return; }
-  if(!data.rows){ out.innerHTML=`<div class="card" style="color:var(--bad)">${data.error||"no result"}</div>`; return; }
+  out.innerHTML=`<div class="card"><div class="muted" id="mxprog">Simulating ${n} games × ${count} archetypes…</div><div class="bar" style="height:8px;background:var(--card2);border-radius:5px;overflow:hidden;margin-top:8px"><i id="mxbar" style="display:block;height:100%;width:0;background:var(--accent);transition:width .2s"></i></div></div>`;
+  let rows; try{ rows=await sim().matrix(paste, n, count, (p)=>{const bar=$("#mxbar"),pr=$("#mxprog");if(bar)bar.style.width=(100*p.done/p.total)+'%';if(pr)pr.textContent=`Simulating… ${p.done}/${p.total} — ${p.name}`;}); }
+  catch(e){ out.innerHTML=`<div class="card" style="color:var(--bad)">Sim failed: ${e.message}</div>`; return; }
   const wrCol=w=>w>=60?"var(--good)":w<40?"var(--bad)":"var(--txt)";
-  out.innerHTML=`<div class="card"><b>Win rate vs the meta</b> <span class="muted">(worst first · ${n} games each)</span>
-    <div style="margin-top:8px">${data.rows.map(r=>`
+  out.innerHTML=`<div class="card"><b>Win rate vs the meta</b> <span class="muted">(worst first · ${n} games each · top ${count} by usage)</span>
+    <div style="margin-top:8px">${rows.map(r=>`
       <div class="candrow" style="cursor:default">
         <div class="meta"><div class="nm" style="font-size:13px">${r.name}</div>
           <div class="bar" style="height:9px;background:var(--card2);border-radius:5px;overflow:hidden;margin-top:5px"><i style="display:block;height:100%;width:${r.wr}%;background:${wrCol(r.wr)}"></i></div></div>
@@ -705,23 +704,22 @@ async function runMatrix(){
           <button class="btn" data-opt="${encodeURIComponent(r.name)}" style="padding:6px 8px;font-size:11px">Optimize</button>
           <button class="btn" data-play="${encodeURIComponent(r.name)}" style="padding:6px 8px;font-size:11px">Play ▶</button></div>
       </div><div class="optout" data-for="${encodeURIComponent(r.name)}"></div>`).join("")}</div></div>`;
-  out.querySelectorAll("[data-play]").forEach(b=>b.onclick=()=>window.open(`/arena/?opp=${b.dataset.play}&team=${b64paste(paste)}`,"_blank"));
+  out.querySelectorAll("[data-play]").forEach(b=>b.onclick=()=>window.open(`arena/arena.html?opp=${b.dataset.play}&team=${b64paste(paste)}`,"_blank"));
   out.querySelectorAll("[data-opt]").forEach(b=>b.onclick=()=>optimizeVs(decodeURIComponent(b.dataset.opt),paste,b));
 }
 async function optimizeVs(opponent,paste,btn){
   const box=[...document.querySelectorAll(".optout")].find(x=>decodeURIComponent(x.dataset.for)===opponent);
-  if(!box)return; box.innerHTML=`<div class="muted" style="padding:6px 8px">Brute-forcing every bring / lead / Mega (~210 configs) — ~30–60s…</div>`; btn.disabled=true;
-  let data; try{ data=await (await fetch('/api/optimize',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({paste,opponent,n:12})})).json(); }
-  catch(e){ box.innerHTML=`<div style="color:var(--bad);padding:6px 8px">optimize failed</div>`; btn.disabled=false; return; }
+  if(!box)return; box.innerHTML=`<div class="muted" id="optp" style="padding:6px 8px">Brute-forcing every bring / lead / Mega…</div>`; btn.disabled=true;
+  let b; try{ b=await sim().optimize(paste, opponent, 12, (p)=>{const el=box.querySelector("#optp");if(el)el.textContent=`Brute-forcing configs… ${p.done}/${p.total}`;}); }
+  catch(e){ box.innerHTML=`<div style="color:var(--bad);padding:6px 8px">optimize failed: ${e.message}</div>`; btn.disabled=false; return; }
   btn.disabled=false;
-  if(!data.best){ box.innerHTML=`<div style="color:var(--bad);padding:6px 8px">${data.error||"no result"}</div>`; return; }
-  const b=data.best, line=r=>`${r.wr}% — lead <b>${r.leads.join(" + ")}</b> / back ${r.back.join(" + ")} · Mega ${r.mega||"none"}`;
+  const line=r=>`${r.wr}% — lead <b>${r.leads.join(" + ")}</b> / back ${r.back.join(" + ")} · Mega ${r.mega||"none"}`;
   box.innerHTML=`<div class="card" style="margin-top:6px;background:var(--card2)"><b>Best bring vs ${opponent}</b>
      <div style="margin-top:4px">${line(b)}</div>
      <div class="muted" style="margin-top:6px">runners-up</div>
      ${b.runnersUp.map(r=>`<div class="muted" style="font-size:12px">${line(r)}</div>`).join("")}
      <button class="btn" id="playbest" style="margin-top:8px;padding:6px 10px;font-size:12px">Play this matchup ▶</button></div>`;
-  const pb=box.querySelector("#playbest"); if(pb)pb.onclick=()=>window.open(`/arena/?opp=${encodeURIComponent(opponent)}&team=${b64paste(paste)}`,"_blank");
+  const pb=box.querySelector("#playbest"); if(pb)pb.onclick=()=>window.open(`arena/arena.html?opp=${encodeURIComponent(opponent)}&team=${b64paste(paste)}`,"_blank");
 }
 function render(){
   backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(["role","import","megas","pairs","lab"].includes(STATE.screen))go("start"); else if(["editor","stress","speed","calc","optimize"].includes(STATE.screen))go("builder"); };

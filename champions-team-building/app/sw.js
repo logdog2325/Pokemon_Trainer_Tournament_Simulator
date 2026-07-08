@@ -1,15 +1,16 @@
 /* Service worker.
    App shell: NETWORK-FIRST so the app always self-updates when online (falls back
    to cache offline). Sprites: cache-first runtime cache so art shows offline. */
-const CACHE = "ctb-v42";
+const CACHE = "ctb-v43";
 const IMG = "ctb-img-v1";
-const ASSETS = ["./","./index.html","./app.js","./ui.js","./dex-data.js","./moves-data.js","./usage-data.js","./results-data.js","./manifest.webmanifest","./icon-192.png","./icon-512.png"];
+const ASSETS = ["./","./index.html","./app.js","./ui.js","./dex-data.js","./moves-data.js","./usage-data.js","./results-data.js","./manifest.webmanifest","./icon-192.png","./icon-512.png",
+  "./sim/sim-client.js","./sim/worker.js","./arena/arena.html","./arena/arena.js","./arena/arena.css"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE && k !== IMG).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener("fetch", e => {
   const u = new URL(e.request.url);
-  // never intercept the live sim API (POST + SSE stream) or the Arena page/assets — let them hit the server directly
-  if (u.origin === location.origin && (u.pathname.startsWith("/api/") || u.pathname.startsWith("/arena/"))) return;
+  // legacy: never intercept the optional local sim server's API (POST + SSE)
+  if (u.origin === location.origin && u.pathname.startsWith("/api/")) return;
   if (u.origin === location.origin) {
     // network-first: fetch fresh, update cache, fall back to cache when offline
     e.respondWith(

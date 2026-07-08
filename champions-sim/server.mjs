@@ -34,7 +34,6 @@ const FORMAT = 'gen9championsvgc2026regmb';
 const PORT = process.env.PORT || 8790;
 const cdex = Dex.mod('champions');
 const APP_DIR = path.join(__dirname, '..', 'champions-team-building', 'app');
-const ARENA_DIR = path.join(__dirname, 'arena');
 
 // the app exports point spreads as "Stat Points:"; the sim reads them from the EVs field.
 function normalizePaste(paste) {
@@ -170,11 +169,9 @@ const server = http.createServer(async (req, res) => {
 			if (rec && !rec.done && typeof choice === 'string') rec.streams.p1.write(choice);
 			return json(res, { ok: true });
 		}
-		// ---- Arena (client + local assets) under /arena/ ----
-		if (p === '/arena' ) { res.writeHead(302, { Location: '/arena/' }); return res.end(); }
-		if (p === '/arena/') return serveFile(res, path.join(ARENA_DIR, 'arena.html'));
-		if (p.startsWith('/arena/')) { const fp = within(ARENA_DIR, p.slice('/arena/'.length)); return fp ? serveFile(res, fp) : (res.writeHead(404), res.end()); }
-		// ---- Team Builder PWA at root ----
+		// ---- Team Builder PWA at root (self-contained: it runs the sim in-browser;
+		//      the /arena page and /sim worker are served as normal app files) ----
+		if (p === '/arena' || p === '/arena/') { res.writeHead(302, { Location: '/arena/arena.html' }); return res.end(); }
 		if (p === '/') return serveFile(res, path.join(APP_DIR, 'index.html'));
 		const appFp = within(APP_DIR, p);
 		if (appFp && fs.existsSync(appFp) && fs.statSync(appFp).isFile()) return serveFile(res, appFp);
