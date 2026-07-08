@@ -109,7 +109,8 @@ async function optimize(paste, oppName, N, onProgress){
 const battles={}; let bid=1;
 function startBattle(oppName, myPaste, onLine){
   const id=String(bid++); const bs=new BattleStream(); const streams=getPlayerStreams(bs);
-  new GameplanBot(streams.p2,{battle:bs,side:'p2'}).start();
+  // Arena opponent: vary a strong bring each game so you get fresh practice reps.
+  new GameplanBot(streams.p2,{battle:bs,side:'p2',vary:true}).start();
   battles[id]={streams,done:false};
   (async()=>{for await(const chunk of streams.p1){for(const line of chunk.split('\n')){if(!line)continue;onLine(line);if(line.startsWith('|win|')||/^\|tie\b/.test(line))battles[id].done=true;}}})();
   streams.omniscient.write('>start '+JSON.stringify({formatid:FORMAT})+'\n>player p1 '+JSON.stringify({name:'You',team:pack(myPaste&&myPaste.trim()?myPaste:MY_TEAM)})+'\n>player p2 '+JSON.stringify({name:'AI · '+oppName,team:pack(META[oppName]||Object.values(META)[0])}));
