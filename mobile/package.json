@@ -1,0 +1,13 @@
+{
+  "name": "champions-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Capacitor wrapper that packages the offline Champions Team Builder PWA as an Android app.",
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2"
+  },
+  "dependencies": {
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/android": "^6.1.2"
+  }
+}

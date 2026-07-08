@@ -1,0 +1,6 @@
+{
+  "appId": "com.logdog2325.champions",
+  "appName": "Champions Team Builder",
+  "webDir": "www",
+  "android": { "allowMixedContent": true }
+}
