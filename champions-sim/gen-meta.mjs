@@ -57,20 +57,37 @@ const RESULTS = (() => {
     return JSON.parse(j);
   } catch (e) { console.error('no results-data:', e.message); return { mons: {} }; }
 })();
+const megasData = RESULTS.megas || {}, pairsData = RESULTS.pairs || {};
 const usg = sp => { const m = RESULTS.mons || {}; return (m[sp] || m[sp.replace(/-.*$/, '')] || {}).teams || 0; };
-// primary Mega (defines the archetype) = the highest-usage Mega holder; total team usage as tiebreak
-function analyze(paste) {
-  let primary = null, primaryU = -1, anySp = null, anyU = -1, teamU = 0;
+const megaUsg = nm => (megasData[nm] || {}).teams || 0;
+// a Mega holder's tracked name matching RESULTS keys, e.g. "Charizard-Y", "Floette"
+function megaName(sp, item) {
+  const it = cdex.items.get(item); if (!it.megaStone) return null;
+  const m = /\b([XY])$/.exec(item);
+  const cands = m ? [sp + '-' + m[1]] : [sp, sp.replace(/-.*$/, '')];
+  for (const c of cands) if (megasData[c]) return c;
+  return cands[0];
+}
+// the Mega name(s) a team runs, highest-usage first
+function megasOf(paste) {
+  const mn = [];
   for (const b of paste.trim().split(/\n\s*\n/)) {
     const head = b.trim().split('\n')[0]; const at = head.lastIndexOf(' @ ');
     if (at < 0) continue;
-    const sp = head.slice(0, at).trim(), item = head.slice(at + 3).trim();
-    const u = usg(sp); teamU += u;
-    if (u > anyU) { anyU = u; anySp = sp; }
-    if (cdex.items.get(item).megaStone && u > primaryU) { primaryU = u; primary = sp; }
+    const nm = megaName(head.slice(0, at).trim(), head.slice(at + 3).trim());
+    if (nm) mn.push(nm);
   }
-  primary = primary || anySp;
-  return { primary, primaryU: usg(primary), teamU };
+  return mn.sort((a, b) => megaUsg(b) - megaUsg(a));
+}
+// real archetype frequency: pairing adoption if 2 Megas, else Mega adoption; team usage as tiebreak
+function usageScore(paste, mn) {
+  const teamU = paste.trim().split(/\n\s*\n/).reduce((a, b) => a + usg(b.split(' @ ')[0]), 0);
+  let s = 0;
+  if (mn.length >= 2) {
+    const tracked = pairsData[[mn[0], mn[1]].sort().join(' + ')];
+    s = tracked ? tracked.teams : Math.min(megaUsg(mn[0]), megaUsg(mn[1])) / 5;   // untracked pairing = rare
+  } else if (mn.length === 1) s = megaUsg(mn[0]);
+  return s * 1000 + teamU;
 }
 
 const blocks = fs.readFileSync(SRC, 'utf8').split(/#{20,}/).map(b => b.trim()).filter(b => /@ /.test(b));
@@ -79,19 +96,14 @@ for (const block of blocks) {
   const paste = fixPaste(block);
   let team; try { team = Teams.import(paste); } catch { fail++; continue; }
   if (val.validateTeam(team)) { fail++; continue; }
-  list.push({ name: nameOf(paste, tagOf(block)), paste, ...analyze(paste) });
+  const mn = megasOf(paste);
+  const name = mn.length ? mn.join(' / ') : nameOf(paste, tagOf(block));
+  list.push({ name, paste, score: usageScore(paste, mn) });
   ok++;
 }
-// group by primary Mega; best (most-used) team per Mega leads, ordered by Mega usage -> diverse Top-N.
-// the remaining same-Mega teams follow (so all 188 are present, no archetype crowds the front).
-const groups = {};
-for (const t of list) (groups[t.primary] = groups[t.primary] || []).push(t);
-for (const k in groups) groups[k].sort((a, b) => b.teamU - a.teamU);
-const heads = Object.values(groups).map(g => g[0]).sort((a, b) => b.primaryU - a.primaryU || b.teamU - a.teamU);
-const rest = Object.values(groups).flatMap(g => g.slice(1)).sort((a, b) => b.primaryU - a.primaryU || b.teamU - a.teamU);
-const ordered = [...heads, ...rest];
+list.sort((a, b) => b.score - a.score);   // most-faced archetypes first; Charizard variants rank by their own pairing usage
 const META = {}; const used = new Set();
-for (const t of ordered) {
+for (const t of list) {
   let n = t.name, k = 2; while (used.has(n)) n = `${t.name} #${k++}`;
   used.add(n); META[n] = '\n' + t.paste + '\n';
 }
