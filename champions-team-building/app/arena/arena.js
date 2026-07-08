@@ -54,7 +54,7 @@ async function pump() {
 	while (q.length) {
 		const line = q.shift();
 		const stop = await apply(line);
-		if (stop) { busy = false; return; }   // a request paused us for input
+		if (stop) { busy = false; return; }
 	}
 	busy = false;
 }
@@ -68,7 +68,11 @@ async function apply(line) {
 	if (!line.startsWith('|')) return false;
 	const p = line.split('|'); const tag = p[1];
 	switch (tag) {
-		case 'request': { handleRequest(JSON.parse(p.slice(2).join('|'))); return true; }
+		// Stop the pump ONLY when the request actually needs your input. A `wait`
+		// request (the opponent is switching/acting — e.g. after you KO their mon)
+		// must NOT stop the pump: the switch/turn lines that follow were already
+		// enqueued in this same chunk, so nothing would ever restart it → freeze.
+		case 'request': return handleRequest(JSON.parse(p.slice(2).join('|')));
 		case 'clearpoke': roster.p1 = []; roster.p2 = []; break;
 		case 'poke': { if (roster[p[2]]) roster[p[2]].push(p[3]); break; }   // OTS reveal: "|poke|p2|Kingambit, F|"
 		case 'turn': logLine(`<span class="t">— Turn ${p[2]} —</span>`); clearControls(); break;
@@ -127,11 +131,14 @@ function setWeather(w, upkeep) {
 function clearControls() { $('#controls').innerHTML = ''; $('#field').classList.remove('targeting'); document.querySelectorAll('.slot.pick').forEach(s => s.classList.remove('pick')); }
 function submit(choice) { clearControls(); SIM.choose(battleId, choice); }
 
+// returns true if this request rendered controls and the pump should pause for
+// your input; false for a `wait` request (keep the stream flowing).
 function handleRequest(req) {
-	if (req.wait) return;
-	if (req.teamPreview) return teamPreviewUI(req);
-	if (req.forceSwitch) return forceSwitchUI(req);
-	if (req.active) return moveUI(req);
+	if (req.wait) return false;
+	if (req.teamPreview) { teamPreviewUI(req); return true; }
+	if (req.forceSwitch) { forceSwitchUI(req); return true; }
+	if (req.active) { moveUI(req); return true; }
+	return false;
 }
 
 const TYPECOLOR = {}; // (kept simple; could color by move type)

@@ -680,7 +680,8 @@ function renderLab(){
       <div class="seg" style="margin-top:8px">
         <div class="field" style="flex:1;margin:0"><label>Opponents (by usage)</label>
           <select id="labcount"><option value="24">Top 24 archetypes (fast)</option><option value="60">Top 60</option><option value="188">All 188</option></select></div>
-        <div class="field" style="flex:1;margin:0"><label>Games each</label><input type="number" id="labn" value="20" min="6" max="60"></div>
+        <div class="field" style="flex:1;margin:0"><label>Search depth</label>
+          <select id="labn"><option value="2">Quick</option><option value="3" selected>Standard</option><option value="5">Thorough</option></select></div>
       </div>
       <button class="btn primary" id="runmx" style="width:100%;margin-top:8px">▶ Run matchup matrix</button></div>
     <div id="labout"></div>`;
@@ -695,20 +696,21 @@ function labProblem(v){
     <ul style="margin:6px 0 0 18px">${(v.errors||[]).slice(0,8).map(e=>`<li class="muted" style="font-size:12px">${e.replace(/</g,"&lt;")}</li>`).join("")}</ul></div>`;
 }
 async function runMatrix(){
-  const paste=$("#labpaste").value.trim(), n=Math.max(6,Math.min(60,+$("#labn").value||20)), count=+$("#labcount").value||24, out=$("#labout");
+  const paste=$("#labpaste").value.trim(), n=Math.max(2,Math.min(8,+$("#labn").value||3)), count=+$("#labcount").value||24, out=$("#labout");
   if(!paste){out.innerHTML=`<div class="card muted">Paste a team first.</div>`;return;}
   out.innerHTML=`<div class="card muted">Checking your team…</div>`;
   let v; try{ v=await sim().validate(paste); }catch(e){ v={count:0,errors:[e.message]}; }
   if(v.count===0 || (v.errors&&v.errors.length)){ out.innerHTML=labProblem(v); if(v.count<4) return; }   // hard-broken: don't bother simulating
   const banner = (v.errors&&v.errors.length) ? labProblem(v) : "";
-  out.innerHTML=banner+`<div class="card"><div class="muted" id="mxprog">Simulating ${n} games × ${count} archetypes…</div><div class="bar" style="height:8px;background:var(--card2);border-radius:5px;overflow:hidden;margin-top:8px"><i id="mxbar" style="display:block;height:100%;width:0;background:var(--accent);transition:width .2s"></i></div></div>`;
-  let rows; try{ rows=await sim().matrix(paste, n, count, (p)=>{const bar=$("#mxbar"),pr=$("#mxprog");if(bar)bar.style.width=(100*p.done/p.total)+'%';if(pr)pr.textContent=`Simulating… ${p.done}/${p.total} — ${p.name}`;}); }
+  out.innerHTML=banner+`<div class="card"><div class="muted" id="mxprog">Searching your best line vs ${count} archetypes…</div><div class="bar" style="height:8px;background:var(--card2);border-radius:5px;overflow:hidden;margin-top:8px"><i id="mxbar" style="display:block;height:100%;width:0;background:var(--accent);transition:width .2s"></i></div></div>`;
+  let rows; try{ rows=await sim().matrix(paste, n, count, (p)=>{const bar=$("#mxbar"),pr=$("#mxprog");if(bar)bar.style.width=(100*p.done/p.total)+'%';if(pr)pr.textContent=`Finding your best bring… ${Math.round(100*p.done/p.total)}% — ${p.name}`;}); }
   catch(e){ out.innerHTML=`<div class="card" style="color:var(--bad)">Sim failed: ${e.message}</div>`; return; }
   const wrCol=w=>w>=60?"var(--good)":w<40?"var(--bad)":"var(--txt)";
-  out.innerHTML=banner+`<div class="card"><b>Win rate vs the meta</b> <span class="muted">(worst first · ${n} games each · top ${count} by usage)</span>
+  out.innerHTML=banner+`<div class="card"><b>Best-line win rate vs the meta</b> <span class="muted">(worst first · your strongest bring per matchup · top ${count} by usage)</span>
     <div style="margin-top:8px">${rows.map(r=>`
       <div class="candrow" style="cursor:default">
         <div class="meta"><div class="nm" style="font-size:13px">${r.name}</div>
+          ${r.leads?`<div class="muted" style="font-size:11px;margin-top:2px">lead <b>${r.leads.join(" + ")}</b> · back ${r.back.join(" + ")}${r.mega?` · Mega <b>${r.mega}</b>`:""}</div>`:""}
           <div class="bar" style="height:9px;background:var(--card2);border-radius:5px;overflow:hidden;margin-top:5px"><i style="display:block;height:100%;width:${r.wr}%;background:${wrCol(r.wr)}"></i></div></div>
         <div class="scorebadge"><b style="color:${wrCol(r.wr)}">${r.wr}%</b><small>${r.games}g</small></div>
         <div style="display:flex;flex-direction:column;gap:4px">
@@ -720,8 +722,8 @@ async function runMatrix(){
 }
 async function optimizeVs(opponent,paste,btn){
   const box=[...document.querySelectorAll(".optout")].find(x=>decodeURIComponent(x.dataset.for)===opponent);
-  if(!box)return; box.innerHTML=`<div class="muted" id="optp" style="padding:6px 8px">Brute-forcing every bring / lead / Mega…</div>`; btn.disabled=true;
-  let res; try{ res=await sim().optimize(paste, opponent, 12, (p)=>{const el=box.querySelector("#optp");if(el)el.textContent=`Brute-forcing configs… ${p.done}/${p.total}`;}); }
+  if(!box)return; box.innerHTML=`<div class="muted" id="optp" style="padding:6px 8px">Testing every bring / lead / Mega vs a varied opponent…</div>`; btn.disabled=true;
+  let res; try{ res=await sim().optimize(paste, opponent, 12, (p)=>{const el=box.querySelector("#optp");if(el)el.textContent=`Testing lines… ${p.done}/${p.total} games`;}); }
   catch(e){ box.innerHTML=`<div style="color:var(--bad);padding:6px 8px">optimize failed: ${e.message}</div>`; btn.disabled=false; return; }
   btn.disabled=false;
   const best=res.best, runners=res.runnersUp||[];

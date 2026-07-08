@@ -28,6 +28,10 @@ class GameplanBot extends RandomPlayerAI {
 		//   { order: '1 2 3 4' team-preview order (first 4 brought, first 2 lead),
 		//     megaSpecies: 'Sceptile' (only this mon may Mega) | null (never Mega) | undefined (bot decides) }
 		this._cfg = opts.config || null;
+		// Arena practice mode: pick a strong-but-varied bring each game so you get
+		// fresh reps instead of the same four every time. Never set for the matrix/
+		// optimizer (they need the deterministic heuristic for stable win rates).
+		this._vary = !!opts.vary;
 	}
 
 	get battle() { return this._bs && this._bs.battle; }
@@ -324,16 +328,21 @@ class GameplanBot extends RandomPlayerAI {
 			if (['drought', 'drizzle', 'sandstream', 'snowwarning', 'orichalcumpulse', 'protosynthesis'].includes(ability)) val += 30;  // weather
 			if (moves.some(m => ['helpinghand', 'partingshot', 'willowisp', 'taunt', 'encore'].includes(m))) val += 14;
 			if (moves.includes('protect')) val += 6;
-			if (mon && mon.item && b.dex.items.get(mon.item).megaStone) val += 26;    // bringing the Mega
+			const hasMega = !!(mon && mon.item && b.dex.items.get(mon.item).megaStone);
+			if (hasMega) val += 26;                                                  // bringing the Mega
 			const off = mon ? Math.max(mon.getStat('atk', false, true), mon.getStat('spa', false, true)) : 0;
 			val += off / 4;
 			val += matchupVal(mon, moves);                                          // adapt the bring to the opponent's six
 			// does this mon shield a co-lead setter? redirection, Fake Out, or a priority-blocking ability
 			const guardsSetter = moves.some(m => ['ragepowder', 'followme', 'fakeout'].includes(m))
 				|| ['armortail', 'queenlymajesty', 'dazzling', 'intimidate'].includes(ability);
-			return { i: i + 1, val, isSpeedCtrl, guardsSetter };
+			return { i: i + 1, val, isSpeedCtrl, guardsSetter, hasMega };
 		}).sort((a, b) => b.val - a.val);
-		const bring = scored.slice(0, n);
+		// Matrix "best line" mode: the search fixes WHICH four to bring (bringOnly) and lets
+		// the bot order the leads/Mega. Restrict scoring to those four, keep them all.
+		let pool = scored;
+		if (this._cfg && this._cfg.bringOnly) { const set = new Set(this._cfg.bringOnly); pool = scored.filter(x => set.has(x.i)); }
+		const bring = this._vary ? this._varyBring(pool, n) : pool.slice(0, n);
 		// leads: one speed-control mon to set the mode + a partner that PROTECTS the setter,
 		// so TR reliably goes up. Best partner = a redirect / Fake Out / priority-blocker (even if
 		// it's a second setter like Farigiraf, whose Armor Tail stops Fake Out & priority).
@@ -342,14 +351,44 @@ class GameplanBot extends RandomPlayerAI {
 		if (setters.length) {
 			const setter = setters[0];
 			const others = bring.filter(x => x !== setter);
-			const partner = others.find(x => x.guardsSetter && !x.isSpeedCtrl)   // ideal: dedicated guard (Vivillon)
-				|| others.find(x => x.guardsSetter)                              // a guard that also sets (Farigiraf/Armor Tail)
-				|| others.find(x => !x.isSpeedCtrl)                              // any non-setter
-				|| others[0];
+			let partner;
+			if (this._vary) {
+				// vary the co-lead for practice diversity, but keep it sane: prefer a guard
+				// that protects the setter, else a second speed-setter, else anything.
+				const guards = others.filter(x => x.guardsSetter);
+				const seconds = others.filter(x => x.isSpeedCtrl);
+				const pool = guards.length ? guards : seconds.length ? seconds : others;
+				partner = pool[Math.floor(Math.random() * pool.length)];
+			} else {
+				partner = others.find(x => x.guardsSetter && !x.isSpeedCtrl)   // ideal: dedicated guard (Vivillon)
+					|| others.find(x => x.guardsSetter)                              // a guard that also sets (Farigiraf/Armor Tail)
+					|| others.find(x => !x.isSpeedCtrl)                              // any non-setter
+					|| others[0];
+			}
 			const rest = bring.filter(x => x !== setter && x !== partner);
 			leads = [setter, partner, ...rest];
-		} else leads = bring;
+		} else {
+			leads = bring.slice();
+			if (this._vary && leads.length > 1 && Math.random() < 0.5) [leads[0], leads[1]] = [leads[1], leads[0]];
+		}
 		return `team ${leads.map(x => x.i).join('')}`;
+	}
+
+	// Practice-mode bring: keep the core (speed control + the Mega) but draw the rest
+	// from the strongest remaining mons with a little randomness, so each Arena game
+	// brings a fresh, still-coherent four.
+	_varyBring(scored, n) {
+		const pool = scored.slice();
+		const pick = [];
+		const take = pred => { const i = pool.findIndex(pred); if (i >= 0) pick.push(pool.splice(i, 1)[0]); };
+		take(x => x.isSpeedCtrl);   // always keep a way to control speed
+		take(x => x.hasMega);       // always bring the Mega for power
+		while (pick.length < n && pool.length) {
+			const top = pool.slice(0, Math.max(2, n - pick.length + 1));   // consider the best few remaining
+			const c = top[Math.floor(Math.random() * top.length)];
+			pick.push(c); pool.splice(pool.indexOf(c), 1);
+		}
+		return pick.slice(0, n);
 	}
 }
 
