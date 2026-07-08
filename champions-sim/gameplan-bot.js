@@ -51,9 +51,20 @@ class GameplanBot extends RandomPlayerAI {
 		const S = ['nastyplot', 'swordsdance', 'calmmind', 'bulkup', 'dragondance', 'shellsmash', 'trickroom', 'tailwind', 'victorydance', 'tidyup'];
 		return this.foeMoves().some(m => S.includes(m.id));
 	}
-	// is Trick Room hurting ME right now? (TR up AND I'm faster than the foes -> I move last)
+	// does MY team run Trick Room? (then TR being up is favorable to me — don't stall it)
+	myHasTR() {
+		const s = this.mySide; if (!s) return false;
+		return s.pokemon.some(p => (p.baseMoveSlots || p.moveSlots || []).some(m => this.battle.toID(m.id || m.move) === 'trickroom'));
+	}
+	// foe mons that carry Trick Room and are on the field — anti-TR: KO/Taunt/Encore before it goes up
+	foeTRSetters() {
+		if (this.trActive()) return [];                        // TR already up — too late to prevent
+		const b = this.battle; if (!b) return [];
+		return this.foeActive().filter(f => (f.moveSlots || []).some(ms => b.toID(ms.id) === 'trickroom'));
+	}
+	// is Trick Room hurting ME right now? (enemy TR up AND I'm faster -> I move last). My own TR is fine.
 	trHurtsMe(me) {
-		if (!this.trActive() || !me) return false;
+		if (!this.trActive() || !me || this.myHasTR()) return false;
 		const foes = this.foeActive(); if (!foes.length) return false;
 		return me.getStat('spe', false, true) > Math.max(...foes.map(f => f.getStat('spe', false, true)));
 	}
@@ -136,8 +147,12 @@ class GameplanBot extends RandomPlayerAI {
 		// --- disruption / status, differentiated by what it accomplishes ---
 		if (id === 'willowisp') return { score: this.foePhysical() ? 28 : 8 };   // cripple a physical attacker
 		if (id === 'thunderwave') return { score: 16 };                          // slow a fast foe
-		if (id === 'taunt') return { score: (this.foeHasSetup() && turn <= 3) ? 44 : 22 };  // proactively shut off TR/setup/Tailwind
-		if (id === 'encore') return { score: 16 };                               // lock a foe into one move
+		if (id === 'taunt') {
+			// anti-TR: a live TR setter that hasn't gone up yet is the #1 Taunt target
+			if (this.foeTRSetters().length) return { score: 60 };
+			return { score: (this.foeHasSetup() && turn <= 3) ? 44 : 22 };       // shut off setup/Tailwind
+		}
+		if (id === 'encore') return { score: this.foeTRSetters().length ? 40 : 16 };  // lock a TR setter off Trick Room
 		if (id === 'partingshot') return { score: 15 };                          // pivot + double debuff
 		if (id === 'helpinghand') return { score: (ally && !ally.fainted) ? 18 : -20 };
 		if (['reflect', 'lightscreen', 'auroraveil', 'safeguard'].includes(id)) return { score: turn <= 2 ? 18 : 6 };
@@ -155,6 +170,7 @@ class GameplanBot extends RandomPlayerAI {
 			// pick the foe we hit hardest / can KO (focus-fire + priority revenge logic)
 			const prio = (b.dex.moves.get(id).priority || 0) > 0;
 			const sucker = id === 'suckerpunch';
+			const trSetters = this.foeTRSetters();
 			foes.forEach((f) => {
 				const slot = this.foeSide.active.indexOf(f) + 1;   // 1-based foe slot
 				let dmg = this.estPct(me, id, f);
@@ -166,6 +182,7 @@ class GameplanBot extends RandomPlayerAI {
 				else if (already + dmg >= foeHp) pct += 45;         // combined focus-fire KO
 				else if (already > 0) pct += 8;                     // chip the already-targeted foe
 				if (prio && dmg >= foeHp) pct += 22;                // priority secures the KO before they move
+				if (trSetters.includes(f)) pct += 18;              // anti-TR: gang the setter to KO it before TR goes up
 				if (pct > best.pct) best = { pct, suffix: (this.needsTarget(target) ? ` ${slot}` : ''), foeSlot: slot, dmgPct: dmg };
 			});
 		}
@@ -266,18 +283,52 @@ class GameplanBot extends RandomPlayerAI {
 	// ---------- bring-6 / pick-4 ----------
 	chooseTeamPreview(team) {
 		if (this._cfg && this._cfg.order) return `team ${this._cfg.order.replace(/\s+/g, '')}`;  // forced by optimizer
-		// Reg M-B brings 4. Pick 4 by simple coverage: keep speed-control + best raw offense.
+		// Reg M-B brings 4. Pick a COHERENT four: speed control to set the mode, redirection/
+		// disruption to protect the setter, the Mega for power, and hit hard — not four attackers.
 		const n = this.battle && this.battle.ruleTable ? (this.battle.ruleTable.pickedTeamSize || 4) : 4;
 		if (!this.battle || team.length <= n) return 'default';
-		const idx = team.map((p, i) => {
+		const b = this.battle;
+		const scored = team.map((p, i) => {
 			const mon = this.mySide.pokemon[i];
-			const moves = (p.moves || []).map(m => this.battle.toID(m));
-			const speedctrl = moves.some(m => ['trickroom', 'tailwind', 'icywind', 'electroweb'].includes(m)) ? 100 : 0;
-			const support = moves.some(m => ['fakeout', 'ragepowder', 'followme', 'protect', 'helpinghand'].includes(m)) ? 20 : 0;
+			const moves = (p.moves || []).map(m => b.toID(m));
+			const ability = mon ? b.toID(mon.ability || (mon.set && mon.set.ability)) : '';
+			let val = 0;
+			const isSpeedCtrl = moves.some(m => ['trickroom', 'tailwind', 'icywind', 'electroweb'].includes(m));
+			if (isSpeedCtrl) val += 100;                                              // the game plan
+			if (moves.some(m => ['ragepowder', 'followme'].includes(m))) val += 55;   // redirection protects the setter
+			if (moves.some(m => ['sleeppowder', 'spore', 'hypnosis'].includes(m))) val += 35;  // disruption buys a turn
+			if (moves.includes('fakeout')) val += 32;
+			// abilities that shield the setter from Fake Out / priority while TR goes up (e.g. Farigiraf's Armor Tail)
+			if (['armortail', 'queenlymajesty', 'dazzling'].includes(ability)) val += 24;
+			if (['intimidate'].includes(ability)) val += 28;
+			if (['drought', 'drizzle', 'sandstream', 'snowwarning', 'orichalcumpulse', 'protosynthesis'].includes(ability)) val += 30;  // weather
+			if (moves.some(m => ['helpinghand', 'partingshot', 'willowisp', 'taunt', 'encore'].includes(m))) val += 14;
+			if (moves.includes('protect')) val += 6;
+			if (mon && mon.item && b.dex.items.get(mon.item).megaStone) val += 26;    // bringing the Mega
 			const off = mon ? Math.max(mon.getStat('atk', false, true), mon.getStat('spa', false, true)) : 0;
-			return { i: i + 1, val: speedctrl + support + off / 3 };
-		}).sort((a, b) => b.val - a.val).slice(0, n).map(x => x.i);
-		return `team ${idx.join('')}`;
+			val += off / 4;
+			// does this mon shield a co-lead setter? redirection, Fake Out, or a priority-blocking ability
+			const guardsSetter = moves.some(m => ['ragepowder', 'followme', 'fakeout'].includes(m))
+				|| ['armortail', 'queenlymajesty', 'dazzling', 'intimidate'].includes(ability);
+			return { i: i + 1, val, isSpeedCtrl, guardsSetter };
+		}).sort((a, b) => b.val - a.val);
+		const bring = scored.slice(0, n);
+		// leads: one speed-control mon to set the mode + a partner that PROTECTS the setter,
+		// so TR reliably goes up. Best partner = a redirect / Fake Out / priority-blocker (even if
+		// it's a second setter like Farigiraf, whose Armor Tail stops Fake Out & priority).
+		const setters = bring.filter(x => x.isSpeedCtrl);
+		let leads;
+		if (setters.length) {
+			const setter = setters[0];
+			const others = bring.filter(x => x !== setter);
+			const partner = others.find(x => x.guardsSetter && !x.isSpeedCtrl)   // ideal: dedicated guard (Vivillon)
+				|| others.find(x => x.guardsSetter)                              // a guard that also sets (Farigiraf/Armor Tail)
+				|| others.find(x => !x.isSpeedCtrl)                              // any non-setter
+				|| others[0];
+			const rest = bring.filter(x => x !== setter && x !== partner);
+			leads = [setter, partner, ...rest];
+		} else leads = bring;
+		return `team ${leads.map(x => x.i).join('')}`;
 	}
 }
 

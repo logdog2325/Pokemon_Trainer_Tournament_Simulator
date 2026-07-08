@@ -75,9 +75,22 @@ status (Will-O-Wisp reads physical threats, Taunt vs setup/TR, Thunder Wave, Enc
 screens, setup (only when safe), redirection (Rage Powder/Follow Me), Protect (situational), sleep
 (premium), Trick Room / Tailwind timing, Fake Out (T1), and weather-war mega timing.
 
-Strength (`champions-sim/calibrate.mjs`, vs RandomPlayerAI, sides alternated, 150 games each):
-**Offense 94.7%, Trick Room 69.3%, avg 82.0%** — clears the bar and executes game plans. Trustworthy
+Strength (`champions-sim/calibrate.mjs`, vs RandomPlayerAI, sides alternated):
+**Offense ~93%, Trick Room ~88%, avg ~91%** — clears the bar and executes game plans. Trustworthy
 for the beginner-to-intermediate target, so matchup win-rates are believable.
+
+**Anti-Trick-Room play (added):** the bot now (a) does NOT stall its *own* favorable TR (`myHasTR`
+gate), and (b) actively fights *enemy* TR before it goes up — a live foe TR setter is the #1 **Taunt**
+target (score 60) / **Encore** target (40), and both attackers get a focus-fire bonus to **KO the setter
+before Trick Room lands**. Under enemy TR it stalls with Protect.
+
+**Team-Preview intelligence (rewritten):** `chooseTeamPreview` now brings a *coherent four*, not four
+attackers — it weights speed control (TR/Tailwind), **redirection** (Rage Powder/Follow Me, protects the
+setter), disruption (sleep/Fake Out), weather & Intimidate abilities, and the Mega, above raw offense.
+Leads are chosen as **setter + a partner that shields it** (redirect / Fake Out / a priority-blocking
+ability like Farigiraf's **Armor Tail**), so Trick Room reliably goes up instead of the setter being
+Fake-Out'd or revenge-KO'd. (For the Quivern team it now correctly leads **Gardevoir + Vivillon** and
+brings Torkoal + Farigiraf back.)
 
 ### ✅ Bring-4 / mega optimizer — BUILT
 `champions-sim/optimizer.mjs` (+ shared `teams.mjs`). The bot's Team-Preview choices are now injectable
@@ -88,21 +101,32 @@ recommends *lead Gardevoir + Farigiraf (the setters), back Mudsdale + Torkoal, M
 
     node champions-sim/optimizer.mjs 30      # games per config
 
-Caveat: *rankings are trustworthy; absolute win-rates are inflated* right now, because these opponent
-teams carry no TR disruption and the bot doesn't yet play defensively *around* enemy Trick Room
-(Protect through it / sac to preserve) — so TR sweeps unopposed. Fixing that anti-TR defense is the main
-remaining bot-tuning item for realistic absolute numbers.
+    node champions-sim/optimizer.mjs 30      # games per config
+
+### ✅ Real archetype teams — SOURCED
+`champions-sim/teams.mjs` now holds **real current-meta tournament pastes** from The Champions Arena II
+(Jul 2026): Char-Y/Aerodactyl offense (Marco #1), Big 6 (Toler #2), Blastoise/Floette control (Jorge #3),
+Delphox/Blastoise (Juan #7), and a Rain (Pelipper/Archaludon) core. Pastes are spread-less; `autospread.mjs`
+fills role-based Champions point spreads (TR/fast/bulky detection) so consumers get complete, legal teams.
+
+### ✅ Step 3 — Matchup matrix — SHIPPED
+`champions-sim/matrix.mjs` plays your team vs one real team per archetype (both sides the calibrated bot,
+sides alternated) and prints a win-rate table, **worst matchup first**.
+
+    node champions-sim/matrix.mjs 60
+
+Current read for the Quivern TR team (honest self-play, both bots smart):
+
+    Delphox / Blastoise (Juan #7)             3% ⚠️   (double Fire — Delphox + Incineroar — is the wall)
+    Big 6 (Toler #2)                         27% ⚠️
+    Blastoise / Floette control (Jorge #3)   63% ✓
+    Char-Y / Aerodactyl offense (Marco #1)   83% ✓
+    Rain (Pelipper / Archaludon)             83% ✓
+    overall ~52%
+
+The two ⚠️ matchups are real, actionable weaknesses (Fire spam vs a Grass/Fairy/Psychic TR core). Use
+`optimizer.mjs` to search the best bring/lead/Mega for a specific bad matchup.
 
 ### ⏳ Remaining
-- **Real archetype teams**: swap the spread-complete approximations in `teams.mjs` for the actual
-  tournament pastes in `champions-team-building/top-teams-deduped.md` (best team per Mega/pairing),
-  auto-filling role-based point spreads (prep step, TODO).
-- **Anti-TR defensive play** in the bot (for realistic absolute win-rates).
-- **Matchup matrix** view: your team vs one team per archetype → win-rate table (worst first).
-- **Human-vs-bot** local server for sparring.
-
-## Meta opponent teams (to source)
-One real team **per archetype**, pulled from **Limitless / paste repos** (pokepast.es), e.g. from
-The Champions Arena II top 8: Char-Y/Aerodactyl offense, Big 6, Delphox/Blastoise control. Plus
-Pikalytics usage for `gen9championsvgc2026regmb`. (Current analyzer/harness use hand-built
-approximations of these; swap in the real exported pastes.)
+- **Human-vs-bot** local server for sparring (Step 4).
+- **App integration**: drop a pokepaste into the `champions-team-building` app → see the matrix.
