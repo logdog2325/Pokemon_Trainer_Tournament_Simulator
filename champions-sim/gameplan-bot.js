@@ -338,7 +338,11 @@ class GameplanBot extends RandomPlayerAI {
 				|| ['armortail', 'queenlymajesty', 'dazzling', 'intimidate'].includes(ability);
 			return { i: i + 1, val, isSpeedCtrl, guardsSetter, hasMega };
 		}).sort((a, b) => b.val - a.val);
-		const bring = this._vary ? this._varyBring(scored, n) : scored.slice(0, n);
+		// Matrix "best line" mode: the search fixes WHICH four to bring (bringOnly) and lets
+		// the bot order the leads/Mega. Restrict scoring to those four, keep them all.
+		let pool = scored;
+		if (this._cfg && this._cfg.bringOnly) { const set = new Set(this._cfg.bringOnly); pool = scored.filter(x => set.has(x.i)); }
+		const bring = this._vary ? this._varyBring(pool, n) : pool.slice(0, n);
 		// leads: one speed-control mon to set the mode + a partner that PROTECTS the setter,
 		// so TR reliably goes up. Best partner = a redirect / Fake Out / priority-blocker (even if
 		// it's a second setter like Farigiraf, whose Armor Tail stops Fake Out & priority).
