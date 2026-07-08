@@ -128,7 +128,9 @@ class GameplanBot extends RandomPlayerAI {
 			if (this.twActive() || this.trActive()) return { score: -30 };
 			const mySpe = me ? me.getStat('spe', false, true) : 100;
 			const foeSpe = foes.length ? Math.max(...foes.map(f => f.getStat('spe', false, true))) : 100;
-			return { score: mySpe >= foeSpe * 0.6 ? 45 : 10 };    // fast-ish team wants it
+			const wantTW = mySpe >= foeSpe * 0.55;   // fast-ish team wants the speed control
+			// like Trick Room, get the mode online turn 1 — high, but below a clean game-ending KO (>=160)
+			return { score: wantTW ? (turn <= 1 ? 90 : 55) : 10 };
 		}
 		if (id === 'fakeout') return { score: turn <= 1 ? 55 : -40 };  // turn 1 only
 		if (['ragepowder', 'followme'].includes(id)) return { score: ally && !ally.fainted ? 25 : -20 };
@@ -228,7 +230,9 @@ class GameplanBot extends RandomPlayerAI {
 		const choices = request.active.map((active, i) => {
 			const pm = request.side.pokemon[i];
 			if (pm.condition.endsWith(' fnt') || pm.commanding) return 'pass';
-			canMegaEvo = canMegaEvo && active.canMegaEvo;
+			// don't gate on this mon's canMegaEvo here — that wrongly blocks Mega when a non-Mega
+			// mon (e.g. a Tailwind lead) comes before the Mega mon. canMegaEvo is cleared only after
+			// we actually Mega-Evolve one this turn (below).
 			const ally = this.mySide ? this.mySide.active[i ^ 1] : null;
 
 			const legal = range(1, active.moves.length)
