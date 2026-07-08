@@ -68,8 +68,8 @@ class GameplanBot extends RandomPlayerAI {
 		return dmg / defender.maxhp * 100;
 	}
 
-	// ---- score one (move, target) option; returns {score, choiceSuffix} ----
-	scoreOption(mIdx, active, mv, foes, ally, turn) {
+	// ---- score one (move, target) option; returns {score, suffix, foeSlot, dmgPct} ----
+	scoreOption(mIdx, active, mv, foes, ally, turn, planned) {
 		const b = this.battle;
 		const me = this.mySide ? this.mySide.active[mIdx] : null;
 		const id = b ? b.toID(mv.move) : mv.move;
@@ -81,8 +81,14 @@ class GameplanBot extends RandomPlayerAI {
 			if (this.trActive()) return { score: -50 };           // never re-cancel our own TR
 			const mySpe = me ? me.getStat('spe', false, true) : 100;
 			const foeSpe = foes.length ? Math.max(...foes.map(f => f.getStat('spe', false, true))) : 100;
-			return { score: mySpe <= foeSpe ? 60 : -20 };
+			// high priority to get the mode online early; still below a clean game-ending KO (>=160)
+			return { score: mySpe <= foeSpe ? (turn <= 2 ? 110 : 75) : -20 };
 		}
+		if (['sleeppowder', 'spore', 'hypnosis', 'lovelykiss', 'darkvoid'].includes(id)) {
+			// sleep is premium disruption — buys the Trick Room / setup turn
+			return { score: foes.length ? 50 : -10 };
+		}
+		if (id === 'yawn') return { score: foes.length ? 22 : -10 };
 		if (id === 'tailwind') {
 			if (this.twActive() || this.trActive()) return { score: -30 };
 			const mySpe = me ? me.getStat('spe', false, true) : 100;
@@ -112,15 +118,20 @@ class GameplanBot extends RandomPlayerAI {
 		} else if (['self', 'adjacentAlly'].includes(target)) {
 			return { score: 0 };
 		} else {
-			// pick the foe we hit hardest / can KO
-			foes.forEach((f, k) => {
+			// pick the foe we hit hardest / can KO (with focus-fire: combine with partner's planned damage)
+			foes.forEach((f) => {
 				const slot = this.foeSide.active.indexOf(f) + 1;   // 1-based foe slot
-				let pct = this.estPct(me, id, f);
-				if (pct >= 100 * f.hp / f.maxhp) pct += 60;         // KO bonus
-				if (pct > best.pct) best = { pct, suffix: (this.needsTarget(target) ? ` ${slot}` : '') };
+				const dmg = this.estPct(me, id, f);
+				const foeHp = 100 * f.hp / f.maxhp;
+				const already = (planned && planned[slot]) || 0;
+				let pct = dmg;
+				if (dmg >= foeHp) pct += 60;                        // solo KO
+				else if (already + dmg >= foeHp) pct += 45;         // combined focus-fire KO
+				else if (already > 0) pct += 8;                     // chip the already-targeted foe
+				if (pct > best.pct) best = { pct, suffix: (this.needsTarget(target) ? ` ${slot}` : ''), foeSlot: slot, dmgPct: dmg };
 			});
 		}
-		return { score: best.pct, suffix: best.suffix };
+		return { score: best.pct, suffix: best.suffix, foeSlot: best.foeSlot, dmgPct: best.dmgPct };
 	}
 
 	needsTarget(t) { return ['normal', 'any', 'adjacentFoe'].includes(t); }
@@ -158,7 +169,7 @@ class GameplanBot extends RandomPlayerAI {
 		const turn = this.battle ? this.battle.turn : 1;
 		const foes = this.foeActive();
 		let canMegaEvo = true;
-		const chosen = [];
+		const planned = {};              // foeSlot -> cumulative damage % planned this turn (focus-fire)
 		const choices = request.active.map((active, i) => {
 			const pm = request.side.pokemon[i];
 			if (pm.condition.endsWith(' fnt') || pm.commanding) return 'pass';
@@ -171,11 +182,13 @@ class GameplanBot extends RandomPlayerAI {
 			if (!legal.length) return 'pass';
 
 			const scored = legal.map(mv => {
-				const s = this.scoreOption(i, active, mv, foes, ally, turn);
+				const s = this.scoreOption(i, active, mv, foes, ally, turn, planned);
 				return { mv, ...s };
 			}).sort((a, b) => b.score - a.score);
 
 			const pick = scored[0];
+			// record planned damage on the target so the partner can focus-fire the same foe
+			if (pick.foeSlot && pick.dmgPct) planned[pick.foeSlot] = (planned[pick.foeSlot] || 0) + pick.dmgPct;
 			// resolve the target suffix for the picked move (status foe/ally moves need one too)
 			let suffix = pick.suffix || '';
 			if (!suffix) {

@@ -61,18 +61,17 @@ every bring/lead/mega combo cheaply.
 Currently uses the built-in RandomPlayerAI for both sides, so the win% reflects **raw team power, not
 skilled play** — the game-plan bot below is what makes it a trustworthy matchup read.
 
-### 🚧 Game-plan doubles bot — BUILT (v1, needs tuning)
+### ✅ Game-plan doubles bot — BUILT + CALIBRATED
 `champions-sim/gameplan-bot.js` — a hand-crafted heuristic doubles player (extends the sim's
 RandomPlayerAI, peeks the live Battle for foe info). Implements: damage-based targeting + KO-seeking,
-spread moves, and game-plan rules for **Trick Room / Tailwind** (set TR when slower & not up; Tailwind
-when fast-ish & no TR), **Fake Out** (turn 1), Protect (situational), redirection, setup, and
-**weather-war mega timing** (holds Char-Y / Froslass to set weather LAST and override the opponent —
-`megaWeatherOf` + the mega-timing block). Plugged into `simulate-matchup.mjs` (smart / random modes).
+**focus-fire** (both attackers combine onto one foe to secure KOs), spread moves, sleep as premium
+disruption, and game-plan rules for **Trick Room / Tailwind** (set TR when slower & not up, prioritized
+early; Tailwind when fast-ish & no TR), **Fake Out** (turn 1), situational Protect, redirection, setup,
+and **weather-war mega timing** (holds Char-Y / Froslass to set weather LAST and override the opponent).
 
-State: runs full battles cleanly and *executes* game plans (a TR team reliably sets Trick Room and
-sweeps). But it only beats random ~55% and matchup numbers are inflated — so it needs **calibration**
-before the win-rates are trustworthy: stronger KO/finish priority, better targeting weights, smarter
-Protect/setup usage, and Tailwind-team counterplay. Validate on a non-TR team (TR mirrors are noisy).
+Strength (measured by `champions-sim/calibrate.mjs`, GameplanBot vs RandomPlayerAI, sides alternated,
+120 games each): **Offense 92.5%, Trick Room 70.8%, avg 81.7%** — clears the 70% bar and executes game
+plans. Focus-fire was the decisive lever. This is trustworthy for the beginner-to-intermediate target.
 
 ### ⏳ Remaining
 - **Bring-6 / pick-4 + mega + lead optimizer** (per user spec): for a matchup, run ~100 games for each
