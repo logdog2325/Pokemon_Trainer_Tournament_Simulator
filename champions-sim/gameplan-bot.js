@@ -46,6 +46,17 @@ class GameplanBot extends RandomPlayerAI {
 	foeHasSpread() { return this.foeMoves().some(m => ['allAdjacentFoes', 'allAdjacent'].includes(m.target) && m.basePower); }
 	foeHasPriority() { return this.foeMoves().some(m => (m.priority || 0) > 0 && m.category !== 'Status'); }
 	foePhysical() { return this.foeMoves().some(m => m.category === 'Physical' && m.basePower >= 55); }
+	// foe's kit contains a setup / speed-control move (something to disrupt with Taunt)
+	foeHasSetup() {
+		const S = ['nastyplot', 'swordsdance', 'calmmind', 'bulkup', 'dragondance', 'shellsmash', 'trickroom', 'tailwind', 'victorydance', 'tidyup'];
+		return this.foeMoves().some(m => S.includes(m.id));
+	}
+	// is Trick Room hurting ME right now? (TR up AND I'm faster than the foes -> I move last)
+	trHurtsMe(me) {
+		if (!this.trActive() || !me) return false;
+		const foes = this.foeActive(); if (!foes.length) return false;
+		return me.getStat('spe', false, true) > Math.max(...foes.map(f => f.getStat('spe', false, true)));
+	}
 
 	// If this Pokemon Mega-Evolves, what weather (if any) would its mega ability set?
 	// (Champions weather wars: Char-Y->Drought, Froslass->Snow Warning, etc. are mega-gated.)
@@ -111,6 +122,7 @@ class GameplanBot extends RandomPlayerAI {
 		if (id === 'fakeout') return { score: turn <= 1 ? 55 : -40 };  // turn 1 only
 		if (['ragepowder', 'followme'].includes(id)) return { score: ally && !ally.fainted ? 25 : -20 };
 		if (['protect', 'detect', 'kingsshield', 'spikyshield'].includes(id)) {
+			if (this.trHurtsMe(me)) return { score: 36 };          // stall out the enemy Trick Room turns
 			// don't spam; use when threatened or to stall a clearly winning board
 			return { score: (me && me.hp / me.maxhp < 0.4) ? 20 : (turn <= 1 ? -5 : 8) };
 		}
@@ -124,7 +136,7 @@ class GameplanBot extends RandomPlayerAI {
 		// --- disruption / status, differentiated by what it accomplishes ---
 		if (id === 'willowisp') return { score: this.foePhysical() ? 28 : 8 };   // cripple a physical attacker
 		if (id === 'thunderwave') return { score: 16 };                          // slow a fast foe
-		if (id === 'taunt') return { score: 22 };                                // shut off TR/Tailwind/setup/redirect
+		if (id === 'taunt') return { score: (this.foeHasSetup() && turn <= 3) ? 44 : 22 };  // proactively shut off TR/setup/Tailwind
 		if (id === 'encore') return { score: 16 };                               // lock a foe into one move
 		if (id === 'partingshot') return { score: 15 };                          // pivot + double debuff
 		if (id === 'helpinghand') return { score: (ally && !ally.fainted) ? 18 : -20 };
