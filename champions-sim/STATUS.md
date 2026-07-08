@@ -69,9 +69,15 @@ disruption, and game-plan rules for **Trick Room / Tailwind** (set TR when slowe
 early; Tailwind when fast-ish & no TR), **Fake Out** (turn 1), situational Protect, redirection, setup,
 and **weather-war mega timing** (holds Char-Y / Froslass to set weather LAST and override the opponent).
 
-Strength (measured by `champions-sim/calibrate.mjs`, GameplanBot vs RandomPlayerAI, sides alternated,
-120 games each): **Offense 92.5%, Trick Room 70.8%, avg 81.7%** — clears the 70% bar and executes game
-plans. Focus-fire was the decisive lever. This is trustworthy for the beginner-to-intermediate target.
+Full move-category logic: damage/KO + **focus-fire**, spread moves, **priority revenge-KO** (+ Sucker
+Punch conditionality), **Wide Guard / Quick Guard** (react to foe spread/priority kits), differentiated
+status (Will-O-Wisp reads physical threats, Taunt vs setup/TR, Thunder Wave, Encore, Parting Shot),
+screens, setup (only when safe), redirection (Rage Powder/Follow Me), Protect (situational), sleep
+(premium), Trick Room / Tailwind timing, Fake Out (T1), and weather-war mega timing.
+
+Strength (`champions-sim/calibrate.mjs`, vs RandomPlayerAI, sides alternated, 150 games each):
+**Offense 94.7%, Trick Room 69.3%, avg 82.0%** — clears the bar and executes game plans. Trustworthy
+for the beginner-to-intermediate target, so matchup win-rates are believable.
 
 ### ⏳ Remaining
 - **Bring-6 / pick-4 + mega + lead optimizer** (per user spec): for a matchup, run ~100 games for each

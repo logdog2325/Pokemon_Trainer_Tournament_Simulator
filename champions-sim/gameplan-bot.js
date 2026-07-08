@@ -34,6 +34,15 @@ class GameplanBot extends RandomPlayerAI {
 	trActive() { return !!(this.battle && this.battle.field.getPseudoWeather('trickroom')); }
 	twActive() { const s = this.mySide; return !!(s && s.sideConditions['tailwind']); }
 
+	// inspect the foes' known moves (fair in symmetric AI-vs-AI) for guard/status logic
+	foeMoves() {
+		const b = this.battle; if (!b) return [];
+		return this.foeActive().flatMap(f => (f.moveSlots || []).map(ms => b.dex.moves.get(ms.id)));
+	}
+	foeHasSpread() { return this.foeMoves().some(m => ['allAdjacentFoes', 'allAdjacent'].includes(m.target) && m.basePower); }
+	foeHasPriority() { return this.foeMoves().some(m => (m.priority || 0) > 0 && m.category !== 'Status'); }
+	foePhysical() { return this.foeMoves().some(m => m.category === 'Physical' && m.basePower >= 55); }
+
 	// If this Pokemon Mega-Evolves, what weather (if any) would its mega ability set?
 	// (Champions weather wars: Char-Y->Drought, Froslass->Snow Warning, etc. are mega-gated.)
 	megaWeatherOf(pokemon) {
@@ -101,12 +110,21 @@ class GameplanBot extends RandomPlayerAI {
 			// don't spam; use when threatened or to stall a clearly winning board
 			return { score: (me && me.hp / me.maxhp < 0.4) ? 20 : (turn <= 1 ? -5 : 8) };
 		}
-		if (['nastyplot', 'swordsdance', 'calmmind', 'bulkup', 'dragondance', 'shellsmash'].includes(id)) {
-			return { score: (me && me.hp / me.maxhp > 0.7 && foes.length < 2) ? 30 : 12 };
+		if (['nastyplot', 'swordsdance', 'calmmind', 'bulkup', 'dragondance', 'shellsmash', 'victorydance', 'tidyup'].includes(id)) {
+			// only set up when healthy and not staring down a full board that will punish it
+			return { score: (me && me.hp / me.maxhp > 0.7 && foes.length < 2) ? 32 : 10 };
 		}
-		if (['helpinghand', 'willowisp', 'thunderwave', 'encore', 'taunt', 'partingshot'].includes(id)) {
-			return { score: 14 };
-		}
+		// --- protective moves that react to the foe's kit ---
+		if (id === 'wideguard') return { score: this.foeHasSpread() ? 40 : (turn <= 1 ? -8 : 4) };
+		if (id === 'quickguard') return { score: this.foeHasPriority() ? 34 : (turn <= 1 ? -8 : 3) };
+		// --- disruption / status, differentiated by what it accomplishes ---
+		if (id === 'willowisp') return { score: this.foePhysical() ? 28 : 8 };   // cripple a physical attacker
+		if (id === 'thunderwave') return { score: 16 };                          // slow a fast foe
+		if (id === 'taunt') return { score: 22 };                                // shut off TR/Tailwind/setup/redirect
+		if (id === 'encore') return { score: 16 };                               // lock a foe into one move
+		if (id === 'partingshot') return { score: 15 };                          // pivot + double debuff
+		if (id === 'helpinghand') return { score: (ally && !ally.fainted) ? 18 : -20 };
+		if (['reflect', 'lightscreen', 'auroraveil', 'safeguard'].includes(id)) return { score: turn <= 2 ? 18 : 6 };
 
 		// --- damaging moves: best target ---
 		const spread = ['allAdjacentFoes', 'allAdjacent'].includes(target);
@@ -118,16 +136,20 @@ class GameplanBot extends RandomPlayerAI {
 		} else if (['self', 'adjacentAlly'].includes(target)) {
 			return { score: 0 };
 		} else {
-			// pick the foe we hit hardest / can KO (with focus-fire: combine with partner's planned damage)
+			// pick the foe we hit hardest / can KO (focus-fire + priority revenge logic)
+			const prio = (b.dex.moves.get(id).priority || 0) > 0;
+			const sucker = id === 'suckerpunch';
 			foes.forEach((f) => {
 				const slot = this.foeSide.active.indexOf(f) + 1;   // 1-based foe slot
-				const dmg = this.estPct(me, id, f);
+				let dmg = this.estPct(me, id, f);
+				if (sucker) dmg *= 0.9;                             // conditional: fails if the foe doesn't attack
 				const foeHp = 100 * f.hp / f.maxhp;
 				const already = (planned && planned[slot]) || 0;
 				let pct = dmg;
 				if (dmg >= foeHp) pct += 60;                        // solo KO
 				else if (already + dmg >= foeHp) pct += 45;         // combined focus-fire KO
 				else if (already > 0) pct += 8;                     // chip the already-targeted foe
+				if (prio && dmg >= foeHp) pct += 22;                // priority secures the KO before they move
 				if (pct > best.pct) best = { pct, suffix: (this.needsTarget(target) ? ` ${slot}` : ''), foeSlot: slot, dmgPct: dmg };
 			});
 		}
