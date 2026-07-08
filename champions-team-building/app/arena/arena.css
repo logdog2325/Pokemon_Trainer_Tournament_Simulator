@@ -61,6 +61,21 @@ h1 { font-size: 18px; font-weight: 700; margin-bottom: 8px; letter-spacing: .3px
 .plate.hidden { display: none; }
 .tag { display: inline-block; font-size: 9px; padding: 0 4px; border-radius: 3px; background: #5b62a0; margin-left: 4px; }
 
+/* ---- narrow screens: keep the corner HP plates clear of the sprites ---- */
+@media (max-width: 600px) {
+	#field { height: 320px; }
+	.slot { width: 104px; height: 94px; }
+	.slot img { max-width: 96px; max-height: 88px; }
+	#p2a { top: 14px; right: 6px; }   #p2b { top: 44px; right: 96px; }
+	#p1a { bottom: 34px; left: 6px; }  #p1b { bottom: 12px; left: 96px; }
+	.plate { width: 128px; padding: 4px 7px; }
+	#plate-p2a { top: 8px; left: 8px; }    #plate-p2b { top: 52px; left: 8px; }
+	#plate-p1a { bottom: 52px; right: 8px; } #plate-p1b { bottom: 8px; right: 8px; }
+	.plate .nm { font-size: 11px; }  .plate .lv { font-size: 10px; }
+	.plate .st { font-size: 9px; min-height: 10px; }
+	.hpbar { height: 6px; }
+}
+
 /* ---- log + controls ---- */
 #log { height: 96px; overflow-y: auto; background: #14162a; border: 1px solid #2c3050; border-radius: 8px; padding: 7px 10px; font-size: 12px; }
 #log div { padding: 1px 0; } #log .t { color: #8a90b0; } #log .big { color: #ffe36b; font-weight: 700; }
