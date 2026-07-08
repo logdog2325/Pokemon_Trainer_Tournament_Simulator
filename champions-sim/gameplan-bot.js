@@ -87,23 +87,46 @@ class GameplanBot extends RandomPlayerAI {
 	}
 
 	// ---- rough damage % of a move vs a defender (lvl 50, avg roll) ----
+	// We run out of live battle context, so we can't fire the sim's ability/item modify
+	// events (they crash) — instead we fold the modifiers that actually swing decisions
+	// (Technician, Adaptability, weather, Life Orb, multi-hit, etc.) in by hand.
 	estPct(attacker, moveId, defender) {
 		const b = this.battle; if (!b || !attacker || !defender) return 0;
 		const m = b.dex.moves.get(moveId);
 		if (!m.basePower || m.category === 'Status') return 0;
 		if (!b.dex.getImmunity(m.type, defender)) return 0;
+		const abil = b.toID(attacker.ability), item = b.toID(attacker.item), w = b.field.weather;
 		let bp = m.basePower;
-		// Eruption/Water Spout style: scale with HP
+		const perHit = bp;                                       // base power of a single hit (for Technician)
+		// HP-scaling nukes
 		if (['eruption', 'waterspout', 'dragonenergy'].includes(m.id)) bp = Math.max(1, Math.floor(150 * attacker.hp / attacker.maxhp));
+		// Last Respects: +50 BP per fainted ally — a lethal lategame cleaner the bot must respect
+		if (m.id === 'lastrespects') { const f = attacker.side ? attacker.side.pokemon.filter(p => p.fainted).length : 0; bp = Math.min(50 + 50 * f, 500); }
+		// multi-hit: score the whole barrage, not one hit (Population Bomb etc.)
+		const HITS = { populationbomb: (item === 'widelens' || abil === 'skilllink') ? 9 : 6, bulletseed: item === 'loadeddice' ? 4.5 : abil === 'skilllink' ? 5 : 3.2, rockblast: item === 'loadeddice' ? 4.5 : abil === 'skilllink' ? 5 : 3.2, iciclespear: abil === 'skilllink' ? 5 : 3.2, pinmissile: abil === 'skilllink' ? 5 : 3.2, tailslap: abil === 'skilllink' ? 5 : 3.2, watershuriken: 3, bonemerang: 2, dragondarts: 2, dualwingbeat: 2, doublehit: 2, twineedle: 2 };
+		if (HITS[m.id]) bp *= HITS[m.id];
 		const eff = b.dex.getEffectiveness(m.type, defender);   // integer doublings
 		const typeMult = Math.pow(2, eff);
-		const stab = attacker.hasType(m.type) ? 1.5 : 1;
+		let stab = attacker.hasType(m.type) ? 1.5 : 1;
+		if (stab > 1 && abil === 'adaptability') stab = 2;
 		const phys = m.category === 'Physical';
-		// unmodified=true: include boosts but skip ability/item modify events (which crash out of battle context)
-		const atk = attacker.getStat(phys ? 'atk' : 'spa', false, true);
+		const atk = attacker.getStat(phys ? 'atk' : 'spa', false, true);   // includes boosts (so a -2 nuke reads weak)
 		const def = Math.max(1, defender.getStat(phys ? 'def' : 'spd', false, true));
 		const base = Math.floor(Math.floor((2 * 50 / 5 + 2) * bp * atk / def) / 50) + 2;
-		const dmg = base * stab * typeMult * 0.925;             // avg roll
+		// ability / item / weather multipliers
+		let mod = 1;
+		if (abil === 'technician' && perHit <= 60) mod *= 1.5;
+		if (abil === 'sheerforce' && m.secondary) mod *= 1.3;
+		if (abil === 'fairyaura' && m.type === 'Fairy') mod *= 1.33;
+		if (abil === 'toughclaws' && m.flags && m.flags.contact) mod *= 1.3;
+		if ((abil === 'hugepower' || abil === 'purepower') && phys) mod *= 2;
+		if ((w === 'sunnyday' || w === 'desolateland')) { if (m.type === 'Fire') mod *= 1.5; if (m.type === 'Water') mod *= 0.5; }
+		if ((w === 'raindance' || w === 'primordialsea')) { if (m.type === 'Water') mod *= 1.5; if (m.type === 'Fire') mod *= 0.5; }
+		if (item === 'lifeorb') mod *= 1.3;
+		if (item === 'choiceband' && phys) mod *= 1.5;
+		if (item === 'choicespecs' && !phys) mod *= 1.5;
+		if (item === 'expertbelt' && eff > 0) mod *= 1.2;
+		const dmg = base * stab * typeMult * mod * 0.925;       // avg roll
 		return dmg / defender.maxhp * 100;
 	}
 
@@ -137,15 +160,26 @@ class GameplanBot extends RandomPlayerAI {
 			return { score: wantTW ? (turn <= 1 ? 90 : 55) : 10 };
 		}
 		if (id === 'fakeout') return { score: turn <= 1 ? 55 : -40 };  // turn 1 only
-		if (['ragepowder', 'followme'].includes(id)) return { score: ally && !ally.fainted ? 25 : -20 };
+		if (['ragepowder', 'followme'].includes(id)) {
+			if (!ally || ally.fainted) return { score: -20 };
+			// redirect attacks off a valuable partner — a Mega/sweeper or a frail setter it's protecting
+			const allyMega = /-Mega/.test(ally.species.name) || (ally.item && b.dex.items.get(ally.item).megaStone);
+			const allyFrail = (ally.getStat('def', false, true) + ally.getStat('spd', false, true)) < 205;
+			return { score: (turn <= 2 ? 34 : 24) + (allyMega ? 12 : 0) + (allyFrail ? 6 : 0) };
+		}
 		if (['protect', 'detect', 'kingsshield', 'spikyshield'].includes(id)) {
 			if (this.trHurtsMe(me)) return { score: 36 };          // stall out the enemy Trick Room turns
 			// don't spam; use when threatened or to stall a clearly winning board
 			return { score: (me && me.hp / me.maxhp < 0.4) ? 20 : (turn <= 1 ? -5 : 8) };
 		}
 		if (['nastyplot', 'swordsdance', 'calmmind', 'bulkup', 'dragondance', 'shellsmash', 'victorydance', 'tidyup'].includes(id)) {
-			// only set up when healthy and not staring down a full board that will punish it
-			return { score: (me && me.hp / me.maxhp > 0.7 && foes.length < 2) ? 32 : 10 };
+			// set up when healthy AND safe: behind a redirecting partner (Follow Me), out-speeding
+			// the board, or down to one foe. This is what enables a Calm Mind "balance mode".
+			const healthy = me && me.hp / me.maxhp > 0.65;
+			if (!healthy) return { score: 8 };
+			const allyRedirects = ally && !ally.fainted && (ally.moveSlots || []).some(ms => ['followme', 'ragepowder'].includes(b.toID(ms.id)));
+			const faster = me && foes.length && me.getStat('spe', false, true) > Math.max(...foes.map(f => f.getStat('spe', false, true)));
+			return { score: (allyRedirects || foes.length < 2 || faster) ? 30 : 14 };
 		}
 		// --- protective moves that react to the foe's kit ---
 		if (id === 'wideguard') return { score: this.foeHasSpread() ? 40 : (turn <= 1 ? -8 : 4) };
