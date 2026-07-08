@@ -141,6 +141,20 @@ Current read for the Quivern TR team (honest self-play, both bots smart):
 The two ⚠️ matchups are real, actionable weaknesses (Fire spam vs a Grass/Fairy/Psychic TR core). Use
 `optimizer.mjs` to search the best bring/lead/Mega for a specific bad matchup.
 
+### ✅ Champions Arena — offline GRAPHICAL battle vs AI (SHIPPED)
+`champions-sim/arena/` — a local Pokémon-Showdown-style client where you pilot your team
+vs the calibrated bot, with **real Showdown animated sprites**, the classic grassy field,
+move/HP/faint animations, weather + Trick Room overlays, and click-to-choose controls —
+**fully offline** (all sprites/backgrounds bundled in `arena/sprites` + `arena/fx`).
+
+    node champions-sim/arena/server.mjs      # open http://localhost:8790
+
+- Pick any archetype/mega core to face, or **🎲 Random**.
+- **Open Team Sheets**: you see the opponent's full **six** at Team Preview, then tap your
+  **4 to bring** (first two lead). The AI brings & plays with the game-plan bot.
+- Dependency-free Node server bridges the real sim (GameplanBot on p2) to the browser via
+  Server-Sent Events; your choices go back over POST. See `arena/README.md`.
+
 ### ⏳ Remaining
-- **Human-vs-bot** local server for sparring (Step 4).
 - **App integration**: drop a pokepaste into the `champions-team-building` app → see the matrix.
+- (Nice-to-have) let the Arena accept a pasted team for *your* side instead of the built-in one.
