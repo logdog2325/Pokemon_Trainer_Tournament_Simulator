@@ -20,6 +20,7 @@ const FORMAT = 'gen9championsvgc2026regmb';
 const cdex = Dex.mod('champions');
 
 import { MY_TEAM, META } from './teams.mjs';
+import { autospread } from './autospread.mjs';
 
 // ---- parse a paste into slot metadata (species, mega-capable, is-lead-ish) ----
 const LEADISH = ['trickroom', 'tailwind', 'fakeout', 'ragepowder', 'followme', 'icywind', 'electroweb', 'sleeppowder', 'protect'];
@@ -75,8 +76,8 @@ async function winRate(myPacked, foePacked, config, N) {
 }
 
 export async function optimize(myPaste, foePaste, foeName, N) {
-	const myPacked = Teams.pack(Teams.import(myPaste));
-	const foePacked = Teams.pack(Teams.import(foePaste));
+	const myPacked = Teams.pack(Teams.import(autospread(myPaste)));
+	const foePacked = Teams.pack(Teams.import(autospread(foePaste)));
 	const slots = meta(myPaste);
 	const byName = Object.fromEntries(slots.map(s => [s.slot, s.species]));
 

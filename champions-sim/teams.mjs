@@ -1,11 +1,8 @@
 /*
- * Shared team library for the analyzer / harness / optimizer.
- * Champions point pastes (points in the EVs field, 0-32; base ability for megas).
- *
- * NOTE: META teams are spread-complete approximations of the tournament
- * archetypes. To use the real tournament pastes from
- * champions-team-building/top-teams-deduped.md (which lack EV spreads), run them
- * through the auto-spread step (see prep-teams.mjs, TODO) and drop them in here.
+ * Shared team library. MY_TEAM has explicit point spreads; META teams are the
+ * REAL current-meta lists from The Champions Arena II (706 players, Jul 2026),
+ * as raw tournament pastes (no spreads). Consumers run them through
+ * autospread() (see autospread.mjs) to fill role-based point spreads.
  */
 
 export const MY_TEAM = `
@@ -70,188 +67,251 @@ Timid Nature
 - Protect
 `;
 
+// The Champions Arena II — real top teams (spread-less; autospread fills them).
 export const META = {
-	'Char-Y / Aerodactyl offense': `
+	'Char-Y / Aerodactyl offense (Marco #1)': `
 Charizard @ Charizardite Y
 Ability: Blaze
-Level: 50
-EVs: 4 HP / 32 SpA / 30 Spe
-Timid Nature
+Modest Nature
 - Heat Wave
-- Air Slash
+- Weather Ball
 - Solar Beam
 - Protect
 
-Aerodactyl @ Aerodactylite
-Ability: Rock Head
-Level: 50
-EVs: 4 HP / 32 Atk / 30 Spe
-Jolly Nature
-- Rock Slide
-- Dual Wingbeat
-- Tailwind
-- Protect
-
-Incineroar @ Sitrus Berry
+Incineroar @ Charcoal
 Ability: Intimidate
-Level: 50
-EVs: 32 HP / 2 Def / 32 SpD
-Careful Nature
-- Fake Out
+Brave Nature
 - Flare Blitz
+- Darkest Lariat
+- Fake Out
 - Parting Shot
-- Knock Off
-
-Farigiraf @ Colbur Berry
-Ability: Armor Tail
-Level: 50
-EVs: 32 HP / 32 SpD / 2 Def
-Sassy Nature
-- Trick Room
-- Helping Hand
-- Psychic
-- Protect
 
 Sylveon @ Fairy Feather
 Ability: Pixilate
-Level: 50
-EVs: 32 HP / 32 SpA / 2 Def
 Modest Nature
 - Hyper Voice
-- Moonblast
+- Yawn
 - Quick Attack
+- Protect
+
+Farigiraf @ Sitrus Berry
+Ability: Armor Tail
+Calm Nature
+- Psyshock
+- Helping Hand
+- Trick Room
 - Protect
 
 Garchomp @ Life Orb
 Ability: Rough Skin
-Level: 50
-EVs: 4 HP / 32 Atk / 30 Spe
 Jolly Nature
 - Earthquake
-- Rock Slide
+- Protect
 - Dragon Claw
+- Stomping Tantrum
+
+Aerodactyl @ Focus Sash
+Ability: Unnerve
+Jolly Nature
+- Rock Slide
+- Tailwind
+- Wide Guard
 - Protect
 `,
-	'Big 6 (Char-Y / Floette)': `
+	'Big 6 (Toler #2)': `
+Kingambit @ Chople Berry
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Low Kick
+- Sucker Punch
+- Protect
+
 Charizard @ Charizardite Y
-Ability: Blaze
-Level: 50
-EVs: 4 HP / 32 SpA / 30 Spe
-Timid Nature
+Ability: Solar Power
+Modest Nature
 - Heat Wave
-- Air Slash
+- Weather Ball
 - Solar Beam
 - Protect
 
-Floette @ Floettenite
+Floette-Eternal @ Floettite
 Ability: Flower Veil
-Level: 50
-EVs: 32 HP / 32 SpA / 2 SpD
-Modest Nature
+Timid Nature
 - Moonblast
-- Light of Ruin
 - Dazzling Gleam
-- Protect
-
-Basculegion @ Focus Sash
-Ability: Adaptability
-Level: 50
-EVs: 32 Atk / 2 Def / 32 Spe
-Adamant Nature
-- Wave Crash
-- Last Respects
-- Aqua Jet
-- Protect
-
-Kingambit @ Life Orb
-Ability: Defiant
-Level: 50
-EVs: 24 HP / 32 Atk / 10 Spe
-Adamant Nature
-- Kowtow Cleave
-- Sucker Punch
-- Iron Head
+- Light of Ruin
 - Protect
 
 Whimsicott @ Focus Sash
 Ability: Prankster
-Level: 50
-EVs: 32 SpA / 32 Spe / 2 HP
 Timid Nature
-- Tailwind
 - Moonblast
+- Tailwind
 - Encore
 - Protect
 
 Garchomp @ Life Orb
 Ability: Rough Skin
-Level: 50
-EVs: 4 HP / 32 Atk / 30 Spe
 Jolly Nature
 - Earthquake
-- Rock Slide
 - Dragon Claw
+- Rock Slide
+- Protect
+
+Basculegion @ Mystic Water
+Ability: Adaptability
+Adamant Nature
+- Wave Crash
+- Aqua Jet
+- Last Respects
 - Protect
 `,
-	'Delphox / Blastoise control': `
-Delphox @ Delphoxite
-Ability: Blaze
-Level: 50
-EVs: 4 HP / 32 SpA / 30 Spe
-Timid Nature
-- Heat Wave
-- Nasty Plot
-- Psyshock
+	'Blastoise / Floette control (Jorge #3)': `
+Sinistcha @ Occa Berry
+Ability: Hospitality
+Bold Nature
+- Matcha Gotcha
+- Trick Room
+- Rage Powder
 - Protect
+
+Sneasler @ Focus Sash
+Ability: Poison Touch
+Jolly Nature
+- Close Combat
+- Poison Jab
+- Fake Out
+- Rock Tomb
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Careful Nature
+- Flare Blitz
+- Fake Out
+- Helping Hand
+- Parting Shot
 
 Blastoise @ Blastoisinite
 Ability: Rain Dish
-Level: 50
-EVs: 4 HP / 32 SpA / 30 Spe
 Modest Nature
 - Water Spout
 - Dark Pulse
 - Shell Smash
 - Protect
 
-Incineroar @ Sitrus Berry
-Ability: Intimidate
-Level: 50
-EVs: 32 HP / 2 Def / 32 SpD
-Careful Nature
-- Fake Out
-- Flare Blitz
-- Parting Shot
-- Helping Hand
-
-Kingambit @ Black Glasses
+Kingambit @ Life Orb
 Ability: Defiant
-Level: 50
-EVs: 24 HP / 32 Atk / 10 Spe
 Adamant Nature
 - Kowtow Cleave
 - Sucker Punch
 - Swords Dance
 - Protect
 
-Sinistcha @ Kasib Berry
-Ability: Hospitality
-Level: 50
-EVs: 32 HP / 32 Def / 2 SpD
-Relaxed Nature
-- Trick Room
-- Rage Powder
-- Matcha Gotcha
+Floette-Eternal @ Floettite
+Ability: Flower Veil
+Modest Nature
+- Protect
+- Calm Mind
+- Dazzling Gleam
+- Moonblast
+`,
+	'Delphox / Blastoise (Juan #7)': `
+Delphox @ Delphoxite
+Ability: Blaze
+Timid Nature
+- Heat Wave
+- Psyshock
+- Nasty Plot
 - Protect
 
 Sneasler @ Focus Sash
 Ability: Poison Touch
-Level: 50
-EVs: 4 HP / 32 Atk / 30 Spe
 Jolly Nature
-- Close Combat
-- Poison Jab
+- Quick Guard
 - Fake Out
+- Poison Jab
+- Close Combat
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Impish Nature
+- Fake Out
+- Parting Shot
+- Helping Hand
+- Flare Blitz
+
+Sinistcha @ Occa Berry
+Ability: Hospitality
+Bold Nature
+- Matcha Gotcha
+- Rage Powder
+- Trick Room
 - Protect
+
+Blastoise @ Blastoisinite
+Ability: Rain Dish
+Modest Nature
+- Water Spout
+- Dark Pulse
+- Shell Smash
+- Protect
+
+Kingambit @ Black Glasses
+Ability: Defiant
+Adamant Nature
+- Protect
+- Swords Dance
+- Kowtow Cleave
+- Sucker Punch
+`,
+	'Rain (Pelipper / Archaludon)': `
+Scovillain @ Scovillainite
+Ability: Moody
+Calm Nature
+- Protect
+- Overheat
+- Rage Powder
+- Leech Seed
+
+Basculegion @ Life Orb
+Ability: Swift Swim
+Adamant Nature
+- Protect
+- Wave Crash
+- Aqua Jet
+- Last Respects
+
+Pelipper @ Sitrus Berry
+Ability: Drizzle
+Modest Nature
+- Protect
+- Weather Ball
+- Hurricane
+- Tailwind
+
+Archaludon @ Leftovers
+Ability: Stamina
+Bold Nature
+- Protect
+- Flash Cannon
+- Electro Shot
+- Dragon Pulse
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Sassy Nature
+- Spirit Break
+- Light Screen
+- Reflect
+- Parting Shot
+
+Floette-Eternal @ Floettite
+Ability: Flower Veil
+Modest Nature
+- Protect
+- Dazzling Gleam
+- Moonblast
+- Light of Ruin
 `,
 };
