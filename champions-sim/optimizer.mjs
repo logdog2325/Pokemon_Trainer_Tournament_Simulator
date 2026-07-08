@@ -9,7 +9,7 @@
  *   node champions-sim/optimizer.mjs [gamesPerConfig]
  */
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 import { createRequire } from 'module';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
@@ -46,10 +46,16 @@ function combos4(slots) {
 	return out;
 }
 
-// order a bring so the two most "lead-ish" mons are first (leads)
-function order(bring) {
-	const sorted = [...bring].sort((x, y) => y.leadScore - x.leadScore);
-	return sorted.map(s => s.slot).join('');
+// every unordered lead pair within a bring-4 (leads first, back two after).
+// returns order strings like '1543' — exhaustive, not heuristic.
+function leadOrderings(bring) {
+	const out = [];
+	for (let a = 0; a < bring.length; a++) for (let b = a + 1; b < bring.length; b++) {
+		const leads = [bring[a], bring[b]];
+		const back = bring.filter((_, k) => k !== a && k !== b);
+		out.push([...leads, ...back].map(s => s.slot).join(''));
+	}
+	return out;
 }
 
 function runOne(myPacked, foePacked, config) {
@@ -81,13 +87,13 @@ export async function optimize(myPaste, foePaste, foeName, N) {
 	const slots = meta(myPaste);
 	const byName = Object.fromEntries(slots.map(s => [s.slot, s.species]));
 
-	// build configs: each bring-4 x mega option (each mega-capable mon in the bring, or none)
+	// build configs EXHAUSTIVELY: every bring-4 × every lead pairing × every Mega choice
+	// (each mega-capable mon in the bring, plus "none"). Truly brute-forced, not heuristic.
 	const configs = [];
 	for (const bring of combos4(slots)) {
-		const ord = order(bring);
-		const megaOpts = bring.filter(s => s.megaCapable).map(s => s.species);
-		const opts = megaOpts.length ? megaOpts : [null];        // if no mega in bring, run once with none
-		for (const m of opts) configs.push({ order: ord, megaSpecies: m, bring: bring.map(s => s.slot) });
+		const megaOpts = [...bring.filter(s => s.megaCapable).map(s => s.species), null];  // each mega, or none
+		for (const ord of leadOrderings(bring))
+			for (const m of megaOpts) configs.push({ order: ord, megaSpecies: m, bring: bring.map(s => s.slot) });
 	}
 
 	console.log(`\n=== vs ${foeName} ===  (${configs.length} configs x ${N} games)`);
@@ -119,4 +125,7 @@ async function main() {
 	}
 	console.log(`\n[${((Date.now() - t0) / 1000).toFixed(0)}s]`);
 }
-main().catch(e => console.log('ERR:', e.message, e.stack));
+// only auto-run when invoked directly (so `import { optimize }` doesn't launch every matchup)
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+	main().catch(e => console.log('ERR:', e.message, e.stack));
+}

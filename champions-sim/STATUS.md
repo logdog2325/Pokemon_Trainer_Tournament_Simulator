@@ -103,6 +103,20 @@ recommends *lead Gardevoir + Farigiraf (the setters), back Mudsdale + Torkoal, M
 
     node champions-sim/optimizer.mjs 30      # games per config
 
+The optimizer is now **truly exhaustive**: it brute-forces *every* bring-4 × *every* lead pairing ×
+*every* Mega choice (incl. "none") — ~210 configs for a 6-mon team — and ranks by measured win rate.
+This finds brings the general heuristic misses (e.g. for the bad Delphox matchup it surfaces
+*lead Mudsdale + Vivillon, Mega Gardevoir ≈ 50%* vs the ~3% you'd get bringing your default four).
+
+### ✅ Step 4 — Human-vs-bot sparring — SHIPPED
+`champions-sim/spar.mjs` — play a real offline Reg M-B doubles battle from the terminal against the
+calibrated bot. You pick your bring-4 + leads and each move **by number** (foes and HP% shown; `m` to
+Mega, `s` to switch); the bot pilots a chosen meta team with its **smart** auto-selection. Renders
+moves/damage/faints/Trick Room/weather and forced switches, plays to a winner.
+
+    node champions-sim/spar.mjs list     # show opponent archetypes
+    node champions-sim/spar.mjs 3        # spar vs archetype #3
+
 ### ✅ Real archetype teams — SOURCED
 `champions-sim/teams.mjs` now holds **real current-meta tournament pastes** from The Champions Arena II
 (Jul 2026): Char-Y/Aerodactyl offense (Marco #1), Big 6 (Toler #2), Blastoise/Floette control (Jorge #3),
