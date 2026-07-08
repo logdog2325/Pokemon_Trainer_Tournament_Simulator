@@ -292,6 +292,22 @@ class GameplanBot extends RandomPlayerAI {
 		const n = this.battle && this.battle.ruleTable ? (this.battle.ruleTable.pickedTeamSize || 4) : 4;
 		if (!this.battle || team.length <= n) return 'default';
 		const b = this.battle;
+		// Open Team Sheets: scout the opponent's six so the bring adapts to THIS matchup
+		const foe6 = this.foeSide ? this.foeSide.pokemon.filter(p => p) : [];
+		const matchupVal = (mon, moves) => {
+			if (!foe6.length || !mon) return 0;
+			let pressure = 0, threat = 0;
+			for (const f of foe6) {
+				let best = 0;
+				for (const mid of moves) { const d = this.estPct(mon, mid, f); if (d > best) best = d; }
+				pressure += Math.min(best, 110);                                  // how hard I hit each of their mons
+				const fmoves = (f.moveSlots || []).map(ms => b.toID(ms.id));
+				for (const mid of fmoves) { const d = this.estPct(f, mid, mon); if (d > threat) threat = d; }  // their best hit on me
+			}
+			pressure /= foe6.length;
+			// keep this a FLEX-slot tuner, not an override of the core game plan (speed control +100, redirect +55)
+			return pressure * 0.22 - Math.max(0, threat - 70) * 0.35;           // reward offense; penalize being OHKO fodder
+		};
 		const scored = team.map((p, i) => {
 			const mon = this.mySide.pokemon[i];
 			const moves = (p.moves || []).map(m => b.toID(m));
@@ -311,6 +327,7 @@ class GameplanBot extends RandomPlayerAI {
 			if (mon && mon.item && b.dex.items.get(mon.item).megaStone) val += 26;    // bringing the Mega
 			const off = mon ? Math.max(mon.getStat('atk', false, true), mon.getStat('spa', false, true)) : 0;
 			val += off / 4;
+			val += matchupVal(mon, moves);                                          // adapt the bring to the opponent's six
 			// does this mon shield a co-lead setter? redirection, Fake Out, or a priority-blocking ability
 			const guardsSetter = moves.some(m => ['ragepowder', 'followme', 'fakeout'].includes(m))
 				|| ['armortail', 'queenlymajesty', 'dazzling', 'intimidate'].includes(ability);
