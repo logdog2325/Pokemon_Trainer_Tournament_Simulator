@@ -296,11 +296,38 @@ async function boot() {
 	if (qOpp && handoff) { MY_PASTE = handoff; startBattle(qOpp); return; }   // quick-play the requested matchup
 	renderSetup(handoff, qOpp);
 }
+// ---------- saved teams (shared localStorage with the builder) ----------
+// arena.js runs without the main engine, so decode the builder's compact team
+// code here and rebuild a Showdown pokepaste the sim can parse (matches exportPaste).
+function decodeSavedCode(code) {
+	try { let b = code.replace(/-/g, '+').replace(/_/g, '/'); while (b.length % 4) b += '='; return JSON.parse(decodeURIComponent(escape(atob(b)))); }
+	catch (e) { return null; }
+}
+const SP_LABELS = [['HP'], ['Atk'], ['Def'], ['SpA'], ['SpD'], ['Spe']];   // order matches the points array
+function savedCodeToPaste(code) {
+	const arr = decodeSavedCode(code); if (!arr || !arr.length) return null;
+	return arr.map(a => {                                     // a = [name, formIndex, item, ability, nature, points[6], moves[]]
+		const name = a[0], item = a[2] || '', ability = a[3] || '', nature = a[4] || 'Hardy', pts = a[5] || [], moves = (a[6] || []).filter(Boolean);
+		const sp = SP_LABELS.map(([l], i) => [pts[i] || 0, l]).filter(x => x[0]).map(x => x[0] + ' ' + x[1]).join(' / ');
+		return `${name} @ ${item}\nAbility: ${ability}\nLevel: 50\n${nature} Nature\nStat Points: ${sp || 'none'}\n${moves.map(m => '- ' + m).join('\n')}`;
+	}).join('\n\n');
+}
+function loadSavedTeams() {
+	let list; try { list = JSON.parse(localStorage.getItem('ctb_saved_v1') || '[]'); } catch (e) { return []; }
+	return (Array.isArray(list) ? list : []).map(t => ({ name: t.name, paste: savedCodeToPaste(t.code) })).filter(t => t.paste);
+}
+function escapeHtml(s) { return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+
 function renderSetup(handoff, preOpp) {
-	MY_PASTE = handoff || null;
+	const saved = loadSavedTeams();
+	// default to your newest saved team when you have one (and didn't arrive from the builder)
+	const defSaved = !handoff && saved.length ? 0 : -1;
+	MY_PASTE = handoff || (defSaved >= 0 ? saved[defSaved].paste : null);
 	const s = $('#start');
 	const opts = [
-		handoff ? `<option value="__handoff">Your team (from the builder)</option>` : `<option value="__default">Sample Trick Room team (built-in)</option>`,
+		handoff ? `<option value="__handoff">Your team (from the builder)</option>` : '',
+		saved.length ? `<optgroup label="My saved teams">` + saved.map((t, i) => `<option value="s:${i}"${i === defSaved ? ' selected' : ''}>💾 ${escapeHtml(t.name)}</option>`).join('') + `</optgroup>` : '',
+		handoff ? '' : `<option value="__default"${defSaved < 0 ? ' selected' : ''}>Sample Trick Room team (built-in)</option>`,
 		`<option value="__paste">Paste my own team…</option>`,
 		`<optgroup label="Pilot a meta archetype">` + OPPONENTS.map(n => `<option value="t:${encodeURIComponent(n)}">${n}</option>`).join('') + `</optgroup>`,
 	].join('');
@@ -314,7 +341,13 @@ function renderSetup(handoff, preOpp) {
 	sel.onchange = () => {
 		const v = sel.value;
 		if (v === '__paste') { ta.classList.remove('hidden'); MY_PASTE = ta.value.trim() || null; }
-		else { ta.classList.add('hidden'); MY_PASTE = v === '__handoff' ? handoff : v.startsWith('t:') ? TEAMS[decodeURIComponent(v.slice(2))] : null; }
+		else {
+			ta.classList.add('hidden');
+			MY_PASTE = v === '__handoff' ? handoff
+				: v.startsWith('s:') ? (saved[+v.slice(2)] || {}).paste || null
+				: v.startsWith('t:') ? TEAMS[decodeURIComponent(v.slice(2))]
+				: null;
+		}
 	};
 	ta.oninput = () => { MY_PASTE = ta.value.trim() || null; };
 	const list = $('#oppList');
