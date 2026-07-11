@@ -5,6 +5,24 @@ const TCOL={Normal:"#9aa0aa",Fire:"#ff7043",Water:"#4d8cf5",Electric:"#f7c948",G
 const $=s=>document.querySelector(s), app=$("#app"), titleEl=$("#title"), backBtn=$("#back"), teambar=$("#teambar"), exportBtn=$("#exportBtn");
 let STATE={screen:"start",lead:null,role:null,team:[],q:"",slotRole:null};
 const BULK=e=>e.baseStats.hp+e.baseStats.def+e.baseStats.spd;
+
+/* ---------------- PERSISTENCE (localStorage) ---------------- */
+const LS={
+  get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+};
+const SAVED_KEY="ctb_saved_v1", BOX_KEY="ctb_box_v1", STAR_KEY="ctb_star_v1";
+function savedTeams(){return LS.get(SAVED_KEY,[]);}
+function saveTeamAs(name,team){
+  const list=savedTeams(), code=E.encodeTeam(team);
+  const rec={name,code,n:team.length,ts:Date.now()};
+  const i=list.findIndex(t=>t.name.toLowerCase()===name.toLowerCase());
+  if(i>=0)list[i]=rec; else list.unshift(rec);
+  LS.set(SAVED_KEY,list.slice(0,50)); return rec;
+}
+function deleteSaved(name){LS.set(SAVED_KEY,savedTeams().filter(t=>t.name!==name));}
+function ownedBox(){return LS.get(BOX_KEY,[]).map(n=>E.byName[n]).filter(Boolean);}
+function starredBox(){const box=new Set(LS.get(BOX_KEY,[]));return LS.get(STAR_KEY,[]).filter(n=>box.has(n)).map(n=>E.byName[n]).filter(Boolean);}
 const SLOT_ROLES=[
  {key:"speed",label:"Speed control",need:"speed",fill:e=>e.moves.includes("Tailwind")||e.moves.includes("Trick Room")},
  {key:"trsetter",label:"Trick Room setter",fill:e=>e.moves.includes("Trick Room")},
@@ -29,13 +47,6 @@ function img(e){return `<img loading="lazy" src="${e.spritePrimary||e.spriteFall
 // form-aware sprite: Mega art when a Mega form is selected, falling back to the base sprite
 function megaSpriteOf(e,fi){return (fi>=0&&e.mega&&e.mega[fi]&&e.mega[fi].sprite)||e.spritePrimary||e.spriteFallback;}
 function imgF(e,fi){return `<img loading="lazy" src="${megaSpriteOf(e,fi)}" onerror="this.onerror=null;this.src='${e.spriteFallback}'" alt="${e.name}">`;}
-// best recommended set for a specific form (Mega index >=0, or base)
-function formSet(e,fi){
-  if(fi>=0) return E.recommendSet(e,"mega"+fi);
-  const meta=E.recommendSet(e,"meta"); if(meta&&meta.formIndex<0&&E.usageOf(e)) return meta;
-  const roles=E.detectRoles(e).filter(r=>r.key!=="meta"&&!/^mega/.test(r.key));
-  return E.recommendSet(e,roles[0]?roles[0].key:"breaker");
-}
 function tbadges(types){return `<div class="types">${types.map(t=>`<span class="tt" style="background:${TCOL[t]||'#888'}">${t}</span>`).join("")}</div>`;}
 const POWDER=["Rage Powder","Spore","Sleep Powder","Stun Spore","Poison Powder","Cotton Spore","Powder","Magic Powder"];
 function caveats(e){
@@ -57,13 +68,18 @@ function renderStart(){
   titleEl.textContent="Pick your core Pokémon";
   backBtn.classList.add("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
   const list=E.DEX.filter(e=>e.name.toLowerCase().includes(STATE.q.toLowerCase())).sort((a,b)=>a.name.localeCompare(b.name));
-  app.innerHTML=`<button class="btn" id="imp" style="width:100%;margin-bottom:10px">📋 Import / paste a team</button>
+  const nSaved=savedTeams().length, nBox=LS.get(BOX_KEY,[]).length;
+  app.innerHTML=`<button class="btn" id="boxbtn" style="width:100%;margin-bottom:10px">📦 Box builder — best team from your Pokémon${nBox?` <span class="muted">(${nBox} in box)</span>`:""}</button>
+    <button class="btn" id="savedbtn" style="width:100%;margin-bottom:10px">💾 Saved teams${nSaved?` <span class="muted">(${nSaved})</span>`:""}</button>
+    <button class="btn" id="imp" style="width:100%;margin-bottom:10px">📋 Import / paste a team</button>
     <button class="btn" id="labbtn" style="width:100%;margin-bottom:10px">🧪 Battle Lab — simulate matchups vs the meta</button>
     <button class="btn" id="arenabtn" style="width:100%;margin-bottom:10px">⚔️ Champions Arena — play a battle vs the AI</button>
     <button class="btn" id="megabtn" style="width:100%;margin-bottom:10px">🏆 Mega tier list (Limitless M-B)</button>
     <button class="btn" id="pairbtn" style="width:100%;margin-bottom:10px">🤝 Mega pairing tier list</button>
     <input class="search" id="q" placeholder="Search ${E.DEX.length} Pokémon…" value="${STATE.q}">
     <div class="grid">${list.slice(0,400).map(e=>`<div class="mon" data-n="${e.name}">${img(e)}<div class="nm">${e.name}</div>${tbadges(e.types)}</div>`).join("")}</div>`;
+  $("#boxbtn").onclick=()=>go("box");
+  $("#savedbtn").onclick=()=>go("saved");
   $("#imp").onclick=()=>go("import");
   $("#labbtn").onclick=()=>go("lab");
   $("#arenabtn").onclick=()=>{ location.href="arena/arena.html"; };
@@ -197,8 +213,8 @@ function renderBuilder(){
   const needs=E.teamNeeds(STATE.team);
   if(STATE.team.length>=6){
     app.innerHTML=healthCard(STATE.team)+weakCard(tally,needs)+`<div class="card"><b>Team complete.</b>
-      <div class="seg" style="margin-top:10px;flex-wrap:wrap"><button class="btn primary" id="exp2">Export / Share</button><button class="btn" id="lab6">🧪 Battle Lab</button><button class="btn" id="spd6">⚡ Speed</button><button class="btn" id="calc6">🧮 Calc</button><button class="btn" id="opt6">🎯 Optimize</button><button class="btn" id="stress6">Stress test</button></div></div>`;
-    $("#exp2").onclick=showExport; $("#lab6").onclick=()=>go("lab"); $("#spd6").onclick=()=>go("speed"); $("#calc6").onclick=()=>go("calc"); $("#opt6").onclick=()=>go("optimize"); $("#stress6").onclick=()=>go("stress"); bindHealthCard(); return;
+      <div class="seg" style="margin-top:10px;flex-wrap:wrap"><button class="btn primary" id="exp2">Export / Share</button><button class="btn" id="save6">💾 Save</button><button class="btn" id="lab6">🧪 Battle Lab</button><button class="btn" id="spd6">⚡ Speed</button><button class="btn" id="calc6">🧮 Calc</button><button class="btn" id="opt6">🎯 Optimize</button><button class="btn" id="stress6">Stress test</button></div></div>`;
+    $("#exp2").onclick=showExport; $("#save6").onclick=()=>go("saved"); $("#lab6").onclick=()=>go("lab"); $("#spd6").onclick=()=>go("speed"); $("#calc6").onclick=()=>go("calc"); $("#opt6").onclick=()=>go("optimize"); $("#stress6").onclick=()=>go("stress"); bindHealthCard(); return;
   }
   // STEP 1: choose what this slot does — driven by the role's needs plan (Phase 3) + threat map (Phase 4)
   if(!STATE.slotRole){
@@ -335,17 +351,20 @@ function renderEditor(){
       ${megaBtns}${statBars(ef.baseStats)}</div>
     <div class="card">
       ${ef.isMega?'':`<div class="field"><label>Ability</label><select id="ab">${(e.abilities||[]).map(a=>`<option ${a===M.set.ability?'selected':''}>${a}</option>`).join("")}</select></div>`}
-      <div class="field"><label>Item${ef.isMega?' — Mega Stone needed to evolve':''}</label><select id="it">${itemOpts.map(it=>`<option ${it===M.set.item?'selected':''}>${it}</option>`).join("")}</select></div>
+      <div class="field"><label>Item${ef.isMega?' — Mega Stone needed to evolve':''}</label><select id="it"><option value="" ${!M.set.item?'selected':''}>— none —</option>${itemOpts.map(it=>`<option ${it===M.set.item?'selected':''}>${it}</option>`).join("")}</select></div>
       <div class="field"><label>Nature</label><select id="na">${E.NATURES.map(n=>`<option ${n===M.set.nature?'selected':''}>${n}</option>`).join("")}</select></div>
       <div class="field"><label>Moves</label>${[0,1,2,3].map(i=>`<select class="mv" data-i="${i}" style="margin-bottom:5px"><option value="">— empty —</option>${ms.map(m=>moveOpt(m,M.set.moves[i])).join("")}</select>`).join("")}</div>
       <div class="field"><label>Stat points — <span class="total" id="tot" style="color:${total>66?'var(--bad)':'var(--good)'}">${total}/66</span> · max 32 each</label>
         <div class="sp">${[["HP","hp"],["Atk","atk"],["Def","def"],["SpA","spa"],["SpD","spd"],["Spe","spe"]].map(([l,k])=>`<div class="field"><label>${l}</label><input type="number" class="pt" data-k="${k}" min="0" max="32" value="${M.set.points[k]||0}"></div>`).join("")}</div></div>
       <button class="btn primary" id="save" style="width:100%">${STATE.editing.slotIndex<0?'Add to team':'Save changes'}</button>
     </div>`;
-  // tapping Base <-> Mega loads that form's recommended set (moves/item/nature/spread) and art
+  // tapping Base <-> Mega keeps your current moves / nature / points / ability (the movepool is the
+  // same for both forms). Only the held item changes to keep the form legal: a Mega form needs its
+  // stone, and switching back to Base drops the stone.
   app.querySelectorAll(".formsel button").forEach(b=>b.onclick=()=>{const f=+b.dataset.f;M.formIndex=f;
-    const ns=formSet(e,f);
-    if(ns){M.set={ability:ns.ability,item:ns.item,nature:ns.nature,points:Object.assign({},ns.points),moves:(ns.moves||[]).slice()};while(M.set.moves.length<4)M.set.moves.push("");}
+    const stones=e.megaStones||[];
+    if(f>=0){const stone=stones[f]||stones[0]; if(stone&&M.set.item!==stone)M.set.item=stone;}
+    else if(stones.includes(M.set.item))M.set.item="";
     renderEditor();});
   const ab=$("#ab");if(ab)ab.onchange=()=>M.set.ability=ab.value;
   $("#it").onchange=()=>M.set.item=$("#it").value;
@@ -623,6 +642,132 @@ function renderImport(){
   };
   backBtn.onclick=()=>go("start");
 }
+/* ---------------- SAVED TEAMS (localStorage) ---------------- */
+function renderSaved(){
+  titleEl.textContent="Saved teams"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
+  const list=savedTeams(), cur=STATE.team&&STATE.team.length;
+  const esc=s=>String(s).replace(/"/g,"&quot;").replace(/</g,"&lt;");
+  const flash=STATE.savedFlash; STATE.savedFlash=null;
+  const saveCard=cur?`<div class="card"><b>Save this team (${STATE.team.length}/6)</b>
+      <div class="muted" style="margin-top:2px">Stored on this device — pull it up and tweak any time. Saving the same name overwrites it.</div>
+      <div class="row" style="margin-top:8px;gap:6px"><input class="search" id="svname" style="margin:0;flex:1" placeholder="Team name…" value="${esc(STATE.savedName||'')}">
+      <button class="btn primary" id="svbtn" style="white-space:nowrap">Save</button></div>
+      <div id="svmsg" style="margin-top:6px;color:${flash?'var(--good)':'var(--mut)'};font-size:13px">${flash?'✓ Saved “'+esc(flash)+'” — it’s in your list below.':''}</div></div>`:"";
+  const rows=list.length?list.map(t=>{
+    const team=E.decodeTeam(t.code)||[];
+    const sprites=team.slice(0,6).map(m=>`<img loading="lazy" src="${megaSpriteOf(m.entry,m.formIndex)}" onerror="this.style.visibility='hidden'" style="width:36px;height:36px;object-fit:contain">`).join("");
+    return `<div class="card"><div class="row"><b style="flex:1">${esc(t.name)}</b><span class="muted" style="font-size:11px">${t.n}/6 · ${new Date(t.ts).toLocaleDateString()}</span></div>
+      <div class="row" style="margin-top:6px;flex-wrap:wrap;gap:2px">${sprites||'<span class="muted">empty</span>'}</div>
+      <div class="seg" style="margin-top:8px"><button class="btn primary loadT" data-n="${esc(t.name)}">Load & tweak</button><button class="btn delT" data-n="${esc(t.name)}">Delete</button></div></div>`;
+  }).join(""):`<div class="card muted">No saved teams yet. Build a team, then tap 💾 Save to keep it here between sessions.</div>`;
+  app.innerHTML=saveCard+rows;
+  if(cur){const nm=$("#svname");$("#svbtn").onclick=()=>{const name=(nm.value||"").trim();if(!name){$("#svmsg").textContent="Enter a name first.";return;}saveTeamAs(name,STATE.team);STATE.savedName=name;STATE.savedFlash=name;renderSaved();};}
+  app.querySelectorAll(".loadT").forEach(b=>b.onclick=()=>{const rec=savedTeams().find(t=>t.name===b.dataset.n);if(!rec)return;const team=E.decodeTeam(rec.code);if(team&&team.length){STATE.team=team.slice(0,6);STATE.lead=team[0].entry;STATE.role=null;STATE.slotRole=null;STATE.q="";STATE.savedName=rec.name;go("builder");}});
+  app.querySelectorAll(".delT").forEach(b=>b.onclick=()=>{if(confirm("Delete “"+b.dataset.n+"”?")){deleteSaved(b.dataset.n);renderSaved();}});
+  backBtn.onclick=()=>go(cur?"builder":"start");
+}
+
+/* ---------------- BOX BUILDER (optimal team from owned Pokémon) ---------------- */
+// pick the best member set for a box entry, reusing the builder's recommend logic
+function boxMember(e){return mkMember(e);}
+function teamDiff(a,b){const B=new Set(b.map(m=>m.entry.name));return a.filter(m=>!B.has(m.entry.name)).length;}
+// beam search: from the owned pool (with starred mons forced on), assemble the highest-fit legal 6.
+function buildBoxTeams(poolEntries,starredEntries){
+  const target=Math.min(6,poolEntries.length);
+  const starNames=new Set(starredEntries.map(e=>e.name));
+  // prefilter for speed: keep every starred mon + the top ~40 by standalone fit
+  const solo=poolEntries.map(e=>({e,s:E.scoreForSlot(e,[],"any").total})).sort((a,b)=>b.s-a.s);
+  const pool=[]; const cap=Math.max(40,starredEntries.length);
+  for(const {e} of solo) if(starNames.has(e.name)) pool.push(e);
+  for(const {e} of solo) if(!starNames.has(e.name)&&pool.length<cap) pool.push(e);
+  const seed=starredEntries.slice(0,6).map(boxMember);
+  let beams=[{team:seed,used:new Set(seed.map(m=>m.entry.name)),score:0}];
+  const BEAM=6,BRANCH=5;
+  while(beams.some(b=>b.team.length<target)){
+    const next=[];
+    for(const beam of beams){
+      if(beam.team.length>=target){next.push(beam);continue;}
+      const cands=pool.filter(e=>!beam.used.has(e.name))
+        .map(e=>({e,s:E.scoreForSlot(e,beam.team,"any").total})).sort((a,b)=>b.s-a.s).slice(0,BRANCH);
+      if(!cands.length){next.push(beam);continue;}
+      for(const c of cands) next.push({team:beam.team.concat([boxMember(c.e)]),used:new Set([...beam.used,c.e.name]),score:beam.score+c.s});
+    }
+    const seen=new Map();
+    for(const b of next){const sig=b.team.map(m=>m.entry.name).sort().join("|");const p=seen.get(sig);if(!p||b.score>p.score)seen.set(sig,b);}
+    beams=[...seen.values()].sort((a,b)=>b.score-a.score).slice(0,BEAM);
+  }
+  const complete=beams.filter(b=>b.team.length===target);
+  complete.forEach(b=>{const h=E.teamHealth(b.team);b.health=h.score;b.grade=h.grade;b.flags=h.flags;b.rank=h.score*3+b.score/Math.max(1,b.team.length);});
+  complete.sort((a,b)=>b.rank-a.rank);
+  const out=[];
+  for(const b of complete){if(out.every(o=>teamDiff(o.team,b.team)>=2)){out.push(b);if(out.length>=4)break;}}
+  return out;
+}
+const GRADE_COL={A:"var(--good)",B:"var(--good)",C:"var(--txt)",D:"var(--bad)",F:"var(--bad)"};
+function renderBox(){
+  titleEl.textContent="Box builder"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
+  const boxList=LS.get(BOX_KEY,[]), box=new Set(boxList), star=new Set(LS.get(STAR_KEY,[]));
+  const q=(STATE.q||"").toLowerCase();
+  const list=E.DEX.filter(e=>e.name.toLowerCase().includes(q)).sort((a,b)=>{
+    const ao=box.has(a.name),bo=box.has(b.name); if(ao!==bo)return ao?-1:1; return a.name.localeCompare(b.name);});
+  const tile=e=>{const owned=box.has(e.name),starred=star.has(e.name);
+    return `<div class="mon boxmon${owned?' owned':''}" data-n="${e.name}">${img(e)}<div class="nm">${e.name}</div>
+      ${owned?`<button class="starb${starred?' on':''}" data-star="${e.name}">${starred?'★':'☆'}</button>`:''}</div>`;};
+  app.innerHTML=`<div class="card"><b>📦 Box builder</b>
+      <div class="muted" style="margin-top:4px">Tap the Pokémon you own to add them to your box. Tap ★ on an owned mon to <b>force it onto the team</b>. Then build the best legal 6 the app can make from your box, with a few alternatives.</div>
+      <div class="row" style="margin-top:10px;gap:6px;flex-wrap:wrap">
+        <span class="muted" id="boxcount" style="flex:1">Box: <b>${box.size}</b> owned · <b>${star.size}</b> starred</span>
+        <button class="btn primary" id="buildbtn"${box.size?'':' disabled'}>⚙️ Build best team</button>
+        ${box.size?`<button class="btn" id="clearbox">Clear box</button>`:''}</div></div>
+    <div id="boxout"></div>
+    <input class="search" id="q" placeholder="Search ${E.DEX.length} Pokémon…" value="${STATE.q||''}">
+    <div class="grid" id="boxgrid">${list.slice(0,400).map(tile).join("")}</div>`;
+  const rebindGrid=()=>{
+    app.querySelectorAll(".boxmon").forEach(t=>t.onclick=ev=>{
+      if(ev.target.classList.contains("starb"))return;
+      const n=t.dataset.n, b=new Set(LS.get(BOX_KEY,[]));
+      if(b.has(n))b.delete(n); else b.add(n);
+      LS.set(BOX_KEY,[...b]);
+      if(!b.has(n)){const s=new Set(LS.get(STAR_KEY,[]));s.delete(n);LS.set(STAR_KEY,[...s]);}
+      renderBox();window.scrollTo(0,window.scrollY);
+    });
+    app.querySelectorAll(".starb").forEach(sb=>sb.onclick=ev=>{
+      ev.stopPropagation(); const n=sb.dataset.star, s=new Set(LS.get(STAR_KEY,[]));
+      if(s.has(n))s.delete(n); else s.add(n);
+      LS.set(STAR_KEY,[...s]); renderBox();window.scrollTo(0,window.scrollY);
+    });
+  };
+  const qEl=$("#q"); qEl.oninput=()=>{STATE.q=qEl.value;const ql=qEl.value.toLowerCase();
+    const l=E.DEX.filter(e=>e.name.toLowerCase().includes(ql)).sort((a,b)=>{const ao=box.has(a.name),bo=box.has(b.name);if(ao!==bo)return ao?-1:1;return a.name.localeCompare(b.name);});
+    $("#boxgrid").innerHTML=l.slice(0,400).map(tile).join("");rebindGrid();};
+  const cb=$("#clearbox"); if(cb)cb.onclick=()=>{if(confirm("Clear your whole box?")){LS.set(BOX_KEY,[]);LS.set(STAR_KEY,[]);renderBox();}};
+  $("#buildbtn").onclick=()=>{
+    const out=$("#boxout"); out.innerHTML=`<div class="card muted">⚙️ Building the best team from your ${box.size} Pokémon…</div>`;
+    setTimeout(()=>{
+      const teams=buildBoxTeams(ownedBox(),starredBox());
+      if(!teams.length){out.innerHTML=`<div class="card muted">Couldn't build a team — add a few more Pokémon to your box.</div>`;return;}
+      out.innerHTML=teams.map((t,i)=>boxResultCard(t,i)).join("");
+      out.querySelectorAll(".loadbox").forEach(b=>b.onclick=()=>{const t=teams[+b.dataset.i];STATE.team=t.team.map(m=>({entry:m.entry,formIndex:m.formIndex,roleKey:m.roleKey,set:JSON.parse(JSON.stringify(m.set))}));STATE.lead=t.team[0].entry;STATE.role=null;STATE.slotRole=null;STATE.q="";go("builder");});
+      out.scrollIntoView({behavior:"smooth",block:"start"});
+    },30);
+  };
+  rebindGrid();
+  backBtn.onclick=()=>go("start");
+}
+function boxResultCard(t,i){
+  const star=new Set(LS.get(STAR_KEY,[]));
+  const mons=t.team.map(m=>{const forced=star.has(m.entry.name);
+    return `<div class="candrow" style="padding:6px">${imgF(m.entry,m.formIndex)}
+      <div class="meta"><div class="nm" style="font-size:13px">${m.entry.name}${m.formIndex>=0?' <span class="mega" style="color:var(--accent)">(Mega)</span>':''}${forced?' <span class="tag good">★ forced</span>':''}</div>
+        <div class="brk">${(m.set.moves||[]).filter(Boolean).join(" · ")||"—"}</div></div></div>`;}).join("");
+  const flags=(t.flags||[]).filter(f=>f.sev>=1).slice(0,3).map(f=>`<div class="muted" style="font-size:12px">${f.sev>=2?'⚠':'•'} ${f.msg}</div>`).join("");
+  return `<div class="card" style="border-color:${i===0?'var(--accent)':'var(--line)'}">
+    <div class="row"><b style="flex:1">${i===0?'⭐ Best team':'Alternative '+i}</b>
+      <span class="scorebadge"><b style="color:${GRADE_COL[t.grade]||'var(--txt)'};font-size:18px">${t.grade}</b><small>health ${t.health}</small></span></div>
+    <div style="margin-top:8px">${mons}</div>
+    ${flags?`<div style="margin-top:6px">${flags}</div>`:'<div class="muted" style="font-size:12px;margin-top:6px">✓ No major structural gaps.</div>'}
+    <button class="btn primary loadbox" data-i="${i}" style="width:100%;margin-top:10px">Load & tweak this team</button></div>`;
+}
 /* ---------------- MEGA TIER LIST (Limitless M-B results) ---------------- */
 const TIER_COL={S:"#ff7043",A:"#f7c948",B:"#5cc46b",C:"#4d8cf5",D:"#9aa0c8",F:"#6b6f86"};
 function renderMegas(){
@@ -752,8 +897,10 @@ async function optimizeVs(opponent,paste,btn){
   const pb=box.querySelector("#playbest"); if(pb)pb.onclick=()=>window.open(`arena/arena.html?opp=${encodeURIComponent(opponent)}&team=${b64paste(paste)}`,"_blank");
 }
 function render(){
-  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(["role","import","megas","pairs","lab"].includes(STATE.screen))go("start"); else if(["editor","stress","speed","calc","optimize"].includes(STATE.screen))go("builder"); };
+  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(["role","import","megas","pairs","lab","box","saved"].includes(STATE.screen))go("start"); else if(["editor","stress","speed","calc","optimize"].includes(STATE.screen))go("builder"); };
   if(STATE.screen==="lab")renderLab();
+  else if(STATE.screen==="box")renderBox();
+  else if(STATE.screen==="saved")renderSaved();
   else
   if(STATE.screen==="pairs")renderPairs();
   else if(STATE.screen==="megas")renderMegas();

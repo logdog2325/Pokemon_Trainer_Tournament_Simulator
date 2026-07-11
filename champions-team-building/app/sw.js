@@ -1,7 +1,7 @@
 /* Service worker.
    App shell: NETWORK-FIRST so the app always self-updates when online (falls back
    to cache offline). Sprites: cache-first runtime cache so art shows offline. */
-const CACHE = "ctb-v48";
+const CACHE = "ctb-v49";
 const IMG = "ctb-img-v1";
 const ASSETS = ["./","./index.html","./app.js","./ui.js","./dex-data.js","./moves-data.js","./usage-data.js","./results-data.js","./manifest.webmanifest","./icon-192.png","./icon-512.png",
   "./sim/sim-client.js","./sim/worker.js","./arena/arena.html","./arena/arena.js","./arena/arena.css"];
