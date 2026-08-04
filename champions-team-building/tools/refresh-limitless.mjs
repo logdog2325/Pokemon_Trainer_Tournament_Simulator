@@ -46,7 +46,24 @@ if (!OUT) { console.error("usage: node refresh-limitless.mjs <out-results-data.j
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const norm = s => String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
-async function getText(url) { const r = await fetch(url, { headers: HEADERS }); if (!r.ok) throw new Error(`${r.status} ${url}`); return r.text(); }
+// Limitless rate-limits (HTTP 429) once you walk a few hundred tournaments. Without backoff the
+// standings fetch silently dropped ~55% of events — including the format's largest (the 4254-player
+// Grand Champions Festival Encore) — so every retryable status is retried with exponential backoff.
+const RETRY_BASE = 1000, MAX_RETRY = 5;
+async function getText(url) {
+  let wait = RETRY_BASE;
+  for (let attempt = 0; ; attempt++) {
+    const r = await fetch(url, { headers: HEADERS });
+    if (r.ok) return r.text();
+    if ((r.status === 429 || r.status >= 500) && attempt < MAX_RETRY) {
+      wait *= 2;
+      if (DEBUG) console.error(`  ${r.status} — backing off ${wait}ms  ${url}`);
+      await sleep(wait);
+      continue;
+    }
+    throw new Error(`${r.status} ${url}`);
+  }
+}
 async function getJSON(url) { const t = await getText(url); try { return JSON.parse(t); } catch { return null; } }
 
 // ---- map decklist species (showdown id slugs) back to the app's dex names -------------------------
@@ -101,13 +118,30 @@ function parseListing(html) {
   return out;
 }
 async function discover() {
-  // wide windows so all M-B events are surfaced regardless of how long the reg has run; the
-  // date filter excludes the older Reg M-A events that the wider windows also return.
+  // Use the JSON listing rather than scraping the HTML table. Two reasons the HTML path was lossy:
+  //   1. `show=` silently caps at 400 rows (bigger values fall back to 25), so the oldest M-B events
+  //      fell off the end of every time window.
+  //   2. the table links named events by vanity slug (/tournament/grandchampionsfestivalencore), but
+  //      the standings API only accepts the hex id — so the biggest events failed as "Invalid
+  //      tournament ID" no matter how politely we asked.
+  // The API returns proper hex ids and honours large limits (limit=1000 reaches well past MB_START).
+  const byId = {};
+  try {
+    const rows = await getJSON(`${BASE}/api/tournaments?game=VGC&limit=1000`);
+    for (const t of (Array.isArray(rows) ? rows : [])) {
+      const date = String(t.date || "").slice(0, 10);
+      if (!t.id || date < MB_START) continue;
+      byId[t.id] = { id: t.id, date, players: +t.players || 0, name: t.name || "" };
+    }
+  } catch (e) { console.error("listing failed:", e.message); }
+
+  // Belt-and-braces: also read the HTML listing, which occasionally carries events the API omits.
+  // Only rows whose link is already a hex id are usable (vanity slugs are rejected by the API).
   const urls = ["4weeks", "12weeks", "24weeks"].flatMap(t => ["all", "online", "offline"].map(p =>
     `${BASE}/tournaments/completed?game=VGC&format=all&platform=${p}&type=all&time=${t}&show=400`));
-  const byId = {};
   for (const u of urls) {
-    try { for (const t of parseListing(await getText(u))) if (t.date >= MB_START && !byId[t.id]) byId[t.id] = t; }
+    try { for (const t of parseListing(await getText(u)))
+      if (t.date >= MB_START && /^[a-f0-9]{16,}$/.test(t.id) && !byId[t.id]) byId[t.id] = t; }
     catch (e) { if (DEBUG) console.error("listing failed:", u, e.message); }
     await sleep(800);
   }
