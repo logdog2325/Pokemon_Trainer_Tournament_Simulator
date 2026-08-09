@@ -313,7 +313,56 @@ const RES_MONS=RESULTS.mons||{}, RES_MEGAS=RESULTS.megas||{}, RES_PAIRS=RESULTS.
 const RES_MIN_GAMES=25;                          // below this the win rate is too noisy to act on
 function resultsFor(e){return e&&RES_MONS[e.name]||null;}     // per-species tournament record
 // per-Mega record (by held stone). For dual-mega mons pass the form label suffix (e.g. "Y").
-function megaResultsFor(name,variant){const k=variant?name+"-"+variant:name;return RES_MEGAS[k]||RES_MEGAS[name]||null;}
+// Dual-mega species also carry a bare `name` key in RESULTS holding a tiny, unlabelled residue
+// (Charizard = 4 teams, F tier). Falling back to it would report the format's best mega as its
+// worst, so an explicit variant never falls back to the bare key.
+function megaResultsFor(name,variant){
+  if(variant) return RES_MEGAS[name+"-"+variant]||null;
+  return RES_MEGAS[name]||null;
+}
+// Resolve a team member's chosen mega form to its RESULTS key ("Charizard" + "Mega Y" -> "Charizard-Y").
+function megaKeyOf(m){
+  if(!m||m.formIndex==null||m.formIndex<0) return null;
+  const e=m.entry, mg=(e.mega||[])[m.formIndex]; if(!mg) return null;
+  const lab=String(mg.label||"").match(/\b([XY])\b/i);
+  if(lab){const k=e.name+"-"+lab[1].toUpperCase(); if(RES_MEGAS[k]) return k;}
+  return RES_MEGAS[e.name]?e.name:null;
+}
+// Team-level tournament evidence: how the chosen megas actually perform, plus whether this exact
+// mega core is a proven pairing. Win rates are shrunk toward the 50% field baseline by sample size,
+// so a 64% pairing over 29 teams counts for less than the same edge over 1500 teams.
+function provenTeamBonus(team){
+  const keys=(team||[]).map(megaKeyOf).filter(Boolean);
+  let pts=0; const notes=[];
+  for(const k of keys){
+    const r=RES_MEGAS[k]; if(!r) continue;
+    const games=(r.wins||0)+(r.losses||0); if(games<RES_MIN_GAMES) continue;
+    const conf=Math.min(1,games/400);
+    pts+=Math.max(-4,Math.min(4,(r.adjWr-50)*0.5*conf));
+    notes.push(`${k}: ${r.wr}% over ${r.teams} teams (${r.tier})`);
+  }
+  if(keys.length>=2){
+    const p=RES_PAIRS[[...keys].sort().join(" + ")];
+    if(p&&p.teams>=20){
+      const conf=Math.min(1,p.teams/150);
+      pts+=Math.max(-3,Math.min(6,(p.wr-50)*0.6*conf));
+      notes.push(`proven core: ${p.wr}% over ${p.teams} teams`);
+    }
+  }
+  return {pts:Math.max(-6,Math.min(8,Math.round(pts))),notes};
+}
+// Turn-one support density. Champions top cut is won by teams that can spend turns on Fake Out,
+// redirection, boosts and pivots rather than only attacking — the M-4 winner ran six such actions.
+// teamHealth previously only PENALISED missing Fake Out / priority; this credits the surplus.
+const SUPPORT_ACTIONS=["Fake Out","Rage Powder","Follow Me","Helping Hand","Coaching","Decorate",
+  "Parting Shot","U-turn","Volt Switch","Flip Turn","Wide Guard","Quick Guard","Reflect","Light Screen",
+  "Aurora Veil","Life Dew","Heal Pulse","Pollen Puff","Taunt","Encore","Will-O-Wisp","Thunder Wave",
+  "Icy Wind","Electroweb","Snarl","Ally Switch"];
+function supportDensity(team){
+  const seen=new Set();
+  for(const m of (team||[])) for(const mv of setMovesOf(m)) if(SUPPORT_ACTIONS.includes(mv)) seen.add(mv);
+  return {n:seen.size,list:[...seen]};
+}
 // tournament-proven score nudge: shrunk win rate vs the 50% field baseline, sample-gated and capped.
 // This is PERFORMANCE (does it win games in real events), distinct from raw usage/popularity.
 function provenBonus(e){
@@ -848,10 +897,23 @@ function teamHealth(team){
     if(mu.neutral){score-=Math.min(8,mu.neutral*1.5);
       flags.push({sev:1,msg:`only a soft/neutral matchup into ${mu.neutral} threat${mu.neutral>1?"s":""} (survive or trade, not a clean check)`});}
   }
+  // turn-one support density — top cut wins on Fake Out / redirection / boosts / pivots, not just attacks
+  const sup=supportDensity(team);
+  if(n>=4){
+    if(sup.n>=5){score+=5;flags.push({sev:0,msg:`deep support kit (${sup.n} actions: ${sup.list.slice(0,6).join(", ")}) — you can spend turns without losing tempo`});}
+    else if(sup.n>=3){score+=2;flags.push({sev:0,msg:`${sup.n} support actions (${sup.list.join(", ")})`});}
+    else if(sup.n<=1){score-=5;flags.push({sev:2,msg:`only ${sup.n} support action${sup.n===1?"":"s"} — top-cut teams average 3+ (Fake Out, redirection, Helping Hand/Coaching, pivots)`});}
+  }
+  // tournament evidence for the chosen megas and mega core
+  const proven=provenTeamBonus(team);
+  if(proven.pts||proven.notes.length){
+    score+=proven.pts;
+    flags.push({sev:0,msg:`tournament record ${proven.pts>=0?"+":""}${proven.pts}: ${proven.notes.join(" · ")||"no qualifying sample"}`});
+  }
   score=Math.max(0,Math.min(100,Math.round(score)));
   const grade=score>=82?"A":score>=68?"B":score>=52?"C":score>=38?"D":"F";
   flags.sort((a,b)=>b.sev-a.sev);
-  return {score,grade,flags,tally,off,needs,mode,mu};
+  return {score,grade,flags,tally,off,needs,mode,mu,support:sup,proven};
 }
 
 /* ---------- archetype skeleton checklist (is the team a complete <archetype>?) ---------- */
@@ -1290,4 +1352,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,teamSpeedLean,speedSetterPref,speedFit,flexSpeedRole,electricImmune,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread,RESULTS,resultsFor,megaResultsFor,provenBonus,teammateSynergy,megaTierList,megaPairList};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,teamSpeedLean,speedSetterPref,speedFit,flexSpeedRole,electricImmune,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread,RESULTS,resultsFor,megaResultsFor,provenBonus,teammateSynergy,megaTierList,megaPairList,megaKeyOf,provenTeamBonus,supportDensity};
