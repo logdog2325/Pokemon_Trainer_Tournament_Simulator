@@ -1366,9 +1366,15 @@ function megaPartnerFinder(baseName,formIndex,opts){
     // opposite — each wants a different four slots — but it is only a mild ding on a flex team.
     const bothSetup=aNeeds.list.includes("setup")&&bNeeds.list.includes("setup");
     const syn=Math.min(10,shared.length*2.5)+(bothSetup?4:0)-(conflict&&!twoMode?4:0);
-    const score=(weak.length?res.length/weak.length:1)*34
-      + (probs.length?solves.length/probs.length:0)*38
-      + (probs.length?survives/probs.length:1)*11
+    // Survival is weighted near-equal to solve count on purpose: a partner that gets OHKO'd by the
+    // anchor's problem Pokemon cannot switch into them, so it is a revenge killer, not a check.
+    // Below half survival it also takes a penalty — covering a fragile sweeper with something
+    // equally fragile does not make the pair playable.
+    const survRate=probs.length?survives/probs.length:1;
+    const score=(weak.length?res.length/weak.length:1)*27
+      + (probs.length?solves.length/probs.length:0)*34
+      + survRate*25
+      + (survRate<0.5?-8:0)
       + (twoMode?7:0) + syn;
     const why=[];
     if(res.length) why.push(`resists ${res.join(", ")}`);
