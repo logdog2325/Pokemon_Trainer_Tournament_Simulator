@@ -76,6 +76,7 @@ function renderStart(){
     <button class="btn" id="arenabtn" style="width:100%;margin-bottom:10px">⚔️ Champions Arena — play a battle vs the AI</button>
     <button class="btn" id="megabtn" style="width:100%;margin-bottom:10px">🏆 Mega tier list (Limitless M-B)</button>
     <button class="btn" id="pairbtn" style="width:100%;margin-bottom:10px">🤝 Mega pairing tier list</button>
+    <button class="btn" id="pfbtn" style="width:100%;margin-bottom:10px">🧩 Mega partner finder — who patches this Mega's holes</button>
     <input class="search" id="q" placeholder="Search ${E.DEX.length} Pokémon…" value="${STATE.q}">
     <div class="grid">${list.slice(0,400).map(e=>`<div class="mon" data-n="${e.name}">${img(e)}<div class="nm">${e.name}</div>${tbadges(e.types)}</div>`).join("")}</div>`;
   $("#boxbtn").onclick=()=>go("box");
@@ -85,6 +86,7 @@ function renderStart(){
   $("#arenabtn").onclick=()=>{ location.href="arena/arena.html"; };
   $("#megabtn").onclick=()=>go("megas");
   $("#pairbtn").onclick=()=>go("pairs");
+  $("#pfbtn").onclick=()=>go("partners");
   const q=$("#q"); q.oninput=()=>{STATE.q=q.value;const g=app.querySelector(".grid");const l=E.DEX.filter(e=>e.name.toLowerCase().includes(STATE.q.toLowerCase())).sort((a,b)=>a.name.localeCompare(b.name));g.innerHTML=l.slice(0,400).map(e=>`<div class="mon" data-n="${e.name}">${img(e)}<div class="nm">${e.name}</div>${tbadges(e.types)}</div>`).join("");bindMons();};
   bindMons();
 }
@@ -212,7 +214,7 @@ function renderBuilder(){
   const danger=Object.entries(tally).filter(([t,v])=>v.count>=2||v.max>=4).map(([t])=>t);
   const needs=E.teamNeeds(STATE.team);
   if(STATE.team.length>=6){
-    app.innerHTML=healthCard(STATE.team)+weakCard(tally,needs)+`<div class="card"><b>Team complete.</b>
+    app.innerHTML=healthCard(STATE.team)+coverageViz(STATE.team)+weakCard(tally,needs)+`<div class="card"><b>Team complete.</b>
       <div class="seg" style="margin-top:10px;flex-wrap:wrap"><button class="btn primary" id="exp2">Export / Share</button><button class="btn" id="save6">💾 Save</button><button class="btn" id="lab6">🧪 Battle Lab</button><button class="btn" id="spd6">⚡ Speed</button><button class="btn" id="calc6">🧮 Calc</button><button class="btn" id="opt6">🎯 Optimize</button><button class="btn" id="stress6">Stress test</button></div></div>`;
     $("#exp2").onclick=showExport; $("#save6").onclick=()=>go("saved"); $("#lab6").onclick=()=>go("lab"); $("#spd6").onclick=()=>go("speed"); $("#calc6").onclick=()=>go("calc"); $("#opt6").onclick=()=>go("optimize"); $("#stress6").onclick=()=>go("stress"); bindHealthCard(); return;
   }
@@ -225,7 +227,7 @@ function renderBuilder(){
     const filledBy=k=>{const rd=SLOT_ROLES.find(r=>r.key===k);if(!rd)return false;return STATE.team.some(m=>{const ef=E.effOf(m);return rd.fill({types:ef.types,baseStats:ef.baseStats,abilities:ef.abilities,moves:(m.set&&m.set.moves)?m.set.moves.filter(Boolean):ef.moves});});};
     const planBtns=plan.map(([k,lab])=>{const done=filledBy(k);return `<button class="btn rolepick ${done?'':'primary'}" data-r="${k}">${done?'✓ ':''}${lab}</button>`;}).join("");
     const others=SLOT_ROLES.filter(r=>!planned.has(r.key)).map(r=>`<button class="btn rolepick" data-r="${r.key}">${r.label}</button>`).join("");
-    app.innerHTML=healthCard(STATE.team)+threatCard+weakCard(tally,null)+
+    app.innerHTML=healthCard(STATE.team)+(STATE.team.length>=3?coverageViz(STATE.team):"")+threatCard+weakCard(tally,null)+
       `<div class="card"><b>Slot ${STATE.team.length+1} — the plan (Phase 3)</b>
         <div class="muted">Your ${STATE.role?STATE.role.label:'lead'} needs these. Pick one to fill (✓ = covered).</div>
         <div class="seg" style="flex-wrap:wrap;margin-top:10px">${planBtns}</div>
@@ -808,6 +810,96 @@ function renderPairs(){
       <div style="margin-top:6px">${byTier[t].map(rowFor).join("")}</div></div>`).join("")}`;
   backBtn.onclick=()=>go("start");
 }
+
+/* ---------------- COVERAGE + SPEED VISUALS ---------------- */
+function coverageViz(team){
+  if(!team||!team.length) return "";
+  const rows=E.coverageProfile(team), sp=E.speedProfile(team);
+  const offW=v=>v>=4?100:v>=2?72:v>=1?40:v>0?18:0;
+  const offC=v=>v>=2?"var(--good)":v>=1?"var(--mut)":"var(--bad)";
+  const defC=r=>r.imm?"var(--good)":r.weak>=3?"var(--bad)":r.weak===2?"#c8703f":r.res?"var(--good)":"var(--mut)";
+  const defW=r=>{const n=team.length||1;return Math.round(Math.max(r.weak,r.res+r.imm)/n*100);};
+  const gaps=rows.filter(r=>r.off<1).map(r=>r.type);
+  const stacked=rows.filter(r=>r.weak>=3).map(r=>r.type);
+  const bar=r=>`<div style="display:flex;align-items:center;gap:6px;font-size:11px;margin:2px 0">
+      <span class="tt" style="background:${TCOL[r.type]||'#888'};min-width:52px;text-align:center">${r.type}</span>
+      <span class="bar" style="flex:1;height:7px;background:var(--card2);border-radius:4px;overflow:hidden">
+        <i style="display:block;height:100%;width:${offW(r.off)}%;background:${offC(r.off)}"></i></span>
+      <span style="width:30px;text-align:right;color:${offC(r.off)}">${r.off===0?'0':'×'+r.off}</span>
+      <span class="bar" style="flex:1;height:7px;background:var(--card2);border-radius:4px;overflow:hidden">
+        <i style="display:block;height:100%;width:${defW(r)}%;background:${defC(r)}"></i></span>
+      <span style="width:52px;text-align:right;color:${defC(r)}">${r.weak?r.weak+' weak':(r.imm?r.imm+' imm':(r.res?r.res+' res':'—'))}</span>
+    </div>`;
+  const maxSpe=Math.max(200,...sp.rows.map(r=>r.spe));
+  const spRow=r=>`<div style="display:flex;align-items:center;gap:6px;font-size:11px;margin:2px 0">
+      <span style="width:96px;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.name}</span>
+      <span class="bar" style="flex:1;height:7px;background:var(--card2);border-radius:4px;overflow:hidden">
+        <i style="display:block;height:100%;width:${Math.round(r.spe/maxSpe*100)}%;background:${r.spe>=110?'var(--accent)':r.spe<=85?'#c8703f':'var(--mut)'}"></i></span>
+      <b style="width:34px;text-align:right">${r.spe}</b>
+      <span style="width:74px;text-align:right;color:var(--mut)">faster than ${r.pct}%</span>
+    </div>`;
+  return `<div class="card"><b>Coverage profile</b>
+    <div class="muted" style="margin-top:2px">Left bar = your best offensive multiplier into that type. Right bar = how many of your ${team.length} are weak (red) or resist (green) it.</div>
+    <div style="margin-top:8px">${rows.map(bar).join("")}</div>
+    ${gaps.length?`<div class="muted" style="margin-top:8px;color:var(--bad)">No super-effective answer to: ${gaps.join(", ")}</div>`:`<div class="muted good" style="margin-top:8px">At least neutral coverage on every type.</div>`}
+    ${stacked.length?`<div class="muted" style="color:var(--bad)">3+ members weak to: ${stacked.join(", ")}</div>`:""}
+  </div>
+  <div class="card"><b>Speed spread</b>
+    <div class="muted" style="margin-top:2px">Against the top-50 meta at their common spreads. Median meta Speed is ${sp.benchMedian}.</div>
+    <div style="margin-top:8px">${sp.rows.map(spRow).join("")}</div>
+    <div class="muted" style="margin-top:6px">${sp.fast} fast (110+) · ${sp.mid} mid · ${sp.slow} slow (85−) — ${sp.twoMode?'<b class="good">two-mode: you can win under Tailwind OR Trick Room</b>':'single speed bracket: you need your own speed control to function'}</div>
+  </div>`;
+}
+
+/* ---------------- MEGA PARTNER FINDER ---------------- */
+function renderPartners(){
+  titleEl.textContent="Mega partner finder"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
+  const megas=E.DEX.filter(e=>e.mega&&e.mega.length).sort((a,b)=>a.name.localeCompare(b.name));
+  if(!STATE.pf) STATE.pf={base:"Charizard",idx:1};
+  const e=E.byName[STATE.pf.base]||megas[0];
+  const forms=(e.mega||[]).map((mg,i)=>({i,label:mg.label||"Mega"}));
+  const R=E.megaPartnerFinder(STATE.pf.base,STATE.pf.idx);
+  const wrCol=w=>w>=52?"var(--good)":w<=46?"var(--bad)":"var(--txt)";
+  const head=`<div class="card">
+    <b>Pick a Mega — see who patches its holes</b>
+    <div class="muted" style="margin-top:2px">Scores every other Mega on three things: does it resist what beats this one, does it KO what this one can't, and do the two cover different speed brackets.</div>
+    <input class="search" id="pfq" placeholder="Search Megas…" value="${STATE.pfq||''}" style="margin-top:10px">
+    <div class="grid" id="pfgrid">${megas.filter(m=>m.name.toLowerCase().includes((STATE.pfq||'').toLowerCase())).map(m=>
+      `<div class="mon${m.name===STATE.pf.base?' owned':''}" data-n="${m.name}" style="${m.name===STATE.pf.base?'outline:2px solid var(--accent)':''}">${imgF(m,0)}<div class="nm">${m.name}</div></div>`).join("")}</div>
+    ${forms.length>1?`<div class="formsel" style="margin-top:8px">${forms.map(f=>`<button class="btn ${f.i===STATE.pf.idx?'active':''}" data-f="${f.i}">${f.label}</button>`).join("")}</div>`:""}
+  </div>`;
+  if(!R){app.innerHTML=head+`<div class="card muted">No data for that Mega.</div>`;bindPF();backBtn.onclick=()=>go("start");return;}
+  const A=R.anchor;
+  const probList=R.problems.length?R.problems.map(p=>p.name).join(", "):"nothing in the top 50 — this Mega is self-sufficient";
+  const partnerRow=p=>{
+    const ent=E.byName[p.base];
+    return `<div class="candrow" data-n="${p.base}" data-i="${p.idx}">
+      ${ent?imgF(ent,p.idx):''}
+      <div class="meta"><div class="nm">${p.key} ${tbadges(p.types)}</div>
+        <div class="brk">resists <b>${p.resists.length}/${R.weak.length}</b> of its weaknesses · solves <b>${p.solves.length}/${R.problems.length}</b> · survives ${p.survives}/${R.problems.length} · Spe ${p.spe}${p.twoMode?' · <b style="color:var(--accent)">two-mode</b>':''}</div>
+        ${p.solves.length?`<div class="brk" style="color:var(--good)">fixes: ${p.solves.slice(0,6).join(", ")}${p.solves.length>6?'…':''}</div>`:''}
+        ${p.pair?`<div class="brk">played together on ${p.pair.teams} teams · ${p.pair.wr}% win rate</div>`:''}
+      </div>
+      <div class="scorebadge"><b style="color:${wrCol(p.rec?p.rec.wr:50)}">${p.score}</b><small>fit</small></div></div>`;
+  };
+  app.innerHTML=head+`
+    <div class="card"><div class="row">${imgF(e,STATE.pf.idx)}<div style="flex:1">
+        <b>${A.key}</b> ${tbadges(A.types)}
+        <div class="muted">${A.ability} · Speed ${A.spe}${A.rec?` · ${A.rec.wr}% win rate over ${A.rec.teams} teams (${A.rec.tier} tier)`:''}</div></div></div>
+      <div class="wk" style="margin-top:8px">${R.weak.length?R.weak.map(t=>`<span class="x2">${t}</span>`).join(""):'<span class="muted">no weaknesses</span>'}</div>
+      <div class="muted"><b>${R.problems.length}</b> of the top 50 both threaten it and survive it: ${probList}</div></div>
+    <div class="card"><b>Best partners</b> <span class="muted">(ranked by fit)</span>
+      <div style="margin-top:6px">${R.partners.slice(0,12).map(partnerRow).join("")||'<div class="muted">No partners with enough tournament data.</div>'}</div></div>`;
+  bindPF();
+  app.querySelectorAll(".candrow").forEach(r=>r.onclick=()=>{STATE.pf={base:r.dataset.n,idx:+r.dataset.i};renderPartners();window.scrollTo(0,0);});
+  backBtn.onclick=()=>go("start");
+  function bindPF(){
+    const q=$("#pfq"); if(q)q.oninput=()=>{STATE.pfq=q.value;renderPartners();};
+    app.querySelectorAll("#pfgrid .mon").forEach(m=>m.onclick=()=>{STATE.pf={base:m.dataset.n,idx:0};renderPartners();window.scrollTo(0,0);});
+    app.querySelectorAll(".formsel button").forEach(b=>b.onclick=()=>{STATE.pf.idx=+b.dataset.f;renderPartners();});
+  }
+}
+
 /* ---------------- BATTLE LAB (in-browser offline simulation) ---------------- */
 function b64paste(str){try{return btoa(unescape(encodeURIComponent(str))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}catch(e){return'';}}
 let SIM=null;
@@ -897,12 +989,13 @@ async function optimizeVs(opponent,paste,btn){
   const pb=box.querySelector("#playbest"); if(pb)pb.onclick=()=>window.open(`arena/arena.html?opp=${encodeURIComponent(opponent)}&team=${b64paste(paste)}`,"_blank");
 }
 function render(){
-  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(["role","import","megas","pairs","lab","box","saved"].includes(STATE.screen))go("start"); else if(["editor","stress","speed","calc","optimize"].includes(STATE.screen))go("builder"); };
+  backBtn.onclick=()=>{ if(STATE.screen==="builder")go("role"); else if(["role","import","megas","pairs","partners","lab","box","saved"].includes(STATE.screen))go("start"); else if(["editor","stress","speed","calc","optimize"].includes(STATE.screen))go("builder"); };
   if(STATE.screen==="lab")renderLab();
   else if(STATE.screen==="box")renderBox();
   else if(STATE.screen==="saved")renderSaved();
   else
-  if(STATE.screen==="pairs")renderPairs();
+  if(STATE.screen==="partners")renderPartners();
+  else if(STATE.screen==="pairs")renderPairs();
   else if(STATE.screen==="megas")renderMegas();
   else if(STATE.screen==="import")renderImport();
   else if(STATE.screen==="optimize")renderOptimize();

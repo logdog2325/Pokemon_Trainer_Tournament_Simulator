@@ -1228,6 +1228,103 @@ function koText(min,max,hp){
 }
 // build a member from a mon name at its meta set (for the defender dropdown)
 function benchMember(name){const e=byName[name];if(!e)return null;const set=recommendSet(e,"meta");return {entry:e,formIndex:(set.formIndex!=null?set.formIndex:-1),set};}
+
+/* ---------- coverage + speed profiles (for the team visualisations) ---------- */
+// Per-type offensive reach and defensive posture, as plain numbers the UI can draw as bars.
+// Offence uses the team's actual damaging moves; defence counts members weak/resistant to each type.
+function coverageProfile(team){
+  const atk=new Set();
+  for(const m of team||[]) for(const mv of setMovesOf(m)){const i=moveInfo(mv); if(i.bp>=55&&i.t) atk.add(i.t);}
+  return TYPES.map(dt=>{
+    let off=0; for(const at of atk){const x=(CHART[at]&&CHART[at][dt]!=null)?CHART[at][dt]:1; off=Math.max(off,x);}
+    let weak=0,res=0,imm=0;
+    for(const m of team||[]){const ef=effOf(m); let mult=1;
+      for(const d of ef.types){const x=(CHART[dt]&&CHART[dt][d]!=null)?CHART[dt][d]:1; mult*=x;}
+      if(mult===0)imm++; else if(mult>1)weak++; else if(mult<1)res++;}
+    return {type:dt,off,weak,res,imm};
+  });
+}
+// Speed spread: where the team sits against the meta, and whether it can use both speed modes.
+function speedProfile(team){
+  const spOf=m=>{const v=memberSpeed(m);return (v&&typeof v==='object')?v.spe:v;};
+  const rows=(team||[]).map(m=>({name:effOf(m).name,spe:spOf(m)})).sort((a,b)=>b.spe-a.spe);
+  const bench=metaBenchmarks(50).map(b=>{const mem=benchMember(b.name); return mem?spOf(mem):0;}).filter(Boolean).sort((a,b)=>b-a);
+  const pct=s=>bench.length?Math.round(bench.filter(x=>x<s).length/bench.length*100):0;
+  const fast=rows.filter(r=>r.spe>=110).length, slow=rows.filter(r=>r.spe<=85).length;
+  return {rows:rows.map(r=>({...r,pct:pct(r.spe)})),fast,slow,mid:rows.length-fast-slow,
+    twoMode:fast>=1&&slow>=1, benchMedian:bench.length?bench[Math.floor(bench.length/2)]:0};
+}
+
+/* ---------- mega partner finder ---------- */
+// For one Mega, work out what actually beats it, what it cannot remove, and which other Mega
+// patches the most of that — defensively (resists its weaknesses), offensively (KOs its problem
+// list), and on speed (does the pair cover both speed modes).
+function _megaAttacker(name,idx){
+  const e=byName[name]; if(!e||!e.mega||!e.mega[idx]) return null;
+  const mg=e.mega[idx], phys=mg.baseStats.atk>=mg.baseStats.spa;
+  const u=RES_MONS[name]&&usageOf(e)||usageOf(e)||{};
+  const pool=((u.moves||[]).filter(m=>moveInfo(m).bp&&e.moves.includes(m)));
+  const byType={};
+  for(const m of e.moves){const i=moveInfo(m); if(!i.bp||i.bp<60) continue; if((i.c==="Phys")!==phys) continue;
+    if(!byType[i.t]||moveInfo(byType[i.t]).bp<i.bp) byType[i.t]=m;}
+  const moves=[...new Set([...pool,...Object.values(byType)])].slice(0,10);
+  const pts=phys?{hp:2,atk:32,def:0,spa:0,spd:0,spe:32}:{hp:2,atk:0,def:0,spa:32,spd:0,spe:32};
+  return {key:megaKeyOf({entry:e,formIndex:idx})||name, base:name, idx, entry:e, ability:mg.ability,
+    types:mg.type||e.types, moves,
+    mem:{entry:e,formIndex:idx,set:{ability:mg.ability,item:(e.megaStones||[])[idx]||"",nature:phys?"Adamant":"Modest",points:pts,moves:[]}}};
+}
+function allMegaAttackers(){
+  const out=[];
+  for(const e of DEX) for(let i=0;i<(e.mega||[]).length;i++){const a=_megaAttacker(e.name,i); if(a) out.push(a);}
+  return out;
+}
+const _SPREAD_MV=new Set(["Blizzard","Heat Wave","Earthquake","Rock Slide","Hyper Voice","Make It Rain","Surf",
+  "Dazzling Gleam","Icy Wind","Muddy Water","Water Spout","Eruption","Discharge","Snarl","Sludge Wave","Bulldoze","Matcha Gotcha"]);
+function _bestHit(A,def){
+  let best=0,mv0="";
+  for(const mv of A.moves){const r=calcDamage(A.mem,mv,def,{spread:_SPREAD_MV.has(mv)}); if(!r||r.immune) continue;
+    let k=1; const i=moveInfo(mv);
+    if(A.ability==="Tough Claws"&&i.c==="Phys"&&/Punch|Head|Fang|Claw|Slam|Combat|Blitz|Smash|Crash|Cleave|Bird|Wingbeat|Liquidation|Rough/.test(mv)) k*=1.3;
+    if(A.ability==="Fairy Aura"&&i.t==="Fairy") k*=1.33;
+    if(r.minPct*k>best){best=r.minPct*k;mv0=mv;}}
+  return {pct:best,move:mv0};
+}
+function _worstTaken(att,def){
+  let w=0,mv0="";
+  for(const mv of setMovesOf(att)){const i=moveInfo(mv); if(!i.bp) continue;
+    const r=calcDamage(att,mv,def,{spread:_SPREAD_MV.has(mv)}); if(!r||r.immune) continue;
+    if(r.minPct>w){w=r.minPct;mv0=mv;}}
+  return {pct:w,move:mv0};
+}
+function megaPartnerFinder(baseName,formIndex,opts){
+  opts=opts||{};
+  const A=_megaAttacker(baseName,formIndex==null?0:formIndex); if(!A) return null;
+  const weak=TYPES.filter(t=>{let m=1;for(const d of A.types){const x=(CHART[t]&&CHART[t][d]!=null)?CHART[t][d]:1;m*=x;} return m>1;});
+  const meta=metaBenchmarks(opts.metaN||50).map(b=>benchMember(b.name)).filter(Boolean);
+  // A's problem list: meta mons that hurt it AND that it cannot remove in one hit
+  const probs=meta.filter(t=>_worstTaken(t,A.mem).pct>=75 && _bestHit(A,t).pct<100)
+    .map(t=>({name:effOf(t).name,member:t,hits:_worstTaken(t,A.mem).pct,taken:_bestHit(A,t).pct}));
+  const spOf=m=>{const v=memberSpeed(m);return (v&&typeof v==='object')?v.spe:v;};
+  const aSpe=spOf(A.mem);
+  const cands=allMegaAttackers().filter(B=>B.key!==A.key&&B.base!==A.base).map(B=>{
+    const res=weak.filter(t=>{let m=1;for(const d of B.types){const x=(CHART[t]&&CHART[t][d]!=null)?CHART[t][d]:1;m*=x;} return m<1;});
+    const solves=probs.filter(p=>_bestHit(B,p.member).pct>=100).map(p=>p.name);
+    const survives=probs.filter(p=>_worstTaken(p.member,B.mem).pct<100).length;
+    const bSpe=spOf(B.mem);
+    const twoMode=(aSpe>=110&&bSpe<=85)||(bSpe>=110&&aSpe<=85);
+    const rec=RES_MEGAS[B.key]||null;
+    const pair=RES_PAIRS[[A.key,B.key].sort().join(" + ")]||null;
+    const score=(weak.length?res.length/weak.length:1)*38
+      + (probs.length?solves.length/probs.length:0)*42
+      + (probs.length?survives/probs.length:1)*12
+      + (twoMode?8:0);
+    return {key:B.key,base:B.base,idx:B.idx,types:B.types,ability:B.ability,spe:bSpe,
+      resists:res,solves,survives,twoMode,rec,pair,score:Math.round(score)};
+  }).filter(x=>x.rec&&x.rec.teams>=(opts.minTeams||100));
+  cands.sort((a,b)=>b.score-a.score||((b.rec?b.rec.wr:0)-(a.rec?a.rec.wr:0)));
+  return {anchor:{key:A.key,base:A.base,idx:A.idx,types:A.types,ability:A.ability,spe:aSpe,rec:RES_MEGAS[A.key]||null},
+    weak, problems:probs, partners:cands};
+}
 function calcDamage(att,move,def,field){
   field=field||{};
   const mi=moveInfo(move); if(!mi.bp||!(mi.c==="Phys"||mi.c==="Spec"))return null;
@@ -1352,4 +1449,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,teamSpeedLean,speedSetterPref,speedFit,flexSpeedRole,electricImmune,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread,RESULTS,resultsFor,megaResultsFor,provenBonus,teammateSynergy,megaTierList,megaPairList,megaKeyOf,provenTeamBonus,supportDensity};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,teamSpeedLean,speedSetterPref,speedFit,flexSpeedRole,electricImmune,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread,RESULTS,resultsFor,megaResultsFor,provenBonus,teammateSynergy,megaTierList,megaPairList,megaKeyOf,provenTeamBonus,supportDensity,coverageProfile,speedProfile,megaPartnerFinder,allMegaAttackers};
