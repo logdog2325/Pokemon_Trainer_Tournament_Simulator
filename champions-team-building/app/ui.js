@@ -870,14 +870,13 @@ function renderPartners(){
   </div>`;
   if(!R){app.innerHTML=head+`<div class="card muted">No data for that Mega.</div>`;bindPF();backBtn.onclick=()=>go("start");return;}
   const A=R.anchor;
-  const probList=R.problems.length?R.problems.map(p=>p.name).join(", "):"nothing in the top 50 — this Mega is self-sufficient";
-  const partnerRow=p=>{
+    const partnerRow=p=>{
     const ent=E.byName[p.base];
     return `<div class="candrow" data-n="${p.base}" data-i="${p.idx}">
       ${ent?imgF(ent,p.idx):''}
       <div class="meta"><div class="nm">${p.key} ${tbadges(p.types)}</div>
         <div class="brk">resists <b>${p.resists.length}/${R.weak.length}</b> of its weaknesses · solves <b>${p.solves.length}/${R.problems.length}</b> · survives ${p.survives}/${R.problems.length} · Spe ${p.spe}${p.twoMode?' · <b style="color:var(--accent)">two-mode</b>':''}</div>
-        ${p.solves.length?`<div class="brk" style="color:var(--good)">fixes: ${p.solves.slice(0,6).join(", ")}${p.solves.length>6?'…':''}</div>`:''}
+        ${p.why&&p.why.length?`<div class="brk" style="color:var(--good)">${p.why.join(" · ")}</div>`:''}
         ${p.pair?`<div class="brk">played together on ${p.pair.teams} teams · ${p.pair.wr}% win rate</div>`:''}
       </div>
       <div class="scorebadge"><b style="color:${wrCol(p.rec?p.rec.wr:50)}">${p.score}</b><small>fit</small></div></div>`;
@@ -887,7 +886,8 @@ function renderPartners(){
         <b>${A.key}</b> ${tbadges(A.types)}
         <div class="muted">${A.ability} · Speed ${A.spe}${A.rec?` · ${A.rec.wr}% win rate over ${A.rec.teams} teams (${A.rec.tier} tier)`:''}</div></div></div>
       <div class="wk" style="margin-top:8px">${R.weak.length?R.weak.map(t=>`<span class="x2">${t}</span>`).join(""):'<span class="muted">no weaknesses</span>'}</div>
-      <div class="muted"><b>${R.problems.length}</b> of the top 50 both threaten it and survive it: ${probList}</div></div>
+      <div class="muted"><b>${R.problems.length}</b> of the top 50 beat it in a straight exchange (★ = outspeeds it): ${R.problems.length?R.problems.map(p=>p.name+(p.outsped?'★':'')).join(", "):'nothing in the top 50'}</div>
+      ${A.needs&&A.needs.list.length?`<div class="muted" style="margin-top:4px">Wants: ${A.needs.list.join(", ")}${A.needs.setup.length?` (setup: ${A.needs.setup.join(", ")})`:''}</div>`:''}</div>
     <div class="card"><b>Best partners</b> <span class="muted">(ranked by fit)</span>
       <div style="margin-top:6px">${R.partners.slice(0,12).map(partnerRow).join("")||'<div class="muted">No partners with enough tournament data.</div>'}</div></div>`;
   bindPF();

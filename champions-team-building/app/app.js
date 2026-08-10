@@ -1246,7 +1246,7 @@ function coverageProfile(team){
 }
 // Speed spread: where the team sits against the meta, and whether it can use both speed modes.
 function speedProfile(team){
-  const spOf=m=>{const v=memberSpeed(m);return (v&&typeof v==='object')?v.spe:v;};
+  const spOf=_spOf;
   const rows=(team||[]).map(m=>({name:effOf(m).name,spe:spOf(m)})).sort((a,b)=>b.spe-a.spe);
   const bench=metaBenchmarks(50).map(b=>{const mem=benchMember(b.name); return mem?spOf(mem):0;}).filter(Boolean).sort((a,b)=>b-a);
   const pct=s=>bench.length?Math.round(bench.filter(x=>x<s).length/bench.length*100):0;
@@ -1259,13 +1259,23 @@ function speedProfile(team){
 // For one Mega, work out what actually beats it, what it cannot remove, and which other Mega
 // patches the most of that — defensively (resists its weaknesses), offensively (KOs its problem
 // list), and on speed (does the pair cover both speed modes).
+// Moves nobody actually clicks on a Mega in doubles: self-locking, recharge, self-KO, or a
+// coin-flip to land. Letting these into an auto-built set makes a Mega look like it answers
+// things it cannot answer in a real game (Outrage was crediting Mega Charizard X with a Garchomp KO).
+const _BAD_AUTO_MV=new Set(["Outrage","Thrash","Petal Dance","Raging Fury","Giga Impact","Hyper Beam",
+  "Frenzy Plant","Blast Burn","Hydro Cannon","Focus Punch","Self-Destruct","Explosion","Misty Explosion",
+  "Final Gambit","Last Resort","Sky Attack","Solar Beam","Solar Blade","Skull Bash","Razor Wind","Bide",
+  "Zap Cannon","Dynamic Punch","Inferno","Sheer Cold","Fissure","Horn Drill","Guillotine"]);
 function _megaAttacker(name,idx){
   const e=byName[name]; if(!e||!e.mega||!e.mega[idx]) return null;
   const mg=e.mega[idx], phys=mg.baseStats.atk>=mg.baseStats.spa;
-  const u=RES_MONS[name]&&usageOf(e)||usageOf(e)||{};
-  const pool=((u.moves||[]).filter(m=>moveInfo(m).bp&&e.moves.includes(m)));
+  const u=usageOf(e)||{};
+  // Species usage is form-blind: Charizard's list is Mega Y's special set, which is wrong for Mega X.
+  // Only keep usage moves matching the FORM's attacking side, then fill by type from the movepool.
+  const pool=((u.moves||[]).filter(m=>{const i=moveInfo(m); return i.bp&&e.moves.includes(m)&&(i.c==="Phys")===phys&&!_BAD_AUTO_MV.has(m);}));
   const byType={};
   for(const m of e.moves){const i=moveInfo(m); if(!i.bp||i.bp<60) continue; if((i.c==="Phys")!==phys) continue;
+    if(_BAD_AUTO_MV.has(m)) continue;
     if(!byType[i.t]||moveInfo(byType[i.t]).bp<i.bp) byType[i.t]=m;}
   const moves=[...new Set([...pool,...Object.values(byType)])].slice(0,10);
   const pts=phys?{hp:2,atk:32,def:0,spa:0,spd:0,spe:32}:{hp:2,atk:0,def:0,spa:32,spd:0,spe:32};
@@ -1289,6 +1299,14 @@ function _bestHit(A,def){
     if(r.minPct*k>best){best=r.minPct*k;mv0=mv;}}
   return {pct:best,move:mv0};
 }
+function _spOf(m){const v=memberSpeed(m);return (v&&typeof v==='object')?v.spe:v;}
+// Does the attacker actually win the 1v1? An OHKO only counts if it lands first, or if the
+// attacker survives the return hit and kills on the swing back.
+function _winsExchange(A,defMember){
+  if(_bestHit(A,defMember).pct<100) return false;
+  if(_spOf(A.mem)>_spOf(defMember)) return true;
+  return _worstTaken(defMember,A.mem).pct<100;
+}
 function _worstTaken(att,def){
   let w=0,mv0="";
   for(const mv of setMovesOf(att)){const i=moveInfo(mv); if(!i.bp) continue;
@@ -1296,33 +1314,75 @@ function _worstTaken(att,def){
     if(r.minPct>w){w=r.minPct;mv0=mv;}}
   return {pct:w,move:mv0};
 }
+// What support a Mega needs to function. Two Megas that want the SAME support kit are cheap to
+// team together — one Fake Out chain, one redirector and one Intimidate answer covers both, so the
+// other four slots do double duty. Mega Charizard X (Dragon Dance) + Mega Floette (Calm Mind) is the
+// worked example: both are setup sweepers, so the same double-Fake-Out + Rage Powder shell serves both.
+function supportNeedsOf(A){
+  const e=A.entry, needs=[];
+  const bs=effOf(A.mem).baseStats, phys=bs.atk>=bs.spa, off=Math.max(bs.atk,bs.spa);
+  // Only count setup a sweeper would ACTUALLY run: it must boost the side this Mega attacks from
+  // and be a real win-condition move. SETUP includes filler like Curse and Work Up that almost
+  // every Pokemon learns, which would otherwise mark the whole dex as a setup sweeper.
+  const want=phys?"atk":"spa";
+  const setup=(e.moves||[]).filter(m=>{const i=SETUP_INFO[m]; return i&&(i[0]===want||i[0]==="both")&&i[1]>=6;})
+    .sort((a,b)=>SETUP_INFO[b][1]-SETUP_INFO[a][1]);
+  if(setup.length&&off>=115){ needs.push("setup"); needs.push("fakeout"); needs.push("redirection"); }
+  if(phys&&!ANTI_INTIM.includes(A.ability)) needs.push("anti-intimidate");
+  if(_spOf(A.mem)<=85) needs.push("trickroom"); else if(_spOf(A.mem)>=110) needs.push("tailwind");
+  const frail=effOf(A.mem).baseStats.def+effOf(A.mem).baseStats.spd<=175;
+  if(frail) needs.push("redirection");
+  return {list:[...new Set(needs)],setup:setup.slice(0,3),phys};
+}
 function megaPartnerFinder(baseName,formIndex,opts){
   opts=opts||{};
   const A=_megaAttacker(baseName,formIndex==null?0:formIndex); if(!A) return null;
   const weak=TYPES.filter(t=>{let m=1;for(const d of A.types){const x=(CHART[t]&&CHART[t][d]!=null)?CHART[t][d]:1;m*=x;} return m>1;});
   const meta=metaBenchmarks(opts.metaN||50).map(b=>benchMember(b.name)).filter(Boolean);
-  // A's problem list: meta mons that hurt it AND that it cannot remove in one hit
-  const probs=meta.filter(t=>_worstTaken(t,A.mem).pct>=75 && _bestHit(A,t).pct<100)
-    .map(t=>({name:effOf(t).name,member:t,hits:_worstTaken(t,A.mem).pct,taken:_bestHit(A,t).pct}));
-  const spOf=m=>{const v=memberSpeed(m);return (v&&typeof v==='object')?v.spe:v;};
+  // A's problem list: meta mons that hurt it AND that it does not cleanly beat.
+  // "Cleanly beat" is speed-aware: an OHKO only counts if you move first, or if you survive the
+  // incoming hit and kill on the swing back. A faster attacker that one-shots you is still a
+  // problem even when you would have KO'd it — which is exactly the Garchomp / Mega Charizard X case.
+  const probs=meta.filter(t=>_worstTaken(t,A.mem).pct>=75 && !_winsExchange(A,t))
+    .map(t=>({name:effOf(t).name,member:t,hits:_worstTaken(t,A.mem).pct,taken:_bestHit(A,t).pct,
+      outsped:_spOf(t)>_spOf(A.mem)}));
+  const spOf=_spOf;
   const aSpe=spOf(A.mem);
+  const aNeeds=supportNeedsOf(A);
   const cands=allMegaAttackers().filter(B=>B.key!==A.key&&B.base!==A.base).map(B=>{
+    const bNeeds=supportNeedsOf(B);
+    const shared=aNeeds.list.filter(n=>bNeeds.list.includes(n));
+    const conflict=(aNeeds.list.includes("trickroom")&&bNeeds.list.includes("tailwind"))
+                 ||(aNeeds.list.includes("tailwind")&&bNeeds.list.includes("trickroom"));
     const res=weak.filter(t=>{let m=1;for(const d of B.types){const x=(CHART[t]&&CHART[t][d]!=null)?CHART[t][d]:1;m*=x;} return m<1;});
-    const solves=probs.filter(p=>_bestHit(B,p.member).pct>=100).map(p=>p.name);
+    const solves=probs.filter(p=>_winsExchange(B,p.member)).map(p=>p.name);
     const survives=probs.filter(p=>_worstTaken(p.member,B.mem).pct<100).length;
     const bSpe=spOf(B.mem);
     const twoMode=(aSpe>=110&&bSpe<=85)||(bSpe>=110&&aSpe<=85);
     const rec=RES_MEGAS[B.key]||null;
     const pair=RES_PAIRS[[A.key,B.key].sort().join(" + ")]||null;
-    const score=(weak.length?res.length/weak.length:1)*38
-      + (probs.length?solves.length/probs.length:0)*42
-      + (probs.length?survives/probs.length:1)*12
-      + (twoMode?8:0);
+    // Shared support needs are worth real points: two setup sweepers run off ONE Fake Out +
+    // redirection shell, so the pair costs four slots instead of six. A speed-mode conflict is the
+    // opposite — each wants a different four slots — but it is only a mild ding on a flex team.
+    const bothSetup=aNeeds.list.includes("setup")&&bNeeds.list.includes("setup");
+    const syn=Math.min(10,shared.length*2.5)+(bothSetup?4:0)-(conflict&&!twoMode?4:0);
+    const score=(weak.length?res.length/weak.length:1)*34
+      + (probs.length?solves.length/probs.length:0)*38
+      + (probs.length?survives/probs.length:1)*11
+      + (twoMode?7:0) + syn;
+    const why=[];
+    if(res.length) why.push(`resists ${res.join(", ")}`);
+    if(solves.length) why.push(`removes ${solves.slice(0,4).join(", ")}${solves.length>4?" +"+(solves.length-4):""}`);
+    if(bothSetup) why.push("both are setup sweepers — one Fake Out + redirection shell serves both");
+    else if(shared.length) why.push(`shares support needs: ${shared.join(", ")}`);
+    if(twoMode) why.push("opposite speed brackets — usable under Tailwind or Trick Room");
+    if(conflict&&!twoMode) why.push("wants a different speed mode");
     return {key:B.key,base:B.base,idx:B.idx,types:B.types,ability:B.ability,spe:bSpe,
-      resists:res,solves,survives,twoMode,rec,pair,score:Math.round(score)};
+      resists:res,solves,survives,twoMode,rec,pair,shared,bothSetup,conflict,why,
+      score:Math.round(score)};
   }).filter(x=>x.rec&&x.rec.teams>=(opts.minTeams||100));
   cands.sort((a,b)=>b.score-a.score||((b.rec?b.rec.wr:0)-(a.rec?a.rec.wr:0)));
-  return {anchor:{key:A.key,base:A.base,idx:A.idx,types:A.types,ability:A.ability,spe:aSpe,rec:RES_MEGAS[A.key]||null},
+  return {anchor:{key:A.key,base:A.base,idx:A.idx,types:A.types,ability:A.ability,spe:aSpe,rec:RES_MEGAS[A.key]||null,needs:aNeeds},
     weak, problems:probs, partners:cands};
 }
 function calcDamage(att,move,def,field){
@@ -1449,4 +1509,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,teamSpeedLean,speedSetterPref,speedFit,flexSpeedRole,electricImmune,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread,RESULTS,resultsFor,megaResultsFor,provenBonus,teammateSynergy,megaTierList,megaPairList,megaKeyOf,provenTeamBonus,supportDensity,coverageProfile,speedProfile,megaPartnerFinder,allMegaAttackers};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,teamSpeedLean,speedSetterPref,speedFit,flexSpeedRole,electricImmune,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread,RESULTS,resultsFor,megaResultsFor,provenBonus,teammateSynergy,megaTierList,megaPairList,megaKeyOf,provenTeamBonus,supportDensity,coverageProfile,speedProfile,megaPartnerFinder,allMegaAttackers,supportNeedsOf};
