@@ -28,7 +28,8 @@ const CHART = {
 };
 /* ability defensive modifiers: type -> multiplier (0 = immune). Applied after the chart. */
 const ABILITY_MOD = {
-  "Levitate":{Ground:0}, "Flash Fire":{Fire:0}, "Lightning Rod":{Electric:0},
+  "Levitate":{Ground:0}, "Eelevate":{Ground:0},   // Eelevate is Mega Eelektross's Levitate
+  "Flash Fire":{Fire:0}, "Lightning Rod":{Electric:0},
   "Volt Absorb":{Electric:0}, "Motor Drive":{Electric:0}, "Water Absorb":{Water:0},
   "Storm Drain":{Water:0}, "Dry Skin":{Water:0,Fire:1.25}, "Sap Sipper":{Grass:0},
   "Earth Eater":{Ground:0}, "Well-Baked Body":{Fire:0}, "Thick Fat":{Fire:.5,Ice:.5},
