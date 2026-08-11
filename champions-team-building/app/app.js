@@ -1293,11 +1293,10 @@ const _SPREAD_MV=new Set(["Blizzard","Heat Wave","Earthquake","Rock Slide","Hype
   "Dazzling Gleam","Icy Wind","Muddy Water","Water Spout","Eruption","Discharge","Snarl","Sludge Wave","Bulldoze","Matcha Gotcha"]);
 function _bestHit(A,def){
   let best=0,mv0="";
-  for(const mv of A.moves){const r=calcDamage(A.mem,mv,def,{spread:_SPREAD_MV.has(mv)}); if(!r||r.immune) continue;
-    let k=1; const i=moveInfo(mv);
-    if(A.ability==="Tough Claws"&&i.c==="Phys"&&/Punch|Head|Fang|Claw|Slam|Combat|Blitz|Smash|Crash|Cleave|Bird|Wingbeat|Liquidation|Rough/.test(mv)) k*=1.3;
-    if(A.ability==="Fairy Aura"&&i.t==="Fairy") k*=1.33;
-    if(r.minPct*k>best){best=r.minPct*k;mv0=mv;}}
+  // calcDamage applies Tough Claws / Fairy Aura / -ate / multi-hit itself now — no manual factors here.
+  for(const mv of A.moves){const r=calcDamage(A.mem,mv,def,{spread:_SPREAD_MV.has(mv)});
+    if(!r||r.immune||r.unknownBP) continue;
+    if(r.minPct>best){best=r.minPct;mv0=mv;}}
   return {pct:best,move:mv0};
 }
 function _spOf(m){const v=memberSpeed(m);return (v&&typeof v==='object')?v.spe:v;}
@@ -1311,7 +1310,7 @@ function _winsExchange(A,defMember){
 function _worstTaken(att,def){
   let w=0,mv0="";
   for(const mv of setMovesOf(att)){const i=moveInfo(mv); if(!i.bp) continue;
-    const r=calcDamage(att,mv,def,{spread:_SPREAD_MV.has(mv)}); if(!r||r.immune) continue;
+    const r=calcDamage(att,mv,def,{spread:_SPREAD_MV.has(mv)}); if(!r||r.immune||r.unknownBP) continue;
     if(r.minPct>w){w=r.minPct;mv0=mv;}}
   return {pct:w,move:mv0};
 }
@@ -1392,40 +1391,167 @@ function megaPartnerFinder(baseName,formIndex,opts){
   return {anchor:{key:A.key,base:A.base,idx:A.idx,types:A.types,ability:A.ability,spe:aSpe,rec:RES_MEGAS[A.key]||null,needs:aNeeds},
     weak, problems:probs, partners:cands};
 }
+
+/* ---------- move flags + variable-power handling (for calcDamage) ---------- */
+// Champions' move data carries only {type, category, bp, priority}, so the flags an ability keys
+// off (contact, punch, pulse, bite, slicing) are kept here by name.
+const MF_CONTACT=new Set(["Tackle","Body Slam","Double-Edge","Take Down","Flare Blitz","Wild Charge","Head Smash",
+ "Close Combat","Brick Break","Drain Punch","Mach Punch","Bullet Punch","Ice Punch","Fire Punch","Thunder Punch",
+ "Shadow Punch","Focus Punch","Power-Up Punch","Meteor Mash","Iron Head","Zen Headbutt","Headbutt","Psychic Fangs",
+ "Ice Fang","Fire Fang","Thunder Fang","Poison Fang","Crunch","Bite","Play Rough","Sucker Punch","Kowtow Cleave",
+ "Night Slash","Sacred Sword","Leaf Blade","X-Scissor","Cross Poison","Aerial Ace","Dual Wingbeat","Brave Bird",
+ "Fly","Acrobatics","U-turn","Flip Turn","Liquidation","Waterfall","Aqua Jet","Aqua Tail","Wave Crash","Dive",
+ "Stomping Tantrum","High Horsepower","Earthquake_NO","Iron Tail","Shadow Claw","Shadow Sneak","Dragon Claw",
+ "Dragon Rush","Outrage","Superpower","Wild Charge","Volt Tackle","Extreme Speed","Quick Attack","Facade",
+ "Return","Last Resort","Giga Impact","Skull Bash","Razor Shell","Dire Claw","Rage Fist","Population Bomb",
+ "Triple Axel","Icicle Crash","Avalanche","Payback","Knock Off","Throat Chop","Lash Out","Bitter Malice",
+ "Spirit Break","Grassy Glide","Jet Punch","First Impression","Leech Life","Megahorn","Bullet Seed_NO",
+ "Poison Jab","Gunk Shot","Sky Attack","Body Press","Bolt Beak","Fishious Rend","Rock Smash","Low Kick",
+ "Heavy Slam","Heat Crash","Bulldoze_NO","Wood Hammer","Petal Blizzard_NO","Solar Blade","Seed Bomb_NO"]);
+const MF_PUNCH=new Set(["Ice Punch","Fire Punch","Thunder Punch","Drain Punch","Mach Punch","Bullet Punch",
+ "Shadow Punch","Focus Punch","Power-Up Punch","Meteor Mash","Sucker Punch","Jet Punch","Dynamic Punch",
+ "Comet Punch","Dizzy Punch","Hammer Arm","Plasma Fists","Rage Fist"]);
+const MF_PULSE=new Set(["Water Pulse","Dragon Pulse","Dark Pulse","Aura Sphere","Origin Pulse","Terrain Pulse","Heal Pulse"]);
+const MF_BITE=new Set(["Bite","Crunch","Psychic Fangs","Ice Fang","Fire Fang","Thunder Fang","Poison Fang","Fishious Rend","Jaw Lock"]);
+const MF_SLICE=new Set(["Leaf Blade","Night Slash","Sacred Sword","X-Scissor","Cross Poison","Air Slash","Psycho Cut",
+ "Razor Shell","Aerial Ace","Slash","Fury Cutter","Behemoth Blade","Ceaseless Edge","Stone Axe","Kowtow Cleave","Solar Blade"]);
+const MF_RECOIL=new Set(["Flare Blitz","Wild Charge","Head Smash","Double-Edge","Brave Bird","Take Down","Submission",
+ "Volt Tackle","Wood Hammer","Wave Crash","Light of Ruin"]);
+const MF_SOUND=new Set(["Hyper Voice","Boomburst","Snarl","Bug Buzz","Overdrive","Disarming Voice","Round","Echoed Voice","Clanging Scales"]);
+// moves with a secondary effect Sheer Force powers up (and removes)
+const MF_SECONDARY=new Set(["Iron Head","Zen Headbutt","Ice Punch","Fire Punch","Thunder Punch","Play Rough",
+ "Liquidation","Waterfall","Crunch","Psychic Fangs","Ice Fang","Fire Fang","Thunder Fang","Rock Slide","Air Slash",
+ "Sludge Bomb","Flamethrower","Fire Blast","Ice Beam","Blizzard","Thunderbolt","Thunder","Discharge","Body Slam",
+ "Dire Claw","Dark Pulse","Dragon Pulse","Energy Ball","Shadow Ball","Moonblast","Mystical Fire","Muddy Water",
+ "Scald","Poison Jab","Gunk Shot","Icicle Crash","Bone Rush","Focus Blast","Aqua Tail_NO","Earth Power","Power Gem"]);
+// fixed-count multi-hit moves: [minHits, maxHits]. Skill Link forces the max.
+const MF_MULTIHIT={"Dual Wingbeat":[2,2],"Double Kick":[2,2],"Twineedle":[2,2],"Bonemerang":[2,2],"Double Hit":[2,2],
+ "Gear Grind":[2,2],"Dragon Darts":[2,2],"Triple Axel":[3,3],"Triple Kick":[3,3],"Surging Strikes":[3,3],
+ "Bullet Seed":[2,5],"Rock Blast":[2,5],"Icicle Spear":[2,5],"Pin Missile":[2,5],"Arm Thrust":[2,5],
+ "Fury Attack":[2,5],"Fury Swipes":[2,5],"Scale Shot":[2,5],"Water Shuriken":[2,5],"Population Bomb":[1,10]};
+// -ate abilities: retype a Normal move and boost it
+const ATE={"Pixilate":["Fairy",1.2],"Aerilate":["Flying",1.2],"Refrigerate":["Ice",1.2],"Galvanize":["Electric",1.2],"Dragonize":["Dragon",1.2]};
+// Power that depends on battle context. Returns a bp, or null to leave the move uncalculable.
+// `field` may supply: statused, targetStatus, movingFirst, movingSecond, prevFailed, hitsTaken,
+// faintedAllies, terrain, targetWeight (kg) — anything omitted falls back to the move's base power.
+function variableBP(move,mi,att,def,field,aS,dS){
+  const F=field||{};
+  switch(move){
+    case "Gyro Ball":   return Math.min(150,Math.floor(25*dS.spe/Math.max(1,aS.spe))||1);
+    case "Electro Ball":{const r=aS.spe/Math.max(1,dS.spe);
+      return r>=4?150:r>=3?120:r>=2?80:r>1?60:40;}
+    case "Facade":      return F.statused?140:70;
+    case "Acrobatics":  return (att.set&&att.set.item)?55:110;
+    case "Hex": case "Venoshock": return F.targetStatus?(mi.bp*2):mi.bp;
+    case "Avalanche": case "Payback": return F.movingSecond?(mi.bp*2):mi.bp;
+    case "Bolt Beak": case "Fishious Rend": return F.movingFirst?(mi.bp*2):mi.bp;
+    case "Stomping Tantrum": return F.prevFailed?150:75;
+    case "Rage Fist":   return Math.min(350,50+50*(F.hitsTaken||0));
+    case "Last Respects": return Math.min(300,50+50*(F.faintedAllies||0));
+    case "Weather Ball": return F.weather?100:50;
+    case "Terrain Pulse": return F.terrain?100:50;
+    case "Grass Knot": case "Low Kick":{const w=F.targetWeight; if(!w) return null;
+      return w>=200?120:w>=100?100:w>=50?60:w>=25?40:w>=10?40:20;}
+    case "Heavy Slam": case "Heat Crash":{const w=F.targetWeight,uw=F.userWeight; if(!w||!uw) return null;
+      const r=uw/w; return r>=5?120:r>=4?100:r>=3?80:r>=2?60:40;}
+    default: return mi.bp;
+  }
+}
+// Weather Ball / Terrain Pulse also change type.
+function dynamicType(move,mi,field){
+  const F=field||{};
+  if(move==="Weather Ball"&&F.weather) return {sun:"Fire",rain:"Water",sand:"Rock",snow:"Ice"}[F.weather]||mi.t;
+  if(move==="Terrain Pulse"&&F.terrain) return {electric:"Electric",grassy:"Grass",psychic:"Psychic",misty:"Fairy"}[F.terrain]||mi.t;
+  return mi.t;
+}
+
 function calcDamage(att,move,def,field){
   field=field||{};
-  const mi=moveInfo(move); if(!mi.bp||!(mi.c==="Phys"||mi.c==="Spec"))return null;
-  const phys=mi.c==="Phys", wt=mi.t;
+  const mi=moveInfo(move); if(!mi.c||!(mi.c==="Phys"||mi.c==="Spec"))return null;
+  const phys=mi.c==="Phys";
   const aEf=effOf(att),dEf=effOf(def),aS=finalStats(att),dS=finalStats(def);
   const aAb=(aEf.abilities||[])[0]||"",dAb=(dEf.abilities||[])[0]||"";
   const aItem=(att.set&&att.set.item)||"",dItem=(def.set&&def.set.item)||"";
+
+  // ---- power: fixed, context-dependent, or uncalculable without extra data ----
+  let bp=variableBP(move,mi,att,def,field,aS,dS);
+  if(bp==null) return {unknownBP:true,move,type:mi.t,note:"needs weight data"};
+  if(!bp) return null;
+
+  // ---- type: -ate abilities and weather/terrain moves retype before effectiveness ----
+  let wt=dynamicType(move,mi,field);
+  let ateMod=1;
+  if(ATE[aAb]&&wt==="Normal"){ wt=ATE[aAb][0]; ateMod=ATE[aAb][1]; }
+
   const eff=effTable(dEf,dAb)[wt]; if(eff===0)return {immune:true,move,type:wt};
+
   let A=phys?aS.atk:aS.spa, D=phys?dS.def:dS.spd;
   if((aAb==="Huge Power"||aAb==="Pure Power")&&phys)A*=2;
   if(aItem==="Choice Band"&&phys)A=Math.floor(A*1.5);
   if(aItem==="Choice Specs"&&!phys)A=Math.floor(A*1.5);
   let atkStage=field.atkStage||0; if(field.intimidate&&phys)atkStage-=1;
   A=Math.floor(A*stageMul(atkStage));
-  D=Math.floor(D*stageMul(field.defStage||0));
+  // defence stages are stat-specific: Stamina and Cotton Guard raise Def only, Calm Mind raises
+  // SpD only. A bare `defStage` still works and applies to whichever stat this move targets.
+  const dStage=(phys?field.defStagePhys:field.defStageSpec);
+  D=Math.floor(D*stageMul(dStage!=null?dStage:(field.defStage||0)));
   if(dItem==="Assault Vest"&&!phys)D=Math.floor(D*1.5);
   if(field.weather==="sand"&&dEf.types.includes("Rock")&&!phys)D=Math.floor(D*1.5);
   if(field.weather==="snow"&&dEf.types.includes("Ice")&&phys)D=Math.floor(D*1.5);
-  let bp=mi.bp; if(aAb==="Technician"&&bp<=60)bp=Math.floor(bp*1.5);
+
+  if(aAb==="Technician"&&bp<=60)bp=Math.floor(bp*1.5);
   const base=Math.floor(Math.floor(22*bp*A/D)/50)+2;
+
   let weatherMod=1;
   if(field.weather==="sun"){if(wt==="Fire")weatherMod=1.5;if(wt==="Water")weatherMod=0.5;}
   if(field.weather==="rain"){if(wt==="Water")weatherMod=1.5;if(wt==="Fire")weatherMod=0.5;}
   const spreadMod=field.spread?0.75:1;
   const stab=aEf.types.includes(wt)?(aAb==="Adaptability"?2:1.5):1;
-  let fm=1;
+
+  // ---- final multipliers ----
+  let fm=ateMod;
+  if(aAb==="Tough Claws"&&MF_CONTACT.has(move))fm*=1.3;
+  if(aAb==="Iron Fist"&&MF_PUNCH.has(move))fm*=1.2;
+  if(aAb==="Mega Launcher"&&MF_PULSE.has(move))fm*=1.5;
+  if(aAb==="Strong Jaw"&&MF_BITE.has(move))fm*=1.5;
+  if(aAb==="Sharpness"&&MF_SLICE.has(move))fm*=1.5;
+  if(aAb==="Reckless"&&MF_RECOIL.has(move))fm*=1.2;
+  if(aAb==="Punk Rock"&&MF_SOUND.has(move))fm*=1.3;
+  if(aAb==="Sheer Force"&&MF_SECONDARY.has(move))fm*=1.3;
+  if(aAb==="Tinted Lens"&&eff<1)fm*=2;
+  if(aAb==="Analytic"&&field.movingSecond)fm*=1.3;
+  if(aAb==="Solar Power"&&!phys&&field.weather==="sun")fm*=1.5;
+  if((aAb==="Blaze"&&wt==="Fire"||aAb==="Torrent"&&wt==="Water"||aAb==="Overgrow"&&wt==="Grass"
+     ||aAb==="Swarm"&&wt==="Bug")&&field.pinch)fm*=1.5;
+  // Fairy Aura / Dark Aura boost that type for EVERY Pokemon on the field, both sides.
+  if((field.fairyAura||aAb==="Fairy Aura")&&wt==="Fairy")fm*=1.33;
+  if((field.darkAura||aAb==="Dark Aura")&&wt==="Dark")fm*=1.33;
   if(aItem==="Life Orb")fm*=1.3;
   if(aItem==="Expert Belt"&&eff>1)fm*=1.2;
   if(aItem==="Muscle Band"&&phys)fm*=1.1;
   if(aItem==="Wise Glasses"&&!phys)fm*=1.1;
   if(TYPE_ITEM[aItem]===wt)fm*=1.2;
+  if(field.helpingHand)fm*=1.5;
+  // screens: 0.5 in singles, 0.667 in doubles (the format default here)
+  const screenMul=field.singles?0.5:0.667;
+  if(field.auroraVeil||(phys?field.reflect:field.lightScreen))fm*=screenMul;
+  if(field.friendGuard)fm*=0.75;
+  if(field.terrain==="grassy"&&wt==="Grass"&&!dEf.types.includes("Flying"))fm*=1.3;
+  if(field.terrain==="electric"&&wt==="Electric")fm*=1.3;
+  if(field.terrain==="psychic"&&wt==="Psychic")fm*=1.3;
+  if(field.terrain==="misty"&&wt==="Dragon")fm*=0.5;
   if(dAb==="Multiscale"&&field.fullHP!==false)fm*=0.5;
   if((dAb==="Filter"||dAb==="Solid Rock"||dAb==="Prism Armor")&&eff>1)fm*=0.75;
+  if(dAb==="Fluffy"&&MF_CONTACT.has(move))fm*=0.5;
+  if(dAb==="Ice Scales"&&!phys)fm*=0.5;
+  if(dAb==="Punk Rock"&&MF_SOUND.has(move))fm*=0.5;
   if(field.burn&&phys&&aAb!=="Guts")fm*=0.5;
+
+  // ---- multi-hit ----
+  let hits=1;
+  const mh=MF_MULTIHIT[move];
+  if(mh) hits=(aAb==="Skill Link")?mh[1]:(field.hits||(mh[0]===mh[1]?mh[0]:Math.round((mh[0]+mh[1])/2)));
+
   const rolls=[];
   for(let r=85;r<=100;r++){
     let d=base;
@@ -1434,10 +1560,10 @@ function calcDamage(att,move,def,field){
     d=pokeRound(d*stab);
     d=Math.floor(d*eff);
     d=pokeRound(d*fm);
-    rolls.push(Math.max(1,d));
+    rolls.push(Math.max(1,d)*hits);
   }
   const hp=dS.hp,min=rolls[0],max=rolls[15];
-  return {min,max,hp,eff,phys,type:wt,move,
+  return {min,max,hp,eff,phys,type:wt,move,hits,bp,
     minPct:Math.round(min/hp*1000)/10,maxPct:Math.round(max/hp*1000)/10,ko:koText(min,max,hp)};
 }
 
