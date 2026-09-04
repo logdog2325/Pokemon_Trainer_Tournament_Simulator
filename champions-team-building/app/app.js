@@ -325,8 +325,16 @@ function megaResultsFor(name,variant){
 function megaKeyOf(m){
   if(!m||m.formIndex==null||m.formIndex<0) return null;
   const e=m.entry, mg=(e.mega||[])[m.formIndex]; if(!mg) return null;
-  const lab=String(mg.label||"").match(/\b([XY])\b/i);
-  if(lab){const k=e.name+"-"+lab[1].toUpperCase(); if(RES_MEGAS[k]) return k;}
+  const lab=String(mg.label||"").match(/\b([XYZ])\b/i);
+  if(lab){
+    const v=lab[1].toUpperCase();
+    // Z megas are Reg M-C forms with no tournament history. The bare key holds the ORIGINAL
+    // mega's record (Garchomp = 123 refs), so falling back would credit Mega Garchomp Z with
+    // results from a format it did not exist in. Same rule as megaResultsFor: an explicit
+    // variant never falls back to the bare key.
+    if(v==="Z") return null;
+    const k=e.name+"-"+v; if(RES_MEGAS[k]) return k;
+  }
   return RES_MEGAS[e.name]?e.name:null;
 }
 // Team-level tournament evidence: how the chosen megas actually perform, plus whether this exact
