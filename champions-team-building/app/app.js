@@ -75,6 +75,10 @@ const PRIORITY=["Sucker Punch","Bullet Punch","Aqua Jet","Ice Shard","Shadow Sne
 const HAZARD=["Stealth Rock","Spikes","Toxic Spikes","Sticky Web"];
 const SUPPORT=["Helping Hand","Wide Guard","Quick Guard","Reflect","Light Screen","Aurora Veil","Heal Pulse","Life Dew","Pollen Puff","Decorate","Coaching"];
 const WEATHER_ABIL={"Drought":"sun","Drizzle":"rain","Sand Stream":"sand","Snow Warning":"snow","Orichalcum Pulse":"sun","Desolate Land":"sun","Primordial Sea":"rain"};
+// Reg M-C brought the terrain setters (Indeedee, Rillaboom, Pincurchin) into the format.
+// Before M-C the only one was Mega Raichu X, so terrain was not worth modelling.
+const TERRAIN_ABIL={"Psychic Surge":"psychic","Grassy Surge":"grassy","Electric Surge":"electric","Misty Surge":"misty"};
+const TERRAIN_MOVE={"Psychic Terrain":"psychic","Grassy Terrain":"grassy","Electric Terrain":"electric","Misty Terrain":"misty"};
 const has=(e,list)=> list.filter(m=>e.moves.includes(m));
 
 function statSum(e){const s=e.baseStats;return s.hp+s.atk+s.def+s.spa+s.spd+s.spe;}
@@ -216,6 +220,21 @@ function teamWeather(team){
   for(const m of team) for(const a of effOf(m).abilities) if(WEATHER_ABIL[a]) return WEATHER_ABIL[a];
   return null;
 }
+// An ability setter is automatic; a terrain MOVE only counts if the member actually runs it.
+function teamTerrain(team){
+  for(const m of team) for(const a of effOf(m).abilities) if(TERRAIN_ABIL[a]) return TERRAIN_ABIL[a];
+  for(const m of team) for(const mv of setMovesOf(m)) if(TERRAIN_MOVE[mv]) return TERRAIN_MOVE[mv];
+  return null;
+}
+// Terrain only touches GROUNDED Pokemon — no boost for the user, no protection for the target.
+// This is why Levitate megas (Delphox, Chimecho, Garchomp Z) get nothing out of a terrain team.
+function isGrounded(mon){
+  const e=effOf(mon);
+  if(e.types.includes("Flying")) return false;
+  if((e.abilities||[]).includes("Levitate")) return false;
+  if(mon&&mon.set&&mon.set.item==="Air Balloon") return false;
+  return true;
+}
 function weatherBonus(e,weather){
   if(!weather) return 0;
   let b=0; const ab=e.abilities||[], ty=e.types;
@@ -297,10 +316,16 @@ const ITEMS=["Life Orb","Leftovers","Focus Sash","Sitrus Berry","Choice Scarf","
   "Expert Belt","Muscle Band","Wise Glasses","Bright Powder","Wide Lens","Zoom Lens","Scope Lens","Quick Claw","King's Rock",
   "Mental Herb","White Herb","Shell Bell","Focus Band","Iron Ball","Shed Shell","Metronome","Big Root","Light Clay",
   "Heat Rock","Damp Rock","Smooth Rock","Icy Rock",
+  /* Reg M-C additions */
+  "Rocky Helmet","Air Balloon","Terrain Extender","Red Card","Eject Button","Binding Band","Normal Gem","Leek",
+  "Grassy Seed","Electric Seed","Psychic Seed","Misty Seed",
   "Charti Berry","Occa Berry","Passho Berry","Shuca Berry","Wacan Berry","Yache Berry","Chople Berry","Kebia Berry",
   "Coba Berry","Payapa Berry","Tanga Berry","Colbur Berry","Haban Berry","Kasib Berry","Babiri Berry","Roseli Berry",
   "Chilan Berry","Rindo Berry","Lum Berry","Oran Berry","Cheri Berry","Chesto Berry","Pecha Berry","Rawst Berry","Aspear Berry","Persim Berry","Leppa Berry"];
-const GOOD_AB={"Intimidate":13,"Unburden":12,"Parental Bond":15,"Adaptability":12,"Technician":11,"Huge Power":14,"Pure Power":14,"Speed Boost":13,"Magic Bounce":11,"Regenerator":11,"Levitate":9,"Flash Fire":8,"Lightning Rod":9,"Good as Gold":12,"Sharpness":11,"Tough Claws":10,"No Guard":11,"Mold Breaker":8,"Dry Skin":9,"Thick Fat":9,"Sand Rush":9,"Swift Swim":9,"Chlorophyll":9,"Protosynthesis":11,"Quark Drive":11,"Contrary":12,"Prankster":11,"Water Absorb":9,"Volt Absorb":9,"Storm Drain":9,"Sap Sipper":9,"Drought":11,"Drizzle":11,"Sand Stream":11,"Snow Warning":11};
+const GOOD_AB={"Intimidate":13,"Unburden":12,"Parental Bond":15,"Adaptability":12,"Technician":11,"Huge Power":14,"Pure Power":14,"Speed Boost":13,"Magic Bounce":11,"Regenerator":11,"Levitate":9,"Flash Fire":8,"Lightning Rod":9,"Good as Gold":12,"Sharpness":11,"Tough Claws":10,"No Guard":11,"Mold Breaker":8,"Dry Skin":9,"Thick Fat":9,"Sand Rush":9,"Swift Swim":9,"Chlorophyll":9,"Protosynthesis":11,"Quark Drive":11,"Contrary":12,"Prankster":11,"Water Absorb":9,"Volt Absorb":9,"Storm Drain":9,"Sap Sipper":9,"Drought":11,"Drizzle":11,"Sand Stream":11,"Snow Warning":11,
+  /* Reg M-C */ "Psychic Surge":12,"Grassy Surge":12,"Electric Surge":11,"Misty Surge":10,"Libero":12,"Protean":12,
+  "Aerilate":12,"Punk Rock":10,"Steely Spirit":10,"Guard Dog":9,"Stakeout":9,"Sniper":8,"Thermal Exchange":9,
+  "Seed Sower":7,"Competitive":9,"Defiant":9,"Scrappy":8,"Fur Coat":10,"Own Tempo":6,"Emergency Exit":2};
 function moveInfo(n){return (window.MOVES&&window.MOVES[n])||{t:null,c:"",bp:0,pri:0};}
 function recommendAbility(e){let best=(e.abilities||[])[0]||"",sc=-1;for(const a of(e.abilities||[])){const v=GOOD_AB[a]||5;if(v>sc){sc=v;best=a;}}return best;}
 
@@ -812,15 +837,15 @@ function checkCoverageBonus(e,team,slot){
   if(team.length<1) return 0;
   const {mu,tm}=teamMatchupState(team);
   if(!mu.uncovered&&!mu.neutral) return 0;             // already check everything → no patch available
-  const weather=teamWeather(team);
+  const weather=teamWeather(team), terrain=teamTerrain(team);
   const set=recommendSet(e,slot&&slot.key?slot.key:"meta");
   const cm={entry:e,formIndex:(set.formIndex!=null?set.formIndex:-1),set};
   let b=0;
   mu.rows.forEach((row,i)=>{
     if(row.tier>=2) return;                             // already a check — nothing to patch
     const t=tm[i]; if(!t) return;
-    const inc=bestHitPct(t,cm,{weather});               // threat's max% on the candidate
-    const ko=memberKOon(cm,t,{weather,spread:false});   // candidate's KO on the threat
+    const inc=bestHitPct(t,cm,{weather,terrain});       // threat's max% on the candidate
+    const ko=memberKOon(cm,t,{weather,terrain,spread:false}); // candidate's KO on the threat
     const survives=inc<100, faster=memberSpeed(cm,{weather}).spe>memberSpeed(t,{weather}).spe;
     const becomesCheck=(survives&&ko.mn>=50)||(faster&&ko.mn>=100);
     if(becomesCheck) b+=row.tier===0?7:2;              // patching an UNCOVERED threat >> upgrading a soft one
@@ -927,7 +952,7 @@ function teamHealth(team){
 
 /* ---------- archetype skeleton checklist (is the team a complete <archetype>?) ---------- */
 function archetypeChecklist(team){
-  const mode=teamSpeedMode(team), needs=teamNeeds(team), weather=teamWeather(team), tm=team.flatMap(m=>setMovesOf(m));
+  const mode=teamSpeedMode(team), needs=teamNeeds(team), weather=teamWeather(team), terrain=teamTerrain(team), tm=team.flatMap(m=>setMovesOf(m));
   const wins=team.filter(m=>offense(m.entry)>=105||m.formIndex>=0||has(m.entry,SETUP).length).length;
   const fast=team.filter(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe>=85).length;
   const slow=team.filter(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe<=55).length;
@@ -937,11 +962,35 @@ function archetypeChecklist(team){
   const lightClay=team.some(m=>m.set&&m.set.item==="Light Clay");
   const bellyDrum=team.some(m=>setMovesOf(m).includes("Belly Drum"));
   const weatherAbuser=weather&&team.some(m=>{const e=m.entry;return (e.abilities||[]).some(a=>WEATHER_BENEFIT_ABIL[weather]&&WEATHER_BENEFIT_ABIL[weather].includes(a))||(weather==="sun"&&e.types.includes("Fire"))||(weather==="rain"&&e.types.includes("Water"));});
+  // Terrain payoff: a grounded member that actually cashes the terrain in. Levitate/Flying members
+  // are excluded on purpose — they get no boost and no protection from your own terrain.
+  const TERRAIN_PAYOFF={psychic:["Expanding Force","Psychic","Psyshock","Psychic Noise","Stored Power","Zen Headbutt","Psycho Cut","Terrain Pulse"],
+    grassy:["Grassy Glide","Wood Hammer","Power Whip","Grass Knot","Energy Ball","Seed Bomb","Terrain Pulse"],
+    electric:["Rising Voltage","Thunderbolt","Wild Charge","Volt Tackle","Discharge","Psyblade","Terrain Pulse"],
+    misty:["Moonblast","Dazzling Gleam","Play Rough","Alluring Voice","Terrain Pulse"]};
+  const terrainAbuser=terrain&&team.filter(m=>isGrounded(m)&&setMovesOf(m).some(x=>(TERRAIN_PAYOFF[terrain]||[]).includes(x))).length;
+  const seeds={psychic:"Psychic Seed",grassy:"Grassy Seed",electric:"Electric Seed",misty:"Misty Seed"};
   let arche="Balance";
   add("2+ win conditions",wins>=2);
-  add("Fake Out (≈90% of top teams)",!needs.fakeout);
+  // Psychic Terrain blocks priority against grounded targets — including your OWN Fake Out.
+  if(terrain==="psychic") add("Fake Out — dead weight under your own Psychic Terrain",!tm.includes("Fake Out"));
+  else add("Fake Out (≈90% of top teams)",!needs.fakeout);
   const snowVeil=tm.includes("Aurora Veil")&&team.some(m=>(m.entry.abilities||[]).includes("Snow Warning"));
-  if(weather&&weatherAbuser){const ab=weather.charAt(0).toUpperCase()+weather.slice(1); arche=ab+" offense";
+  if(terrain&&terrainAbuser>=2){
+    const nm=terrain.charAt(0).toUpperCase()+terrain.slice(1);
+    arche=terrain==="psychic"?"Psyspam (Psychic Terrain)":nm+" Terrain offense";
+    add(nm+" Terrain setter",true);
+    add("2+ grounded abusers",terrainAbuser>=2);
+    // One setter is one KO away from losing the archetype; a terrain MOVE on a second member is the backup.
+    add("a backup setter (second ability, or the terrain move)",
+      team.filter(m=>effOf(m).abilities.some(a=>TERRAIN_ABIL[a])||setMovesOf(m).some(mv=>TERRAIN_MOVE[mv])).length>=2);
+    add("Terrain Extender (5 → 8 turns)",team.some(m=>m.set&&m.set.item==="Terrain Extender"));
+    add(seeds[terrain]+" on a member (free +1, and Unburden fuel)",team.some(m=>m.set&&m.set.item===seeds[terrain]));
+    if(terrain==="psychic") add("an answer to Dark types (they are immune to your spam)",
+      team.some(m=>setMovesOf(m).some(x=>{const i=moveInfo(x);return (i.t==="Fighting"||i.t==="Fairy"||i.t==="Bug")&&i.bp>=60;})));
+    add("redirection to protect the setter",!needs.redir);
+  }
+  else if(weather&&weatherAbuser){const ab=weather.charAt(0).toUpperCase()+weather.slice(1); arche=ab+" offense";
     add(ab+" setter",true); add(ab+" abuser",weatherAbuser); if(weather==="snow")add("Aurora Veil",tm.includes("Aurora Veil"));}
   else if(snowVeil){arche="Snow / Aurora Veil offense"; add("Snow Warning setter",true); add("Aurora Veil",true); add("Light Clay",lightClay); add("2+ fast attackers",fast>=2);}
   else if(bellyDrum){arche="Belly Drum offense"; add("Belly Drum sweeper",true); add("priority to cash in the boost",prio>=1); add("redirection / Fake Out / screens to land it",!needs.redir||!needs.fakeout||screens);}
@@ -977,11 +1026,11 @@ function threatAnswers(team){
 // how much of the meta does each win-condition actually KO, in the team's enabled state?
 function winConRealism(team){
   if(!team.length) return {wins:[],best:0};
-  const threats=threatMembers(), weather=teamWeather(team);
+  const threats=threatMembers(), weather=teamWeather(team), terrain=teamTerrain(team);
   const wins=team.filter(m=>{const e=m.entry;return offense(e)>=110||m.formIndex>=0||has(e,SETUP).length;});
   const out=wins.map(w=>{
     let ko=0;
-    for(const t of threats){let best=0;for(const mv of setMovesOf(w)){const r=calcDamage(w,mv,t,{weather,spread:false});if(r&&!r.immune&&r.maxPct>best)best=r.maxPct;}
+    for(const t of threats){let best=0;for(const mv of setMovesOf(w)){const r=calcDamage(w,mv,t,{weather,terrain,spread:false});if(r&&!r.immune&&r.maxPct>best)best=r.maxPct;}
       if(best>=100)ko+=1; else if(best>=50)ko+=0.5;}
     return {name:w.entry.name+(w.formIndex>=0?" (Mega)":""),frac:Math.round(ko/threats.length*100)};
   }).sort((a,b)=>b.frac-a.frac);
@@ -1014,15 +1063,15 @@ function metaThreatList(n){
 // opts.mode: "none" (raw speed) · "tailwind" (our Speed ×2, theirs not) · "trickroom" (lower Speed acts first).
 function threatMatchups(team,list,opts){
   if(!team||!team.length) return {rows:[],checked:0,neutral:0,uncovered:0,uncoveredNames:[],total:0,mode:(opts&&opts.mode)||"none"};
-  const weather=teamWeather(team), mode=(opts&&opts.mode)||"none";
+  const weather=teamWeather(team), terrain=teamTerrain(team), mode=(opts&&opts.mode)||"none";
   const rows=(list&&list.length?list:threatMembers()).map(t=>{
     const tSpe=memberSpeed(t,{weather}).spe;
     let tier=0,by=null,note="",det=null;
     let lowInc=999,lowBy=null,lowMove=null;                // best (least-OHKO'd) wall, for the uncovered case
     for(const d of team){
-      const take=worstHit(t,d,{weather});                  // threat's hardest hit on us {pct,move}
+      const take=worstHit(t,d,{weather,terrain});          // threat's hardest hit on us {pct,move}
       const inc=take.pct;
-      const ko=memberKOon(d,t,{weather,spread:false});     // our best KO on the threat {mn,mx,move}
+      const ko=memberKOon(d,t,{weather,terrain,spread:false}); // our best KO on the threat {mn,mx,move}
       const sd=memberSpeed(d,{weather}).spe;
       // "both" = a two-mode team that can bring up whichever speed mode is favorable for this matchup
       const faster = mode==="both" ? (sd*2>tSpe||sd<tSpe) : mode==="trickroom" ? sd<tSpe : mode==="tailwind" ? sd*2>tSpe : sd>tSpe;
@@ -1071,7 +1120,7 @@ function optimizeSurvive(def,att,move,opt){
       const dp=tot-hp; if(dp>32) continue;
       const pts={hp,atk:0,def:0,spa:0,spd:0,spe:0}; pts[dk]=dp;
       const d={entry:def.entry,formIndex:def.formIndex,set:Object.assign({},def.set,{points:pts})};
-      const r=calcDamage(att,move,d,{weather:opt.weather,spread:opt.spread});
+      const r=calcDamage(att,move,d,{weather:opt.weather,terrain:opt.terrain,spread:opt.spread});
       if(!r) return {possible:false,immune:false};
       if(r.immune) return {possible:true,immune:true,hp:0,def:0,total:0,maxPct:0};
       if(r.maxPct<100) return {possible:true,hp,def:dp,defStat:dk,total:tot,maxPct:r.maxPct};
@@ -1079,31 +1128,31 @@ function optimizeSurvive(def,att,move,opt){
   }
   // not survivable even at 32/32
   const d={entry:def.entry,formIndex:def.formIndex,set:Object.assign({},def.set,{points:{hp:32,atk:0,def:phys?32:0,spa:0,spd:phys?0:32,spe:0}})};
-  const r=calcDamage(att,move,d,{weather:opt.weather,spread:opt.spread});
+  const r=calcDamage(att,move,d,{weather:opt.weather,terrain:opt.terrain,spread:opt.spread});
   return {possible:false,maxPct:r?r.maxPct:999};
 }
 // min attacking points so `m` (with nature) reaches a KO benchmark on a meta defender.
 // ko: "ohko" => guaranteed OHKO (min roll ≥ 100%); "2hko" => guaranteed 2HKO (min roll ≥ 50%).
-function optimizeKO(m,nature,atkK,def,ko,weather,fixedMove){
+function optimizeKO(m,nature,atkK,def,ko,weather,fixedMove,terrain){
   const thr=ko==="2hko"?50:100;
   // pick the move: explicit, else whichever hits this defender hardest at full investment
   let mv=fixedMove;
   if(!mv){
     let bp=-1; const fp={hp:0,atk:0,def:0,spa:0,spd:0,spe:0}; fp[atkK]=32;
     const fa={entry:m.entry,formIndex:m.formIndex,set:Object.assign({},m.set,{points:fp,nature})};
-    for(const c of setMovesOf(fa)){const r=calcDamage(fa,c,def,{weather,spread:false});if(r&&!r.immune&&r.minPct>bp){bp=r.minPct;mv=c;}}
+    for(const c of setMovesOf(fa)){const r=calcDamage(fa,c,def,{weather,terrain,spread:false});if(r&&!r.immune&&r.minPct>bp){bp=r.minPct;mv=c;}}
   }
   if(!mv) return {possible:false,move:null};
   for(let p=0;p<=32;p++){
     const pts={hp:0,atk:0,def:0,spa:0,spd:0,spe:0}; pts[atkK]=p;
     const fa={entry:m.entry,formIndex:m.formIndex,set:Object.assign({},m.set,{points:pts,nature})};
-    const r=calcDamage(fa,mv,def,{weather,spread:false});
+    const r=calcDamage(fa,mv,def,{weather,terrain,spread:false});
     if(r&&!r.immune&&r.minPct>=thr) return {possible:true,points:p,move:mv,pct:r.minPct};
   }
   // not reachable even at 32 — report the best we can do
   const fp={hp:0,atk:0,def:0,spa:0,spd:0,spe:0}; fp[atkK]=32;
   const fa={entry:m.entry,formIndex:m.formIndex,set:Object.assign({},m.set,{points:fp,nature})};
-  const r=calcDamage(fa,mv,def,{weather,spread:false});
+  const r=calcDamage(fa,mv,def,{weather,terrain,spread:false});
   return {possible:false,move:mv,pct:r?r.minPct:0};
 }
 // full 66-point spread that satisfies a speed benchmark + survival constraints + KO benchmarks at once.
@@ -1299,10 +1348,17 @@ function allMegaAttackers(){
 }
 const _SPREAD_MV=new Set(["Blizzard","Heat Wave","Earthquake","Rock Slide","Hyper Voice","Make It Rain","Surf",
   "Dazzling Gleam","Icy Wind","Muddy Water","Water Spout","Eruption","Discharge","Snarl","Sludge Wave","Bulldoze","Matcha Gotcha"]);
+// Expanding Force is single-target normally and only becomes a spread move in Psychic Terrain,
+// so it can't live in the flat set above. Like the terrain's power boost, the spread conversion
+// needs a GROUNDED user — a Levitate/Flying attacker gets neither.
+function isSpreadMove(mv,field,att){
+  if(_SPREAD_MV.has(mv)) return true;
+  return mv==="Expanding Force"&&!!field&&field.terrain==="psychic"&&(!att||isGrounded(att));
+}
 function _bestHit(A,def){
   let best=0,mv0="";
   // calcDamage applies Tough Claws / Fairy Aura / -ate / multi-hit itself now — no manual factors here.
-  for(const mv of A.moves){const r=calcDamage(A.mem,mv,def,{spread:_SPREAD_MV.has(mv)});
+  for(const mv of A.moves){const r=calcDamage(A.mem,mv,def,{spread:isSpreadMove(mv,null)});
     if(!r||r.immune||r.unknownBP) continue;
     if(r.minPct>best){best=r.minPct;mv0=mv;}}
   return {pct:best,move:mv0};
@@ -1318,7 +1374,7 @@ function _winsExchange(A,defMember){
 function _worstTaken(att,def){
   let w=0,mv0="";
   for(const mv of setMovesOf(att)){const i=moveInfo(mv); if(!i.bp) continue;
-    const r=calcDamage(att,mv,def,{spread:_SPREAD_MV.has(mv)}); if(!r||r.immune||r.unknownBP) continue;
+    const r=calcDamage(att,mv,def,{spread:isSpreadMove(mv,null)}); if(!r||r.immune||r.unknownBP) continue;
     if(r.minPct>w){w=r.minPct;mv0=mv;}}
   return {pct:w,move:mv0};
 }
@@ -1420,6 +1476,8 @@ const MF_PUNCH=new Set(["Ice Punch","Fire Punch","Thunder Punch","Drain Punch","
  "Shadow Punch","Focus Punch","Power-Up Punch","Meteor Mash","Sucker Punch","Jet Punch","Dynamic Punch",
  "Comet Punch","Dizzy Punch","Hammer Arm","Plasma Fists","Rage Fist"]);
 const MF_PULSE=new Set(["Water Pulse","Dragon Pulse","Dark Pulse","Aura Sphere","Origin Pulse","Terrain Pulse","Heal Pulse"]);
+// Grassy Terrain halves these against grounded targets.
+const MF_GROUNDQUAKE=new Set(["Earthquake","Bulldoze","Magnitude"]);
 const MF_BITE=new Set(["Bite","Crunch","Psychic Fangs","Ice Fang","Fire Fang","Thunder Fang","Poison Fang","Fishious Rend","Jaw Lock"]);
 const MF_SLICE=new Set(["Leaf Blade","Night Slash","Sacred Sword","X-Scissor","Cross Poison","Air Slash","Psycho Cut",
  "Razor Shell","Aerial Ace","Slash","Fury Cutter","Behemoth Blade","Ceaseless Edge","Stone Axe","Kowtow Cleave","Solar Blade"]);
@@ -1458,6 +1516,11 @@ function variableBP(move,mi,att,def,field,aS,dS){
     case "Last Respects": return Math.min(300,50+50*(F.faintedAllies||0));
     case "Weather Ball": return F.weather?100:50;
     case "Terrain Pulse": return F.terrain?100:50;
+    // Terrain-fed moves (M-C). Expanding Force also becomes a SPREAD move in Psychic Terrain —
+    // callers set field.spread; see _SPREAD_MV.
+    case "Expanding Force": return (F.terrain==="psychic"&&isGrounded(att))?120:80;
+    case "Rising Voltage":  return (F.terrain==="electric"&&isGrounded(def))?140:70;
+    case "Psyblade":        return (F.terrain==="electric"&&isGrounded(att))?120:80;
     case "Grass Knot": case "Low Kick":{const w=F.targetWeight; if(!w) return null;
       return w>=200?120:w>=100?100:w>=50?60:w>=25?40:w>=10?40:20;}
     case "Heavy Slam": case "Heat Crash":{const w=F.targetWeight,uw=F.userWeight; if(!w||!uw) return null;
@@ -1544,10 +1607,16 @@ function calcDamage(att,move,def,field){
   const screenMul=field.singles?0.5:0.667;
   if(field.auroraVeil||(phys?field.reflect:field.lightScreen))fm*=screenMul;
   if(field.friendGuard)fm*=0.75;
-  if(field.terrain==="grassy"&&wt==="Grass"&&!dEf.types.includes("Flying"))fm*=1.3;
-  if(field.terrain==="electric"&&wt==="Electric")fm*=1.3;
-  if(field.terrain==="psychic"&&wt==="Psychic")fm*=1.3;
-  if(field.terrain==="misty"&&wt==="Dragon")fm*=0.5;
+  // Terrain: the offensive boost needs a GROUNDED ATTACKER, the defensive effects a grounded TARGET.
+  if(field.terrain&&isGrounded(att)){
+    if(field.terrain==="grassy"&&wt==="Grass")fm*=1.3;
+    if(field.terrain==="electric"&&wt==="Electric")fm*=1.3;
+    if(field.terrain==="psychic"&&wt==="Psychic")fm*=1.3;
+  }
+  if(field.terrain&&isGrounded(def)){
+    if(field.terrain==="misty"&&wt==="Dragon")fm*=0.5;
+    if(field.terrain==="grassy"&&MF_GROUNDQUAKE.has(move))fm*=0.5;
+  }
   if(dAb==="Multiscale"&&field.fullHP!==false)fm*=0.5;
   if((dAb==="Filter"||dAb==="Solid Rock"||dAb==="Prism Armor")&&eff>1)fm*=0.75;
   if(dAb==="Fluffy"&&MF_CONTACT.has(move))fm*=0.5;
