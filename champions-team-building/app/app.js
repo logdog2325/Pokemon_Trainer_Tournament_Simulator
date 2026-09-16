@@ -196,7 +196,9 @@ function teamWeakTally(team){
 function setMovesOf(m){return (m&&m.set&&m.set.moves)?m.set.moves.filter(Boolean):(m&&m.entry?m.entry.moves:[]);}
 function teamNeeds(team){
   const flat=team.flatMap(m=>setMovesOf(m));
-  const ab=team.flatMap(m=>effOf(m).abilities);
+  // Include the BASE ability of a Megaed member: Intimidate fires on switch-in, before you Mega,
+  // and both Worlds 2026 reports deliberately delay Mega Evolution to keep the base ability.
+  const ab=team.flatMap(m=>effOf(m).abilities.concat(m.formIndex>=0?(m.entry.abilities||[]):[]));
   return {
     speed: !flat.some(m=>SPEEDCTRL.includes(m)),
     redir: !flat.some(m=>REDIR.includes(m)),
@@ -219,6 +221,24 @@ const WEATHER_BENEFIT_ABIL={
 function teamWeather(team){
   for(const m of team) for(const a of effOf(m).abilities) if(WEATHER_ABIL[a]) return WEATHER_ABIL[a];
   return null;
+}
+// Counts INDEPENDENT layers of turn-order control — losing one must not disable the others.
+// Both Worlds 2026 reports stacked four. Paralysis and weather-speed persist after their setter
+// faints; Tailwind does not, which is why the count matters more than the presence of any one.
+const _PARA=["Zap Cannon","Thunder Wave","Nuzzle","Glare","Stun Spore","Thunder"];
+const _SPEEDAB=["Sand Rush","Swift Swim","Chlorophyll","Slush Rush","Unburden","Quark Drive","Protosynthesis","Surge Surfer"];
+function speedLayers(team){
+  const tm=team.flatMap(m=>setMovesOf(m)); let n=0;
+  if(tm.includes("Tailwind")) n++;
+  // Prankster Tailwind is a separate layer from a non-Prankster one: it wins the setup race.
+  if(tm.includes("Tailwind")&&team.some(m=>setMovesOf(m).includes("Tailwind")&&effOf(m).abilities.includes("Prankster"))) n++;
+  if(tm.includes("Trick Room")) n++;
+  if(team.some(m=>effOf(m).abilities.some(a=>_SPEEDAB.includes(a)))) n++;
+  if(tm.some(x=>_PARA.includes(x))) n++;
+  if(tm.includes("Icy Wind")||tm.includes("Electroweb")||tm.includes("Bulldoze")||tm.includes("Drum Beating")) n++;
+  if(team.filter(m=>setMovesOf(m).some(x=>PRIORITY.includes(x))).length>=2) n++;  // a priority package
+  if(tm.includes("Fake Out")) n++;
+  return n;
 }
 // An ability setter is automatic; a terrain MOVE only counts if the member actually runs it.
 function teamTerrain(team){
@@ -898,7 +918,11 @@ function teamHealth(team){
   // role backbone — calibrated to Champions top-cut frequencies (Intimidate is OPTIONAL, never required)
   if(n>=4){
     if(mode==="none"){score-=12;flags.push({sev:2,msg:"no speed-control plan (Tailwind / Trick Room / priority)"});}
-    if(needs.fakeout){score-=4;flags.push({sev:1,msg:"no Fake Out (≈90% of top teams run one)"});}
+    // Fake Out is a soft heuristic, not a rule: Wolfe Glick's Worlds 2026 team ran NO Fake Out and
+    // no redirection, and the Hamann team ran one Fake Out and no redirection. Both substituted
+    // redundant turn-order control. Penalise only when speed control is ALSO thin.
+    if(needs.fakeout){const sc=speedLayers(team);score-=(sc>=2?1:4);
+      flags.push({sev:sc>=2?0:1,msg:sc>=2?"no Fake Out, but "+sc+" layers of speed control cover for it":"no Fake Out and <2 layers of speed control"});}
     if(needs.priority){score-=5;flags.push({sev:1,msg:"no priority move"});}
     if(needs.redir && team.some(m=>has(m.entry,SETUP).length&&offense(m.entry)>=95)){score-=4;flags.push({sev:1,msg:"setup sweeper with no redirection to protect it"});}
     // Trick Room matchup: every team should be able to interact with opposing Trick Room
@@ -974,7 +998,9 @@ function archetypeChecklist(team){
   add("2+ win conditions",wins>=2);
   // Psychic Terrain blocks priority against grounded targets — including your OWN Fake Out.
   if(terrain==="psychic") add("Fake Out — dead weight under your own Psychic Terrain",!tm.includes("Fake Out"));
-  else add("Fake Out (≈90% of top teams)",!needs.fakeout);
+  else add("Fake Out, or 2+ layers of speed control instead",!needs.fakeout||speedLayers(team)>=2);
+  // The hard rule the Worlds reports actually support: redundant, INDEPENDENT turn-order control.
+  add("2+ independent layers of speed control",speedLayers(team)>=2);
   const snowVeil=tm.includes("Aurora Veil")&&team.some(m=>(m.entry.abilities||[]).includes("Snow Warning"));
   if(terrain&&terrainAbuser>=2){
     const nm=terrain.charAt(0).toUpperCase()+terrain.slice(1);
@@ -1003,7 +1029,13 @@ function archetypeChecklist(team){
     add("an answer to opposing Trick Room (Taunt / your own TR / a slow attacker)", tm.includes("Taunt")||tm.includes("Trick Room")||team.some(m=>offense(m.entry)>=95&&effOf(m).baseStats.spe<=55));}
   else if(mode==="priority"){arche=bellyDrum?"Belly Drum / priority offense":"Priority hyper-offense"; add("2+ priority users",prio>=2); add("2+ fast attackers",fast>=2); if(bellyDrum)add("redirection/Fake Out to land Belly Drum",!needs.redir||!needs.fakeout);}
   else {arche="Balance / no speed mode"; add("a speed-control mode (Tailwind / Trick Room)",mode!=="none"); add("a priority move",!needs.priority);}
-  add("redirection if a setup sweeper is present", !(team.some(m=>has(m.entry,SETUP).length&&offense(m.entry)>=95)) || !needs.redir);
+  // Redirection, Fake Out, screens, Intimidate or team-wide priority blocking all buy a setup
+  // turn. Wolfe's Worlds team protected a Contrary-setup Staraptor with Farigiraf's Armor Tail
+  // and bulk rather than a redirector, and named that as the plan.
+  const setupCover=!needs.redir||!needs.fakeout||screens||!needs.intimidate
+    ||team.some(m=>effOf(m).abilities.includes("Armor Tail"))||terrain==="psychic";
+  add("a way to buy the setup turn (redirect / Fake Out / screens / Intimidate / priority block)",
+    !(team.some(m=>has(m.entry,SETUP).length&&offense(m.entry)>=95)) || setupCover);
   add("Intimidate glue (optional)",!needs.intimidate);
   return {arche,items,complete:items.filter(i=>i.ok).length,total:items.length};
 }

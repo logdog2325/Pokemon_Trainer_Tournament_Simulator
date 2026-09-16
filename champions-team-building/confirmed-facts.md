@@ -116,3 +116,35 @@ Emergency Exit (Golisopod — a liability in doubles, it force-switches at 50%).
 ### Not added (worth noting)
 **Weezing was left out**, so **Neutralizing Gas** is still absent — there is no ability-off switch for
 Surge/Intimidate/Protosynthesis in this format.
+
+---
+
+## Confirmed in play by Worlds 2026 team reports
+Sources: Wolfe Glick's report (59th, 5-3 Day 1) and the Hamann/Farzan/Koch report (one team,
+three players, **all three Day 2**). Full methodology extract in `top-player-methodology.md`.
+
+- **Mega Staraptor** — Contrary, Flying/Fighting. **Close Combat raises its Def and SpD**, so it is
+  a bulk-accumulating attack, not a drawback. Both teams ran it Jolly, max Speed, 0–1 Atk, rest
+  bulk, with Brave Bird / Close Combat / Tailwind / Protect.
+- **Mega Raichu Y** — No Guard. **Zap Cannon becomes 100% accurate, i.e. guaranteed paralysis**
+  (speed control that halves *them* and survives its setter fainting). Raichu's bulk is
+  **identical** base and Mega, so delaying Mega Evolution costs nothing defensively and keeps
+  Lightning Rod. No Guard also lets opponents never miss *against* it. Outsped by Aerodactyl and
+  Delphox, which is why it's played as support, not an attacker.
+- **Hisuian Arcanine** — Rock Head makes Head Smash recoil-free; **Extreme Speed's +2 priority
+  moves before Prankster**, which is how you deny a second Prankster Tailwind. Head Smash OHKOs any
+  Charizard and Arcanine outspeeds Modest ones.
+- **Basculegion-M** — Adaptability, Last Respects as an endgame move, Aqua Jet for the priority
+  package, and a Water resistance that makes it a reliable Sneasler switch-in.
+- **Gholdengo Power Gem** — 100% accurate Rock special move; with Life Orb it **always OHKOs
+  Charizard**, which Life Orb Garchomp's Rock Slide does not. Good as Gold blanks Sleep Powder,
+  Encore and Perish Song.
+- **Fairy Aura is field-wide and affects both sides** — both teams EV against "Whimsicott Moonblast
+  in Fairy Aura," confirming it boosts opposing Fairy moves too.
+- **Pelipper in Champions runs only Weather Ball and Hurricane**, so switching into it is always
+  safe; Tyranitar therefore shuts Rain down almost by existing.
+- **Sandstorm is 1/16 max HP and Rock types are immune** — Wolfe sits Staraptor at exactly 191 HP
+  because 192 takes 12 sand damage instead of 11.
+- Meta note (M-B): **Kingambit sets with only Dark moves + Swords Dance** were a trend. Tyranitar
+  crushes those on its Dark resistance and 150 base Mega Def — but note both reports instead ran
+  **Chople Berry + Low Kick** on their own Dark/Steel or Rock/Dark slot to win the Kingambit trade.
