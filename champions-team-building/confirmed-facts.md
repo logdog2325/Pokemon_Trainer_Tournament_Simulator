@@ -148,3 +148,37 @@ three players, **all three Day 2**). Full methodology extract in `top-player-met
 - Meta note (M-B): **Kingambit sets with only Dark moves + Swords Dance** were a trend. Tyranitar
   crushes those on its Dark resistance and 150 base Mega Def — but note both reports instead ran
   **Chople Berry + Low Kick** on their own Dark/Steel or Rock/Dark slot to win the Kingambit trade.
+
+---
+
+## Mega Evolution + entry abilities (Claude got this WRONG twice — user-corrected)
+
+**The rule:** an entry ability gained from Mega Evolution (Drought, Drizzle, Sand Stream, Snow
+Warning, Intimidate, Electric Surge) behaves like any other entry ability **once the Mega exists**.
+It fires on Mega Evolution, and it fires again on **every subsequent switch-in**.
+
+Consequences, all of which were mis-modelled at some point:
+1. **Base Charizard sets no weather.** Drought belongs to Mega Charizard Y, not to Charizard. So
+   Charizard does NOT race an opposing Drizzle/Sand Stream on the lead turn. There is no Speed
+   contest, because your setter is not on the field yet in any meaningful sense.
+   → *Wrong claim made: "Zard Y at 124 is faster than Pelipper so you always lose the weather war
+   and cannot build under it." The Speed table was answering a non-existent question.*
+2. **Mega Evolution resolves at the start of a turn of your choosing**, after both sides' switch-in
+   abilities have already fired. So the weather-setting turn is entirely the Mega user's choice.
+3. **Drought is NOT a one-shot.** After Mega Evolving, switching Mega Charizard Y out and back in
+   re-activates Drought. It is exactly as renewable as Pelipper's Drizzle.
+   → *Wrong claim made: "your Drought is a one-shot against their renewable Drizzle."*
+4. So the weather war is a **symmetric switching war: whoever enters last wins**, and each re-set
+   costs a turn of board presence. The winner is whoever can afford the switches.
+5. **Residual Speed factor, narrow:** if both sides switch in on the SAME turn, entry abilities fire
+   in Speed order and the *slower* one resolves last and wins. Mega Zard Y (124) loses that specific
+   exchange to most Pelipper spreads. Usually declinable.
+6. **Cost of delaying a Mega is species-specific.** Markus could hold Raichu back for free because
+   its bulk is identical in both forms. Charizard pays 109→159 SpA and 85→115 SpD for every turn it
+   waits, so the holding period is the dangerous part, and the answer is switching rather than
+   standing in it. Sand Stream is a true base-form ability on Tyranitar, so sand re-sets more cheaply
+   than sun does.
+
+> Same principle already recorded under Reg M-C for terrain: on simultaneous entry the SLOWER setter
+> takes the field. The generalisation is that entry abilities resolve in Speed order, last write wins,
+> and Mega Evolution is an extra, player-timed write.
