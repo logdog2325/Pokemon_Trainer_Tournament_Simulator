@@ -182,3 +182,23 @@ Consequences, all of which were mis-modelled at some point:
 > Same principle already recorded under Reg M-C for terrain: on simultaneous entry the SLOWER setter
 > takes the field. The generalisation is that entry abilities resolve in Speed order, last write wins,
 > and Mega Evolution is an extra, player-timed write.
+
+## Resist berries (added to the calculator 2026-09-28)
+All 18 type-resist berries halve **one** super-effective hit of their type and are then consumed.
+`Chilan Berry` is the exception: it halves Normal damage even though Normal is never
+super-effective. The berry keys off the move's **final** type, so an Aerilate/Pixilate-retyped
+Normal move is no longer caught by Chilan — it needs Coba/Roseli, and only if the new type is
+actually super-effective.
+
+Verified in `app/app.js`: Chople Berry takes Jolly max-Attack Unburden Sneasler's Close Combat on
+a 32 HP Adamant Kingambit from 170-202.9% (16/16 kill) down to 85-101.4% (1/16 kill). Adding
+16 points of Def on top makes it 0/16 against both Sneasler and Mega Golisopod, costing 17 Attack.
+
+`calcDamage` now also returns `rolls` (the 16-element damage array) and `koRolls` (how many of the
+16 reach the KO), so "15/16" answers can be read off directly instead of inferred from min/max.
+
+## Still missing from the calculator
+**Weight-based moves return no number.** `Low Kick` and `Grass Knot` are wired to `field.targetWeight`,
+but no dex entry carries a weight, so both come back `{unknownBP:true, note:"needs weight data"}`.
+Both Worlds 2026 teams ran Low Kick, so this is a real gap — do not quote a Low Kick number until
+weights are in the dex.

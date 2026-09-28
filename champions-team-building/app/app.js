@@ -1304,6 +1304,13 @@ function finalStats(m){
 }
 
 /* ---------- damage calculator (Gen 9 doubles, practical estimate) ---------- */
+// Resist berries: halve one super-effective hit of their type. Chilan is the exception —
+// it halves Normal even though Normal is never super-effective.
+const RESIST_BERRY={"Occa Berry":"Fire","Passho Berry":"Water","Wacan Berry":"Electric","Rindo Berry":"Grass",
+  "Yache Berry":"Ice","Chople Berry":"Fighting","Kebia Berry":"Poison","Shuca Berry":"Ground",
+  "Coba Berry":"Flying","Payapa Berry":"Psychic","Tanga Berry":"Bug","Charti Berry":"Rock",
+  "Kasib Berry":"Ghost","Haban Berry":"Dragon","Colbur Berry":"Dark","Babiri Berry":"Steel",
+  "Roseli Berry":"Fairy","Chilan Berry":"Normal"};
 const TYPE_ITEM={"Charcoal":"Fire","Mystic Water":"Water","Magnet":"Electric","Miracle Seed":"Grass","Never-Melt Ice":"Ice","Black Belt":"Fighting","Poison Barb":"Poison","Soft Sand":"Ground","Sharp Beak":"Flying","Twisted Spoon":"Psychic","Silver Powder":"Bug","Hard Stone":"Rock","Spell Tag":"Ghost","Dragon Fang":"Dragon","Black Glasses":"Dark","Metal Coat":"Steel","Silk Scarf":"Normal","Fairy Feather":"Fairy"};
 function stageMul(s){s=Math.max(-6,Math.min(6,s||0));return s>=0?(2+s)/2:2/(2-s);}
 function pokeRound(x){return (x-Math.floor(x))>0.5?Math.ceil(x):Math.floor(x);} // round half down
@@ -1654,6 +1661,9 @@ function calcDamage(att,move,def,field){
   if(dAb==="Fluffy"&&MF_CONTACT.has(move))fm*=0.5;
   if(dAb==="Ice Scales"&&!phys)fm*=0.5;
   if(dAb==="Punk Rock"&&MF_SOUND.has(move))fm*=0.5;
+  // Resist berry on the defender. Consumed, so it only applies to the first qualifying hit —
+  // pass field.berryUsed to price the follow-up.
+  if(RESIST_BERRY[dItem]===wt&&!field.berryUsed&&(eff>1||dItem==="Chilan Berry"))fm*=0.5;
   if(field.burn&&phys&&aAb!=="Guts")fm*=0.5;
 
   // ---- multi-hit ----
@@ -1672,7 +1682,9 @@ function calcDamage(att,move,def,field){
     rolls.push(Math.max(1,d)*hits);
   }
   const hp=dS.hp,min=rolls[0],max=rolls[15];
-  return {min,max,hp,eff,phys,type:wt,move,hits,bp,
+  return {min,max,hp,eff,phys,type:wt,move,hits,bp,rolls,
+    // how many of the 16 damage rolls actually reach the KO — the model asks for roll-level answers
+    koRolls:rolls.filter(d=>d>=hp).length,
     minPct:Math.round(min/hp*1000)/10,maxPct:Math.round(max/hp*1000)/10,ko:koText(min,max,hp)};
 }
 
