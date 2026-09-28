@@ -1304,6 +1304,22 @@ function finalStats(m){
 }
 
 /* ---------- damage calculator (Gen 9 doubles, practical estimate) ---------- */
+// Species weight in kg, for Grass Knot / Low Kick / Heavy Slam / Heat Crash. Only the Reg M-C
+// relevant set is filled in; anything missing makes those moves return {unknownBP} rather than a
+// wrong number. Mega weights differ from base in the real games, but across this set no Mega
+// crosses a weight tier boundary, so the base figure is what the BP table needs.
+const WEIGHT={"Sceptile":52.2,"Rillaboom":78.2,"Sneasler":43,"Incineroar":83,"Salamence":102.6,
+ "Kingambit":120,"Indeedee":28,"Indeedee-Male":28,"Indeedee-Female":28,"Golisopod":108,"Garchomp":95,
+ "Farigiraf":160,"Gholdengo":30,"Baxcalibur":210,"Sylveon":23.5,"Metagross":550,"Milotic":162,
+ "Pelipper":28,"Tyranitar":202,"Rotom-Heat":0.3,"Staraptor":24.9,"Archaludon":60,"Froslass":26.6,
+ "Weavile":34,"Whimsicott":6.6,"Arcanine-Hisui":168,"Primarina":44,"Glimmora":45,"Empoleon":84.5,
+ "Goodra-Hisui":334.1,"Gardevoir":48.4,"Hatterene":5.1,"Aggron":360,"Medicham":31.5,"Cinderace":33,
+ "Swampert":81.9,"Feraligatr":88.8,"Emboar":150,"Meganium":100.5,"Lucario":54,"Absol":47,
+ "Charizard":90.5,"Alakazam":48,"Aerodactyl":59,"Gengar":40.5,"Greninja":40,"Delphox":39,
+ "Raichu":30,"Manectric":40.2,"Lopunny":33.3,"Beedrill":29.5,"Rhyperior":282.8,"Zoroark-Hisui":83,
+ "Rampardos":102.5,"Kleavor":89,"Conkeldurr":87,"Crabominable":180,"Pangoro":136,"Aurorus":225,
+ "Perrserker":28,"Dragonite":210,"Starmie":80,"Pidgeot":39.5,"Pyroar":81.5};
+function weightOf(mon){ return mon&&mon.entry?WEIGHT[mon.entry.name]:null; }
 // Resist berries: halve one super-effective hit of their type. Chilan is the exception —
 // it halves Normal even though Normal is never super-effective.
 const RESIST_BERRY={"Occa Berry":"Fire","Passho Berry":"Water","Wacan Berry":"Electric","Rindo Berry":"Grass",
@@ -1560,9 +1576,11 @@ function variableBP(move,mi,att,def,field,aS,dS){
     case "Expanding Force": return (F.terrain==="psychic"&&isGrounded(att))?120:80;
     case "Rising Voltage":  return (F.terrain==="electric"&&isGrounded(def))?140:70;
     case "Psyblade":        return (F.terrain==="electric"&&isGrounded(att))?120:80;
-    case "Grass Knot": case "Low Kick":{const w=F.targetWeight; if(!w) return null;
-      return w>=200?120:w>=100?100:w>=50?60:w>=25?40:w>=10?40:20;}
-    case "Heavy Slam": case "Heat Crash":{const w=F.targetWeight,uw=F.userWeight; if(!w||!uw) return null;
+    // Weight tiers are 20/40/60/80/100/120 at <10 / 10 / 25 / 50 / 100 / 200 kg.
+    case "Grass Knot": case "Low Kick":{const w=F.targetWeight||weightOf(def); if(!w) return null;
+      return w>=200?120:w>=100?100:w>=50?80:w>=25?60:w>=10?40:20;}
+    case "Heavy Slam": case "Heat Crash":{const w=F.targetWeight||weightOf(def),uw=F.userWeight||weightOf(att);
+      if(!w||!uw) return null;
       const r=uw/w; return r>=5?120:r>=4?100:r>=3?80:r>=2?60:40;}
     default: return mi.bp;
   }

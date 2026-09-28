@@ -197,8 +197,13 @@ a 32 HP Adamant Kingambit from 170-202.9% (16/16 kill) down to 85-101.4% (1/16 k
 `calcDamage` now also returns `rolls` (the 16-element damage array) and `koRolls` (how many of the
 16 reach the KO), so "15/16" answers can be read off directly instead of inferred from min/max.
 
-## Still missing from the calculator
-**Weight-based moves return no number.** `Low Kick` and `Grass Knot` are wired to `field.targetWeight`,
-but no dex entry carries a weight, so both come back `{unknownBP:true, note:"needs weight data"}`.
-Both Worlds 2026 teams ran Low Kick, so this is a real gap — do not quote a Low Kick number until
-weights are in the dex.
+## Weight-based moves (fixed 2026-09-28)
+`Grass Knot` / `Low Kick` BP tiers are **20 / 40 / 60 / 80 / 100 / 120** at
+**<10 / 10 / 25 / 50 / 100 / 200 kg**. The app previously had two tiers wrong (50kg returned 60
+instead of 80, 25kg returned 40 instead of 60) — fixed, and `WEIGHT` in `app/app.js` now carries
+kg for the Reg M-C relevant species, derived automatically from the defender rather than needing
+`field.targetWeight` passed in. Species outside the table still return `{unknownBP:true}` rather
+than a wrong number.
+
+No Mega in the current set crosses a weight tier boundary relative to its base form, so the base
+figure is what the BP table needs.
