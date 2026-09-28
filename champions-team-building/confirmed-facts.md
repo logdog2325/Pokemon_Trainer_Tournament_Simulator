@@ -207,3 +207,18 @@ than a wrong number.
 
 No Mega in the current set crosses a weight tier boundary relative to its base form, so the base
 figure is what the BP table needs.
+
+## Items that do NOT exist in Champions (user-corrected 2026-09-28)
+Claude built a Gliscor set around **Toxic Orb**, which is not in the format. Verified against
+`ITEMS` in `app/app.js`: the only "Orb" in Champions is **Life Orb**. Also absent:
+**Flame Orb, Black Sludge, Covert Cloak, Safety Goggles, Clear Amulet**.
+
+Consequences:
+- **Poison Heal and Guts have no self-activation route.** A Poison Heal Gliscor or a Guts attacker
+  can only turn its ability on if the opponent chooses to status it, so neither is a plan. On
+  Gliscor that leaves **Hyper Cutter** as the only live ability.
+- There is no item answer to powder moves (no Safety Goggles) or to Intimidate (no Clear Amulet) —
+  those jobs have to come from an ability (Clear Body, Hyper Cutter, Mirror Armor, Defiant,
+  Competitive) or not at all.
+
+This is Phase 0 of the build model: check `ITEMS` before designing around an item.
