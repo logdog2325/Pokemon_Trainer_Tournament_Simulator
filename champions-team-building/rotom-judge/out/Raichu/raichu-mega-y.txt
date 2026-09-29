@@ -1,0 +1,59 @@
+Raichu @ Raichunite Y
+Ability: Lightning Rod
+Level: 50
+EVs: 2 HP / 8 Def / 32 SpA / 24 Spe
+Timid Nature
+- Zap Cannon
+- Focus Blast
+- Alluring Voice
+- Protect
+
+Indeedee-F @ Psychic Seed
+Ability: Psychic Surge
+Level: 50
+EVs: 32 HP / 32 Def / 2 SpD
+Bold Nature
+- Follow Me
+- Helping Hand
+- Expanding Force
+- Trick Room
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Level: 50
+EVs: 32 HP / 8 Atk / 26 Def
+Impish Nature
+- Fake Out
+- Flare Blitz
+- Darkest Lariat
+- Helping Hand
+
+Arcanine-Hisui @ Life Orb
+Ability: Rock Head
+Level: 50
+EVs: 2 HP / 32 Atk / 32 Spe
+Jolly Nature
+- Head Smash
+- Flare Blitz
+- Extreme Speed
+- Protect
+
+Hydreigon @ Focus Sash
+Ability: Levitate
+Level: 50
+EVs: 2 HP / 32 SpA / 32 Spe
+Timid Nature
+- Draco Meteor
+- Dark Pulse
+- Tailwind
+- Protect
+
+Milotic @ Never-Melt Ice
+Ability: Competitive
+Level: 50
+EVs: 32 HP / 26 Def / 8 SpA
+Bold Nature
+- Ice Beam
+- Icy Wind
+- Scald
+- Protect

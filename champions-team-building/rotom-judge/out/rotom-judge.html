@@ -1,0 +1,385 @@
+<title>Rotom Judge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a hearing record. One case at a time, transcript read top to bottom, a player docked to the bottom edge.
+   Speaker colour is information: A and B are the two advocates, the judge is amber (Rotom's own colour). */
+:root{
+  --bg:#eef0f4; --surface:#ffffff; --ink:#14161b; --muted:#5b6270; --line:#d8dbe2;
+  --a:#0b6f80; --a-soft:rgba(11,111,128,.10);
+  --b:#a3244f; --b-soft:rgba(163,36,79,.09);
+  --judge:#b86e00; --judge-soft:rgba(184,110,0,.12);
+  --ok:#2b8a3e; --ok-soft:rgba(43,138,62,.12); --bad:#c92a2a; --bad-soft:rgba(201,42,42,.10);
+  --live:rgba(184,110,0,.18);
+  --display:"Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --body:"Literata", Georgia, "Times New Roman", serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --ui:system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0f1116; --surface:#171a21; --ink:#e8eaf0; --muted:#9aa1ae; --line:#2a2f3a;
+  --a:#46c4d6; --a-soft:rgba(70,196,214,.12); --b:#f0729c; --b-soft:rgba(240,114,156,.11);
+  --judge:#f5b638; --judge-soft:rgba(245,182,56,.13); --ok:#69db7c; --ok-soft:rgba(105,219,124,.13);
+  --bad:#ff8787; --bad-soft:rgba(255,135,135,.12); --live:rgba(245,182,56,.20); color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0f1116; --surface:#171a21; --ink:#e8eaf0; --muted:#9aa1ae; --line:#2a2f3a;
+  --a:#46c4d6; --a-soft:rgba(70,196,214,.12); --b:#f0729c; --b-soft:rgba(240,114,156,.11);
+  --judge:#f5b638; --judge-soft:rgba(245,182,56,.13); --ok:#69db7c; --ok-soft:rgba(105,219,124,.13);
+  --bad:#ff8787; --bad-soft:rgba(255,135,135,.12); --live:rgba(245,182,56,.20); color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--ink); font:16px/1.62 var(--body); margin:0}
+.wrap{max-width:720px; margin:0 auto; padding-inline:16px; padding-block:0 140px}
+h1,h2,h3,h4{font-family:var(--display); font-weight:800; text-wrap:balance; line-height:1.12; margin:0}
+button{font:inherit; color:inherit; cursor:pointer}
+button:focus-visible, select:focus-visible, a:focus-visible{outline:2px solid var(--judge); outline-offset:2px}
+
+/* top bar: case picker */
+.top{position:sticky; top:env(safe-area-inset-top,0px); z-index:5; background:var(--bg); border-bottom:1px solid var(--line)}
+.top-in{max-width:720px; margin:0 auto; padding:10px 16px; display:flex; flex-direction:column; gap:8px}
+.brand{display:flex; align-items:baseline; justify-content:space-between; gap:12px}
+.brand b{font-family:var(--display); font-weight:800; font-size:18px; letter-spacing:.01em}
+.brand span{font:12px/1.3 var(--ui); color:var(--muted)}
+.cases{display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; padding-bottom:2px}
+.cases::-webkit-scrollbar{display:none}
+.case-chip{flex:0 0 auto; border:1px solid var(--line); background:var(--surface); border-radius:999px;
+  padding:6px 12px; font:600 13px/1 var(--ui); white-space:nowrap}
+.case-chip[aria-current="true"]{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+.case-chip small{font-weight:400; opacity:.7; margin-left:4px}
+
+/* case header */
+.hero{padding-block:22px 6px; display:flex; flex-direction:column; gap:12px}
+.eyebrow{font:600 11px/1.3 var(--ui); letter-spacing:.09em; text-transform:uppercase; color:var(--muted); display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+.tag{border:1px solid currentColor; border-radius:4px; padding:1px 6px; letter-spacing:.06em}
+.tag.hypo{color:var(--judge)}
+.hero h1{font-size:clamp(26px,7vw,40px)}
+.hero h1 .vs{font-family:var(--body); font-style:italic; font-weight:400; color:var(--muted); font-size:.62em; padding-inline:.18em}
+.ruling{font:600 15px/1.4 var(--ui)}
+.ruling .who{color:var(--judge)}
+.scores{display:grid; gap:10px; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px}
+.score-row{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 10px; align-items:baseline}
+.score-row .nm{font:600 14px/1.3 var(--ui); min-width:0}
+.score-row .num{font:800 20px/1 var(--display); font-variant-numeric:tabular-nums}
+.bar{grid-column:1/-1; height:8px; border-radius:4px; background:var(--line); overflow:hidden}
+.bar i{display:block; height:100%; border-radius:4px}
+.score-row .rub{grid-column:1/-1; font:12px/1.4 var(--mono); color:var(--muted)}
+.rub-key{font:12px/1.4 var(--ui); color:var(--muted)}
+.listen-all{display:flex; align-items:center; justify-content:center; gap:10px; width:100%; border:0; border-radius:10px;
+  padding:14px; background:var(--judge); color:#1a1200; font:700 16px/1 var(--ui)}
+.listen-all svg{width:18px; height:18px}
+
+/* transcript */
+.sec{padding-block:26px 4px; display:flex; flex-direction:column; gap:10px; scroll-margin-top:110px}
+.sec-head{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap}
+.who-chip{display:inline-flex; align-items:center; gap:8px; font:700 12px/1 var(--ui); letter-spacing:.07em; text-transform:uppercase; padding:6px 10px; border-radius:6px}
+.who-chip.a{background:var(--a-soft); color:var(--a)} .who-chip.b{background:var(--b-soft); color:var(--b)} .who-chip.j{background:var(--judge-soft); color:var(--judge)}
+.sec h2{font-size:22px}
+.play-sec{border:1px solid var(--line); background:var(--surface); border-radius:999px; padding:6px 12px 6px 10px; font:600 13px/1 var(--ui); display:inline-flex; gap:6px; align-items:center}
+.play-sec svg{width:12px; height:12px}
+.txt{border-left:3px solid var(--line); padding-left:14px; min-width:0}
+.txt.a{border-color:var(--a)} .txt.b{border-color:var(--b)} .txt.j{border-color:var(--judge)}
+.txt p, .txt li{margin:0 0 .75em}
+.txt ul, .txt ol{margin:0 0 .75em; padding-left:1.2em}
+.txt h4{font-size:17px; margin:1em 0 .4em}
+.txt strong{font-weight:600}
+.txt code{font:14px var(--mono)}
+.blk{border-radius:4px; transition:background-color .2s}
+.blk.speaking{background:var(--live); box-shadow:0 0 0 4px var(--live)}
+.tbl{overflow-x:auto; margin:0 0 .9em}
+.tbl table{border-collapse:collapse; font:13px/1.4 var(--ui); min-width:100%}
+.tbl th,.tbl td{border-bottom:1px solid var(--line); padding:6px 8px; text-align:left; vertical-align:top}
+.conclusion{background:var(--judge-soft); border-radius:10px; padding:16px; display:flex; flex-direction:column; gap:8px}
+.conclusion h3{font-size:18px; color:var(--judge)}
+.conclusion .rule{font:700 16px/1.4 var(--ui)}
+
+/* fact checks */
+.checks{display:flex; flex-direction:column; gap:8px}
+.check{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:10px 12px; display:grid; grid-template-columns:auto minmax(0,1fr); gap:4px 10px}
+.pill{font:700 11px/1 var(--ui); letter-spacing:.05em; text-transform:uppercase; border-radius:4px; padding:4px 6px; align-self:start}
+.pill.ok{background:var(--ok-soft); color:var(--ok)} .pill.bad{background:var(--bad-soft); color:var(--bad)}
+.check .cl{font:14px/1.45 var(--ui)} .check .cl b{font-weight:600}
+.check .rc{grid-column:2; font:12px/1.4 var(--mono); color:var(--muted)}
+
+/* teams */
+.team{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px; display:flex; flex-direction:column; gap:10px; min-width:0}
+.team h3{font-size:19px}
+.team .hl{font:15px/1.5 var(--body)}
+.team .b4{font:13px/1.5 var(--ui); color:var(--muted)}
+.legal{font:700 11px/1 var(--ui); letter-spacing:.05em; text-transform:uppercase}
+.legal.ok{color:var(--ok)} .legal.bad{color:var(--bad)}
+.paste{position:relative; min-width:0}
+.paste pre{margin:0; background:var(--bg); border:1px solid var(--line); border-radius:8px; padding:12px; font:12.5px/1.5 var(--mono); overflow-x:auto; max-height:320px}
+.copy{position:absolute; top:8px; right:8px; border:1px solid var(--line); background:var(--surface); border-radius:6px; padding:5px 9px; font:600 12px/1 var(--ui)}
+details.brief{font:14px/1.5 var(--ui)} details.brief summary{cursor:pointer; color:var(--muted); font-weight:600}
+details.brief ul{padding-left:1.2em; margin:.4em 0}
+
+/* player */
+.player{position:fixed; left:0; right:0; bottom:0; z-index:10; background:var(--surface); border-top:1px solid var(--line);
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px)); box-shadow:0 -6px 24px rgba(0,0,0,.08)}
+.player-in{max-width:720px; margin:0 auto; display:flex; flex-direction:column; gap:8px}
+.now{font:600 12px/1.3 var(--ui); color:var(--muted); display:flex; gap:8px; align-items:center; min-width:0}
+.now .dot{width:8px; height:8px; border-radius:50%; flex:0 0 auto; background:var(--judge)}
+.now .dot.a{background:var(--a)} .now .dot.b{background:var(--b)}
+.now span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.ctrls{display:flex; align-items:center; gap:8px}
+.ctrls button{border:1px solid var(--line); background:var(--bg); border-radius:8px; height:40px; min-width:44px; display:inline-flex; align-items:center; justify-content:center; gap:6px; padding-inline:10px; font:600 13px/1 var(--ui)}
+.ctrls button svg{width:16px; height:16px}
+.ctrls .main{background:var(--judge); color:#1a1200; border-color:var(--judge); min-width:64px}
+.ctrls .grow{flex:1}
+.voices{border-top:1px solid var(--line); padding-top:10px; display:grid; gap:8px}
+.voices label{display:grid; grid-template-columns:90px minmax(0,1fr); gap:8px; align-items:center; font:600 13px/1.2 var(--ui)}
+.voices select{width:100%; min-width:0; font:13px var(--ui); padding:6px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--ink)}
+.voices p{margin:0; font:12px/1.4 var(--ui); color:var(--muted)}
+.nospeech{font:13px/1.4 var(--ui); color:var(--bad)}
+@media (prefers-reduced-motion: reduce){ .blk{transition:none} }
+</style>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand"><b>Rotom Judge</b><span id="caseCount"></span></div>
+    <nav class="cases" id="cases" aria-label="Choose a debate"></nav>
+  </div>
+</header>
+
+<main class="wrap" id="case"></main>
+
+<div class="player" id="player" hidden>
+  <div class="player-in">
+    <div class="now"><i class="dot" id="nowDot"></i><span id="nowTxt">Ready</span></div>
+    <div class="ctrls">
+      <button id="prev" aria-label="Previous section"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
+      <button id="pp" class="main" aria-label="Play or pause"><svg id="ppIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5v14l12-7z"/></svg></button>
+      <button id="next" aria-label="Next section"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button>
+      <span class="grow"></span>
+      <button id="rate" aria-label="Reading speed">1×</button>
+      <button id="vbtn" aria-expanded="false" aria-controls="voices">Voices</button>
+      <button id="stop" aria-label="Stop and close player"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h12v12H6z"/></svg></button>
+    </div>
+    <div class="voices" id="voices" hidden>
+      <label for="vA"><span id="vAlab">Advocate A</span><select id="vA"></select></label>
+      <label for="vB"><span id="vBlab">Advocate B</span><select id="vB"></select></label>
+      <label for="vJ">Judge<select id="vJ"></select></label>
+      <p>These are your device's built-in voices. If a speaker shares a voice with another, its pitch is shifted so you can still tell them apart. Keep the screen on while listening; most phones stop reading when the screen locks.</p>
+    </div>
+  </div>
+</div>
+
+<script type="application/json" id="data">{"cases":[{"species":"Mewtwo","slug":"mewtwo","hypothetical":true,"short":"X vs Y","forms":[{"label":"Mega X","name":"Mega Mewtwo X","slug":"mewtwo-mega-x","stone":"Mewtwonite X"},{"label":"Mega Y","name":"Mega Mewtwo Y","slug":"mewtwo-mega-y","stone":"Mewtwonite Y"}],"winnerName":"Mega Mewtwo Y","score_a":82,"score_b":87,"rubric_a":"35/40, 21/25, 16/20, 10/15","rubric_b":"36/40, 22/25, 17/20, 12/15","ruleLine":"Rotom Judge rules that Mega Mewtwo Y is the better Mega (Mega Mewtwo X 82, Mega Mewtwo Y 87).","opinion":"Every number both sides cited reproduces exactly. The case is decided by which weaknesses a partner can fix.\n\nY's physical frailty is real. Kowtow Cleave OHKOs it through Psychic Terrain (119.1-142.1%), and Knock Off does 65.6-78.7%. But\nits priority deaths (Sucker Punch 14/16, First Impression 179-210%, Grassy Glide) are removed by Psychic Terrain on a grounded Y.\nA's strongest counter was the 105-vs-105 Indeedee/Rillaboom terrain tie. That is fixable, because a Relaxed or Quiet\n0-Speed Indeedee-F runs at 94 (engine), so it is slower than Rillaboom and wins the lead terrain every time. Y also keeps its\ndamage through Intimidate, and its PT+HH Psystrike answers the #1 threat, Rillaboom (116.9-138.6%), which X can only\ndent (63.8-75.4%).\n\nX's central claim, that Fighting STAB beats the Dark types, fails against the most common Dark type itself. Incineroar's\nIntimidate drops X's Helping Hand Drain Punch on Kingambit to 71-84.1%, and Incineroar and Kingambit are the two most-used\nDark types. A also made a mechanics error: Sylveon's Hyper Beam is single-target, so Wide Guard does not cover X's worst\nmatchup. A's Fake Out/Steadfast point also conflicts with its own Psychic Terrain partner, which blocks Fake Out on X.\nA was right about accuracy: 8 of Y's 13 OHKOs need a 70-85% move. That is why the margin is narrow. B used it well by\nchoosing Helping Hand plus Psychic Terrain boosts that turn 100%-accurate Psystrike into KOs. Also, Aura Sphere\n(never misses) with Helping Hand KOs Kingambit at 102.9-121.7% (engine), so Y's Kingambit answer does not have to be a\n70% Focus Blast.","conclusion":"Mega Mewtwo Y wins narrowly (87-82) in this hypothetical matchup. Every damage number either side cited checks out in the engine. X really is much bulkier against physical hits (Kowtow Cleave 44.8-53% vs Y's 119.1-142.1%), and 8 of Y's 13 OHKOs rely on 70-85% moves. But X's main claim, that Fighting STAB answers the Dark types, breaks against Incineroar's Intimidate: Helping Hand Drain Punch on Kingambit drops to 71-84.1%, no KO. A also made a mechanics error: Sylveon's Hyper Beam is single-target, so Wide Guard does not stop it. Y's priority weakness is fixable. Psychic Terrain blocks priority on the grounded Y, and a 0-Speed Relaxed Indeedee-F (94 Speed) is slower than Rillaboom (105), so it wins the terrain on the lead. Terrain plus Helping Hand Psystrike also KOs the #1 threat Rillaboom (116.9-138.6%), and Helping Hand Aura Sphere KOs Kingambit (102.9-121.7%) with no accuracy roll. X is the physically bulky, Intimidate-sensitive Helping Hand attacker. Y is a Psychic Terrain hyper-offense sweeper that must avoid Kowtow Cleave and Knock Off.","debate":{"oa":"Thesis: in the Reg M-C format as it actually exists, Mega Mewtwo X is the better Mega form. It survives the priority attacks and physical Dark and Bug moves that make up most of the usage-weighted board. Its OHKOs come from moves that always hit. And its Fighting typing hits Incineroar and Kingambit, the two most-used Pokemon that stop a Psychic attacker. Mega Y wins more on paper and fewer on the field.\n\n**1. Y's OHKO lead depends on inaccurate moves; X's does not (fact sheet).** On paper Y OHKOs 13/21 and X OHKOs 9/21. But 8 of Y's 13 need Focus Blast (70%), Fire Blast (85%) or Thunder (70%): Kingambit, M-Golisopod, Gholdengo, Pelipper, Whimsicott, Archaludon, M-Froslass and M-Tyranitar. Only 5 of Y's OHKOs use a 100%-accurate move. X gets 8 OHKOs with 100% moves: Sneasler, M-Salamence (15/16), Garchomp, Pelipper, Whimsicott, Arcanine-Hisui, M-Tyranitar and M-Staraptor (14/16). Its ninth, M-Froslass, uses Stone Edge (80%). In a best-of-3 set, the OHKOs that always land are the ones that count.\n\n**2. Y is OHKO'd by the most-used physical attackers; X is not (engine and fact sheet).** Both forms below use the same offensive spread: 2 HP, 32 in the attacking stat, 32 Speed.\n- Kingambit (22.44%) Sucker Punch: into Y 99.5-118% (14/16). Into X 36.6-44.3%.\n- Kingambit Kowtow Cleave: into Y 119.1-142.1%, a guaranteed OHKO. Into X 44.8-53%.\n- Mega Golisopod (18.49%) First Impression: into Y 179.2-210.4%. Into X 66.7-79.8%.\n- Rillaboom (37.18%) Wood Hammer in Grassy Terrain: into Y 102.7-122.4%. Into X 77.6-92.3%.\n- Mega Tyranitar Crunch: into Y 129-154.1%. Into X 49.2-57.9%.\n\nOverall Y is OHKO'd by 7/21 board threats and X by 4/21 (fact sheet). Y's losses sit on the highest-usage Pokemon, and Sucker Punch and Kowtow Cleave hit Y harder than any of X's four checks hit X.\n\n**3. X's Fighting STAB beats the Dark types that wall Psychic (engine).** Y's Psystrike does nothing to Incineroar or Kingambit, and its answers to them are 70% Focus Blasts. X answers them with 100%-accurate moves:\n- Drain Punch into Incineroar (26.77%): 87.1-104%. With Helping Hand, 130.7-155.9%, a guaranteed KO.\n- Drain Punch into Kingambit, with its Chople Berry counted: 70.5-84.1%. With Helping Hand, 105.8-126.1%, a guaranteed KO.\n\nDrain Punch also heals X while it attacks. It gets the same neutral 76-91% on Archaludon and Mega Baxcalibur, and a Helping Hand KO on both.\n\n**4. X takes Fake Out and Knock Off better, and Steadfast helps (engine).** Incineroar's Knock Off does 25.1-30.1% to X and 65.6-78.7% to Y. Every Fake Out from Incineroar, Sneasler or Rillaboom that flinches X triggers Steadfast, which raises X's 200 Speed to 300 for the rest of the game. At that point X outspeeds the whole board without needing Tailwind.\n\n**5. X's Speed is already enough (fact sheet).** At 200 Speed (Jolly, 32 Speed), X outspeeds all 21 board threats, the same as Y does at 211. Y's extra Speed only matters against Mega Mewtwo X itself and Mega Greninja. Neither is on the board.\n\n**Team role and partners.** X works as a physical attacker next to a Helping Hand and Follow Me partner, or next to Psychic Terrain. Indeedee-F provides both, and its Psychic Terrain boosts Zen Headbutt to 62.3-73.4% on Rillaboom and 128.1-151.9% on Mega Staraptor (engine). Whimsicott is another option: Tailwind plus Helping Hand, with Prankster, which makes Drain Punch KO Incineroar and Kingambit. The 4 threats that OHKO X are Mega Salamence, Mega Staraptor, Sylveon and Gholdengo. Each has an answer on X's own moveset or on a teammate:\n- Mega Salamence: X outspeeds it (200 vs 158) and Ice Punch KOs 15/16.\n- Mega Staraptor: X outspeeds it (200 vs 178), and Zen Headbutt in Psychic Terrain KOs.\n- Sylveon and Gholdengo: a partner with Wide Guard, or a Steel type, covers them.\n\n**Pre-empting Y's best point: raw special damage and 13 OHKOs.** The number looks strong until you count accuracy and bulk. Five of Y's OHKOs are on Focus Blast (Kingambit, Incineroar is not even one, Archaludon, M-Tyranitar) or Thunder, where a single miss loses the turn. Two of them, Pelipper and Whimsicott, carry Focus Sash, so neither form actually OHKOs them. And Y is OHKO'd in return by Kingambit's Sucker Punch, which goes first no matter how fast Y is. Y's 211 Speed cannot outrun priority.\n\nOne weakness I will admit: X is physical, so Incineroar's Intimidate matters. At -1 Attack, Helping Hand Drain Punch still does 86.1-104% to Incineroar (engine). Y has no equivalent answer to Kingambit at any stat stage. X is the form that gets through the Pokemon people actually use.","ob":"**Thesis:** Mega Mewtwo Y is the better Mega. It is the fastest Mewtwo, it OHKOs more of the Reg M-C board, it is far harder to hit on the special side, and its partners fix its weak points in ways Mega X cannot copy.\n\n**1. It OHKOs more of the board: 13/21 threats vs Mega X's 9/21 (fact sheet, no item).**\nTimid 2/32 SpA/32 Spe gives 246 SpA. Here is what it deletes: Sneasler (Psystrike 443-522%), M-Salamence (Ice Beam 163-194%), Garchomp (Ice Beam 171-203%) and Arcanine-Hisui (Earth Power 195-230%). It also takes out Gholdengo (Fire Blast 109-129%), M-Golisopod (Fire Blast 160-191%), Kingambit (Focus Blast 102-121%) and Archaludon (Focus Blast 144-170%). Mega X cannot OHKO Kingambit (Brick Break 70.5-84.1%), Gholdengo (Fire Punch 71-84%) or Golisopod (76.9-92.3%). Those three together make up 56% usage. The accuracy cost is real: Fire Blast is 85%, Focus Blast 70%.\n\n**2. It is the fastest Mewtwo: 211 vs 200 Speed (fact sheet).**\nBoth forms outspeed all 21 board threats. Y also beats Mega X itself, plus Mega Manectric and Mega Lopunny (205) and Mega Delphox (204), all of which outspeed X.\n\n**3. Intimidate does not touch it.**\nIncineroar is the #3 threat at 26.77% usage. I ran Mega X at -1 Atk in the engine. At -1 X loses its kills:\n- Incineroar: Brick Break 57.4-69.3%\n- M-Salamence: Ice Punch 66.7-79.6%\n- Garchomp: Ice Punch drops to 86.5-103.8% (3/16 rolls KO)\n\nMega Y's special numbers stay the same. With Helping Hand, Focus Blast OHKOs Incineroar 120.3-142.6% (engine).\n\n**4. Much better special bulk and neutral Flying/Fairy (fact sheet).**\nMega X is weak to Fairy and Flying. The same hits on each form:\n\n| Hit | on Mega X | on Mega Y |\n|---|---|---|\n| Sylveon Hyper Beam | OHKO, 184-217% | 78.7-92.9% |\n| M-Staraptor Brave Bird | OHKO, 105-125% | 69.4-82.5% |\n| Whimsicott Moonblast | 63.4-75.4% | 27.9-32.8% |\n| Indeedee-F Expanding Force | 35-41% | 14.8-17.5% |\n| Pelipper's best hit | Hurricane 83-99.5% | Weather Ball 49.7-59% |\n\n**5. Its amplifiers are real and on-format (engine).**\nMewtwo cannot hold Life Orb, and neither form can, because the stone uses the item slot. So the boosts come from the field and from partners:\n- Psychic Terrain + Helping Hand Psystrike: Milotic 122.8-145.5% KO, Rillaboom 116.9-138.6% KO\n- Helping Hand Psystrike on Sylveon: 110.2-130.5% KO\n- Helping Hand Dark Pulse on Indeedee-F: 100-118.6% KO\n- Fire Blast in sun: Rillaboom 110.1-130.4% KO, M-Metagross 138-162.6% KO\n\nFor comparison, Rillaboom is the #1 threat at 37.18% usage, and no-item Mega X only does 63.8-75.4% to it.\n\n**Team role and partners**\nMega Y is a fast special sweeper that fires first in every slot.\n- **Indeedee-F (Psychic Surge, Follow Me, Helping Hand)** is the main partner. It turns Psystrike into the Rillaboom and Milotic KOs listed above. Its Psychic Terrain also blocks priority against grounded Mewtwo Y. That shuts off the priority hits that exploit Y's lower physical bulk: M-Golisopod's First Impression (+2, 179-210% on Y) and Kingambit's Sucker Punch. Follow Me soaks the Dark and Bug attacks aimed at it.\n- **Torkoal (Drought, 20 Speed)** is the alternative partner. It needs no Mega slot and gives the sun Fire Blast numbers above.\n\n**Pre-empting Mega X's best point: \"Y is OHKO'd by 7/21, X only by 4/21.\"**\nLook at who those 7 are:\n- **Slow threats that Y hits first and OHKOs:** Kingambit (70 Speed; Focus Blast KO, and guaranteed with Helping Hand), M-Golisopod (60; Fire Blast 160%), Arcanine-Hisui (156; Earth Power 195%) and M-Tyranitar (91; Focus Blast 153%).\n- **Rillaboom:** it only KOs Y in its own Grassy Terrain (102.7-122.4%). Y still moves first, at 211 vs 105.\n- **The remaining two:** M-Salamence and M-Baxcalibur. Y outspeeds both. Salamence takes Ice Beam 163%, and Baxcalibur takes Focus Blast 89-106%.\n\nIn short, most of Y's \"defensive losses\" are to threats it moves before and OHKOs. Mega X's losses are to Sylveon, Staraptor and Salamence, which hit it for super-effective damage through types it cannot change. It is also weakened by the Intimidate it faces from the #3 threat on the board. Mega Y has more kills, more Speed and less exposure: it is the better Mega.","ra":"**Rebuttal (Mega Mewtwo X)**\n\n**1. \"13/21 OHKOs\" is really 11, and 6 of those depend on accuracy.** The engine's board gives Pelipper and Whimsicott Focus Sash, so Y's Thunder (329.9-391.2%) and Fire Blast (156.2-185.4%) leave both at 1 HP. That applies to X too, which drops to 7. Look at the OHKOs that always land. Y keeps 5: Sneasler, M-Salamence, Garchomp, Arcanine-H and one more. X keeps 6: Sneasler, M-Salamence (15/16), Garchomp, Arcanine-H, M-Tyranitar and M-Staraptor (14/16). Y's other 6 need Focus Blast (70%) or Fire Blast (85%). I concede one point: the engine does count Chople Berry, so Y's Focus Blast OHKOs Kingambit at 102.4-120.8% even through the berry. That OHKO is real, but it still lands only 70% of the time.\n\n**2. Psychic Terrain only blocks priority; Kingambit still OHKOs Y.** They are right that Indeedee-F's terrain stops Sucker Punch and First Impression on a grounded Y. But Kowtow Cleave in Psychic Terrain still does 119.1-142.1% to Y (engine). Y moves first and hits with Focus Blast 70% of the time. The other 30%, Y dies. Mega X takes 44.8-53% from the same hit.\n\nTheir plan also runs into Rillaboom. Indeedee-F and Rillaboom both have 105 Speed on the board, and the slower setter's terrain is the one that stays. Both set terrain on entry, so that becomes a 50/50 speed tie. When Grassy Terrain wins, Wood Hammer OHKOs Y (102.7-122.4%). When Psychic Terrain wins, it does 79.2-94%. Y's main partner only protects it half the time against the #1 threat.\n\n**3. Intimidate: I concede this, but look at the whole picture.** Their -1 numbers are correct: Drain Punch does 57.4-69.3% to Incineroar. I also have to correct my own opening. Helping Hand Drain Punch at -1 does 86.1-104%, and only 3/16 rolls KO. Y's Helping Hand Focus Blast does 120.3-142.6% if it hits, so into an Intimidate Incineroar, Y is the better form. However, without Helping Hand, Y's Focus Blast does only 80.2-95% to Incineroar, so Y also needs the partner. And Incineroar's Knock Off does 65.6-78.7% to Y against 25.1-30.1% to X. Y wins that trade only 70% of the time.\n\n**4. Special bulk: I concede the numbers.** Their table is accurate. Sylveon's Hyper Beam and Mega Staraptor's Brave Bird OHKO X. But X outspeeds Staraptor (200 vs 178), and Zen Headbutt in Psychic Terrain OHKOs it. Sylveon's Hyper Beam is a spread move, which Wide Guard stops. Y's worst matchups are Kingambit, Mega Golisopod and Rillaboom, which have 22-37% usage each. X's are fewer and on lower-usage threats.\n\n**5. Speed.** Mega Manectric, Mega Lopunny and Mega Delphox are not on the board. Against all 21 threats, 211 Speed and 200 Speed outspeed exactly the same set.\n\n**Summary.** Y does more damage when Focus Blast hits and Indeedee-F wins the terrain tie. X does its job without either: it OHKOs more with 100%-accurate moves and takes only 44.8-53% from Kowtow Cleave, against Y's 119.1-142.1%.\n\nMega Mewtwo X still wins because more of its KOs land every time and it survives the Pokemon people actually use, so it loses fewer games to a missed Focus Blast or a lost terrain tie.","rb":"**Rebuttal: Mega Mewtwo Y**\n\n**1. X's priority numbers ignore the partner it named.** Kingambit's Sucker Punch (99.5-118%, 14/16) and Golisopod's +2 First Impression (179-210%) are correct engine numbers in a vacuum. But Y's listed partner is Indeedee-F, and X's opening names the same partner. Psychic Terrain blocks every priority move aimed at a grounded target (confirmed-facts.md). Mega Y is grounded, so both hits fail. That also covers Rillaboom's Grassy Glide and every Fake Out. The Fake Out point cuts against X: X also wants Indeedee, and under Indeedee's terrain Fake Out never flinches X, so Steadfast never triggers. I concede the non-priority hit. Kowtow Cleave OHKOs Y at 119-142%. Y still moves first (211 vs 70), and a Focus Blast miss loses Y.\n\n**2. The Dark-type answer falls apart at -1.** X's own concession matters more than it admits. Incineroar and Kingambit are often brought together, and X's plan against Kingambit needs Helping Hand. I ran it in the engine with Kingambit's Chople Berry counted:\n- X at -1, Helping Hand Drain Punch into Kingambit: **71-84.1%, no KO**\n- X at -1, unboosted: 47.3-56%\n- X at -1, Helping Hand into Incineroar: only 3/16 rolls KO (86.1-104%)\n\nY's answers ignore Intimidate. Helping Hand Focus Blast does 153.6-181.2% to Kingambit through Chople and 120.3-142.6% to Incineroar. Unboosted Focus Blast OHKOs Kingambit at 102.4-120.8%. So Y's answer is a 70% roll to KO. After one Intimidate, X's answer is close to a 0% roll to KO Kingambit.\n\n**3. The accuracy argument: partly conceded, partly overstated.** X is right that only 5 of Y's 13 OHKOs use 100%-accurate moves, and that the Focus Sash on Pelipper and Whimsicott removes those KOs for both forms. I accept both. But three of X's own \"sure\" KOs are also rolls:\n- M-Salamence: 15/16\n- M-Staraptor: 14/16\n- M-Froslass: Stone Edge at 80%\n\nX's clean lead also falls apart in the matchups that matter by usage:\n- **Rillaboom (#1, 37.18%):** X's best hit is 63.8-75.4%. Y's Psystrike in terrain alone does 77.8-92.3%, and Psychic Terrain plus Helping Hand OHKOs.\n- **Gholdengo and M-Golisopod:** X needs two hits on each. Y has an 85% OHKO on each.\n\nA 70-85% chance of a KO still beats a 0% chance.\n\n**4. Bulk trade.** I concede Knock Off: it does 65.6-78.7% to Y against 25-30% to X. Y's 7/21 physical exposure is real, and it is the price of the form. But the threats that OHKO X are Sylveon (184-217%), Staraptor and Gholdengo. X can only handle them by adding Wide Guard or a Steel partner, which takes up a slot. Y's exposure is mostly to slow Pokemon it moves before, and its partner's terrain blocks the priority.\n\n**Conclusion:** Mega Y keeps its damage through Intimidate, moves first, and under its own Psychic Terrain it cannot be hit by the priority moves X's case depends on. It is therefore the Mega that converts against the real Reg M-C board, while X loses its main answer to Kingambit after one Intimidate."},"checks":[{"sideName":"Mega Mewtwo X","side":"A","claim":"Kingambit Sucker Punch into Y 99.5-118% (14/16), into X 36.6-44.3%","holds":true,"recomputed":"99.5-118% (14/16); 36.6-44.3%"},{"sideName":"Mega Mewtwo X","side":"A","claim":"Kowtow Cleave into Y 119.1-142.1% even in Psychic Terrain; into X 44.8-53%","holds":true,"recomputed":"119.1-142.1% KO with or without PT; 44.8-53%"},{"sideName":"Mega Mewtwo X","side":"A","claim":"Wood Hammer into Y 102.7-122.4% Grassy, 79.2-94% Psychic Terrain; Indeedee-F and Rillaboom tie at 105","holds":true,"recomputed":"102.7-122.4% KO; 79.2-94%; both 105 Spe"},{"sideName":"Mega Mewtwo X","side":"A","claim":"Drain Punch Incineroar 87.1-104%, +HH 130.7-155.9%, -1 +HH 86.1-104% (3/16)","holds":true,"recomputed":"87.1-104% (3/16); 130.7-155.9% KO; 86.1-104% (3/16)"},{"sideName":"Mega Mewtwo X","side":"A","claim":"Drain Punch Kingambit (Chople) 70.5-84.1%, +HH 105.8-126.1%","holds":true,"recomputed":"70.5-84.1%; 105.8-126.1% KO"},{"sideName":"Mega Mewtwo X","side":"A","claim":"Knock Off 25.1-30.1% into X vs 65.6-78.7% into Y; Zen Headbutt PT on M-Staraptor 128.1-151.9%","holds":true,"recomputed":"25.1-30.1%; 65.6-78.7%; 128.1-151.9% KO"},{"sideName":"Mega Mewtwo X","side":"A","claim":"Sylveon's Hyper Beam is a spread move that Wide Guard stops","holds":false,"recomputed":"Hyper Beam is single-target: 184.2-216.9% on X, no spread; only Hyper Voice (82-98.9%) is spread"},{"sideName":"Mega Mewtwo Y","side":"B","claim":"X at -1: Brick Break Incineroar 57.4-69.3%, Ice Punch M-Salamence 66.7-79.6%, Garchomp 86.5-103.8% (3/16)","holds":true,"recomputed":"57.4-69.3%; 66.7-79.6%; 86.5-103.8% (3/16)"},{"sideName":"Mega Mewtwo Y","side":"B","claim":"X -1 +HH Drain Punch Kingambit 71-84.1% no KO; -1 unboosted 47.3-56%","holds":true,"recomputed":"71-84.1%; 47.3-56%"},{"sideName":"Mega Mewtwo Y","side":"B","claim":"Y HH Focus Blast Incineroar 120.3-142.6%, Kingambit 153.6-181.2%; unboosted Kingambit 102.4-120.8%","holds":true,"recomputed":"120.3-142.6% KO; 153.6-181.2% KO; 102.4-120.8% KO (all 70% acc)"},{"sideName":"Mega Mewtwo Y","side":"B","claim":"PT+HH Psystrike Milotic 122.8-145.5%, Rillaboom 116.9-138.6%; PT alone Rillaboom 77.8-92.3%","holds":true,"recomputed":"122.8-145.5% KO; 116.9-138.6% KO; 77.8-92.3%"},{"sideName":"Mega Mewtwo Y","side":"B","claim":"HH Psystrike Sylveon 110.2-130.5%, HH Dark Pulse Indeedee-F 100-118.6%, sun Fire Blast Rillaboom 110.1-130.4% / M-Metagross 138-162.6%","holds":true,"recomputed":"110.2-130.5%; 100-118.6%; 110.1-130.4%; 138-162.6%"},{"sideName":"Mega Mewtwo Y","side":"B","claim":"Sylveon Hyper Beam into X 184.2-216.9% vs Y 78.7-92.9%; M-Staraptor Brave Bird into X 104.9-124.6%","holds":true,"recomputed":"184.2-216.9% KO; 78.7-92.9%; 104.9-124.6% KO"}],"teams":[{"legal":true,"paste":"# HYPOTHETICAL: Mewtwo is not in Pokemon Champions. Mega Mewtwo X team, Reg M-C doubles.\n\nMewtwo @ Mewtwonite X\nAbility: Pressure\nLevel: 50\nEVs: 11 HP / 32 Atk / 23 Spe\nJolly Nature\n- Zen Headbutt\n- Drain Punch\n- Ice Punch\n- Protect\n\nIndeedee-F @ Sitrus Berry\nAbility: Psychic Surge\nLevel: 50\nEVs: 32 HP / 26 Def / 8 SpD\nRelaxed Nature\n- Follow Me\n- Helping Hand\n- Expanding Force\n- Trick Room\n\nTalonflame @ Sharp Beak\nAbility: Gale Wings\nLevel: 50\nEVs: 2 HP / 32 Atk / 32 Spe\nJolly Nature\n- Tailwind\n- Brave Bird\n- Flare Blitz\n- Protect\n\nArcanine-Hisui @ Charcoal\nAbility: Intimidate\nLevel: 50\nEVs: 12 HP / 32 Atk / 22 Spe\nJolly Nature\n- Flare Blitz\n- Head Smash\n- Extreme Speed\n- Protect\n\nSneasler @ Psychic Seed\nAbility: Unburden\nLevel: 50\nEVs: 2 HP / 32 Atk / 32 Spe\nJolly Nature\n- Close Combat\n- Gunk Shot\n- Fake Out\n- Protect\n\nGholdengo @ Life Orb\nAbility: Good as Gold\nLevel: 50\nEVs: 7 HP / 2 Def / 32 SpA / 25 Spe\nModest Nature\n- Make It Rain\n- Shadow Ball\n- Focus Blast\n- Protect\n","default_four":"The default four are Mewtwo X, Indeedee-F, Talonflame and Arcanine-Hisui. Lead Indeedee-F with Mewtwo X and Mega Evolve on turn 1. Indeedee uses Helping Hand for the Kingambit, Incineroar, Rillaboom and Sylveon KOs, and Follow Me when Sylveon, Gholdengo, Staraptor or Salamence would hit Mewtwo. Talonflame (Tailwind) and Arcanine-H (Intimidate, Fire coverage) wait in the back. Against Tailwind or Trick Room teams, lead Talonflame with Mewtwo and keep Indeedee in the back to reverse Trick Room. Against Incineroar and Kingambit, bring Sneasler instead of Talonflame and lead it with Indeedee: the Psychic Seed triggers, and Sneasler reaches 378 Speed for Helping Hand Close Combat. Against Sylveon or Gholdengo, bring Gholdengo instead of Talonflame. Against rain, bring Sneasler and Gholdengo instead of Talonflame and Arcanine.","headline":"This is a hypothetical team, because Mewtwo is not in Champions. Mega Mewtwo X (190 Speed, moves that never miss) is paired with a 94-Speed Relaxed Indeedee-F: Helping Hand and Psychic Terrain turn Mewtwo's near-misses into KOs, and Follow Me absorbs the Sylveon, Salamence and Staraptor hits that would OHKO it. Talonflame's Tailwind and Sneasler's Unburden are the two speed-control layers. Arcanine-H, Sneasler and Gholdengo take over the Dark-type and Fairy KOs when Intimidate blunts Mewtwo.","notes_path":"/home/user/Pokemon_Trainer_Tournament_Simulator/champions-team-building/rotom-judge/out/Mewtwo/mewtwo-mega-x-notes.md"},{"legal":true,"paste":"Mewtwo @ Mewtwonite Y\nAbility: Unnerve\nLevel: 50\nEVs: 21 Def / 32 SpA / 13 Spe\nTimid Nature\n- Psystrike\n- Aura Sphere\n- Ice Beam\n- Protect\n\nIndeedee-F @ Terrain Extender\nAbility: Psychic Surge\nLevel: 50\nEVs: 32 HP / 32 Def / 2 SpD\nRelaxed Nature\n- Follow Me\n- Helping Hand\n- Reflect\n- Protect\n\nArcanine-Hisui @ Life Orb\nAbility: Intimidate\nLevel: 50\nEVs: 2 HP / 32 Atk / 32 Spe\nAdamant Nature\n- Head Smash\n- Flare Blitz\n- Close Combat\n- Protect\n\nIncineroar @ Sitrus Berry\nAbility: Intimidate\nLevel: 50\nEVs: 32 HP / 20 Atk / 14 SpD\nAdamant Nature\n- Flare Blitz\n- Darkest Lariat\n- Parting Shot\n- Will-O-Wisp\n\nSneasler @ Psychic Seed\nAbility: Unburden\nLevel: 50\nEVs: 2 HP / 32 Atk / 32 Spe\nJolly Nature\n- Close Combat\n- Dire Claw\n- Throat Chop\n- Protect\n\nWhimsicott @ Focus Sash\nAbility: Prankster\nLevel: 50\nEVs: 2 HP / 32 SpA / 32 Spe\nTimid Nature\n- Tailwind\n- Moonblast\n- Encore\n- Taunt\n","default_four":"Default four: Mewtwo, Indeedee-F, Arcanine-Hisui and Incineroar. Lead Indeedee-F + Mewtwo, with Arcanine and Incineroar in the back.\n\nOn turn 1, Mewtwo Mega Evolves. Indeedee's Psychic Surge lands last at 94 Speed, so it overwrites Rillaboom's Grassy Terrain. Indeedee then uses Helping Hand to set up KOs (HH Psystrike on Rillaboom 116.9-138.6%, HH Aura Sphere on Kingambit 102.9-121.7%), or Follow Me when a physical nuke is aimed at Mewtwo. The two Intimidates in the back cut Kowtow Cleave on Mewtwo to 64.1-77.3%, or 42.5-51.4% with Reflect up.\n\nOther matchups:\n- Tailwind / hyper-offense: lead Whimsicott + Mewtwo, with Indeedee-F and Arcanine in the back.\n- Trick Room: bring Mewtwo, Whimsicott, Sneasler and Arcanine. Whimsicott uses Prankster Taunt on the setter.\n- Kingambit + Incineroar Dark cores: bring Mewtwo, Indeedee-F, Sneasler and Arcanine. Sneasler HH Close Combat KOs Chople Kingambit (126.1-149.3%) and KOs Incineroar at +0 (105-124.8%).","headline":"HYPOTHETICAL Psychic Terrain hyper-offense built around Mega Mewtwo Y. A 94-Speed Relaxed Indeedee-F wins the terrain on the lead, which protects the grounded Y from priority, and its Helping Hand pushes Psystrike, Aura Sphere and Ice Beam (all 100% accurate) to KOs on Rillaboom, Kingambit, Sneasler, M-Salamence and Garchomp. Two Intimidates (Arcanine-Hisui, Incineroar), Reflect, Prankster Tailwind/Taunt (Whimsicott) and Unburden Sneasler cover the physical threats Y cannot handle. Each top-8 threat has at least two engine-verified answers. One correction to the brief: Incineroar cannot learn Knock Off in Champions, and its real Darkest Lariat does 70.7-84% to Y.","notes_path":"/home/user/Pokemon_Trainer_Tournament_Simulator/champions-team-building/rotom-judge/out/Mewtwo/mewtwo-mega-y-notes.md"}],"brief_a":{"game_plan":"HYPOTHETICAL (Mewtwo not in Champions). Mega Mewtwo X is a fast (200 Spe, outspeeds all 21 board threats), physically bulky Psychic/Fighting attacker. It stays in against Dark and Bug priority and threatens with 100%-accurate coverage (Zen Headbutt, Drain Punch, Ice Punch, Earthquake). Pair it with Helping Hand to reach the Incineroar and Kingambit KOs, and with Psychic Terrain for Zen Headbutt. The team must handle Intimidate and the Fairy/Flying/Ghost hits that OHKO X. Do not count on Steadfast when running Psychic Terrain, because the terrain blocks Fake Out on X.","lean_into":["Physical bulk against the top physical threats: Kowtow Cleave 44.8-53%, Sucker Punch 36.6-44.3%, M-Golisopod First Impression 66.7-79.8%, Incineroar Knock Off 25.1-30.1%, M-Tyranitar Crunch 49.2-57.9%","100%-accurate OHKOs: Zen Headbutt Sneasler 346-413%, Ice Punch Garchomp 129.7-153.5%, Ice Punch M-Salamence 98.9-118.3% (15/16), Earthquake Arcanine-Hisui 158-188%, Brick Break M-Tyranitar 115.9-139.1%, Zen Headbutt M-Staraptor 98.4-116.8% (128.1-151.9% in Psychic Terrain)","Helping Hand Drain Punch at +0: Incineroar 130.7-155.9% KO, Kingambit through Chople Berry 105.8-126.1% KO, and it heals","200 Speed outspeeds M-Salamence (158) and M-Staraptor (178), the fast threats that OHKO it"],"must_cover":["Intimidate (Incineroar 26.77%): at -1, Drain Punch on Incineroar 57.4-69.3%, HH Drain Punch on Kingambit 71-84.1% (no KO), Ice Punch on M-Salamence 66.7-79.6% and Garchomp 86.5-103.8%; there is no Clear Amulet in Champions","Sylveon single-target Pixilate Hyper Beam 184.2-216.9% (still 123-144.8% through Light Screen); Wide Guard does NOT stop it, only Hyper Voice (82-98.9%)","M-Staraptor Brave Bird 104.9-124.6% and M-Salamence Double-Edge 161.2-190.2% (107.7-127.3% at -1); X loses if opposing Tailwind or Trick Room makes it move second","Gholdengo Shadow Ball 99.5-119.1% (15/16) while X only does 71-84% back with Fire Punch","Rillaboom (#1, 37.18%): X's best hit is only 63.8-75.4%; Wood Hammer in Grassy does 77.6-92.3% to X","M-Golisopod: X needs two hits (Fire Punch 76.9-92.3%)"],"partner_ideas":["Indeedee-F: Helping Hand, Follow Me to redirect Sylveon/Staraptor/Gholdengo hits, and Psychic Terrain for Zen Headbutt","Its own Intimidate (Incineroar or Arcanine-Hisui) to weaken M-Salamence and M-Staraptor, plus an Incineroar answer that is not physical","Steel type to wall Fairy/Flying and pressure Sylveon (M-Metagross, Archaludon or Kingambit)","Fire or Flying attacker to handle Rillaboom and M-Golisopod, and a Ghost/Dark answer to Gholdengo","Speed control (Tailwind from Whimsicott or Pelipper), or Protect for the turns an opposing Tailwind is up"]},"brief_b":{"game_plan":"HYPOTHETICAL (Mewtwo not in Champions). Mega Mewtwo Y runs Psychic Terrain hyper-offense. A 0-Speed Relaxed/Quiet Indeedee-F (94 Spe, slower than Rillaboom's 105, so its terrain comes up last on the lead) blocks every priority move aimed at the grounded Y, and adds Helping Hand plus Follow Me. Y moves first at 211 and uses terrain-boosted Psystrike, with Aura Sphere or Focus Blast for the Dark types. Its damage ignores Intimidate. Protect it from the non-priority physical nukes, above all Kowtow Cleave.","lean_into":["13/21 OHKOs with no item. The 100%-accurate ones: Psystrike Sneasler 443-522% and M-Staraptor 126.5-149.2%, Ice Beam M-Salamence 163-194% and Garchomp 171-203%, Earth Power Arcanine-Hisui 195-230%","Psychic Terrain + Helping Hand Psystrike: Rillaboom 116.9-138.6% KO, Milotic 122.8-145.5% KO; HH Psystrike Sylveon 110.2-130.5%; HH Dark Pulse Indeedee-F 100-118.6%","Dark answers unaffected by Intimidate: HH Aura Sphere Kingambit 102.9-121.7% (never misses); Focus Blast Kingambit 102.4-120.8% (70%); HH Focus Blast Incineroar 120.3-142.6% (70%)","Fire Blast (85%): Gholdengo 108.9-129%, M-Golisopod 160-191%; in sun Rillaboom 110.1-130.4%, M-Metagross 138-162.6%","Special bulk: Sylveon Hyper Beam 78.7-92.9%, Whimsicott Moonblast 27.9-32.8%, M-Staraptor Brave Bird 69.4-82.5%"],"must_cover":["Kingambit Kowtow Cleave 119.1-142.1% (not priority, so terrain does not help; 101.4-119.2% even with 32 HP). Intimidate reduces it to 79.8-95.1%, Reflect to 79.2-94.5%","Priority whenever Psychic Terrain is down: Sucker Punch 99.5-118% (14/16), M-Golisopod First Impression 179-210% (119-142% at -1), Rillaboom Grassy Glide","Rillaboom Wood Hammer in Grassy 102.7-122.4% KO (79.2-94% under Psychic Terrain), so Y must win the terrain war","Incineroar Knock Off 65.6-78.7%, while Y does only 80.2-95% back without Helping Hand","Other physical OHKOs Y must hit first or Protect from: M-Tyranitar Crunch 129-154%, Arcanine-Hisui Head Smash 111-132%, M-Baxcalibur Glaive Rush 102-121%, M-Salamence Double-Edge 106-126%","Accuracy: 8 of 13 OHKOs rely on Focus Blast (70%), Fire Blast (85%) or Thunder (70%); Pelipper and Whimsicott carry Focus Sash"],"partner_ideas":["Indeedee-F with Psychic Surge, Follow Me and Helping Hand at Relaxed/Quiet 0 Speed (94) to win the terrain on a Rillaboom lead; the team should not run its own Fake Out under Psychic Terrain","Intimidate user (Incineroar or Arcanine-Hisui) to take Kowtow Cleave (79.8-95.1%) and Knock Off (45.9-53.6%) out of KO range","Reflect setter as a screen against the physical attackers","Physical or Fairy/Fighting teammate that can KO Kingambit and M-Tyranitar on its own, so the team does not depend on Focus Blast","Torkoal (Drought, very slow setter) as a secondary sun mode for Fire Blast"]}}],"pending":["Charizard","Raichu","Garchomp","Absol","Lucario"]}</script>
+<script>
+(function(){
+const DATA = JSON.parse(document.getElementById("data").textContent);
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store = { get(k,d){ try{ const v = localStorage.getItem("rj:"+k); return v == null ? d : JSON.parse(v); }catch(e){ return d; } },
+                set(k,v){ try{ localStorage.setItem("rj:"+k, JSON.stringify(v)); }catch(e){} } };
+
+/* ---------- tiny markdown renderer: paragraphs, lists, headings, pipe tables, **bold**, *italic*, `code` ---------- */
+function inline(t){
+  return esc(t).replace(/`([^`]+)`/g,"<code>$1</code>").replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>")
+    .replace(/(^|[\s(])\*([^*\s][^*]*)\*(?=[\s).,;:!?]|$)/g,"$1<em>$2</em>");
+}
+function md(src){
+  const lines = String(src || "").replace(/\r/g,"").split("\n");
+  const out = []; let para = [], list = null, table = null;
+  const flushP = () => { if (para.length){ out.push('<p class="blk">'+inline(para.join(" "))+"</p>"); para = []; } };
+  const flushL = () => { if (list){ out.push("<"+list.t+">"+list.items.map(i=>'<li class="blk">'+inline(i)+"</li>").join("")+"</"+list.t+">"); list = null; } };
+  const flushT = () => { if (table){ const rows = table.filter(r=>!/^\|?\s*:?-{2,}/.test(r.replace(/\|/g,"").trim() ? r : "")).filter(r=>!/^\s*\|?[\s:|-]+\|?\s*$/.test(r));
+      const cells = r => r.trim().replace(/^\||\|$/g,"").split("|").map(c=>inline(c.trim()));
+      out.push('<div class="tbl"><table>'+rows.map((r,i)=>"<tr>"+cells(r).map(c=>i?"<td>"+c+"</td>":"<th>"+c+"</th>").join("")+"</tr>").join("")+"</table></div>"); table = null; } };
+  for (const raw of lines){
+    const l = raw.trimEnd();
+    if (/^\s*\|/.test(l)){ flushP(); flushL(); (table = table || []).push(l); continue; } else flushT();
+    if (!l.trim()){ flushP(); flushL(); continue; }
+    if (/^-{3,}$/.test(l.trim())){ flushP(); flushL(); continue; }
+    let m;
+    if ((m = l.match(/^#{1,6}\s+(.*)$/))){ flushP(); flushL(); out.push('<h4 class="blk">'+inline(m[1])+"</h4>"); continue; }
+    if ((m = l.match(/^\s*[-*•]\s+(.*)$/))){ flushP(); if (!list || list.t!=="ul"){ flushL(); list = {t:"ul", items:[]}; } list.items.push(m[1]); continue; }
+    if ((m = l.match(/^\s*\d+[.)]\s+(.*)$/))){ flushP(); if (!list || list.t!=="ol"){ flushL(); list = {t:"ol", items:[]}; } list.items.push(m[1]); continue; }
+    if (list && /^\s{2,}\S/.test(raw)){ list.items[list.items.length-1] += " " + l.trim(); continue; }
+    flushL(); para.push(l.trim());
+  }
+  flushP(); flushL(); flushT();
+  return out.join("");
+}
+
+/* ---------- speech text: say numbers and Pokemon shorthand the way a person would ---------- */
+const SAY = [
+  [/\bM-(?=[A-Z])/g,"Mega "], [/\bReg M-C\b/g,"Regulation M C"], [/\bOHKOs\b/g,"one-hit K O's"], [/\bOHKO'?d\b/g,"one-hit K O'd"], [/\bOHKO\b/g,"one-hit K O"],
+  [/\b2HKOs?\b/g,"two-hit K O"], [/\bKOs\b/g,"K O's"], [/\bKO\b/g,"K O"], [/\bHH\b/g,"Helping Hand"], [/\bPT\b/g,"Psychic Terrain"],
+  [/\bSpA\b/g,"Special Attack"], [/\bSpD\b/g,"Special Defense"], [/\bSpe\b/g,"Speed"], [/\bAtk\b/g,"Attack"], [/\bDef\b/g,"Defense"],
+  [/\bHP\b/g,"H P"], [/\bBP\b/g,"base power"], [/\bSTAB\b/g,"stab"], [/\bvs\.?\b/g,"versus"], [/\bBST\b/g,"base stat total"],
+  [/(\d+)\/16\b/g,"$1 of 16 rolls"], [/(\d+(?:\.\d+)?)\s*[-–]\s*(\d+(?:\.\d+)?)%/g,"$1 to $2 percent"], [/%/g," percent"],
+  [/(\d(?:\.\d+)?)x\b/g,"$1 times"], [/(^|[\s(])\+(\d)/g,"$1plus $2"], [/(^|[\s(])-(\d)/g,"$1minus $2"],
+  [/->|→/g," to "], [/≈|~/g,"about "], [/&/g," and "], [/[*_`#|>]/g,""], [/\s{2,}/g," "]
+];
+const say = t => SAY.reduce((s,[re,rep]) => s.replace(re,rep), String(t)).trim();
+function sentences(t){
+  const parts = String(t).split(/(?<=[.!?;:])\s+(?=["'(A-Z0-9])/); const out = []; let cur = "";
+  for (const p of parts){ if ((cur+" "+p).length < 210) cur = cur ? cur+" "+p : p; else { if (cur) out.push(cur); cur = p; } }
+  if (cur) out.push(cur);
+  return out.flatMap(s => s.length <= 260 ? [s] : s.match(/.{1,240}(?:,\s|\s|$)/g) || [s]);
+}
+
+/* ---------- rendering a case ---------- */
+let current = null, ITEMS = [], SEC_START = [];
+function sectionHTML(i, s){
+  const icon = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5v14l12-7z"/></svg>';
+  return '<section class="sec" id="sec'+i+'" data-sec="'+i+'"><div class="sec-head"><div>'+
+    '<span class="who-chip '+s.who+'">'+esc(s.chip)+'</span></div>'+
+    '<button class="play-sec" data-play="'+i+'">'+icon+' Listen</button></div>'+
+    '<h2>'+esc(s.title)+'</h2><div class="txt '+s.who+'">'+s.html+'</div></section>';
+}
+function renderCase(c){
+  stopSpeech(); current = c;
+  document.querySelectorAll(".case-chip").forEach(b => b.setAttribute("aria-current", b.dataset.sp === c.species ? "true" : "false"));
+  const [A,B] = c.forms, win = c.winnerName;
+  const barColor = w => w === "a" ? "var(--a)" : "var(--b)";
+  const secs = [
+    {who:"a", chip:"For "+A.name, title:"Opening argument", html:md(c.debate.oa), spk:"a"},
+    {who:"b", chip:"For "+B.name, title:"Opening argument", html:md(c.debate.ob), spk:"b"},
+    {who:"a", chip:"For "+A.name, title:"Rebuttal", html:md(c.debate.ra), spk:"a"},
+    {who:"b", chip:"For "+B.name, title:"Rebuttal", html:md(c.debate.rb), spk:"b"},
+    {who:"j", chip:"Rotom Judge", title:"The judge's opinion", html:md(c.opinion || "") +
+      '<div class="conclusion"><h3>Conclusion</h3><p class="rule blk">'+esc(c.ruleLine)+'</p>'+md(c.conclusion)+'</div>', spk:"j"},
+  ];
+  const checks = (c.checks||[]).map(k => '<div class="check"><span class="pill '+(k.holds?"ok":"bad")+'">'+(k.holds?"Holds":"Fails")+'</span>'+
+    '<div class="cl"><b>'+esc(k.sideName)+':</b> '+esc(k.claim)+'</div><div class="rc">Judge got: '+esc(k.recomputed)+'</div></div>').join("");
+  const team = (f, t, br, idx) => {
+    if (!t) return '<div class="team"><h3>Built around '+esc(f.name)+'</h3><p class="legal bad">Team build failed</p></div>';
+    return '<div class="team"><h3>Built around '+esc(f.name)+'</h3>'+
+      '<span class="legal '+(t.legal?"ok":"bad")+'">'+(t.legal?"✓ Passed the legality check":"✗ Did not pass the legality check")+'</span>'+
+      '<div class="hl">'+inline(t.headline||"")+'</div>'+
+      '<div class="paste"><button class="copy" data-copy="'+idx+'">Copy paste</button><pre id="paste'+idx+'">'+esc(t.paste||"")+'</pre></div>'+
+      '<div class="b4"><strong>How to bring it:</strong> '+inline(t.default_four||"")+'</div>'+
+      (br ? '<details class="brief"><summary>The judge\'s brief for this team</summary><p>'+esc(br.game_plan)+'</p>'+
+        '<p><strong>Lean into</strong></p><ul>'+(br.lean_into||[]).map(x=>"<li>"+esc(x)+"</li>").join("")+'</ul>'+
+        '<p><strong>Must cover</strong></p><ul>'+(br.must_cover||[]).map(x=>"<li>"+esc(x)+"</li>").join("")+'</ul></details>' : "")+
+      '</div>';
+  };
+  const scoreRow = (f, sc, rub, k) => '<div class="score-row"><span class="nm">'+esc(f.name)+(win===f.name?" 🏆":"")+'</span><span class="num">'+sc+'</span>'+
+    '<span class="bar"><i style="width:'+Math.max(0,Math.min(100,sc))+'%;background:'+barColor(k)+'"></i></span><span class="rub">'+esc(rub||"")+'</span></div>';
+  $("#case").innerHTML =
+    '<div class="hero"><div class="eyebrow"><span>Pokémon Champions · Reg M-C</span>'+(c.hypothetical?'<span class="tag hypo">Hypothetical — not in Champions yet</span>':"")+'</div>'+
+    '<h1>'+esc(A.name)+'<span class="vs">vs</span>'+esc(B.name)+'</h1>'+
+    '<div class="ruling">Ruled for <span class="who">'+esc(win)+'</span></div>'+
+    '<div class="scores">'+scoreRow(A,c.score_a,c.rubric_a,"a")+scoreRow(B,c.score_b,c.rubric_b,"b")+
+    '<div class="rub-key">Scored out of 100: evidence 40, relevance to the format 25, rebuttal 20, honesty 15.</div></div>'+
+    (speechOK ? '<button class="listen-all" id="listenAll"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5v14l12-7z"/></svg>Listen to the whole debate</button>'
+              : '<p class="nospeech">This browser has no text-to-speech, so the debate can be read but not played.</p>')+'</div>'+
+    secs.map((s,i)=>sectionHTML(i,s)).join("")+
+    '<section class="sec"><h2>The judge checks the numbers</h2><p class="rub-key">Each claim was recomputed with the damage calculator.</p><div class="checks">'+checks+'</div></section>'+
+    '<section class="sec"><h2>The teams</h2>'+team(A,c.teams[0],c.brief_a,0)+team(B,c.teams[1],c.brief_b,1)+'</section>';
+  // build the speech queue from the rendered blocks
+  ITEMS = []; SEC_START = [];
+  secs.forEach((s,i) => {
+    SEC_START[i] = ITEMS.length;
+    const intro = (s.spk==="j" ? "The judge's opinion." : s.title+" for "+(s.spk==="a"?A.name:B.name)+".");
+    ITEMS.push({sec:i, el:null, text:say(intro), spk:"j", label:s.chip+" · "+s.title});
+    document.querySelectorAll("#sec"+i+" .blk").forEach(el => {
+      sentences(say(el.textContent)).forEach(t => ITEMS.push({sec:i, el, text:t, spk:s.spk, label:s.chip+" · "+s.title}));
+    });
+  });
+  $("#vAlab").textContent = A.name; $("#vBlab").textContent = B.name;
+  $("#listenAll") && $("#listenAll").addEventListener("click", () => playFrom(0));
+  document.querySelectorAll("[data-play]").forEach(b => b.addEventListener("click", () => playFrom(SEC_START[+b.dataset.play])));
+  document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => copyPaste(b)));
+  store.set("case", c.species);
+  if (location.hash !== "#"+c.slug) history.replaceState(null, "", "#"+c.slug);
+  window.scrollTo(0,0);
+}
+function copyPaste(btn){
+  const pre = document.getElementById("paste"+btn.dataset.copy), text = pre.textContent;
+  const done = () => { btn.textContent = "Copied"; setTimeout(()=>btn.textContent="Copy paste", 1600); };
+  const select = () => { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected"; };
+  try { navigator.clipboard.writeText(text).then(done, select); } catch(e){ select(); }
+}
+
+/* ---------- speech engine ---------- */
+const speechOK = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+const synth = speechOK ? window.speechSynthesis : null;
+let voices = [], idx = 0, playing = false, token = 0, wake = null;
+const RATES = [0.85, 1, 1.15, 1.3, 1.5];
+let rate = store.get("rate", 1);
+const pick = store.get("voices", {});
+function loadVoices(){
+  if (!synth) return;
+  voices = synth.getVoices().filter(v => /^en/i.test(v.lang));
+  if (!voices.length) voices = synth.getVoices();
+  const opts = voices.map((v,i) => '<option value="'+i+'">'+esc(v.name)+" ("+esc(v.lang)+")</option>").join("") || '<option value="-1">Device default</option>';
+  ["vA","vB","vJ"].forEach((id,k) => {
+    const sel = document.getElementById(id); sel.innerHTML = opts;
+    const saved = voices.findIndex(v => v.name === pick[id]);
+    sel.value = String(saved >= 0 ? saved : Math.min(k, Math.max(0, voices.length-1)));
+  });
+}
+function voiceFor(spk){
+  const id = spk==="a" ? "vA" : spk==="b" ? "vB" : "vJ";
+  const i = +document.getElementById(id).value;
+  const v = voices[i] || null;
+  // same voice as another speaker -> shift pitch so the three speakers stay distinguishable
+  const others = ["vA","vB","vJ"].filter(x=>x!==id).map(x=>+document.getElementById(x).value);
+  const shared = others.includes(i);
+  const pitch = !shared ? 1 : spk==="a" ? 1.12 : spk==="b" ? 0.82 : 1;
+  return {v, pitch, rate: spk==="j" ? rate*0.96 : rate};
+}
+function setNow(item){
+  $("#nowTxt").textContent = item ? item.label : "Finished";
+  $("#nowDot").className = "dot" + (item && item.spk !== "j" ? " "+item.spk : "");
+  $("#ppIcon").innerHTML = playing ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>' : '<path d="M7 5v14l12-7z"/>';
+}
+function highlight(el){
+  document.querySelectorAll(".blk.speaking").forEach(x => x.classList.remove("speaking"));
+  if (el){ el.classList.add("speaking");
+    const r = el.getBoundingClientRect(), vh = innerHeight;
+    if (r.top < 90 || r.bottom > vh - 150) el.scrollIntoView({block:"center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}); }
+}
+function speakNext(my){
+  if (my !== token || !playing) return;
+  if (idx >= ITEMS.length){ playing = false; setNow(null); highlight(null); releaseWake(); return; }
+  const it = ITEMS[idx], vs = voiceFor(it.spk);
+  const u = new SpeechSynthesisUtterance(it.text);
+  if (vs.v){ u.voice = vs.v; u.lang = vs.v.lang; }
+  u.pitch = vs.pitch; u.rate = vs.rate;
+  u.onend = () => { if (my !== token) return; idx++; speakNext(my); };
+  u.onerror = e => { if (my !== token) return; if (e.error === "interrupted" || e.error === "canceled") return; idx++; speakNext(my); };
+  setNow(it); highlight(it.el);
+  synth.speak(u);
+}
+function playFrom(i){
+  if (!synth) return;
+  $("#player").hidden = false;
+  token++; synth.cancel(); idx = Math.max(0, Math.min(i, ITEMS.length-1)); playing = true;
+  const my = token; setTimeout(() => speakNext(my), 60); requestWake();
+}
+function pauseSpeech(){ playing = false; token++; if (synth) synth.cancel(); setNow(ITEMS[idx]); releaseWake(); }
+function stopSpeech(){ playing = false; token++; if (synth) synth.cancel(); highlight(null); $("#player").hidden = true; releaseWake(); }
+function secJump(d){
+  const cur = ITEMS[idx] ? ITEMS[idx].sec : 0, target = Math.max(0, Math.min(SEC_START.length-1, cur + d));
+  playFrom(SEC_START[target]);
+}
+async function requestWake(){ try{ if (navigator.wakeLock && !wake) wake = await navigator.wakeLock.request("screen"); }catch(e){ wake = null; } }
+function releaseWake(){ try{ wake && wake.release(); }catch(e){} wake = null; }
+
+/* ---------- wiring ---------- */
+$("#pp").addEventListener("click", () => playing ? pauseSpeech() : playFrom(idx));
+$("#prev").addEventListener("click", () => secJump(-1));
+$("#next").addEventListener("click", () => secJump(1));
+$("#stop").addEventListener("click", stopSpeech);
+$("#rate").textContent = rate+"×";
+$("#rate").addEventListener("click", () => { rate = RATES[(RATES.indexOf(rate)+1) % RATES.length]; $("#rate").textContent = rate+"×"; store.set("rate", rate); if (playing) playFrom(idx); });
+$("#vbtn").addEventListener("click", () => { const v = $("#voices"); v.hidden = !v.hidden; $("#vbtn").setAttribute("aria-expanded", String(!v.hidden)); });
+["vA","vB","vJ"].forEach(id => document.getElementById(id).addEventListener("change", e => {
+  const v = voices[+e.target.value]; if (v){ pick[id] = v.name; store.set("voices", pick); } if (playing) playFrom(idx); }));
+if (synth){ loadVoices(); synth.onvoiceschanged = loadVoices; }
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && playing) requestWake(); });
+
+const cases = DATA.cases;
+$("#caseCount").textContent = cases.length + (cases.length === 1 ? " debate" : " debates") + (DATA.pending.length ? " · " + DATA.pending.length + " still running" : "");
+$("#cases").innerHTML = cases.map(c => '<button class="case-chip" data-sp="'+esc(c.species)+'">'+esc(c.species)+'<small>'+esc(c.short)+'</small></button>').join("") +
+  DATA.pending.map(s => '<button class="case-chip" disabled title="Still running">'+esc(s)+'<small>running…</small></button>').join("");
+document.querySelectorAll(".case-chip[data-sp]").forEach(b => b.addEventListener("click", () => renderCase(cases.find(c => c.species === b.dataset.sp))));
+const fromHash = cases.find(c => "#"+c.slug === location.hash), saved = cases.find(c => c.species === store.get("case", ""));
+renderCase(fromHash || saved || cases[0]);
+})();
+</script>

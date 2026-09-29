@@ -1,0 +1,385 @@
+<title>Rotom Judge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a hearing record. One case at a time, transcript read top to bottom, a player docked to the bottom edge.
+   Speaker colour is information: A and B are the two advocates, the judge is amber (Rotom's own colour). */
+:root{
+  --bg:#eef0f4; --surface:#ffffff; --ink:#14161b; --muted:#5b6270; --line:#d8dbe2;
+  --a:#0b6f80; --a-soft:rgba(11,111,128,.10);
+  --b:#a3244f; --b-soft:rgba(163,36,79,.09);
+  --judge:#b86e00; --judge-soft:rgba(184,110,0,.12);
+  --ok:#2b8a3e; --ok-soft:rgba(43,138,62,.12); --bad:#c92a2a; --bad-soft:rgba(201,42,42,.10);
+  --live:rgba(184,110,0,.18);
+  --display:"Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --body:"Literata", Georgia, "Times New Roman", serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --ui:system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0f1116; --surface:#171a21; --ink:#e8eaf0; --muted:#9aa1ae; --line:#2a2f3a;
+  --a:#46c4d6; --a-soft:rgba(70,196,214,.12); --b:#f0729c; --b-soft:rgba(240,114,156,.11);
+  --judge:#f5b638; --judge-soft:rgba(245,182,56,.13); --ok:#69db7c; --ok-soft:rgba(105,219,124,.13);
+  --bad:#ff8787; --bad-soft:rgba(255,135,135,.12); --live:rgba(245,182,56,.20); color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0f1116; --surface:#171a21; --ink:#e8eaf0; --muted:#9aa1ae; --line:#2a2f3a;
+  --a:#46c4d6; --a-soft:rgba(70,196,214,.12); --b:#f0729c; --b-soft:rgba(240,114,156,.11);
+  --judge:#f5b638; --judge-soft:rgba(245,182,56,.13); --ok:#69db7c; --ok-soft:rgba(105,219,124,.13);
+  --bad:#ff8787; --bad-soft:rgba(255,135,135,.12); --live:rgba(245,182,56,.20); color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--ink); font:16px/1.62 var(--body); margin:0}
+.wrap{max-width:720px; margin:0 auto; padding-inline:16px; padding-block:0 140px}
+h1,h2,h3,h4{font-family:var(--display); font-weight:800; text-wrap:balance; line-height:1.12; margin:0}
+button{font:inherit; color:inherit; cursor:pointer}
+button:focus-visible, select:focus-visible, a:focus-visible{outline:2px solid var(--judge); outline-offset:2px}
+
+/* top bar: case picker */
+.top{position:sticky; top:env(safe-area-inset-top,0px); z-index:5; background:var(--bg); border-bottom:1px solid var(--line)}
+.top-in{max-width:720px; margin:0 auto; padding:10px 16px; display:flex; flex-direction:column; gap:8px}
+.brand{display:flex; align-items:baseline; justify-content:space-between; gap:12px}
+.brand b{font-family:var(--display); font-weight:800; font-size:18px; letter-spacing:.01em}
+.brand span{font:12px/1.3 var(--ui); color:var(--muted)}
+.cases{display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; padding-bottom:2px}
+.cases::-webkit-scrollbar{display:none}
+.case-chip{flex:0 0 auto; border:1px solid var(--line); background:var(--surface); border-radius:999px;
+  padding:6px 12px; font:600 13px/1 var(--ui); white-space:nowrap}
+.case-chip[aria-current="true"]{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+.case-chip small{font-weight:400; opacity:.7; margin-left:4px}
+
+/* case header */
+.hero{padding-block:22px 6px; display:flex; flex-direction:column; gap:12px}
+.eyebrow{font:600 11px/1.3 var(--ui); letter-spacing:.09em; text-transform:uppercase; color:var(--muted); display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+.tag{border:1px solid currentColor; border-radius:4px; padding:1px 6px; letter-spacing:.06em}
+.tag.hypo{color:var(--judge)}
+.hero h1{font-size:clamp(26px,7vw,40px)}
+.hero h1 .vs{font-family:var(--body); font-style:italic; font-weight:400; color:var(--muted); font-size:.62em; padding-inline:.18em}
+.ruling{font:600 15px/1.4 var(--ui)}
+.ruling .who{color:var(--judge)}
+.scores{display:grid; gap:10px; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px}
+.score-row{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 10px; align-items:baseline}
+.score-row .nm{font:600 14px/1.3 var(--ui); min-width:0}
+.score-row .num{font:800 20px/1 var(--display); font-variant-numeric:tabular-nums}
+.bar{grid-column:1/-1; height:8px; border-radius:4px; background:var(--line); overflow:hidden}
+.bar i{display:block; height:100%; border-radius:4px}
+.score-row .rub{grid-column:1/-1; font:12px/1.4 var(--mono); color:var(--muted)}
+.rub-key{font:12px/1.4 var(--ui); color:var(--muted)}
+.listen-all{display:flex; align-items:center; justify-content:center; gap:10px; width:100%; border:0; border-radius:10px;
+  padding:14px; background:var(--judge); color:#1a1200; font:700 16px/1 var(--ui)}
+.listen-all svg{width:18px; height:18px}
+
+/* transcript */
+.sec{padding-block:26px 4px; display:flex; flex-direction:column; gap:10px; scroll-margin-top:110px}
+.sec-head{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap}
+.who-chip{display:inline-flex; align-items:center; gap:8px; font:700 12px/1 var(--ui); letter-spacing:.07em; text-transform:uppercase; padding:6px 10px; border-radius:6px}
+.who-chip.a{background:var(--a-soft); color:var(--a)} .who-chip.b{background:var(--b-soft); color:var(--b)} .who-chip.j{background:var(--judge-soft); color:var(--judge)}
+.sec h2{font-size:22px}
+.play-sec{border:1px solid var(--line); background:var(--surface); border-radius:999px; padding:6px 12px 6px 10px; font:600 13px/1 var(--ui); display:inline-flex; gap:6px; align-items:center}
+.play-sec svg{width:12px; height:12px}
+.txt{border-left:3px solid var(--line); padding-left:14px; min-width:0}
+.txt.a{border-color:var(--a)} .txt.b{border-color:var(--b)} .txt.j{border-color:var(--judge)}
+.txt p, .txt li{margin:0 0 .75em}
+.txt ul, .txt ol{margin:0 0 .75em; padding-left:1.2em}
+.txt h4{font-size:17px; margin:1em 0 .4em}
+.txt strong{font-weight:600}
+.txt code{font:14px var(--mono)}
+.blk{border-radius:4px; transition:background-color .2s}
+.blk.speaking{background:var(--live); box-shadow:0 0 0 4px var(--live)}
+.tbl{overflow-x:auto; margin:0 0 .9em}
+.tbl table{border-collapse:collapse; font:13px/1.4 var(--ui); min-width:100%}
+.tbl th,.tbl td{border-bottom:1px solid var(--line); padding:6px 8px; text-align:left; vertical-align:top}
+.conclusion{background:var(--judge-soft); border-radius:10px; padding:16px; display:flex; flex-direction:column; gap:8px}
+.conclusion h3{font-size:18px; color:var(--judge)}
+.conclusion .rule{font:700 16px/1.4 var(--ui)}
+
+/* fact checks */
+.checks{display:flex; flex-direction:column; gap:8px}
+.check{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:10px 12px; display:grid; grid-template-columns:auto minmax(0,1fr); gap:4px 10px}
+.pill{font:700 11px/1 var(--ui); letter-spacing:.05em; text-transform:uppercase; border-radius:4px; padding:4px 6px; align-self:start}
+.pill.ok{background:var(--ok-soft); color:var(--ok)} .pill.bad{background:var(--bad-soft); color:var(--bad)}
+.check .cl{font:14px/1.45 var(--ui)} .check .cl b{font-weight:600}
+.check .rc{grid-column:2; font:12px/1.4 var(--mono); color:var(--muted)}
+
+/* teams */
+.team{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px; display:flex; flex-direction:column; gap:10px; min-width:0}
+.team h3{font-size:19px}
+.team .hl{font:15px/1.5 var(--body)}
+.team .b4{font:13px/1.5 var(--ui); color:var(--muted)}
+.legal{font:700 11px/1 var(--ui); letter-spacing:.05em; text-transform:uppercase}
+.legal.ok{color:var(--ok)} .legal.bad{color:var(--bad)}
+.paste{position:relative; min-width:0}
+.paste pre{margin:0; background:var(--bg); border:1px solid var(--line); border-radius:8px; padding:12px; font:12.5px/1.5 var(--mono); overflow-x:auto; max-height:320px}
+.copy{position:absolute; top:8px; right:8px; border:1px solid var(--line); background:var(--surface); border-radius:6px; padding:5px 9px; font:600 12px/1 var(--ui)}
+details.brief{font:14px/1.5 var(--ui)} details.brief summary{cursor:pointer; color:var(--muted); font-weight:600}
+details.brief ul{padding-left:1.2em; margin:.4em 0}
+
+/* player */
+.player{position:fixed; left:0; right:0; bottom:0; z-index:10; background:var(--surface); border-top:1px solid var(--line);
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px)); box-shadow:0 -6px 24px rgba(0,0,0,.08)}
+.player-in{max-width:720px; margin:0 auto; display:flex; flex-direction:column; gap:8px}
+.now{font:600 12px/1.3 var(--ui); color:var(--muted); display:flex; gap:8px; align-items:center; min-width:0}
+.now .dot{width:8px; height:8px; border-radius:50%; flex:0 0 auto; background:var(--judge)}
+.now .dot.a{background:var(--a)} .now .dot.b{background:var(--b)}
+.now span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.ctrls{display:flex; align-items:center; gap:8px}
+.ctrls button{border:1px solid var(--line); background:var(--bg); border-radius:8px; height:40px; min-width:44px; display:inline-flex; align-items:center; justify-content:center; gap:6px; padding-inline:10px; font:600 13px/1 var(--ui)}
+.ctrls button svg{width:16px; height:16px}
+.ctrls .main{background:var(--judge); color:#1a1200; border-color:var(--judge); min-width:64px}
+.ctrls .grow{flex:1}
+.voices{border-top:1px solid var(--line); padding-top:10px; display:grid; gap:8px}
+.voices label{display:grid; grid-template-columns:90px minmax(0,1fr); gap:8px; align-items:center; font:600 13px/1.2 var(--ui)}
+.voices select{width:100%; min-width:0; font:13px var(--ui); padding:6px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--ink)}
+.voices p{margin:0; font:12px/1.4 var(--ui); color:var(--muted)}
+.nospeech{font:13px/1.4 var(--ui); color:var(--bad)}
+@media (prefers-reduced-motion: reduce){ .blk{transition:none} }
+</style>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand"><b>Rotom Judge</b><span id="caseCount"></span></div>
+    <nav class="cases" id="cases" aria-label="Choose a debate"></nav>
+  </div>
+</header>
+
+<main class="wrap" id="case"></main>
+
+<div class="player" id="player" hidden>
+  <div class="player-in">
+    <div class="now"><i class="dot" id="nowDot"></i><span id="nowTxt">Ready</span></div>
+    <div class="ctrls">
+      <button id="prev" aria-label="Previous section"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
+      <button id="pp" class="main" aria-label="Play or pause"><svg id="ppIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5v14l12-7z"/></svg></button>
+      <button id="next" aria-label="Next section"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button>
+      <span class="grow"></span>
+      <button id="rate" aria-label="Reading speed">1×</button>
+      <button id="vbtn" aria-expanded="false" aria-controls="voices">Voices</button>
+      <button id="stop" aria-label="Stop and close player"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h12v12H6z"/></svg></button>
+    </div>
+    <div class="voices" id="voices" hidden>
+      <label for="vA"><span id="vAlab">Advocate A</span><select id="vA"></select></label>
+      <label for="vB"><span id="vBlab">Advocate B</span><select id="vB"></select></label>
+      <label for="vJ">Judge<select id="vJ"></select></label>
+      <p>These are your device's built-in voices. If a speaker shares a voice with another, its pitch is shifted so you can still tell them apart. Keep the screen on while listening; most phones stop reading when the screen locks.</p>
+    </div>
+  </div>
+</div>
+
+<script type="application/json" id="data">/*__DATA__*/</script>
+<script>
+(function(){
+const DATA = JSON.parse(document.getElementById("data").textContent);
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store = { get(k,d){ try{ const v = localStorage.getItem("rj:"+k); return v == null ? d : JSON.parse(v); }catch(e){ return d; } },
+                set(k,v){ try{ localStorage.setItem("rj:"+k, JSON.stringify(v)); }catch(e){} } };
+
+/* ---------- tiny markdown renderer: paragraphs, lists, headings, pipe tables, **bold**, *italic*, `code` ---------- */
+function inline(t){
+  return esc(t).replace(/`([^`]+)`/g,"<code>$1</code>").replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>")
+    .replace(/(^|[\s(])\*([^*\s][^*]*)\*(?=[\s).,;:!?]|$)/g,"$1<em>$2</em>");
+}
+function md(src){
+  const lines = String(src || "").replace(/\r/g,"").split("\n");
+  const out = []; let para = [], list = null, table = null;
+  const flushP = () => { if (para.length){ out.push('<p class="blk">'+inline(para.join(" "))+"</p>"); para = []; } };
+  const flushL = () => { if (list){ out.push("<"+list.t+">"+list.items.map(i=>'<li class="blk">'+inline(i)+"</li>").join("")+"</"+list.t+">"); list = null; } };
+  const flushT = () => { if (table){ const rows = table.filter(r=>!/^\|?\s*:?-{2,}/.test(r.replace(/\|/g,"").trim() ? r : "")).filter(r=>!/^\s*\|?[\s:|-]+\|?\s*$/.test(r));
+      const cells = r => r.trim().replace(/^\||\|$/g,"").split("|").map(c=>inline(c.trim()));
+      out.push('<div class="tbl"><table>'+rows.map((r,i)=>"<tr>"+cells(r).map(c=>i?"<td>"+c+"</td>":"<th>"+c+"</th>").join("")+"</tr>").join("")+"</table></div>"); table = null; } };
+  for (const raw of lines){
+    const l = raw.trimEnd();
+    if (/^\s*\|/.test(l)){ flushP(); flushL(); (table = table || []).push(l); continue; } else flushT();
+    if (!l.trim()){ flushP(); flushL(); continue; }
+    if (/^-{3,}$/.test(l.trim())){ flushP(); flushL(); continue; }
+    let m;
+    if ((m = l.match(/^#{1,6}\s+(.*)$/))){ flushP(); flushL(); out.push('<h4 class="blk">'+inline(m[1])+"</h4>"); continue; }
+    if ((m = l.match(/^\s*[-*•]\s+(.*)$/))){ flushP(); if (!list || list.t!=="ul"){ flushL(); list = {t:"ul", items:[]}; } list.items.push(m[1]); continue; }
+    if ((m = l.match(/^\s*\d+[.)]\s+(.*)$/))){ flushP(); if (!list || list.t!=="ol"){ flushL(); list = {t:"ol", items:[]}; } list.items.push(m[1]); continue; }
+    if (list && /^\s{2,}\S/.test(raw)){ list.items[list.items.length-1] += " " + l.trim(); continue; }
+    flushL(); para.push(l.trim());
+  }
+  flushP(); flushL(); flushT();
+  return out.join("");
+}
+
+/* ---------- speech text: say numbers and Pokemon shorthand the way a person would ---------- */
+const SAY = [
+  [/\bM-(?=[A-Z])/g,"Mega "], [/\bReg M-C\b/g,"Regulation M C"], [/\bOHKOs\b/g,"one-hit K O's"], [/\bOHKO'?d\b/g,"one-hit K O'd"], [/\bOHKO\b/g,"one-hit K O"],
+  [/\b2HKOs?\b/g,"two-hit K O"], [/\bKOs\b/g,"K O's"], [/\bKO\b/g,"K O"], [/\bHH\b/g,"Helping Hand"], [/\bPT\b/g,"Psychic Terrain"],
+  [/\bSpA\b/g,"Special Attack"], [/\bSpD\b/g,"Special Defense"], [/\bSpe\b/g,"Speed"], [/\bAtk\b/g,"Attack"], [/\bDef\b/g,"Defense"],
+  [/\bHP\b/g,"H P"], [/\bBP\b/g,"base power"], [/\bSTAB\b/g,"stab"], [/\bvs\.?\b/g,"versus"], [/\bBST\b/g,"base stat total"],
+  [/(\d+)\/16\b/g,"$1 of 16 rolls"], [/(\d+(?:\.\d+)?)\s*[-–]\s*(\d+(?:\.\d+)?)%/g,"$1 to $2 percent"], [/%/g," percent"],
+  [/(\d(?:\.\d+)?)x\b/g,"$1 times"], [/(^|[\s(])\+(\d)/g,"$1plus $2"], [/(^|[\s(])-(\d)/g,"$1minus $2"],
+  [/->|→/g," to "], [/≈|~/g,"about "], [/&/g," and "], [/[*_`#|>]/g,""], [/\s{2,}/g," "]
+];
+const say = t => SAY.reduce((s,[re,rep]) => s.replace(re,rep), String(t)).trim();
+function sentences(t){
+  const parts = String(t).split(/(?<=[.!?;:])\s+(?=["'(A-Z0-9])/); const out = []; let cur = "";
+  for (const p of parts){ if ((cur+" "+p).length < 210) cur = cur ? cur+" "+p : p; else { if (cur) out.push(cur); cur = p; } }
+  if (cur) out.push(cur);
+  return out.flatMap(s => s.length <= 260 ? [s] : s.match(/.{1,240}(?:,\s|\s|$)/g) || [s]);
+}
+
+/* ---------- rendering a case ---------- */
+let current = null, ITEMS = [], SEC_START = [];
+function sectionHTML(i, s){
+  const icon = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5v14l12-7z"/></svg>';
+  return '<section class="sec" id="sec'+i+'" data-sec="'+i+'"><div class="sec-head"><div>'+
+    '<span class="who-chip '+s.who+'">'+esc(s.chip)+'</span></div>'+
+    '<button class="play-sec" data-play="'+i+'">'+icon+' Listen</button></div>'+
+    '<h2>'+esc(s.title)+'</h2><div class="txt '+s.who+'">'+s.html+'</div></section>';
+}
+function renderCase(c){
+  stopSpeech(); current = c;
+  document.querySelectorAll(".case-chip").forEach(b => b.setAttribute("aria-current", b.dataset.sp === c.species ? "true" : "false"));
+  const [A,B] = c.forms, win = c.winnerName;
+  const barColor = w => w === "a" ? "var(--a)" : "var(--b)";
+  const secs = [
+    {who:"a", chip:"For "+A.name, title:"Opening argument", html:md(c.debate.oa), spk:"a"},
+    {who:"b", chip:"For "+B.name, title:"Opening argument", html:md(c.debate.ob), spk:"b"},
+    {who:"a", chip:"For "+A.name, title:"Rebuttal", html:md(c.debate.ra), spk:"a"},
+    {who:"b", chip:"For "+B.name, title:"Rebuttal", html:md(c.debate.rb), spk:"b"},
+    {who:"j", chip:"Rotom Judge", title:"The judge's opinion", html:md(c.opinion || "") +
+      '<div class="conclusion"><h3>Conclusion</h3><p class="rule blk">'+esc(c.ruleLine)+'</p>'+md(c.conclusion)+'</div>', spk:"j"},
+  ];
+  const checks = (c.checks||[]).map(k => '<div class="check"><span class="pill '+(k.holds?"ok":"bad")+'">'+(k.holds?"Holds":"Fails")+'</span>'+
+    '<div class="cl"><b>'+esc(k.sideName)+':</b> '+esc(k.claim)+'</div><div class="rc">Judge got: '+esc(k.recomputed)+'</div></div>').join("");
+  const team = (f, t, br, idx) => {
+    if (!t) return '<div class="team"><h3>Built around '+esc(f.name)+'</h3><p class="legal bad">Team build failed</p></div>';
+    return '<div class="team"><h3>Built around '+esc(f.name)+'</h3>'+
+      '<span class="legal '+(t.legal?"ok":"bad")+'">'+(t.legal?"✓ Passed the legality check":"✗ Did not pass the legality check")+'</span>'+
+      '<div class="hl">'+inline(t.headline||"")+'</div>'+
+      '<div class="paste"><button class="copy" data-copy="'+idx+'">Copy paste</button><pre id="paste'+idx+'">'+esc(t.paste||"")+'</pre></div>'+
+      '<div class="b4"><strong>How to bring it:</strong> '+inline(t.default_four||"")+'</div>'+
+      (br ? '<details class="brief"><summary>The judge\'s brief for this team</summary><p>'+esc(br.game_plan)+'</p>'+
+        '<p><strong>Lean into</strong></p><ul>'+(br.lean_into||[]).map(x=>"<li>"+esc(x)+"</li>").join("")+'</ul>'+
+        '<p><strong>Must cover</strong></p><ul>'+(br.must_cover||[]).map(x=>"<li>"+esc(x)+"</li>").join("")+'</ul></details>' : "")+
+      '</div>';
+  };
+  const scoreRow = (f, sc, rub, k) => '<div class="score-row"><span class="nm">'+esc(f.name)+(win===f.name?" 🏆":"")+'</span><span class="num">'+sc+'</span>'+
+    '<span class="bar"><i style="width:'+Math.max(0,Math.min(100,sc))+'%;background:'+barColor(k)+'"></i></span><span class="rub">'+esc(rub||"")+'</span></div>';
+  $("#case").innerHTML =
+    '<div class="hero"><div class="eyebrow"><span>Pokémon Champions · Reg M-C</span>'+(c.hypothetical?'<span class="tag hypo">Hypothetical — not in Champions yet</span>':"")+'</div>'+
+    '<h1>'+esc(A.name)+'<span class="vs">vs</span>'+esc(B.name)+'</h1>'+
+    '<div class="ruling">Ruled for <span class="who">'+esc(win)+'</span></div>'+
+    '<div class="scores">'+scoreRow(A,c.score_a,c.rubric_a,"a")+scoreRow(B,c.score_b,c.rubric_b,"b")+
+    '<div class="rub-key">Scored out of 100: evidence 40, relevance to the format 25, rebuttal 20, honesty 15.</div></div>'+
+    (speechOK ? '<button class="listen-all" id="listenAll"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5v14l12-7z"/></svg>Listen to the whole debate</button>'
+              : '<p class="nospeech">This browser has no text-to-speech, so the debate can be read but not played.</p>')+'</div>'+
+    secs.map((s,i)=>sectionHTML(i,s)).join("")+
+    '<section class="sec"><h2>The judge checks the numbers</h2><p class="rub-key">Each claim was recomputed with the damage calculator.</p><div class="checks">'+checks+'</div></section>'+
+    '<section class="sec"><h2>The teams</h2>'+team(A,c.teams[0],c.brief_a,0)+team(B,c.teams[1],c.brief_b,1)+'</section>';
+  // build the speech queue from the rendered blocks
+  ITEMS = []; SEC_START = [];
+  secs.forEach((s,i) => {
+    SEC_START[i] = ITEMS.length;
+    const intro = (s.spk==="j" ? "The judge's opinion." : s.title+" for "+(s.spk==="a"?A.name:B.name)+".");
+    ITEMS.push({sec:i, el:null, text:say(intro), spk:"j", label:s.chip+" · "+s.title});
+    document.querySelectorAll("#sec"+i+" .blk").forEach(el => {
+      sentences(say(el.textContent)).forEach(t => ITEMS.push({sec:i, el, text:t, spk:s.spk, label:s.chip+" · "+s.title}));
+    });
+  });
+  $("#vAlab").textContent = A.name; $("#vBlab").textContent = B.name;
+  $("#listenAll") && $("#listenAll").addEventListener("click", () => playFrom(0));
+  document.querySelectorAll("[data-play]").forEach(b => b.addEventListener("click", () => playFrom(SEC_START[+b.dataset.play])));
+  document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => copyPaste(b)));
+  store.set("case", c.species);
+  if (location.hash !== "#"+c.slug) history.replaceState(null, "", "#"+c.slug);
+  window.scrollTo(0,0);
+}
+function copyPaste(btn){
+  const pre = document.getElementById("paste"+btn.dataset.copy), text = pre.textContent;
+  const done = () => { btn.textContent = "Copied"; setTimeout(()=>btn.textContent="Copy paste", 1600); };
+  const select = () => { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected"; };
+  try { navigator.clipboard.writeText(text).then(done, select); } catch(e){ select(); }
+}
+
+/* ---------- speech engine ---------- */
+const speechOK = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+const synth = speechOK ? window.speechSynthesis : null;
+let voices = [], idx = 0, playing = false, token = 0, wake = null;
+const RATES = [0.85, 1, 1.15, 1.3, 1.5];
+let rate = store.get("rate", 1);
+const pick = store.get("voices", {});
+function loadVoices(){
+  if (!synth) return;
+  voices = synth.getVoices().filter(v => /^en/i.test(v.lang));
+  if (!voices.length) voices = synth.getVoices();
+  const opts = voices.map((v,i) => '<option value="'+i+'">'+esc(v.name)+" ("+esc(v.lang)+")</option>").join("") || '<option value="-1">Device default</option>';
+  ["vA","vB","vJ"].forEach((id,k) => {
+    const sel = document.getElementById(id); sel.innerHTML = opts;
+    const saved = voices.findIndex(v => v.name === pick[id]);
+    sel.value = String(saved >= 0 ? saved : Math.min(k, Math.max(0, voices.length-1)));
+  });
+}
+function voiceFor(spk){
+  const id = spk==="a" ? "vA" : spk==="b" ? "vB" : "vJ";
+  const i = +document.getElementById(id).value;
+  const v = voices[i] || null;
+  // same voice as another speaker -> shift pitch so the three speakers stay distinguishable
+  const others = ["vA","vB","vJ"].filter(x=>x!==id).map(x=>+document.getElementById(x).value);
+  const shared = others.includes(i);
+  const pitch = !shared ? 1 : spk==="a" ? 1.12 : spk==="b" ? 0.82 : 1;
+  return {v, pitch, rate: spk==="j" ? rate*0.96 : rate};
+}
+function setNow(item){
+  $("#nowTxt").textContent = item ? item.label : "Finished";
+  $("#nowDot").className = "dot" + (item && item.spk !== "j" ? " "+item.spk : "");
+  $("#ppIcon").innerHTML = playing ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>' : '<path d="M7 5v14l12-7z"/>';
+}
+function highlight(el){
+  document.querySelectorAll(".blk.speaking").forEach(x => x.classList.remove("speaking"));
+  if (el){ el.classList.add("speaking");
+    const r = el.getBoundingClientRect(), vh = innerHeight;
+    if (r.top < 90 || r.bottom > vh - 150) el.scrollIntoView({block:"center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}); }
+}
+function speakNext(my){
+  if (my !== token || !playing) return;
+  if (idx >= ITEMS.length){ playing = false; setNow(null); highlight(null); releaseWake(); return; }
+  const it = ITEMS[idx], vs = voiceFor(it.spk);
+  const u = new SpeechSynthesisUtterance(it.text);
+  if (vs.v){ u.voice = vs.v; u.lang = vs.v.lang; }
+  u.pitch = vs.pitch; u.rate = vs.rate;
+  u.onend = () => { if (my !== token) return; idx++; speakNext(my); };
+  u.onerror = e => { if (my !== token) return; if (e.error === "interrupted" || e.error === "canceled") return; idx++; speakNext(my); };
+  setNow(it); highlight(it.el);
+  synth.speak(u);
+}
+function playFrom(i){
+  if (!synth) return;
+  $("#player").hidden = false;
+  token++; synth.cancel(); idx = Math.max(0, Math.min(i, ITEMS.length-1)); playing = true;
+  const my = token; setTimeout(() => speakNext(my), 60); requestWake();
+}
+function pauseSpeech(){ playing = false; token++; if (synth) synth.cancel(); setNow(ITEMS[idx]); releaseWake(); }
+function stopSpeech(){ playing = false; token++; if (synth) synth.cancel(); highlight(null); $("#player").hidden = true; releaseWake(); }
+function secJump(d){
+  const cur = ITEMS[idx] ? ITEMS[idx].sec : 0, target = Math.max(0, Math.min(SEC_START.length-1, cur + d));
+  playFrom(SEC_START[target]);
+}
+async function requestWake(){ try{ if (navigator.wakeLock && !wake) wake = await navigator.wakeLock.request("screen"); }catch(e){ wake = null; } }
+function releaseWake(){ try{ wake && wake.release(); }catch(e){} wake = null; }
+
+/* ---------- wiring ---------- */
+$("#pp").addEventListener("click", () => playing ? pauseSpeech() : playFrom(idx));
+$("#prev").addEventListener("click", () => secJump(-1));
+$("#next").addEventListener("click", () => secJump(1));
+$("#stop").addEventListener("click", stopSpeech);
+$("#rate").textContent = rate+"×";
+$("#rate").addEventListener("click", () => { rate = RATES[(RATES.indexOf(rate)+1) % RATES.length]; $("#rate").textContent = rate+"×"; store.set("rate", rate); if (playing) playFrom(idx); });
+$("#vbtn").addEventListener("click", () => { const v = $("#voices"); v.hidden = !v.hidden; $("#vbtn").setAttribute("aria-expanded", String(!v.hidden)); });
+["vA","vB","vJ"].forEach(id => document.getElementById(id).addEventListener("change", e => {
+  const v = voices[+e.target.value]; if (v){ pick[id] = v.name; store.set("voices", pick); } if (playing) playFrom(idx); }));
+if (synth){ loadVoices(); synth.onvoiceschanged = loadVoices; }
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && playing) requestWake(); });
+
+const cases = DATA.cases;
+$("#caseCount").textContent = cases.length + (cases.length === 1 ? " debate" : " debates") + (DATA.pending.length ? " · " + DATA.pending.length + " still running" : "");
+$("#cases").innerHTML = cases.map(c => '<button class="case-chip" data-sp="'+esc(c.species)+'">'+esc(c.species)+'<small>'+esc(c.short)+'</small></button>').join("") +
+  DATA.pending.map(s => '<button class="case-chip" disabled title="Still running">'+esc(s)+'<small>running…</small></button>').join("");
+document.querySelectorAll(".case-chip[data-sp]").forEach(b => b.addEventListener("click", () => renderCase(cases.find(c => c.species === b.dataset.sp))));
+const fromHash = cases.find(c => "#"+c.slug === location.hash), saved = cases.find(c => c.species === store.get("case", ""));
+renderCase(fromHash || saved || cases[0]);
+})();
+</script>

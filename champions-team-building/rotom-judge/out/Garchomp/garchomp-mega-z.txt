@@ -1,0 +1,59 @@
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Level: 50
+EVs: 30 HP / 32 SpA / 4 Spe
+Timid Nature
+- Draco Meteor
+- Fire Blast
+- Earth Power
+- Protect
+
+Whimsicott @ Focus Sash
+Ability: Prankster
+Level: 50
+EVs: 32 HP / 2 Def / 32 Spe
+Timid Nature
+- Tailwind
+- Helping Hand
+- Sunny Day
+- Moonblast
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Level: 50
+EVs: 32 HP / 4 Atk / 30 Def
+Impish Nature
+- Fake Out
+- Flare Blitz
+- Darkest Lariat
+- Parting Shot
+
+Sneasler @ White Herb
+Ability: Unburden
+Level: 50
+EVs: 2 HP / 32 Atk / 32 Spe
+Jolly Nature
+- Fake Out
+- Close Combat
+- Dire Claw
+- Protect
+
+Gholdengo @ Life Orb
+Ability: Good as Gold
+Level: 50
+EVs: 27 HP / 17 Def / 22 SpA
+Modest Nature
+- Make It Rain
+- Psyshock
+- Shadow Ball
+- Protect
+
+Milotic @ Leftovers
+Ability: Competitive
+Level: 50
+EVs: 32 HP / 14 Def / 20 SpA
+Modest Nature
+- Scald
+- Ice Beam
+- Icy Wind
+- Protect
