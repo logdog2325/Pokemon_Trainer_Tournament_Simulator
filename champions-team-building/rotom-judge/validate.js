@@ -57,10 +57,11 @@ for (const m of mons) {
   if (!e) { errors.push(m.raw + ": NOT in the Champions dex"); continue; }
   if (e.hypothetical) {
     const reqSp = require_ ? require_.split(":")[0] : null;
-    if (reqSp === m.name) warns.push(m.name + " is HYPOTHETICAL (not in Champions yet) - allowed only as this run's centrepiece");
+    if (reqSp === m.name || reqSp === e.baseSpecies) warns.push(m.name + " is HYPOTHETICAL (not in Champions yet) - allowed only as this run's centrepiece");
     else errors.push(m.name + " is HYPOTHETICAL and not in Champions - not allowed on this team");
   }
-  if (seenSp[m.name]) errors.push("Species Clause: two " + m.name); seenSp[m.name] = 1;
+  const spKey = e.baseSpecies || m.name; // Greninja-Ash counts as Greninja for Species Clause
+  if (seenSp[spKey]) errors.push("Species Clause: two " + spKey); seenSp[spKey] = 1;
   if (!m.item) errors.push(m.name + ": no item");
   else {
     const stones = e.megaStones || [];
@@ -82,9 +83,16 @@ for (const m of mons) {
 }
 if (require_) {
   const [sp, label] = require_.split(":");
-  const e = E.dexf(sp), mm = mons.find(x => x.name === sp);
-  const i = e ? (e.mega || []).findIndex(x => (x.label || "Mega") === label) : -1;
-  if (!mm) errors.push("required " + sp + " is not on the team");
+  let e = E.dexf(sp), mm = mons.find(x => x.name === sp);
+  let i = e ? (e.mega || []).findIndex(x => (x.label || "Mega") === label) : -1;
+  // A form that is not a Mega (e.g. Gen 7 Ash-Greninja) lives on its own entry with baseSpecies = sp.
+  const alt = i < 0 && E.DEX.find(x => x.baseSpecies === sp && (x.mega || []).some(f => (f.label || "Mega") === label));
+  if (alt) {
+    const am = mons.find(x => x.name === alt.name);
+    if (!am) errors.push("required " + alt.name + " (" + label + " form) is not on the team");
+    else if (/ite( [XYZ])?$/.test(am.item) && !E.ITEMS.includes(am.item)) errors.push(alt.name + " must hold a normal item, not a Mega Stone");
+  }
+  else if (!mm) errors.push("required " + sp + " is not on the team");
   else if (i < 0) errors.push(sp + " has no form '" + label + "'");
   else if (mm.item !== (e.megaStones || [])[i]) errors.push(sp + " must hold " + (e.megaStones || [])[i] + " for " + label + " (holds " + mm.item + ")");
 }
@@ -93,7 +101,12 @@ if (require_) {
 console.log("FINAL STATS (Mega form shown when holding its own stone)");
 for (const m of mons) {
   const e = E.dexf(m.name); if (!e) continue;
-  const fi = (e.megaStones || []).indexOf(m.item);
+  let fi = (e.megaStones || []).indexOf(m.item);
+  if (e.battleBond) { // show both states: before and after its first knockout
+    try { const pre = E.stats(E.mk(m.name, -1, m.item, m.nature, m.pts, m.moves, m.ability));
+      console.log("  " + (m.name + " [before KO]").padEnd(24) + "".padEnd(32) + ["hp","atk","def","spa","spd","spe"].map(k => k.toUpperCase() + " " + pre[k]).join("  ")); } catch (err) {}
+    fi = 0;
+  }
   try {
     const mon = E.mk(m.name, fi, m.item, m.nature, m.pts, m.moves, m.ability);
     const s = E.stats(mon);

@@ -35,4 +35,28 @@ module.exports = [
       "Comet Punch","Facade","Chilling Water","Low Sweep","Trailblaze","Pay Day","Ancient Power","Dream Eater",
       "Drain Punch","Tri Attack","Vacuum Wave"],
   },
+  {
+    // Gen 7 Battle Bond. Starts as Battle Bond Greninja (base stats below); after it knocks out a Pokemon with an
+    // attack it becomes Ash-Greninja (entry.mega[0], label "Ash") for the rest of the battle, even after switching.
+    // It holds a normal item and does NOT use the team's one Mega Evolution. Water Shuriken becomes 20 BP and always
+    // hits 3 times (handled in app.js, keyed on `battleBond`). Champions' own Greninja has the Gen 9 Battle Bond
+    // (+1 Atk/SpA/Spe once after a KO) instead; that is not what this entry models.
+    // Stats: Serebii / Bulbapedia, Ash-Greninja 72/145/67/153/71/132.
+    name: "Greninja-Ash",
+    baseSpecies: "Greninja",
+    hypothetical: true,
+    battleBond: true,
+    types: ["Water", "Dark"],
+    baseStats: { hp: 72, atk: 95, def: 67, spa: 103, spd: 71, spe: 122 },
+    abilities: ["Battle Bond"],
+    weightKg: 40,
+    mega: [
+      { label: "Ash", type: ["Water", "Dark"], ability: "Battle Bond",
+        baseStats: { hp: 72, atk: 145, def: 67, spa: 153, spd: 71, spe: 132 },
+        sprite: "https://play.pokemonshowdown.com/sprites/home/greninja-ash.png" },
+    ],
+    megaStones: [],
+    dex: 658,
+    movesFrom: "Greninja", // same Champions movepool as Greninja, so only the form mechanics differ
+  },
 ];

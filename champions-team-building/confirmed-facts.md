@@ -251,3 +251,15 @@ Psyshock number in this repo was too low against physically frail targets.
   outside its Champions movepool.
 - The six Rotom Judge debates (2026-09-29) ran BEFORE these two fixes. Their Incineroar and contact-move numbers are
   close but not exact. The fact sheets have been regenerated for future runs.
+
+## Protean / Libero STAB and 2-5 hit moves (calculator fixes, 2026-09-29)
+- **Protean and Libero never applied STAB** to off-type moves in the calculator. Now every attack from a Protean/Libero
+  user gets x1.5 STAB, because the user becomes the move's type. Under current rules the type change happens **once per
+  switch-in**, so a later attack of a different type gets no STAB; price that with `field.proteanSpent: true`.
+  Mega Greninja's no-item OHKOs on the Rotom Judge board went from 3 to 8 (physical) and 5 to 6 (special).
+  Cinderace (Libero) was undercounted the same way.
+- **2-5 hit moves** (Scale Shot, Bullet Seed, Water Shuriken, Rock Blast...) defaulted to 4 hits, the rounded mean. The
+  real distribution is 2 hits 35%, 3 hits 35%, 4 hits 15%, 5 hits 15%, so 70% of uses land 2 or 3. Default is now 3.
+  Earlier "Scale Shot KOs" in this repo that assumed 4 hits were optimistic.
+- **Champions' Greninja has the Gen 9 Battle Bond** (+1 Atk/SpA/Spe once after a KO), not the Gen 7 Ash transformation.
+  Gen 7 Ash-Greninja exists only as hypothetical data in `rotom-judge/hypothetical.js`.

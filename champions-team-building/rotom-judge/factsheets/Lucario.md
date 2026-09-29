@@ -20,7 +20,7 @@ Base stats hp 70 / atk 145 / def 88 / spa 140 / spd 70 / spe 112  (BST 625)
 
 ### Speed
 - Jolly/Timid 32: 180 | Jolly/Timid 0: 145 | neutral 32: 164 | Brave/Quiet 0 (Trick Room): 118
-- Megas faster than its max (180): Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Mewtwo Mega Y 211, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Mewtwo Mega X 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183
+- Megas faster than its max (180): Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183
 - Board threats it outspeeds at max: Rillaboom 105, Incineroar 80, M-Salamence 158, Kingambit 70, Indeedee-F 105, M-Golisopod 60, Garchomp 169, Farigiraf 85, Gholdengo 144, Pelipper 128, Milotic 101, Sylveon 97, Archaludon 123, Arcanine-Hisui 156, M-Baxcalibur 125, M-Metagross 148, M-Tyranitar 91, M-Staraptor 178
 - Board threats faster than it at max: Sneasler 189, Whimsicott 184, M-Froslass 189
 

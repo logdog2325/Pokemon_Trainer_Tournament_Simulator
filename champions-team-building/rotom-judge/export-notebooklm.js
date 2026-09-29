@@ -7,7 +7,7 @@ const fs = require("fs");
 const path = require("path");
 const OUT = path.join(__dirname, "out");
 const DIR = path.join(OUT, "notebooklm");
-const HYPO = new Set(require("./hypothetical").map(h => h.name));
+const HYPO = new Set(require("./hypothetical").flatMap(h => [h.name, h.baseSpecies].filter(Boolean)));
 
 function opinionOf(sp, v) {
   if (v && v.opinion) return v.opinion;

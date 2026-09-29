@@ -25,6 +25,7 @@ vm.runInContext(src, ctx);
 const DEX = ctx.window.DEX, MOVES = ctx.window.MOVES;
 // Hypothetical species (not in Champions) for "what if" runs. Appended in memory only; see hypothetical.js.
 for (const h of require("./hypothetical")) {
+  if (h.movesFrom && !h.moves) { const src = DEX.find(e => e.name === h.movesFrom); h.moves = src ? src.moves.slice() : []; }
   if (!DEX.some(e => e.name === h.name)) DEX.push(h);
   if (h.weightKg) ctx.WEIGHT[h.name] = h.weightKg;
 }

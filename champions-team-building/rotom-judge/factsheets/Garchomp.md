@@ -20,7 +20,7 @@ Base stats hp 108 / atk 170 / def 115 / spa 120 / spd 95 / spe 92  (BST 700)
 
 ### Speed
 - Jolly/Timid 32: 158 | Jolly/Timid 0: 123 | neutral 32: 144 | Brave/Quiet 0 (Trick Room): 100
-- Megas faster than its max (158): Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Mewtwo Mega Y 211, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Mewtwo Mega X 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183, Lucario Mega 180, Raichu Mega X 178, Skarmory Mega 178, Metagross Mega 178, Staraptor Mega 178, Gallade Mega 178, Pinsir Mega 172, Sharpedo Mega 172, Excadrill Mega 170, Floette Mega 169, Glimmora Mega 168, Charizard Mega X 167, Charizard Mega Y 167, Kangaskhan Mega 167, Dragonite Mega 167, Blaziken Mega 167, Gardevoir Mega 167, Medicham Mega 167, Glalie Mega 167, Falinks Mega 167
+- Megas faster than its max (158): Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183, Lucario Mega 180, Raichu Mega X 178, Skarmory Mega 178, Metagross Mega 178, Staraptor Mega 178, Gallade Mega 178, Pinsir Mega 172, Sharpedo Mega 172, Excadrill Mega 170, Floette Mega 169, Glimmora Mega 168, Charizard Mega X 167, Charizard Mega Y 167, Kangaskhan Mega 167, Dragonite Mega 167, Blaziken Mega 167, Gardevoir Mega 167, Medicham Mega 167, Glalie Mega 167, Falinks Mega 167
 - Board threats it outspeeds at max: Rillaboom 105, Incineroar 80, Kingambit 70, Indeedee-F 105, M-Golisopod 60, Farigiraf 85, Gholdengo 144, Pelipper 128, Milotic 101, Sylveon 97, Archaludon 123, Arcanine-Hisui 156, M-Baxcalibur 125, M-Metagross 148, M-Tyranitar 91
 - Board threats faster than it at max: Sneasler 189, M-Salamence 158, Garchomp 169, Whimsicott 184, M-Froslass 189, M-Staraptor 178
 
@@ -35,24 +35,24 @@ Base stats hp 108 / atk 170 / def 115 / spa 120 / spd 95 / spe 92  (BST 700)
 | Rillaboom | 37.18% | 105 | Poison Jab | 58-68.6% | 100% |
 | Sneasler | 34.29% | 189 | Earthquake | 150.3-177.1% KO | 100% |
 | Incineroar | 26.77% | 80 | Stomping Tantrum | 81.2-96% | 100% |
-| M-Salamence | 23.15% | 158 | Scale Shot | 94.6-116.1% (12/16) | 90% |
+| M-Salamence | 23.15% | 158 | Dragon Rush | 90.3-107.5% (8/16) | 100% |
 | Kingambit | 22.44% | 70 | Stomping Tantrum | 64.7-76.3% | 100% |
 | Indeedee-F | 21.78% | 105 | Crunch | 59.9-71.2% | 100% |
 | M-Golisopod | 18.49% | 60 | Fire Fang | 61.5-74.7% | 100% |
-| Garchomp | 17.12% | 169 | Scale Shot | 121.1-147% KO | 90% |
+| Garchomp | 17.12% | 169 | Dragon Rush | 117.8-139.5% KO | 100% |
 | Farigiraf | 15.9% | 85 | Crunch | 54.1-64% | 100% |
 | Gholdengo | 15.23% | 144 | Stomping Tantrum | 97-114.8% (13/16) | 100% |
 | Pelipper | 13.09% | 128 | Thunder Fang | 131.4-157.7% KO | 100% |
 | Whimsicott | 12.65% | 184 | Poison Jab | 186.9-221.9% KO | 100% |
-| Milotic | 11.42% | 101 | Scale Shot | 59.4-71.3% | 90% |
+| Milotic | 11.42% | 101 | Dragon Rush | 56.9-67.3% | 100% |
 | Sylveon | 10.63% | 97 | Iron Tail | 89.3-105.1% (5/16) | 75% |
 | Archaludon | 9.98% | 123 | Earthquake | 69.6-82.9% | 100% |
 | Arcanine-Hisui | 9.38% | 156 | Stomping Tantrum | 218.6-260.5% KO | 100% |
-| M-Baxcalibur | - | 125 | Scale Shot | 93.2-108.7% (6/16) | 90% |
+| M-Baxcalibur | - | 125 | Dragon Rush | 90.3-105.8% (6/16) | 100% |
 | M-Froslass | - | 189 | Iron Tail | 126.5-149.7% KO | 75% |
 | M-Metagross | - | 148 | Stomping Tantrum | 66.7-78.4% | 100% |
 | M-Tyranitar | - | 91 | Brick Break | 71.5-85% | 100% |
-| M-Staraptor | 8.94% | 178 | Scale Shot | 58.4-71.4% | 90% |
+| M-Staraptor | 8.94% | 178 | Dragon Rush | 56.8-67% | 100% |
 
 OHKOs (14+/16 rolls) with no item: **6 / 21**. A Life Orb is x1.3, a type item x1.2, Choice Band/Specs x1.5 on top.
 
@@ -62,24 +62,24 @@ OHKOs (14+/16 rolls) with no item: **6 / 21**. A Life Orb is x1.3, a type item x
 | Rillaboom | 37.18% | 105 | Poison Jab | 58-68.6% | 100% |
 | Sneasler | 34.29% | 189 | Earthquake | 195.5-229.9% KO | 100% |
 | Incineroar | 26.77% | 80 | Stomping Tantrum | 105.4-124.8% KO | 100% |
-| M-Salamence | 23.15% | 158 | Scale Shot | 94.6-116.1% (12/16) | 90% |
+| M-Salamence | 23.15% | 158 | Dragon Rush | 90.3-107.5% (8/16) | 100% |
 | Kingambit | 22.44% | 70 | Stomping Tantrum | 84.1-99% | 100% |
 | Indeedee-F | 21.78% | 105 | Crunch | 59.9-71.2% | 100% |
 | M-Golisopod | 18.49% | 60 | Fire Fang | 61.5-74.7% | 100% |
-| Garchomp | 17.12% | 169 | Scale Shot | 121.1-147% KO | 90% |
+| Garchomp | 17.12% | 169 | Dragon Rush | 117.8-139.5% KO | 100% |
 | Farigiraf | 15.9% | 85 | Crunch | 54.1-64% | 100% |
 | Gholdengo | 15.23% | 144 | Stomping Tantrum | 126-149.1% KO | 100% |
 | Pelipper | 13.09% | 128 | Stone Edge | 132.8-157.7% KO | 80% |
 | Whimsicott | 12.65% | 184 | Poison Jab | 186.9-221.9% KO | 100% |
-| Milotic | 11.42% | 101 | Scale Shot | 59.4-71.3% | 90% |
+| Milotic | 11.42% | 101 | Dragon Rush | 56.9-67.3% | 100% |
 | Sylveon | 10.63% | 97 | Iron Tail | 115.8-136.7% KO | 75% |
 | Archaludon | 9.98% | 123 | Earthquake | 90.6-107.7% (7/16) | 100% |
 | Arcanine-Hisui | 9.38% | 156 | Stomping Tantrum | 284.3-338.4% KO | 100% |
-| M-Baxcalibur | - | 125 | Scale Shot | 93.2-108.7% (6/16) | 90% |
+| M-Baxcalibur | - | 125 | Dragon Rush | 90.3-105.8% (6/16) | 100% |
 | M-Froslass | - | 189 | Iron Tail | 164.6-194.6% KO | 75% |
 | M-Metagross | - | 148 | Stomping Tantrum | 86.5-101.8% (3/16) | 100% |
 | M-Tyranitar | - | 91 | Brick Break | 71.5-85% | 100% |
-| M-Staraptor | 8.94% | 178 | Scale Shot | 58.4-71.4% | 90% |
+| M-Staraptor | 8.94% | 178 | Dragon Rush | 56.8-67% | 100% |
 
 OHKOs (14+/16 rolls) with no item: **9 / 21**. A Life Orb is x1.3, a type item x1.2, Choice Band/Specs x1.5 on top.
 
@@ -137,28 +137,28 @@ Base stats hp 108 / atk 130 / def 85 / spa 141 / spd 85 / spe 151  (BST 700)
 | threat | usage | Spe | best move | damage | acc |
 |---|---|---|---|---|---|
 | Rillaboom | 37.18% | 105 | Poison Jab | 48.3-57% | 100% |
-| Sneasler | 34.29% | 189 | Scale Shot | 84.1-101.9% (1/16) | 90% |
+| Sneasler | 34.29% | 189 | Stomping Tantrum | 82.8-98.1% | 100% |
 | Incineroar | 26.77% | 80 | Stone Edge | 59.4-70.3% | 80% |
-| M-Salamence | 23.15% | 158 | Scale Shot | 77.4-94.6% | 90% |
+| M-Salamence | 23.15% | 158 | Dragon Rush | 74.2-88.2% | 100% |
 | Kingambit | 22.44% | 70 | Brick Break | 35.7-42.5% | 100% |
 | Indeedee-F | 21.78% | 105 | Crunch | 49.7-58.8% | 100% |
 | M-Golisopod | 18.49% | 60 | Fire Fang | 50.5-61.5% | 100% |
-| Garchomp | 17.12% | 169 | Scale Shot | 103.8-121.1% KO | 90% |
+| Garchomp | 17.12% | 169 | Dragon Rush | 97.3-114.6% (13/16) | 100% |
 | Farigiraf | 15.9% | 85 | Crunch | 45-53.2% | 100% |
 | Gholdengo | 15.23% | 144 | Crunch | 56.8-67.5% | 100% |
 | Pelipper | 13.09% | 128 | Thunder Fang | 110.9-131.4% KO | 100% |
 | Whimsicott | 12.65% | 184 | Poison Jab | 154.7-183.9% KO | 100% |
-| Milotic | 11.42% | 101 | Scale Shot | 49.5-59.4% | 90% |
+| Milotic | 11.42% | 101 | Dragon Rush | 46.5-55.4% | 100% |
 | Sylveon | 10.63% | 97 | Iron Tail | 72.3-85.9% | 75% |
-| Archaludon | 9.98% | 123 | Scale Shot | 39.8-48.6% | 90% |
+| Archaludon | 9.98% | 123 | Brick Break | 38.7-46.4% | 100% |
 | Arcanine-Hisui | 9.38% | 156 | Liquidation | 137.2-162.8% KO | 100% |
 | M-Baxcalibur | - | 125 | Dragon Rush | 73.8-87.4% | 100% |
 | M-Froslass | - | 189 | Iron Tail | 103.4-122.4% KO | 75% |
 | M-Metagross | - | 148 | Crunch | 38.6-45.6% | 100% |
 | M-Tyranitar | - | 91 | Brick Break | 58-69.6% | 100% |
-| M-Staraptor | 8.94% | 178 | Scale Shot | 47.6-58.4% | 90% |
+| M-Staraptor | 8.94% | 178 | Dragon Rush | 45.9-55.1% | 100% |
 
-OHKOs (14+/16 rolls) with no item: **5 / 21**. A Life Orb is x1.3, a type item x1.2, Choice Band/Specs x1.5 on top.
+OHKOs (14+/16 rolls) with no item: **4 / 21**. A Life Orb is x1.3, a type item x1.2, Choice Band/Specs x1.5 on top.
 
 ### Offense — Timid 2/32 SpA/32 Spe (Atk 135 / SpA 193 / Spe 223), neutral field, no item
 | threat | usage | Spe | best move | damage | acc |

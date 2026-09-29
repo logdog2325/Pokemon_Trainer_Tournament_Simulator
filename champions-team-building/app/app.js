@@ -1574,6 +1574,8 @@ function variableBP(move,mi,att,def,field,aS,dS){
     case "Rage Fist":   return Math.min(350,50+50*(F.hitsTaken||0));
     case "Last Respects": return Math.min(300,50+50*(F.faintedAllies||0));
     case "Weather Ball": return F.weather?100:50;
+    // Gen 7 Ash-Greninja (hypothetical data only): Water Shuriken is 20 BP per hit instead of 15.
+    case "Water Shuriken": return (att&&att.entry&&att.entry.battleBond&&att.formIndex>=0)?20:mi.bp;
     case "Terrain Pulse": return F.terrain?100:50;
     // Terrain-fed moves (M-C). Expanding Force also becomes a SPREAD move in Psychic Terrain —
     // callers set field.spread; see _SPREAD_MV.
@@ -1640,7 +1642,10 @@ function calcDamage(att,move,def,field){
   if(field.weather==="sun"){if(wt==="Fire")weatherMod=1.5;if(wt==="Water")weatherMod=0.5;}
   if(field.weather==="rain"){if(wt==="Water")weatherMod=1.5;if(wt==="Fire")weatherMod=0.5;}
   const spreadMod=field.spread?0.75:1;
-  const stab=aEf.types.includes(wt)?(aAb==="Adaptability"?2:1.5):1;
+  // Protean / Libero turn the user into the move's type, so the attack gets STAB. Under current rules this happens once
+  // per switch-in, so a LATER attack of a different type does not; pass field.proteanSpent to price that case.
+  const typeMatch=aEf.types.includes(wt)||((aAb==="Protean"||aAb==="Libero")&&!field.proteanSpent);
+  const stab=typeMatch?(aAb==="Adaptability"?2:1.5):1;
 
   // ---- final multipliers ----
   let fm=ateMod;
@@ -1697,7 +1702,10 @@ function calcDamage(att,move,def,field){
   // ---- multi-hit ----
   let hits=1;
   const mh=MF_MULTIHIT[move];
-  if(mh) hits=(aAb==="Skill Link")?mh[1]:(field.hits||(mh[0]===mh[1]?mh[0]:Math.round((mh[0]+mh[1])/2)));
+  // 2-5 hit moves land 2 or 3 hits 70% of the time (35% each), so default to 3, not the rounded mean of 4.
+  if(mh) hits=(aAb==="Skill Link")?mh[1]:(field.hits||(mh[0]===mh[1]?mh[0]:(mh[0]===2&&mh[1]===5)?3:Math.round((mh[0]+mh[1])/2)));
+  // Gen 7 Ash-Greninja (hypothetical data only): Water Shuriken always hits 3 times.
+  if(move==="Water Shuriken"&&att&&att.entry&&att.entry.battleBond&&att.formIndex>=0&&!field.hits) hits=3;
 
   const rolls=[];
   for(let r=85;r<=100;r++){

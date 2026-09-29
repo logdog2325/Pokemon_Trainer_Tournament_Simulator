@@ -5,8 +5,8 @@
 const fs = require("fs");
 const path = require("path");
 const OUT = path.join(__dirname, "out");
-const ORDER = ["Charizard", "Mewtwo", "Raichu", "Garchomp", "Absol", "Lucario"];
-const HYPO = new Set(require("./hypothetical").map(h => h.name));
+const ORDER = ["Charizard", "Mewtwo", "Raichu", "Garchomp", "Absol", "Lucario", "Greninja"];
+const HYPO = new Set(require("./hypothetical").flatMap(h => [h.name, h.baseSpecies].filter(Boolean)));
 
 function opinionOf(sp, v) {
   if (v && v.opinion) return v.opinion;
