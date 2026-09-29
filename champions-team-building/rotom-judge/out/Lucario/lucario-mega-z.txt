@@ -1,0 +1,59 @@
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Level: 50
+EVs: 2 HP / 32 SpA / 32 Spe
+Timid Nature
+- Aura Sphere
+- Flash Cannon
+- Psychic
+- Protect
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Level: 50
+EVs: 32 HP / 22 Atk / 12 Def
+Adamant Nature
+- Fake Out
+- Flare Blitz
+- Darkest Lariat
+- Helping Hand
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Level: 50
+EVs: 32 HP / 32 Atk / 2 Def
+Brave Nature
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- High Horsepower
+
+Talonflame @ Sharp Beak
+Ability: Gale Wings
+Level: 50
+EVs: 10 HP / 32 Atk / 24 Spe
+Adamant Nature
+- Brave Bird
+- Flare Blitz
+- Tailwind
+- Protect
+
+Gholdengo @ Life Orb
+Ability: Good as Gold
+Level: 50
+EVs: 7 HP / 2 Def / 32 SpA / 25 Spe
+Modest Nature
+- Make It Rain
+- Shadow Ball
+- Power Gem
+- Protect
+
+Dragonite @ Never-Melt Ice
+Ability: Multiscale
+Level: 50
+EVs: 32 HP / 32 Atk / 2 Def
+Adamant Nature
+- Extreme Speed
+- Ice Spinner
+- Tailwind
+- Helping Hand
