@@ -8,6 +8,7 @@ const path = require("path");
 const OUT = path.join(__dirname, "out");
 const DIR = path.join(OUT, "notebooklm");
 const HYPO = new Set(require("./hypothetical").flatMap(h => [h.name, h.baseSpecies].filter(Boolean)));
+const HYPO_NOTE = {}; for (const h of require("./hypothetical")) HYPO_NOTE[h.baseSpecies || h.name] = h.debateNote;
 
 function opinionOf(sp, v) {
   if (v && v.opinion) return v.opinion;
@@ -54,9 +55,9 @@ function atAGlance(sp, forms) {
 }
 
 const PRIMER = `## What this is
-Rotom Judge is an experiment in settling a Pokémon argument with evidence. Some Pokémon in Pokémon Champions have two
-different Mega Evolutions, and players argue about which one is better. For each such Pokémon, two AI advocates each
-argued for one Mega form. They were not allowed to rely on memory: every claim had to come from a damage calculator
+Rotom Judge is an experiment in settling a Pokémon argument with evidence. Some Pokémon have two competing
+super-forms (two Mega Evolutions, or a Mega against a special battle form), and players argue about which is better. For
+each one, two AI advocates each argued for one form. They were not allowed to rely on memory: every claim had to come from a damage calculator
 built for Pokémon Champions, and they could run new calculations. Each advocate gave an opening argument, then read the
 other side's opening and wrote a rebuttal. An impartial AI judge then recomputed the disputed numbers itself, scored
 both sides, wrote its opinion and ruled on which Mega is better. Finally it built the strongest competitive team it
@@ -104,7 +105,7 @@ function exportOne(sp) {
   const L = [];
   L.push("# Rotom Judge: " + A.name + " vs " + B.name);
   L.push("");
-  if (hypo) L.push("> **Hypothetical debate.** " + sp + " is not in Pokémon Champions yet. This debate uses its main-series stats and Scarlet/Violet moves as a what-if. Every other Pokémon, item and rule is real Champions data.\n");
+  if (hypo) L.push("> **Hypothetical debate.** " + (HYPO_NOTE[sp] || sp + " is not in Pokémon Champions yet.") + "\n");
   L.push("**The ruling:** Rotom Judge ruled that **" + win + "** is the better Mega. Final score: " + A.name + " " + v.score_a + ", " + B.name + " " + v.score_b + " (out of 100).");
   L.push("");
   L.push(PRIMER);

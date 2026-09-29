@@ -11,6 +11,7 @@ module.exports = [
   {
     name: "Mewtwo",
     hypothetical: true,
+    debateNote: "Mewtwo is not in Pokémon Champions yet. This debate uses its main-series stats and Scarlet/Violet moves as a what-if. Every other Pokémon, item and rule is real Champions data.",
     types: ["Psychic"],
     baseStats: { hp: 106, atk: 110, def: 90, spa: 154, spd: 90, spe: 130 },
     abilities: ["Pressure", "Unnerve"],
@@ -45,6 +46,7 @@ module.exports = [
     name: "Greninja-Ash",
     baseSpecies: "Greninja",
     hypothetical: true,
+    debateNote: "Ash-Greninja is not in Pokémon Champions. Mega Greninja is real Champions data; Ash-Greninja is a what-if using its Gen 7 Battle Bond transformation with Champions Greninja's moves. Every other Pokémon, item and rule is real Champions data.",
     battleBond: true,
     types: ["Water", "Dark"],
     baseStats: { hp: 72, atk: 95, def: 67, spa: 103, spd: 71, spe: 122 },

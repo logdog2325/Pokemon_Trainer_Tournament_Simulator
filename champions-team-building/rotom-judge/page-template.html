@@ -260,7 +260,8 @@ function renderCase(c){
   const scoreRow = (f, sc, rub, k) => '<div class="score-row"><span class="nm">'+esc(f.name)+(win===f.name?" 🏆":"")+'</span><span class="num">'+sc+'</span>'+
     '<span class="bar"><i style="width:'+Math.max(0,Math.min(100,sc))+'%;background:'+barColor(k)+'"></i></span><span class="rub">'+esc(rub||"")+'</span></div>';
   $("#case").innerHTML =
-    '<div class="hero"><div class="eyebrow"><span>Pokémon Champions · Reg M-C</span>'+(c.hypothetical?'<span class="tag hypo">Hypothetical — not in Champions yet</span>':"")+'</div>'+
+    '<div class="hero"><div class="eyebrow"><span>Pokémon Champions · Reg M-C</span>'+(c.hypothetical?'<span class="tag hypo">Hypothetical</span>':"")+'</div>'+
+    (c.hypothetical && c.hypoNote ? '<p class="rub-key">'+esc(c.hypoNote)+'</p>' : "")+
     '<h1>'+esc(A.name)+'<span class="vs">vs</span>'+esc(B.name)+'</h1>'+
     '<div class="ruling">Ruled for <span class="who">'+esc(win)+'</span></div>'+
     '<div class="scores">'+scoreRow(A,c.score_a,c.rubric_a,"a")+scoreRow(B,c.score_b,c.rubric_b,"b")+

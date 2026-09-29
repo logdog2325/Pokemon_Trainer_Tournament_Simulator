@@ -5,9 +5,9 @@
 **The ruling:** Rotom Judge ruled that **Mega Mewtwo Y** is the better Mega. Final score: Mega Mewtwo X 82, Mega Mewtwo Y 87 (out of 100).
 
 ## What this is
-Rotom Judge is an experiment in settling a Pokémon argument with evidence. Some Pokémon in Pokémon Champions have two
-different Mega Evolutions, and players argue about which one is better. For each such Pokémon, two AI advocates each
-argued for one Mega form. They were not allowed to rely on memory: every claim had to come from a damage calculator
+Rotom Judge is an experiment in settling a Pokémon argument with evidence. Some Pokémon have two competing
+super-forms (two Mega Evolutions, or a Mega against a special battle form), and players argue about which is better. For
+each one, two AI advocates each argued for one form. They were not allowed to rely on memory: every claim had to come from a damage calculator
 built for Pokémon Champions, and they could run new calculations. Each advocate gave an opening argument, then read the
 other side's opening and wrote a rebuttal. An impartial AI judge then recomputed the disputed numbers itself, scored
 both sides, wrote its opinion and ruled on which Mega is better. Finally it built the strongest competitive team it

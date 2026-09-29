@@ -7,6 +7,7 @@ const path = require("path");
 const OUT = path.join(__dirname, "out");
 const ORDER = ["Charizard", "Mewtwo", "Raichu", "Garchomp", "Absol", "Lucario", "Greninja"];
 const HYPO = new Set(require("./hypothetical").flatMap(h => [h.name, h.baseSpecies].filter(Boolean)));
+const HYPO_NOTE = {}; for (const h of require("./hypothetical")) HYPO_NOTE[h.baseSpecies || h.name] = h.debateNote;
 
 function opinionOf(sp, v) {
   if (v && v.opinion) return v.opinion;
@@ -25,7 +26,7 @@ for (const sp of ORDER) {
   const winnerName = v.winner === A.label ? A.name : v.winner === B.label ? B.name : "Neither (tie)";
   const sideName = s => /^A\b|form a/i.test(s) ? A.name : /^B\b|form b/i.test(s) ? B.name : s;
   cases.push({
-    species: sp, slug: sp.toLowerCase(), hypothetical: HYPO.has(sp),
+    species: sp, slug: sp.toLowerCase(), hypothetical: HYPO.has(sp), hypoNote: HYPO_NOTE[sp] || "",
     short: A.label.replace("Mega", "").trim() + " vs " + B.label.replace("Mega", "").trim() || "Mega vs Z",
     forms: r.forms, winnerName, score_a: v.score_a, score_b: v.score_b, rubric_a: v.rubric_a, rubric_b: v.rubric_b,
     ruleLine: winnerName.startsWith("Neither") ? "Rotom Judge rules that neither form is clearly better."
