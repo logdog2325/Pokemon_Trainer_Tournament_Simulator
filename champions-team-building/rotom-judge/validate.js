@@ -55,6 +55,11 @@ const seenSp = {}, seenIt = {};
 for (const m of mons) {
   const e = E.dexf(m.name);
   if (!e) { errors.push(m.raw + ": NOT in the Champions dex"); continue; }
+  if (e.hypothetical) {
+    const reqSp = require_ ? require_.split(":")[0] : null;
+    if (reqSp === m.name) warns.push(m.name + " is HYPOTHETICAL (not in Champions yet) - allowed only as this run's centrepiece");
+    else errors.push(m.name + " is HYPOTHETICAL and not in Champions - not allowed on this team");
+  }
   if (seenSp[m.name]) errors.push("Species Clause: two " + m.name); seenSp[m.name] = 1;
   if (!m.item) errors.push(m.name + ": no item");
   else {

@@ -23,6 +23,11 @@ src += "\n;Object.assign(globalThis,{calcDamage,finalStats,effOf,effTable,isGrou
 vm.runInContext(src, ctx);
 
 const DEX = ctx.window.DEX, MOVES = ctx.window.MOVES;
+// Hypothetical species (not in Champions) for "what if" runs. Appended in memory only; see hypothetical.js.
+for (const h of require("./hypothetical")) {
+  if (!DEX.some(e => e.name === h.name)) DEX.push(h);
+  if (h.weightKg) ctx.WEIGHT[h.name] = h.weightKg;
+}
 const dexf = n => DEX.find(e => e.name === n);
 
 // Stat points: 66 total, max 32 per stat. Order: hp, atk, def, spa, spd, spe.

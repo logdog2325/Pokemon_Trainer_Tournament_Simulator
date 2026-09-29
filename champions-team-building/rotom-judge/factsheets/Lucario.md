@@ -115,7 +115,7 @@ OHKO'd by **8 / 21** board threats on a no-investment spread.
 
 Base stats hp 70 / atk 100 / def 70 / spa 164 / spd 70 / spe 151  (BST 625)
 
-**Aura Guard:** Champions-original: halves damage from CONTACT moves (Close Combat, Sucker Punch, Kowtow Cleave, Flare Blitz...). Non-contact moves (Earthquake, Rock Slide, all special moves) are unaffected.
+**Aura Guard:** Champions-original: halves damage from PHYSICAL CONTACT moves (Close Combat, Sucker Punch, Kowtow Cleave, Flare Blitz...). Non-contact moves (Earthquake, Rock Slide, all special moves) are unaffected.
 
 ### Typing
 - 4x: none | 2x: Fire, Fighting, Ground

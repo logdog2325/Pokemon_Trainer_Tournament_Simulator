@@ -224,7 +224,7 @@ Consequences:
 This is Phase 0 of the build model: check `ITEMS` before designing around an item.
 
 ## Z-Mega and Mega abilities added to the calculator (2026-09-29)
-- **Aura Guard** (Mega Lucario Z, Champions-original): halves damage from **contact** moves only. Non-contact moves
+- **Aura Guard** (Mega Lucario Z, Champions-original): halves damage from **physical contact** moves only (user-confirmed). Non-contact moves
   (Earthquake, Rock Slide, every special move) are unaffected. Source: official Pokemon Champions account and Bulbapedia.
   Correctness depends on `MF_CONTACT` in `app/app.js`, which is a hand-maintained list — extend it if a contact move is missing.
 - **Sand Force** (Mega Garchomp): Rock / Ground / Steel moves x1.3, **only in sand**. Garchomp does not set sand itself,
@@ -232,3 +232,10 @@ This is Phase 0 of the build model: check `ITEMS` before designing around an ite
   applied in the damage calc, which undercounted Mega Garchomp.
 - **Mewtwo is not in Champions** — not in the dex and not on any Reg M-C roster source. Only five species have two
   Mega forms: Charizard (X/Y), Raichu (X/Y), Absol (Mega / Mega Z), Garchomp (Mega / Mega Z), Lucario (Mega / Mega Z).
+
+## Psyshock / Psystrike hit DEFENSE (calculator bug fixed 2026-09-29)
+Psyshock, Psystrike and Secret Sword are special moves that use the attacker's SpA against the target's **Defense**.
+The calculator was pricing them against SpD. Now fixed via `MF_HITS_DEF` in `app/app.js`: they use Def, Def stages,
+and snow's Ice Def boost, and they **ignore Assault Vest** and sand's Rock SpD boost. Example: Timid Indeedee-M's
+Psyshock into an Assault Vest Jolly Sneasler went from being priced like Psychic (137.6%) to 229.3%. Any earlier
+Psyshock number in this repo was too low against physically frail targets.

@@ -18,7 +18,7 @@ GROUND RULES (Pokemon Champions, Regulation M-C doubles, Level 50, bring 6 pick 
 - Stat points: 66 total, max 32 per stat (not EVs). Positive nature = x1.1.
 - Item Clause: all six items distinct. Species Clause: no duplicate species. Only ONE Mega Evolution per battle.
 - NOT in Champions: Toxic Orb, Flame Orb, Black Sludge, Covert Cloak, Safety Goggles, Clear Amulet. Check any item
-  against the engine's ITEMS list before using it. Mewtwo is not in the game.
+  against the engine's ITEMS list before using it. Mewtwo is not in the game (unless a SPECIAL NOTE below says this run is a Mewtwo hypothetical).
 - Spread moves take x0.75 in doubles. Screens are x0.667 in doubles, not 0.5.
 - Entry abilities (weather/terrain setters) resolve in Speed order and the LAST write wins, so the slower setter wins a
   simultaneous lead, and a Mega-granted setter re-fires on every switch-in after it has Mega Evolved.
@@ -104,7 +104,7 @@ function openingPrompt(sp, me, them) {
   return `You are the advocate for ${me.name} in "Rotom Judge", a structured debate. Your opponent argues for ${them.name}.
 Your job: prove ${me.name} (form label "${me.label}", holds ${me.stone}) is the better Mega form of ${sp} for Reg M-C doubles.
 Be one-sided, but every claim must be true: a judge will recompute your numbers and penalise any that are wrong.
-${RULES}
+${RULES}${noteFor(sp)}
 
 Read ${ROOT}/rotom-judge/factsheets/${sp}.md first. Compute extra calcs where they strengthen your case (items like Life Orb,
 Choice Band, type boosters; Helping Hand; weather/terrain your form sets or wants; Speed tiers; survival with bulk investment).
@@ -120,7 +120,7 @@ Return only the argument text.`
 
 function rebuttalPrompt(sp, me, them, mine, theirs) {
   return `You are the advocate for ${me.name} in "Rotom Judge". Below are both opening arguments.
-${RULES}
+${RULES}${noteFor(sp)}
 
 Fact sheet: ${ROOT}/rotom-judge/factsheets/${sp}.md
 
@@ -146,7 +146,7 @@ Return only the rebuttal text.`
 function verdictPrompt(sp, A, B, oa, ob, ra, rb) {
   return `You are ROTOM JUDGE, the impartial judge. Two advocates argued which Mega form of ${sp} is better in Reg M-C doubles:
 form A = ${A.name} (label "${A.label}", ${A.stone}); form B = ${B.name} (label "${B.label}", ${B.stone}).
-${RULES}
+${RULES}${noteFor(sp)}
 
 Fact sheet: ${ROOT}/rotom-judge/factsheets/${sp}.md
 
@@ -182,7 +182,7 @@ function buildPrompt(sp, me, brief, verdictSummary) {
   const dir = `${ROOT}/rotom-judge/out/${sp}`
   return `You are ROTOM JUDGE's team builder. Build the STRONGEST possible Reg M-C doubles team of six around ${me.name}
 (${sp} holding ${me.stone}, form label "${me.label}").
-${RULES}
+${RULES}${noteFor(sp)}
 
 Inputs:
 - Fact sheet: ${ROOT}/rotom-judge/factsheets/${sp}.md
@@ -212,6 +212,10 @@ Return the structured result.`
 
 // ---------------------------------------------------------------------------------------------
 const MATCHUPS = args
+// Optional per-matchup note appended to every prompt (e.g. marking a species as hypothetical).
+const NOTE = {}
+for (const m of MATCHUPS) if (m.note) NOTE[m.species] = m.note
+function noteFor(sp) { return NOTE[sp] ? "\n\nSPECIAL NOTE FOR THIS MATCHUP: " + NOTE[sp] : "" }
 log(`Rotom Judge: ${MATCHUPS.length} matchups x 7 agents = ${MATCHUPS.length * 7} agents`)
 
 const results = await pipeline(

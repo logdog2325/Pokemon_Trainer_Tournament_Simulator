@@ -1514,6 +1514,7 @@ function megaPartnerFinder(baseName,formIndex,opts){
 /* ---------- move flags + variable-power handling (for calcDamage) ---------- */
 // Champions' move data carries only {type, category, bp, priority}, so the flags an ability keys
 // off (contact, punch, pulse, bite, slicing) are kept here by name.
+const MF_HITS_DEF=new Set(["Psyshock","Psystrike","Secret Sword"]);
 const MF_CONTACT=new Set(["Tackle","Body Slam","Double-Edge","Take Down","Flare Blitz","Wild Charge","Head Smash",
  "Close Combat","Brick Break","Drain Punch","Mach Punch","Bullet Punch","Ice Punch","Fire Punch","Thunder Punch",
  "Shadow Punch","Focus Punch","Power-Up Punch","Meteor Mash","Iron Head","Zen Headbutt","Headbutt","Psychic Fangs",
@@ -1613,7 +1614,9 @@ function calcDamage(att,move,def,field){
 
   const eff=effTable(dEf,dAb)[wt]; if(eff===0)return {immune:true,move,type:wt};
 
-  let A=phys?aS.atk:aS.spa, D=phys?dS.def:dS.spd;
+  // Psyshock / Psystrike / Secret Sword are special moves that hit the target's DEFENSE, not SpD.
+  const hitsDef=phys||MF_HITS_DEF.has(move);
+  let A=phys?aS.atk:aS.spa, D=hitsDef?dS.def:dS.spd;
   if((aAb==="Huge Power"||aAb==="Pure Power")&&phys)A*=2;
   if(aItem==="Choice Band"&&phys)A=Math.floor(A*1.5);
   if(aItem==="Choice Specs"&&!phys)A=Math.floor(A*1.5);
@@ -1621,11 +1624,11 @@ function calcDamage(att,move,def,field){
   A=Math.floor(A*stageMul(atkStage));
   // defence stages are stat-specific: Stamina and Cotton Guard raise Def only, Calm Mind raises
   // SpD only. A bare `defStage` still works and applies to whichever stat this move targets.
-  const dStage=(phys?field.defStagePhys:field.defStageSpec);
+  const dStage=(hitsDef?field.defStagePhys:field.defStageSpec);
   D=Math.floor(D*stageMul(dStage!=null?dStage:(field.defStage||0)));
-  if(dItem==="Assault Vest"&&!phys)D=Math.floor(D*1.5);
-  if(field.weather==="sand"&&dEf.types.includes("Rock")&&!phys)D=Math.floor(D*1.5);
-  if(field.weather==="snow"&&dEf.types.includes("Ice")&&phys)D=Math.floor(D*1.5);
+  if(dItem==="Assault Vest"&&!hitsDef)D=Math.floor(D*1.5);
+  if(field.weather==="sand"&&dEf.types.includes("Rock")&&!hitsDef)D=Math.floor(D*1.5);
+  if(field.weather==="snow"&&dEf.types.includes("Ice")&&hitsDef)D=Math.floor(D*1.5);
 
   if(aAb==="Technician"&&bp<=60)bp=Math.floor(bp*1.5);
   const base=Math.floor(Math.floor(22*bp*A/D)/50)+2;
@@ -1679,8 +1682,8 @@ function calcDamage(att,move,def,field){
   if(dAb==="Multiscale"&&field.fullHP!==false)fm*=0.5;
   if((dAb==="Filter"||dAb==="Solid Rock"||dAb==="Prism Armor")&&eff>1)fm*=0.75;
   if(dAb==="Fluffy"&&MF_CONTACT.has(move))fm*=0.5;
-  // Aura Guard (Mega Lucario Z, Champions-original): halves damage from contact moves.
-  if(dAb==="Aura Guard"&&MF_CONTACT.has(move))fm*=0.5;
+  // Aura Guard (Mega Lucario Z, Champions-original): halves damage from PHYSICAL contact moves.
+  if(dAb==="Aura Guard"&&phys&&MF_CONTACT.has(move))fm*=0.5;
   if(dAb==="Ice Scales"&&!phys)fm*=0.5;
   if(dAb==="Punk Rock"&&MF_SOUND.has(move))fm*=0.5;
   // Resist berry on the defender. Consumed, so it only applies to the first qualifying hit —
