@@ -57,7 +57,7 @@ Base stats hp 72 / atk 125 / def 77 / spa 133 / spd 81 / spe 142  (BST 630)
 | M-Tyranitar | - | 91 | Low Kick | 135.3-162.3% KO | 100% |
 | M-Staraptor | 8.94% | 178 | Ice Punch | 68.1-81.1% | 100% |
 
-OHKOs (14+/16 rolls) with no item: **8 / 21**. A Life Orb is x1.3, a type item x1.2, Choice Band/Specs x1.5 on top.
+OHKOs (14+/16 rolls) with no item: **8 / 21**. A Mega holds its stone, so it gets no item. A non-Mega form can use Life Orb (x1.3), Expert Belt (x1.2 on super-effective hits) or a type item (x1.2). Choice Band and Choice Specs are NOT in Champions; Choice Scarf is.
 
 ### Offense — Timid 2/32 SpA/32 Spe (Atk 130 / SpA 185 / Spe 213), neutral field, no item
 | threat | usage | Spe | best move | damage | acc |
@@ -84,7 +84,7 @@ OHKOs (14+/16 rolls) with no item: **8 / 21**. A Life Orb is x1.3, a type item x
 | M-Tyranitar | - | 91 | Low Kick | 98.6-117.9% (15/16) | 100% |
 | M-Staraptor | 8.94% | 178 | Ice Beam | 91.9-110.3% (9/16) | 100% |
 
-OHKOs (14+/16 rolls) with no item: **6 / 21**. A Life Orb is x1.3, a type item x1.2, Choice Band/Specs x1.5 on top.
+OHKOs (14+/16 rolls) with no item: **6 / 21**. A Mega holds its stone, so it gets no item. A non-Mega form can use Life Orb (x1.3), Expert Belt (x1.2 on super-effective hits) or a type item (x1.2). Choice Band and Choice Specs are NOT in Champions; Choice Scarf is.
 
 ### Defense — on the offensive spread above (HP 149 / Def 97 / SpD 101), threat in its own field
 | threat | its best hit | damage |
@@ -161,7 +161,7 @@ Base stats hp 72 / atk 145 / def 67 / spa 153 / spd 71 / spe 132  (BST 640)
 | M-Tyranitar | - | 91 | Low Kick | 100.5-119.8% KO | 100% |
 | M-Staraptor | 8.94% | 178 | Acrobatics | 73.5-87.6% | 100% |
 
-OHKOs (14+/16 rolls) with no item: **6 / 21**. A Life Orb is x1.3, a type item x1.2, Choice Band/Specs x1.5 on top.
+OHKOs (14+/16 rolls) with no item: **6 / 21**. A Mega holds its stone, so it gets no item. A non-Mega form can use Life Orb (x1.3), Expert Belt (x1.2 on super-effective hits) or a type item (x1.2). Choice Band and Choice Specs are NOT in Champions; Choice Scarf is.
 
 ### Offense — Timid 2/32 SpA/32 Spe (Atk 148 / SpA 205 / Spe 202), neutral field, no item
 | threat | usage | Spe | best move | damage | acc |
@@ -188,7 +188,7 @@ OHKOs (14+/16 rolls) with no item: **6 / 21**. A Life Orb is x1.3, a type item x
 | M-Tyranitar | - | 91 | Hydro Pump | 87.9-104.3% (3/16) | 80% |
 | M-Staraptor | 8.94% | 178 | Ice Beam | 68.1-81.1% | 100% |
 
-OHKOs (14+/16 rolls) with no item: **7 / 21**. A Life Orb is x1.3, a type item x1.2, Choice Band/Specs x1.5 on top.
+OHKOs (14+/16 rolls) with no item: **7 / 21**. A Mega holds its stone, so it gets no item. A non-Mega form can use Life Orb (x1.3), Expert Belt (x1.2 on super-effective hits) or a type item (x1.2). Choice Band and Choice Specs are NOT in Champions; Choice Scarf is.
 
 ### Defense — on the offensive spread above (HP 149 / Def 87 / SpD 91), threat in its own field
 | threat | its best hit | damage |
@@ -265,7 +265,7 @@ Base stats hp 72 / atk 95 / def 67 / spa 103 / spd 71 / spe 122  (BST 530)
 | M-Tyranitar | - | 91 | Low Kick | 75.4-90.8% | 100% |
 | M-Staraptor | 8.94% | 178 | Acrobatics | 55.1-65.9% | 100% |
 
-OHKOs (14+/16 rolls) with no item: **2 / 21**. A Life Orb is x1.3, a type item x1.2, Choice Band/Specs x1.5 on top.
+OHKOs (14+/16 rolls) with no item: **2 / 21**. A Mega holds its stone, so it gets no item. A non-Mega form can use Life Orb (x1.3), Expert Belt (x1.2 on super-effective hits) or a type item (x1.2). Choice Band and Choice Specs are NOT in Champions; Choice Scarf is.
 
 ### Offense — Timid 2/32 SpA/32 Spe (Atk 103 / SpA 155 / Spe 191), neutral field, no item
 | threat | usage | Spe | best move | damage | acc |
@@ -292,7 +292,7 @@ OHKOs (14+/16 rolls) with no item: **2 / 21**. A Life Orb is x1.3, a type item x
 | M-Tyranitar | - | 91 | Hydro Pump | 66.7-79.2% | 80% |
 | M-Staraptor | 8.94% | 178 | Ice Beam | 51.9-61.6% | 100% |
 
-OHKOs (14+/16 rolls) with no item: **5 / 21**. A Life Orb is x1.3, a type item x1.2, Choice Band/Specs x1.5 on top.
+OHKOs (14+/16 rolls) with no item: **5 / 21**. A Mega holds its stone, so it gets no item. A non-Mega form can use Life Orb (x1.3), Expert Belt (x1.2 on super-effective hits) or a type item (x1.2). Choice Band and Choice Specs are NOT in Champions; Choice Scarf is.
 
 ### Defense — on the offensive spread above (HP 149 / Def 87 / SpD 91), threat in its own field
 | threat | its best hit | damage |

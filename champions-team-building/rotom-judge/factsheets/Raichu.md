@@ -54,7 +54,7 @@ Base stats hp 60 / atk 135 / def 95 / spa 90 / spd 95 / spe 110  (BST 585)
 | M-Tyranitar | - | 91 | Brick Break | 59.9-71.5% | 100% |
 | M-Staraptor | 8.94% | 178 | Volt Tackle | 149.2-177.3% KO | 100% |
 
-OHKOs (14+/16 rolls) with no item: **6 / 21**. A Life Orb is x1.3, a type item x1.2, Choice Band/Specs x1.5 on top.
+OHKOs (14+/16 rolls) with no item: **6 / 21**. A Mega holds its stone, so it gets no item. A non-Mega form can use Life Orb (x1.3), Expert Belt (x1.2 on super-effective hits) or a type item (x1.2). Choice Band and Choice Specs are NOT in Champions; Choice Scarf is.
 
 ### Defense — on the offensive spread above (HP 137 / Def 115 / SpD 115), threat in its own field
 | threat | its best hit | damage |
@@ -131,7 +131,7 @@ Base stats hp 60 / atk 100 / def 55 / spa 160 / spd 80 / spe 130  (BST 585)
 | M-Tyranitar | - | 91 | Focus Blast | 131.4-156.5% KO | 100% |
 | M-Staraptor | 8.94% | 178 | Zap Cannon | 140.5-166.5% KO | 100% |
 
-OHKOs (14+/16 rolls) with no item: **5 / 21**. A Life Orb is x1.3, a type item x1.2, Choice Band/Specs x1.5 on top.
+OHKOs (14+/16 rolls) with no item: **5 / 21**. A Mega holds its stone, so it gets no item. A non-Mega form can use Life Orb (x1.3), Expert Belt (x1.2 on super-effective hits) or a type item (x1.2). Choice Band and Choice Specs are NOT in Champions; Choice Scarf is.
 
 ### Defense — on the offensive spread above (HP 137 / Def 75 / SpD 100), threat in its own field
 | threat | its best hit | damage |

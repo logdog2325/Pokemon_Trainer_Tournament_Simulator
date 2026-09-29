@@ -1,11 +1,11 @@
 # Rotom Judge: Mega Absol vs Mega Absol Z
 
-**The ruling:** Rotom Judge ruled that **Mega Absol Z** is the better Mega. Final score: Mega Absol 62, Mega Absol Z 81 (out of 100).
+**The ruling:** Rotom Judge ruled that **Mega Absol Z** is the better form. Final score: Mega Absol 62, Mega Absol Z 81 (out of 100).
 
 ## What this is
-Rotom Judge is an experiment in settling a Pokémon argument with evidence. Some Pokémon in Pokémon Champions have two
-different Mega Evolutions, and players argue about which one is better. For each such Pokémon, two AI advocates each
-argued for one Mega form. They were not allowed to rely on memory: every claim had to come from a damage calculator
+Rotom Judge is an experiment in settling a Pokémon argument with evidence. Some Pokémon have two competing
+super-forms (two Mega Evolutions, or a Mega against a special battle form), and players argue about which is better. For
+each one, two AI advocates each argued for one form. They were not allowed to rely on memory: every claim had to come from a damage calculator
 built for Pokémon Champions, and they could run new calculations. Each advocate gave an opening argument, then read the
 other side's opening and wrote a rebuttal. An impartial AI judge then recomputed the disputed numbers itself, scored
 both sides, wrote its opinion and ruled on which Mega is better. Finally it built the strongest competitive team it
@@ -48,7 +48,7 @@ could around each form.
 - Magic Bounce: Reflects status moves aimed at it back at the user: Spore, Thunder Wave, Will-O-Wisp, Taunt, Encore, Parting Shot, Fake Tears, etc. Does not block damaging moves or Fake Out.
 - Takes 4x damage from: none. Takes 2x from: Fighting, Bug, Fairy.
 - Resists (half damage): Ghost, Dark. Quarter damage: none. Immune to: Psychic.
-- Top Speed with full investment: 183. Megas faster than that: Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Mewtwo Mega Y 211, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Mewtwo Mega X 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187; tied with Houndoom Mega.
+- Top Speed with full investment: 183. Megas faster than that: Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187; tied with Houndoom Mega.
 - One-hit knockouts against the 21 key threats, with no item: 6 of 21 as a physical attacker.
 - Knocked out in one hit by 13 of the 21 key threats when it has no bulk investment.
 
@@ -221,7 +221,7 @@ B's weak points:
 Z is the better form. Its main liabilities are Intimidate, Fairy hits and Garchomp/Salamence, and each can be fixed with a partner. Mega's Fighting/Bug weakness and low Defense cannot be fixed that way.
 
 ### Conclusion
-Rotom Judge rules that Mega Absol Z is the better Mega (Mega Absol 62, Mega Absol Z 81).
+Rotom Judge rules that Mega Absol Z is the better form (Mega Absol 62, Mega Absol Z 81).
 
 Mega Absol Z wins. Mega Absol's opening count of 16 OHKOs depended on a Life Orb, which it cannot hold alongside Absolite. Without it, and counting only 100%-accurate moves and non-Sash targets, Z OHKOs 7 threats (96.58% usage) and Mega OHKOs 5 (58.90%). Mega's defensive claims also used the Jolly spread, but A recommended Hasty. On Hasty (72 Def), Mega is OHKO'd by 16 of 21 threats, not 13, and Kingambit's Iron Head KOs 8/16. Z's 223 Speed outspeeds every board threat, and it is immune to both top Fake Out users and to Sneasler's and Staraptor's Close Combat. Mega's proven strength is 100%-accurate Ice Beam on Garchomp (12/16) and M-Salamence (8/16), which becomes a guaranteed KO on both with Helping Hand. Intimidate also knocks every one of Z's Helping Hand and +1 KOs under 100%. That makes Mega a niche Dragon-killer. Z is the better lead sweeper, as long as a partner handles Intimidate and Fairy.
 

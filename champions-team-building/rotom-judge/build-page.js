@@ -30,7 +30,7 @@ for (const sp of ORDER) {
     short: A.label.replace("Mega", "").trim() + " vs " + B.label.replace("Mega", "").trim() || "Mega vs Z",
     forms: r.forms, winnerName, score_a: v.score_a, score_b: v.score_b, rubric_a: v.rubric_a, rubric_b: v.rubric_b,
     ruleLine: winnerName.startsWith("Neither") ? "Rotom Judge rules that neither form is clearly better."
-      : "Rotom Judge rules that " + winnerName + " is the better Mega (" + A.name + " " + v.score_a + ", " + B.name + " " + v.score_b + ").",
+      : "Rotom Judge rules that " + winnerName + " is the better form (" + A.name + " " + v.score_a + ", " + B.name + " " + v.score_b + ").",
     opinion: opinionOf(sp, v), conclusion: v.conclusion || v.summary || "",
     debate: r.debate || {}, checks: (v.checked_claims || []).map(c => Object.assign({ sideName: sideName(String(c.side)) }, c)),
     teams: r.teams || [], brief_a: v.brief_a, brief_b: v.brief_b,

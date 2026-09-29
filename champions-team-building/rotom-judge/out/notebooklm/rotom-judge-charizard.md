@@ -1,11 +1,11 @@
 # Rotom Judge: Mega Charizard X vs Mega Charizard Y
 
-**The ruling:** Rotom Judge ruled that **Mega Charizard Y** is the better Mega. Final score: Mega Charizard X 77, Mega Charizard Y 89 (out of 100).
+**The ruling:** Rotom Judge ruled that **Mega Charizard Y** is the better form. Final score: Mega Charizard X 77, Mega Charizard Y 89 (out of 100).
 
 ## What this is
-Rotom Judge is an experiment in settling a Pokémon argument with evidence. Some Pokémon in Pokémon Champions have two
-different Mega Evolutions, and players argue about which one is better. For each such Pokémon, two AI advocates each
-argued for one Mega form. They were not allowed to rely on memory: every claim had to come from a damage calculator
+Rotom Judge is an experiment in settling a Pokémon argument with evidence. Some Pokémon have two competing
+super-forms (two Mega Evolutions, or a Mega against a special battle form), and players argue about which is better. For
+each one, two AI advocates each argued for one form. They were not allowed to rely on memory: every claim had to come from a damage calculator
 built for Pokémon Champions, and they could run new calculations. Each advocate gave an opening argument, then read the
 other side's opening and wrote a rebuttal. An impartial AI judge then recomputed the disputed numbers itself, scored
 both sides, wrote its opinion and ruled on which Mega is better. Finally it built the strongest competitive team it
@@ -48,7 +48,7 @@ could around each form.
 - Tough Claws: Contact moves x1.3.
 - Takes 4x damage from: none. Takes 2x from: Ground, Rock, Dragon.
 - Resists (half damage): Electric, Bug, Steel. Quarter damage: Fire, Grass. Immune to: none.
-- Top Speed with full investment: 167. Megas faster than that: Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Mewtwo Mega Y 211, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Mewtwo Mega X 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183, Lucario Mega 180, Raichu Mega X 178, Skarmory Mega 178, Metagross Mega 178, Staraptor Mega 178, Gallade Mega 178, Pinsir Mega 172, Sharpedo Mega 172, Excadrill Mega 170, Floette Mega 169, Glimmora Mega 168; tied with Charizard Mega Y, Kangaskhan Mega, Dragonite Mega, Blaziken Mega, Gardevoir Mega, Medicham Mega, Glalie Mega, Falinks Mega.
+- Top Speed with full investment: 167. Megas faster than that: Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183, Lucario Mega 180, Raichu Mega X 178, Skarmory Mega 178, Metagross Mega 178, Staraptor Mega 178, Gallade Mega 178, Pinsir Mega 172, Sharpedo Mega 172, Excadrill Mega 170, Floette Mega 169, Glimmora Mega 168; tied with Charizard Mega Y, Kangaskhan Mega, Dragonite Mega, Blaziken Mega, Gardevoir Mega, Medicham Mega, Glalie Mega, Falinks Mega.
 - One-hit knockouts against the 21 key threats, with no item: 11 of 21 as a physical attacker; 9 of 21 as a special attacker.
 - Knocked out in one hit by 6 of the 21 key threats when it has no bulk investment.
 
@@ -57,7 +57,7 @@ could around each form.
 - Drought: Sets sun on Mega Evolution AND on every later switch-in. Fire x1.5, Water x0.5, Solar Beam fires in one turn. Weather wars are won by whoever enters LAST (confirmed-facts.md).
 - Takes 4x damage from: Rock. Takes 2x from: Water, Electric.
 - Resists (half damage): Fire, Fighting, Steel, Fairy. Quarter damage: Grass, Bug. Immune to: Ground.
-- Top Speed with full investment: 167. Megas faster than that: Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Mewtwo Mega Y 211, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Mewtwo Mega X 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183, Lucario Mega 180, Raichu Mega X 178, Skarmory Mega 178, Metagross Mega 178, Staraptor Mega 178, Gallade Mega 178, Pinsir Mega 172, Sharpedo Mega 172, Excadrill Mega 170, Floette Mega 169, Glimmora Mega 168; tied with Charizard Mega X, Kangaskhan Mega, Dragonite Mega, Blaziken Mega, Gardevoir Mega, Medicham Mega, Glalie Mega, Falinks Mega.
+- Top Speed with full investment: 167. Megas faster than that: Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183, Lucario Mega 180, Raichu Mega X 178, Skarmory Mega 178, Metagross Mega 178, Staraptor Mega 178, Gallade Mega 178, Pinsir Mega 172, Sharpedo Mega 172, Excadrill Mega 170, Floette Mega 169, Glimmora Mega 168; tied with Charizard Mega X, Kangaskhan Mega, Dragonite Mega, Blaziken Mega, Gardevoir Mega, Medicham Mega, Glalie Mega, Falinks Mega.
 - One-hit knockouts against the 21 key threats, with no item: 15 of 21 as a special attacker.
 - Knocked out in one hit by 8 of the 21 key threats when it has no bulk investment.
 
@@ -238,7 +238,7 @@ Neither side made an item or mechanic error. Minor loose points:
 **Engine note.** The engine's accuracy table has no entry for Dragon Rush, so the fact sheet lists it at 100%. In the main-series games Dragon Rush is 75% accurate. The team builder should prefer Dragon Claw.
 
 ### Conclusion
-Rotom Judge rules that Mega Charizard Y is the better Mega (Mega Charizard X 77, Mega Charizard Y 89).
+Rotom Judge rules that Mega Charizard Y is the better form (Mega Charizard X 77, Mega Charizard Y 89).
 
 Mega Y wins. On turn one, Y in its own sun OHKOs 13/21 board threats using only moves at 90% accuracy or better, and still 10/21 without Overheat (100%-accurate Weather Ball, Solar Beam and others). Mega X on its recommended Flare Blitz / Dragon Claw set OHKOs only 9/21 at +0. X's case is real but conditional. After one Dragon Dance it has Speed 250 and OHKOs 15/21 with no item, and it takes Rock Slide at 37-59% from Sneasler and Garchomp, where the same attacks KO Y. But Garchomp (169 Speed) outspeeds X at +0 and OHKOs it with Dragon Claw (105.8-125.8%), and its spread Earthquake also does 97.4-117.4% (15/16), so X's setup turn is not safe. A's headline 21/21 used five attacking moves. On the four-move set it is 20/21 with Helping Hand and 18/21 with Life Orb. B's numbers all held and its concessions (8/21 OHKO'd on a neutral field, the Rock weakness, and Intimidate reducing it to 67-80% from Sneasler) were accurate. Y is an immediate sun spread nuke: Heat Wave in sun with Helping Hand OHKOs 9/21 across both targets. X is a single-target Dragon Dance sweeper that fits sand, rain or neutral-weather teams and needs Follow Me, Psychic Terrain and Intimidate support.
 

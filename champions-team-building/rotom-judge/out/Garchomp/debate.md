@@ -187,7 +187,7 @@ Mega's own matchup with M-Salamence is a 158 Speed tie.
 
 ---
 ## ⚖️ The Judge's Opinion
-_Having heard both openings and both rebuttals, Rotom Judge rules on which Mega is better, and why._
+_Having heard both openings and both rebuttals, Rotom Judge rules on which form is better, and why._
 
 Nearly every damage roll both sides cited reproduces.
 
@@ -215,7 +215,7 @@ But B's headline counts are inflated by the two Focus Sash holders: 7/21 is real
 **Verdict.** On what was proven, Mega Garchomp is the stronger Mega for a team built around sand. Mega Z is a real alternative for a weather-free, fast special attacker.
 
 ### 🏆 Conclusion
-**Rotom Judge rules that Mega Garchomp is the better Mega** (Mega Garchomp 75, Mega Garchomp Z 68).
+**Rotom Judge rules that Mega Garchomp is the better form** (Mega Garchomp 75, Mega Garchomp Z 68).
 
 Mega Garchomp wins narrowly, and only on a team built around sand.
 

@@ -2,7 +2,7 @@
 
 > **Hypothetical debate.** Mewtwo is not in Pokémon Champions yet. This debate uses its main-series stats and Scarlet/Violet moves as a what-if. Every other Pokémon, item and rule is real Champions data.
 
-**The ruling:** Rotom Judge ruled that **Mega Mewtwo Y** is the better Mega. Final score: Mega Mewtwo X 82, Mega Mewtwo Y 87 (out of 100).
+**The ruling:** Rotom Judge ruled that **Mega Mewtwo Y** is the better form. Final score: Mega Mewtwo X 82, Mega Mewtwo Y 87 (out of 100).
 
 ## What this is
 Rotom Judge is an experiment in settling a Pokémon argument with evidence. Some Pokémon have two competing
@@ -214,7 +214,7 @@ choosing Helping Hand plus Psychic Terrain boosts that turn 100%-accurate Psystr
 70% Focus Blast.
 
 ### Conclusion
-Rotom Judge rules that Mega Mewtwo Y is the better Mega (Mega Mewtwo X 82, Mega Mewtwo Y 87).
+Rotom Judge rules that Mega Mewtwo Y is the better form (Mega Mewtwo X 82, Mega Mewtwo Y 87).
 
 Mega Mewtwo Y wins narrowly (87-82) in this hypothetical matchup. Every damage number either side cited checks out in the engine. X really is much bulkier against physical hits (Kowtow Cleave 44.8-53% vs Y's 119.1-142.1%), and 8 of Y's 13 OHKOs rely on 70-85% moves. But X's main claim, that Fighting STAB answers the Dark types, breaks against Incineroar's Intimidate: Helping Hand Drain Punch on Kingambit drops to 71-84.1%, no KO. A also made a mechanics error: Sylveon's Hyper Beam is single-target, so Wide Guard does not stop it. Y's priority weakness is fixable. Psychic Terrain blocks priority on the grounded Y, and a 0-Speed Relaxed Indeedee-F (94 Speed) is slower than Rillaboom (105), so it wins the terrain on the lead. Terrain plus Helping Hand Psystrike also KOs the #1 threat Rillaboom (116.9-138.6%), and Helping Hand Aura Sphere KOs Kingambit (102.9-121.7%) with no accuracy roll. X is the physically bulky, Intimidate-sensitive Helping Hand attacker. Y is a Psychic Terrain hyper-offense sweeper that must avoid Kowtow Cleave and Knock Off.
 

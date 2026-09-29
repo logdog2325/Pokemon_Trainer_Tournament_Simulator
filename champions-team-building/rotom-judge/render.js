@@ -47,12 +47,12 @@ function renderMatchup(r) {
   L.push(`### ${B.name} responds`); L.push(quote(d.rb)); L.push("");
   L.push("---");
   L.push("## ⚖️ The Judge's Opinion");
-  L.push(`_Having heard both openings and both rebuttals, Rotom Judge rules on which Mega is better, and why._`);
+  L.push(`_Having heard both openings and both rebuttals, Rotom Judge rules on which form is better, and why._`);
   L.push("");
   L.push(quote(judgeOpinion(r) || ""));
   L.push("");
   L.push("### 🏆 Conclusion");
-  L.push(`**Rotom Judge rules that ${win === "Tie" ? "neither form is clearly better" : win + " is the better Mega"}** (${A.name} ${v.score_a}, ${B.name} ${v.score_b}).`);
+  L.push(`**Rotom Judge rules that ${win === "Tie" ? "neither form is clearly better" : win + " is the better form"}** (${A.name} ${v.score_a}, ${B.name} ${v.score_b}).`);
   L.push("");
   L.push(quote(v.conclusion || v.summary));
   L.push("");

@@ -263,3 +263,14 @@ Psyshock number in this repo was too low against physically frail targets.
   Earlier "Scale Shot KOs" in this repo that assumed 4 hits were optimistic.
 - **Champions' Greninja has the Gen 9 Battle Bond** (+1 Atk/SpA/Spe once after a KO), not the Gen 7 Ash transformation.
   Gen 7 Ash-Greninja exists only as hypothetical data in `rotom-judge/hypothetical.js`.
+
+## Choice Band and Choice Specs are NOT in Champions (Claude's tooling suggested them, 2026-09-29)
+Only **Choice Scarf** exists. Claude's Rotom Judge tooling wrongly suggested Choice Band / Specs in three places: every
+fact sheet's footer ("Choice Band/Specs x1.5"), the advocates' prompt ("items like Life Orb, Choice Band"), and the
+Greninja matchup note ("Life Orb, Choice Specs, Focus Sash"). The Ash-Greninja advocate built its case on Choice Specs
+and lost points for it; the judge re-ran the case with Life Orb and still ruled for Ash. The other debates only
+mentioned the items to say a Mega can't hold them. No team held either item, because validate.js rejects anything
+outside ITEMS. All three suggestions are removed and every fact sheet regenerated.
+
+The damage items that DO exist: Life Orb (x1.3, 10% recoil), Expert Belt (x1.2 on super-effective hits), type items
+(x1.2, e.g. Charcoal, Mystic Water, Fairy Feather). A Mega Evolution holds its stone and gets none of them.

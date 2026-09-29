@@ -1,11 +1,11 @@
 # Rotom Judge: Mega Lucario vs Mega Lucario Z
 
-**The ruling:** Rotom Judge ruled that **Mega Lucario** is the better Mega. Final score: Mega Lucario 77, Mega Lucario Z 80 (out of 100).
+**The ruling:** Rotom Judge ruled that **Mega Lucario** is the better form. Final score: Mega Lucario 77, Mega Lucario Z 80 (out of 100).
 
 ## What this is
-Rotom Judge is an experiment in settling a Pokémon argument with evidence. Some Pokémon in Pokémon Champions have two
-different Mega Evolutions, and players argue about which one is better. For each such Pokémon, two AI advocates each
-argued for one Mega form. They were not allowed to rely on memory: every claim had to come from a damage calculator
+Rotom Judge is an experiment in settling a Pokémon argument with evidence. Some Pokémon have two competing
+super-forms (two Mega Evolutions, or a Mega against a special battle form), and players argue about which is better. For
+each one, two AI advocates each argued for one form. They were not allowed to rely on memory: every claim had to come from a damage calculator
 built for Pokémon Champions, and they could run new calculations. Each advocate gave an opening argument, then read the
 other side's opening and wrote a rebuttal. An impartial AI judge then recomputed the disputed numbers itself, scored
 both sides, wrote its opinion and ruled on which Mega is better. Finally it built the strongest competitive team it
@@ -48,7 +48,7 @@ could around each form.
 - Adaptability: STAB is x2 instead of x1.5.
 - Takes 4x damage from: none. Takes 2x from: Fire, Fighting, Ground.
 - Resists (half damage): Normal, Grass, Ice, Dragon, Dark, Steel. Quarter damage: Bug, Rock. Immune to: Poison.
-- Top Speed with full investment: 180. Megas faster than that: Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Mewtwo Mega Y 211, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Mewtwo Mega X 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183.
+- Top Speed with full investment: 180. Megas faster than that: Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183.
 - One-hit knockouts against the 21 key threats, with no item: 12 of 21 as a physical attacker; 9 of 21 as a special attacker.
 - Knocked out in one hit by 8 of the 21 key threats when it has no bulk investment.
 
@@ -260,7 +260,7 @@ Almost every damage roll reproduces. The debate turned on three things: Focus Sa
 **Engine gap (not scored against either side).** Aura Guard is not applied to Fake Out or Glaive Rush, because both are missing from `MF_CONTACT`. The real damage Z takes from those two moves is about half what is shown.
 
 ### Conclusion
-Rotom Judge rules that Mega Lucario is the better Mega (Mega Lucario 77, Mega Lucario Z 80).
+Rotom Judge rules that Mega Lucario is the better form (Mega Lucario 77, Mega Lucario Z 80).
 
 Mega Lucario wins on evidence, even though Mega Lucario Z's advocate argued more cleanly and scores slightly higher (80 vs 77).
 

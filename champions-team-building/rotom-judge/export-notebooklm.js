@@ -106,7 +106,7 @@ function exportOne(sp) {
   L.push("# Rotom Judge: " + A.name + " vs " + B.name);
   L.push("");
   if (hypo) L.push("> **Hypothetical debate.** " + (HYPO_NOTE[sp] || sp + " is not in Pokémon Champions yet.") + "\n");
-  L.push("**The ruling:** Rotom Judge ruled that **" + win + "** is the better Mega. Final score: " + A.name + " " + v.score_a + ", " + B.name + " " + v.score_b + " (out of 100).");
+  L.push("**The ruling:** Rotom Judge ruled that **" + win + "** is the better form. Final score: " + A.name + " " + v.score_a + ", " + B.name + " " + v.score_b + " (out of 100).");
   L.push("");
   L.push(PRIMER);
   L.push("");
@@ -125,7 +125,7 @@ function exportOne(sp) {
   L.push(opinionOf(sp, v));
   L.push("");
   L.push("### Conclusion");
-  L.push("Rotom Judge rules that " + win + " is the better Mega (" + A.name + " " + v.score_a + ", " + B.name + " " + v.score_b + ").");
+  L.push("Rotom Judge rules that " + win + " is the better form (" + A.name + " " + v.score_a + ", " + B.name + " " + v.score_b + ").");
   L.push("");
   L.push(String(v.conclusion || v.summary || "").trim());
   L.push("");

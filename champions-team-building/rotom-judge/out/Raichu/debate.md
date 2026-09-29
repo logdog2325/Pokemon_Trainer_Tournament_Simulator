@@ -156,7 +156,7 @@ Mega Raichu Y still wins because it moves first on every set, never misses and t
 
 ---
 ## ⚖️ The Judge's Opinion
-_Having heard both openings and both rebuttals, Rotom Judge rules on which Mega is better, and why._
+_Having heard both openings and both rebuttals, Rotom Judge rules on which form is better, and why._
 
 Almost every damage roll either side cited reproduces. The case turns on which premises survived checking.
 
@@ -196,7 +196,7 @@ A's line on Sneasler, "wins the exchange every time", ignores Volt Tackle recoil
 - **Mega X** is a narrower anti-terrain Fake Out lead. It is the better pick only if a team specifically needs to deny Rillaboom and Indeedee terrain.
 
 ### 🏆 Conclusion
-**Rotom Judge rules that Mega Raichu Y is the better Mega** (Mega Raichu X 63, Mega Raichu Y 79).
+**Rotom Judge rules that Mega Raichu Y is the better form** (Mega Raichu X 63, Mega Raichu Y 79).
 
 Mega Raichu Y wins, 79 to 63.
 

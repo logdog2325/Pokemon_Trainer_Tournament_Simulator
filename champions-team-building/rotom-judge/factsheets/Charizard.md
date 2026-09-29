@@ -54,7 +54,7 @@ Base stats hp 78 / atk 130 / def 111 / spa 130 / spd 85 / spe 100  (BST 634)
 | M-Tyranitar | - | 91 | Brick Break | 75.4-90.3% | 100% |
 | M-Staraptor | 8.94% | 178 | Flare Blitz | 72.4-86.5% | 100% |
 
-OHKOs (14+/16 rolls) with no item: **11 / 21**. A Life Orb is x1.3, a type item x1.2, Choice Band/Specs x1.5 on top.
+OHKOs (14+/16 rolls) with no item: **11 / 21**. A Mega holds its stone, so it gets no item. A non-Mega form can use Life Orb (x1.3), Expert Belt (x1.2 on super-effective hits) or a type item (x1.2). Choice Band and Choice Specs are NOT in Champions; Choice Scarf is.
 
 ### Offense — Timid 2/32 SpA/32 Spe (Atk 135 / SpA 182 / Spe 167), neutral field, no item
 | threat | usage | Spe | best move | damage | acc |
@@ -81,7 +81,7 @@ OHKOs (14+/16 rolls) with no item: **11 / 21**. A Life Orb is x1.3, a type item 
 | M-Tyranitar | - | 91 | Focus Blast | 114-135.3% KO | 70% |
 | M-Staraptor | 8.94% | 178 | Hurricane | 74.6-88.6% | 70% |
 
-OHKOs (14+/16 rolls) with no item: **9 / 21**. A Life Orb is x1.3, a type item x1.2, Choice Band/Specs x1.5 on top.
+OHKOs (14+/16 rolls) with no item: **9 / 21**. A Mega holds its stone, so it gets no item. A non-Mega form can use Life Orb (x1.3), Expert Belt (x1.2 on super-effective hits) or a type item (x1.2). Choice Band and Choice Specs are NOT in Champions; Choice Scarf is.
 
 ### Defense — on the offensive spread above (HP 155 / Def 131 / SpD 105), threat in its own field
 | threat | its best hit | damage |
@@ -158,7 +158,7 @@ Base stats hp 78 / atk 104 / def 78 / spa 159 / spd 115 / spe 100  (BST 634)
 | M-Tyranitar | - | 91 | Focus Blast | 131.4-156.5% KO | 70% |
 | M-Staraptor | 8.94% | 178 | Hurricane | 127.6-152.4% KO | 50% |
 
-OHKOs (14+/16 rolls) with no item: **15 / 21**. A Life Orb is x1.3, a type item x1.2, Choice Band/Specs x1.5 on top.
+OHKOs (14+/16 rolls) with no item: **15 / 21**. A Mega holds its stone, so it gets no item. A non-Mega form can use Life Orb (x1.3), Expert Belt (x1.2 on super-effective hits) or a type item (x1.2). Choice Band and Choice Specs are NOT in Champions; Choice Scarf is.
 
 ### Defense — on the offensive spread above (HP 155 / Def 98 / SpD 135), threat in its own field
 | threat | its best hit | damage |

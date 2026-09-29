@@ -1,11 +1,11 @@
 # Rotom Judge: Mega Raichu X vs Mega Raichu Y
 
-**The ruling:** Rotom Judge ruled that **Mega Raichu Y** is the better Mega. Final score: Mega Raichu X 63, Mega Raichu Y 79 (out of 100).
+**The ruling:** Rotom Judge ruled that **Mega Raichu Y** is the better form. Final score: Mega Raichu X 63, Mega Raichu Y 79 (out of 100).
 
 ## What this is
-Rotom Judge is an experiment in settling a Pokémon argument with evidence. Some Pokémon in Pokémon Champions have two
-different Mega Evolutions, and players argue about which one is better. For each such Pokémon, two AI advocates each
-argued for one Mega form. They were not allowed to rely on memory: every claim had to come from a damage calculator
+Rotom Judge is an experiment in settling a Pokémon argument with evidence. Some Pokémon have two competing
+super-forms (two Mega Evolutions, or a Mega against a special battle form), and players argue about which is better. For
+each one, two AI advocates each argued for one form. They were not allowed to rely on memory: every claim had to come from a damage calculator
 built for Pokémon Champions, and they could run new calculations. Each advocate gave an opening argument, then read the
 other side's opening and wrote a rebuttal. An impartial AI judge then recomputed the disputed numbers itself, scored
 both sides, wrote its opinion and ruled on which Mega is better. Finally it built the strongest competitive team it
@@ -48,7 +48,7 @@ could around each form.
 - Electric Surge: Sets Electric Terrain on Mega Evolution / switch-in: grounded Electric moves x1.3, grounded Pokemon cannot fall asleep. Does NOT block priority (only Psychic Terrain does). Overwrites Psychic/Grassy terrain - last setter wins.
 - Takes 4x damage from: none. Takes 2x from: Ground.
 - Resists (half damage): Electric, Flying, Steel. Quarter damage: none. Immune to: none.
-- Top Speed with full investment: 178. Megas faster than that: Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Mewtwo Mega Y 211, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Mewtwo Mega X 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183, Lucario Mega 180; tied with Skarmory Mega, Metagross Mega, Staraptor Mega, Gallade Mega.
+- Top Speed with full investment: 178. Megas faster than that: Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183, Lucario Mega 180; tied with Skarmory Mega, Metagross Mega, Staraptor Mega, Gallade Mega.
 - One-hit knockouts against the 21 key threats, with no item: 6 of 21 as a physical attacker.
 - Knocked out in one hit by 5 of the 21 key threats when it has no bulk investment.
 
@@ -57,7 +57,7 @@ could around each form.
 - No Guard: Every move it uses and every move used on it cannot miss. Zap Cannon (120 BP, 100% paralysis) becomes a guaranteed paralysis spread-control tool; Focus Blast/Thunder/Hurricane are 100% accurate.
 - Takes 4x damage from: none. Takes 2x from: Ground.
 - Resists (half damage): Electric, Flying, Steel. Quarter damage: none. Immune to: none.
-- Top Speed with full investment: 200. Megas faster than that: Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Mewtwo Mega Y 211, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204; tied with Gengar Mega, Mewtwo Mega X.
+- Top Speed with full investment: 200. Megas faster than that: Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204; tied with Gengar Mega.
 - One-hit knockouts against the 21 key threats, with no item: 5 of 21 as a special attacker.
 - Knocked out in one hit by 11 of the 21 key threats when it has no bulk investment.
 
@@ -245,7 +245,7 @@ A's line on Sneasler, "wins the exchange every time", ignores Volt Tackle recoil
 - **Mega X** is a narrower anti-terrain Fake Out lead. It is the better pick only if a team specifically needs to deny Rillaboom and Indeedee terrain.
 
 ### Conclusion
-Rotom Judge rules that Mega Raichu Y is the better Mega (Mega Raichu X 63, Mega Raichu Y 79).
+Rotom Judge rules that Mega Raichu Y is the better form (Mega Raichu X 63, Mega Raichu Y 79).
 
 Mega Raichu Y wins, 79 to 63.
 

@@ -17,7 +17,7 @@ const RULES = `
 GROUND RULES (Pokemon Champions, Regulation M-C doubles, Level 50, bring 6 pick 4):
 - Stat points: 66 total, max 32 per stat (not EVs). Positive nature = x1.1.
 - Item Clause: all six items distinct. Species Clause: no duplicate species. Only ONE Mega Evolution per battle.
-- NOT in Champions: Toxic Orb, Flame Orb, Black Sludge, Covert Cloak, Safety Goggles, Clear Amulet. Check any item
+- NOT in Champions: Choice Band, Choice Specs, Toxic Orb, Flame Orb, Black Sludge, Covert Cloak, Safety Goggles, Clear Amulet. Check any item
   against the engine's ITEMS list before using it. Mewtwo is not in the game (unless a SPECIAL NOTE below says this run is a Mewtwo hypothetical).
 - Spread moves take x0.75 in doubles. Screens are x0.667 in doubles, not 0.5.
 - Entry abilities (weather/terrain setters) resolve in Speed order and the LAST write wins, so the slower setter wins a
@@ -109,7 +109,7 @@ Be one-sided, but every claim must be true: a judge will recompute your numbers 
 ${RULES}${noteFor(sp)}
 
 Read ${ROOT}/rotom-judge/factsheets/${sp}.md first. Compute extra calcs where they strengthen your case (items like Life Orb,
-Choice Band, type boosters; Helping Hand; weather/terrain your form sets or wants; Speed tiers; survival with bulk investment).
+Expert Belt, type boosters - a Mega holds its stone and gets no item, and Choice Band / Choice Specs do NOT exist in Champions; Helping Hand; weather/terrain your form sets or wants; Speed tiers; survival with bulk investment).
 Argue about the format that exists: the usage-weighted threat board, not hypothetical opponents.
 
 Write your OPENING ARGUMENT, max ~650 words:

@@ -64,5 +64,16 @@
       "Mega Lucario",
       "Mega Lucario Z"
     ]
+  },
+  "Greninja": {
+    "a": "Mega Greninja",
+    "b": "Ash-Greninja",
+    "winner": "Ash-Greninja",
+    "score_a": 78,
+    "score_b": 70,
+    "legal": [
+      "Mega Greninja",
+      "Ash-Greninja"
+    ]
   }
 }

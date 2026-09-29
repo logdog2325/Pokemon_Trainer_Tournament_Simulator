@@ -1,11 +1,11 @@
 # Rotom Judge: Mega Garchomp vs Mega Garchomp Z
 
-**The ruling:** Rotom Judge ruled that **Mega Garchomp** is the better Mega. Final score: Mega Garchomp 75, Mega Garchomp Z 68 (out of 100).
+**The ruling:** Rotom Judge ruled that **Mega Garchomp** is the better form. Final score: Mega Garchomp 75, Mega Garchomp Z 68 (out of 100).
 
 ## What this is
-Rotom Judge is an experiment in settling a Pokémon argument with evidence. Some Pokémon in Pokémon Champions have two
-different Mega Evolutions, and players argue about which one is better. For each such Pokémon, two AI advocates each
-argued for one Mega form. They were not allowed to rely on memory: every claim had to come from a damage calculator
+Rotom Judge is an experiment in settling a Pokémon argument with evidence. Some Pokémon have two competing
+super-forms (two Mega Evolutions, or a Mega against a special battle form), and players argue about which is better. For
+each one, two AI advocates each argued for one form. They were not allowed to rely on memory: every claim had to come from a damage calculator
 built for Pokémon Champions, and they could run new calculations. Each advocate gave an opening argument, then read the
 other side's opening and wrote a rebuttal. An impartial AI judge then recomputed the disputed numbers itself, scored
 both sides, wrote its opinion and ruled on which Mega is better. Finally it built the strongest competitive team it
@@ -48,7 +48,7 @@ could around each form.
 - Sand Force: Rock / Ground / Steel moves x1.3 ONLY in sand. Garchomp does not set sand itself; without a sand partner the ability does nothing. Immune to sand chip.
 - Takes 4x damage from: Ice. Takes 2x from: Dragon, Fairy.
 - Resists (half damage): Fire, Poison, Rock. Quarter damage: none. Immune to: Electric.
-- Top Speed with full investment: 158. Megas faster than that: Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Mewtwo Mega Y 211, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Mewtwo Mega X 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183, Lucario Mega 180, Raichu Mega X 178, Skarmory Mega 178, Metagross Mega 178, Staraptor Mega 178, Gallade Mega 178, Pinsir Mega 172, Sharpedo Mega 172, Excadrill Mega 170, Floette Mega 169, Glimmora Mega 168, Charizard Mega X 167, Charizard Mega Y 167, Kangaskhan Mega 167, Dragonite Mega 167, Blaziken Mega 167, Gardevoir Mega 167, Medicham Mega 167, Glalie Mega 167, Falinks Mega 167.
+- Top Speed with full investment: 158. Megas faster than that: Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183, Lucario Mega 180, Raichu Mega X 178, Skarmory Mega 178, Metagross Mega 178, Staraptor Mega 178, Gallade Mega 178, Pinsir Mega 172, Sharpedo Mega 172, Excadrill Mega 170, Floette Mega 169, Glimmora Mega 168, Charizard Mega X 167, Charizard Mega Y 167, Kangaskhan Mega 167, Dragonite Mega 167, Blaziken Mega 167, Gardevoir Mega 167, Medicham Mega 167, Glalie Mega 167, Falinks Mega 167.
 - One-hit knockouts against the 21 key threats, with no item: 6 of 21 as a physical attacker; 9 of 21 as a physical attacker.
 - Knocked out in one hit by 4 of the 21 key threats when it has no bulk investment.
 
@@ -58,7 +58,7 @@ could around each form.
 - Takes 4x damage from: none. Takes 2x from: Ice, Dragon, Fairy.
 - Resists (half damage): Fire, Water, Electric, Grass. Quarter damage: none. Immune to: Ground.
 - Top Speed with full investment: 223. Megas faster than that: NONE; tied with Absol Mega Z, Lucario Mega Z.
-- One-hit knockouts against the 21 key threats, with no item: 5 of 21 as a physical attacker; 7 of 21 as a special attacker.
+- One-hit knockouts against the 21 key threats, with no item: 4 of 21 as a physical attacker; 7 of 21 as a special attacker.
 - Knocked out in one hit by 5 of the 21 key threats when it has no bulk investment.
 
 ## Round 1: Opening arguments
@@ -264,7 +264,7 @@ But B's headline counts are inflated by the two Focus Sash holders: 7/21 is real
 **Verdict.** On what was proven, Mega Garchomp is the stronger Mega for a team built around sand. Mega Z is a real alternative for a weather-free, fast special attacker.
 
 ### Conclusion
-Rotom Judge rules that Mega Garchomp is the better Mega (Mega Garchomp 75, Mega Garchomp Z 68).
+Rotom Judge rules that Mega Garchomp is the better form (Mega Garchomp 75, Mega Garchomp Z 68).
 
 Mega Garchomp wins narrowly, and only on a team built around sand.
 

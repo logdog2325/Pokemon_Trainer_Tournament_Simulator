@@ -148,7 +148,7 @@ Speed is not damage, but it decides who acts first. Z at 223 moves before Sneasl
 
 ---
 ## ⚖️ The Judge's Opinion
-_Having heard both openings and both rebuttals, Rotom Judge rules on which Mega is better, and why._
+_Having heard both openings and both rebuttals, Rotom Judge rules on which form is better, and why._
 
 Nearly every damage roll both sides cited reproduces. The debate turned on which premises survived.
 
@@ -172,7 +172,7 @@ B's weak points:
 Z is the better form. Its main liabilities are Intimidate, Fairy hits and Garchomp/Salamence, and each can be fixed with a partner. Mega's Fighting/Bug weakness and low Defense cannot be fixed that way.
 
 ### 🏆 Conclusion
-**Rotom Judge rules that Mega Absol Z is the better Mega** (Mega Absol 62, Mega Absol Z 81).
+**Rotom Judge rules that Mega Absol Z is the better form** (Mega Absol 62, Mega Absol Z 81).
 
 Mega Absol Z wins. Mega Absol's opening count of 16 OHKOs depended on a Life Orb, which it cannot hold alongside Absolite. Without it, and counting only 100%-accurate moves and non-Sash targets, Z OHKOs 7 threats (96.58% usage) and Mega OHKOs 5 (58.90%). Mega's defensive claims also used the Jolly spread, but A recommended Hasty. On Hasty (72 Def), Mega is OHKO'd by 16 of 21 threats, not 13, and Kingambit's Iron Head KOs 8/16. Z's 223 Speed outspeeds every board threat, and it is immune to both top Fake Out users and to Sneasler's and Staraptor's Close Combat. Mega's proven strength is 100%-accurate Ice Beam on Garchomp (12/16) and M-Salamence (8/16), which becomes a guaranteed KO on both with Helping Hand. Intimidate also knocks every one of Z's Helping Hand and +1 KOs under 100%. That makes Mega a niche Dragon-killer. Z is the better lead sweeper, as long as a partner handles Intimidate and Fairy.
 

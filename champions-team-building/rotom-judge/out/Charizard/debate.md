@@ -168,7 +168,7 @@ Mega Charizard Y still wins because it does its damage immediately, to both targ
 
 ---
 ## ⚖️ The Judge's Opinion
-_Having heard both openings and both rebuttals, Rotom Judge rules on which Mega is better, and why._
+_Having heard both openings and both rebuttals, Rotom Judge rules on which form is better, and why._
 
 Mega Y wins because it hits hard from the turn it Mega Evolves, and Mega X has to survive a setup turn first.
 
@@ -189,7 +189,7 @@ Neither side made an item or mechanic error. Minor loose points:
 **Engine note.** The engine's accuracy table has no entry for Dragon Rush, so the fact sheet lists it at 100%. In the main-series games Dragon Rush is 75% accurate. The team builder should prefer Dragon Claw.
 
 ### 🏆 Conclusion
-**Rotom Judge rules that Mega Charizard Y is the better Mega** (Mega Charizard X 77, Mega Charizard Y 89).
+**Rotom Judge rules that Mega Charizard Y is the better form** (Mega Charizard X 77, Mega Charizard Y 89).
 
 Mega Y wins. On turn one, Y in its own sun OHKOs 13/21 board threats using only moves at 90% accuracy or better, and still 10/21 without Overheat (100%-accurate Weather Ball, Solar Beam and others). Mega X on its recommended Flare Blitz / Dragon Claw set OHKOs only 9/21 at +0. X's case is real but conditional. After one Dragon Dance it has Speed 250 and OHKOs 15/21 with no item, and it takes Rock Slide at 37-59% from Sneasler and Garchomp, where the same attacks KO Y. But Garchomp (169 Speed) outspeeds X at +0 and OHKOs it with Dragon Claw (105.8-125.8%), and its spread Earthquake also does 97.4-117.4% (15/16), so X's setup turn is not safe. A's headline 21/21 used five attacking moves. On the four-move set it is 20/21 with Helping Hand and 18/21 with Life Orb. B's numbers all held and its concessions (8/21 OHKO'd on a neutral field, the Rock weakness, and Intimidate reducing it to 67-80% from Sneasler) were accurate. Y is an immediate sun spread nuke: Heat Wave in sun with Helping Hand OHKOs 9/21 across both targets. X is a single-target Dragon Dance sweeper that fits sand, rain or neutral-weather teams and needs Follow Me, Psychic Terrain and Intimidate support.
 

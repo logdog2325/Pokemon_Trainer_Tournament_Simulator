@@ -142,7 +142,7 @@ FORMS.forEach(f => {
         if (b && b.r.koRolls >= 14) ko++;
         w("| " + t.name + " | " + (t.usage ? t.usage + "%" : "-") + " | " + E.stats(t.mon).spe + " | " + (b ? b.move : "-") + " | " + (b ? fmt(b.r) : "-") + " | " + (b ? accuracy(b.move, ab, F.field.weather) + "%" : "") + " |");
       }
-      w("\nOHKOs (14+/16 rolls) with no item: **" + ko + " / " + BOARD.length + "**. A Life Orb is x1.3, a type item x1.2, Choice Band/Specs x1.5 on top.");
+      w("\nOHKOs (14+/16 rolls) with no item: **" + ko + " / " + BOARD.length + "**. A Mega holds its stone, so it gets no item. A non-Mega form can use Life Orb (x1.3), Expert Belt (x1.2 on super-effective hits) or a type item (x1.2). Choice Band and Choice Specs are NOT in Champions; Choice Scarf is.");
       w("");
     }
   }

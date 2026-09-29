@@ -186,7 +186,7 @@ Mega Lucario hits harder per attack, but Mega Lucario Z still wins: it moves bef
 
 ---
 ## ⚖️ The Judge's Opinion
-_Having heard both openings and both rebuttals, Rotom Judge rules on which Mega is better, and why._
+_Having heard both openings and both rebuttals, Rotom Judge rules on which form is better, and why._
 
 Almost every damage roll reproduces. The debate turned on three things: Focus Sash, Speed, and how many accurate OHKOs each form actually has.
 
@@ -211,7 +211,7 @@ Almost every damage roll reproduces. The debate turned on three things: Focus Sa
 **Engine gap (not scored against either side).** Aura Guard is not applied to Fake Out or Glaive Rush, because both are missing from `MF_CONTACT`. The real damage Z takes from those two moves is about half what is shown.
 
 ### 🏆 Conclusion
-**Rotom Judge rules that Mega Lucario is the better Mega** (Mega Lucario 77, Mega Lucario Z 80).
+**Rotom Judge rules that Mega Lucario is the better form** (Mega Lucario 77, Mega Lucario Z 80).
 
 Mega Lucario wins on evidence, even though Mega Lucario Z's advocate argued more cleanly and scores slightly higher (80 vs 77).
 
