@@ -1649,6 +1649,8 @@ function calcDamage(att,move,def,field){
   if(aAb==="Tinted Lens"&&eff<1)fm*=2;
   if(aAb==="Analytic"&&field.movingSecond)fm*=1.3;
   if(aAb==="Solar Power"&&!phys&&field.weather==="sun")fm*=1.5;
+  // Sand Force (Mega Garchomp): Rock / Ground / Steel moves x1.3, only while sand is up.
+  if(aAb==="Sand Force"&&field.weather==="sand"&&(wt==="Rock"||wt==="Ground"||wt==="Steel"))fm*=1.3;
   if((aAb==="Blaze"&&wt==="Fire"||aAb==="Torrent"&&wt==="Water"||aAb==="Overgrow"&&wt==="Grass"
      ||aAb==="Swarm"&&wt==="Bug")&&field.pinch)fm*=1.5;
   // Fairy Aura / Dark Aura boost that type for EVERY Pokemon on the field, both sides.
@@ -1677,6 +1679,8 @@ function calcDamage(att,move,def,field){
   if(dAb==="Multiscale"&&field.fullHP!==false)fm*=0.5;
   if((dAb==="Filter"||dAb==="Solid Rock"||dAb==="Prism Armor")&&eff>1)fm*=0.75;
   if(dAb==="Fluffy"&&MF_CONTACT.has(move))fm*=0.5;
+  // Aura Guard (Mega Lucario Z, Champions-original): halves damage from contact moves.
+  if(dAb==="Aura Guard"&&MF_CONTACT.has(move))fm*=0.5;
   if(dAb==="Ice Scales"&&!phys)fm*=0.5;
   if(dAb==="Punk Rock"&&MF_SOUND.has(move))fm*=0.5;
   // Resist berry on the defender. Consumed, so it only applies to the first qualifying hit —
