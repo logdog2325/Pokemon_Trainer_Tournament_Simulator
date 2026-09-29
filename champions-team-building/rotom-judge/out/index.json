@@ -1,0 +1,13 @@
+{
+  "Mewtwo": {
+    "a": "Mega Mewtwo X",
+    "b": "Mega Mewtwo Y",
+    "winner": "Mega Mewtwo Y",
+    "score_a": 82,
+    "score_b": 87,
+    "legal": [
+      "Mega Mewtwo X",
+      "Mega Mewtwo Y"
+    ]
+  }
+}
