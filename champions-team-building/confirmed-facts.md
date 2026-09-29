@@ -239,3 +239,15 @@ The calculator was pricing them against SpD. Now fixed via `MF_HITS_DEF` in `app
 and snow's Ice Def boost, and they **ignore Assault Vest** and sand's Rock SpD boost. Example: Timid Indeedee-M's
 Psyshock into an Assault Vest Jolly Sneasler went from being priced like Psychic (137.6%) to 229.3%. Any earlier
 Psyshock number in this repo was too low against physically frail targets.
+
+## Contact list and board fixes (2026-09-29, found by the Rotom Judge runs)
+- **33 contact moves were missing from `MF_CONTACT`** in `app/app.js`, including Fake Out, Glaive Rush, Power Whip,
+  Darkest Lariat, Horn Leech, High Jump Kick, Headlong Rush, Aqua Step, Collision Course and Drill Run. Tough Claws
+  (Mega Metagross, Mega Charizard X, Mega Golisopod), Aura Guard and Fluffy all read that list, so those moves were
+  neither boosted nor reduced. The Lucario judge flagged Fake Out and Glaive Rush; the rest came from a full check.
+  **Bitter Malice** (special, no contact) was wrongly on the list and has been removed.
+- **Incineroar cannot learn Knock Off in Champions.** Its real Dark STAB is Darkest Lariat. The Rotom Judge threat board
+  had given it Knock Off; a builder agent caught it. `engine.js` now refuses to load if any board threat has a move
+  outside its Champions movepool.
+- The six Rotom Judge debates (2026-09-29) ran BEFORE these two fixes. Their Incineroar and contact-move numbers are
+  close but not exact. The fact sheets have been regenerated for future runs.

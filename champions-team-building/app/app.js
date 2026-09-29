@@ -1515,7 +1515,10 @@ function megaPartnerFinder(baseName,formIndex,opts){
 // Champions' move data carries only {type, category, bp, priority}, so the flags an ability keys
 // off (contact, punch, pulse, bite, slicing) are kept here by name.
 const MF_HITS_DEF=new Set(["Psyshock","Psystrike","Secret Sword"]);
-const MF_CONTACT=new Set(["Tackle","Body Slam","Double-Edge","Take Down","Flare Blitz","Wild Charge","Head Smash",
+const MF_CONTACT=new Set(["Fake Out","Glaive Rush","Power Whip","Horn Leech","Darkest Lariat","Hammer Arm","Upper Hand",
+ "Axe Kick","High Jump Kick","Ice Spinner","Collision Course","Headlong Rush","Gyro Ball","Steel Wing","Spark","Raging Bull",
+ "Lunge","Crabhammer","Aqua Step","Phantom Force","Breaking Swipe","Dragon Tail","Drill Peck","Drill Run","Accelerock",
+ "Trailblaze","Rapid Spin","Covet","Thief","Low Sweep","Circle Throw","Storm Throw","Vital Throw","Tackle","Body Slam","Double-Edge","Take Down","Flare Blitz","Wild Charge","Head Smash",
  "Close Combat","Brick Break","Drain Punch","Mach Punch","Bullet Punch","Ice Punch","Fire Punch","Thunder Punch",
  "Shadow Punch","Focus Punch","Power-Up Punch","Meteor Mash","Iron Head","Zen Headbutt","Headbutt","Psychic Fangs",
  "Ice Fang","Fire Fang","Thunder Fang","Poison Fang","Crunch","Bite","Play Rough","Sucker Punch","Kowtow Cleave",
@@ -1524,7 +1527,7 @@ const MF_CONTACT=new Set(["Tackle","Body Slam","Double-Edge","Take Down","Flare 
  "Stomping Tantrum","High Horsepower","Earthquake_NO","Iron Tail","Shadow Claw","Shadow Sneak","Dragon Claw",
  "Dragon Rush","Outrage","Superpower","Wild Charge","Volt Tackle","Extreme Speed","Quick Attack","Facade",
  "Return","Last Resort","Giga Impact","Skull Bash","Razor Shell","Dire Claw","Rage Fist","Population Bomb",
- "Triple Axel","Icicle Crash","Avalanche","Payback","Knock Off","Throat Chop","Lash Out","Bitter Malice",
+ "Triple Axel","Icicle Crash","Avalanche","Payback","Knock Off","Throat Chop","Lash Out",
  "Spirit Break","Grassy Glide","Jet Punch","First Impression","Leech Life","Megahorn","Bullet Seed_NO",
  "Poison Jab","Gunk Shot","Sky Attack","Body Press","Bolt Beak","Fishious Rend","Rock Smash","Low Kick",
  "Heavy Slam","Heat Crash","Bulldoze_NO","Wood Hammer","Petal Blizzard_NO","Solar Blade","Seed Bomb_NO"]);

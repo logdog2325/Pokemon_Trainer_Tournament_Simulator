@@ -121,11 +121,12 @@ function attackingMoves(m, field) {
 
 // The Reg M-C threat board. Usage from Pikalytics gen9championsvgc2026regmc (M-C, not M-B).
 // Spreads are realistic common builds, not maximums. `moves` = what the threat hits you with.
+// Every move is checked against the species' Champions movepool at load time (see the guard below).
 const T = (name, usage, species, fi, item, nat, pts, moves, ab) => ({ name, usage, mon: mk(species, fi, item, nat, pts, moves, ab) });
 const BOARD = [
   T("Rillaboom", 37.18, "Rillaboom", -1, "Assault Vest", "Adamant", P(32,32,2,0,0,0), ["Wood Hammer","Grassy Glide","High Horsepower","U-turn"], "Grassy Surge"),
   T("Sneasler", 34.29, "Sneasler", -1, "Psychic Seed", "Jolly", P(2,32,0,0,0,32), ["Close Combat","Dire Claw","Rock Slide","Fake Out"], "Unburden"),
-  T("Incineroar", 26.77, "Incineroar", -1, "Sitrus Berry", "Careful", P(32,12,6,0,16,0), ["Flare Blitz","Knock Off","Fake Out","Parting Shot"], "Intimidate"),
+  T("Incineroar", 26.77, "Incineroar", -1, "Sitrus Berry", "Careful", P(32,12,6,0,16,0), ["Flare Blitz","Darkest Lariat","Fake Out","Parting Shot"], "Intimidate"),
   T("M-Salamence", 23.15, "Salamence", 0, "Salamencite", "Adamant", P(16,32,0,0,0,18), ["Double-Edge","Dragon Claw","Protect"], "Aerilate"),
   T("Kingambit", 22.44, "Kingambit", -1, "Chople Berry", "Adamant", P(32,32,2,0,0,0), ["Kowtow Cleave","Sucker Punch","Iron Head","Low Kick"], "Supreme Overlord"),
   T("Indeedee-F", 21.78, "Indeedee-Female", -1, "Sitrus Berry", "Bold", P(32,0,32,0,2,0), ["Expanding Force","Follow Me","Trick Room"], "Psychic Surge"),
@@ -145,6 +146,9 @@ const BOARD = [
   T("M-Tyranitar", null, "Tyranitar", 0, "Tyranitarite", "Adamant", P(32,32,2,0,0,0), ["Rock Slide","Crunch","Low Kick"], "Sand Stream"),
   T("M-Staraptor", 8.94, "Staraptor", 0, "Staraptite", "Jolly", P(25,9,0,0,0,32), ["Brave Bird","Close Combat","Tailwind"], "Contrary"),
 ];
+// Guard: a board move the species cannot learn in Champions is a data error (Incineroar was once given Knock Off).
+for (const t of BOARD) for (const mv of t.mon.set.moves)
+  if (!t.mon.entry.moves.includes(mv)) throw new Error("BOARD: " + t.name + " cannot learn " + mv + " in Champions");
 // Weather each board threat brings with it (so its own hits are priced in its own field).
 const THREAT_FIELD = { "Pelipper": { weather: "rain" }, "M-Froslass": { weather: "snow" },
   "M-Tyranitar": { weather: "sand" }, "Rillaboom": { terrain: "grassy" }, "Indeedee-F": { terrain: "psychic" } };

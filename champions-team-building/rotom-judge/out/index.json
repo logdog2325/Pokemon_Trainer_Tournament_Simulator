@@ -9,5 +9,60 @@
       "Mega Mewtwo X",
       "Mega Mewtwo Y"
     ]
+  },
+  "Absol": {
+    "a": "Mega Absol",
+    "b": "Mega Absol Z",
+    "winner": "Mega Absol Z",
+    "score_a": 62,
+    "score_b": 81,
+    "legal": [
+      "Mega Absol",
+      "Mega Absol Z"
+    ]
+  },
+  "Charizard": {
+    "a": "Mega Charizard X",
+    "b": "Mega Charizard Y",
+    "winner": "Mega Charizard Y",
+    "score_a": 77,
+    "score_b": 89,
+    "legal": [
+      "Mega Charizard X",
+      "Mega Charizard Y"
+    ]
+  },
+  "Raichu": {
+    "a": "Mega Raichu X",
+    "b": "Mega Raichu Y",
+    "winner": "Mega Raichu Y",
+    "score_a": 63,
+    "score_b": 79,
+    "legal": [
+      "Mega Raichu X",
+      "Mega Raichu Y"
+    ]
+  },
+  "Garchomp": {
+    "a": "Mega Garchomp",
+    "b": "Mega Garchomp Z",
+    "winner": "Mega Garchomp",
+    "score_a": 75,
+    "score_b": 68,
+    "legal": [
+      "Mega Garchomp",
+      "Mega Garchomp Z"
+    ]
+  },
+  "Lucario": {
+    "a": "Mega Lucario",
+    "b": "Mega Lucario Z",
+    "winner": "Mega Lucario",
+    "score_a": 77,
+    "score_b": 80,
+    "legal": [
+      "Mega Lucario",
+      "Mega Lucario Z"
+    ]
   }
 }

@@ -137,7 +137,7 @@ OHKOs (14+/16 rolls) with no item: **13 / 21**. A Life Orb is x1.3, a type item 
 |---|---|---|
 | Rillaboom | Wood Hammer | 102.7-122.4% KO |
 | Sneasler | Dire Claw | 50.8-59.6% |
-| Incineroar | Knock Off | 65.6-78.7% |
+| Incineroar | Darkest Lariat | 86.3-102.7% (2/16) |
 | M-Salamence | Double-Edge | 106-125.7% KO |
 | Kingambit | Kowtow Cleave | 119.1-142.1% KO |
 | Indeedee-F | Expanding Force | 14.8-17.5% |

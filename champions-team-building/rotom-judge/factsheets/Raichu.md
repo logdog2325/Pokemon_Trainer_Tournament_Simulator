@@ -20,7 +20,7 @@ Base stats hp 60 / atk 135 / def 95 / spa 90 / spd 95 / spe 110  (BST 585)
 
 ### Speed
 - Jolly/Timid 32: 178 | Jolly/Timid 0: 143 | neutral 32: 162 | Brave/Quiet 0 (Trick Room): 117
-- Megas faster than its max (178): Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183, Lucario Mega 180 | ties: Skarmory Mega, Metagross Mega, Staraptor Mega, Gallade Mega
+- Megas faster than its max (178): Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Mewtwo Mega Y 211, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Mewtwo Mega X 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183, Lucario Mega 180 | ties: Skarmory Mega, Metagross Mega, Staraptor Mega, Gallade Mega
 - Board threats it outspeeds at max: Rillaboom 105, Incineroar 80, M-Salamence 158, Kingambit 70, Indeedee-F 105, M-Golisopod 60, Garchomp 169, Farigiraf 85, Gholdengo 144, Pelipper 128, Milotic 101, Sylveon 97, Archaludon 123, Arcanine-Hisui 156, M-Baxcalibur 125, M-Metagross 148, M-Tyranitar 91
 - Board threats faster than it at max: Sneasler 189, Whimsicott 184, M-Froslass 189, M-Staraptor 178
 
@@ -97,7 +97,7 @@ Base stats hp 60 / atk 100 / def 55 / spa 160 / spd 80 / spe 130  (BST 585)
 
 ### Speed
 - Jolly/Timid 32: 200 | Jolly/Timid 0: 165 | neutral 32: 182 | Brave/Quiet 0 (Trick Room): 135
-- Megas faster than its max (200): Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204 | ties: Gengar Mega
+- Megas faster than its max (200): Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Mewtwo Mega Y 211, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204 | ties: Gengar Mega, Mewtwo Mega X
 - Board threats it outspeeds at max: Rillaboom 105, Sneasler 189, Incineroar 80, M-Salamence 158, Kingambit 70, Indeedee-F 105, M-Golisopod 60, Garchomp 169, Farigiraf 85, Gholdengo 144, Pelipper 128, Whimsicott 184, Milotic 101, Sylveon 97, Archaludon 123, Arcanine-Hisui 156, M-Baxcalibur 125, M-Froslass 189, M-Metagross 148, M-Tyranitar 91, M-Staraptor 178
 - Board threats faster than it at max: none
 

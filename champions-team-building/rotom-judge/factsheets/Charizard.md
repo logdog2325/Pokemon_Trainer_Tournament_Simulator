@@ -20,7 +20,7 @@ Base stats hp 78 / atk 130 / def 111 / spa 130 / spd 85 / spe 100  (BST 634)
 
 ### Speed
 - Jolly/Timid 32: 167 | Jolly/Timid 0: 132 | neutral 32: 152 | Brave/Quiet 0 (Trick Room): 108
-- Megas faster than its max (167): Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183, Lucario Mega 180, Raichu Mega X 178, Skarmory Mega 178, Metagross Mega 178, Staraptor Mega 178, Gallade Mega 178, Pinsir Mega 172, Sharpedo Mega 172, Excadrill Mega 170, Floette Mega 169, Glimmora Mega 168 | ties: Charizard Mega Y, Kangaskhan Mega, Dragonite Mega, Blaziken Mega, Gardevoir Mega, Medicham Mega, Glalie Mega, Falinks Mega
+- Megas faster than its max (167): Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Mewtwo Mega Y 211, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Mewtwo Mega X 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183, Lucario Mega 180, Raichu Mega X 178, Skarmory Mega 178, Metagross Mega 178, Staraptor Mega 178, Gallade Mega 178, Pinsir Mega 172, Sharpedo Mega 172, Excadrill Mega 170, Floette Mega 169, Glimmora Mega 168 | ties: Charizard Mega Y, Kangaskhan Mega, Dragonite Mega, Blaziken Mega, Gardevoir Mega, Medicham Mega, Glalie Mega, Falinks Mega
 - Board threats it outspeeds at max: Rillaboom 105, Incineroar 80, M-Salamence 158, Kingambit 70, Indeedee-F 105, M-Golisopod 60, Farigiraf 85, Gholdengo 144, Pelipper 128, Milotic 101, Sylveon 97, Archaludon 123, Arcanine-Hisui 156, M-Baxcalibur 125, M-Metagross 148, M-Tyranitar 91
 - Board threats faster than it at max: Sneasler 189, Garchomp 169, Whimsicott 184, M-Froslass 189, M-Staraptor 178
 
@@ -88,7 +88,7 @@ OHKOs (14+/16 rolls) with no item: **9 / 21**. A Life Orb is x1.3, a type item x
 |---|---|---|
 | Rillaboom | High Horsepower | 68.4-81.3% |
 | Sneasler | Close Combat | 60.6-72.3% |
-| Incineroar | Knock Off | 27.1-32.9% |
+| Incineroar | Darkest Lariat | 34.8-41.3% |
 | M-Salamence | Dragon Claw | 98.1-116.1% (14/16) |
 | Kingambit | Kowtow Cleave | 49-58.1% |
 | Indeedee-F | Expanding Force | 45.8-55.5% |
@@ -124,7 +124,7 @@ Base stats hp 78 / atk 104 / def 78 / spa 159 / spd 115 / spe 100  (BST 634)
 
 ### Speed
 - Jolly/Timid 32: 167 | Jolly/Timid 0: 132 | neutral 32: 152 | Brave/Quiet 0 (Trick Room): 108
-- Megas faster than its max (167): Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183, Lucario Mega 180, Raichu Mega X 178, Skarmory Mega 178, Metagross Mega 178, Staraptor Mega 178, Gallade Mega 178, Pinsir Mega 172, Sharpedo Mega 172, Excadrill Mega 170, Floette Mega 169, Glimmora Mega 168 | ties: Charizard Mega X, Kangaskhan Mega, Dragonite Mega, Blaziken Mega, Gardevoir Mega, Medicham Mega, Glalie Mega, Falinks Mega
+- Megas faster than its max (167): Absol Mega Z 223, Garchomp Mega Z 223, Lucario Mega Z 223, Alakazam Mega 222, Aerodactyl Mega 222, Beedrill Mega 216, Sceptile Mega 216, Greninja Mega 213, Mewtwo Mega Y 211, Manectric Mega 205, Lopunny Mega 205, Delphox Mega 204, Raichu Mega Y 200, Gengar Mega 200, Mewtwo Mega X 200, Pyroar Mega 195, Meowstic-Male Mega 193, Pidgeot Mega 190, Starmie Mega 189, Salamence Mega 189, Froslass Mega 189, Hawlucha Mega 187, Houndoom Mega 183, Absol Mega 183, Lucario Mega 180, Raichu Mega X 178, Skarmory Mega 178, Metagross Mega 178, Staraptor Mega 178, Gallade Mega 178, Pinsir Mega 172, Sharpedo Mega 172, Excadrill Mega 170, Floette Mega 169, Glimmora Mega 168 | ties: Charizard Mega X, Kangaskhan Mega, Dragonite Mega, Blaziken Mega, Gardevoir Mega, Medicham Mega, Glalie Mega, Falinks Mega
 - Board threats it outspeeds at max: Rillaboom 105, Incineroar 80, M-Salamence 158, Kingambit 70, Indeedee-F 105, M-Golisopod 60, Farigiraf 85, Gholdengo 144, Pelipper 128, Milotic 101, Sylveon 97, Archaludon 123, Arcanine-Hisui 156, M-Baxcalibur 125, M-Metagross 148, M-Tyranitar 91
 - Board threats faster than it at max: Sneasler 189, Garchomp 169, Whimsicott 184, M-Froslass 189, M-Staraptor 178
 
@@ -165,7 +165,7 @@ OHKOs (14+/16 rolls) with no item: **15 / 21**. A Life Orb is x1.3, a type item 
 |---|---|---|
 | Rillaboom | Wood Hammer | 27.7-32.9% |
 | Sneasler | Rock Slide | 100.6-121.3% KO |
-| Incineroar | Knock Off | 35.5-42.6% |
+| Incineroar | Darkest Lariat | 47.1-56.1% |
 | M-Salamence | Double-Edge | 116.1-136.8% KO |
 | Kingambit | Kowtow Cleave | 65.8-77.4% |
 | Indeedee-F | Expanding Force | 35.5-42.6% |
