@@ -145,6 +145,28 @@ A 70-85% chance of a KO still beats a 0% chance.
 **Conclusion:** Mega Y keeps its damage through Intimidate, moves first, and under its own Psychic Terrain it cannot be hit by the priority moves X's case depends on. It is therefore the Mega that converts against the real Reg M-C board, while X loses its main answer to Kingambit after one Intimidate.
 
 ---
+## ⚖️ The Judge's Opinion
+_Having heard both openings and both rebuttals, Rotom Judge rules on which Mega is better, and why._
+
+Every number both sides cited reproduces exactly. The case is decided by which weaknesses a partner can fix.
+
+Y's physical frailty is real. Kowtow Cleave OHKOs it through Psychic Terrain (119.1-142.1%), and Knock Off does 65.6-78.7%. But
+its priority deaths (Sucker Punch 14/16, First Impression 179-210%, Grassy Glide) are removed by Psychic Terrain on a grounded Y.
+A's strongest counter was the 105-vs-105 Indeedee/Rillaboom terrain tie. That is fixable, because a Relaxed or Quiet
+0-Speed Indeedee-F runs at 94 (engine), so it is slower than Rillaboom and wins the lead terrain every time. Y also keeps its
+damage through Intimidate, and its PT+HH Psystrike answers the #1 threat, Rillaboom (116.9-138.6%), which X can only
+dent (63.8-75.4%).
+
+X's central claim, that Fighting STAB beats the Dark types, fails against the most common Dark type itself. Incineroar's
+Intimidate drops X's Helping Hand Drain Punch on Kingambit to 71-84.1%, and Incineroar and Kingambit are the two most-used
+Dark types. A also made a mechanics error: Sylveon's Hyper Beam is single-target, so Wide Guard does not cover X's worst
+matchup. A's Fake Out/Steadfast point also conflicts with its own Psychic Terrain partner, which blocks Fake Out on X.
+A was right about accuracy: 8 of Y's 13 OHKOs need a 70-85% move. That is why the margin is narrow. B used it well by
+choosing Helping Hand plus Psychic Terrain boosts that turn 100%-accurate Psystrike into KOs. Also, Aura Sphere
+(never misses) with Helping Hand KOs Kingambit at 102.9-121.7% (engine), so Y's Kingambit answer does not have to be a
+70% Focus Blast.
+
+---
 ## The judge checks the numbers
 Every claim below was recomputed by the judge with the damage engine.
 

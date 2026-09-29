@@ -10,6 +10,17 @@ const files = process.argv.slice(2);
 if (!files.length) { console.error("usage: node render.js <results.json> [...]"); process.exit(1); }
 
 const quote = t => String(t || "(no text returned)").trim();
+// The judge's full opinion: the structured `opinion` field when the run has one, otherwise the
+// "## Ruling" section the judge wrote into out/<Species>/verdict.md.
+function judgeOpinion(r) {
+  if (r.verdict && r.verdict.opinion) return r.verdict.opinion;
+  const f = path.join(OUT, r.species, "verdict.md");
+  if (!fs.existsSync(f)) return null;
+  const md = fs.readFileSync(f, "utf8");
+  const m = md.match(/^## (?:Ruling|Short ruling|The ruling|Judge's opinion|Opinion)[^\n]*\n([\s\S]*?)(?=^## |(?![\s\S]))/m);
+  return m ? m[1].trim().replace(/\n?-{3,}\s*$/, "").trim() : null;
+}
+
 function renderMatchup(r) {
   const [A, B] = r.forms, v = r.verdict || {}, d = r.debate || {};
   const [ta, tb] = r.teams || [];
@@ -36,6 +47,12 @@ function renderMatchup(r) {
   L.push("## Round 2 — Rebuttals");
   L.push(`### ${A.name} responds`); L.push(quote(d.ra)); L.push("");
   L.push(`### ${B.name} responds`); L.push(quote(d.rb)); L.push("");
+  L.push("---");
+  L.push("## ⚖️ The Judge's Opinion");
+  L.push(`_Having heard both openings and both rebuttals, Rotom Judge rules on which Mega is better, and why._`);
+  L.push("");
+  L.push(quote(judgeOpinion(r) || v.summary));
+  L.push("");
   L.push("---");
   L.push("## The judge checks the numbers");
   L.push("Every claim below was recomputed by the judge with the damage engine.");

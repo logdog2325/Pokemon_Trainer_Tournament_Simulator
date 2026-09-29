@@ -52,6 +52,7 @@ const VERDICT = {
     rubric_a: { type: 'string', description: 'evidence/relevance/rebuttal/honesty points for A, e.g. "34/40, 20/25, 15/20, 12/15"' },
     rubric_b: { type: 'string' },
     summary: { type: 'string', description: '3-6 sentences: who won, the decisive numbers, what each form is actually for' },
+    opinion: { type: 'string', description: "the judge's full written opinion, first person, 250-450 words: having heard both sides, which Mega you think is better and why" },
     checked_claims: {
       type: 'array',
       items: {
@@ -84,7 +85,7 @@ const VERDICT = {
       required: ['game_plan', 'lean_into', 'must_cover', 'partner_ideas'],
     },
   },
-  required: ['winner', 'score_a', 'score_b', 'rubric_a', 'rubric_b', 'summary', 'checked_claims', 'brief_a', 'brief_b'],
+  required: ['winner', 'score_a', 'score_b', 'rubric_a', 'rubric_b', 'summary', 'opinion', 'checked_claims', 'brief_a', 'brief_b'],
 }
 
 const BUILD = {
@@ -169,13 +170,18 @@ STEP 2 - SCORE each side out of 100:
 - Honesty 15: accurate concessions, no overclaiming, no items or mechanics that don't exist in Champions.
 The winner is whichever form the evidence supports as better in this format, which usually but not always tracks the score.
 
-STEP 3 - TEAM BRIEFS. The debate now drives two teambuilds, one per form. For EACH form write a brief from what the
+STEP 3 - YOUR OPINION. Write the judge's opinion in the first person (250-450 words), as a ruling delivered after
+hearing both sides: which Mega you think is better in this format and WHY. Say which arguments persuaded you and which
+did not, what each advocate got right and got wrong (with the numbers), anything important NEITHER side raised, and
+what each form is genuinely best at. Return it in the opinion field and put it under "## Judge's opinion" in verdict.md.
+
+STEP 4 - TEAM BRIEFS. The debate now drives two teambuilds, one per form. For EACH form write a brief from what the
 debate PROVED (not what either side merely claimed): game_plan; lean_into (the strengths shown with numbers);
 must_cover (the threats and weaknesses the debate exposed, by name, with numbers); partner_ideas (specific Pokemon or
 roles, e.g. "sand setter for Sand Force", "Fairy answer", "speed control"). Be concrete: the team builder only sees your brief and the fact sheet.
 
-STEP 4 - Write ${ROOT}/rotom-judge/out/${sp}/verdict.md: the scores with the rubric breakdown, the checked-claims table,
-a short ruling, and both briefs. Then return the structured verdict.`
+STEP 5 - Write ${ROOT}/rotom-judge/out/${sp}/verdict.md: the scores with the rubric breakdown, the checked-claims table,
+your opinion, and both briefs. Then return the structured verdict.`
 }
 
 function buildPrompt(sp, me, brief, verdictSummary) {
