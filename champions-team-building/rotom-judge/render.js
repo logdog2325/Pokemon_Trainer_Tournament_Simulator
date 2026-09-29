@@ -30,8 +30,6 @@ function renderMatchup(r) {
   L.push("");
   L.push(`> **Winner: ${win}** — ${A.name} **${v.score_a}** / ${B.name} **${v.score_b}** (out of 100)`);
   L.push("");
-  L.push(quote(v.summary));
-  L.push("");
   L.push("| | " + A.name + " | " + B.name + " |");
   L.push("|---|---|---|");
   L.push("| Total | " + v.score_a + " | " + v.score_b + " |");
@@ -51,7 +49,12 @@ function renderMatchup(r) {
   L.push("## ⚖️ The Judge's Opinion");
   L.push(`_Having heard both openings and both rebuttals, Rotom Judge rules on which Mega is better, and why._`);
   L.push("");
-  L.push(quote(judgeOpinion(r) || v.summary));
+  L.push(quote(judgeOpinion(r) || ""));
+  L.push("");
+  L.push("### 🏆 Conclusion");
+  L.push(`**Rotom Judge rules that ${win === "Tie" ? "neither form is clearly better" : win + " is the better Mega"}** (${A.name} ${v.score_a}, ${B.name} ${v.score_b}).`);
+  L.push("");
+  L.push(quote(v.conclusion || v.summary));
   L.push("");
   L.push("---");
   L.push("## The judge checks the numbers");

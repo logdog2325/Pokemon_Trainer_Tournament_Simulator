@@ -2,8 +2,6 @@
 
 > **Winner: Mega Mewtwo Y** — Mega Mewtwo X **82** / Mega Mewtwo Y **87** (out of 100)
 
-Mega Mewtwo Y wins narrowly (87-82) in this hypothetical matchup. Every damage number either side cited checks out in the engine. X really is much bulkier against physical hits (Kowtow Cleave 44.8-53% vs Y's 119.1-142.1%), and 8 of Y's 13 OHKOs rely on 70-85% moves. But X's main claim, that Fighting STAB answers the Dark types, breaks against Incineroar's Intimidate: Helping Hand Drain Punch on Kingambit drops to 71-84.1%, no KO. A also made a mechanics error: Sylveon's Hyper Beam is single-target, so Wide Guard does not stop it. Y's priority weakness is fixable. Psychic Terrain blocks priority on the grounded Y, and a 0-Speed Relaxed Indeedee-F (94 Speed) is slower than Rillaboom (105), so it wins the terrain on the lead. Terrain plus Helping Hand Psystrike also KOs the #1 threat Rillaboom (116.9-138.6%), and Helping Hand Aura Sphere KOs Kingambit (102.9-121.7%) with no accuracy roll. X is the physically bulky, Intimidate-sensitive Helping Hand attacker. Y is a Psychic Terrain hyper-offense sweeper that must avoid Kowtow Cleave and Knock Off.
-
 | | Mega Mewtwo X | Mega Mewtwo Y |
 |---|---|---|
 | Total | 82 | 87 |
@@ -165,6 +163,11 @@ A was right about accuracy: 8 of Y's 13 OHKOs need a 70-85% move. That is why th
 choosing Helping Hand plus Psychic Terrain boosts that turn 100%-accurate Psystrike into KOs. Also, Aura Sphere
 (never misses) with Helping Hand KOs Kingambit at 102.9-121.7% (engine), so Y's Kingambit answer does not have to be a
 70% Focus Blast.
+
+### 🏆 Conclusion
+**Rotom Judge rules that Mega Mewtwo Y is the better Mega** (Mega Mewtwo X 82, Mega Mewtwo Y 87).
+
+Mega Mewtwo Y wins narrowly (87-82) in this hypothetical matchup. Every damage number either side cited checks out in the engine. X really is much bulkier against physical hits (Kowtow Cleave 44.8-53% vs Y's 119.1-142.1%), and 8 of Y's 13 OHKOs rely on 70-85% moves. But X's main claim, that Fighting STAB answers the Dark types, breaks against Incineroar's Intimidate: Helping Hand Drain Punch on Kingambit drops to 71-84.1%, no KO. A also made a mechanics error: Sylveon's Hyper Beam is single-target, so Wide Guard does not stop it. Y's priority weakness is fixable. Psychic Terrain blocks priority on the grounded Y, and a 0-Speed Relaxed Indeedee-F (94 Speed) is slower than Rillaboom (105), so it wins the terrain on the lead. Terrain plus Helping Hand Psystrike also KOs the #1 threat Rillaboom (116.9-138.6%), and Helping Hand Aura Sphere KOs Kingambit (102.9-121.7%) with no accuracy roll. X is the physically bulky, Intimidate-sensitive Helping Hand attacker. Y is a Psychic Terrain hyper-offense sweeper that must avoid Kowtow Cleave and Knock Off.
 
 ---
 ## The judge checks the numbers
