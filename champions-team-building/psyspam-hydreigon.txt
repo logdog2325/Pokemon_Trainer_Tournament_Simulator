@@ -53,7 +53,7 @@ Ability: Levitate
 Level: 50
 EVs: 2 HP / 32 SpA / 32 Spe
 Timid Nature
-- Tailwind
 - Draco Meteor
 - Dark Pulse
+- Flamethrower
 - Protect
