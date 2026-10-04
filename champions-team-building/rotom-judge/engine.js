@@ -86,7 +86,7 @@ const ACC = { "Focus Blast":70, "Stone Edge":80, "Hurricane":70, "Thunder":70, "
   "Inferno":50, "Leaf Storm":90, "Overheat":90, "Power Whip":85, "Air Slash":95, "Scale Shot":90,
   "Heat Wave":90, "Electroweb":95, "Dire Claw":100, "Sucker Punch":100, "Cross Chop":80, "High Jump Kick":90,
   "Poison Fang":100, "Fire Punch":100, "Ice Punch":100, "Thunder Punch":100, "Psycho Cut":100, "Solar Beam":100,
-  "Solar Blade":100, "Superpower":100, "Close Combat":100, "Crunch":100, "Aura Sphere":100 };
+  "Solar Blade":100, "Superpower":100, "Close Combat":100, "Crunch":100, "Aura Sphere":100, "Light of Ruin":90 };
 function accuracy(move, attAbility, weather) {
   if (attAbility === "No Guard") return 100;
   if (weather === "rain" && (move === "Thunder" || move === "Hurricane")) return 100;
