@@ -9,7 +9,7 @@ Bold Nature
 - Trick Room
 
 Sceptile @ Sceptilite
-Ability: Lightning Rod
+Ability: Overgrow
 Level: 50
 EVs: 4 HP / 32 SpA / 30 Spe
 Timid Nature
@@ -49,7 +49,7 @@ Adamant Nature
 - Rock Slide
 
 Delphox @ Delphoxite
-Ability: Levitate
+Ability: Blaze
 Level: 50
 EVs: 26 HP / 1 Def / 9 SpA / 30 Spe
 Timid Nature
