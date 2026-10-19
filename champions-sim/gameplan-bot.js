@@ -86,6 +86,29 @@ class GameplanBot extends RandomPlayerAI {
 			primordialsea: 'raindance', sandstream: 'sandstorm', snowwarning: 'snowscape', snowcloak: null }[ab] || null;
 	}
 
+	// ---- ability-based immunities (Levitate, Lightning Rod, Water Absorb, ...) ----
+	// getImmunity() only knows TYPE immunities; without this the bot fires Earthquake
+	// into Levitate Rotom and Thunderbolt into Lightning Rod Sceptile.
+	abilityBlocks(m, attacker, defender) {
+		const b = this.battle;
+		if (b.toID(attacker.ability) === 'moldbreaker' || b.toID(attacker.ability) === 'teravolt' || b.toID(attacker.ability) === 'turboblaze') return false;
+		const ab = b.toID(defender.ability);
+		if (m.type === 'Ground' && defender.isGrounded && !defender.isGrounded()) return true;   // Levitate / Air Balloon / Flying
+		const IMM = { Electric: ['lightningrod', 'voltabsorb', 'motordrive'], Water: ['stormdrain', 'waterabsorb', 'dryskin'],
+			Fire: ['flashfire', 'wellbakedbody'], Grass: ['sapsipper'], Ground: ['eartheater'] };
+		return (IMM[m.type] || []).includes(ab);
+	}
+	// a single-target Electric/Water move gets pulled into Lightning Rod / Storm Drain on the field
+	// (foe OR my own ally). Returns the redirecting Pokemon, or null.
+	redirector(m, attacker) {
+		const b = this.battle;
+		if (!['Electric', 'Water'].includes(m.type) || !['normal', 'any', 'adjacentFoe'].includes(m.target)) return null;
+		if (['moldbreaker', 'teravolt', 'turboblaze'].includes(b.toID(attacker.ability))) return null;
+		const want = m.type === 'Electric' ? 'lightningrod' : 'stormdrain';
+		const all = [...(this.mySide ? this.mySide.active : []), ...(this.foeSide ? this.foeSide.active : [])];
+		return all.find(p => p && !p.fainted && p !== attacker && b.toID(p.ability) === want) || null;
+	}
+
 	// ---- rough damage % of a move vs a defender (lvl 50, avg roll) ----
 	// We run out of live battle context, so we can't fire the sim's ability/item modify
 	// events (they crash) — instead we fold the modifiers that actually swing decisions
@@ -95,6 +118,7 @@ class GameplanBot extends RandomPlayerAI {
 		const m = b.dex.moves.get(moveId);
 		if (!m.basePower || m.category === 'Status') return 0;
 		if (!b.dex.getImmunity(m.type, defender)) return 0;
+		if (this.abilityBlocks(m, attacker, defender)) return 0;
 		const abil = b.toID(attacker.ability), item = b.toID(attacker.item), w = b.field.weather;
 		let bp = m.basePower;
 		const perHit = bp;                                       // base power of a single hit (for Technician)
@@ -139,12 +163,26 @@ class GameplanBot extends RandomPlayerAI {
 
 		// --- game-plan / status moves ---
 		if (id === 'trickroom') {
-			// set TR if my side is (on avg) slower than the foes and TR isn't up
-			if (this.trActive()) return { score: -50 };           // never re-cancel our own TR
-			const mySpe = me ? me.getStat('spe', false, true) : 100;
-			const foeSpe = foes.length ? Math.max(...foes.map(f => f.getStat('spe', false, true))) : 100;
-			// high priority to get the mode online early; still below a clean game-ending KO (>=160)
-			return { score: mySpe <= foeSpe ? (turn <= 2 ? 110 : 75) : -20 };
+			// Judge the TEAM, not the setter: a slow Indeedee on a fast team should not flip the
+			// speed order against its own attackers. Using TR while it is up ends it, which is
+			// exactly right when the opponent set it and it hurts us (reverse Trick Room).
+			const teamSpe = side => {
+				const mons = side ? side.pokemon.filter(p => p && !p.fainted && (p.isActive || p.position < 4 || p.isStarted)) : [];
+				return mons.length ? mons.reduce((a, p) => a + p.getStat('spe', false, true), 0) / mons.length : 100;
+			};
+			const mine = teamSpe(this.mySide), theirs = teamSpe(this.foeSide);
+			if (this.trActive()) return { score: mine > theirs ? 70 : -50 };   // reverse theirs; never cancel ours
+			return { score: mine < theirs * 0.9 ? (turn <= 2 ? 110 : 75) : -20 };
+		}
+		if (id === 'imprison') {
+			// Imprison blocks every foe from using moves we know. Its big use: a Trick Room
+			// user with Imprison stops the opponent's Trick Room for as long as it stays in.
+			const myMoves = me ? (me.moveSlots || []).map(ms => b.toID(ms.id)) : [];
+			const foeAll = this.foeSide ? this.foeSide.pokemon.filter(p => p && !p.fainted) : [];
+			const blocks = foeAll.some(f => (f.moveSlots || []).some(ms => myMoves.includes(b.toID(ms.id)) && b.toID(ms.id) !== 'imprison'));
+			const blocksTR = myMoves.includes('trickroom') && foeAll.some(f => (f.moveSlots || []).some(ms => b.toID(ms.id) === 'trickroom'));
+			if (me && me.volatiles && me.volatiles['imprison']) return { score: -40 };
+			return { score: blocksTR ? (this.trActive() ? 10 : 95) : blocks ? 20 : -20 };
 		}
 		if (['sleeppowder', 'spore', 'hypnosis', 'lovelykiss', 'darkvoid'].includes(id)) {
 			// sleep is premium disruption — buys the Trick Room / setup turn
@@ -207,6 +245,14 @@ class GameplanBot extends RandomPlayerAI {
 		} else if (['self', 'adjacentAlly'].includes(target)) {
 			return { score: 0 };
 		} else {
+			// Lightning Rod / Storm Drain soaks single-target Electric/Water moves: the hit does
+			// nothing. Into my OWN ally it's a deliberate +1 Sp. Atk boost (the Sceptile + Rotom
+			// combo), worth a little; into a foe it's a wasted turn that boosts them.
+			const rd = this.redirector(b.dex.moves.get(id), me);
+			if (rd) {
+				const mine = this.mySide && this.mySide.active.includes(rd);
+				return { score: mine ? 12 : -30 };
+			}
 			// pick the foe we hit hardest / can KO (focus-fire + priority revenge logic)
 			const prio = (b.dex.moves.get(id).priority || 0) > 0;
 			const sucker = id === 'suckerpunch';

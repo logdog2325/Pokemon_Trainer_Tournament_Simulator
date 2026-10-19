@@ -910,7 +910,7 @@ function renderLab(){
   const paste0=havePaste?E.exportPaste(STATE.team):"";
   app.innerHTML=`
     <div class="card"><b>Simulated matchups vs the meta</b>
-      <div class="muted" style="margin-top:4px">Plays real offline AI-vs-AI Reg M-B doubles battles (both sides the game-plan bot) right here in your browser — no server — and reports your win rate vs each archetype, worst first. Then optimize your bring for a bad one, or play it out in the Arena.</div></div>
+      <div class="muted" style="margin-top:4px">Plays real offline AI-vs-AI Reg M-C doubles battles (both sides the game-plan bot) right here in your browser — no server — and reports your win rate vs each archetype, worst first. Then optimize your bring for a bad one, or play it out in the Arena.</div></div>
     <div class="card" id="labstatus"><span class="muted">Loading engine…</span></div>
     <div class="card"><label class="muted">Your team (pokepaste — from your build; edit freely)</label>
       <textarea id="labpaste" style="width:100%;height:150px;margin-top:8px;background:var(--card2);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:10px;font:12px/1.4 ui-monospace,monospace" placeholder="paste a Showdown export / Champions team…">${paste0.replace(/</g,'&lt;')}</textarea>
@@ -921,11 +921,52 @@ function renderLab(){
           <select id="labn"><option value="2">Quick</option><option value="3" selected>Standard</option><option value="5">Thorough</option></select></div>
       </div>
       <button class="btn primary" id="runmx" style="width:100%;margin-top:8px">▶ Run matchup matrix</button></div>
+    <div class="card"><b>Head-to-head report</b> <span class="muted" style="font-size:12px">— like trickroom.dev: who's favoured, best 4 + leads for both sides, key Pokémon, turn-1 lines</span>
+      <textarea id="h2hpaste" style="width:100%;height:110px;margin-top:8px;background:var(--card2);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:10px;font:12px/1.4 ui-monospace,monospace" placeholder="paste the OPPONENT's team (open team sheet)…"></textarea>
+      <div class="seg" style="margin-top:8px"><div class="field" style="flex:1;margin:0"><label>Depth</label>
+        <select id="h2hlevel"><option value="quick">Quick (~1 min)</option><option value="standard">Standard (~3 min)</option></select></div></div>
+      <button class="btn primary" id="runh2h" style="width:100%;margin-top:8px">⚔ Analyze this matchup</button>
+      <div id="h2hout"></div></div>
     <div id="labout"></div>`;
   backBtn.onclick=()=>go(havePaste?"builder":"start");
   const status=$("#labstatus");
   sim().ready.then(()=>{ status.innerHTML=`<span style="color:var(--good)">● engine ready</span> <span class="muted">— runs 100% offline, on-device.</span>`; });
   $("#runmx").onclick=()=>runMatrix();
+  $("#runh2h").onclick=()=>{ const opp=$("#h2hpaste").value.trim(); if(!opp){$("#h2hout").innerHTML=`<div class="muted" style="margin-top:8px">Paste the opponent's team first.</div>`;return;} runReport($("#labpaste").value.trim(), opp, $("#h2hlevel").value, $("#h2hout")); };
+}
+// head-to-head matchup report (search/report-core.js running in the sim worker)
+async function runReport(paste, opponent, level, box){
+  if(!paste){ box.innerHTML=`<div class="muted" style="margin-top:8px">Paste your team above first.</div>`; return; }
+  box.innerHTML=`<div class="muted" id="h2hprog" style="margin-top:8px">Simulating… this plays a few thousand games on-device.</div>`;
+  const stageName={screen:"Testing every bring + lead for both sides",grid:"Playing the best plans against each other",lines:"Searching turn-1 lines"};
+  let r; try{ r=await sim().report(paste, opponent, level, (p)=>{const el=box.querySelector("#h2hprog"); if(el) el.textContent=`${stageName[p.stage]||p.stage}… ${p.total>1?Math.round(100*p.done/p.total)+'%':''}`;}); }
+  catch(e){ box.innerHTML=`<div style="color:var(--bad);margin-top:8px">Report failed: ${e.message}</div>`; return; }
+  box.innerHTML=reportHtml(r);
+}
+function reportHtml(r){
+  const pc=v=>Math.round(100*v)+"%", col=v=>v>=0.6?"var(--good)":v<0.4?"var(--bad)":"var(--txt)";
+  const plan=m=>`lead <b>${m.leads.join(" + ")}</b> · back ${m.back.join(" + ")}`;
+  const plans=(arr,key)=>arr.filter(m=>m.weight>0.02).map(m=>`<div style="font-size:12px;margin-top:3px"><b>${pc(m.weight)}</b> — ${plan(m)} <span class="muted">(${pc(m[key])})</span></div>`).join("");
+  const imp=arr=>arr.map(x=>`<div style="display:flex;gap:8px;font-size:12px;margin-top:2px"><span style="flex:1">${x.species}</span><b style="color:${col(x.broughtWinRate)}">${pc(x.broughtWinRate)}</b><span class="muted">${x.games}g</span></div>`).join("");
+  let lines="";
+  if(r.turn1){
+    const t=r.turn1, hp=t.humanPrior;
+    const rows=t.ourLines.slice().sort((a,b)=>((b.vsHumans??b.vsBestPlay)-(a.vsHumans??a.vsBestPlay)));
+    lines=`<div style="margin-top:12px"><b>Turn 1:</b> ${t.leads[0].join(" + ")} vs ${t.leads[1].join(" + ")}
+      <div class="muted" style="font-size:11px;margin-top:3px">their best moves: ${t.theirLines.filter(l=>l.weight>0.05).map(l=>`${l.line} (${pc(l.weight)})`).join(" · ")||"spread out"}</div>
+      ${hp?`<div class="muted" style="font-size:11px;margin-top:2px">ladder players usually click (${hp.replays} replays, ${hp.minRating}+): ${t.theirLines.slice().sort((a,b)=>b.human-a.human).slice(0,3).map(l=>`${l.line} (${pc(l.human)})`).join(" · ")}</div>`:""}
+      <table style="width:100%;font-size:12px;margin-top:6px;border-collapse:collapse"><tr class="muted" style="font-size:10px"><td>your line</td><td>vs best play</td><td>vs humans</td><td>worst</td></tr>
+      ${rows.map(l=>`<tr style="border-top:1px solid var(--line)${l.recommended?';background:var(--card2)':''}"><td style="padding:4px 2px">${l.recommended?"★ ":""}${l.line}</td><td style="color:${col(l.vsBestPlay)}">${pc(l.vsBestPlay)}</td><td style="color:${col(l.vsHumans??0.5)}">${l.vsHumans==null?"–":pc(l.vsHumans)}</td><td class="muted">${pc(l.worst)}</td></tr>`).join("")}</table></div>`;
+  }
+  return `<div style="margin-top:10px;padding:11px 13px;background:var(--card2);border-radius:10px">
+      <div style="display:flex;align-items:center;gap:14px"><div style="font-size:32px;font-weight:800;color:${col(r.winChance)}">${pc(r.winChance)}</div>
+      <div><b>${r.verdict}</b><div class="muted" style="font-size:11px">95% range ${pc(r.range[0])}–${pc(r.range[1])} · ${r.games} games · ${Math.round(r.seconds)}s</div></div></div></div>
+    <div style="margin-top:10px"><b>Your best plans</b> <span class="muted" style="font-size:11px">(how often to pick each · win% vs their mix)</span>${plans(r.ourPlans,"vsTheirMix")}</div>
+    <div style="margin-top:8px"><b>Their best plans</b>${plans(r.theirPlans,"vsOurMix")}</div>
+    <div style="display:flex;gap:14px;margin-top:10px"><div style="flex:1"><b style="font-size:12px">Your Pokémon</b> <span class="muted" style="font-size:10px">win% when brought</span>${imp(r.ourImportance)}</div>
+      <div style="flex:1"><b style="font-size:12px">Their Pokémon</b>${imp(r.theirImportance)}</div></div>
+    ${lines}
+    <div class="muted" style="font-size:10px;margin-top:8px">Bot-vs-bot simulation — a directional read, not perfect play.</div>`;
 }
 function labProblem(v){
   return `<div class="card" style="border-color:var(--bad)"><b style="color:var(--bad)">⚠ Team problem — fix this or the win-rates are meaningless</b>
@@ -967,10 +1008,12 @@ async function runMatrix(){
         <div class="scorebadge"><b style="color:${wrCol(r.wr)}">${r.wr}%</b><small>${r.games}g</small></div>
         <div style="display:flex;flex-direction:column;gap:4px">
           <button class="btn" data-opt="${encodeURIComponent(r.name)}" style="padding:6px 8px;font-size:11px">Optimize</button>
+          <button class="btn" data-rep="${encodeURIComponent(r.name)}" style="padding:6px 8px;font-size:11px">Report</button>
           <button class="btn" data-play="${encodeURIComponent(r.name)}" style="padding:6px 8px;font-size:11px">Play ▶</button></div>
       </div><div class="optout" data-for="${encodeURIComponent(r.name)}"></div>`).join("")}</div></div>`;
   out.querySelectorAll("[data-play]").forEach(b=>b.onclick=()=>window.open(`arena/arena.html?opp=${b.dataset.play}&team=${b64paste(paste)}`,"_blank"));
   out.querySelectorAll("[data-opt]").forEach(b=>b.onclick=()=>optimizeVs(decodeURIComponent(b.dataset.opt),paste,b));
+  out.querySelectorAll("[data-rep]").forEach(b=>b.onclick=()=>{ const nm=decodeURIComponent(b.dataset.rep); const box=[...document.querySelectorAll(".optout")].find(x=>decodeURIComponent(x.dataset.for)===nm); if(box) runReport(paste, nm, "quick", box); });
 }
 async function optimizeVs(opponent,paste,btn){
   const box=[...document.querySelectorAll(".optout")].find(x=>decodeURIComponent(x.dataset.for)===opponent);

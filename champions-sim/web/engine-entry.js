@@ -1,6 +1,6 @@
 /*
  * Browser engine entry — bundled by build.mjs into the app's engine.web.js.
- * Runs the REAL Champions Reg M-B engine (+ GameplanBot) entirely client-side:
+ * Runs the REAL Champions Reg M-C engine (+ GameplanBot) entirely client-side:
  * matchup matrix, exhaustive bring/lead/Mega optimizer, and live human-vs-AI
  * battles. Exposes globalThis.ChampSim; the Web Worker (app/sim/worker.js) drives it.
  */
@@ -9,6 +9,8 @@ const { TeamValidator } = require('../../pokemon-showdown/dist/sim/team-validato
 const { GameplanBot } = require('../gameplan-bot.js');
 const { MY_TEAM, META } = require('../teams.mjs');
 const { autospread } = require('../autospread.mjs');
+const { matchupReport } = require('../search/report-core.js');
+const HUMAN_PRIOR = require('../human/move-prior.json');   // what ladder players click (build-prior.mjs)
 const FORMAT = 'gen9championsvgc2026regmc';
 const cdex = Dex.mod('champions');
 const validator = new TeamValidator(FORMAT);
@@ -172,5 +174,12 @@ function startBattle(oppName, myPaste, onLine){
 }
 function choose(id, choice){const rec=battles[id];if(rec&&!rec.done&&typeof choice==='string')rec.streams.p1.write(choice);}
 
-globalThis.ChampSim = { opponents:Object.keys(META), teams:META, sprites:SPRITEMAP, defaultTeam:MY_TEAM, validate, matrix, optimize, startBattle, choose };
+// trickroom.dev-style head-to-head: favoured %, best four + leads for both sides, Pokemon
+// importance, and turn-1 lines vs best play and vs what ladder humans click.
+// `opponent` is an archetype name from META or a full paste.
+function report(paste, opponent, level, onProgress){
+  const theirs = META[opponent] || opponent;
+  return matchupReport(normalizePaste(paste), normalizePaste(theirs), { level: level || 'quick', prior: HUMAN_PRIOR }, onProgress);
+}
+globalThis.ChampSim = { opponents:Object.keys(META), teams:META, sprites:SPRITEMAP, defaultTeam:MY_TEAM, validate, matrix, optimize, report, startBattle, choose };
 globalThis.simReady = true;

@@ -60,5 +60,6 @@ esbuild.build({
   inject:[path.join(__dirname,'process-shim.js')],
   alias:{path:'path-browserify', util:path.join(__dirname,'util-shim.js'), 'node:util':path.join(__dirname,'util-shim.js'), 'util/types':path.join(__dirname,'util-shim.js')},
   loader:{'.map':'empty'}, plugins:[patchPlugin], logLevel:'error', legalComments:'none', minify:true,
+  keepNames:true,   // Battle.toJSON/fromJSON (search clones) rebuilds objects by class name
 }).then(()=>console.log('engine.web.js → '+OUT+'  ('+(fs.statSync(OUT).size/1024/1024).toFixed(2)+' MB)'))
  .catch(e=>{console.error('BUNDLE FAILED:', e.message); process.exit(1);});
