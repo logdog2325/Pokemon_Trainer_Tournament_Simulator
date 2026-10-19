@@ -16,7 +16,7 @@ const { BattleStream, getPlayerStreams, Teams } = require(path.join(DIST, 'sim')
 const { GameplanBot } = require(path.join(__dirname, 'gameplan-bot.js'));
 import { MY_TEAM, META } from './teams.mjs';
 import { autospread } from './autospread.mjs';
-const FORMAT = 'gen9championsvgc2026regmb';
+const FORMAT = 'gen9championsvgc2026regmc';
 
 function pack(paste) { return Teams.pack(Teams.import(autospread(paste))); }
 

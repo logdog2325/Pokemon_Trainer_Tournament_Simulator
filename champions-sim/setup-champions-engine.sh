@@ -2,7 +2,7 @@
 #
 # setup-champions-engine.sh
 # ---------------------------------------------------------------------------
-# Builds an OFFLINE Pokémon Champions battle engine (Reg M-B VGC doubles + Bo3)
+# Builds an OFFLINE Pokémon Champions battle engine (Reg M-C VGC doubles + Bo3)
 # on top of the pokemon-showdown submodule.
 #
 # The submodule (cRz-Shadows/pokemon-showdown) is our starting point because the
@@ -48,10 +48,10 @@ npm install --legacy-peer-deps
 echo "==> 5/6  compile the engine"
 node build
 
-echo "==> 6/6  smoke test: one offline Champions Reg M-B doubles battle"
+echo "==> 6/6  smoke test: one offline Champions Reg M-C doubles battle"
 cd "$ROOT"
 node champions-sim/battle-test.js
 
 echo
 echo "Done. The engine is at ./pokemon-showdown (offline-ready)."
-echo "Champions format ids:  gen9championsvgc2026regmb   |   gen9championsvgc2026regmbbo3"
+echo "Champions format ids:  gen9championsvgc2026regmc   |   gen9championsvgc2026regmcbo3"

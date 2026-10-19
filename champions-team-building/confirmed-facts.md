@@ -274,3 +274,15 @@ outside ITEMS. All three suggestions are removed and every fact sheet regenerate
 
 The damage items that DO exist: Life Orb (x1.3, 10% recoil), Expert Belt (x1.2 on super-effective hits), type items
 (x1.2, e.g. Charcoal, Mystic Water, Fairy Feather). A Mega Evolution holds its stone and gets none of them.
+
+## 2026-10 — Engine moved to Reg M-C; Indeedee movepools corrected
+- The offline sim now runs the official Showdown format **gen9championsvgc2026regmc** (upstream added it,
+  including Aura Guard). `champions-sim/validate-paste.mjs` validates any paste against it.
+- **Indeedee movepools were swapped in app/dex-data.js.** Per Showdown's Champions data:
+  **Follow Me is Indeedee-F only**; **Expanding Force is Indeedee-M only**. Both get Imprison, Trick Room,
+  Helping Hand, Psychic. Neither gets Ally Switch. Fixed from the Showdown learnsets.
+  (A Colbur Indeedee-M with Follow Me is NOT legal — the real Colbur Follow Me sets on Limitless are Indeedee-F.)
+- Opponent library rebuilt from **399 Reg M-C Limitless events / 18,673 teams** (refresh-top-teams.mjs now
+  takes --reg/--since/--until). 326 of 335 deduped teams pass the real M-C validator.
+- `movepool-audit-vs-showdown.txt` lists every app-vs-Showdown movepool difference still unreviewed
+  (many are form-mapping artifacts, e.g. base Rotom / Tauros / Lycanroc forms).

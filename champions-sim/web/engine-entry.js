@@ -9,7 +9,7 @@ const { TeamValidator } = require('../../pokemon-showdown/dist/sim/team-validato
 const { GameplanBot } = require('../gameplan-bot.js');
 const { MY_TEAM, META } = require('../teams.mjs');
 const { autospread } = require('../autospread.mjs');
-const FORMAT = 'gen9championsvgc2026regmb';
+const FORMAT = 'gen9championsvgc2026regmc';
 const cdex = Dex.mod('champions');
 const validator = new TeamValidator(FORMAT);
 

@@ -130,7 +130,7 @@ const BOARD = [
   T("Incineroar", 26.77, "Incineroar", -1, "Sitrus Berry", "Careful", P(32,12,6,0,16,0), ["Flare Blitz","Darkest Lariat","Fake Out","Parting Shot"], "Intimidate"),
   T("M-Salamence", 23.15, "Salamence", 0, "Salamencite", "Adamant", P(16,32,0,0,0,18), ["Double-Edge","Dragon Claw","Protect"], "Aerilate"),
   T("Kingambit", 22.44, "Kingambit", -1, "Chople Berry", "Adamant", P(32,32,2,0,0,0), ["Kowtow Cleave","Sucker Punch","Iron Head","Low Kick"], "Supreme Overlord"),
-  T("Indeedee-F", 21.78, "Indeedee-Female", -1, "Sitrus Berry", "Bold", P(32,0,32,0,2,0), ["Expanding Force","Follow Me","Trick Room"], "Psychic Surge"),
+  T("Indeedee-F", 21.78, "Indeedee-Female", -1, "Sitrus Berry", "Bold", P(32,0,32,0,2,0), ["Psychic","Follow Me","Trick Room"], "Psychic Surge"),
   T("M-Golisopod", 18.49, "Golisopod", 0, "Golisopite", "Adamant", P(32,32,2,0,0,0), ["First Impression","Close Combat","Liquidation"], "Tough Claws"),
   T("Garchomp", 17.12, "Garchomp", -1, "Life Orb", "Jolly", P(2,32,0,0,0,32), ["Earthquake","Dragon Claw","Rock Slide"], "Rough Skin"),
   T("Farigiraf", 15.90, "Farigiraf", -1, "Sitrus Berry", "Bold", P(27,0,12,5,17,5), ["Psychic","Foul Play","Trick Room"], "Armor Tail"),

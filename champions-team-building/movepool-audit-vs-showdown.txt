@@ -1,0 +1,214 @@
+app-only moves: 120  showdown-only moves: 1383
+Venusaur: Showdown has, app missing -> Attract, Bind, Double Team, Mud-Slap, Reflect, Safeguard, String Shot, Swagger, Block
+Charizard: Showdown has, app missing -> Slash, Attract, Curse, Double Team, Dynamic Punch, Mud-Slap, Reflect, Seismic Toss, Swagger, Toxic, Block, Howl, Quick Attack
+Blastoise: Showdown has, app missing -> Attract, Counter, Curse, Double Team, Dynamic Punch, Mud-Slap, Reflect, Scald, Seismic Toss, Swagger, Toxic, Block, Follow Me
+Pidgeot: Showdown has, app missing -> Air Cutter, Curse, Defog, Detect, Double-Edge, Double Team, Mud-Slap, Pluck, Reflect, Swagger, Toxic
+Arbok: Showdown has, app missing -> Aqua Tail, Attract, Bind, Curse, Disable, Double Team, Fissure, Infestation, Swagger, Torment
+Pikachu: Showdown has, app missing -> Attract, Counter, Covet, Curse, Detect, Double-Edge, Follow Me, Magnet Rise, Mud-Slap, Seismic Toss, Swagger, Teeter Dance, Toxic, Uproar
+Raichu: Showdown has, app missing -> Attract, Counter, Covet, Curse, Detect, Double-Edge, Follow Me, Magnet Rise, Mud-Slap, Seismic Toss, Swagger, Teeter Dance, Toxic, Uproar
+Raichu-Alola: Showdown has, app missing -> Attract, Counter, Covet, Curse, Detect, Double-Edge, Follow Me, Magnet Rise, Mud-Slap, Seismic Toss, Swagger, Teeter Dance, Toxic, Uproar
+Clefable: Showdown has, app missing -> Ally Switch, Attract, Counter, Covet, Curse, Detect, Double Team, Dynamic Punch, Heal Bell, Iron Tail, Last Resort, Mega Kick, Minimize, Mud-Slap, Pound, Recycle, Role Play, Seismic Toss, Soft-Boiled, Swagger, Toxic, Zap Cannon, Belly Drum
+Ninetales: Showdown has, app missing -> Covet, Curse, Double Team, Reflect, Role Play, Swagger, Toxic
+Ninetales-Alola: Showdown has, app missing -> Aqua Tail, Covet, Double Team, Frost Breath, Heal Bell, Reflect, Role Play, Sheer Cold, Swagger, Toxic
+Wigglytuff: Showdown has, app missing -> Ally Switch, Attract, Charge Beam, Counter, Curse, Detect, Double Team, Dynamic Punch, Heal Bell, Mud-Slap, Pound, Recycle, Role Play, Seismic Toss, Swagger, Toxic, Zap Cannon, Tickle
+Vileplume: Showdown has, app missing -> Curse, Double-Edge, Double Team, Drain Punch, Gastro Acid, Infestation, Reflect, Swagger, Worry Seed
+Persian: app has but Showdown says NO -> Beat Up, Burning Jealousy, Confuse Ray, Flatter, Parting Shot, Quash, Smack Down
+Persian: Showdown has, app missing -> Attract, Detect, Mud-Slap, Petal Dance, Sing, Swagger, Torment, Toxic, Zap Cannon
+Arcanine: Showdown has, app missing -> Attract, Double Team, Mud-Slap, Reflect, Safeguard, Swagger, Toxic
+Alakazam: Showdown has, app missing -> Charge Beam, Counter, Curse, Dig, Double-Edge, Dynamic Punch, Focus Punch, Gravity, Knock Off, Night Shade, Psych Up, Recycle, Seismic Toss, Swagger, Torment, Toxic, Zap Cannon, Power Trick
+Machamp: Showdown has, app missing -> Curse, Double Team, Fissure, Focus Punch, Mud-Slap, Role Play, Smack Down, Swagger, Toxic, Vacuum Wave, Power Trick
+Victreebel: Showdown has, app missing -> Attract, Bind, Curse, Double-Edge, Double Team, Infestation, Morning Sun, Swagger, Belch, Teeter Dance
+Slowbro: Showdown has, app missing -> After You, Aqua Tail, Attract, Double-Edge, Double Team, Fissure, Mud-Slap, Recycle, Reflect, Swagger, Toxic, Zap Cannon
+Slowbro-Galar: Showdown has, app missing -> Attract, Scald
+Gengar: Showdown has, app missing -> Ally Switch, Attract, Double Team, Encore, Explosion, Infestation, Swagger, Torment, Uproar, Zap Cannon
+Starmie: Showdown has, app missing -> Attract, Curse, Double Team, Pain Split, Psych Up, Recycle, Reflect Type, Swagger, Toxic, Zap Cannon
+Mr. Mime: Showdown has, app missing -> Covet, Double Team, Focus Punch, Healing Wish, Infestation, Mud-Slap, Pound, Psych Up, Swagger, Toxic
+Pinsir: Showdown has, app missing -> Slash
+Tauros: app has but Showdown says NO -> Aqua Jet, Body Press, Bulk Up, Chilling Water, Drill Run, Fire Spin, Flame Charge, Flare Blitz, Hydro Pump, Liquidation, Overheat, Temper Flare, Water Pulse, Wave Crash, Will-O-Wisp
+Vaporeon: Showdown has, app missing -> Attract, Double Team, Heal Bell, Reflect, Sing, Swagger, Toxic
+Jolteon: Showdown has, app missing -> Attract, Double Team, Heal Bell, Iron Tail, Reflect, Sing, Swagger, Toxic
+Flareon: Showdown has, app missing -> Attract, Double Team, Heal Bell, Iron Tail, Reflect, Sing, Swagger, Toxic
+Snorlax: Showdown has, app missing -> After You, Double Team, Mega Kick, Psychic, Swagger, Toxic, Water Pulse, Whirlpool, Whirlwind
+Dragonite: Showdown has, app missing -> Attract, Bind, Curse, Detect, Double-Edge, Double Team, Horn Drill, Reflect, Swagger, Toxic, Whirlpool, Zap Cannon
+Meganium: Showdown has, app missing -> Attract, Detect, Double Team, Swagger, Toxic, Worry Seed
+Typhlosion: Showdown has, app missing -> Attract, Detect, Double Team, Iron Tail, Mud-Slap, Swagger, Toxic, Crush Claw, Thrash
+Typhlosion-Hisui: Showdown has, app missing -> Attract, Detect, Double Team, Iron Tail, Mud-Slap, Swagger, Toxic, Crush Claw, Thrash
+Feraligatr: Showdown has, app missing -> Slash, Attract, Detect, Double Team, Dynamic Punch, Scald, Seismic Toss, Swagger, Toxic
+Ariados: Showdown has, app missing -> Attract, Curse, Double-Edge, Double Team, Swagger
+Ampharos: Showdown has, app missing -> Attract, Counter, Curse, Double Team, Dynamic Punch, Heal Bell, Magnet Rise, Seismic Toss, Swagger, Toxic
+Azumarill: Showdown has, app missing -> Double-Edge, Mud-Slap, Attract, Covet, Curse, Double Team, Dynamic Punch, Mega Kick, Scald, Seismic Toss, Steel Roller, Swagger, Toxic
+Politoed: Showdown has, app missing -> Double-Edge, Mud-Slap, Counter, Curse, Detect, Double Team, Fissure, Mega Kick, Pound, Scald, Seismic Toss, Toxic, Sweet Kiss
+Espeon: Showdown has, app missing -> Baby-Doll Eyes, Double-Edge, Mud-Slap, Attract, Double Team, Heal Bell, Iron Tail, Sing, Swagger, Toxic
+Umbreon: Showdown has, app missing -> Baby-Doll Eyes, Double-Edge, Mud-Slap, Attract, Double Team, Heal Bell, Iron Tail, Sing
+Slowking: Showdown has, app missing -> After You, Aqua Tail, Attract, Double-Edge, Double Team, Fissure, Mud-Slap, Recycle, Toxic, Zap Cannon
+Slowking-Galar: Showdown has, app missing -> Attract, Scald
+Forretress: Showdown has, app missing -> Double-Edge, Self-Destruct, Attract, Double Team, String Shot, Swagger, Sweet Scent, Toxic
+Steelix: Showdown has, app missing -> Double-Edge, Self-Destruct, Double Team, Explosion, Mud-Slap, Psych Up, Roar, Swagger, Torment, Toxic
+Scizor: Showdown has, app missing -> Slash, Attract, Cross Poison, Detect, Morning Sun, Safeguard, Swagger, Toxic
+Skarmory: Showdown has, app missing -> Slash
+Houndoom: Showdown has, app missing -> Attract, Charm, Curse, Detect, Double Team, Role Play
+Tyranitar: Showdown has, app missing -> Attract, Detect, Double Team, Rock Polish, Torment, Toxic
+Sceptile: Showdown has, app missing -> Slash, Attract, Counter, Dynamic Punch, Mud-Slap, Pound, Safeguard, Seismic Toss, Swagger, Toxic, Crush Claw
+Blaziken: Showdown has, app missing -> Slash, Attract, Defog, Double Team, Dynamic Punch, Seismic Toss, Swagger, Toxic
+Swampert: Showdown has, app missing -> Aqua Tail, Attract, Double Team, Dynamic Punch, Scald, Seismic Toss, Swagger, Toxic
+Pelipper: Showdown has, app missing -> Attract, Defog, Double-Edge, Double Team, Mud-Slap, Pluck, Scald, Sky Attack, Swagger, Toxic
+Gardevoir: Showdown has, app missing -> Ally Switch, Attract, Double-Edge, Mega Kick, Mud-Slap, Recycle, Torment, Toxic, Sing
+Aggron: Showdown has, app missing -> Aerial Ace, Double Team, Magnet Rise, Rock Polish, Spite, Toxic, Water Pulse
+Medicham: Showdown has, app missing -> Attract, Double-Edge, Double Team, Mud-Slap, Recycle, Role Play, Seismic Toss, Swagger, Toxic
+Manectric: Showdown has, app missing -> Double-Edge, Double Team, Magnet Rise, Mud-Slap, Swagger, Toxic
+Swalot: Showdown has, app missing -> Attract, Counter, Double Team, Dynamic Punch, Explosion, Infestation, Pound, Sing, Swagger
+Sharpedo: Showdown has, app missing -> Slash, Double Team, Mud-Slap, Spite, Super Fang, Torment, Toxic
+Camerupt: Showdown has, app missing -> After You, Attract, Double Team, Swagger, Toxic
+Altaria: Showdown has, app missing -> Air Cutter, Attract, Double Team, Heal Bell, Mud-Slap, Psych Up, Swagger, Toxic
+Milotic: Showdown has, app missing -> Double Team, Swagger, Toxic
+Banette: Showdown has, app missing -> Slash, Ally Switch, Attract, Body Slam, Double-Edge, Double Team, Toxic
+Chimecho: Showdown has, app missing -> Attract, Bind, Double Team, Entrainment, Last Resort, Swagger, Torment, Toxic
+Absol: Showdown has, app missing -> Slash
+Glalie: Showdown has, app missing -> Attract, Double-Edge, Safeguard, Sing, Swagger, Toxic
+Salamence: Showdown has, app missing -> Attract, Double Team, Swagger, Toxic, Wish
+Metagross: Showdown has, app missing -> Ally Switch, Double Team, Dynamic Punch, Heavy Slam, Rock Polish, Toxic
+Torterra: Showdown has, app missing -> Double Team, Iron Tail, Safeguard, Swagger, Toxic
+Infernape: Showdown has, app missing -> Covet, Double Team, Role Play, Swagger, Toxic, Quick Guard
+Empoleon: Showdown has, app missing -> Covet, Defog, Double Team, Pluck, Quash, Scald, Toxic, Double Hit, Flail, Pound, Sing
+Staraptor: Showdown has, app missing -> Attract, Defog, Mud-Slap, Pluck, Toxic, Detect
+Luxray: Showdown has, app missing -> Attract, Double Team, Magnet Rise, Mud-Slap, Toxic
+Roserade: Showdown has, app missing -> Covet, Double-Edge, Double Team, Mud-Slap, Psych Up, Swagger, Sweet Kiss
+Rampardos: Showdown has, app missing -> Double Team, Rock Polish, Spite, Swagger, Toxic
+Bastiodon: Showdown has, app missing -> Double Team, Magnet Rise, Rock Polish, Torment, Toxic
+Lopunny: Showdown has, app missing -> Charge Beam, Covet, Double Team, Endeavor, Heal Bell, Last Resort, Mud-Slap, Pound, Swagger, Toxic, Water Pulse
+Garchomp: Showdown has, app missing -> Slash, Attract, Double Team, Mud-Slap, Roar, Swagger, Toxic
+Lucario: Showdown has, app missing -> Attract, Double Team, Follow Me, Magnet Rise, Mud-Slap, Role Play, Swagger, Toxic
+Hippowdon: Showdown has, app missing -> Attract, Double Team, Iron Tail, Swagger, Toxic, Water Pulse, Weather Ball
+Toxicroak: Showdown has, app missing -> Acupressure, Attract, Double Team, Role Play, Torment
+Abomasnow: Showdown has, app missing -> Attract, Double Team, Light Screen, Role Play, Safeguard, Synthesis, Toxic, Worry Seed
+Weavile: Showdown has, app missing -> Slash, Attract, Crush Claw, Curse, Detect, Double-Edge, Double Team, Dynamic Punch, Iron Tail, Mud-Slap, Psych Up, Swagger, Torment, Toxic, Whirlpool
+Rhyperior: Showdown has, app missing -> Ancient Power, Aqua Tail, Attract, Block, Double Team, Dynamic Punch, Fissure, Seismic Toss, Spite, Swagger, Toxic, Whirlpool, Zap Cannon, Crush Claw, Thrash
+Leafeon: Showdown has, app missing -> Attract, Double Team, Heal Bell, Iron Tail, Reflect, Sing, Swagger, Toxic
+Glaceon: Showdown has, app missing -> Attract, Double Team, Heal Bell, Iron Tail, Reflect, Sing, Swagger, Toxic
+Gliscor: Showdown has, app missing -> Slash, Aqua Tail, Bug Bite, Curse, Defog, Detect, Double Team, Guillotine, Power Trick, Rock Polish, Roost, Swagger, Taunt, Torment
+Mamoswine: Showdown has, app missing -> Detect, Double Team, Light Screen, Swagger, Toxic
+Gallade: Showdown has, app missing -> Slash, Ally Switch, Attract, Double-Edge, Mud-Slap, Recycle, Swagger, Torment, Toxic, Sing, Wish
+Froslass: Showdown has, app missing -> Attract, Double-Edge, Sing, Swagger, Toxic
+Rotom: app has but Showdown says NO -> Overheat, Hydro Pump, Blizzard, Air Slash, Leaf Storm
+Serperior: Showdown has, app missing -> Aqua Tail, Bind, Defog, Double Team, Safeguard, Swagger, Torment, Toxic, Worry Seed
+Emboar: Showdown has, app missing -> Attract, Covet, Double Team, Swagger, Toxic
+Samurott: Showdown has, app missing -> Slash, Attract, Covet, Double Team, Scald, Swagger, Toxic
+Samurott-Hisui: Showdown has, app missing -> Slash, Attract, Covet, Double Team, Scald, Swagger, Toxic
+Watchog: Showdown has, app missing -> Aqua Tail, Covet, Double Team, Endeavor, Flail, Last Resort, Swagger, Tearful Look, Toxic
+Liepard: Showdown has, app missing -> Slash, Aerial Ace, Psych Up, Role Play, Spite, Toxic
+Simisage: Showdown has, app missing -> Covet, Double Team, Endeavor, Focus Punch, Gastro Acid, Knock Off, Role Play, Spiky Shield, Swagger, Synthesis, Tickle, Toxic, Worry Seed
+Simisear: Showdown has, app missing -> Covet, Double Team, Endeavor, Focus Punch, Gastro Acid, Knock Off, Role Play, Swagger, Tickle, Torment, Toxic
+Simipour: Showdown has, app missing -> Aqua Tail, Covet, Double Team, Endeavor, Focus Punch, Gastro Acid, Knock Off, Role Play, Swagger, Tickle, Torment, Toxic, Water Pulse
+Musharna: Showdown has, app missing -> After You, Baton Pass, Gravity, Heal Bell, Pain Split, Psych Up, Swagger, Torment, Toxic, Worry Seed
+Excadrill: Showdown has, app missing -> Slash, Attract, Double Team, Swagger, Toxic
+Conkeldurr: Showdown has, app missing -> Block, Double Team, Pound, Swagger, Toxic
+Scolipede: Showdown has, app missing -> Double Team, Endeavor, Infestation, Struggle Bug, Swagger
+Whimsicott: Showdown has, app missing -> Covet, Defog, Double Team, Knock Off, Swagger, Toxic
+Krookodile: Showdown has, app missing -> Attract, Double Team, Toxic, Mean Look
+Scrafty: Showdown has, app missing -> Attract, Double Team, Toxic
+Cofagrigus: Showdown has, app missing -> After You, Block, Double Team, Infestation, Knock Off, Pain Split, Psych Up, Role Play, Spite, Swagger, Toxic
+Garbodor: Showdown has, app missing -> Double Team, Infestation, Pound, Spite, Swagger
+Zoroark: Showdown has, app missing -> Attract, Copycat, Covet, Double Team, Swagger
+Reuniclus: Showdown has, app missing -> After You, Double Team, Explosion, Infestation, Role Play, Swagger, Toxic
+Vanilluxe: Showdown has, app missing -> Double Team, Swagger, Toxic, Water Pulse
+Eelektross: Showdown has, app missing -> Aqua Tail, Attract, Bind, Double Team, Magnet Rise, Swagger, Toxic
+Chandelure: Showdown has, app missing -> Ally Switch, Attract, Swagger, Toxic
+Beartic: Showdown has, app missing -> Slash, Attract, Covet, Double Team, Toxic
+Golurk: Showdown has, app missing -> Ally Switch, Block, Double Team, Pound, Rock Polish, Safeguard, Swagger, Toxic
+Hydreigon: Showdown has, app missing -> Aqua Tail, Attract, Double Team, Swagger, Torment, Toxic
+Volcarona: Showdown has, app missing -> Attract, Double Team, Magnet Rise, Swagger, Toxic
+Chesnaught: Showdown has, app missing -> Attract, Double Team, Swagger, Toxic, Worry Seed
+Delphox: Showdown has, app missing -> Ally Switch, Attract, Covet, Recycle, Swagger, Toxic
+Greninja: Showdown has, app missing -> Attract, Pound, Scald, Spite, Swagger, Toxic
+Diggersby: Showdown has, app missing -> Double Team, Endeavor, Last Resort, Recycle, Smack Down, Swagger, Torment, Toxic
+Talonflame: Showdown has, app missing -> Attract, Double Team, Swagger, Toxic
+Vivillon: Showdown has, app missing -> Electroweb
+Pyroar: Showdown has, app missing -> Attract, Double Team, Swagger, Toxic
+Florges: Showdown has, app missing -> After You, Ally Switch, Attract, Covet, Double Team, Heal Bell, Swagger, Toxic, Worry Seed
+Gogoat: Showdown has, app missing -> Attract, Double Team, Swagger, Toxic
+Pangoro: Showdown has, app missing -> Slash, Aerial Ace, Block, Covet, Double Team, Endeavor, Focus Punch, Roar, Spite, Swagger, Torment, Toxic
+Meowstic-Male: app has but Showdown says NO -> Extrasensory, Future Sight
+Meowstic-Male: Showdown has, app missing -> Ally Switch, Attract, Double Team, Heal Bell, Recycle, Swagger, Torment, Toxic
+Meowstic-Male: ability mismatch app Keen Eye,Infiltrator,Prankster (male hidden),Competitive (female hidden) vs Keen Eye,Infiltrator,Prankster
+Aegislash: Showdown has, app missing -> Slash, After You, Double Team, Magnet Rise, Spite, Swagger, Toxic
+Aromatisse: Showdown has, app missing -> Charge Beam, Covet, Double Team, Endeavor, Heal Bell, Swagger, Torment, Toxic
+Slurpuff: Showdown has, app missing -> Belly Drum, Covet, Double Team, Gastro Acid, Heal Bell, Psych Up, Swagger, Toxic
+Malamar: Showdown has, app missing -> Slash, Topsy-Turvy, Ally Switch, Attract, Bind, Flatter, Power Split, Role Play, Simple Beam, Toxic
+Barbaracle: Showdown has, app missing -> Mud-Slap, Slash, X-Scissor, Aerial Ace, Double Team, Endeavor, Infestation, Smack Down, Swagger, Tickle, Torment, Toxic, Water Pulse
+Dragalge: Showdown has, app missing -> Mud-Slap, Attract, Bounce, Swagger
+Clawitzer: Showdown has, app missing -> Mud-Slap, U-turn, Attract, Double Team, Iron Tail, Scald, Swagger, Toxic
+Heliolisk: Showdown has, app missing -> Mud-Slap, U-turn, Double Team, Magnet Rise, Pound, Psych Up, Swagger, Toxic
+Tyrantrum: Showdown has, app missing -> Aerial Ace, Block, Double Team, Swagger, Toxic
+Aurorus: Showdown has, app missing -> Aqua Tail, Charge Beam, Double Team, Dragon Tail, Frost Breath, Magnet Rise, Psych Up, Roar, Rock Polish, Swagger, Toxic, Water Pulse
+Sylveon: Showdown has, app missing -> Attract, Double Team, Heal Bell, Iron Tail, Sing, Swagger, Toxic
+Goodra: Showdown has, app missing -> Attract, Double Team, Infestation, Swagger
+Goodra-Hisui: Showdown has, app missing -> Acid Armor, Attract, Double Team, Infestation, Round, Snore, Swagger, Toxic
+Trevenant: Showdown has, app missing -> Attract, Double Team, Role Play, Worry Seed
+Gourgeist: Showdown has, app missing -> Charge Beam, Double Team, Flame Charge, Role Play, Spite, Swagger, Synthesis, Toxic
+Avalugg: Showdown has, app missing -> After You, Attract, Double Team, Rock Polish, Safeguard, Swagger, Toxic, Water Pulse
+Avalugg-Hisui: Showdown has, app missing -> After You, Attract, Double Team, Flash Cannon, Frost Breath, Rock Polish, Round, Safeguard, Snore, Surf, Swagger, Toxic, Water Pulse
+Noivern: Showdown has, app missing -> Attract, Swagger, Torment, Toxic
+Decidueye: app has but Showdown says NO -> Aura Sphere, Brick Break, Bulk Up, Close Combat, Coaching, Focus Blast, Focus Punch, Reversal, Rock Tomb, Scary Face, Taunt, Triple Arrows, Upper Hand
+Decidueye: Showdown has, app missing -> Attract, Covet, Safeguard, Sky Attack, Swagger, Toxic, Worry Seed
+Decidueye-Hisui: Showdown has, app missing -> Attract, Covet, Safeguard, Sky Attack, Swagger, Toxic, Worry Seed, Curse
+Incineroar: Showdown has, app missing -> Covet, Double Team, Torment, Toxic, U-turn
+Primarina: Showdown has, app missing -> Aqua Tail, Covet, Double Team, Pound, Scald, Swagger, Toxic, Aromatic Mist
+Toucannon: Showdown has, app missing -> U-turn, Defog, Double Team, Swagger, Toxic
+Crabominable: Showdown has, app missing -> Mud-Slap, Attract, Double Team, Frost Breath, Scald, Stone Edge, Toxic
+Lycanroc-Midday: app has but Showdown says NO -> Counter, Fire Punch, Fling, Focus Energy, Focus Punch, Foul Play, Knock Off, Lash Out, Low Sweep, Mega Kick, Outrage, Payback, Reversal, Shadow Claw, Throat Chop, Thunder Punch, Upper Hand, Uproar
+Lycanroc-Midday: Showdown has, app missing -> Double-Edge, Mud-Slap, Attract, Covet, Rock Polish, Swagger, Toxic
+Toxapex: Showdown has, app missing -> After You, Attract, Covet, Double Team, Frost Breath, Gastro Acid, Knock Off, Safeguard, Scald, Spite, Swagger
+Mudsdale: Showdown has, app missing -> Double-Edge, Mud-Slap, Attract, Double Team, Swagger, Toxic
+Araquanid: Showdown has, app missing -> X-Scissor, Double Team, Frost Breath, Scald, Swagger, Toxic
+Salazzle: Showdown has, app missing -> Mud-Slap, Will-O-Wisp, Attract, Covet, Double Team
+Tsareena: Showdown has, app missing -> U-turn, Attract, Covet, Double Team, Safeguard, Toxic, Worry Seed, Feint
+Golisopod: Showdown has, app missing -> Double Team, Swagger, Toxic
+Mimikyu: Showdown has, app missing -> Slash
+Kommo-o: Showdown has, app missing -> Aqua Tail, Double Team, Safeguard, Swagger, Toxic
+Rillaboom: Showdown has, app missing -> Attract
+Cinderace: Showdown has, app missing -> Ally Switch, Attract
+Inteleon: Showdown has, app missing -> Attract, Pound, Safeguard
+Corviknight: Showdown has, app missing -> Attract
+Flapple: Showdown has, app missing -> Attract
+Appletun: Showdown has, app missing -> Attract
+Sandaconda: Showdown has, app missing -> Attract
+Toxtricity: app has but Showdown says NO -> Magnetic Flux, Parabolic Charge
+Toxtricity: Showdown has, app missing -> Attract
+Hatterene: Showdown has, app missing -> Attract
+Grimmsnarl: Showdown has, app missing -> Attract, Thunder Wave
+Perrserker: Showdown has, app missing -> Attract
+Mr. Rime: Showdown has, app missing -> Pound, Charge Beam, Covet, Double Team, Focus Punch, Healing Wish, Infestation, Mud-Slap, Psych Up, Toxic
+Dragapult: Showdown has, app missing -> Ally Switch, Attract, Scald
+Wyrdeer: Showdown has, app missing -> Attract, Bounce, Detect, Double Team, Iron Tail, Last Resort, Magic Room, Mud-Slap, Round, Snore, Sucker Punch, Swagger, Toxic
+Kleavor: Showdown has, app missing -> Slash, Assurance, Attract, Cross Poison, Curse, Detect, Knock Off, Morning Sun, Psycho Cut, Roost, Round, Safeguard, Snore, Steel Wing, Swagger, Toxic
+Sneasler: Showdown has, app missing -> Slash
+Meowscarada: Showdown has, app missing -> Slash
+Quaquaval: Showdown has, app missing -> Pound
+Maushold: Showdown has, app missing -> Pound
+Squawkabilly: ability mismatch app Intimidate,Hustle,Guts (Green/Blue),Sheer Force (Yellow/White) vs Intimidate,Hustle,Guts
+Mabosstiff: Showdown has, app missing -> Charm
+Tinkaton: app has but Showdown says NO -> Psychic
+Palafin: app has but Showdown says NO -> Psychic
+Orthworm: app has but Showdown says NO -> Psychic
+Glimmora: app has but Showdown says NO -> Psychic
+Houndstone: app has but Showdown says NO -> Psychic
+Annihilape: app has but Showdown says NO -> Psychic
+Annihilape: Showdown has, app missing -> Aerial Ace, Attract, Covet, Detect, Double Team, Final Gambit, Iron Tail, Mega Kick, Mud-Slap, Payback, Psych Up, Role Play, Round, Snore, Toxic, Power Trip
+Farigiraf: Showdown has, app missing -> Attract, Double Team, Iron Tail, Mud-Slap, Recycle, Round, Snore, Sucker Punch, Swagger, Toxic, Zap Cannon
+Kingambit: Showdown has, app missing -> Slash, Attract, Beat Up, Double Team, Knock Off, Magnet Rise, Payback, Psycho Cut, Rock Polish, Role Play, Round, Screech, Snore, Swagger, Toxic
+Gholdengo: Showdown has, app missing -> Psychic
+Archaludon: Showdown has, app missing -> Slash, Attract, Body Press, Round, Screech, Snore, Steel Roller, Stomping Tantrum
+Hydrapple: Showdown has, app missing -> Attract
+Lycanroc-Midnight: app has but Showdown says NO -> Accelerock, Agility, Assurance, Drill Run, Quick Attack, Quick Guard, Tail Slap
+Lycanroc-Midnight: Showdown has, app missing -> Attract, Covet, Rock Polish, Swagger, Toxic
+Lycanroc-Dusk: app has but Showdown says NO -> Agility, Assurance, Fire Punch, Fling, Focus Punch, Foul Play, Knock Off, Lash Out, Low Sweep, Mega Kick, Payback, Shadow Claw, Sunny Day, Thunder Punch, Upper Hand, Uproar
+Lycanroc-Dusk: Showdown has, app missing -> Focus Energy, Attract, Covet, Rock Polish, Swagger, Toxic
+Tauros-Paldea-Blaze: app has but Showdown says NO -> Assurance
+Tauros-Paldea-Aqua: app has but Showdown says NO -> Assurance, Sunny Day
+Meowstic-Female: Showdown has, app missing -> Ally Switch, Attract, Double Team, Heal Bell, Recycle, Swagger, Torment, Toxic
+Persian-Alola: app has but Showdown says NO -> Pain Split
+Persian-Alola: Showdown has, app missing -> Attract, Swagger, Torment, Toxic
+Toxtricity-Low-Key: app has but Showdown says NO -> Shift Gear, Zap Cannon
+Toxtricity-Low-Key: Showdown has, app missing -> Attract
+Indeedee-Male: app has but Showdown says NO -> Alluring Voice, Baton Pass, Charm, Follow Me, Guard Split, Guard Swap, Heal Pulse, Light Screen, Reflect, Safeguard, Sing
+Indeedee-Female: app has but Showdown says NO -> After You, Encore, Expanding Force, Extrasensory, Gravity, Last Resort, Magic Room, Power Split, Power Swap, Psychic Noise, Tri Attack, Wonder Room

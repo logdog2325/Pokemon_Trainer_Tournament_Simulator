@@ -16,7 +16,7 @@ const require = createRequire(import.meta.url);
 const DIST = path.join(__dirname, '..', 'pokemon-showdown', 'dist');
 const { BattleStream, getPlayerStreams, Teams, Dex } = require(path.join(DIST, 'sim'));
 const { GameplanBot } = require(path.join(__dirname, 'gameplan-bot.js'));
-const FORMAT = 'gen9championsvgc2026regmb';
+const FORMAT = 'gen9championsvgc2026regmc';
 const cdex = Dex.mod('champions');
 
 import { MY_TEAM, META } from './teams.mjs';

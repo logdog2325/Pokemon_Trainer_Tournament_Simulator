@@ -15,6 +15,7 @@
  * Standings are cached to --cache-dir so re-runs are cheap; delete the dir to force a refetch.
  *
  * Usage: node refresh-top-teams.mjs <out-top-teams-deduped.md> [--debug] [--cache-dir <dir>]
+ *          [--reg M-C] [--since 2026-09-09] [--until YYYY-MM-DD]   (defaults: Reg M-C, its start date)
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -22,8 +23,12 @@ import path from "node:path";
 const OUT = process.argv[2];
 const DEBUG = process.argv.includes("--debug");
 const CACHE_DIR = (() => { const i = process.argv.indexOf("--cache-dir"); return i > 0 ? process.argv[i + 1] : ".standings-cache"; })();
+const argOf = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
+// Regulation window. M-B ran 2026-06-17 -> 2026-09-08; M-C started 2026-09-09.
+const REG = argOf("--reg", "M-C");
+const SINCE = argOf("--since", REG === "M-B" ? "2026-06-17" : "2026-09-09");
+const UNTIL = argOf("--until", REG === "M-B" ? "2026-09-08" : "9999-12-31");
 const BASE = "https://play.limitlesstcg.com";
-const MB_START = "2026-06-17";
 const MIN_EVENTS = 10, MIN_TEAMS = 500;
 const REQ_DELAY = 350, RETRY_BASE = 1000, MAX_RETRY = 5;
 const UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36";
@@ -74,7 +79,7 @@ async function discover() {
   const rows = await getJSON(`${BASE}/api/tournaments?game=VGC&limit=1000`);
   for (const t of (Array.isArray(rows) ? rows : [])) {
     const date = String(t.date || "").slice(0, 10);
-    if (!t.id || date < MB_START) continue;
+    if (!t.id || date < SINCE || date > UNTIL) continue;
     byId[t.id] = { id: t.id, date, players: +t.players || 0, name: t.name || "" };
   }
   return Object.values(byId);
@@ -94,8 +99,8 @@ const sigOf = dl => dl.map(m => `${norm(toDexName(m.id, m.name) || m.id)}@${norm
 
 async function main() {
   const events = await discover();
-  if (!events.length) { console.error("no M-B tournaments discovered"); process.exit(1); }
-  console.log(`discovered ${events.length} M-B-dated tournaments`);
+  if (!events.length) { console.error(`no ${REG} tournaments discovered`); process.exit(1); }
+  console.log(`discovered ${events.length} ${REG}-dated tournaments (${SINCE} -> ${UNTIL})`);
   fs.mkdirSync(CACHE_DIR, { recursive: true });
 
   const teams = new Map();        // signature -> aggregated team record
@@ -111,7 +116,7 @@ async function main() {
       await sleep(REQ_DELAY);
     }
     if (!Array.isArray(s) || !s.length) continue;
-    // Champions guard: a Reg M-B event carries Mega stones; a same-dated Reg H/I event does not.
+    // Champions guard: a Champions event carries Mega stones; a same-dated Reg H/I event does not.
     let st = 0, tot = 0;
     for (const p of s) for (const m of (p.decklist || [])) { tot++; if (isStone(m.item)) st++; }
     if (!tot || st / tot < 0.05) { if (DEBUG) console.error("  non-Champions", ev.name); continue; }
@@ -189,9 +194,9 @@ async function main() {
     (b.megas.length + b.pairs.length) - (a.megas.length + a.pairs.length) || b.t.score - a.t.score);
 
   const stamp = new Date().toISOString().slice(0, 10);
-  let md = "CHAMPIONS REG M-B — TOP TOURNAMENT TEAMS (deduplicated)\n";
+  let md = `CHAMPIONS REG ${REG} — TOP TOURNAMENT TEAMS (deduplicated)\n`;
   md += "======================================================================\n\n";
-  md += `Built from ${usedEvents} completed Limitless M-B tournaments (${totalTeams} teams), updated ${stamp}.\n`;
+  md += `Built from ${usedEvents} completed Limitless ${REG} tournaments (${totalTeams} teams), updated ${stamp}.\n`;
   md += "Each unique team is listed once, tagged with every Mega and pairing it is the most effective team for.\n";
   md += '"Most effective" = highest win rate against the most opponents (Wilson lower-bound on W/L, so a strong record over many games beats a tiny undefeated run).\n';
   md += `${list.length} unique teams cover ${Object.keys(bestFor).length} of ${megaSet.size} Megas + all ${Object.keys(pairFor).length} pairings. Sorted by how many they top.\n`;
