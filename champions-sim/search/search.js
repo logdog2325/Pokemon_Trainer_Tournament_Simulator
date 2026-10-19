@@ -161,6 +161,8 @@ function searchTurn(battle, sideId, opts = {}) {
 		let tot = 0;
 		for (const seed of seeds) {
 			const c = clone(battle, seed);
+			// a live battle may already hold one side's submitted choice (e.g. the Arena bot) — replace it
+			for (const sd of c.sides) sd.clearChoice();
 			const okA = c.choose(sideId, a.choice); if (!okA) { c.sides.find(s => s.id === sideId).clearChoice(); c.choose(sideId, 'default'); }
 			const okB = c.choose(foeId, b.choice); if (!okB) { c.sides.find(s => s.id === foeId).clearChoice(); c.choose(foeId, 'default'); }
 			c.log.length = 0; c.sentLogPos = 0;

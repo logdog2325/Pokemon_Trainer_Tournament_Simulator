@@ -26,7 +26,7 @@ function play(searchSide) {
 		}
 	}
 	if (!b.ended) return 0.5;
-	return b.winner === (searchSide === 'p1' ? 'A' : 'B') ? 1 : 0;
+	return b.winner === b.sides[searchSide === 'p1' ? 0 : 1].name ? 1 : 0;
 }
 
 let score = 0;

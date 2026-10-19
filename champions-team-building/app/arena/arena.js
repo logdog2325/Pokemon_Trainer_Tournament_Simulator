@@ -129,7 +129,26 @@ function setWeather(w, upkeep) {
 
 // ---------- controls ----------
 function clearControls() { $('#controls').innerHTML = ''; $('#field').classList.remove('targeting'); document.querySelectorAll('.slot.pick').forEach(s => s.classList.remove('pick')); }
-function submit(choice) { clearControls(); SIM.choose(battleId, choice); }
+function submit(choice) { clearControls(); clearAnalysis(); SIM.choose(battleId, choice); }
+
+// "Analyze turn": run the one-turn search in the worker and show your best lines.
+// Practice / prep only — using this during a real tournament would be ghosting.
+async function analyzeTurn(btn) {
+	btn.disabled = true; btn.textContent = '💡 Thinking…';
+	let box = document.getElementById('analysis');
+	if (!box) { box = el('div', 'analysis'); box.id = 'analysis'; $('#controls').before(box); }
+	box.innerHTML = '<div class="muted">Playing out every line pair a few times…</div>';
+	let r; try { r = await SIM.analyze(battleId); } catch (e) { r = { error: e.message }; }
+	btn.disabled = false; btn.textContent = '💡 Analyze turn';
+	if (r.error) { box.innerHTML = `<div class="muted">${r.error}</div>`; return; }
+	const pc = v => v == null ? '–' : Math.round(100 * v) + '%';
+	box.innerHTML = `<div class="ctrlhead">Turn ${r.turn} — your lines <small class="muted">(win chance vs best play · vs humans · worst)</small></div>`
+		+ r.lines.map(l => `<div class="aline${l.recommended ? ' best' : ''}"><span>${l.recommended ? '★ ' : ''}${l.line}</span><b>${pc(l.vsBestPlay)}</b><b>${pc(l.vsHumans)}</b><small>${pc(l.worst)}</small>${l.recommended ? ` <button class="btn p" data-ch="${encodeURIComponent(l.choice)}">Play ★</button>` : ''}</div>`).join('')
+		+ `<div class="muted" style="font-size:11px;margin-top:4px">their likely moves: ${r.theirLikely.map(t => `${t.line} (${pc(t.weight)})`).join(' · ')}</div>`;
+	const pb = box.querySelector('[data-ch]');
+	if (pb) pb.onclick = () => { box.remove(); submit(decodeURIComponent(pb.dataset.ch)); };
+}
+function clearAnalysis() { const b = document.getElementById('analysis'); if (b) b.remove(); }
 
 // returns true if this request rendered controls and the pump should pause for
 // your input; false for a `wait` request (keep the stream flowing).
@@ -169,6 +188,12 @@ function moveUI(req) {
 		});
 		c.appendChild(grid);
 		const row = el('div', 'row');
+		if (step === 0) {
+			// search the live position: best lines vs best play and vs how ladder humans play
+			const ab = el('button', 'btn', '💡 Analyze turn');
+			ab.onclick = () => analyzeTurn(ab);
+			row.appendChild(ab);
+		}
 		if (a.canMegaEvo && megaLeft) {
 			const mb = el('button', 'btn' + (megaOn ? ' p' : ''), megaOn ? '★ Mega: ON' : '☆ Mega Evolve');
 			mb.onclick = () => { megaOn = !megaOn; renderStep(); };

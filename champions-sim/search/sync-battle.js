@@ -89,7 +89,8 @@ function rollout(battle, { maxTurns = 40, configs = {} } = {}) {
 		if (!p.length) break;
 		for (const s of p) submit(battle, s.id, policyChoice(battle, s.id, configs[s.id]));
 	}
-	if (battle.ended) return battle.winner === 'A' ? 1 : battle.winner === 'B' ? 0 : 0.5;
+	// compare against the sides' own names: Arena battles call the players "You" / "AI · ..."
+	if (battle.ended) return battle.winner === battle.sides[0].name ? 1 : battle.winner === battle.sides[1].name ? 0 : 0.5;
 	return evaluate(battle);
 }
 

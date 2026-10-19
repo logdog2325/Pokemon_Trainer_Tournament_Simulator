@@ -30,6 +30,8 @@
   SimClient.prototype.optimize = function (paste, opponent, n, onProgress) { return this._call({ type: 'optimize', paste, opponent, n }, onProgress).then((r) => r.result); };
   // head-to-head matchup report; opponent = archetype name or a paste; level 'quick' | 'standard'
   SimClient.prototype.report = function (paste, opponent, level, onProgress) { return this._call({ type: 'report', paste, opponent, level }, onProgress).then((r) => r.result); };
+  // Arena: one-turn search from the live position of battle `bid` (your side)
+  SimClient.prototype.analyze = function (bid) { return this._call({ type: 'analyze', bid }).then((r) => r.result); };
   SimClient.prototype.startBattle = function (opponent, paste, onLine) {
     const bid = ++this.rid; this.battleHandlers[bid] = onLine;
     this.w.postMessage({ type: 'battle:start', bid, opponent, paste });

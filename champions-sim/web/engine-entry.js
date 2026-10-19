@@ -10,6 +10,7 @@ const { GameplanBot } = require('../gameplan-bot.js');
 const { MY_TEAM, META } = require('../teams.mjs');
 const { autospread } = require('../autospread.mjs');
 const { matchupReport } = require('../search/report-core.js');
+const { searchTurn } = require('../search/search.js');
 const HUMAN_PRIOR = require('../human/move-prior.json');   // what ladder players click (build-prior.mjs)
 const FORMAT = 'gen9championsvgc2026regmc';
 const cdex = Dex.mod('champions');
@@ -167,10 +168,26 @@ function startBattle(oppName, myPaste, onLine){
   const id=String(bid++); const bs=new BattleStream(); const streams=getPlayerStreams(bs);
   // Arena opponent: vary a strong bring each game so you get fresh practice reps.
   new GameplanBot(streams.p2,{battle:bs,side:'p2',vary:true}).start();
-  battles[id]={streams,done:false};
+  battles[id]={streams,bs,done:false};
   (async()=>{for await(const chunk of streams.p1){for(const line of chunk.split('\n')){if(!line)continue;onLine(line);if(line.startsWith('|win|')||/^\|tie\b/.test(line))battles[id].done=true;}}})();
   streams.omniscient.write('>start '+JSON.stringify({formatid:FORMAT})+'\n>player p1 '+JSON.stringify({name:'You',team:pack(myPaste&&myPaste.trim()?myPaste:MY_TEAM)})+'\n>player p2 '+JSON.stringify({name:'AI · '+oppName,team:pack(META[oppName]||Object.values(META)[0])}));
   return id;
+}
+// Arena "Analyze this turn": one-turn search from the live position (your side = p1).
+// Returns your candidate lines with win chances vs best play and vs human tendencies.
+function analyze(id){
+  const rec=battles[id]; const b=rec&&rec.bs&&rec.bs.battle;
+  if(!b||b.ended) return { error:'No live battle.' };
+  const req=b.sides[0].activeRequest;
+  if(!req||req.wait||!req.active||req.forceSwitch) return { error:'Analysis works on a normal move turn (not team preview or a forced switch).' };
+  const r=searchTurn(b,'p1',{k:6,samples:6,horizon:6,prior:HUMAN_PRIOR});
+  return {
+    turn:b.turn,
+    lines:r.ours.map((o,i)=>({ line:o.label, choice:o.choice, vsBestPlay:r.table[i].reduce((s,v,j)=>s+v*r.theirStrategy[j],0),
+      vsHumans:r.humanStrategy?r.table[i].reduce((s,v,j)=>s+v*r.humanStrategy[j],0):null, worst:r.worst[i], recommended:o===r.best }))
+      .sort((a,b)=>((b.vsHumans??b.vsBestPlay)-(a.vsHumans??a.vsBestPlay))),
+    theirLikely:r.theirs.map((o,j)=>({ line:o.label, weight:r.theirStrategy[j], human:r.humanStrategy?r.humanStrategy[j]:null })).sort((a,b)=>b.weight-a.weight).slice(0,3),
+  };
 }
 function choose(id, choice){const rec=battles[id];if(rec&&!rec.done&&typeof choice==='string')rec.streams.p1.write(choice);}
 
@@ -181,5 +198,5 @@ function report(paste, opponent, level, onProgress){
   const theirs = META[opponent] || opponent;
   return matchupReport(normalizePaste(paste), normalizePaste(theirs), { level: level || 'quick', prior: HUMAN_PRIOR }, onProgress);
 }
-globalThis.ChampSim = { opponents:Object.keys(META), teams:META, sprites:SPRITEMAP, defaultTeam:MY_TEAM, validate, matrix, optimize, report, startBattle, choose };
+globalThis.ChampSim = { opponents:Object.keys(META), teams:META, sprites:SPRITEMAP, defaultTeam:MY_TEAM, validate, matrix, optimize, report, analyze, startBattle, choose };
 globalThis.simReady = true;
