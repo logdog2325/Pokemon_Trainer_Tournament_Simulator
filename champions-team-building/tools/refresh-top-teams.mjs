@@ -65,7 +65,7 @@ const ALIAS = { basculegion: "Basculegion-Male", basculegionf: "Basculegion-Fema
 const MEGA_SPECIES = new Set(DEX.filter(d => d.megaStones && d.megaStones.length).map(d => norm(d.name)));
 const toDexName = (id, name) => BY_NORM[ALIAS[norm(id)] ? norm(ALIAS[norm(id)]) : norm(id)]
   || BY_NORM[norm(ALIAS[norm(id)] || "")] || ALIAS[norm(id)] || BY_NORM[norm(name)] || BY_NORM[norm(id)] || null;
-const isStone = it => { if (!it) return false; it = it.trim(); if (it.toLowerCase() === "eviolite") return false; return /ite( [XY])?$/.test(it); };
+const isStone = it => { if (!it) return false; it = it.trim(); if (it.toLowerCase() === "eviolite") return false; return /ite([ -][XYZ])?$/.test(it); };   // Charizardite Y, Garchompite Z, ...
 
 // Wilson lower bound on a win rate — rewards a good record over many games.
 function wilson(w, l) {
@@ -134,7 +134,7 @@ async function main() {
         for (const m of dl) {
           const dn = toDexName(m.id, m.name);
           if (dn && MEGA_SPECIES.has(norm(dn)) && isStone(m.item)) {
-            const x = String(m.item).match(/ ([XY])$/);
+            const x = String(m.item).match(/[ -]([XYZ])$/);
             megas.push(dn + (x ? "-" + x[1] : ""));
           }
         }

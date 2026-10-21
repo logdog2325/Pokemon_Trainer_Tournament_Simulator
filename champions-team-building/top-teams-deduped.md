@@ -1,16 +1,16 @@
 CHAMPIONS REG M-C — TOP TOURNAMENT TEAMS (deduplicated)
 ======================================================================
 
-Built from 399 completed Limitless M-C tournaments (18673 teams), updated 2026-10-19.
+Built from 413 completed Limitless M-C tournaments (19204 teams), updated 2026-10-21.
 Each unique team is listed once, tagged with every Mega and pairing it is the most effective team for.
 "Most effective" = highest win rate against the most opponents (Wilson lower-bound on W/L, so a strong record over many games beats a tiny undefeated run).
-335 unique teams cover 78 of 78 Megas + all 284 pairings. Sorted by how many they top.
+335 unique teams cover 81 of 81 Megas + all 292 pairings. Sorted by how many they top.
 NOTE: Limitless doesn't publish EV/point spreads — pastes have exact moves/item/ability/nature only.
 
 ######################################################################
 TEAM 1 — kotori · #1 at ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (M-C) (48 teams) · 9-0
 ######################################################################
-Best team for Megas: Gengar, Froslass
+Best team for Megas: Froslass, Gengar
 Best team for Pairings: Froslass + Gengar
 
 Gengar @ Gengarite
@@ -62,61 +62,223 @@ Sassy Nature
 - U-turn
 
 ######################################################################
-TEAM 2 — drbananaman · #1 at Thavorian Trials 11 (29 teams) · 8-0
+TEAM 2 — jaylun · #1 at ⚔️Torre Lotta Cup #1⚔️ | Reg M-C | Premi/Prizes🏆 (52 teams) · 10-0
 ######################################################################
-Best team for Megas: Tyranitar, Pidgeot
-Best team for Pairings: Pidgeot + Tyranitar
+Best team for Megas: Raichu-Y, Garchomp-Z
+Best team for Pairings: Garchomp-Z + Raichu-Y
 
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
-Jolly Nature
-- Rock Slide
-- Knock Off
-- Dragon Dance
-- Protect
-
-Excadrill @ Focus Sash
-Ability: Sand Rush
+Kingambit @ Focus Sash
+Ability: Defiant
 Adamant Nature
-- High Horsepower
+- Kowtow Cleave
 - Iron Head
-- Rock Slide
-- Protect
+- Sucker Punch
+- Low Kick
 
-Pidgeot @ Pidgeotite
-Ability: Keen Eye
-Timid Nature
-- Heat Wave
-- Hurricane
-- Tailwind
-- Protect
-
-Sinistcha @ Sitrus Berry
-Ability: Hospitality
-Calm Nature
-- Matcha Gotcha
-- Rage Powder
-- Trick Room
-- Protect
-
-Indeedee @ Choice Scarf
+Indeedee ♀ @ Rocky Helmet
 Ability: Psychic Surge
+Bold Nature
+- Psychic
+- Follow Me
+- Helping Hand
+- Protect
+
+Armarouge @ Life Orb
+Ability: Flash Fire
 Modest Nature
-- Mystical Fire
+- Armor Cannon
 - Expanding Force
-- Trick
+- Wide Guard
 - Protect
 
 Sneasler @ Psychic Seed
 Ability: Unburden
-Jolly Nature
+Adamant Nature
 - Close Combat
 - Dire Claw
-- Acrobatics
+- Rock Tomb
+- Protect
+
+Raichu @ Raichunite Y
+Ability: Lightning Rod
+Timid Nature
+- Zap Cannon
+- Focus Blast
+- Fake Out
+- Protect
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Protect
+- Dragon Pulse
+- Earth Power
+- Power Gem
+
+######################################################################
+TEAM 3 — yegorushhka · #1 at VGC Reg M-C Ingame Tour #9 (Shiny Gyarados) (44 teams) · 10-0
+######################################################################
+Best team for Megas: Salamence, Charizard-Y
+Best team for Pairings: Charizard-Y + Salamence
+
+Salamence @ Salamencite
+Ability: Intimidate
+Modest Nature
+- Draco Meteor
+- Hyper Voice
+- Flamethrower
+- Protect
+
+Charizard @ Charizardite Y
+Ability: Blaze
+Modest Nature
+- Weather Ball
+- Heat Wave
+- Ancient Power
+- Protect
+
+Incineroar @ Lum Berry
+Ability: Intimidate
+Careful Nature
+- Fake Out
+- Parting Shot
+- Flare Blitz
+- Snarl
+
+Garchomp @ Choice Scarf
+Ability: Rough Skin
+Adamant Nature
+- Earthquake
+- Stomping Tantrum
+- Dragon Claw
+- Rock Slide
+
+Kingambit @ Life Orb
+Ability: Defiant
+Adamant Nature
+- Assurance
+- Sucker Punch
+- Iron Head
+- Protect
+
+Whimsicott @ Focus Sash
+Ability: Prankster
+Timid Nature
+- Moonblast
+- Tailwind
+- Encore
 - Protect
 
 ######################################################################
-TEAM 3 — chamuscado12 · #10 at MetaVGC Arena #1 - Reg MC - Prizes: R$ 50 + Shiny (70 teams) · 5-2
+TEAM 4 — samurpo · #1 at Gym Leader GAUNTLET (Monotype Tour) (46 teams) · 8-0
+######################################################################
+Best team for Megas: Golisopod, Swampert
+Best team for Pairings: Golisopod + Swampert
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- Leech Life
+- Iron Head
+- Sucker Punch
+- Protect
+
+Basculegion-Female @ Focus Sash
+Ability: Swift Swim
+Modest Nature
+- Shadow Ball
+- Ice Beam
+- Muddy Water
+- Protect
+
+Pelipper @ Damp Rock
+Ability: Drizzle
+Bold Nature
+- Helping Hand
+- Tailwind
+- Weather Ball
+- Hurricane
+
+Swampert @ Swampertite
+Ability: Damp
+Adamant Nature
+- Wave Crash
+- Earthquake
+- Ice Punch
+- Protect
+
+Toxapex @ Leftovers
+Ability: Regenerator
+Impish Nature
+- Toxic
+- Infestation
+- Baneful Bunker
+- Wide Guard
+
+Primarina @ Sitrus Berry
+Ability: Liquid Voice
+Modest Nature
+- Calm Mind
+- Hyper Voice
+- Moonblast
+- Protect
+
+######################################################################
+TEAM 5 — bef · #1 at Final Weekend Qualifier| Prize Shiny Garchomp (24 teams) · 6-2
+######################################################################
+Best team for Megas: Kangaskhan, Barbaracle
+Best team for Pairings: Barbaracle + Kangaskhan
+
+Barbaracle @ Barbaracite
+Ability: Tough Claws
+Adamant Nature
+- Close Combat
+- Rock Slide
+- Shell Smash
+- Protect
+
+Farigiraf @ Sitrus Berry
+Ability: Armor Tail
+Relaxed Nature
+- Thunderbolt
+- Psychic
+- Helping Hand
+- Trick Room
+
+Torkoal @ Charcoal
+Ability: Drought
+Modest Nature
+- Eruption
+- Weather Ball
+- Heat Wave
+- Protect
+
+Venusaur @ Life Orb
+Ability: Chlorophyll
+Modest Nature
+- Leaf Storm
+- Sludge Bomb
+- Weather Ball
+- Protect
+
+Vivillon @ Focus Sash
+Ability: Compound Eyes
+Timid Nature
+- Hurricane
+- Rage Powder
+- Sleep Powder
+- Protect
+
+Kangaskhan @ Kangaskhanite
+Ability: Scrappy
+Adamant Nature
+- Double-Edge
+- Hammer Arm
+- Fake Out
+- Ice Punch
+
+######################################################################
+TEAM 6 — chamuscado12 · #10 at MetaVGC Arena #1 - Reg MC - Prizes: R$ 50 + Shiny (70 teams) · 5-2
 ######################################################################
 Best team for Megas: Steelix
 Best team for Pairings: Charizard-Y + Tyranitar, Steelix + Tyranitar
@@ -170,9 +332,117 @@ Modest Nature
 - Solar Beam
 
 ######################################################################
-TEAM 4 — liamjvgc · #1 at Corner Clash (Shiny Dnite Prize) (21 teams) · 8-0
+TEAM 7 — serosmurf · #2 at Off Meta Fight Club #7 (NEW Rules) (63 teams) · 7-1
 ######################################################################
-Best team for Megas: Gardevoir, Golisopod
+Best team for Megas: Baxcalibur, Gyarados
+Best team for Pairings: Baxcalibur + Gyarados
+
+Ninetales-Alola @ Light Clay
+Ability: Snow Warning
+Timid Nature
+- Blizzard
+- Moonblast
+- Aurora Veil
+- Protect
+
+Baxcalibur @ Baxcalibrite
+Ability: Thermal Exchange
+Adamant Nature
+- Glaive Rush
+- High Horsepower
+- Ice Shard
+- Protect
+
+Sneasler @ Focus Sash
+Ability: Unburden
+Jolly Nature
+- Close Combat
+- Dire Claw
+- Fake Out
+- Coaching
+
+Ceruledge @ Life Orb
+Ability: Flash Fire
+Adamant Nature
+- Bitter Blade
+- Shadow Sneak
+- Bulk Up
+- Protect
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Grassy Glide
+- High Horsepower
+- Fake Out
+
+Gyarados @ Gyaradosite
+Ability: Intimidate
+Jolly Nature
+- Aqua Tail
+- Crunch
+- Dragon Dance
+- Protect
+
+######################################################################
+TEAM 8 — drbananaman · #1 at Thavorian Trials 11 (29 teams) · 8-0
+######################################################################
+Best team for Megas: Tyranitar, Pidgeot
+
+Tyranitar @ Tyranitarite
+Ability: Sand Stream
+Jolly Nature
+- Rock Slide
+- Knock Off
+- Dragon Dance
+- Protect
+
+Excadrill @ Focus Sash
+Ability: Sand Rush
+Adamant Nature
+- High Horsepower
+- Iron Head
+- Rock Slide
+- Protect
+
+Pidgeot @ Pidgeotite
+Ability: Keen Eye
+Timid Nature
+- Heat Wave
+- Hurricane
+- Tailwind
+- Protect
+
+Sinistcha @ Sitrus Berry
+Ability: Hospitality
+Calm Nature
+- Matcha Gotcha
+- Rage Powder
+- Trick Room
+- Protect
+
+Indeedee @ Choice Scarf
+Ability: Psychic Surge
+Modest Nature
+- Mystical Fire
+- Expanding Force
+- Trick
+- Protect
+
+Sneasler @ Psychic Seed
+Ability: Unburden
+Jolly Nature
+- Close Combat
+- Dire Claw
+- Acrobatics
+- Protect
+
+######################################################################
+TEAM 9 — liamjvgc · #1 at Corner Clash (Shiny Dnite Prize) (21 teams) · 8-0
+######################################################################
+Best team for Megas: Gardevoir
+Best team for Pairings: Gardevoir + Golisopod
 
 Golisopod @ Golisopite
 Ability: Emergency Exit
@@ -223,7 +493,61 @@ Jolly Nature
 - Extreme Speed
 
 ######################################################################
-TEAM 5 — jorgegmz · #2 at Friday Fight Night 76! $25 Prize & Top 8 Graphic (127 teams) · 11-1
+TEAM 10 — zephyr0811 · #1 at M-C|LAST SEASON 2 TOUR👑CROWN FIGHT Bo3 TOUR #90👑 (71 teams) · 9-1
+######################################################################
+Best team for Megas: Lucario-Z
+Best team for Pairings: Gardevoir + Lucario-Z
+
+Gardevoir @ Gardevoirite
+Ability: Trace
+Modest Nature
+- Hyper Voice
+- Expanding Force
+- Grass Knot
+- Protect
+
+Indeedee ♀ @ Colbur Berry
+Ability: Psychic Surge
+Bold Nature
+- Psychic
+- Helping Hand
+- Follow Me
+- Protect
+
+Sneasler @ Psychic Seed
+Ability: Unburden
+Adamant Nature
+- Dire Claw
+- Close Combat
+- Rock Tomb
+- Protect
+
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Modest Nature
+- Flash Cannon
+- Aura Sphere
+- Dark Pulse
+- Detect
+
+Annihilape @ Choice Scarf
+Ability: Defiant
+Adamant Nature
+- Close Combat
+- Rock Slide
+- Phantom Force
+- Shadow Claw
+
+Armarouge @ Focus Sash
+Ability: Flash Fire
+Timid Nature
+- Armor Cannon
+- Expanding Force
+- Wide Guard
+- Protect
+
+######################################################################
+TEAM 11 — jorgegmz · #2 at Friday Fight Night 76! $25 Prize & Top 8 Graphic (127 teams) · 11-1
 ######################################################################
 Best team for Megas: Staraptor
 Best team for Pairings: Gardevoir + Staraptor
@@ -277,61 +601,168 @@ Jolly Nature
 - Ice Punch
 
 ######################################################################
-TEAM 6 — macarrones · #1 at Friday Fight Night 76! $25 Prize & Top 8 Graphic (127 teams) · 11-1
+TEAM 12 — zane286 · #1 at ⛩️Chadweezy95 Singles Champions Tournament Ep 1!⛩️ (3 teams) · 7-0
 ######################################################################
-Best team for Megas: Charizard-Y
-Best team for Pairings: Charizard-Y + Froslass
+Best team for Megas: Dragonite, Feraligatr
 
-Charizard @ Charizardite Y
-Ability: Blaze
-Modest Nature
-- Weather Ball
-- Heat Wave
-- Solar Beam
+Maushold @ Wide Lens
+Ability: Technician
+Jolly Nature
+- Population Bomb
+- Bite
+- Tidy Up
+- Encore
+
+Arboliva @ Grassy Seed
+Ability: Seed Sower
+Relaxed Nature
+- Giga Drain
+- Leech Seed
+- Strength Sap
 - Protect
 
-Kingambit @ Chople Berry
+Feraligatr @ Feraligite
+Ability: Sheer Force
+Jolly Nature
+- Liquidation
+- Ice Punch
+- Body Slam
+- Dragon Dance
+
+Espathra @ Focus Sash
+Ability: Speed Boost
+Modest Nature
+- Lumina Crash
+- Protect
+- Baton Pass
+- Calm Mind
+
+Dragonite @ Dragoninite
+Ability: Multiscale
+Modest Nature
+- Air Slash
+- Ice Beam
+- Flamethrower
+- Extreme Speed
+
+Heliolisk @ Life Orb
+Ability: Dry Skin
+Timid Nature
+- Thunderbolt
+- Hyper Voice
+- Volt Switch
+- Focus Blast
+
+######################################################################
+TEAM 13 — andrewswho · #1 at Chateau Knockout II (47 teams) · 6-0
+######################################################################
+Best team for Megas: Camerupt
+Best team for Pairings: Camerupt + Raichu-Y
+
+Raichu @ Raichunite Y
+Ability: Lightning Rod
+Timid Nature
+- Fake Out
+- Zap Cannon
+- Focus Blast
+- Protect
+
+Camerupt @ Cameruptite
+Ability: Solid Rock
+Quiet Nature
+- Heat Wave
+- Ancient Power
+- Earth Power
+- Protect
+
+Farigiraf @ Grassy Seed
+Ability: Armor Tail
+Sassy Nature
+- Psychic
+- Hyper Voice
+- Trick Room
+- Helping Hand
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Wood Hammer
+- Grassy Glide
+- U-turn
+
+Kingambit @ Focus Sash
 Ability: Defiant
 Adamant Nature
 - Kowtow Cleave
-- Iron Head
 - Sucker Punch
-- Protect
+- Iron Head
+- Low Kick
 
-Sneasler @ White Herb
-Ability: Unburden
-Adamant Nature
-- Close Combat
-- Dire Claw
-- Fake Out
-- Protect
-
-Froslass @ Froslassite
-Ability: Snow Cloak
-Modest Nature
+Dragapult @ Life Orb
+Ability: Clear Body
+Timid Nature
 - Shadow Ball
-- Blizzard
-- Aurora Veil
-- Protect
-
-Dragonite @ Life Orb
-Ability: Inner Focus
-Adamant Nature
-- Dragon Claw
-- Superpower
-- Tailwind
-- Extreme Speed
-
-Garchomp @ Sitrus Berry
-Ability: Rough Skin
-Adamant Nature
-- Earthquake
-- Dragon Claw
-- Rock Slide
+- Draco Meteor
+- Will-O-Wisp
 - Protect
 
 ######################################################################
-TEAM 7 — munch · #3 at Talon's FIGHT CLUB #106 POKEMON CHAMPIONS REG M-C (110 teams) · 10-1
+TEAM 14 — sooner · #1 at HeroicTitan’s VGC Battle Arena (37 teams) · 7-0
+######################################################################
+Best team for Megas: Absol-Z
+Best team for Pairings: Absol-Z + Garchomp-Z
+
+Absol @ Absolite Z
+Ability: Justified
+Adamant Nature
+- Night Slash
+- Detect
+- Close Combat
+- Shadow Claw
+
+Indeedee @ Choice Scarf
+Ability: Psychic Surge
+Modest Nature
+- Expanding Force
+- Protect
+- Trick
+- Mystical Fire
+
+Sneasler @ Psychic Seed
+Ability: Unburden
+Adamant Nature
+- Protect
+- Close Combat
+- Dire Claw
+- Throat Chop
+
+Milotic @ Leftovers
+Ability: Competitive
+Modest Nature
+- Ice Beam
+- Protect
+- Muddy Water
+- Scald
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Earth Power
+- Draco Meteor
+- Dragon Pulse
+- Protect
+
+Volcarona @ Passho Berry
+Ability: Flame Body
+Modest Nature
+- Struggle Bug
+- Tailwind
+- Rage Powder
+- Overheat
+
+######################################################################
+TEAM 15 — munch · #3 at Talon's FIGHT CLUB #106 POKEMON CHAMPIONS REG M-C (110 teams) · 10-1
 ######################################################################
 Best team for Megas: Raichu-X
 Best team for Pairings: Raichu-X + Staraptor
@@ -385,115 +816,115 @@ Careful Nature
 - Parting Shot
 
 ######################################################################
-TEAM 8 — merrypasta · #1 at VGC UU Regulation M-B "Edinburgh Regional" (10 teams) · 6-0
+TEAM 16 — vuultur · #1 at VGC UmbreNews 20.10.2026 #36 - Champion (62 teams) · 8-1
 ######################################################################
-Best team for Megas: Venusaur
-Best team for Pairings: Gardevoir + Venusaur
+Best team for Megas: Garchomp
+Best team for Pairings: Floette + Garchomp
 
-Gardevoir @ Gardevoirite
-Ability: Trace
-Modest Nature
-- Hyper Voice
-- Psyshock
-- Protect
-- Trick Room
-
-Venusaur @ Venusaurite
-Ability: Chlorophyll
-Modest Nature
-- Giga Drain
-- Sludge Bomb
-- Protect
-- Earth Power
-
-Rotom-Wash @ Sitrus Berry
-Ability: Levitate
-Modest Nature
-- Hydro Pump
-- Thunderbolt
-- Protect
-- Will-O-Wisp
-
-Aegislash @ Life Orb
-Ability: Stance Change
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
 Adamant Nature
-- Poltergeist
-- Iron Head
-- King's Shield
-- Shadow Sneak
-
-Scrafty @ Roseli Berry
-Ability: Intimidate
-Adamant Nature
-- Close Combat
-- Knock Off
 - Fake Out
-- Helping Hand
+- Wood Hammer
+- Grassy Glide
+- High Horsepower
 
-Talonflame @ Sharp Beak
-Ability: Gale Wings
+Sneasler @ Focus Sash
+Ability: Poison Touch
 Jolly Nature
-- Brave Bird
-- Flare Blitz
-- Protect
-- Tailwind
+- Fake Out
+- Close Combat
+- Dire Claw
+- Coaching
 
-######################################################################
-TEAM 9 — lucasnivy · #1 at Matcha Gotcha's Tourney (PRIVATE) (15 teams) · 6-0
-######################################################################
-Best team for Megas: Mawile
-Best team for Pairings: Floette + Mawile
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Sassy Nature
+- Fake Out
+- Flare Blitz
+- Helping Hand
+- Parting Shot
 
 Floette @ Floettite
-Ability: Fairy Aura
+Ability: Flower Veil
 Modest Nature
 - Dazzling Gleam
 - Draining Kiss
 - Calm Mind
 - Protect
 
-Clefable @ Leftovers
-Ability: Unaware
-Bold Nature
-- Moonblast
-- Follow Me
-- Life Dew
-- Protect
-
-Primarina @ Sitrus Berry
-Ability: Liquid Voice
-Modest Nature
-- Hyper Voice
-- Moonblast
-- Calm Mind
-- Protect
-
-Mawile @ Mawilite
-Ability: Huge Power
+Kingambit @ Life Orb
+Ability: Defiant
 Adamant Nature
-- Iron Head
+- Kowtow Cleave
 - Sucker Punch
-- Play Rough
+- Swords Dance
 - Protect
 
-Mimikyu @ Mental Herb
-Ability: Disguise
+Garchomp @ Garchompite
+Ability: Rough Skin
 Adamant Nature
-- Play Rough
-- Shadow Claw
-- Trick Room
+- Dragon Claw
+- Stomping Tantrum
+- Rock Slide
 - Protect
-
-Grimmsnarl @ Light Clay
-Ability: Prankster
-Impish Nature
-- Foul Play
-- Fake Out
-- Light Screen
-- Reflect
 
 ######################################################################
-TEAM 10 — 415jason · #1 at Champions' Frontier #3 (27 teams) · 7-0
+TEAM 17 — mindless_99 · #1 at London Corviknights VGC Weekly Tour 13! (Reg M-C) (64 teams) · 7-0
+######################################################################
+Best team for Megas: Delphox
+Best team for Pairings: Delphox + Salamence
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- U-turn
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Impish Nature
+- Fake Out
+- Flare Blitz
+- Darkest Lariat
+- Parting Shot
+
+Kingambit @ Chople Berry
+Ability: Defiant
+Adamant Nature
+- Protect
+- Swords Dance
+- Sucker Punch
+- Kowtow Cleave
+
+Sneasler @ Grassy Seed
+Ability: Unburden
+Adamant Nature
+- Protect
+- Fake Out
+- Close Combat
+- Dire Claw
+
+Salamence @ Salamencite
+Ability: Intimidate
+Timid Nature
+- Protect
+- Hyper Voice
+- Flamethrower
+- Draco Meteor
+
+Delphox @ Delphoxite
+Ability: Blaze
+Timid Nature
+- Protect
+- Heat Wave
+- Nasty Plot
+- Psychic
+
+######################################################################
+TEAM 18 — 415jason · #1 at Champions' Frontier #3 (27 teams) · 7-0
 ######################################################################
 Best team for Megas: Blastoise
 Best team for Pairings: Blastoise + Delphox
@@ -547,221 +978,223 @@ Bold Nature
 - Protect
 
 ######################################################################
-TEAM 11 — vuultur · #2 at VGC UmbreNews 06.10.2026 #34 - Champion (57 teams) · 7-2
+TEAM 19 — walaye · #1 at Off Meta Fight Club #6 ($20 USD prize pool) (51 teams) · 9-1
 ######################################################################
-Best team for Megas: Garchomp
-Best team for Pairings: Floette + Garchomp
+Best team for Megas: Malamar
+Best team for Pairings: Gardevoir + Malamar
 
-Incineroar @ Sitrus Berry
-Ability: Intimidate
-Impish Nature
-- Flare Blitz
-- Helping Hand
-- Parting Shot
-- Fake Out
+Grapploct @ Life Orb
+Ability: Technician
+Brave Nature
+- Storm Throw
+- Payback
+- Detect
+- Octolock
 
-Floette @ Floettite
-Ability: Flower Veil
-Modest Nature
-- Dazzling Gleam
-- Draining Kiss
-- Calm Mind
+Malamar @ Malamarite
+Ability: Contrary
+Sassy Nature
+- Superpower
+- Knock Off
 - Protect
+- Trick Room
 
-Sneasler @ Focus Sash
-Ability: Poison Touch
-Adamant Nature
-- Coaching
-- Fake Out
-- Close Combat
-- Dire Claw
+Gardevoir @ Gardevoirite
+Ability: Trace
+Modest Nature
+- Expanding Force
+- Hyper Voice
+- Protect
+- Calm Mind
 
-Rillaboom @ Miracle Seed
+Basculegion-Male @ Choice Scarf
+Ability: Adaptability
+Jolly Nature
+- Aqua Jet
+- Flip Turn
+- Last Respects
+- Wave Crash
+
+Indeedee ♀ @ Psychic Seed
+Ability: Psychic Surge
+Relaxed Nature
+- Psychic
+- Helping Hand
+- Follow Me
+- Trick Room
+
+Reuniclus @ Twisted Spoon
+Ability: Regenerator
+Quiet Nature
+- Shadow Ball
+- Expanding Force
+- Protect
+- Trick Room
+
+######################################################################
+TEAM 20 — vinnamon · #1 at Metal's Meteor Mash-Up #3 - TOP 4 IN DISCORD HOF (24 teams) · 6-2
+######################################################################
+Best team for Megas: Altaria
+Best team for Pairings: Altaria + Camerupt
+
+Farigiraf @ Grassy Seed
+Ability: Armor Tail
+Quiet Nature
+- Trick Room
+- Psychic Noise
+- Protect
+- Helping Hand
+
+Rillaboom @ Life Orb
 Ability: Grassy Surge
 Adamant Nature
+- Grassy Glide
 - Fake Out
 - Wood Hammer
-- Grassy Glide
 - High Horsepower
 
-Garchomp @ Garchompite
-Ability: Rough Skin
-Adamant Nature
+Camerupt @ Cameruptite
+Ability: Solid Rock
+Quiet Nature
+- Earth Power
+- Heat Wave
 - Protect
-- Scale Shot
-- Stomping Tantrum
-- Rock Slide
-
-Kingambit @ Life Orb
-Ability: Defiant
-Adamant Nature
-- Protect
-- Swords Dance
-- Kowtow Cleave
-- Sucker Punch
-
-######################################################################
-TEAM 12 — salvypara · #1 at [Shiny Salamence to 1st] The Grim Challenge #8 M-C (61 teams) · 9-1
-######################################################################
-Best team for Megas: Aerodactyl
-Best team for Pairings: Aerodactyl + Gengar
-
-Gengar @ Gengarite
-Ability: Shadow Tag
-Modest Nature
-- Shadow Ball
-- Sludge Bomb
-- Protect
-- Perish Song
-
-Incineroar @ Chople Berry
-Ability: Intimidate
-Relaxed Nature
-- Fake Out
-- Flare Blitz
-- Protect
-- Parting Shot
-
-Kommo-o @ Leftovers
-Ability: Soundproof
-Timid Nature
-- Clanging Scales
-- Aura Sphere
-- Protect
-- Clangorous Soul
-
-Rillaboom @ Eject Button
-Ability: Grassy Surge
-Sassy Nature
-- Fake Out
-- Grassy Glide
-- Protect
-- U-turn
-
-Aerodactyl @ Aerodactylite
-Ability: Unnerve
-Jolly Nature
-- Rock Slide
-- Dual Wingbeat
-- Protect
-- Tailwind
+- Ancient Power
 
 Kingambit @ Focus Sash
 Ability: Defiant
 Adamant Nature
 - Kowtow Cleave
-- Low Kick
-- Protect
 - Sucker Punch
+- Iron Head
+- Low Kick
 
-######################################################################
-TEAM 13 — bef · #1 at Final Weekend Qualifier| Prize Shiny Garchomp (24 teams) · 6-2
-######################################################################
-Best team for Megas: Kangaskhan, Barbaracle
-
-Barbaracle @ Barbaracite
-Ability: Tough Claws
-Adamant Nature
-- Close Combat
-- Rock Slide
-- Shell Smash
+Araquanid @ Mystic Water
+Ability: Water Bubble
+Brave Nature
+- Liquidation
+- Wide Guard
+- Leech Life
 - Protect
 
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
-Relaxed Nature
-- Thunderbolt
-- Psychic
-- Helping Hand
-- Trick Room
-
-Torkoal @ Charcoal
-Ability: Drought
+Altaria @ Altarianite
+Ability: Cloud Nine
 Modest Nature
-- Eruption
-- Weather Ball
-- Heat Wave
+- Hyper Voice
+- Draco Meteor
+- Protect
+- Will-O-Wisp
+
+######################################################################
+TEAM 21 — lovelyluna · #6 at Maddo's Cup #12 | 100€ for the Winner | Reg M-C (388 teams) · 11-2
+######################################################################
+Best team for Megas: Glimmora
+Best team for Pairings: Garchomp-Z + Glimmora
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Draco Meteor
+- Flamethrower
+- Power Gem
 - Protect
 
-Venusaur @ Life Orb
-Ability: Chlorophyll
+Glimmora @ Glimmoranite
+Ability: Toxic Debris
 Modest Nature
-- Leaf Storm
+- Power Gem
 - Sludge Bomb
-- Weather Ball
+- Earth Power
+- Spiky Shield
+
+Kingambit @ Life Orb
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Low Kick
+- Sucker Punch
 - Protect
 
-Vivillon @ Focus Sash
-Ability: Compound Eyes
+Whimsicott @ Focus Sash
+Ability: Prankster
 Timid Nature
-- Hurricane
-- Rage Powder
-- Sleep Powder
+- Moonblast
+- Tailwind
+- Encore
 - Protect
 
-Kangaskhan @ Kangaskhanite
-Ability: Scrappy
+Basculegion-Male @ Mystic Water
+Ability: Adaptability
 Adamant Nature
-- Double-Edge
-- Hammer Arm
-- Fake Out
-- Ice Punch
-
-######################################################################
-TEAM 14 — cerulean_jake · #1 at Ace Pokémon Invitational (6 teams) · 5-0
-######################################################################
-Best team for Megas: Scrafty, Sceptile
-
-Ceruledge @ White Herb
-Ability: Flash Fire
-Adamant Nature
-- Bitter Blade
-- Shadow Sneak
-- Swords Dance
+- Wave Crash
+- Last Respects
+- Aqua Jet
 - Protect
 
-Scrafty @ Scraftinite
+Incineroar @ Charcoal
 Ability: Intimidate
 Adamant Nature
 - Fake Out
-- Close Combat
-- Knock Off
-- Detect
+- Flare Blitz
+- Throat Chop
+- Parting Shot
 
-Primarina @ Sitrus Berry
-Ability: Liquid Voice
-Modest Nature
+######################################################################
+TEAM 22 — kardeas · #1 at 🍋Sitrus-Series🍋|Champions-MC|#76 (177 teams) · 10-2
+######################################################################
+Best team for Megas: Metagross
+Best team for Pairings: Metagross + Salamence
+
+Salamence @ Salamencite
+Ability: Intimidate
+Timid Nature
 - Hyper Voice
-- Moonblast
-- Calm Mind
+- Flamethrower
+- Tailwind
 - Protect
 
-Klefki @ Light Clay
-Ability: Prankster
-Calm Nature
-- Foul Play
-- Reflect
-- Light Screen
-- Thunder Wave
-
-Vivillon @ Focus Sash
-Ability: Compound Eyes
+Indeedee @ Focus Sash
+Ability: Psychic Surge
 Timid Nature
-- Hurricane
-- Sleep Powder
-- Tailwind
-- Rage Powder
+- Expanding Force
+- Mystical Fire
+- Helping Hand
+- Protect
 
-Sceptile @ Sceptilite
-Ability: Overgrow
-Timid Nature
-- Energy Ball
-- Dragon Pulse
-- Earth Power
+Sneasler @ Psychic Seed
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Rock Slide
+- Dire Claw
+- Protect
+
+Typhlosion-Hisui @ Choice Scarf
+Ability: Blaze
+Modest Nature
+- Eruption
+- Heat Wave
+- Shadow Ball
+- Overheat
+
+Milotic @ Sitrus Berry
+Ability: Competitive
+Modest Nature
+- Scald
+- Ice Beam
+- Icy Wind
+- Protect
+
+Metagross @ Metagrossite
+Ability: Clear Body
+Adamant Nature
+- Steel Roller
+- Psychic Fangs
+- Stomping Tantrum
 - Protect
 
 ######################################################################
-TEAM 15 — nevermore23 · #1 at 3º Torneio Remoto Pokémon Champions - Liga CWB (11 teams) · 5-0
+TEAM 23 — nevermore23 · #1 at 3º Torneio Remoto Pokémon Champions - Liga CWB (11 teams) · 5-0
 ######################################################################
 Best team for Megas: Scovillain
 Best team for Pairings: Froslass + Scovillain
@@ -815,7 +1248,60 @@ Adamant Nature
 - Protect
 
 ######################################################################
-TEAM 16 — silverland · #2 at Meeklosh's Fight Night Friday  | REG M-C (42 teams) · 8-1
+TEAM 24 — cerulean_jake · #1 at Ace Pokémon Invitational (6 teams) · 5-0
+######################################################################
+Best team for Megas: Sceptile, Scrafty
+
+Ceruledge @ White Herb
+Ability: Flash Fire
+Adamant Nature
+- Bitter Blade
+- Shadow Sneak
+- Swords Dance
+- Protect
+
+Scrafty @ Scraftinite
+Ability: Intimidate
+Adamant Nature
+- Fake Out
+- Close Combat
+- Knock Off
+- Detect
+
+Primarina @ Sitrus Berry
+Ability: Liquid Voice
+Modest Nature
+- Hyper Voice
+- Moonblast
+- Calm Mind
+- Protect
+
+Klefki @ Light Clay
+Ability: Prankster
+Calm Nature
+- Foul Play
+- Reflect
+- Light Screen
+- Thunder Wave
+
+Vivillon @ Focus Sash
+Ability: Compound Eyes
+Timid Nature
+- Hurricane
+- Sleep Powder
+- Tailwind
+- Rage Powder
+
+Sceptile @ Sceptilite
+Ability: Overgrow
+Timid Nature
+- Energy Ball
+- Dragon Pulse
+- Earth Power
+- Protect
+
+######################################################################
+TEAM 25 — silverland · #2 at Meeklosh's Fight Night Friday  | REG M-C (42 teams) · 8-1
 ######################################################################
 Best team for Megas: Hawlucha
 Best team for Pairings: Gengar + Hawlucha
@@ -869,7 +1355,7 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 17 — d4rkeva · #2 at Alpensee Tour (Reg M-C) #77 (93 teams) · 10-2
+TEAM 26 — d4rkeva · #2 at Alpensee Tour (Reg M-C) #77 (93 teams) · 10-2
 ######################################################################
 Best team for Megas: Pyroar
 Best team for Pairings: Gardevoir + Pyroar
@@ -923,60 +1409,7 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 18 — serosmurf · #2 at Off Meta Fight Club #7 (NEW Rules) (63 teams) · 7-1
-######################################################################
-Best team for Megas: Gyarados, Baxcalibur
-
-Ninetales-Alola @ Light Clay
-Ability: Snow Warning
-Timid Nature
-- Blizzard
-- Moonblast
-- Aurora Veil
-- Protect
-
-Baxcalibur @ Baxcalibrite
-Ability: Thermal Exchange
-Adamant Nature
-- Glaive Rush
-- High Horsepower
-- Ice Shard
-- Protect
-
-Sneasler @ Focus Sash
-Ability: Unburden
-Jolly Nature
-- Close Combat
-- Dire Claw
-- Fake Out
-- Coaching
-
-Ceruledge @ Life Orb
-Ability: Flash Fire
-Adamant Nature
-- Bitter Blade
-- Shadow Sneak
-- Bulk Up
-- Protect
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Wood Hammer
-- Grassy Glide
-- High Horsepower
-- Fake Out
-
-Gyarados @ Gyaradosite
-Ability: Intimidate
-Jolly Nature
-- Aqua Tail
-- Crunch
-- Dragon Dance
-- Protect
-
-######################################################################
-TEAM 19 — vietman204 · #2 at Pokepal Smackdown #161 (Champions) (Reg M-C) (45 teams) · 5-0
+TEAM 27 — vietman204 · #2 at Pokepal Smackdown #161 (Champions) (Reg M-C) (45 teams) · 5-0
 ######################################################################
 Best team for Megas: Skarmory
 Best team for Pairings: Raichu-Y + Skarmory
@@ -1030,7 +1463,7 @@ Jolly Nature
 - Protect
 
 ######################################################################
-TEAM 20 — italomassuco · #1 at Intimidators Champions Challenge #45 REG M-C (90 teams) · 9-1
+TEAM 28 — italomassuco · #1 at Intimidators Champions Challenge #45 REG M-C (90 teams) · 9-1
 ######################################################################
 Best team for Megas: Meganium
 Best team for Pairings: Meganium + Tyranitar
@@ -1084,7 +1517,7 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 21 — pokemacholives · #6 at Alpensee Tour (Reg M-C) #77 (93 teams) · 7-3
+TEAM 29 — pokemacholives · #6 at Alpensee Tour (Reg M-C) #77 (93 teams) · 7-3
 ######################################################################
 Best team for Megas: Drampa
 Best team for Pairings: Charizard-Y + Drampa
@@ -1138,7 +1571,7 @@ Sassy Nature
 - Light Screen
 
 ######################################################################
-TEAM 22 — lamerlusita · #2 at BK Cup #4 x Micelion | Sylveon EX Box de premio (41 teams) · 7-2
+TEAM 30 — lamerlusita · #2 at BK Cup #4 x Micelion | Sylveon EX Box de premio (41 teams) · 7-2
 ######################################################################
 Best team for Megas: Crabominable
 Best team for Pairings: Camerupt + Crabominable
@@ -1192,220 +1625,61 @@ Brave Nature
 - Low Kick
 
 ######################################################################
-TEAM 23 — nezk025 · #12 at Mudkip's Marsh Pit #5 (58 teams) · 6-2
+TEAM 31 — paparott · #4 at ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (34 teams) · 5-3
 ######################################################################
-Best team for Megas: Scizor
-Best team for Pairings: Aerodactyl + Scizor
+Best team for Megas: Starmie
+Best team for Pairings: Gengar + Starmie
 
-Hydreigon @ Life Orb
-Ability: Levitate
-Timid Nature
-- Dragon Pulse
-- Protect
-- Earth Power
-- Dark Pulse
-
-Scizor @ Scizorite
-Ability: Technician
-Adamant Nature
-- Swords Dance
-- Bug Bite
-- Bullet Punch
-- Protect
-
-Sylveon @ Fairy Feather
-Ability: Pixilate
-Modest Nature
-- Quick Attack
-- Protect
-- Moonblast
-- Hyper Voice
-
-Sinistcha @ Sitrus Berry
-Ability: Hospitality
-Bold Nature
-- Giga Drain
-- Trick Room
-- Rage Powder
-- Protect
-
-Arcanine-Hisui @ Focus Sash
-Ability: Rock Head
-Adamant Nature
-- Rock Slide
-- Flare Blitz
-- Close Combat
-- Protect
-
-Aerodactyl @ Aerodactylite
-Ability: Unnerve
-Jolly Nature
-- Dual Wingbeat
-- Tailwind
-- Rock Slide
-- Wide Guard
-
-######################################################################
-TEAM 24 — twenty9cent2 · #56 at Coupe Critique Champions #4 - 100€ prize (128 teams) · 3-2
-######################################################################
-Best team for Pairings: Froslass + Tyranitar, Froslass + Venusaur
-
-Milotic @ Sitrus Berry
-Ability: Competitive
-Bold Nature
-- Scald
-- Life Dew
-- Ice Beam
-- Protect
-
-Venusaur @ Venusaurite
-Ability: Chlorophyll
-Modest Nature
-- Solar Beam
-- Sludge Bomb
-- Weather Ball
-- Protect
-
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
-Brave Nature
-- Knock Off
-- Rock Slide
-- Low Kick
-- Protect
-
-Froslass @ Froslassite
+Gengar @ Gengarite
 Ability: Cursed Body
-Timid Nature
+Modest Nature
 - Shadow Ball
-- Blizzard
-- Aurora Veil
+- Sludge Bomb
+- Perish Song
 - Protect
 
-Torkoal @ Life Orb
-Ability: Drought
-Quiet Nature
-- Eruption
-- Earth Power
-- Weather Ball
-- Protect
-
-Excadrill @ Focus Sash
-Ability: Sand Rush
-Adamant Nature
-- Iron Head
-- Earthquake
-- Rock Tomb
-- Protect
-
-######################################################################
-TEAM 25 — jaylun · #1 at ⚔️Torre Lotta Cup #1⚔️ | Reg M-C | Premi/Prizes🏆 (52 teams) · 10-0
-######################################################################
-Best team for Megas: Raichu-Y
-
-Kingambit @ Focus Sash
-Ability: Defiant
-Adamant Nature
-- Kowtow Cleave
-- Iron Head
-- Sucker Punch
-- Low Kick
-
-Indeedee ♀ @ Rocky Helmet
-Ability: Psychic Surge
-Bold Nature
-- Psychic
-- Follow Me
-- Helping Hand
-- Protect
-
-Armarouge @ Life Orb
-Ability: Flash Fire
-Modest Nature
-- Armor Cannon
-- Expanding Force
-- Wide Guard
-- Protect
-
-Sneasler @ Psychic Seed
-Ability: Unburden
-Adamant Nature
-- Close Combat
-- Dire Claw
-- Rock Tomb
-- Protect
-
-Raichu @ Raichunite Y
-Ability: Lightning Rod
-Timid Nature
-- Zap Cannon
-- Focus Blast
-- Fake Out
-- Protect
-
-Garchomp @ Garchompite Z
-Ability: Rough Skin
-Modest Nature
-- Protect
-- Dragon Pulse
-- Earth Power
-- Power Gem
-
-######################################################################
-TEAM 26 — mrsidi · #1 at Chacho Cup #3 (18 teams) · 8-0
-######################################################################
-Best team for Megas: Salamence
-
-Salamence @ Salamencite
-Ability: Intimidate
-Naive Nature
-- Double-Edge
-- Hyper Voice
-- Tailwind
-- Protect
-
-Gholdengo @ Life Orb
-Ability: Good as Gold
-Modest Nature
-- Make It Rain
-- Shadow Ball
-- Nasty Plot
-- Protect
-
-Tyranitar @ Chople Berry
-Ability: Sand Stream
-Adamant Nature
-- Rock Slide
-- Knock Off
-- Low Kick
-- Protect
-
-Sneasler @ Grassy Seed
-Ability: Unburden
+Tinkaton @ Grassy Seed
+Ability: Mold Breaker
 Jolly Nature
-- Dire Claw
-- Close Combat
 - Fake Out
+- Gigaton Hammer
+- Encore
+- Play Rough
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Relaxed Nature
+- Fake Out
+- Parting Shot
+- Flare Blitz
 - Protect
 
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Grassy Glide
-- Wood Hammer
-- Fake Out
-- U-turn
+Starmie @ Starminite
+Ability: Natural Cure
+Jolly Nature
+- Liquidation
+- Skill Swap
+- Ice Spinner
+- Zen Headbutt
 
-Milotic @ Sitrus Berry
-Ability: Competitive
-Bold Nature
-- Scald
-- Icy Wind
-- Life Dew
+Garchomp @ Choice Scarf
+Ability: Rough Skin
+Adamant Nature
+- Earthquake
+- Stomping Tantrum
+- Dragon Claw
+- Rock Slide
+
+Rillaboom @ Eject Button
+Ability: Grassy Surge
+Sassy Nature
+- Grassy Glide
+- U-turn
+- Fake Out
 - Protect
 
 ######################################################################
-TEAM 27 — b2k · #1 at DucPokémonChampions#8 (16 teams) · 8-0
+TEAM 32 — b2k · #1 at DucPokémonChampions#8 (16 teams) · 8-0
 ######################################################################
 Best team for Megas: Floette
 
@@ -1458,60 +1732,60 @@ Adamant Nature
 - U-turn
 
 ######################################################################
-TEAM 28 — farigiboy · #1 at VGC Trainer School; champions M/C #5 (64 teams) · 8-2
+TEAM 33 — kotori · #1 at ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (M-C) (43 teams) · 8-0
 ######################################################################
-Best team for Megas: Dragonite
+Best team for Pairings: Floette + Salamence
 
-Dragonite @ Dragoninite
-Ability: Inner Focus
+Floette @ Floettite
+Ability: Flower Veil
 Modest Nature
-- Dragon Pulse
-- Heat Wave
-- Tailwind
+- Moonblast
+- Dazzling Gleam
 - Protect
+- Calm Mind
 
-Basculegion-Male @ Choice Scarf
+Basculegion-Male @ Kasib Berry
 Ability: Adaptability
-Jolly Nature
-- Wave Crash
-- Flip Turn
-- Aqua Jet
-- Last Respects
-
-Kingambit @ Chople Berry
-Ability: Defiant
 Adamant Nature
-- Kowtow Cleave
-- Sucker Punch
-- Iron Head
+- Wave Crash
+- Last Respects
+- Aqua Jet
 - Protect
 
 Rillaboom @ Miracle Seed
 Ability: Grassy Surge
 Adamant Nature
 - Wood Hammer
+- Fake Out
 - Grassy Glide
 - High Horsepower
+
+Incineroar @ Rocky Helmet
+Ability: Intimidate
+Impish Nature
+- Flare Blitz
+- Will-O-Wisp
 - Fake Out
+- Parting Shot
 
-Sneasler @ White Herb
-Ability: Unburden
+Salamence @ Salamencite
+Ability: Intimidate
 Adamant Nature
-- Close Combat
-- Gunk Shot
-- Rock Slide
+- Body Slam
+- Dragon Claw
+- Dragon Dance
 - Protect
 
-Sylveon @ Fairy Feather
-Ability: Pixilate
+Armarouge @ Sitrus Berry
+Ability: Flash Fire
 Modest Nature
-- Hyper Voice
-- Quick Attack
-- Yawn
-- Protect
+- Armor Cannon
+- Psychic
+- Wide Guard
+- Trick Room
 
 ######################################################################
-TEAM 29 — vgcdan · #1 at Talon's FIGHT CLUB #105 POKEMON CHAMPIONS REG M-C (89 teams) · 11-1
+TEAM 34 — vgcdan · #1 at Talon's FIGHT CLUB #105 POKEMON CHAMPIONS REG M-C (89 teams) · 11-1
 ######################################################################
 Best team for Pairings: Floette + Raichu-Y
 
@@ -1564,113 +1838,60 @@ Adamant Nature
 - Swords Dance
 
 ######################################################################
-TEAM 30 — andrewswho · #1 at Chateau Knockout II (47 teams) · 6-0
+TEAM 35 — macarrones · #1 at Friday Fight Night 76! $25 Prize & Top 8 Graphic (127 teams) · 11-1
 ######################################################################
-Best team for Megas: Camerupt
+Best team for Pairings: Charizard-Y + Froslass
 
-Raichu @ Raichunite Y
-Ability: Lightning Rod
-Timid Nature
-- Fake Out
-- Zap Cannon
-- Focus Blast
-- Protect
-
-Camerupt @ Cameruptite
-Ability: Solid Rock
-Quiet Nature
+Charizard @ Charizardite Y
+Ability: Blaze
+Modest Nature
+- Weather Ball
 - Heat Wave
-- Ancient Power
-- Earth Power
+- Solar Beam
 - Protect
 
-Farigiraf @ Grassy Seed
-Ability: Armor Tail
-Sassy Nature
-- Psychic
-- Hyper Voice
-- Trick Room
-- Helping Hand
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Fake Out
-- Wood Hammer
-- Grassy Glide
-- U-turn
-
-Kingambit @ Focus Sash
+Kingambit @ Chople Berry
 Ability: Defiant
 Adamant Nature
 - Kowtow Cleave
-- Sucker Punch
 - Iron Head
-- Low Kick
+- Sucker Punch
+- Protect
 
-Dragapult @ Life Orb
-Ability: Clear Body
-Timid Nature
+Sneasler @ White Herb
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Dire Claw
+- Fake Out
+- Protect
+
+Froslass @ Froslassite
+Ability: Snow Cloak
+Modest Nature
 - Shadow Ball
-- Draco Meteor
-- Will-O-Wisp
+- Blizzard
+- Aurora Veil
 - Protect
 
-######################################################################
-TEAM 31 — zane286 · #1 at ⛩️Chadweezy95 Singles Champions Tournament Ep 1!⛩️ (3 teams) · 7-0
-######################################################################
-Best team for Megas: Feraligatr
-
-Maushold @ Wide Lens
-Ability: Technician
-Jolly Nature
-- Population Bomb
-- Bite
-- Tidy Up
-- Encore
-
-Arboliva @ Grassy Seed
-Ability: Seed Sower
-Relaxed Nature
-- Giga Drain
-- Leech Seed
-- Strength Sap
-- Protect
-
-Feraligatr @ Feraligite
-Ability: Sheer Force
-Jolly Nature
-- Liquidation
-- Ice Punch
-- Body Slam
-- Dragon Dance
-
-Espathra @ Focus Sash
-Ability: Speed Boost
-Modest Nature
-- Lumina Crash
-- Protect
-- Baton Pass
-- Calm Mind
-
-Dragonite @ Dragoninite
-Ability: Multiscale
-Modest Nature
-- Air Slash
-- Ice Beam
-- Flamethrower
+Dragonite @ Life Orb
+Ability: Inner Focus
+Adamant Nature
+- Dragon Claw
+- Superpower
+- Tailwind
 - Extreme Speed
 
-Heliolisk @ Life Orb
-Ability: Dry Skin
-Timid Nature
-- Thunderbolt
-- Hyper Voice
-- Volt Switch
-- Focus Blast
+Garchomp @ Sitrus Berry
+Ability: Rough Skin
+Adamant Nature
+- Earthquake
+- Dragon Claw
+- Rock Slide
+- Protect
 
 ######################################################################
-TEAM 32 — vivillonvgc · played TARTAN TAKEDOWN #38! - [CHAMPIONS REG M-C!] (123 teams) · 0-0
+TEAM 36 — vivillonvgc · played TARTAN TAKEDOWN #38! - [CHAMPIONS REG M-C!] (123 teams) · 0-0
 ######################################################################
 Best team for Pairings: Raichu-Y + Staraptor
 
@@ -1723,7 +1944,60 @@ Adamant Nature
 - Stomping Tantrum
 
 ######################################################################
-TEAM 33 — slitherwinglover21 · #1 at Thavorian’s Tubby tour (17 teams) · 6-0
+TEAM 37 — merrypasta · #1 at VGC UU Regulation M-B "Edinburgh Regional" (10 teams) · 6-0
+######################################################################
+Best team for Megas: Venusaur
+
+Gardevoir @ Gardevoirite
+Ability: Trace
+Modest Nature
+- Hyper Voice
+- Psyshock
+- Protect
+- Trick Room
+
+Venusaur @ Venusaurite
+Ability: Chlorophyll
+Modest Nature
+- Giga Drain
+- Sludge Bomb
+- Protect
+- Earth Power
+
+Rotom-Wash @ Sitrus Berry
+Ability: Levitate
+Modest Nature
+- Hydro Pump
+- Thunderbolt
+- Protect
+- Will-O-Wisp
+
+Aegislash @ Life Orb
+Ability: Stance Change
+Adamant Nature
+- Poltergeist
+- Iron Head
+- King's Shield
+- Shadow Sneak
+
+Scrafty @ Roseli Berry
+Ability: Intimidate
+Adamant Nature
+- Close Combat
+- Knock Off
+- Fake Out
+- Helping Hand
+
+Talonflame @ Sharp Beak
+Ability: Gale Wings
+Jolly Nature
+- Brave Bird
+- Flare Blitz
+- Protect
+- Tailwind
+
+######################################################################
+TEAM 38 — slitherwinglover21 · #1 at Thavorian’s Tubby tour (17 teams) · 6-0
 ######################################################################
 Best team for Megas: Clefable
 
@@ -1776,7 +2050,60 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 34 — something_smart · #1 at Fan format Regulation U (8 teams) · 6-0
+TEAM 39 — lucasnivy · #1 at Matcha Gotcha's Tourney (PRIVATE) (15 teams) · 6-0
+######################################################################
+Best team for Megas: Mawile
+
+Floette @ Floettite
+Ability: Fairy Aura
+Modest Nature
+- Dazzling Gleam
+- Draining Kiss
+- Calm Mind
+- Protect
+
+Clefable @ Leftovers
+Ability: Unaware
+Bold Nature
+- Moonblast
+- Follow Me
+- Life Dew
+- Protect
+
+Primarina @ Sitrus Berry
+Ability: Liquid Voice
+Modest Nature
+- Hyper Voice
+- Moonblast
+- Calm Mind
+- Protect
+
+Mawile @ Mawilite
+Ability: Huge Power
+Adamant Nature
+- Iron Head
+- Sucker Punch
+- Play Rough
+- Protect
+
+Mimikyu @ Mental Herb
+Ability: Disguise
+Adamant Nature
+- Play Rough
+- Shadow Claw
+- Trick Room
+- Protect
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Impish Nature
+- Foul Play
+- Fake Out
+- Light Screen
+- Reflect
+
+######################################################################
+TEAM 40 — something_smart · #1 at Fan format Regulation U (8 teams) · 6-0
 ######################################################################
 Best team for Megas: Pinsir
 
@@ -1829,62 +2156,25 @@ Jolly Nature
 - Protect
 
 ######################################################################
-TEAM 35 — forblaze · #1 at SNT Reg M-C Tour #1 (47 teams) · 10-0
+TEAM 41 — geniusmatti · #1 at Meeklosh's Fight Night Friday  | REG M-C (42 teams) · 8-1
 ######################################################################
-Best team for Megas: Swampert
+Best team for Pairings: Raichu-Y + Salamence
 
-Golisopod @ Golisopite
-Ability: Emergency Exit
+Ninetales-Alola @ Light Clay
+Ability: Snow Warning
+Timid Nature
+- Protect
+- Aurora Veil
+- Blizzard
+- Freeze-Dry
+
+Sneasler @ Grassy Seed
+Ability: Unburden
 Adamant Nature
 - Protect
-- Swords Dance
-- Iron Head
-- Brick Break
-
-Indeedee ♀ @ Colbur Berry
-Ability: Psychic Surge
-Bold Nature
-- Follow Me
-- Psychic
-- Protect
-- Trick Room
-
-Pelipper @ Wacan Berry
-Ability: Drizzle
-Modest Nature
-- Hurricane
-- Ice Beam
-- Wide Guard
-- Muddy Water
-
-Archaludon @ Chople Berry
-Ability: Stamina
-Sassy Nature
-- Protect
-- Flash Cannon
-- Electro Shot
-- Dragon Pulse
-
-Toxapex @ Leftovers
-Ability: Regenerator
-Calm Nature
-- Toxic
-- Baneful Bunker
-- Infestation
-- Wide Guard
-
-Swampert @ Swampertite
-Ability: Torrent
-Adamant Nature
-- Protect
-- Wave Crash
-- Earthquake
-- Rock Slide
-
-######################################################################
-TEAM 36 — mindless_99 · #1 at London Corviknights VGC Weekly Tour 13! (Reg M-C) (64 teams) · 7-0
-######################################################################
-Best team for Megas: Delphox
+- Acrobatics
+- Dire Claw
+- Close Combat
 
 Rillaboom @ Miracle Seed
 Ability: Grassy Surge
@@ -1892,113 +2182,15 @@ Adamant Nature
 - Fake Out
 - Grassy Glide
 - Wood Hammer
-- U-turn
+- High Horsepower
 
-Incineroar @ Sitrus Berry
-Ability: Intimidate
-Impish Nature
-- Fake Out
-- Flare Blitz
-- Darkest Lariat
-- Parting Shot
-
-Kingambit @ Chople Berry
-Ability: Defiant
-Adamant Nature
+Gholdengo @ Life Orb
+Ability: Good as Gold
+Modest Nature
 - Protect
-- Swords Dance
-- Sucker Punch
-- Kowtow Cleave
-
-Sneasler @ Grassy Seed
-Ability: Unburden
-Adamant Nature
-- Protect
-- Fake Out
-- Close Combat
-- Dire Claw
-
-Salamence @ Salamencite
-Ability: Intimidate
-Timid Nature
-- Protect
-- Hyper Voice
-- Flamethrower
-- Draco Meteor
-
-Delphox @ Delphoxite
-Ability: Blaze
-Timid Nature
-- Protect
-- Heat Wave
 - Nasty Plot
-- Psychic
-
-######################################################################
-TEAM 37 — walaye · #1 at Off Meta Fight Club #6 ($20 USD prize pool) (51 teams) · 9-1
-######################################################################
-Best team for Megas: Malamar
-
-Grapploct @ Life Orb
-Ability: Technician
-Brave Nature
-- Storm Throw
-- Payback
-- Detect
-- Octolock
-
-Malamar @ Malamarite
-Ability: Contrary
-Sassy Nature
-- Superpower
-- Knock Off
-- Protect
-- Trick Room
-
-Gardevoir @ Gardevoirite
-Ability: Trace
-Modest Nature
-- Expanding Force
-- Hyper Voice
-- Protect
-- Calm Mind
-
-Basculegion-Male @ Choice Scarf
-Ability: Adaptability
-Jolly Nature
-- Aqua Jet
-- Flip Turn
-- Last Respects
-- Wave Crash
-
-Indeedee ♀ @ Psychic Seed
-Ability: Psychic Surge
-Relaxed Nature
-- Psychic
-- Helping Hand
-- Follow Me
-- Trick Room
-
-Reuniclus @ Twisted Spoon
-Ability: Regenerator
-Quiet Nature
+- Make It Rain
 - Shadow Ball
-- Expanding Force
-- Protect
-- Trick Room
-
-######################################################################
-TEAM 38 — yegorushhka · #3 at VGC Indigo League #2 (Prize: Eternal Floette) (105 teams) · 9-1
-######################################################################
-Best team for Pairings: Charizard-Y + Raichu-Y
-
-Charizard @ Charizardite Y
-Ability: Blaze
-Modest Nature
-- Weather Ball
-- Heat Wave
-- Solar Beam
-- Protect
 
 Raichu @ Raichunite Y
 Ability: Lightning Rod
@@ -2008,93 +2200,69 @@ Timid Nature
 - Fake Out
 - Protect
 
-Incineroar @ Rocky Helmet
+Salamence @ Salamencite
 Ability: Intimidate
-Adamant Nature
-- Fake Out
-- Parting Shot
-- Flare Blitz
-- Throat Chop
+Hasty Nature
+- Hyper Voice
+- Double-Edge
+- Tailwind
+- Protect
 
-Kommo-o @ Life Orb
-Ability: Bulletproof
+######################################################################
+TEAM 42 — salvypara · #1 at [Shiny Salamence to 1st] The Grim Challenge #8 M-C (61 teams) · 9-1
+######################################################################
+Best team for Megas: Aerodactyl
+
+Gengar @ Gengarite
+Ability: Shadow Tag
 Modest Nature
+- Shadow Ball
+- Sludge Bomb
+- Protect
+- Perish Song
+
+Incineroar @ Chople Berry
+Ability: Intimidate
+Relaxed Nature
+- Fake Out
+- Flare Blitz
+- Protect
+- Parting Shot
+
+Kommo-o @ Leftovers
+Ability: Soundproof
+Timid Nature
 - Clanging Scales
 - Aura Sphere
+- Protect
 - Clangorous Soul
+
+Rillaboom @ Eject Button
+Ability: Grassy Surge
+Sassy Nature
+- Fake Out
+- Grassy Glide
 - Protect
+- U-turn
 
-Sylveon @ Fairy Feather
-Ability: Pixilate
-Modest Nature
-- Hyper Voice
-- Hyper Beam
-- Quick Attack
-- Protect
-
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
-Quiet Nature
-- Psychic
-- Thunderbolt
-- Trick Room
-- Protect
-
-######################################################################
-TEAM 39 — lyssan · #1 at RookideeVGC Qualifier| Prize Shiny Corviknight (44 teams) · 9-1
-######################################################################
-Best team for Pairings: Gardevoir + Tyranitar
-
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
+Aerodactyl @ Aerodactylite
+Ability: Unnerve
 Jolly Nature
-- Knock Off
 - Rock Slide
-- Low Kick
-- Protect
-
-Gardevoir @ Gardevoirite
-Ability: Telepathy
-Modest Nature
-- Hyper Voice
-- Expanding Force
-- Mystical Fire
-- Protect
-
-Indeedee ♀ @ Rocky Helmet
-Ability: Psychic Surge
-Bold Nature
-- Psychic
-- Follow Me
-- Helping Hand
-- Protect
-
-Gliscor @ Life Orb
-Ability: Hyper Cutter
-Adamant Nature
-- High Horsepower
-- Protect
 - Dual Wingbeat
+- Protect
 - Tailwind
 
-Sneasler @ Psychic Seed
-Ability: Unburden
+Kingambit @ Focus Sash
+Ability: Defiant
 Adamant Nature
-- Close Combat
-- Dire Claw
-- Rock Tomb
+- Kowtow Cleave
+- Low Kick
 - Protect
-
-Rotom-Heat @ Choice Scarf
-Ability: Levitate
-Timid Nature
-- Volt Switch
-- Overheat
-- Trick
-- Discharge
+- Sucker Punch
 
 ######################################################################
-TEAM 40 — doc_mrmega · #2 at M-C|LAST SEASON 2 TOUR👑CROWN FIGHT Bo3 TOUR #90👑 (71 teams) · 9-1
+TEAM 43 — doc_mrmega · #2 at M-C|LAST SEASON 2 TOUR👑CROWN FIGHT Bo3 TOUR #90👑 (71 teams) · 9-1
 ######################################################################
 Best team for Pairings: Delphox + Tyranitar
 
@@ -2147,9 +2315,176 @@ Adamant Nature
 - Protect
 
 ######################################################################
-TEAM 41 — vinnamon · #1 at Metal's Meteor Mash-Up #3 - TOP 4 IN DISCORD HOF (24 teams) · 6-2
+TEAM 44 — yegorushhka · #3 at VGC Indigo League #2 (Prize: Eternal Floette) (105 teams) · 9-1
 ######################################################################
-Best team for Megas: Altaria
+Best team for Pairings: Charizard-Y + Raichu-Y
+
+Charizard @ Charizardite Y
+Ability: Blaze
+Modest Nature
+- Weather Ball
+- Heat Wave
+- Solar Beam
+- Protect
+
+Raichu @ Raichunite Y
+Ability: Lightning Rod
+Timid Nature
+- Zap Cannon
+- Focus Blast
+- Fake Out
+- Protect
+
+Incineroar @ Rocky Helmet
+Ability: Intimidate
+Adamant Nature
+- Fake Out
+- Parting Shot
+- Flare Blitz
+- Throat Chop
+
+Kommo-o @ Life Orb
+Ability: Bulletproof
+Modest Nature
+- Clanging Scales
+- Aura Sphere
+- Clangorous Soul
+- Protect
+
+Sylveon @ Fairy Feather
+Ability: Pixilate
+Modest Nature
+- Hyper Voice
+- Hyper Beam
+- Quick Attack
+- Protect
+
+Farigiraf @ Sitrus Berry
+Ability: Armor Tail
+Quiet Nature
+- Psychic
+- Thunderbolt
+- Trick Room
+- Protect
+
+######################################################################
+TEAM 45 — lyssan · #1 at RookideeVGC Qualifier| Prize Shiny Corviknight (44 teams) · 9-1
+######################################################################
+Best team for Pairings: Gardevoir + Tyranitar
+
+Tyranitar @ Tyranitarite
+Ability: Sand Stream
+Jolly Nature
+- Knock Off
+- Rock Slide
+- Low Kick
+- Protect
+
+Gardevoir @ Gardevoirite
+Ability: Telepathy
+Modest Nature
+- Hyper Voice
+- Expanding Force
+- Mystical Fire
+- Protect
+
+Indeedee ♀ @ Rocky Helmet
+Ability: Psychic Surge
+Bold Nature
+- Psychic
+- Follow Me
+- Helping Hand
+- Protect
+
+Gliscor @ Life Orb
+Ability: Hyper Cutter
+Adamant Nature
+- High Horsepower
+- Protect
+- Dual Wingbeat
+- Tailwind
+
+Sneasler @ Psychic Seed
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Dire Claw
+- Rock Tomb
+- Protect
+
+Rotom-Heat @ Choice Scarf
+Ability: Levitate
+Timid Nature
+- Volt Switch
+- Overheat
+- Trick
+- Discharge
+
+######################################################################
+TEAM 46 — die_kampfstube · #2 at Rework Esport Champions Talent Cup 3 | 50€ CP M-C (107 teams) · 9-1
+######################################################################
+Best team for Pairings: Floette + Garchomp-Z
+
+Floette @ Floettite
+Ability: Flower Veil
+Timid Nature
+- Draining Kiss
+- Dazzling Gleam
+- Calm Mind
+- Protect
+
+Sneasler @ Focus Sash
+Ability: Poison Touch
+Jolly Nature
+- Dire Claw
+- Close Combat
+- Coaching
+- Fake Out
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Careful Nature
+- Flare Blitz
+- Throat Chop
+- Parting Shot
+- Fake Out
+
+Kingambit @ Life Orb
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Iron Head
+- Protect
+
+Sinistcha @ Kasib Berry
+Ability: Hospitality
+Calm Nature
+- Matcha Gotcha
+- Rage Powder
+- Life Dew
+- Trick Room
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Draco Meteor
+- Earth Power
+- Flamethrower
+- Protect
+
+######################################################################
+TEAM 47 — vinnamon · #1 at TARTAN TAKEDOWN #39! - [CHAMPIONS REG M-C!] (105 teams) · 11-0
+######################################################################
+Best team for Pairings: Camerupt + Garchomp-Z
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Careful Nature
+- Flare Blitz
+- Throat Chop
+- Fake Out
+- Parting Shot
 
 Farigiraf @ Grassy Seed
 Ability: Armor Tail
@@ -2175,191 +2510,24 @@ Quiet Nature
 - Protect
 - Ancient Power
 
-Kingambit @ Focus Sash
-Ability: Defiant
-Adamant Nature
-- Kowtow Cleave
-- Sucker Punch
-- Iron Head
-- Low Kick
-
-Araquanid @ Mystic Water
-Ability: Water Bubble
-Brave Nature
-- Liquidation
-- Wide Guard
-- Leech Life
-- Protect
-
-Altaria @ Altarianite
-Ability: Cloud Nine
-Modest Nature
-- Hyper Voice
-- Draco Meteor
-- Protect
-- Will-O-Wisp
-
-######################################################################
-TEAM 42 — lovelyluna · #6 at Maddo's Cup #12 | 100€ for the Winner | Reg M-C (388 teams) · 11-2
-######################################################################
-Best team for Megas: Glimmora
-
 Garchomp @ Garchompite Z
 Ability: Rough Skin
 Modest Nature
 - Draco Meteor
-- Flamethrower
-- Power Gem
-- Protect
-
-Glimmora @ Glimmoranite
-Ability: Toxic Debris
-Modest Nature
-- Power Gem
-- Sludge Bomb
 - Earth Power
-- Spiky Shield
-
-Kingambit @ Life Orb
-Ability: Defiant
-Adamant Nature
-- Kowtow Cleave
-- Low Kick
-- Sucker Punch
+- Power Gem
 - Protect
 
-Whimsicott @ Focus Sash
-Ability: Prankster
-Timid Nature
-- Moonblast
-- Tailwind
-- Encore
-- Protect
-
-Basculegion-Male @ Mystic Water
-Ability: Adaptability
-Adamant Nature
-- Wave Crash
-- Last Respects
-- Aqua Jet
-- Protect
-
-Incineroar @ Charcoal
-Ability: Intimidate
-Adamant Nature
-- Fake Out
-- Flare Blitz
-- Throat Chop
-- Parting Shot
-
-######################################################################
-TEAM 43 — kardeas · #1 at 🍋Sitrus-Series🍋|Champions-MC|#76 (177 teams) · 10-2
-######################################################################
-Best team for Megas: Metagross
-
-Salamence @ Salamencite
-Ability: Intimidate
-Timid Nature
+Sylveon @ Fairy Feather
+Ability: Pixilate
+Modest Nature
 - Hyper Voice
-- Flamethrower
-- Tailwind
-- Protect
-
-Indeedee @ Focus Sash
-Ability: Psychic Surge
-Timid Nature
-- Expanding Force
-- Mystical Fire
-- Helping Hand
-- Protect
-
-Sneasler @ Psychic Seed
-Ability: Unburden
-Adamant Nature
-- Close Combat
-- Rock Slide
-- Dire Claw
-- Protect
-
-Typhlosion-Hisui @ Choice Scarf
-Ability: Blaze
-Modest Nature
-- Eruption
-- Heat Wave
-- Shadow Ball
-- Overheat
-
-Milotic @ Sitrus Berry
-Ability: Competitive
-Modest Nature
-- Scald
-- Ice Beam
-- Icy Wind
-- Protect
-
-Metagross @ Metagrossite
-Ability: Clear Body
-Adamant Nature
-- Steel Roller
-- Psychic Fangs
-- Stomping Tantrum
-- Protect
+- Quick Attack
+- Hyper Beam
+- Detect
 
 ######################################################################
-TEAM 44 — evan_santos · #1 at [BR] Copa Oak Stadium #9 - R$ 200 em Premiação (117 teams) · 11-1
-######################################################################
-Best team for Pairings: Floette + Staraptor
-
-Milotic @ Leftovers
-Ability: Competitive
-Calm Nature
-- Muddy Water
-- Coil
-- Hypnosis
-- Recover
-
-Indeedee @ Choice Scarf
-Ability: Psychic Surge
-Timid Nature
-- Expanding Force
-- Psychic
-- Dazzling Gleam
-- Trick
-
-Incineroar @ Chople Berry
-Ability: Intimidate
-Careful Nature
-- Fake Out
-- Flare Blitz
-- Throat Chop
-- Parting Shot
-
-Sneasler @ Psychic Seed
-Ability: Unburden
-Adamant Nature
-- Dire Claw
-- Close Combat
-- Throat Chop
-- Rock Tomb
-
-Staraptor @ Staraptite
-Ability: Intimidate
-Jolly Nature
-- Brave Bird
-- Close Combat
-- Roost
-- Protect
-
-Floette @ Floettite
-Ability: Symbiosis
-Modest Nature
-- Moonblast
-- Dazzling Gleam
-- Light of Ruin
-- Protect
-
-######################################################################
-TEAM 45 — altkyle · #1 at Tenki's Cart Weekly #120 - Reg M-C (137 teams) · 11-0
+TEAM 48 — altkyle · #1 at Tenki's Cart Weekly #120 - Reg M-C (137 teams) · 11-0
 ######################################################################
 Best team for Pairings: Dragonite + Raichu-Y
 
@@ -2412,7 +2580,60 @@ Adamant Nature
 - High Horsepower
 
 ######################################################################
-TEAM 46 — rennychu · #2 at Make It Rain - VGC Tournament (266 teams) · 12-2
+TEAM 49 — evan_santos · #1 at [BR] Copa Oak Stadium #9 - R$ 200 em Premiação (117 teams) · 11-1
+######################################################################
+Best team for Pairings: Floette + Staraptor
+
+Milotic @ Leftovers
+Ability: Competitive
+Calm Nature
+- Muddy Water
+- Coil
+- Hypnosis
+- Recover
+
+Indeedee @ Choice Scarf
+Ability: Psychic Surge
+Timid Nature
+- Expanding Force
+- Psychic
+- Dazzling Gleam
+- Trick
+
+Incineroar @ Chople Berry
+Ability: Intimidate
+Careful Nature
+- Fake Out
+- Flare Blitz
+- Throat Chop
+- Parting Shot
+
+Sneasler @ Psychic Seed
+Ability: Unburden
+Adamant Nature
+- Dire Claw
+- Close Combat
+- Throat Chop
+- Rock Tomb
+
+Staraptor @ Staraptite
+Ability: Intimidate
+Jolly Nature
+- Brave Bird
+- Close Combat
+- Roost
+- Protect
+
+Floette @ Floettite
+Ability: Symbiosis
+Modest Nature
+- Moonblast
+- Dazzling Gleam
+- Light of Ruin
+- Protect
+
+######################################################################
+TEAM 50 — rennychu · #2 at Make It Rain - VGC Tournament (266 teams) · 12-2
 ######################################################################
 Best team for Pairings: Charizard-Y + Gardevoir
 
@@ -2465,7 +2686,166 @@ Brave Nature
 - Close Combat
 
 ######################################################################
-TEAM 47 — rietje13 · played Metal's Meteor Mash Up #1 - TOP 4 TEAM GRAPHIC (38 teams) · 0-0
+TEAM 51 — dartsvgc · #1 at Tenki's Cart Weekly #119 - Reg M-C (90 teams) · 11-0
+######################################################################
+Best team for Pairings: Gardevoir + Gengar
+
+Indeedee ♀ @ Rocky Helmet
+Ability: Psychic Surge
+Relaxed Nature
+- Psychic
+- Trick Room
+- Helping Hand
+- Follow Me
+
+Gengar @ Gengarite
+Ability: Cursed Body
+Timid Nature
+- Shadow Ball
+- Sludge Bomb
+- Icy Wind
+- Protect
+
+Armarouge @ Life Orb
+Ability: Flash Fire
+Modest Nature
+- Armor Cannon
+- Expanding Force
+- Trick Room
+- Protect
+
+Meowscarada @ Choice Scarf
+Ability: Protean
+Adamant Nature
+- Knock Off
+- Flower Trick
+- Triple Axel
+- U-turn
+
+Annihilape @ Focus Sash
+Ability: Defiant
+Adamant Nature
+- Close Combat
+- Phantom Force
+- Rock Slide
+- Protect
+
+Gardevoir @ Gardevoirite
+Ability: Trace
+Modest Nature
+- Hyper Voice
+- Expanding Force
+- Thunderbolt
+- Protect
+
+######################################################################
+TEAM 52 — luca · #1 at VGC UmbreNews 15.09.2026 #32 - Champion (97 teams) · 9-1
+######################################################################
+Best team for Pairings: Gardevoir + Salamence
+
+Gardevoir @ Gardevoirite
+Ability: Trace
+Modest Nature
+- Expanding Force
+- Hyper Voice
+- Trick Room
+- Protect
+
+Indeedee ♀ @ Rocky Helmet
+Ability: Psychic Surge
+Relaxed Nature
+- Follow Me
+- Psychic
+- Helping Hand
+- Protect
+
+Whimsicott @ Focus Sash
+Ability: Prankster
+Timid Nature
+- Moonblast
+- Tailwind
+- Encore
+- Protect
+
+Typhlosion-Hisui @ Life Orb
+Ability: Blaze
+Modest Nature
+- Eruption
+- Shadow Ball
+- Heat Wave
+- Protect
+
+Kingambit @ Chople Berry
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Iron Head
+- Sucker Punch
+- Low Kick
+
+Salamence @ Salamencite
+Ability: Intimidate
+Timid Nature
+- Hyper Voice
+- Draco Meteor
+- Heat Wave
+- Protect
+
+######################################################################
+TEAM 53 — motote · #1 at Pokemon Dominicana - Champions League #13 (19 teams) · 5-0
+######################################################################
+Best team for Pairings: Salamence + Tyranitar
+
+Salamence @ Salamencite
+Ability: Intimidate
+Modest Nature
+- Hyper Voice
+- Draco Meteor
+- Tailwind
+- Protect
+
+Tyranitar @ Tyranitarite
+Ability: Sand Stream
+Adamant Nature
+- Rock Slide
+- Knock Off
+- Dragon Dance
+- Protect
+
+Excadrill @ Focus Sash
+Ability: Sand Rush
+Adamant Nature
+- Rock Slide
+- Earthquake
+- Iron Head
+- Protect
+
+Indeedee @ Terrain Extender
+Ability: Psychic Surge
+Modest Nature
+- Expanding Force
+- Shadow Ball
+- Encore
+- Protect
+
+Sneasler @ Psychic Seed
+Ability: Unburden
+Adamant Nature
+- Fake Out
+- Dire Claw
+- Close Combat
+- Protect
+
+Milotic @ Leftovers
+Ability: Competitive
+Bold Nature
+- Scald
+- Ice Beam
+- Recover
+- Protect
+
+######################################################################
+TEAM 54 — rietje13 · played Metal's Meteor Mash Up #1 - TOP 4 TEAM GRAPHIC (38 teams) · 0-0
 ######################################################################
 Best team for Pairings: Blastoise + Camerupt
 
@@ -2518,60 +2898,7 @@ Adamant Nature
 - Low Kick
 
 ######################################################################
-TEAM 48 — heisenberg81 · #1 at Sunday Showdown #1 (36 teams) · 5-0
-######################################################################
-Best team for Pairings: Metagross + Staraptor
-
-Staraptor @ Staraptite
-Ability: Intimidate
-Careful Nature
-- Brave Bird
-- Close Combat
-- Protect
-- Roost
-
-Metagross @ Metagrossite
-Ability: Clear Body
-Impish Nature
-- Body Press
-- Cosmic Power
-- Rest
-- Iron Head
-
-Toxapex @ Leftovers
-Ability: Regenerator
-Careful Nature
-- Stockpile
-- Toxic
-- Infestation
-- Recover
-
-Grimmsnarl @ Light Clay
-Ability: Prankster
-Impish Nature
-- Light Screen
-- Reflect
-- Spirit Break
-- Parting Shot
-
-Sinistcha @ Sitrus Berry
-Ability: Hospitality
-Calm Nature
-- Trick Room
-- Matcha Gotcha
-- Life Dew
-- Rage Powder
-
-Basculegion-Male @ Focus Sash
-Ability: Adaptability
-Adamant Nature
-- Wave Crash
-- Last Respects
-- Aqua Jet
-- Protect
-
-######################################################################
-TEAM 49 — littlepotato13 · #1 at Pokepal Smackdown #157 (Champions) (Reg M-C) (48 teams) · 5-0
+TEAM 55 — littlepotato13 · #1 at Pokepal Smackdown #157 (Champions) (Reg M-C) (48 teams) · 5-0
 ######################################################################
 Best team for Pairings: Floette + Froslass
 
@@ -2624,7 +2951,7 @@ Relaxed Nature
 - Infestation
 
 ######################################################################
-TEAM 50 — sparx · #1 at Pokepal Smackdown #158 (Champions) (Reg M-C) (82 teams) · 5-0
+TEAM 56 — sparx · #1 at Pokepal Smackdown #158 (Champions) (Reg M-C) (82 teams) · 5-0
 ######################################################################
 Best team for Pairings: Charizard-Y + Swampert
 
@@ -2677,7 +3004,113 @@ Modest Nature
 - Hurricane
 
 ######################################################################
-TEAM 51 — philww · #2 at Sunday Showdown #1 (36 teams) · 5-0
+TEAM 57 — kamikazekidgc · #1 at Pokepal Smackdown #161 (Champions) (Reg M-C) (45 teams) · 5-0
+######################################################################
+Best team for Pairings: Delphox + Golisopod
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- Leech Life
+- Iron Head
+- Drill Run
+- Protect
+
+Archaludon @ Leftovers
+Ability: Stamina
+Modest Nature
+- Electro Shot
+- Dragon Pulse
+- Flash Cannon
+- Protect
+
+Sneasler @ White Herb
+Ability: Unburden
+Adamant Nature
+- Fake Out
+- Close Combat
+- Dire Claw
+- Protect
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Careful Nature
+- Reflect
+- Light Screen
+- Parting Shot
+- Spirit Break
+
+Delphox @ Delphoxite
+Ability: Blaze
+Timid Nature
+- Heat Wave
+- Nasty Plot
+- Psychic
+- Protect
+
+Pelipper @ Focus Sash
+Ability: Drizzle
+Modest Nature
+- Weather Ball
+- Tailwind
+- Hurricane
+- Protect
+
+######################################################################
+TEAM 58 — heisenberg81 · #1 at Sunday Showdown #1 (36 teams) · 5-0
+######################################################################
+Best team for Pairings: Metagross + Staraptor
+
+Staraptor @ Staraptite
+Ability: Intimidate
+Careful Nature
+- Brave Bird
+- Close Combat
+- Protect
+- Roost
+
+Metagross @ Metagrossite
+Ability: Clear Body
+Impish Nature
+- Body Press
+- Cosmic Power
+- Rest
+- Iron Head
+
+Toxapex @ Leftovers
+Ability: Regenerator
+Careful Nature
+- Stockpile
+- Toxic
+- Infestation
+- Recover
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Impish Nature
+- Light Screen
+- Reflect
+- Spirit Break
+- Parting Shot
+
+Sinistcha @ Sitrus Berry
+Ability: Hospitality
+Calm Nature
+- Trick Room
+- Matcha Gotcha
+- Life Dew
+- Rage Powder
+
+Basculegion-Male @ Focus Sash
+Ability: Adaptability
+Adamant Nature
+- Wave Crash
+- Last Respects
+- Aqua Jet
+- Protect
+
+######################################################################
+TEAM 59 — philww · #2 at Sunday Showdown #1 (36 teams) · 5-0
 ######################################################################
 Best team for Pairings: Blastoise + Gardevoir
 
@@ -2730,7 +3163,60 @@ Quiet Nature
 - Dark Pulse
 
 ######################################################################
-TEAM 52 — burmy · #3 at ValkrixVGC Pokemon Champions League #05 (155 teams) · 8-1
+TEAM 60 — kodoku · #1 at ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (29 teams) · 8-0
+######################################################################
+Best team for Pairings: Golisopod + Raichu-X
+
+Basculegion-Female @ Focus Sash
+Ability: Swift Swim
+Modest Nature
+- Muddy Water
+- Shadow Ball
+- Ice Beam
+- Protect
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- Iron Head
+- Leech Life
+- Sucker Punch
+- Protect
+
+Archaludon @ Leftovers
+Ability: Stamina
+Calm Nature
+- Dragon Pulse
+- Electro Shot
+- Snarl
+- Protect
+
+Pelipper @ Damp Rock
+Ability: Drizzle
+Bold Nature
+- Weather Ball
+- Hurricane
+- Protect
+- Wide Guard
+
+Raichu @ Raichunite X
+Ability: Lightning Rod
+Jolly Nature
+- Volt Tackle
+- Volt Switch
+- Fake Out
+- Feint
+
+Sneasler @ Electric Seed
+Ability: Unburden
+Adamant Nature
+- Poison Jab
+- Close Combat
+- Rock Slide
+- Protect
+
+######################################################################
+TEAM 61 — burmy · #3 at ValkrixVGC Pokemon Champions League #05 (155 teams) · 8-1
 ######################################################################
 Best team for Megas: Blaziken
 
@@ -2783,60 +3269,7 @@ Brave Nature
 - Low Kick
 
 ######################################################################
-TEAM 53 — sollasollita · #26 at Amyverse VGC Champions Arena #14 ❤️ Cash Prize! (130 teams) · 4-0
-######################################################################
-Best team for Pairings: Delphox + Floette
-
-Delphox @ Delphoxite
-Ability: Blaze
-Timid Nature
-- Heat Wave
-- Psychic
-- Nasty Plot
-- Protect
-
-Floette @ Floettite
-Ability: Flower Veil
-Bold Nature
-- Draining Kiss
-- Dazzling Gleam
-- Calm Mind
-- Protect
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Fake Out
-- Grassy Glide
-- Wood Hammer
-- High Horsepower
-
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
-Bold Nature
-- Psychic Noise
-- Thunderbolt
-- Helping Hand
-- Protect
-
-Incineroar @ Chople Berry
-Ability: Intimidate
-Impish Nature
-- Fake Out
-- Flare Blitz
-- Darkest Lariat
-- Parting Shot
-
-Kingambit @ Life Orb
-Ability: Defiant
-Adamant Nature
-- Sucker Punch
-- Kowtow Cleave
-- Iron Head
-- Protect
-
-######################################################################
-TEAM 54 — chamuscado12 · #3 at Copa Oak Stadium #11 - Reg MC - R$ 50 (93 teams) · 8-1
+TEAM 62 — chamuscado12 · #3 at Copa Oak Stadium #11 - Reg MC - R$ 50 (93 teams) · 8-1
 ######################################################################
 Best team for Pairings: Gengar + Raichu-X
 
@@ -2889,60 +3322,7 @@ Jolly Nature
 - Volt Switch
 
 ######################################################################
-TEAM 55 — ggttmmhh · #1 at Xperience Play — MH Expo Pokemon Champions $500#1 (24 teams) · 8-1
-######################################################################
-Best team for Pairings: Glimmora + Staraptor
-
-Hippowdon @ Leftovers
-Ability: Sand Stream
-Brave Nature
-- High Horsepower
-- Stone Edge
-- Yawn
-- Protect
-
-Staraptor @ Staraptite
-Ability: Intimidate
-Jolly Nature
-- Protect
-- Brave Bird
-- Close Combat
-- Roost
-
-Whimsicott @ Focus Sash
-Ability: Prankster
-Modest Nature
-- Tailwind
-- Charm
-- Moonblast
-- Grass Knot
-
-Glimmora @ Glimmoranite
-Ability: Toxic Debris
-Modest Nature
-- Spiky Shield
-- Sludge Bomb
-- Power Gem
-- Earth Power
-
-Armarouge @ Kasib Berry
-Ability: Flash Fire
-Modest Nature
-- Wide Guard
-- Armor Cannon
-- Expanding Force
-- Trick Room
-
-Houndstone @ Life Orb
-Ability: Sand Rush
-Adamant Nature
-- Last Respects
-- Protect
-- Play Rough
-- Substitute
-
-######################################################################
-TEAM 56 — loganvv · #3 at Wolfey Patreon Tournament - Pokémon Champions #5 (49 teams) · 8-1
+TEAM 63 — loganvv · #3 at Wolfey Patreon Tournament - Pokémon Champions #5 (49 teams) · 8-1
 ######################################################################
 Best team for Pairings: Charizard-Y + Floette
 
@@ -2995,7 +3375,113 @@ Timid Nature
 - Calm Mind
 
 ######################################################################
-TEAM 57 — colba · #2 at Champions League VGC October (Prize: Shiny Gengar) (81 teams) · 8-1
+TEAM 64 — sollasollita · #26 at Amyverse VGC Champions Arena #14 ❤️ Cash Prize! (130 teams) · 4-0
+######################################################################
+Best team for Pairings: Delphox + Floette
+
+Delphox @ Delphoxite
+Ability: Blaze
+Timid Nature
+- Heat Wave
+- Psychic
+- Nasty Plot
+- Protect
+
+Floette @ Floettite
+Ability: Flower Veil
+Bold Nature
+- Draining Kiss
+- Dazzling Gleam
+- Calm Mind
+- Protect
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- High Horsepower
+
+Farigiraf @ Sitrus Berry
+Ability: Armor Tail
+Bold Nature
+- Psychic Noise
+- Thunderbolt
+- Helping Hand
+- Protect
+
+Incineroar @ Chople Berry
+Ability: Intimidate
+Impish Nature
+- Fake Out
+- Flare Blitz
+- Darkest Lariat
+- Parting Shot
+
+Kingambit @ Life Orb
+Ability: Defiant
+Adamant Nature
+- Sucker Punch
+- Kowtow Cleave
+- Iron Head
+- Protect
+
+######################################################################
+TEAM 65 — ggttmmhh · #1 at Xperience Play — MH Expo Pokemon Champions $500#1 (24 teams) · 8-1
+######################################################################
+Best team for Pairings: Glimmora + Staraptor
+
+Hippowdon @ Leftovers
+Ability: Sand Stream
+Brave Nature
+- High Horsepower
+- Stone Edge
+- Yawn
+- Protect
+
+Staraptor @ Staraptite
+Ability: Intimidate
+Jolly Nature
+- Protect
+- Brave Bird
+- Close Combat
+- Roost
+
+Whimsicott @ Focus Sash
+Ability: Prankster
+Modest Nature
+- Tailwind
+- Charm
+- Moonblast
+- Grass Knot
+
+Glimmora @ Glimmoranite
+Ability: Toxic Debris
+Modest Nature
+- Spiky Shield
+- Sludge Bomb
+- Power Gem
+- Earth Power
+
+Armarouge @ Kasib Berry
+Ability: Flash Fire
+Modest Nature
+- Wide Guard
+- Armor Cannon
+- Expanding Force
+- Trick Room
+
+Houndstone @ Life Orb
+Ability: Sand Rush
+Adamant Nature
+- Last Respects
+- Protect
+- Play Rough
+- Substitute
+
+######################################################################
+TEAM 66 — colba · #2 at Champions League VGC October (Prize: Shiny Gengar) (81 teams) · 8-1
 ######################################################################
 Best team for Pairings: Charizard-Y + Venusaur
 
@@ -3048,60 +3534,60 @@ Jolly Nature
 - Dragon Claw
 
 ######################################################################
-TEAM 58 — naibot2814 · #1 at BK Cup #4 x Micelion | Sylveon EX Box de premio (41 teams) · 8-1
+TEAM 67 — naibot2814 · #1 at BK Cup #4 x Micelion | Sylveon EX Box de premio (41 teams) · 8-1
 ######################################################################
 Best team for Pairings: Dragonite + Raichu-X
-
-Sneasler @ Electric Seed
-Ability: Unburden
-Adamant Nature
-- Protect
-- Dire Claw
-- Swords Dance
-- Close Combat
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Fake Out
-- Grassy Glide
-- Wood Hammer
-- U-turn
 
 Raichu @ Raichunite X
 Ability: Lightning Rod
 Jolly Nature
 - Fake Out
-- Volt Tackle
-- Volt Switch
 - Feint
+- Volt Switch
+- Volt Tackle
+
+Sneasler @ Electric Seed
+Ability: Unburden
+Adamant Nature
+- Protect
+- Swords Dance
+- Close Combat
+- Dire Claw
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Grassy Glide
+- Wood Hammer
+- Fake Out
+- U-turn
 
 Dragonite @ Dragoninite
 Ability: Inner Focus
 Modest Nature
 - Tailwind
 - Dragon Pulse
-- Protect
 - Heat Wave
-
-Primarina @ Leftovers
-Ability: Liquid Voice
-Modest Nature
 - Protect
-- Calm Mind
-- Hyper Voice
-- Moonblast
 
 Kingambit @ Life Orb
 Ability: Defiant
 Adamant Nature
-- Protect
-- Sucker Punch
 - Kowtow Cleave
+- Sucker Punch
 - Swords Dance
+- Protect
+
+Primarina @ Leftovers
+Ability: Liquid Voice
+Modest Nature
+- Moonblast
+- Hyper Voice
+- Protect
+- Calm Mind
 
 ######################################################################
-TEAM 59 — cooperkid · #2 at Friday Fight Night 77! $50 Prize & Team Report (131 teams) · 10-2
+TEAM 68 — cooperkid · #2 at Friday Fight Night 77! $50 Prize & Team Report (131 teams) · 10-2
 ######################################################################
 Best team for Pairings: Staraptor + Tyranitar
 
@@ -3154,7 +3640,7 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 60 — cansecochann1994 · #1 at WARTORTLE WEDNESDAYS #68 REG M-C BO3 OTS (27 teams) · 7-1
+TEAM 69 — cansecochann1994 · #1 at WARTORTLE WEDNESDAYS #68 REG M-C BO3 OTS (27 teams) · 7-1
 ######################################################################
 Best team for Pairings: Delphox + Staraptor
 
@@ -3207,7 +3693,113 @@ Jolly Nature
 - Protect
 
 ######################################################################
-TEAM 61 — eb3n · #2 at ⛩️Chadweezy95 VGC Champions Tournament Ep 22!⛩️ (47 teams) · 5-3
+TEAM 70 — joeygobran · #1 at The Drywalls Series #21 (69 teams) · 9-0
+######################################################################
+Best team for Pairings: Blaziken + Garchomp-Z
+
+Blaziken @ Blazikenite
+Ability: Speed Boost
+Adamant Nature
+- Close Combat
+- Flare Blitz
+- Rock Slide
+- Detect
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Grassy Glide
+- Wood Hammer
+- Fake Out
+- U-turn
+
+Farigiraf @ Sitrus Berry
+Ability: Armor Tail
+Bold Nature
+- Trick Room
+- Psychic
+- Thunderbolt
+- Helping Hand
+
+Primarina @ Life Orb
+Ability: Liquid Voice
+Modest Nature
+- Hyper Voice
+- Protect
+- Moonblast
+- Calm Mind
+
+Kingambit @ Focus Sash
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Iron Head
+- Low Kick
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Earth Power
+- Power Gem
+- Protect
+- Dragon Pulse
+
+######################################################################
+TEAM 71 — aregularguy · #2 at Alpensee Tour (Reg M-C) #75 (125 teams) · 9-3
+######################################################################
+Best team for Pairings: Froslass + Salamence
+
+Froslass @ Froslassite
+Ability: Cursed Body
+Timid Nature
+- Blizzard
+- Shadow Ball
+- Aurora Veil
+- Protect
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- High Horsepower
+
+Kingambit @ Chople Berry
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Iron Head
+- Low Kick
+
+Salamence @ Salamencite
+Ability: Intimidate
+Timid Nature
+- Hyper Voice
+- Flamethrower
+- Tailwind
+- Protect
+
+Sneasler @ Grassy Seed
+Ability: Unburden
+Jolly Nature
+- Dire Claw
+- Close Combat
+- Swords Dance
+- Protect
+
+Arcanine-Hisui @ Focus Sash
+Ability: Rock Head
+Jolly Nature
+- Flare Blitz
+- Head Smash
+- Extreme Speed
+- Protect
+
+######################################################################
+TEAM 72 — eb3n · #2 at ⛩️Chadweezy95 VGC Champions Tournament Ep 22!⛩️ (47 teams) · 5-3
 ######################################################################
 Best team for Pairings: Charizard-Y + Raichu-X
 
@@ -3260,7 +3852,113 @@ Calm Nature
 - Protect
 
 ######################################################################
-TEAM 62 — gabribrick · #2 at GRAVEMINE CIRCUT #02 (M-C) (28 teams) · 5-3
+TEAM 73 — penglin · #6 at Make It Rain - VGC Tournament (266 teams) · 9-3
+######################################################################
+Best team for Pairings: Blastoise + Salamence
+
+Sneasler @ Psychic Seed
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Dire Claw
+- Fake Out
+- Protect
+
+Indeedee ♀ @ Rocky Helmet
+Ability: Psychic Surge
+Sassy Nature
+- Psychic
+- Follow Me
+- Helping Hand
+- Trick Room
+
+Salamence @ Salamencite
+Ability: Intimidate
+Timid Nature
+- Hyper Voice
+- Draco Meteor
+- Tailwind
+- Protect
+
+Kingambit @ Focus Sash
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Low Kick
+- Iron Head
+
+Basculegion-Male @ Life Orb
+Ability: Adaptability
+Adamant Nature
+- Wave Crash
+- Last Respects
+- Aqua Jet
+- Protect
+
+Blastoise @ Blastoisinite
+Ability: Rain Dish
+Modest Nature
+- Water Spout
+- Aura Sphere
+- Shell Smash
+- Protect
+
+######################################################################
+TEAM 74 — shaikhvgc786 · #2 at Maddo's Cup #12 | 100€ for the Winner | Reg M-C (388 teams) · 13-2
+######################################################################
+Best team for Pairings: Golisopod + Raichu-Y
+
+Rillaboom @ Life Orb
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Grassy Glide
+- Fake Out
+- High Horsepower
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- Leech Life
+- Sucker Punch
+- Protect
+- Swords Dance
+
+Incineroar @ Expert Belt
+Ability: Intimidate
+Adamant Nature
+- Fake Out
+- Parting Shot
+- Flare Blitz
+- Darkest Lariat
+
+Farigiraf @ Sitrus Berry
+Ability: Armor Tail
+Relaxed Nature
+- Protect
+- Trick Room
+- Psychic
+- Confuse Ray
+
+Raichu @ Raichunite Y
+Ability: Lightning Rod
+Timid Nature
+- Zap Cannon
+- Focus Blast
+- Protect
+- Encore
+
+Milotic @ Leftovers
+Ability: Competitive
+Calm Nature
+- Hypnosis
+- Protect
+- Coil
+- Muddy Water
+
+######################################################################
+TEAM 75 — gabribrick · #2 at GRAVEMINE CIRCUT #02 (M-C) (28 teams) · 5-3
 ######################################################################
 Best team for Pairings: Gengar + Swampert
 
@@ -3313,7 +4011,7 @@ Adamant Nature
 - Protect
 
 ######################################################################
-TEAM 63 — gurrasnurra5 · #2 at VGC Reg M-C Ingame Tour #7 (Shiny Altaria) (70 teams) · 8-3
+TEAM 76 — gurrasnurra5 · #2 at VGC Reg M-C Ingame Tour #7 (Shiny Altaria) (70 teams) · 8-3
 ######################################################################
 Best team for Pairings: Charizard-Y + Glimmora
 
@@ -3366,7 +4064,60 @@ Modest Nature
 - Spiky Shield
 
 ######################################################################
-TEAM 64 — hugovgc87 · #1 at VGC Reg M-C Ingame Tour #6 (Shiny Pawmot) (127 teams) · 10-2
+TEAM 77 — ecomcc · #1 at 🟊 M-C CHAMPIONS Showdown #1 🟊 (24 teams) · 7-2
+######################################################################
+Best team for Pairings: Glimmora + Salamence
+
+Pawmot @ Focus Sash
+Ability: Iron Fist
+Jolly Nature
+- Double Shock
+- Close Combat
+- Ice Punch
+- Fake Out
+
+Glimmora @ Glimmoranite
+Ability: Toxic Debris
+Timid Nature
+- Sludge Bomb
+- Power Gem
+- Earth Power
+- Spiky Shield
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Grassy Glide
+- Wood Hammer
+- High Horsepower
+- Fake Out
+
+Kingambit @ Chople Berry
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Iron Head
+- Protect
+
+Salamence @ Salamencite
+Ability: Intimidate
+Timid Nature
+- Hyper Voice
+- Draco Meteor
+- Flamethrower
+- Protect
+
+Basculegion-Male @ Choice Scarf
+Ability: Adaptability
+Jolly Nature
+- Flip Turn
+- Last Respects
+- Wave Crash
+- Aqua Jet
+
+######################################################################
+TEAM 78 — hugovgc87 · #1 at VGC Reg M-C Ingame Tour #6 (Shiny Pawmot) (127 teams) · 10-2
 ######################################################################
 Best team for Pairings: Froslass + Raichu-Y
 
@@ -3419,7 +4170,7 @@ Adamant Nature
 - Protect
 
 ######################################################################
-TEAM 65 — ragnelson · #3 at Copa Oak Stadium #12 - MonoType - R$ 50 (64 teams) · 7-1
+TEAM 79 — ragnelson · #3 at Copa Oak Stadium #12 - MonoType - R$ 50 (64 teams) · 7-1
 ######################################################################
 Best team for Megas: Charizard-X
 
@@ -3472,60 +4223,7 @@ Bold Nature
 - Overheat
 
 ######################################################################
-TEAM 66 — madmax0229 · #1 at Vgc Córdoba | -1% (22 teams) · 7-1
-######################################################################
-Best team for Megas: Manectric
-
-Azumarill @ Life Orb
-Ability: Huge Power
-Adamant Nature
-- Liquidation
-- Play Rough
-- Aqua Jet
-- Protect
-
-Meowscarada @ Focus Sash
-Ability: Protean
-Adamant Nature
-- Flower Trick
-- Knock Off
-- Sucker Punch
-- Protect
-
-Dragonite @ Dragon Fang
-Ability: Multiscale
-Timid Nature
-- Dragon Pulse
-- Air Slash
-- Tailwind
-- Protect
-
-Pyroar @ Pyroarite
-Ability: Unnerve
-Modest Nature
-- Heat Wave
-- Overheat
-- Scorching Sands
-- Protect
-
-Manectric @ Manectite
-Ability: Lightning Rod
-Timid Nature
-- Thunderbolt
-- Volt Switch
-- Snarl
-- Protect
-
-Orthworm @ Leftovers
-Ability: Earth Eater
-Impish Nature
-- Body Press
-- Iron Defense
-- Heavy Slam
-- Protect
-
-######################################################################
-TEAM 67 — spikeshock · #1 at Small Pokemon Cup Championships (37 teams) · 7-1
+TEAM 80 — spikeshock · #1 at Small Pokemon Cup Championships (37 teams) · 7-1
 ######################################################################
 Best team for Megas: Excadrill
 
@@ -3578,7 +4276,60 @@ Calm Nature
 - Reflect
 
 ######################################################################
-TEAM 68 — jomccloud23 · #2 at Underdog Cup! Banlist Tournament (23 teams) · 7-1
+TEAM 81 — madmax0229 · #1 at Vgc Córdoba | -1% (22 teams) · 7-1
+######################################################################
+Best team for Megas: Manectric
+
+Azumarill @ Life Orb
+Ability: Huge Power
+Adamant Nature
+- Liquidation
+- Play Rough
+- Aqua Jet
+- Protect
+
+Meowscarada @ Focus Sash
+Ability: Protean
+Adamant Nature
+- Flower Trick
+- Knock Off
+- Sucker Punch
+- Protect
+
+Dragonite @ Dragon Fang
+Ability: Multiscale
+Timid Nature
+- Dragon Pulse
+- Air Slash
+- Tailwind
+- Protect
+
+Pyroar @ Pyroarite
+Ability: Unnerve
+Modest Nature
+- Heat Wave
+- Overheat
+- Scorching Sands
+- Protect
+
+Manectric @ Manectite
+Ability: Lightning Rod
+Timid Nature
+- Thunderbolt
+- Volt Switch
+- Snarl
+- Protect
+
+Orthworm @ Leftovers
+Ability: Earth Eater
+Impish Nature
+- Body Press
+- Iron Defense
+- Heavy Slam
+- Protect
+
+######################################################################
+TEAM 82 — jomccloud23 · #2 at Underdog Cup! Banlist Tournament (23 teams) · 7-1
 ######################################################################
 Best team for Megas: Eelektross
 
@@ -3631,7 +4382,7 @@ Timid Nature
 - Protect
 
 ######################################################################
-TEAM 69 — zaphkiel03 · #1 at Road to Puebla (39 teams) · 7-1
+TEAM 83 — zaphkiel03 · #1 at Road to Puebla (39 teams) · 7-1
 ######################################################################
 Best team for Pairings: Aerodactyl + Charizard-Y
 
@@ -3684,113 +4435,325 @@ Modest Nature
 - Solar Beam
 
 ######################################################################
-TEAM 70 — gabeeel · #1 at Copa Oak Stadium #10 - MonoColor Challenge - R$ 50 (33 teams) · 7-1
+TEAM 84 — rainbuckets · #1 at Hatterene Series Weekly #3 2027 - 7PM EDT - M-C (14 teams) · 6-0
 ######################################################################
-Best team for Pairings: Tyranitar + Venusaur
+Best team for Pairings: Gengar + Golisopod
+
+Gengar @ Gengarite
+Ability: Cursed Body
+Timid Nature
+- Protect
+- Shadow Ball
+- Disable
+- Perish Song
+
+Incineroar @ Rocky Helmet
+Ability: Intimidate
+Relaxed Nature
+- Protect
+- Flare Blitz
+- Parting Shot
+- Fake Out
+
+Rillaboom @ Eject Button
+Ability: Grassy Surge
+Sassy Nature
+- Protect
+- Grassy Glide
+- U-turn
+- Fake Out
+
+Politoed @ Sitrus Berry
+Ability: Drizzle
+Calm Nature
+- Protect
+- Weather Ball
+- Encore
+- Perish Song
+
+Archaludon @ Leftovers
+Ability: Stamina
+Bold Nature
+- Protect
+- Dragon Pulse
+- Electro Shot
+- Snarl
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- Protect
+- Leech Life
+- Sucker Punch
+- Swords Dance
+
+######################################################################
+TEAM 85 — lymnus · #2 at ⛩️Chadweezy95 VGC Champions Tournament Ep 15!⛩️ (37 teams) · 7-1
+######################################################################
+Best team for Pairings: Golisopod + Salamence
+
+Salamence @ Salamencite
+Ability: Intimidate
+Timid Nature
+- Hyper Voice
+- Draco Meteor
+- Flamethrower
+- Protect
+
+Tyranitar @ Focus Sash
+Ability: Sand Stream
+Adamant Nature
+- Rock Slide
+- Assurance
+- High Horsepower
+- Protect
+
+Volcarona @ Rocky Helmet
+Ability: Flame Body
+Bold Nature
+- Bug Buzz
+- Heat Wave
+- Rage Powder
+- Protect
+
+Whimsicott @ Fairy Feather
+Ability: Prankster
+Timid Nature
+- Moonblast
+- Encore
+- Tailwind
+- Protect
+
+Kommo-o @ Life Orb
+Ability: Soundproof
+Timid Nature
+- Clanging Scales
+- Aura Sphere
+- Clangorous Soul
+- Protect
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Jolly Nature
+- Leech Life
+- Iron Head
+- Liquidation
+- Protect
+
+######################################################################
+TEAM 86 — sooner · #2 at ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (M-C) (43 teams) · 7-1
+######################################################################
+Best team for Pairings: Salamence + Swampert
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Careful Nature
+- Spirit Break
+- Parting Shot
+- Reflect
+- Light Screen
+
+Swampert @ Swampertite
+Ability: Damp
+Adamant Nature
+- Wave Crash
+- Earthquake
+- Ice Punch
+- Protect
+
+Pelipper @ Life Orb
+Ability: Drizzle
+Timid Nature
+- Hurricane
+- Weather Ball
+- Protect
+- Wide Guard
+
+Archaludon @ Leftovers
+Ability: Stamina
+Calm Nature
+- Electro Shot
+- Dragon Pulse
+- Flash Cannon
+- Protect
+
+Farigiraf @ Sitrus Berry
+Ability: Armor Tail
+Bold Nature
+- Trick Room
+- Protect
+- Twin Beam
+- Helping Hand
+
+Salamence @ Salamencite
+Ability: Intimidate
+Mild Nature
+- Hyper Voice
+- Dragon Pulse
+- Protect
+- Double-Edge
+
+######################################################################
+TEAM 87 — aerxdri · #1 at Thalera Champions Cheese #18 - Só Evos Especiais (18 teams) · 7-1
+######################################################################
+Best team for Pairings: Lucario-Z + Raichu-Y
+
+Raichu @ Raichunite Y
+Ability: Lightning Rod
+Timid Nature
+- Protect
+- Zap Cannon
+- Focus Blast
+- Fake Out
+
+Basculegion-Male @ Life Orb
+Ability: Adaptability
+Adamant Nature
+- Protect
+- Wave Crash
+- Last Respects
+- Aqua Jet
+
+Arcanine-Hisui @ Focus Sash
+Ability: Rock Head
+Jolly Nature
+- Protect
+- Head Smash
+- Flare Blitz
+- Extreme Speed
+
+Sinistcha @ Kasib Berry
+Ability: Hospitality
+Bold Nature
+- Protect
+- Matcha Gotcha
+- Shadow Ball
+- Rage Powder
+
+Ninetales-Alola @ Choice Scarf
+Ability: Snow Warning
+Timid Nature
+- Blizzard
+- Icy Wind
+- Moonblast
+- Fake Tears
+
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Timid Nature
+- Detect
+- Aura Sphere
+- Nasty Plot
+- Flash Cannon
+
+######################################################################
+TEAM 88 — aerxdri · #1 at Thalera Champions Cheese #16 - Tigrinho Edition (18 teams) · 7-1
+######################################################################
+Best team for Pairings: Garchomp-Z + Metagross
+
+Metagross @ Metagrossite
+Ability: Clear Body
+Adamant Nature
+- Meteor Mash
+- Zen Headbutt
+- Rock Slide
+- Hammer Arm
+
+Cinderace @ Life Orb
+Ability: Libero
+Jolly Nature
+- Pyro Ball
+- Gunk Shot
+- High Jump Kick
+- Will-O-Wisp
+
+Meowscarada @ Choice Scarf
+Ability: Protean
+Naive Nature
+- Triple Axel
+- Play Rough
+- Leaf Storm
+- Giga Impact
+
+Vivillon @ Focus Sash
+Ability: Compound Eyes
+Timid Nature
+- Hurricane
+- Sleep Powder
+- String Shot
+- Stun Spore
+
+Inteleon @ Mystic Water
+Ability: Torrent
+Timid Nature
+- Hydro Pump
+- Icy Wind
+- Muddy Water
+- Hydro Cannon
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Rash Nature
+- Draco Meteor
+- Fire Blast
+- Stone Edge
+- Rock Tomb
+
+######################################################################
+TEAM 89 — silver_arm · #1 at Thavorian Trials 9 (23 teams) · 7-1
+######################################################################
+Best team for Pairings: Mawile + Salamence
+
+Mawile @ Mawilite
+Ability: Hyper Cutter
+Adamant Nature
+- Play Rough
+- Sucker Punch
+- Rock Slide
+- Protect
 
 Rillaboom @ Miracle Seed
 Ability: Grassy Surge
 Adamant Nature
-- Fake Out
 - Wood Hammer
 - Grassy Glide
+- Fake Out
 - High Horsepower
 
-Basculegion-Male @ Focus Sash
-Ability: Adaptability
-Adamant Nature
-- Last Respects
-- Liquidation
-- Aqua Jet
+Salamence @ Salamencite
+Ability: Intimidate
+Timid Nature
+- Hyper Voice
+- Round
+- Tailwind
 - Protect
 
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
-Adamant Nature
-- Rock Slide
-- Knock Off
-- Dragon Dance
-- Protect
-
-Sinistcha @ Colbur Berry
-Ability: Hospitality
-Bold Nature
-- Matcha Gotcha
-- Rage Powder
+Farigiraf @ Sitrus Berry
+Ability: Armor Tail
+Relaxed Nature
+- Psychic Fangs
+- Thunderbolt
+- Helping Hand
 - Trick Room
-- Protect
 
-Reuniclus @ Life Orb
-Ability: Magic Guard
-Quiet Nature
-- Psychic
-- Flash Cannon
-- Trick Room
-- Protect
-
-Venusaur @ Venusaurite
-Ability: Chlorophyll
-Modest Nature
-- Giga Drain
-- Sludge Bomb
-- Earth Power
-- Protect
-
-######################################################################
-TEAM 71 — neves · #2 at Thalera Champions Cheese #16 - Tigrinho Edition (18 teams) · 7-1
-######################################################################
-Best team for Pairings: Aerodactyl + Swampert
-
-Vivillon @ Choice Scarf
-Ability: Compound Eyes
-Timid Nature
-- Sleep Powder
-- Hurricane
-- String Shot
-- Hyper Beam
-
-Politoed @ Sitrus Berry
-Ability: Drizzle
-Timid Nature
-- Hydro Pump
-- Muddy Water
-- Icy Wind
-- Focus Blast
-
-Swampert @ Swampertite
-Ability: Swift Swim
-Adamant Nature
-- High Horsepower
-- Rock Slide
-- Stone Edge
-- Iron Tail
-
-Basculegion-Female @ Mystic Water
-Ability: Swift Swim
-Timid Nature
-- Hydro Pump
-- Muddy Water
-- Blizzard
-- Icy Wind
-
-Inteleon @ Life Orb
-Ability: Torrent
-Timid Nature
-- Hydro Cannon
-- Blizzard
-- Muddy Water
-- Hydro Pump
-
-Aerodactyl @ Aerodactylite
-Ability: Tough Claws
+Arcanine-Hisui @ Focus Sash
+Ability: Rock Head
 Jolly Nature
-- Sky Attack
-- Rock Slide
-- Thunder Fang
-- Ice Fang
+- Flare Blitz
+- Head Smash
+- Extreme Speed
+- Protect
+
+Sylveon @ Fairy Feather
+Ability: Pixilate
+Quiet Nature
+- Hyper Voice
+- Round
+- Quick Attack
+- Detect
 
 ######################################################################
-TEAM 72 — localcringemain · #1 at Øutcasts' Saturday Night #2 [1st: Shiny Garchomp] (31 teams) · 7-1
+TEAM 90 — localcringemain · #1 at Øutcasts' Saturday Night #2 [1st: Shiny Garchomp] (31 teams) · 7-1
 ######################################################################
 Best team for Pairings: Delphox + Dragonite
 
@@ -3843,7 +4806,113 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 73 — elemunzi · #1 at PokéFolk Champions Battle Night #5 - REG M-C (70 teams) · 9-2
+TEAM 91 — batcoach · #1 at Prep Frankfurt Circuito VGC #8 REG MC | Z2 Gaming (74 teams) · 8-1
+######################################################################
+Best team for Pairings: Golisopod + Staraptor
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- Leech Life
+- Iron Head
+- Sucker Punch
+- Swords Dance
+
+Pelipper @ Sitrus Berry
+Ability: Drizzle
+Modest Nature
+- Weather Ball
+- Hurricane
+- Wide Guard
+- Tailwind
+
+Archaludon @ Leftovers
+Ability: Stamina
+Modest Nature
+- Electro Shot
+- Flash Cannon
+- Dragon Pulse
+- Protect
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Sassy Nature
+- Spirit Break
+- Reflect
+- Light Screen
+- Parting Shot
+
+Staraptor @ Staraptite
+Ability: Intimidate
+Jolly Nature
+- Close Combat
+- Brave Bird
+- Roost
+- Protect
+
+Basculegion-Male @ Choice Scarf
+Ability: Adaptability
+Jolly Nature
+- Last Respects
+- Wave Crash
+- Aqua Jet
+- Flip Turn
+
+######################################################################
+TEAM 92 — mrsidi · #1 at Neko Gaming Store VGC #2 (11 teams) · 4-0
+######################################################################
+Best team for Pairings: Charizard-Y + Staraptor
+
+Charizard @ Charizardite Y
+Ability: Solar Power
+Timid Nature
+- Heat Wave
+- Weather Ball
+- Solar Beam
+- Protect
+
+Staraptor @ Staraptite
+Ability: Reckless
+Jolly Nature
+- Close Combat
+- Brave Bird
+- Tailwind
+- Protect
+
+Glimmora @ Focus Sash
+Ability: Toxic Debris
+Modest Nature
+- Power Gem
+- Sludge Bomb
+- Earth Power
+- Spiky Shield
+
+Gholdengo @ Life Orb
+Ability: Good as Gold
+Modest Nature
+- Make It Rain
+- Shadow Ball
+- Nasty Plot
+- Protect
+
+Garchomp @ Choice Scarf
+Ability: Rough Skin
+Adamant Nature
+- Dragon Claw
+- Earthquake
+- Stomping Tantrum
+- Rock Slide
+
+Whimsicott @ Occa Berry
+Ability: Prankster
+Calm Nature
+- Moonblast
+- Tailwind
+- Charm
+- Encore
+
+######################################################################
+TEAM 93 — elemunzi · #1 at PokéFolk Champions Battle Night #5 - REG M-C (70 teams) · 9-2
 ######################################################################
 Best team for Pairings: Charizard-Y + Metagross
 
@@ -3896,60 +4965,7 @@ Jolly Nature
 - Protect
 
 ######################################################################
-TEAM 74 — lojica1 · #4 at Penglin's Penguin Tournouá Laurels (10k in Prizes) (173 teams) · 9-2
-######################################################################
-Best team for Pairings: Dragonite + Froslass
-
-Froslass @ Froslassite
-Ability: Cursed Body
-Timid Nature
-- Blizzard
-- Aurora Veil
-- Shadow Ball
-- Protect
-
-Arcanine-Hisui @ Focus Sash
-Ability: Rock Head
-Jolly Nature
-- Flare Blitz
-- Head Smash
-- Extreme Speed
-- Protect
-
-Dragonite @ Dragoninite
-Ability: Multiscale
-Modest Nature
-- Dragon Pulse
-- Heat Wave
-- Tailwind
-- Protect
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Fake Out
-- Wood Hammer
-- High Horsepower
-- Grassy Glide
-
-Kingambit @ Chople Berry
-Ability: Defiant
-Adamant Nature
-- Iron Head
-- Kowtow Cleave
-- Sucker Punch
-- Low Kick
-
-Sneasler @ Grassy Seed
-Ability: Unburden
-Adamant Nature
-- Close Combat
-- Dire Claw
-- Rock Slide
-- Protect
-
-######################################################################
-TEAM 75 — pcdy_7 · #10 at Make It Rain - VGC Tournament (266 teams) · 9-2
+TEAM 94 — pcdy_7 · #10 at Make It Rain - VGC Tournament (266 teams) · 9-2
 ######################################################################
 Best team for Pairings: Aerodactyl + Froslass
 
@@ -4002,60 +5018,272 @@ Timid Nature
 - Aura Sphere
 
 ######################################################################
-TEAM 76 — mrsidi · #1 at Neko Gaming Store VGC #2 (11 teams) · 4-0
+TEAM 95 — lojica1 · #4 at Penglin's Penguin Tournouá Laurels (10k in Prizes) (173 teams) · 9-2
 ######################################################################
-Best team for Pairings: Charizard-Y + Staraptor
+Best team for Pairings: Dragonite + Froslass
+
+Froslass @ Froslassite
+Ability: Cursed Body
+Timid Nature
+- Blizzard
+- Aurora Veil
+- Shadow Ball
+- Protect
+
+Arcanine-Hisui @ Focus Sash
+Ability: Rock Head
+Jolly Nature
+- Flare Blitz
+- Head Smash
+- Extreme Speed
+- Protect
+
+Dragonite @ Dragoninite
+Ability: Multiscale
+Modest Nature
+- Dragon Pulse
+- Heat Wave
+- Tailwind
+- Protect
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Wood Hammer
+- High Horsepower
+- Grassy Glide
+
+Kingambit @ Chople Berry
+Ability: Defiant
+Adamant Nature
+- Iron Head
+- Kowtow Cleave
+- Sucker Punch
+- Low Kick
+
+Sneasler @ Grassy Seed
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Dire Claw
+- Rock Slide
+- Protect
+
+######################################################################
+TEAM 96 — sappy · #1 at 4fun sabadín (5 teams) · 4-0
+######################################################################
+Best team for Pairings: Lucario-Z + Salamence
+
+Salamence @ Salamencite
+Ability: Intimidate
+Jolly Nature
+- Tailwind
+- Double-Edge
+- Breaking Swipe
+- Protect
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Wood Hammer
+- Grassy Glide
+- Protect
+
+Kingambit @ Life Orb
+Ability: Defiant
+Adamant Nature
+- Swords Dance
+- Kowtow Cleave
+- Sucker Punch
+- Protect
+
+Basculegion-Male @ Choice Scarf
+Ability: Adaptability
+Jolly Nature
+- Wave Crash
+- Last Respects
+- Aqua Jet
+- Flip Turn
+
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Modest Nature
+- Nasty Plot
+- Aura Sphere
+- Flash Cannon
+- Detect
+
+Arcanine-Hisui @ Focus Sash
+Ability: Rock Head
+Adamant Nature
+- Flare Blitz
+- Head Smash
+- Extreme Speed
+- Protect
+
+######################################################################
+TEAM 97 — tsareena · #1 at Mid-Week Smoke #11 (42 teams) · 8-1
+######################################################################
+Best team for Pairings: Charizard-Y + Golisopod
 
 Charizard @ Charizardite Y
 Ability: Blaze
 Timid Nature
+- Protect
+- Heat Wave
+- Weather Ball
+- Solar Beam
+
+Venusaur @ Focus Sash
+Ability: Chlorophyll
+Modest Nature
+- Protect
+- Sludge Bomb
+- Leaf Storm
+- Sleep Powder
+
+Pelipper @ Sitrus Berry
+Ability: Drizzle
+Modest Nature
+- Hurricane
+- Weather Ball
+- Tailwind
+- Wide Guard
+
+Archaludon @ Leftovers
+Ability: Stamina
+Modest Nature
+- Protect
+- Electro Shot
+- Dragon Pulse
+- Flash Cannon
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Careful Nature
+- Light Screen
+- Reflect
+- Spirit Break
+- Parting Shot
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- Protect
+- Leech Life
+- Iron Head
+- Aqua Jet
+
+######################################################################
+TEAM 98 — carlinhos1v2050_67 · #5 at Copa Mestre Pokémon #1 (116 teams) · 8-1
+######################################################################
+Best team for Pairings: Charizard-Y + Garchomp-Z
+
+Charizard @ Charizardite Y
+Ability: Blaze
+Modest Nature
 - Heat Wave
 - Weather Ball
 - Solar Beam
 - Protect
 
-Staraptor @ Staraptite
-Ability: Intimidate
-Jolly Nature
-- Close Combat
-- Brave Bird
-- Tailwind
-- Protect
-
-Glimmora @ Focus Sash
-Ability: Toxic Debris
+Garchomp @ Garchompite Z
+Ability: Rough Skin
 Modest Nature
-- Power Gem
-- Sludge Bomb
 - Earth Power
-- Spiky Shield
+- Dragon Pulse
+- Power Gem
+- Protect
 
 Gholdengo @ Life Orb
 Ability: Good as Gold
 Modest Nature
-- Make It Rain
 - Shadow Ball
+- Make It Rain
 - Nasty Plot
 - Protect
 
-Garchomp @ Choice Scarf
-Ability: Rough Skin
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
 Adamant Nature
-- Dragon Claw
-- Earthquake
-- Stomping Tantrum
-- Rock Slide
+- Wood Hammer
+- Grassy Glide
+- U-turn
+- Fake Out
 
-Whimsicott @ Occa Berry
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Adamant Nature
+- Flare Blitz
+- Throat Chop
+- Parting Shot
+- Fake Out
+
+Whimsicott @ Focus Sash
 Ability: Prankster
-Calm Nature
+Timid Nature
 - Moonblast
 - Tailwind
-- Charm
 - Encore
+- Protect
 
 ######################################################################
-TEAM 77 — gaaruccia · #26 at Tenki's Cart Weekly #120 - Reg M-C (137 teams) · 4-0
+TEAM 99 — sappy · #1 at Jueves 4fun (4 teams) · 4-0
+######################################################################
+Best team for Pairings: Garchomp-Z + Lucario-Z
+
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Modest Nature
+- Aura Sphere
+- Flash Cannon
+- Terrain Pulse
+- Detect
+
+Indeedee ♀ @ Rocky Helmet
+Ability: Psychic Surge
+Bold Nature
+- Follow Me
+- Helping Hand
+- Psychic
+- Protect
+
+Rillaboom @ Life Orb
+Ability: Grassy Surge
+Adamant Nature
+- Grassy Glide
+- Wood Hammer
+- High Horsepower
+- Fake Out
+
+Garchomp @ Garchompite Z
+Ability: Levitate
+Modest Nature
+- Earth Power
+- Power Gem
+- Dragon Pulse
+- Protect
+
+Sneasler @ White Herb
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Dire Claw
+- Lash Out
+- Protect
+
+Ceruledge @ Psychic Seed
+Ability: Flash Fire
+Adamant Nature
+- Bulk Up
+- Bitter Blade
+- Shadow Claw
+- Protect
+
+######################################################################
+TEAM 100 — gaaruccia · #26 at Tenki's Cart Weekly #120 - Reg M-C (137 teams) · 4-0
 ######################################################################
 Best team for Pairings: Blastoise + Floette
 
@@ -4108,7 +5336,7 @@ Modest Nature
 - Expanding Force
 
 ######################################################################
-TEAM 78 — woulvgc · #3 at The Drywalls Series #19 - M-C (89 teams) · 8-1
+TEAM 101 — woulvgc · #3 at The Drywalls Series #19 - M-C (89 teams) · 8-1
 ######################################################################
 Best team for Pairings: Dragonite + Metagross
 
@@ -4161,7 +5389,7 @@ Jolly Nature
 - Coaching
 
 ######################################################################
-TEAM 79 — adri123 · #13 at Talon's FIGHT CLUB #104 POKEMON CHAMPIONS REG M-C (97 teams) · 7-2
+TEAM 102 — adri123 · #13 at Talon's FIGHT CLUB #104 POKEMON CHAMPIONS REG M-C (97 teams) · 7-2
 ######################################################################
 Best team for Megas: Houndoom
 
@@ -4214,7 +5442,7 @@ Bold Nature
 - Trick Room
 
 ######################################################################
-TEAM 80 — i_am_red_1 · #4 at Windwork Valley Tour | Qualifiers 2 🇮🇳 (156 teams) · 9-3
+TEAM 103 — i_am_red_1 · #4 at Windwork Valley Tour | Qualifiers 2 🇮🇳 (156 teams) · 9-3
 ######################################################################
 Best team for Megas: Beedrill
 
@@ -4267,7 +5495,60 @@ Timid Nature
 - Protect
 
 ######################################################################
-TEAM 81 — magdalium · #7 at Maddo's Cup #12 | 100€ for the Winner | Reg M-C (388 teams) · 10-3
+TEAM 104 — vgcorner · #1 at Chaos League Sunday Slam #117 (42 teams) · 8-0
+######################################################################
+Best team for Pairings: Garchomp-Z + Gengar
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Sassy Nature
+- Grassy Glide
+- U-turn
+- Fake Out
+- Protect
+
+Vivillon @ Focus Sash
+Ability: Compound Eyes
+Timid Nature
+- Hurricane
+- Sleep Powder
+- Rage Powder
+- Protect
+
+Incineroar @ Leftovers
+Ability: Intimidate
+Sassy Nature
+- Flare Blitz
+- Parting Shot
+- Fake Out
+- Protect
+
+Primarina @ Sitrus Berry
+Ability: Liquid Voice
+Quiet Nature
+- Hyper Voice
+- Moonblast
+- Perish Song
+- Protect
+
+Gengar @ Gengarite
+Ability: Cursed Body
+Modest Nature
+- Shadow Ball
+- Perish Song
+- Sludge Bomb
+- Protect
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Draco Meteor
+- Earth Power
+- Power Gem
+- Protect
+
+######################################################################
+TEAM 105 — magdalium · #7 at Maddo's Cup #12 | 100€ for the Winner | Reg M-C (388 teams) · 10-3
 ######################################################################
 Best team for Pairings: Froslass + Glimmora
 
@@ -4320,7 +5601,7 @@ Timid Nature
 - Aurora Veil
 
 ######################################################################
-TEAM 82 — blakunz · #2 at Glory of Champions #1 - Regulation M-C (83 teams) · 8-3
+TEAM 106 — blakunz · #2 at Glory of Champions #1 - Regulation M-C (83 teams) · 8-3
 ######################################################################
 Best team for Pairings: Pyroar + Staraptor
 
@@ -4373,7 +5654,113 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 83 — trevyah · #1 at Alpensee Tour (Reg M-C) #78 (82 teams) · 11-0
+TEAM 107 — squall413 · #4 at Pado's Dojo Reg M-C Pratice #1 🍥 (67 teams) · 6-2
+######################################################################
+Best team for Pairings: Garchomp-Z + Pyroar
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Dragon Pulse
+- Earth Power
+- Power Gem
+- Protect
+
+Farigiraf @ Grassy Seed
+Ability: Armor Tail
+Sassy Nature
+- Psychic
+- Helping Hand
+- Trick Room
+- Protect
+
+Torkoal @ Charcoal
+Ability: Drought
+Quiet Nature
+- Eruption
+- Earth Power
+- Helping Hand
+- Protect
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Grassy Glide
+- U-turn
+- Fake Out
+
+Kingambit @ Life Orb
+Ability: Defiant
+Brave Nature
+- Kowtow Cleave
+- Sucker Punch
+- Iron Head
+- Low Kick
+
+Pyroar @ Pyroarite
+Ability: Unnerve
+Timid Nature
+- Overheat
+- Heat Wave
+- Snarl
+- Protect
+
+######################################################################
+TEAM 108 — maxuki549 · #1 at HeroicTitan’s VGC Battle Arena (55 teams) · 8-2
+######################################################################
+Best team for Pairings: Garchomp-Z + Golisopod
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Earth Power
+- Power Gem
+- Protect
+- Dragon Pulse
+
+Volcarona @ Sitrus Berry
+Ability: Flame Body
+Bold Nature
+- Struggle Bug
+- Heat Wave
+- Protect
+- Quiver Dance
+
+Milotic @ Leftovers
+Ability: Competitive
+Calm Nature
+- Ice Beam
+- Icy Wind
+- Scald
+- Protect
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Grassy Glide
+- Wood Hammer
+- U-turn
+- Fake Out
+
+Farigiraf @ Grassy Seed
+Ability: Armor Tail
+Quiet Nature
+- Twin Beam
+- Helping Hand
+- Trick Room
+- Hyper Voice
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Brave Nature
+- Iron Head
+- Leech Life
+- Sucker Punch
+- Protect
+
+######################################################################
+TEAM 109 — trevyah · #1 at Alpensee Tour (Reg M-C) #78 (82 teams) · 11-0
 ######################################################################
 Best team for Pairings: Blastoise + Blaziken
 
@@ -4426,7 +5813,7 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 84 — ultrashxt · #5 at Off Meta MAJOR ($140 USD Prize Pool) (117 teams) · 8-2
+TEAM 110 — ultrashxt · #5 at Off Meta MAJOR ($140 USD Prize Pool) (117 teams) · 8-2
 ######################################################################
 Best team for Megas: Slowbro
 
@@ -4479,7 +5866,7 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 85 — sparkletastix1 · #1 at 🏰FORT TOURNAMENTS  OFF META OCTOBER🏰 (21 teams) · 8-2
+TEAM 111 — sparkletastix1 · #1 at 🏰FORT TOURNAMENTS  OFF META OCTOBER🏰 (21 teams) · 8-2
 ######################################################################
 Best team for Megas: Lopunny
 
@@ -4532,7 +5919,7 @@ Jolly Nature
 - Protect
 
 ######################################################################
-TEAM 86 — ancient95 · #3 at PokéFolk Champions Battle Night #5 - REG M-C (70 teams) · 8-2
+TEAM 112 — ancient95 · #3 at PokéFolk Champions Battle Night #5 - REG M-C (70 teams) · 8-2
 ######################################################################
 Best team for Pairings: Blastoise + Raichu-Y
 
@@ -4585,166 +5972,60 @@ Timid Nature
 - Protect
 
 ######################################################################
-TEAM 87 — rr12rr12 · #2 at MetaVGC Arena #1 - Reg MC - Prizes: R$ 50 + Shiny (70 teams) · 8-2
+TEAM 113 — penguguy · #1 at VGC UU Regulation M-B Weekly #6 (6 teams) · 5-0
 ######################################################################
-Best team for Pairings: Metagross + Swampert
+Best team for Pairings: Gardevoir + Glimmora
 
-Pelipper @ Focus Sash
-Ability: Drizzle
+Glimmora @ Glimmoranite
+Ability: Toxic Debris
+Timid Nature
+- Power Gem
+- Sludge Bomb
+- Earth Power
+- Spiky Shield
+
+Gardevoir @ Gardevoirite
+Ability: Trace
 Modest Nature
-- Hurricane
-- Weather Ball
-- Wide Guard
-- Tailwind
-
-Swampert @ Swampertite
-Ability: Torrent
-Adamant Nature
-- Wave Crash
-- Earthquake
+- Hyper Voice
+- Psyshock
+- Taunt
 - Protect
-- Ice Punch
-
-Typhlosion-Hisui @ Choice Scarf
-Ability: Blaze
-Modest Nature
-- Eruption
-- Heat Wave
-- Shadow Ball
-- Will-O-Wisp
-
-Rotom-Wash @ Sitrus Berry
-Ability: Levitate
-Calm Nature
-- Thunder
-- Volt Switch
-- Light Screen
-- Will-O-Wisp
 
 Kommo-o @ Life Orb
 Ability: Soundproof
 Modest Nature
+- Draco Meteor
 - Clanging Scales
 - Aura Sphere
 - Protect
-- Vacuum Wave
 
-Metagross @ Metagrossite
-Ability: Clear Body
+Aegislash @ Spell Tag
+Ability: Stance Change
 Adamant Nature
-- Bullet Punch
-- Protect
-- Psychic Fangs
-- Stomping Tantrum
-
-######################################################################
-TEAM 88 — theredfury08 · #3 at Pado's Dojo Reg M-C Pratice #4 🍥 (70 teams) · 8-2
-######################################################################
-Best team for Pairings: Blaziken + Froslass
-
-Froslass @ Froslassite
-Ability: Cursed Body
-Timid Nature
-- Blizzard
-- Shadow Ball
-- Aurora Veil
-- Protect
-
-Sneasler @ White Herb
-Ability: Unburden
-Adamant Nature
+- Poltergeist
+- Shadow Sneak
 - Close Combat
-- Gunk Shot
-- Protect
-- Fake Out
+- King's Shield
 
-Kingambit @ Black Glasses
-Ability: Defiant
-Adamant Nature
-- Kowtow Cleave
-- Sucker Punch
-- Swords Dance
-- Protect
-
-Rillaboom @ Occa Berry
-Ability: Grassy Surge
-Adamant Nature
-- Wood Hammer
-- Grassy Glide
-- Fake Out
-- U-turn
-
-Blaziken @ Blazikenite
-Ability: Speed Boost
-Adamant Nature
-- Close Combat
+Talonflame @ Sharp Beak
+Ability: Gale Wings
+Jolly Nature
 - Flare Blitz
-- Rock Slide
+- Brave Bird
+- Tailwind
 - Protect
 
-Primarina @ Grassy Seed
-Ability: Liquid Voice
-Modest Nature
-- Hyper Voice
-- Moonblast
-- Calm Mind
+Basculegion-Female @ Focus Sash
+Ability: Adaptability
+Adamant Nature
+- Liquidation
+- Aqua Jet
+- Last Respects
 - Protect
 
 ######################################################################
-TEAM 89 — tiki_torch · #3 at 🍋Sitrus-Series🍋|Champions-MC|#79 (119 teams) · 8-2
-######################################################################
-Best team for Pairings: Raichu-Y + Scrafty
-
-Scrafty @ Scraftinite
-Ability: Intimidate
-Brave Nature
-- Close Combat
-- Knock Off
-- Detect
-- Rock Slide
-
-Indeedee ♀ @ Rocky Helmet
-Ability: Psychic Surge
-Relaxed Nature
-- Psychic
-- Helping Hand
-- Follow Me
-- Trick Room
-
-Armarouge @ Life Orb
-Ability: Flash Fire
-Quiet Nature
-- Armor Cannon
-- Trick Room
-- Expanding Force
-- Protect
-
-Torkoal @ Charcoal
-Ability: Drought
-Quiet Nature
-- Weather Ball
-- Earth Power
-- Eruption
-- Protect
-
-Raichu @ Raichunite Y
-Ability: Lightning Rod
-Timid Nature
-- Encore
-- Focus Blast
-- Protect
-- Zap Cannon
-
-Mimikyu @ Fairy Feather
-Ability: Disguise
-Brave Nature
-- Play Rough
-- Trick Room
-- Protect
-- Will-O-Wisp
-
-######################################################################
-TEAM 90 — vedantff12345 · #3 at Mudkip's Marsh Pit #5 (58 teams) · 8-2
+TEAM 114 — vedantff12345 · #3 at Mudkip's Marsh Pit #5 (58 teams) · 8-2
 ######################################################################
 Best team for Pairings: Delphox + Metagross
 
@@ -4797,113 +6078,113 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 91 — shaikhvgc786 · #2 at Off Meta Fight Club #5 ($20 USD prize pool) (47 teams) · 6-1
+TEAM 115 — amethyst_sys · #1 at London Corviknights VGC Weekly Tour 16! (64 teams) · 6-1
 ######################################################################
-Best team for Pairings: Floette + Kangaskhan
+Best team for Pairings: Absol-Z + Aerodactyl
 
-Floette @ Floettite
-Ability: Flower Veil
-Modest Nature
-- Calm Mind
-- Dazzling Gleam
-- Draining Kiss
+Absol @ Absolite Z
+Ability: Justified
+Jolly Nature
+- Night Slash
+- Shadow Claw
+- Close Combat
+- Detect
+
+Aerodactyl @ Aerodactylite
+Ability: Unnerve
+Adamant Nature
+- Rock Slide
+- Dual Wingbeat
+- Ice Fang
+- Tailwind
+
+Rillaboom @ Life Orb
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Grassy Glide
+- High Horsepower
+- Fake Out
+
+Sneasler @ Grassy Seed
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Dire Claw
+- Fake Out
 - Protect
 
-Incineroar @ Sitrus Berry
-Ability: Intimidate
-Careful Nature
-- Parting Shot
-- Throat Chop
-- Flare Blitz
-- Fake Out
+Pelipper @ Focus Sash
+Ability: Drizzle
+Modest Nature
+- Hurricane
+- Weather Ball
+- Tailwind
+- Wide Guard
+
+Archaludon @ Leftovers
+Ability: Stamina
+Modest Nature
+- Electro Shot
+- Dragon Pulse
+- Flash Cannon
+- Protect
+
+######################################################################
+TEAM 116 — droeloe2110 · #1 at ⛩️Chadweezy95 VGC Champions Tournament Ep 23!⛩️ (26 teams) · 6-2
+######################################################################
+Best team for Pairings: Froslass + Garchomp-Z
 
 Rillaboom @ Miracle Seed
 Ability: Grassy Surge
 Adamant Nature
-- Fake Out
 - Grassy Glide
 - Wood Hammer
 - U-turn
+- Fake Out
 
-Chandelure @ Focus Sash
-Ability: Flash Fire
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Dragon Pulse
+- Earth Power
+- Power Gem
+- Protect
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Impish Nature
+- Flare Blitz
+- Darkest Lariat
+- Parting Shot
+- Fake Out
+
+Basculegion-Male @ Choice Scarf
+Ability: Adaptability
+Jolly Nature
+- Wave Crash
+- Last Respects
+- Aqua Jet
+- Flip Turn
+
+Froslass @ Froslassite
+Ability: Cursed Body
+Timid Nature
+- Blizzard
+- Shadow Ball
+- Aurora Veil
+- Protect
+
+Volcarona @ Grassy Seed
+Ability: Flame Body
 Modest Nature
 - Heat Wave
-- Trick Room
-- Shadow Ball
-- Protect
-
-Kangaskhan @ Kangaskhanite
-Ability: Scrappy
-Adamant Nature
-- Fake Out
-- Double-Edge
-- Drain Punch
-- Sucker Punch
-
-Hawlucha @ Grassy Seed
-Ability: Unburden
-Adamant Nature
-- Acrobatics
-- Coaching
-- Detect
-- Close Combat
-
-######################################################################
-TEAM 92 — fizzy14 · #2 at 🏰FORT TOURNAMENTS  OFF META OCTOBER🏰 (21 teams) · 6-1
-######################################################################
-Best team for Pairings: Metagross + Venusaur
-
-Kommo-o @ Leftovers
-Ability: Overcoat
-Modest Nature
-- Clanging Scales
-- Clangorous Soul
-- Aura Sphere
-- Protect
-
-Metagross @ Metagrossite
-Ability: Clear Body
-Adamant Nature
-- Earthquake
-- Iron Head
-- Psychic Fangs
-- Protect
-
-Venusaur @ Venusaurite
-Ability: Chlorophyll
-Modest Nature
-- Earth Power
-- Leaf Storm
-- Sludge Bomb
-- Protect
-
-Grimmsnarl @ Light Clay
-Ability: Prankster
-Sassy Nature
-- Light Screen
-- Reflect
-- Parting Shot
-- Spirit Break
-
-Rotom-Wash @ Sitrus Berry
-Ability: Levitate
-Modest Nature
-- Volt Switch
-- Thunderbolt
-- Hydro Pump
-- Protect
-
-Aerodactyl @ Focus Sash
-Ability: Unnerve
-Jolly Nature
-- Rock Slide
-- Dual Wingbeat
-- Tailwind
+- Giga Drain
+- Quiver Dance
 - Protect
 
 ######################################################################
-TEAM 93 — wb_vg · #5 at Sketch Academy Sunday Regulation M-C Tournament (48 teams) · 6-1
+TEAM 117 — wb_vg · #5 at Sketch Academy Sunday Regulation M-C Tournament (48 teams) · 6-1
 ######################################################################
 Best team for Pairings: Delphox + Gengar
 
@@ -4956,7 +6237,219 @@ Timid Nature
 - Psychic
 
 ######################################################################
-TEAM 94 — bigboywally · #3 at ˗ˋˏ❤︎ˎˊ˗ Pomelo Cup (Invitational) (19 teams) · 6-1
+TEAM 118 — skelywiz · #2 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 6-1
+######################################################################
+Best team for Pairings: Garchomp-Z + Mawile
+
+Gholdengo @ Life Orb
+Ability: Good as Gold
+Modest Nature
+- Make It Rain
+- Shadow Ball
+- Power Gem
+- Protect
+
+Basculegion-Male @ Mystic Water
+Ability: Adaptability
+Adamant Nature
+- Wave Crash
+- Last Respects
+- Aqua Jet
+- Protect
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Draco Meteor
+- Flamethrower
+- Power Gem
+- Protect
+
+Mawile @ Mawilite
+Ability: Intimidate
+Adamant Nature
+- Play Rough
+- Rock Slide
+- Knock Off
+- Protect
+
+Meowstic-Male @ Light Clay
+Ability: Prankster
+Calm Nature
+- Reflect
+- Light Screen
+- Thunder Wave
+- Fake Tears
+
+Noivern @ Focus Sash
+Ability: Infiltrator
+Timid Nature
+- Tailwind
+- Draco Meteor
+- Flamethrower
+- Protect
+
+######################################################################
+TEAM 119 — niranjan · #9 at Champions League VGC October (Prize: Shiny Gengar) (81 teams) · 6-1
+######################################################################
+Best team for Pairings: Dragonite + Golisopod
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Brave Nature
+- Leech Life
+- Iron Head
+- Aqua Jet
+- Protect
+
+Dragonite @ Dragoninite
+Ability: Inner Focus
+Modest Nature
+- Dragon Pulse
+- Flamethrower
+- Hurricane
+- Protect
+
+Archaludon @ Leftovers
+Ability: Stamina
+Modest Nature
+- Electro Shot
+- Flash Cannon
+- Dragon Pulse
+- Protect
+
+Farigiraf @ Colbur Berry
+Ability: Armor Tail
+Modest Nature
+- Trick Room
+- Hyper Voice
+- Psychic
+- Energy Ball
+
+Politoed @ Sitrus Berry
+Ability: Drizzle
+Modest Nature
+- Weather Ball
+- Muddy Water
+- Ice Beam
+- Protect
+
+Incineroar @ Rocky Helmet
+Ability: Intimidate
+Brave Nature
+- Flare Blitz
+- Darkest Lariat
+- Parting Shot
+- Fake Out
+
+######################################################################
+TEAM 120 — shaikhvgc786 · #2 at Off Meta Fight Club #5 ($20 USD prize pool) (47 teams) · 6-1
+######################################################################
+Best team for Pairings: Floette + Kangaskhan
+
+Floette @ Floettite
+Ability: Flower Veil
+Modest Nature
+- Calm Mind
+- Dazzling Gleam
+- Draining Kiss
+- Protect
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Careful Nature
+- Parting Shot
+- Throat Chop
+- Flare Blitz
+- Fake Out
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- U-turn
+
+Chandelure @ Focus Sash
+Ability: Flash Fire
+Modest Nature
+- Heat Wave
+- Trick Room
+- Shadow Ball
+- Protect
+
+Kangaskhan @ Kangaskhanite
+Ability: Scrappy
+Adamant Nature
+- Fake Out
+- Double-Edge
+- Drain Punch
+- Sucker Punch
+
+Hawlucha @ Grassy Seed
+Ability: Unburden
+Adamant Nature
+- Acrobatics
+- Coaching
+- Detect
+- Close Combat
+
+######################################################################
+TEAM 121 — anrivgc · #1 at WARTORTLE WEDNESDAYS #66 REG M-C BO3 OTS (17 teams) · 6-1
+######################################################################
+Best team for Pairings: Floette + Lucario-Z
+
+Lucario @ Lucarionite Z
+Ability: Steadfast
+Timid Nature
+- Aura Sphere
+- Flash Cannon
+- Calm Mind
+- Detect
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Adamant Nature
+- Flare Blitz
+- Fake Out
+- Parting Shot
+- Helping Hand
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Wood Hammer
+- Grassy Glide
+- High Horsepower
+
+Basculegion-Male @ Life Orb
+Ability: Adaptability
+Adamant Nature
+- Wave Crash
+- Last Respects
+- Aqua Jet
+- Protect
+
+Floette @ Floettite
+Ability: Fairy Aura
+Modest Nature
+- Dazzling Gleam
+- Moonblast
+- Calm Mind
+- Protect
+
+Aerodactyl @ Focus Sash
+Ability: Unnerve
+Jolly Nature
+- Tailwind
+- Rock Slide
+- Dual Wingbeat
+- Wide Guard
+
+######################################################################
+TEAM 122 — bigboywally · #3 at ˗ˋˏ❤︎ˎˊ˗ Pomelo Cup (Invitational) (19 teams) · 6-1
 ######################################################################
 Best team for Pairings: Blaziken + Floette
 
@@ -5009,7 +6502,60 @@ Adamant Nature
 - Rock Slide
 
 ######################################################################
-TEAM 95 — viophire · #3 at ValkrixVGC Pokemon Champions League #06 (61 teams) · 7-3
+TEAM 123 — aerxdri · #3 at Thalera Champions Cheese #17 - GEN 3 Edition (16 teams) · 6-1
+######################################################################
+Best team for Pairings: Absol-Z + Gardevoir
+
+Absol @ Absolite Z
+Ability: Justified
+Jolly Nature
+- Detect
+- Shadow Claw
+- Taunt
+- Psycho Cut
+
+Salamence @ Yache Berry
+Ability: Intimidate
+Timid Nature
+- Protect
+- Draco Meteor
+- Tailwind
+- Flamethrower
+
+Milotic @ Sitrus Berry
+Ability: Competitive
+Modest Nature
+- Protect
+- Scald
+- Ice Beam
+- Icy Wind
+
+Altaria @ Haban Berry
+Ability: Cloud Nine
+Calm Nature
+- Dragon Pulse
+- Helping Hand
+- Tailwind
+- Feather Dance
+
+Torkoal @ Life Orb
+Ability: Drought
+Modest Nature
+- Protect
+- Eruption
+- Heat Wave
+- Weather Ball
+
+Gardevoir @ Gardevoirite
+Ability: Trace
+Modest Nature
+- Protect
+- Hyper Voice
+- Grass Knot
+- Trick Room
+
+######################################################################
+TEAM 124 — viophire · #3 at ValkrixVGC Pokemon Champions League #06 (61 teams) · 7-3
 ######################################################################
 Best team for Pairings: Charizard-X + Raichu-Y
 
@@ -5062,60 +6608,60 @@ Timid Nature
 - Protect
 
 ######################################################################
-TEAM 96 — robin_vgc · #1 at Metal's Meteor Mash-Up #2 - TOP 4 TEAM GRAPHIC (67 teams) · 8-1
+TEAM 125 — linuswrong · #2 at 🍋Sitrus-Series🍋|Champions-MC|#79 (119 teams) · 9-2
 ######################################################################
-Best team for Pairings: Dragonite + Floette
+Best team for Pairings: Golisopod + Venusaur
 
-Dragonite @ Dragoninite
-Ability: Inner Focus
+Basculegion-Female @ Life Orb
+Ability: Swift Swim
 Modest Nature
-- Heat Wave
+- Shadow Ball
+- Muddy Water
+- Ice Beam
+- Protect
+
+Pelipper @ Sitrus Berry
+Ability: Drizzle
+Modest Nature
+- Helping Hand
 - Tailwind
+- Hurricane
+- Muddy Water
+
+Archaludon @ Leftovers
+Ability: Stamina
+Modest Nature
+- Electro Shot
+- Aura Sphere
 - Dragon Pulse
 - Protect
 
-Sneasler @ White Herb
-Ability: Unburden
+Golisopod @ Golisopite
+Ability: Emergency Exit
 Adamant Nature
-- Rock Tomb
-- Dire Claw
-- Close Combat
+- Sucker Punch
+- Leech Life
+- Iron Head
 - Protect
 
-Incineroar @ Sitrus Berry
-Ability: Intimidate
-Impish Nature
-- Fake Out
-- Parting Shot
-- Throat Chop
-- Flare Blitz
-
-Gholdengo @ Life Orb
-Ability: Good as Gold
-Modest Nature
-- Nasty Plot
-- Make It Rain
-- Shadow Ball
-- Protect
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
+Mamoswine @ Focus Sash
+Ability: Oblivious
 Adamant Nature
-- Fake Out
-- Grassy Glide
-- Wood Hammer
+- Ice Shard
 - High Horsepower
-
-Floette @ Floettite
-Ability: Flower Veil
-Bold Nature
+- Icicle Crash
 - Protect
-- Calm Mind
-- Draining Kiss
-- Dazzling Gleam
+
+Venusaur @ Venusaurite
+Ability: Chlorophyll
+Modest Nature
+- Giga Drain
+- Sludge Bomb
+- Earth Power
+- Protect
 
 ######################################################################
-TEAM 97 — coolguy14604 · #3 at Off Meta MAJOR ($140 USD Prize Pool) (117 teams) · 9-2
+TEAM 126 — coolguy14604 · #3 at Off Meta MAJOR ($140 USD Prize Pool) (117 teams) · 9-2
 ######################################################################
 Best team for Pairings: Camerupt + Mawile
 
@@ -5168,7 +6714,7 @@ Brave Nature
 - Protect
 
 ######################################################################
-TEAM 98 — tricki · #1 at Sketch Academy Sunday Regulation M-C Tournament (61 teams) · 8-1
+TEAM 127 — tricki · #1 at Sketch Academy Sunday Regulation M-C Tournament (61 teams) · 8-1
 ######################################################################
 Best team for Pairings: Gardevoir + Sceptile
 
@@ -5221,60 +6767,7 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 99 — katiclus · #5 at TARTAN'S ROAD TO NICE #42! - [CHAMPIONS REG M-C!] (82 teams) · 6-3
-######################################################################
-Best team for Pairings: Charizard-Y + Mawile
-
-Charizard @ Charizardite Y
-Ability: Blaze
-Modest Nature
-- Heat Wave
-- Weather Ball
-- Ancient Power
-- Protect
-
-Whimsicott @ Focus Sash
-Ability: Prankster
-Timid Nature
-- Moonblast
-- Tailwind
-- Encore
-- Protect
-
-Basculegion-Male @ Life Orb
-Ability: Adaptability
-Adamant Nature
-- Wave Crash
-- Last Respects
-- Aqua Jet
-- Protect
-
-Farigiraf @ Rocky Helmet
-Ability: Armor Tail
-Bold Nature
-- Psychic
-- Helping Hand
-- Trick Room
-- Protect
-
-Incineroar @ Sitrus Berry
-Ability: Intimidate
-Adamant Nature
-- Flare Blitz
-- Throat Chop
-- Fake Out
-- Parting Shot
-
-Mawile @ Mawilite
-Ability: Hyper Cutter
-Adamant Nature
-- Play Rough
-- Rock Slide
-- Brick Break
-- Protect
-
-######################################################################
-TEAM 100 — smogolem · #2 at Chaos League Sunday Slam #116 (34 teams) · 5-3
+TEAM 128 — smogolem · #2 at Chaos League Sunday Slam #116 (34 teams) · 5-3
 ######################################################################
 Best team for Megas: Golurk
 
@@ -5327,7 +6820,7 @@ Brave Nature
 - Close Combat
 
 ######################################################################
-TEAM 101 — lakenta · #4 at VGC Reg M-C Ingame Tour #7 (Shiny Altaria) (70 teams) · 8-2
+TEAM 129 — lakenta · #4 at VGC Reg M-C Ingame Tour #7 (Shiny Altaria) (70 teams) · 8-2
 ######################################################################
 Best team for Pairings: Charizard-Y + Dragonite
 
@@ -5380,7 +6873,166 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 102 — reis637 · #1 at Women's League VGC #14 (6 teams) · 5-1
+TEAM 130 — silverland · #1 at PWC - Battle in the Colosseum #30 (23 teams) · 7-1
+######################################################################
+Best team for Pairings: Hawlucha + Slowbro
+
+Hawlucha @ Hawluchanite
+Ability: Limber
+Jolly Nature
+- Entrainment
+- Close Combat
+- Brave Bird
+- Protect
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Brave Nature
+- Flare Blitz
+- Fake Out
+- Parting Shot
+- Protect
+
+Snorlax @ Leftovers
+Ability: Thick Fat
+Relaxed Nature
+- Stockpile
+- Fissure
+- Protect
+- Smack Down
+
+Slowbro @ Slowbronite
+Ability: Own Tempo
+Sassy Nature
+- Body Press
+- Stored Power
+- Calm Mind
+- Slack Off
+
+Rillaboom @ Eject Button
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- U-turn
+
+Sneasler @ Focus Sash
+Ability: Poison Touch
+Adamant Nature
+- Fake Out
+- Coaching
+- Close Combat
+- Dire Claw
+
+######################################################################
+TEAM 131 — jonen · #3 at Alpensee Tour (Reg M-C) #76 (112 teams) · 8-3
+######################################################################
+Best team for Pairings: Baxcalibur + Raichu-Y
+
+Baxcalibur @ Baxcalibrite
+Ability: Thermal Exchange
+Adamant Nature
+- Glaive Rush
+- Ice Shard
+- Swords Dance
+- Protect
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Careful Nature
+- Fake Out
+- Flare Blitz
+- Taunt
+- Parting Shot
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Wood Hammer
+- Grassy Glide
+- High Horsepower
+
+Volcarona @ Grassy Seed
+Ability: Flame Body
+Modest Nature
+- Quiver Dance
+- Flamethrower
+- Struggle Bug
+- Protect
+
+Basculegion-Male @ Life Orb
+Ability: Adaptability
+Adamant Nature
+- Wave Crash
+- Last Respects
+- Aqua Jet
+- Protect
+
+Raichu @ Raichunite Y
+Ability: Lightning Rod
+Timid Nature
+- Zap Cannon
+- Focus Blast
+- Fake Out
+- Protect
+
+######################################################################
+TEAM 132 — robin_vgc · #1 at Metal's Meteor Mash-Up #2 - TOP 4 TEAM GRAPHIC (67 teams) · 8-1
+######################################################################
+Best team for Pairings: Dragonite + Floette
+
+Dragonite @ Dragoninite
+Ability: Inner Focus
+Modest Nature
+- Heat Wave
+- Tailwind
+- Dragon Pulse
+- Protect
+
+Sneasler @ White Herb
+Ability: Unburden
+Adamant Nature
+- Rock Tomb
+- Dire Claw
+- Close Combat
+- Protect
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Impish Nature
+- Fake Out
+- Parting Shot
+- Roar
+- Flare Blitz
+
+Gholdengo @ Life Orb
+Ability: Good as Gold
+Modest Nature
+- Nasty Plot
+- Make It Rain
+- Shadow Ball
+- Protect
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- High Horsepower
+
+Floette @ Floettite
+Ability: Flower Veil
+Bold Nature
+- Protect
+- Calm Mind
+- Draining Kiss
+- Dazzling Gleam
+
+######################################################################
+TEAM 133 — reis637 · #1 at Women's League VGC #14 (6 teams) · 5-1
 ######################################################################
 Best team for Megas: Chandelure
 
@@ -5433,60 +7085,60 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 103 — testing444 · #5 at ValkrixVGC Pokemon Champions League #05 (155 teams) · 6-2
+TEAM 134 — dman12352 · #17 at Alpensee Tour (Reg M-C) #77 (93 teams) · 5-3
 ######################################################################
-Best team for Pairings: Dragonite + Gengar
+Best team for Pairings: Blaziken + Salamence
 
-Dragonite @ Dragoninite
-Ability: Multiscale
-Timid Nature
-- Dragon Pulse
-- Heat Wave
-- Thunderbolt
+Kingambit @ Chople Berry
+Ability: Defiant
+Adamant Nature
 - Protect
-
-Gengar @ Gengarite
-Ability: Cursed Body
-Timid Nature
-- Sludge Bomb
-- Shadow Ball
-- Substitute
-- Protect
+- Iron Head
+- Sucker Punch
+- Kowtow Cleave
 
 Rillaboom @ Life Orb
 Ability: Grassy Surge
 Adamant Nature
-- Wood Hammer
 - Grassy Glide
-- Superpower
 - Fake Out
-
-Incineroar @ Sitrus Berry
-Ability: Intimidate
-Careful Nature
-- Flare Blitz
-- Throat Chop
-- Fake Out
-- Parting Shot
-
-Hippowdon @ Leftovers
-Ability: Sand Stream
-Careful Nature
 - High Horsepower
-- Stone Edge
-- Yawn
-- Protect
+- Wood Hammer
 
-Annihilape @ Choice Scarf
-Ability: Defiant
-Jolly Nature
+Salamence @ Salamencite
+Ability: Intimidate
+Timid Nature
+- Draco Meteor
+- Hyper Voice
+- Protect
+- Tailwind
+
+Sylveon @ Fairy Feather
+Ability: Pixilate
+Modest Nature
+- Hyper Voice
+- Hyper Beam
+- Detect
+- Quick Attack
+
+Blaziken @ Blazikenite
+Ability: Speed Boost
+Adamant Nature
+- Detect
+- Flare Blitz
 - Close Combat
-- Shadow Claw
-- Ice Punch
-- Rock Tomb
+- Rock Slide
+
+Milotic @ Leftovers
+Ability: Competitive
+Modest Nature
+- Icy Wind
+- Scald
+- Protect
+- Recover
 
 ######################################################################
-TEAM 104 — harryxyz · #8 at Pado's Dojo Reg M-C Pratice #4 🍥 (70 teams) · 6-3
+TEAM 135 — harryxyz · #8 at Pado's Dojo Reg M-C Pratice #4 🍥 (70 teams) · 6-3
 ######################################################################
 Best team for Pairings: Gardevoir + Raichu-Y
 
@@ -5539,7 +7191,60 @@ Jolly Nature
 - Soak
 
 ######################################################################
-TEAM 105 — peacepulis · #4 at ⛩️Chadweezy95 VGC Champions Tournament Ep 15!⛩️ (37 teams) · 5-2
+TEAM 136 — testing444 · #5 at ValkrixVGC Pokemon Champions League #05 (155 teams) · 6-2
+######################################################################
+Best team for Pairings: Dragonite + Gengar
+
+Dragonite @ Dragoninite
+Ability: Multiscale
+Timid Nature
+- Dragon Pulse
+- Heat Wave
+- Thunderbolt
+- Protect
+
+Gengar @ Gengarite
+Ability: Cursed Body
+Timid Nature
+- Sludge Bomb
+- Shadow Ball
+- Substitute
+- Protect
+
+Rillaboom @ Life Orb
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Grassy Glide
+- Superpower
+- Fake Out
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Careful Nature
+- Flare Blitz
+- Throat Chop
+- Fake Out
+- Parting Shot
+
+Hippowdon @ Leftovers
+Ability: Sand Stream
+Careful Nature
+- High Horsepower
+- Stone Edge
+- Yawn
+- Protect
+
+Annihilape @ Choice Scarf
+Ability: Defiant
+Jolly Nature
+- Close Combat
+- Shadow Claw
+- Ice Punch
+- Rock Tomb
+
+######################################################################
+TEAM 137 — peacepulis · #4 at ⛩️Chadweezy95 VGC Champions Tournament Ep 15!⛩️ (37 teams) · 5-2
 ######################################################################
 Best team for Pairings: Metagross + Raichu-Y
 
@@ -5592,166 +7297,7 @@ Timid Nature
 - Protect
 
 ######################################################################
-TEAM 106 — mateusueta · #7 at Copa Mestre Pokémon #1 (116 teams) · 7-2
-######################################################################
-Best team for Megas: Greninja
-
-Greninja @ Greninjite
-Ability: Protean
-Timid Nature
-- Dark Pulse
-- Ice Beam
-- Hydro Pump
-- Protect
-
-Aegislash @ Spell Tag
-Ability: Stance Change
-Adamant Nature
-- Iron Head
-- King's Shield
-- Poltergeist
-- Sacred Sword
-
-Archaludon @ Leftovers
-Ability: Stamina
-Modest Nature
-- Dragon Pulse
-- Flash Cannon
-- Electro Shot
-- Protect
-
-Pelipper @ Sitrus Berry
-Ability: Drizzle
-Modest Nature
-- Hurricane
-- Weather Ball
-- Tailwind
-- Wide Guard
-
-Blaziken @ Life Orb
-Ability: Speed Boost
-Adamant Nature
-- Flare Blitz
-- Detect
-- Close Combat
-- Rock Slide
-
-Espathra @ Focus Sash
-Ability: Speed Boost
-Timid Nature
-- Lumina Crash
-- Trick Room
-- Rain Dance
-- Protect
-
-######################################################################
-TEAM 107 — topo · #3 at SNT Reg M-C Tour #1 (47 teams) · 7-2
-######################################################################
-Best team for Megas: Heracross
-
-Sneasler @ Focus Sash
-Ability: Poison Touch
-Jolly Nature
-- Dire Claw
-- Close Combat
-- Fake Out
-- Quick Guard
-
-Kingambit @ Life Orb
-Ability: Defiant
-Adamant Nature
-- Kowtow Cleave
-- Sucker Punch
-- Swords Dance
-- Protect
-
-Incineroar @ Sitrus Berry
-Ability: Intimidate
-Careful Nature
-- Flare Blitz
-- Helping Hand
-- Parting Shot
-- Fake Out
-
-Delphox @ Delphoxite
-Ability: Blaze
-Modest Nature
-- Heat Wave
-- Nasty Plot
-- Psyshock
-- Protect
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Wood Hammer
-- Grassy Glide
-- Fake Out
-- U-turn
-
-Heracross @ Heracronite
-Ability: Moxie
-Adamant Nature
-- Close Combat
-- Pin Missile
-- Rock Blast
-- Protect
-
-######################################################################
-TEAM 108 — mysticamagic · #3 at Mudkip's Marsh Pit #6 (40 teams) · 7-2
-######################################################################
-Best team for Megas: Gallade
-
-Talonflame @ Sharp Beak
-Ability: Gale Wings
-Jolly Nature
-- Tailwind
-- Flare Blitz
-- Brave Bird
-- Protect
-
-Meganium @ Meganiumite
-Ability: Leaf Guard
-Modest Nature
-- Weather Ball
-- Dazzling Gleam
-- Solar Beam
-- Protect
-
-Politoed @ Sitrus Berry
-Ability: Drizzle
-Modest Nature
-- Muddy Water
-- Encore
-- Weather Ball
-- Protect
-
-Aegislash @ Life Orb
-Ability: Stance Change
-Adamant Nature
-- Iron Head
-- Poltergeist
-- Swords Dance
-- King's Shield
-
-Indeedee ♀ @ Psychic Seed
-Ability: Psychic Surge
-Bold Nature
-- Follow Me
-- Trick Room
-- Psychic
-- Helping Hand
-
-Gallade @ Galladite
-Ability: Sharpness
-Jolly Nature
-- Aqua Cutter
-- Psycho Cut
-- Sacred Sword
-- Bulk Up
-
-######################################################################
-TEAM 109 — kazpazenecca · #2 at TAYO'S MONOTYPE TOUR #5- BO3 CTS - $30/15 (27 teams) · 7-2
+TEAM 138 — kazpazenecca · #2 at TAYO'S MONOTYPE TOUR #5- BO3 CTS - $30/15 (27 teams) · 7-2
 ######################################################################
 Best team for Megas: Dragalge
 
@@ -5804,7 +7350,60 @@ Bold Nature
 - Toxic
 
 ######################################################################
-TEAM 110 — gus_0z · #3 at Off Meta Fight Club #6 ($20 USD prize pool) (51 teams) · 7-2
+TEAM 139 — topo · #3 at SNT Reg M-C Tour #1 (47 teams) · 7-2
+######################################################################
+Best team for Megas: Heracross
+
+Sneasler @ Focus Sash
+Ability: Poison Touch
+Jolly Nature
+- Dire Claw
+- Close Combat
+- Fake Out
+- Quick Guard
+
+Kingambit @ Life Orb
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Swords Dance
+- Protect
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Careful Nature
+- Flare Blitz
+- Helping Hand
+- Parting Shot
+- Fake Out
+
+Delphox @ Delphoxite
+Ability: Blaze
+Modest Nature
+- Heat Wave
+- Nasty Plot
+- Psyshock
+- Protect
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Grassy Glide
+- Fake Out
+- U-turn
+
+Heracross @ Heracronite
+Ability: Moxie
+Adamant Nature
+- Close Combat
+- Pin Missile
+- Rock Blast
+- Protect
+
+######################################################################
+TEAM 140 — gus_0z · #3 at Off Meta Fight Club #6 ($20 USD prize pool) (51 teams) · 7-2
 ######################################################################
 Best team for Megas: Sharpedo
 
@@ -5857,7 +7456,113 @@ Adamant Nature
 - Protect
 
 ######################################################################
-TEAM 111 — xablauloco123 · #7 at 🍋Sitrus-Series🍋|Champions-MC|#77 (83 teams) · 7-2
+TEAM 141 — mateusueta · #7 at Copa Mestre Pokémon #1 (116 teams) · 7-2
+######################################################################
+Best team for Megas: Greninja
+
+Greninja @ Greninjite
+Ability: Protean
+Timid Nature
+- Dark Pulse
+- Ice Beam
+- Hydro Pump
+- Protect
+
+Aegislash @ Spell Tag
+Ability: Stance Change
+Adamant Nature
+- Iron Head
+- King's Shield
+- Poltergeist
+- Sacred Sword
+
+Archaludon @ Leftovers
+Ability: Stamina
+Modest Nature
+- Dragon Pulse
+- Flash Cannon
+- Electro Shot
+- Protect
+
+Pelipper @ Sitrus Berry
+Ability: Drizzle
+Modest Nature
+- Hurricane
+- Weather Ball
+- Tailwind
+- Wide Guard
+
+Blaziken @ Life Orb
+Ability: Speed Boost
+Adamant Nature
+- Flare Blitz
+- Detect
+- Close Combat
+- Rock Slide
+
+Espathra @ Focus Sash
+Ability: Speed Boost
+Timid Nature
+- Lumina Crash
+- Trick Room
+- Rain Dance
+- Protect
+
+######################################################################
+TEAM 142 — mysticamagic · #3 at Mudkip's Marsh Pit #6 (40 teams) · 7-2
+######################################################################
+Best team for Megas: Gallade
+
+Talonflame @ Sharp Beak
+Ability: Gale Wings
+Jolly Nature
+- Tailwind
+- Flare Blitz
+- Brave Bird
+- Protect
+
+Meganium @ Meganiumite
+Ability: Leaf Guard
+Modest Nature
+- Weather Ball
+- Dazzling Gleam
+- Solar Beam
+- Protect
+
+Politoed @ Sitrus Berry
+Ability: Drizzle
+Modest Nature
+- Muddy Water
+- Encore
+- Weather Ball
+- Protect
+
+Aegislash @ Life Orb
+Ability: Stance Change
+Adamant Nature
+- Iron Head
+- Poltergeist
+- Swords Dance
+- King's Shield
+
+Indeedee ♀ @ Psychic Seed
+Ability: Psychic Surge
+Bold Nature
+- Follow Me
+- Trick Room
+- Psychic
+- Helping Hand
+
+Gallade @ Galladite
+Ability: Sharpness
+Jolly Nature
+- Aqua Cutter
+- Psycho Cut
+- Sacred Sword
+- Bulk Up
+
+######################################################################
+TEAM 143 — xablauloco123 · #7 at 🍋Sitrus-Series🍋|Champions-MC|#77 (83 teams) · 7-2
 ######################################################################
 Best team for Pairings: Blaziken + Gardevoir
 
@@ -5910,7 +7615,219 @@ Timid Nature
 - Protect
 
 ######################################################################
-TEAM 112 — patry9x4 · #6 at [BR] Copa Oak Stadium #9 - R$ 200 em Premiação (117 teams) · 8-2
+TEAM 144 — mattpode3 · #13 at VGC Trainer School; champions M/C #1 (147 teams) · 7-2
+######################################################################
+Best team for Pairings: Lucario-Z + Tyranitar
+
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Timid Nature
+- Flash Cannon
+- Aura Sphere
+- Calm Mind
+- Protect
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Impish Nature
+- Flare Blitz
+- Throat Chop
+- Parting Shot
+- Fake Out
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Grassy Glide
+- U-turn
+- Fake Out
+- Wood Hammer
+
+Corviknight @ Occa Berry
+Ability: Mirror Armor
+Adamant Nature
+- Brave Bird
+- Iron Head
+- Tailwind
+- Roost
+
+Tyranitar @ Tyranitarite
+Ability: Sand Stream
+Jolly Nature
+- Rock Slide
+- Knock Off
+- Dragon Dance
+- Protect
+
+Sneasler @ Grassy Seed
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Dire Claw
+- Throat Chop
+- Protect
+
+######################################################################
+TEAM 145 — jonago · #10 at PokeInstinct VGC #3 ($30 USD for the winner) (91 teams) · 7-2
+######################################################################
+Best team for Pairings: Salamence + Scovillain
+
+Primarina @ Life Orb
+Ability: Liquid Voice
+Modest Nature
+- Hyper Voice
+- Moonblast
+- Dazzling Gleam
+- Protect
+
+Kingambit @ Occa Berry
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Iron Head
+- Protect
+
+Farigiraf @ Sitrus Berry
+Ability: Armor Tail
+Quiet Nature
+- Psychic
+- Thunderbolt
+- Trick Room
+- Helping Hand
+
+Scovillain @ Scovillainite
+Ability: Moody
+Calm Nature
+- Flamethrower
+- Giga Drain
+- Rage Powder
+- Protect
+
+Salamence @ Salamencite
+Ability: Intimidate
+Jolly Nature
+- Draco Meteor
+- Double-Edge
+- Tailwind
+- Protect
+
+Sneasler @ Focus Sash
+Ability: Poison Touch
+Jolly Nature
+- Close Combat
+- Poison Jab
+- Rock Tomb
+- Fake Out
+
+######################################################################
+TEAM 146 — dell · #1 at [Shiny Raichu to 1st] The Grim Challenge #11 M-C (55 teams) · 9-1
+######################################################################
+Best team for Pairings: Floette + Golisopod
+
+Sneasler @ White Herb
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Dire Claw
+- Rock Slide
+- Protect
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- Leech Life
+- Iron Head
+- Sucker Punch
+- Protect
+
+Pelipper @ Damp Rock
+Ability: Drizzle
+Bold Nature
+- Weather Ball
+- Hurricane
+- Wide Guard
+- Helping Hand
+
+Archaludon @ Leftovers
+Ability: Stamina
+Bold Nature
+- Electro Shot
+- Dragon Pulse
+- Aura Sphere
+- Protect
+
+Basculegion-Female @ Focus Sash
+Ability: Swift Swim
+Modest Nature
+- Shadow Ball
+- Muddy Water
+- Ice Beam
+- Protect
+
+Floette @ Floettite
+Ability: Flower Veil
+Modest Nature
+- Moonblast
+- Dazzling Gleam
+- Light of Ruin
+- Protect
+
+######################################################################
+TEAM 147 — katiclus · #5 at TARTAN'S ROAD TO NICE #42! - [CHAMPIONS REG M-C!] (82 teams) · 6-3
+######################################################################
+Best team for Pairings: Charizard-Y + Mawile
+
+Charizard @ Charizardite Y
+Ability: Blaze
+Modest Nature
+- Weather Ball
+- Heat Wave
+- Ancient Power
+- Protect
+
+Whimsicott @ Focus Sash
+Ability: Prankster
+Timid Nature
+- Moonblast
+- Tailwind
+- Encore
+- Protect
+
+Basculegion-Male @ Life Orb
+Ability: Adaptability
+Adamant Nature
+- Wave Crash
+- Last Respects
+- Aqua Jet
+- Protect
+
+Farigiraf @ Rocky Helmet
+Ability: Armor Tail
+Bold Nature
+- Psychic
+- Helping Hand
+- Trick Room
+- Protect
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Adamant Nature
+- Fake Out
+- Flare Blitz
+- Throat Chop
+- Parting Shot
+
+Mawile @ Mawilite
+Ability: Hyper Cutter
+Adamant Nature
+- Play Rough
+- Brick Break
+- Rock Slide
+- Protect
+
+######################################################################
+TEAM 148 — patry9x4 · #6 at [BR] Copa Oak Stadium #9 - R$ 200 em Premiação (117 teams) · 8-2
 ######################################################################
 Best team for Pairings: Floette + Metagross
 
@@ -5963,7 +7880,7 @@ Relaxed Nature
 - Trick Room
 
 ######################################################################
-TEAM 113 — ches · #3 at Best of Three Thursday Practice Tourney 5 (4 teams) · 3-0
+TEAM 149 — ches · #3 at Best of Three Thursday Practice Tourney 5 (4 teams) · 3-0
 ######################################################################
 Best team for Megas: Chimecho
 
@@ -6016,7 +7933,7 @@ Brave Nature
 - Darkest Lariat
 
 ######################################################################
-TEAM 114 — oghren2 · played VGC Gemeinde Showdown #11 (40 teams) · 0-0
+TEAM 150 — oghren2 · played VGC Gemeinde Showdown #11 (40 teams) · 0-0
 ######################################################################
 Best team for Pairings: Delphox + Raichu-Y
 
@@ -6069,7 +7986,7 @@ Adamant Nature
 - Iron Head
 
 ######################################################################
-TEAM 115 — drewgaloo · #2 at Best of Three Thursday Practice Tourney 5 (4 teams) · 3-0
+TEAM 151 — drewgaloo · #2 at Best of Three Thursday Practice Tourney 5 (4 teams) · 3-0
 ######################################################################
 Best team for Pairings: Froslass + Staraptor
 
@@ -6122,7 +8039,113 @@ Jolly Nature
 - Tailwind
 
 ######################################################################
-TEAM 116 — highhonorsjacob · #2 at HeroicTitan’s VGC Battle Arena (49 teams) · 6-3
+TEAM 152 — hullk · #1 at Best of Three Thursday Practice Tourney 5 (4 teams) · 3-0
+######################################################################
+Best team for Pairings: Garchomp-Z + Gardevoir
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Timid Nature
+- Draco Meteor
+- Power Gem
+- Earth Power
+- Protect
+
+Indeedee ♀ @ Sitrus Berry
+Ability: Psychic Surge
+Relaxed Nature
+- Psychic
+- Helping Hand
+- Follow Me
+- Trick Room
+
+Gardevoir @ Gardevoirite
+Ability: Telepathy
+Quiet Nature
+- Hyper Voice
+- Expanding Force
+- Aura Sphere
+- Protect
+
+Torkoal @ Charcoal
+Ability: Drought
+Quiet Nature
+- Eruption
+- Weather Ball
+- Solar Beam
+- Protect
+
+Gholdengo @ Life Orb
+Ability: Good as Gold
+Modest Nature
+- Nasty Plot
+- Make It Rain
+- Shadow Ball
+- Protect
+
+Sneasler @ Psychic Seed
+Ability: Unburden
+Jolly Nature
+- Fake Out
+- Gunk Shot
+- Close Combat
+- U-turn
+
+######################################################################
+TEAM 153 — scarybeppe · played [Shiny Raichu to 1st] The Grim Challenge #11 M-C (55 teams) · 0-0
+######################################################################
+Best team for Pairings: Garchomp-Z + Tyranitar
+
+Tyranitar @ Tyranitarite
+Ability: Sand Stream
+Jolly Nature
+- Knock Off
+- Rock Slide
+- Dragon Dance
+- Protect
+
+Excadrill @ Focus Sash
+Ability: Sand Rush
+Jolly Nature
+- High Horsepower
+- Rock Slide
+- Iron Head
+- Protect
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Earth Power
+- Dragon Pulse
+- Power Gem
+- Protect
+
+Sneasler @ White Herb
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Dire Claw
+- Fake Out
+- Protect
+
+Volcarona @ Charti Berry
+Ability: Flame Body
+Timid Nature
+- Overheat
+- Struggle Bug
+- Rage Powder
+- Tailwind
+
+Milotic @ Sitrus Berry
+Ability: Competitive
+Bold Nature
+- Scald
+- Protect
+- Ice Beam
+- Icy Wind
+
+######################################################################
+TEAM 154 — highhonorsjacob · #2 at HeroicTitan’s VGC Battle Arena (49 teams) · 6-3
 ######################################################################
 Best team for Pairings: Gengar + Staraptor
 
@@ -6175,7 +8198,60 @@ Jolly Nature
 - Roost
 
 ######################################################################
-TEAM 117 — fester213 · #5 at Talon's FIGHT CLUB #104 POKEMON CHAMPIONS REG M-C (97 teams) · 8-2
+TEAM 155 — ursavogn · #6 at Copa Mestre Pokémon #1 (116 teams) · 7-2
+######################################################################
+Best team for Pairings: Delphox + Lucario-Z
+
+Kleavor @ Focus Sash
+Ability: Sharpness
+Jolly Nature
+- Tailwind
+- X-Scissor
+- Stone Axe
+- Protect
+
+Decidueye-Hisui @ Scope Lens
+Ability: Scrappy
+Adamant Nature
+- Triple Arrows
+- Leaf Blade
+- Protect
+- Sucker Punch
+
+Ceruledge @ Colbur Berry
+Ability: Flash Fire
+Adamant Nature
+- Bitter Blade
+- Shadow Sneak
+- Protect
+- Bulk Up
+
+Milotic @ Leftovers
+Ability: Competitive
+Modest Nature
+- Recover
+- Scald
+- Icy Wind
+- Protect
+
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Timid Nature
+- Flash Cannon
+- Dark Pulse
+- Aura Sphere
+- Protect
+
+Delphox @ Delphoxite
+Ability: Blaze
+Timid Nature
+- Heat Wave
+- Psychic
+- Protect
+- Encore
+
+######################################################################
+TEAM 156 — fester213 · #5 at Talon's FIGHT CLUB #104 POKEMON CHAMPIONS REG M-C (97 teams) · 8-2
 ######################################################################
 Best team for Pairings: Gengar + Raichu-Y
 
@@ -6228,7 +8304,7 @@ Modest Nature
 - Dragon Pulse
 
 ######################################################################
-TEAM 118 — rocketpup · #2 at VGC Puzzles Practise round 2 (8 teams) · 5-1
+TEAM 157 — rocketpup · #2 at VGC Puzzles Practise round 2 (8 teams) · 5-1
 ######################################################################
 Best team for Megas: Chesnaught
 
@@ -6281,7 +8357,7 @@ Timid Nature
 - Snarl
 
 ######################################################################
-TEAM 119 — royal_rebel_prince21 · #5 at ⛩️Chadweezy95 VGC Champions Tournament Ep 22!⛩️ (47 teams) · 5-1
+TEAM 158 — royal_rebel_prince21 · #5 at ⛩️Chadweezy95 VGC Champions Tournament Ep 22!⛩️ (47 teams) · 5-1
 ######################################################################
 Best team for Megas: Glalie
 
@@ -6334,48 +8410,93 @@ Jolly Nature
 - Protect
 
 ######################################################################
-TEAM 120 — martinvtran · #3 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 5-1
+TEAM 159 — tricki · #5 at Gym Leader GAUNTLET (Monotype Tour) (46 teams) · 5-1
 ######################################################################
-Best team for Pairings: Altaria + Charizard-Y
+Best team for Pairings: Gardevoir + Metagross
 
-Altaria @ Altarianite
-Ability: Cloud Nine
+Gardevoir @ Gardevoirite
+Ability: Trace
 Modest Nature
 - Hyper Voice
-- Hyper Beam
-- Tailwind
+- Expanding Force
+- Mystical Fire
 - Protect
 
-Charizard @ Charizardite Y
-Ability: Blaze
+Indeedee ♀ @ Rocky Helmet
+Ability: Psychic Surge
+Relaxed Nature
+- Follow Me
+- Helping Hand
+- Psychic
+- Protect
+
+Armarouge @ Focus Sash
+Ability: Flash Fire
+Quiet Nature
+- Armor Cannon
+- Expanding Force
+- Trick Room
+- Protect
+
+Gallade @ Life Orb
+Ability: Sharpness
+Adamant Nature
+- Psycho Cut
+- Sacred Sword
+- Night Slash
+- Protect
+
+Slowking-Galar @ Leftovers
+Ability: Regenerator
+Quiet Nature
+- Sludge Bomb
+- Eerie Spell
+- Snarl
+- Protect
+
+Metagross @ Metagrossite
+Ability: Clear Body
+Jolly Nature
+- Iron Head
+- Psychic Fangs
+- Stomping Tantrum
+- Protect
+
+######################################################################
+TEAM 160 — meganvgc · #2 at Hatterene Series Weekly #4 2027 - 6PM UTC - M-C (17 teams) · 5-1
+######################################################################
+Best team for Pairings: Glimmora + Metagross
+
+Glimmora @ Glimmoranite
+Ability: Toxic Debris
 Modest Nature
-- Heat Wave
-- Weather Ball
-- Solar Beam
+- Sludge Bomb
+- Power Gem
+- Earth Power
+- Spiky Shield
+
+Hydreigon @ Life Orb
+Ability: Levitate
+Modest Nature
+- Dragon Pulse
+- Dark Pulse
+- Earth Power
 - Protect
 
-Incineroar @ Sitrus Berry
-Ability: Intimidate
-Careful Nature
-- Throat Chop
-- Flare Blitz
-- Parting Shot
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Grassy Glide
+- High Horsepower
 - Fake Out
 
-Tyrantrum @ Chople Berry
-Ability: Strong Jaw
-Adamant Nature
-- Rock Slide
-- Crunch
-- Psychic Fangs
-- Protect
-
-Dragapult @ Life Orb
-Ability: Infiltrator
+Volcarona @ Grassy Seed
+Ability: Flame Body
 Modest Nature
-- Draco Meteor
-- Shadow Ball
-- Will-O-Wisp
+- Fiery Dance
+- Giga Drain
+- Quiver Dance
 - Protect
 
 Whimsicott @ Focus Sash
@@ -6383,11 +8504,284 @@ Ability: Prankster
 Timid Nature
 - Moonblast
 - Tailwind
-- Protect
 - Encore
+- Protect
+
+Metagross @ Metagrossite
+Ability: Clear Body
+Jolly Nature
+- Iron Head
+- Psychic Fangs
+- Body Press
+- Protect
 
 ######################################################################
-TEAM 121 — vela · #1 at Cusca Champions Weekly M-C ⚡ #12 (PCVGC) (13 teams) · 4-0
+TEAM 161 — peremol · played TARTAN TAKEDOWN #38! - [CHAMPIONS REG M-C!] (123 teams) · 0-0
+######################################################################
+Best team for Pairings: Glimmora + Golisopod
+
+Farigiraf @ Sitrus Berry
+Ability: Armor Tail
+Calm Nature
+- Psychic
+- Helping Hand
+- Protect
+- Trick Room
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- Leech Life
+- Sucker Punch
+- Wide Guard
+- Swords Dance
+
+Incineroar @ Rocky Helmet
+Ability: Intimidate
+Adamant Nature
+- Fake Out
+- Flare Blitz
+- Darkest Lariat
+- Parting Shot
+
+Grapploct @ Life Orb
+Ability: Technician
+Brave Nature
+- Storm Throw
+- Mach Punch
+- Detect
+- Stomping Tantrum
+
+Basculegion-Male @ Choice Scarf
+Ability: Adaptability
+Jolly Nature
+- Wave Crash
+- Aqua Jet
+- Last Respects
+- Flip Turn
+
+Glimmora @ Glimmoranite
+Ability: Toxic Debris
+Modest Nature
+- Power Gem
+- Spiky Shield
+- Earth Power
+- Sludge Bomb
+
+######################################################################
+TEAM 162 — cocoralladoquemado · #5 at Vgc Córdoba | -1% (22 teams) · 5-1
+######################################################################
+Best team for Pairings: Raichu-X + Scovillain
+
+Scovillain @ Scovillainite
+Ability: Moody
+Calm Nature
+- Overheat
+- Leech Seed
+- Rage Powder
+- Protect
+
+Raichu @ Raichunite X
+Ability: Lightning Rod
+Jolly Nature
+- Fake Out
+- Nuzzle
+- Protect
+- Volt Tackle
+
+Toxtricity @ Life Orb
+Ability: Punk Rock
+Timid Nature
+- Overdrive
+- Boomburst
+- Sludge Bomb
+- Protect
+
+Basculegion-Female @ Choice Scarf
+Ability: Adaptability
+Timid Nature
+- Muddy Water
+- Shadow Ball
+- Icy Wind
+- Hydro Pump
+
+Mamoswine @ Focus Sash
+Ability: Oblivious
+Jolly Nature
+- Icicle Crash
+- High Horsepower
+- Ice Shard
+- Protect
+
+Noivern @ Yache Berry
+Ability: Telepathy
+Timid Nature
+- Hurricane
+- Draco Meteor
+- Tailwind
+- Protect
+
+######################################################################
+TEAM 163 — aizinn · #1 at Hatterene Series Weekly #5 2027 - 7PM EDT - M-C (13 teams) · 5-1
+######################################################################
+Best team for Pairings: Golisopod + Lopunny
+
+Lopunny @ Lopunnite
+Ability: Limber
+Jolly Nature
+- Protect
+- Fake Out
+- Triple Axel
+- Close Combat
+
+Gholdengo @ Life Orb
+Ability: Good as Gold
+Timid Nature
+- Protect
+- Thunderbolt
+- Make It Rain
+- Shadow Ball
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- Protect
+- Swords Dance
+- Leech Life
+- Iron Head
+
+Pelipper @ Focus Sash
+Ability: Drizzle
+Timid Nature
+- Protect
+- Tailwind
+- Hurricane
+- Weather Ball
+
+Basculegion-Male @ Choice Scarf
+Ability: Adaptability
+Jolly Nature
+- Aqua Jet
+- Flip Turn
+- Wave Crash
+- Last Respects
+
+Tsareena @ Sitrus Berry
+Ability: Queenly Majesty
+Adamant Nature
+- Protect
+- Trop Kick
+- Low Kick
+- Knock Off
+
+######################################################################
+TEAM 164 — theredfury08 · #3 at Pado's Dojo Reg M-C Pratice #4 🍥 (70 teams) · 8-2
+######################################################################
+Best team for Pairings: Blaziken + Froslass
+
+Froslass @ Froslassite
+Ability: Cursed Body
+Timid Nature
+- Blizzard
+- Shadow Ball
+- Aurora Veil
+- Protect
+
+Sneasler @ White Herb
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Gunk Shot
+- Protect
+- Fake Out
+
+Kingambit @ Black Glasses
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Swords Dance
+- Protect
+
+Rillaboom @ Occa Berry
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Grassy Glide
+- Fake Out
+- U-turn
+
+Blaziken @ Blazikenite
+Ability: Speed Boost
+Adamant Nature
+- Close Combat
+- Flare Blitz
+- Rock Slide
+- Protect
+
+Primarina @ Grassy Seed
+Ability: Liquid Voice
+Modest Nature
+- Hyper Voice
+- Moonblast
+- Calm Mind
+- Protect
+
+######################################################################
+TEAM 165 — venator1 · #4 at [BR] Copa Oak Stadium #9 - R$ 200 em Premiação (117 teams) · 8-3
+######################################################################
+Best team for Pairings: Blastoise + Golisopod
+
+Rillaboom @ Rocky Helmet
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Wood Hammer
+- High Horsepower
+- Grassy Glide
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Impish Nature
+- Throat Chop
+- Fake Out
+- Parting Shot
+- Flare Blitz
+
+Blastoise @ Blastoisinite
+Ability: Rain Dish
+Modest Nature
+- Water Spout
+- Dark Pulse
+- Shell Smash
+- Protect
+
+Archaludon @ Leftovers
+Ability: Stamina
+Calm Nature
+- Dragon Pulse
+- Electro Shot
+- Protect
+- Flash Cannon
+
+Pelipper @ Focus Sash
+Ability: Drizzle
+Timid Nature
+- Tailwind
+- Protect
+- Hurricane
+- Weather Ball
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- Leech Life
+- Protect
+- Iron Head
+- Liquidation
+
+######################################################################
+TEAM 166 — vela · #1 at Cusca Champions Weekly M-C ⚡ #12 (PCVGC) (13 teams) · 4-0
 ######################################################################
 Best team for Pairings: Raichu-Y + Tyranitar
 
@@ -6440,7 +8834,7 @@ Timid Nature
 - Zap Cannon
 
 ######################################################################
-TEAM 122 — martz · #24 at Alpensee Tour (Reg M-C) #75 (125 teams) · 4-3
+TEAM 167 — martz · #24 at Alpensee Tour (Reg M-C) #75 (125 teams) · 4-3
 ######################################################################
 Best team for Pairings: Dragonite + Swampert
 
@@ -6493,7 +8887,113 @@ Sassy Nature
 - Reflect
 
 ######################################################################
-TEAM 123 — coconut_nightmare · #7 at Off Meta MAJOR ($140 USD Prize Pool) (117 teams) · 7-3
+TEAM 168 — drybones · #13 at Make It Rain - VGC Tournament (266 teams) · 8-3
+######################################################################
+Best team for Pairings: Raichu-X + Salamence
+
+Salamence @ Salamencite
+Ability: Intimidate
+Naive Nature
+- Protect
+- Double-Edge
+- Hyper Voice
+- Flamethrower
+
+Archaludon @ Leftovers
+Ability: Stamina
+Timid Nature
+- Protect
+- Electro Shot
+- Flash Cannon
+- Aura Sphere
+
+Pelipper @ Sitrus Berry
+Ability: Drizzle
+Modest Nature
+- Weather Ball
+- Hurricane
+- Tailwind
+- Wide Guard
+
+Sneasler @ Electric Seed
+Ability: Unburden
+Adamant Nature
+- Dire Claw
+- Close Combat
+- Acrobatics
+- Fake Out
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Calm Nature
+- Spirit Break
+- Light Screen
+- Reflect
+- Parting Shot
+
+Raichu @ Raichunite X
+Ability: Lightning Rod
+Jolly Nature
+- Volt Tackle
+- Play Rough
+- Nuzzle
+- Protect
+
+######################################################################
+TEAM 169 — yosuke · #23 at Mid-Week Smoke #10 (55 teams) · 3-3
+######################################################################
+Best team for Pairings: Dragonite + Lucario-Z
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Grassy Glide
+- Fake Out
+- U-turn
+
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Timid Nature
+- Aura Sphere
+- Flash Cannon
+- Calm Mind
+- Detect
+
+Basculegion-Male @ Life Orb
+Ability: Adaptability
+Adamant Nature
+- Wave Crash
+- Last Respects
+- Aqua Jet
+- Protect
+
+Ninetales-Alola @ Choice Scarf
+Ability: Snow Warning
+Timid Nature
+- Blizzard
+- Freeze-Dry
+- Icy Wind
+- Encore
+
+Dragonite @ Dragoninite
+Ability: Inner Focus
+Modest Nature
+- Dragon Pulse
+- Extreme Speed
+- Heat Wave
+- Protect
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Impish Nature
+- Flare Blitz
+- Throat Chop
+- Parting Shot
+- Fake Out
+
+######################################################################
+TEAM 170 — coconut_nightmare · #7 at Off Meta MAJOR ($140 USD Prize Pool) (117 teams) · 7-3
 ######################################################################
 Best team for Pairings: Metagross + Tyranitar
 
@@ -6546,60 +9046,7 @@ Bold Nature
 - Protect
 
 ######################################################################
-TEAM 124 — astrocatvgc · #3 at Rework Esport Champions Talent Cup 3 | 50€ CP M-C (107 teams) · 7-2
-######################################################################
-Best team for Pairings: Staraptor + Swampert
-
-Swampert @ Swampertite
-Ability: Torrent
-Adamant Nature
-- Wave Crash
-- Earthquake
-- Ice Punch
-- Protect
-
-Pelipper @ Sitrus Berry
-Ability: Drizzle
-Bold Nature
-- Weather Ball
-- Hurricane
-- Tailwind
-- Wide Guard
-
-Staraptor @ Staraptite
-Ability: Intimidate
-Jolly Nature
-- Brave Bird
-- Close Combat
-- Tailwind
-- Protect
-
-Gholdengo @ Life Orb
-Ability: Good as Gold
-Timid Nature
-- Make It Rain
-- Shadow Ball
-- Power Gem
-- Protect
-
-Sinistcha @ Colbur Berry
-Ability: Hospitality
-Relaxed Nature
-- Matcha Gotcha
-- Rage Powder
-- Trick Room
-- Protect
-
-Archaludon @ Leftovers
-Ability: Stamina
-Calm Nature
-- Dragon Pulse
-- Electro Shot
-- Aura Sphere
-- Protect
-
-######################################################################
-TEAM 125 — garex26 · #6 at BK Cup #4 x Micelion | Sylveon EX Box de premio (41 teams) · 5-2
+TEAM 171 — garex26 · #6 at BK Cup #4 x Micelion | Sylveon EX Box de premio (41 teams) · 5-2
 ######################################################################
 Best team for Pairings: Charizard-Y + Gengar
 
@@ -6652,7 +9099,7 @@ Adamant Nature
 - Protect
 
 ######################################################################
-TEAM 126 — timbucket · #2 at Champions' Frontier #3 (27 teams) · 5-2
+TEAM 172 — timbucket · #2 at Champions' Frontier #3 (27 teams) · 5-2
 ######################################################################
 Best team for Pairings: Aerodactyl + Gardevoir
 
@@ -6705,7 +9152,113 @@ Adamant Nature
 - Sucker Punch
 
 ######################################################################
-TEAM 127 — mrbear21 · #3 at Friday Fight Night #72 Reg M-C Bo3 (30 teams) · 6-2
+TEAM 173 — astrocatvgc · #3 at Rework Esport Champions Talent Cup 3 | 50€ CP M-C (107 teams) · 7-2
+######################################################################
+Best team for Pairings: Staraptor + Swampert
+
+Gholdengo @ Life Orb
+Ability: Good as Gold
+Timid Nature
+- Make It Rain
+- Shadow Ball
+- Power Gem
+- Protect
+
+Archaludon @ Leftovers
+Ability: Stamina
+Calm Nature
+- Dragon Pulse
+- Electro Shot
+- Flash Cannon
+- Protect
+
+Pelipper @ Sitrus Berry
+Ability: Drizzle
+Bold Nature
+- Weather Ball
+- Hurricane
+- Tailwind
+- Wide Guard
+
+Swampert @ Swampertite
+Ability: Torrent
+Adamant Nature
+- Wave Crash
+- Ice Punch
+- Earthquake
+- Protect
+
+Staraptor @ Staraptite
+Ability: Intimidate
+Jolly Nature
+- Brave Bird
+- Close Combat
+- Tailwind
+- Protect
+
+Sinistcha @ Colbur Berry
+Ability: Hospitality
+Relaxed Nature
+- Matcha Gotcha
+- Rage Powder
+- Trick Room
+- Protect
+
+######################################################################
+TEAM 174 — nezk025 · #12 at Mudkip's Marsh Pit #5 (58 teams) · 6-2
+######################################################################
+Best team for Megas: Scizor
+
+Hydreigon @ Life Orb
+Ability: Levitate
+Timid Nature
+- Dragon Pulse
+- Protect
+- Earth Power
+- Dark Pulse
+
+Scizor @ Scizorite
+Ability: Technician
+Adamant Nature
+- Swords Dance
+- Bug Bite
+- Bullet Punch
+- Protect
+
+Sylveon @ Fairy Feather
+Ability: Pixilate
+Modest Nature
+- Quick Attack
+- Protect
+- Moonblast
+- Hyper Voice
+
+Sinistcha @ Sitrus Berry
+Ability: Hospitality
+Bold Nature
+- Giga Drain
+- Trick Room
+- Rage Powder
+- Protect
+
+Arcanine-Hisui @ Focus Sash
+Ability: Rock Head
+Adamant Nature
+- Rock Slide
+- Flare Blitz
+- Close Combat
+- Protect
+
+Aerodactyl @ Aerodactylite
+Ability: Unnerve
+Jolly Nature
+- Dual Wingbeat
+- Tailwind
+- Rock Slide
+- Wide Guard
+
+######################################################################
+TEAM 175 — mrbear21 · #3 at Friday Fight Night #72 Reg M-C Bo3 (30 teams) · 6-2
 ######################################################################
 Best team for Megas: Aggron
 
@@ -6758,7 +9311,7 @@ Adamant Nature
 - Grassy Glide
 
 ######################################################################
-TEAM 128 — coizey · #10 at Pado's Dojo Reg M-C Pratice #4 🍥 (70 teams) · 6-2
+TEAM 176 — coizey · #10 at Pado's Dojo Reg M-C Pratice #4 🍥 (70 teams) · 6-2
 ######################################################################
 Best team for Pairings: Delphox + Raichu-X
 
@@ -6811,7 +9364,60 @@ Timid Nature
 - Protect
 
 ######################################################################
-TEAM 129 — vybruh · #2 at WARTORTLE WEDNESDAYS #68 REG M-C BO3 OTS (27 teams) · 6-2
+TEAM 177 — bmt295 · #4 at DMV Open #2 (20 teams) · 6-2
+######################################################################
+Best team for Pairings: Charizard-Y + Lucario-Z
+
+Charizard @ Charizardite Y
+Ability: Blaze
+Modest Nature
+- Heat Wave
+- Weather Ball
+- Ancient Power
+- Protect
+
+Indeedee ♀ @ Colbur Berry
+Ability: Psychic Surge
+Bold Nature
+- Psychic
+- Helping Hand
+- Follow Me
+- Trick Room
+
+Sneasler @ Psychic Seed
+Ability: Unburden
+Adamant Nature
+- Dire Claw
+- Close Combat
+- Rock Slide
+- Protect
+
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Timid Nature
+- Nasty Plot
+- Aura Sphere
+- Dark Pulse
+- Detect
+
+Annihilape @ Choice Scarf
+Ability: Defiant
+Jolly Nature
+- Close Combat
+- Ice Punch
+- Phantom Force
+- Shadow Claw
+
+Armarouge @ Focus Sash
+Ability: Flash Fire
+Modest Nature
+- Armor Cannon
+- Expanding Force
+- Wide Guard
+- Protect
+
+######################################################################
+TEAM 178 — vybruh · #2 at WARTORTLE WEDNESDAYS #68 REG M-C BO3 OTS (27 teams) · 6-2
 ######################################################################
 Best team for Pairings: Floette + Gengar
 
@@ -6864,60 +9470,113 @@ Sassy Nature
 - Protect
 
 ######################################################################
-TEAM 130 — adachv · #29 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 3-1
+TEAM 179 — yuirs_gsbx · #2 at ⛩️Chadweezy95 VGC Champions Tournament Ep 11!⛩️ (24 teams) · 6-2
 ######################################################################
-Best team for Pairings: Delphox + Gyarados
+Best team for Pairings: Garchomp-Z + Venusaur
 
-Rillaboom @ Expert Belt
-Ability: Grassy Surge
-Adamant Nature
-- Wood Hammer
-- Grassy Glide
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Power Gem
+- Dragon Pulse
+- Earth Power
+- Protect
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Sassy Nature
+- Foul Play
 - Fake Out
-- High Horsepower
+- Light Screen
+- Reflect
 
-Gholdengo @ Life Orb
-Ability: Good as Gold
+Venusaur @ Venusaurite
+Ability: Chlorophyll
+Modest Nature
+- Leaf Storm
+- Sludge Bomb
+- Sleep Powder
+- Earth Power
+
+Farigiraf @ Sitrus Berry
+Ability: Armor Tail
+Bold Nature
+- Expanding Force
+- Trick Room
+- Thunderbolt
+- Protect
+
+Torkoal @ Charcoal
+Ability: Drought
+Quiet Nature
+- Eruption
+- Weather Ball
+- Body Press
+- Protect
+
+Whimsicott @ Focus Sash
+Ability: Prankster
 Timid Nature
-- Make It Rain
-- Shadow Ball
-- Protect
-- Nasty Plot
-
-Maushold @ Focus Sash
-Ability: Friend Guard
-Timid Nature
-- Follow Me
-- Feint
-- Protect
-- Super Fang
-
-Delphox @ Delphoxite
-Ability: Blaze
-Timid Nature
-- Heat Wave
-- Psychic
-- Nasty Plot
-- Protect
-
-Gyarados @ Gyaradosite
-Ability: Intimidate
-Adamant Nature
-- Dragon Dance
-- Lash Out
-- Waterfall
-- Protect
-
-Annihilape @ Choice Scarf
-Ability: Defiant
-Jolly Nature
-- Close Combat
-- Shadow Claw
-- Rock Tomb
-- Ice Punch
+- Fake Tears
+- Moonblast
+- Sunny Day
+- Tailwind
 
 ######################################################################
-TEAM 131 — rikuteseduse · #6 at VGC UmbreNews 29.09.2026 #34 - Champion (71 teams) · 6-2
+TEAM 180 — pariri · #2 at 👻Mimikyu's Spooky Tourney🎃 | Prize: Shiny Gengar (17 teams) · 6-2
+######################################################################
+Best team for Pairings: Froslass + Golisopod
+
+Froslass @ Froslassite
+Ability: Snow Cloak
+Timid Nature
+- Shadow Ball
+- Blizzard
+- Thunderbolt
+- Protect
+
+Basculegion-Male @ Life Orb
+Ability: Adaptability
+Jolly Nature
+- Last Respects
+- Wave Crash
+- Protect
+- Aqua Jet
+
+Sneasler @ White Herb
+Ability: Unburden
+Jolly Nature
+- Dire Claw
+- Coaching
+- Fake Out
+- Close Combat
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Impish Nature
+- Throat Chop
+- Parting Shot
+- Fake Out
+- Flare Blitz
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- First Impression
+- Leech Life
+- Protect
+- Iron Head
+
+Mimikyu @ Leftovers
+Ability: Disguise
+Adamant Nature
+- Shadow Sneak
+- Trick Room
+- Play Rough
+- Wood Hammer
+
+######################################################################
+TEAM 181 — rikuteseduse · #6 at VGC UmbreNews 29.09.2026 #34 - Champion (71 teams) · 6-2
 ######################################################################
 Best team for Pairings: Scovillain + Tyranitar
 
@@ -6970,7 +9629,7 @@ Adamant Nature
 - High Horsepower
 
 ######################################################################
-TEAM 132 — someoneoffical · #9 at Tenki's Cart Weekly #119 - Reg M-C (90 teams) · 6-2
+TEAM 182 — someoneoffical · #9 at Tenki's Cart Weekly #119 - Reg M-C (90 teams) · 6-2
 ######################################################################
 Best team for Pairings: Meganium + Raichu-Y
 
@@ -7023,130 +9682,130 @@ Timid Nature
 - Weather Ball
 
 ######################################################################
-TEAM 133 — lucasvbc · #6 at Intimidators Champions Challenge #42 REG M-C (71 teams) · 6-2
+TEAM 183 — sam73597479 · #5 at Trinity Championship 13 (Double Format) (60 teams) · 6-2
 ######################################################################
-Best team for Pairings: Aggron + Tyranitar
-
-Rillaboom @ Terrain Extender
-Ability: Grassy Surge
-Adamant Nature
-- Fake Out
-- Grassy Glide
-- Wood Hammer
-- High Horsepower
-
-Toxapex @ Leftovers
-Ability: Regenerator
-Sassy Nature
-- Toxic
-- Infestation
-- Recover
-- Baneful Bunker
-
-Salamence @ Expert Belt
-Ability: Intimidate
-Adamant Nature
-- Breaking Swipe
-- Dual Wingbeat
-- Rock Tomb
-- Protect
-
-Aggron @ Aggronite
-Ability: Heavy Metal
-Careful Nature
-- Curse
-- Body Press
-- Heavy Slam
-- Protect
-
-Sinistcha @ Sitrus Berry
-Ability: Hospitality
-Calm Nature
-- Matcha Gotcha
-- Trick Room
-- Rage Powder
-- Life Dew
-
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
-Adamant Nature
-- Knock Off
-- Rock Slide
-- Dragon Dance
-- Protect
-
-######################################################################
-TEAM 134 — hirseknabe · #3 at Meeklosh's Fight Night Friday  | REG M-C (42 teams) · 6-2
-######################################################################
-Best team for Pairings: Kangaskhan + Raichu-Y
-
-Raichu @ Raichunite Y
-Ability: Lightning Rod
-Timid Nature
-- Zap Cannon
-- Focus Blast
-- Fake Out
-- Protect
-
-Kangaskhan @ Kangaskhanite
-Ability: Scrappy
-Adamant Nature
-- Double-Edge
-- Fake Out
-- Low Kick
-- Sucker Punch
+Best team for Pairings: Salamence + Staraptor
 
 Farigiraf @ Sitrus Berry
 Ability: Armor Tail
 Bold Nature
-- Psychic
+- Expanding Force
+- Imprison
+- Trick Room
 - Protect
+
+Pelipper @ Focus Sash
+Ability: Drizzle
+Timid Nature
+- Protect
+- Tailwind
+- Muddy Water
+- Hurricane
+
+Archaludon @ Chople Berry
+Ability: Stamina
+Modest Nature
+- Protect
+- Electro Shot
+- Flash Cannon
+- Dragon Pulse
+
+Staraptor @ Staraptite
+Ability: Intimidate
+Jolly Nature
+- Protect
+- Tailwind
+- Close Combat
+- Brave Bird
+
+Gholdengo @ Life Orb
+Ability: Good as Gold
+Timid Nature
+- Protect
+- Make It Rain
+- Shadow Ball
+- Nasty Plot
+
+Salamence @ Salamencite
+Ability: Intimidate
+Timid Nature
+- Protect
+- Hyper Voice
+- Tailwind
+- Draco Meteor
+
+######################################################################
+TEAM 184 — csalexsander · #9 at Intimidators Champions Challenge #45 REG M-C (90 teams) · 5-2
+######################################################################
+Best team for Pairings: Golisopod + Golurk
+
+Indeedee ♀ @ Rocky Helmet
+Ability: Psychic Surge
+Relaxed Nature
+- Follow Me
+- Dazzling Gleam
 - Helping Hand
+- Trick Room
+
+Hatterene @ Life Orb
+Ability: Magic Bounce
+Quiet Nature
+- Expanding Force
+- Dazzling Gleam
+- Skill Swap
+- Trick Room
+
+Gallade @ White Herb
+Ability: Sharpness
+Brave Nature
+- Sacred Sword
+- Psycho Cut
+- Wide Guard
 - Trick Room
 
 Torkoal @ Charcoal
 Ability: Drought
-Quiet Nature
+Modest Nature
 - Eruption
 - Weather Ball
-- Heat Wave
+- Earth Power
 - Protect
 
-Sylveon @ Fairy Feather
-Ability: Pixilate
-Modest Nature
-- Hyper Voice
-- Hyper Beam
-- Quick Attack
+Golurk @ Golurkite
+Ability: Iron Fist
+Brave Nature
+- Headlong Rush
+- Poltergeist
+- Ice Punch
 - Protect
 
-Aerodactyl @ Focus Sash
-Ability: Unnerve
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Brave Nature
+- Iron Head
+- Leech Life
+- Swords Dance
+- Protect
+
+######################################################################
+TEAM 185 — pokeopposition · #1 at ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (26 teams) · 7-1
+######################################################################
+Best team for Pairings: Baxcalibur + Froslass
+
+Baxcalibur @ Baxcalibrite
+Ability: Ice Body
 Jolly Nature
-- Rock Slide
-- Dual Wingbeat
+- Glaive Rush
+- Icicle Crash
+- Dragon Dance
 - Protect
-- Tailwind
 
-######################################################################
-TEAM 135 — lyricsum · #7 at Talon's FIGHT CLUB #106 POKEMON CHAMPIONS REG M-C (110 teams) · 7-3
-######################################################################
-Best team for Pairings: Garchomp + Gardevoir
-
-Indeedee ♀ @ Rocky Helmet
-Ability: Psychic Surge
-Bold Nature
-- Terrain Pulse
-- Follow Me
-- Helping Hand
-- Trick Room
-
-Gardevoir @ Gardevoirite
-Ability: Trace
-Modest Nature
-- Hyper Voice
-- Expanding Force
-- Mystical Fire
+Froslass @ Froslassite
+Ability: Cursed Body
+Timid Nature
+- Aurora Veil
+- Blizzard
+- Shadow Ball
 - Protect
 
 Sneasler @ White Herb
@@ -7154,35 +9813,141 @@ Ability: Unburden
 Adamant Nature
 - Fake Out
 - Close Combat
-- Dire Claw
+- Poison Jab
 - Protect
 
-Tyranitar @ Choice Scarf
-Ability: Sand Stream
-Jolly Nature
-- Rock Slide
-- Knock Off
+Rillaboom @ Sitrus Berry
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
 - High Horsepower
-- Ice Punch
+- Grassy Glide
+- Wood Hammer
 
-Garchomp @ Garchompite
+Arcanine-Hisui @ Choice Scarf
+Ability: Rock Head
+Jolly Nature
+- Head Smash
+- Rock Slide
+- Wild Charge
+- Flare Blitz
+
+Kingambit @ Life Orb
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Iron Head
+- Low Kick
+
+######################################################################
+TEAM 186 — huntervgc2326 · #2 at ⛩️Chadweezy95 VGC Champions Tournament Ep 23!⛩️ (26 teams) · 6-2
+######################################################################
+Best team for Pairings: Charizard-X + Garchomp-Z
+
+Charizard @ Charizardite X
+Ability: Blaze
+Adamant Nature
+- Dragon Claw
+- Flare Blitz
+- Dragon Dance
+- Protect
+
+Garchomp @ Garchompite Z
 Ability: Rough Skin
 Modest Nature
-- Draco Meteor
+- Dragon Pulse
 - Earth Power
-- Power Gem
+- Flamethrower
+- Protect
+
+Sneasler @ Grassy Seed
+Ability: Unburden
+Adamant Nature
+- Dire Claw
+- Close Combat
+- Throat Chop
+- Fake Out
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Grassy Glide
+- High Horsepower
+- Fake Out
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Adamant Nature
+- Darkest Lariat
+- Flare Blitz
+- Parting Shot
+- Fake Out
+
+Milotic @ Leftovers
+Ability: Competitive
+Bold Nature
+- Scald
+- Ice Beam
+- Icy Wind
+- Protect
+
+######################################################################
+TEAM 187 — lellocartello · #16 at ⛩️$20 VGC Champions Tournament Ep 34!⛩️ (105 teams) · 5-3
+######################################################################
+Best team for Pairings: Blastoise + Garchomp-Z
+
+Indeedee ♀ @ Rocky Helmet
+Ability: Psychic Surge
+Bold Nature
+- Follow Me
+- Helping Hand
+- Psychic
+- Protect
+
+Gliscor @ Psychic Seed
+Ability: Hyper Cutter
+Jolly Nature
+- Acrobatics
+- High Horsepower
+- Tailwind
 - Protect
 
 Gholdengo @ Life Orb
 Ability: Good as Gold
 Modest Nature
-- Nasty Plot
 - Make It Rain
 - Shadow Ball
+- Nasty Plot
+- Protect
+
+Armarouge @ Focus Sash
+Ability: Flash Fire
+Timid Nature
+- Armor Cannon
+- Expanding Force
+- Wide Guard
+- Protect
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Earth Power
+- Draco Meteor
+- Power Gem
+- Protect
+
+Blastoise @ Blastoisinite
+Ability: Rain Dish
+Modest Nature
+- Shell Smash
+- Water Spout
+- Dark Pulse
 - Protect
 
 ######################################################################
-TEAM 136 — kassiddy · #8 at Off Meta MAJOR ($140 USD Prize Pool) (117 teams) · 7-3
+TEAM 188 — kassiddy · #8 at Off Meta MAJOR ($140 USD Prize Pool) (117 teams) · 7-3
 ######################################################################
 Best team for Pairings: Gengar + Lopunny
 
@@ -7235,93 +10000,16 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 137 — erinus · #5 at VGC Indigo League #2 (Prize: Eternal Floette) (105 teams) · 7-2
+TEAM 189 — rr12rr12 · #2 at MetaVGC Arena #1 - Reg MC - Prizes: R$ 50 + Shiny (70 teams) · 8-2
 ######################################################################
-Best team for Pairings: Delphox + Froslass
-
-Froslass @ Froslassite
-Ability: Cursed Body
-Timid Nature
-- Blizzard
-- Shadow Ball
-- Nasty Plot
-- Protect
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Fake Out
-- Grassy Glide
-- High Horsepower
-- Wood Hammer
-
-Delphox @ Delphoxite
-Ability: Blaze
-Timid Nature
-- Heat Wave
-- Nasty Plot
-- Psyshock
-- Protect
-
-Farigiraf @ Leftovers
-Ability: Armor Tail
-Bold Nature
-- Expanding Force
-- Imprison
-- Protect
-- Trick Room
-
-Sneasler @ Grassy Seed
-Ability: Unburden
-Adamant Nature
-- Fake Out
-- Rock Slide
-- Close Combat
-- Gunk Shot
-
-Primarina @ Life Orb
-Ability: Liquid Voice
-Modest Nature
-- Hyper Voice
-- Moonblast
-- Dazzling Gleam
-- Protect
-
-######################################################################
-TEAM 138 — jonen · #23 at Tenki's Cart Weekly #121 - Reg M-C (78 teams) · 3-3
-######################################################################
-Best team for Pairings: Mawile + Swampert
-
-Sinistcha @ Sitrus Berry
-Ability: Hospitality
-Modest Nature
-- Matcha Gotcha
-- Rage Powder
-- Shadow Ball
-- Trick Room
-
-Mawile @ Mawilite
-Ability: Intimidate
-Adamant Nature
-- Iron Head
-- Play Rough
-- Sucker Punch
-- Protect
-
-Sableye @ Roseli Berry
-Ability: Prankster
-Sassy Nature
-- Encore
-- Rain Dance
-- Will-O-Wisp
-- Light Screen
+Best team for Pairings: Metagross + Swampert
 
 Pelipper @ Focus Sash
 Ability: Drizzle
-Timid Nature
+Modest Nature
 - Hurricane
+- Weather Ball
 - Wide Guard
-- Soak
 - Tailwind
 
 Swampert @ Swampertite
@@ -7329,125 +10017,308 @@ Ability: Torrent
 Adamant Nature
 - Wave Crash
 - Earthquake
-- Ice Punch
 - Protect
+- Ice Punch
+
+Typhlosion-Hisui @ Choice Scarf
+Ability: Blaze
+Modest Nature
+- Eruption
+- Heat Wave
+- Shadow Ball
+- Will-O-Wisp
+
+Rotom-Wash @ Sitrus Berry
+Ability: Levitate
+Calm Nature
+- Thunder
+- Volt Switch
+- Light Screen
+- Will-O-Wisp
+
+Kommo-o @ Life Orb
+Ability: Soundproof
+Modest Nature
+- Clanging Scales
+- Aura Sphere
+- Protect
+- Vacuum Wave
+
+Metagross @ Metagrossite
+Ability: Clear Body
+Adamant Nature
+- Bullet Punch
+- Protect
+- Psychic Fangs
+- Stomping Tantrum
+
+######################################################################
+TEAM 190 — smalls · #5 at Weekend Qualifier|Prize Shiny Golisopod/Lucario (75 teams) · 7-2
+######################################################################
+Best team for Pairings: Gengar + Salamence
+
+Salamence @ Salamencite
+Ability: Intimidate
+Modest Nature
+- Hyper Voice
+- Dragon Pulse
+- Flamethrower
+- Protect
+
+Sylveon @ Fairy Feather
+Ability: Pixilate
+Modest Nature
+- Quick Attack
+- Hyper Voice
+- Hyper Beam
+- Detect
+
+Rillaboom @ Sitrus Berry
+Ability: Grassy Surge
+Adamant Nature
+- Grassy Glide
+- Wood Hammer
+- U-turn
+- Fake Out
+
+Gengar @ Gengarite
+Ability: Cursed Body
+Modest Nature
+- Sludge Bomb
+- Shadow Ball
+- Icy Wind
+- Protect
+
+Milotic @ Grassy Seed
+Ability: Competitive
+Modest Nature
+- Coil
+- Protect
+- Muddy Water
+- Ice Beam
+
+Arcanine-Hisui @ Focus Sash
+Ability: Rock Head
+Adamant Nature
+- Head Smash
+- Flare Blitz
+- Extreme Speed
+- Protect
+
+######################################################################
+TEAM 191 — eddielr24 · #8 at Friday Fight Night #73 Reg M-C Bo3 (53 teams) · 5-2
+######################################################################
+Best team for Pairings: Absol-Z + Floette
+
+Goodra-Hisui @ Leftovers
+Ability: Sap Sipper
+Impish Nature
+- Heavy Slam
+- Body Press
+- Protect
+- Shelter
+
+Basculegion-Male @ Choice Scarf
+Ability: Adaptability
+Jolly Nature
+- Wave Crash
+- Aqua Jet
+- Flip Turn
+- Last Respects
+
+Rillaboom @ Occa Berry
+Ability: Grassy Surge
+Adamant Nature
+- Grassy Glide
+- Fake Out
+- High Horsepower
+- Wood Hammer
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Careful Nature
+- Flare Blitz
+- Throat Chop
+- Fake Out
+- Parting Shot
+
+Floette @ Floettite
+Ability: Flower Veil
+Timid Nature
+- Dazzling Gleam
+- Draining Kiss
+- Calm Mind
+- Protect
+
+Absol @ Absolite Z
+Ability: Justified
+Jolly Nature
+- Night Slash
+- Psycho Cut
+- Close Combat
+- Detect
+
+######################################################################
+TEAM 192 — vinnamon · #2 at ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (M-C) (24 teams) · 6-2
+######################################################################
+Best team for Pairings: Absol-Z + Golisopod
 
 Archaludon @ Leftovers
 Ability: Stamina
 Modest Nature
 - Protect
+- Electro Shot
 - Flash Cannon
 - Dragon Pulse
-- Electro Shot
+
+Pelipper @ Sitrus Berry
+Ability: Drizzle
+Modest Nature
+- Hurricane
+- Weather Ball
+- Tailwind
+- Wide Guard
+
+Rillaboom @ Occa Berry
+Ability: Grassy Surge
+Adamant Nature
+- Grassy Glide
+- U-turn
+- Wood Hammer
+- Fake Out
+
+Pawmot @ Focus Sash
+Ability: Iron Fist
+Jolly Nature
+- Revival Blessing
+- Double Shock
+- Close Combat
+- Protect
+
+Absol @ Absolite Z
+Ability: Justified
+Jolly Nature
+- Swords Dance
+- Close Combat
+- Shadow Claw
+- Detect
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- Leech Life
+- Sucker Punch
+- Iron Head
+- Protect
 
 ######################################################################
-TEAM 139 — shinbu · #16 at Tenki's Cart Weekly #118 - Reg M-C (120 teams) · 5-3
+TEAM 193 — marvvgc · #8 at Talon's FIGHT CLUB #101 POKEMON CHAMPIONS REG M-C (98 teams) · 7-3
 ######################################################################
-Best team for Pairings: Blastoise + Dragonite
+Best team for Pairings: Floette + Slowbro
+
+Rillaboom @ Occa Berry
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Grassy Glide
+- High Horsepower
+- Fake Out
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Careful Nature
+- Flare Blitz
+- Parting Shot
+- Fake Out
+- Throat Chop
+
+Floette @ Floettite
+Ability: Flower Veil
+Modest Nature
+- Dazzling Gleam
+- Moonblast
+- Calm Mind
+- Protect
+
+Sneasler @ Grassy Seed
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Dire Claw
+- Rock Tomb
+- Protect
 
 Gholdengo @ Life Orb
 Ability: Good as Gold
 Timid Nature
 - Make It Rain
-- Protect
-- Nasty Plot
 - Shadow Ball
-
-Dragonite @ Dragoninite
-Ability: Multiscale
-Modest Nature
-- Tailwind
-- Protect
-- Draco Meteor
-- Hurricane
-
-Pelipper @ Focus Sash
-Ability: Drizzle
-Quiet Nature
-- Weather Ball
-- Hurricane
-- Wide Guard
-- Muddy Water
-
-Archaludon @ Leftovers
-Ability: Stamina
-Modest Nature
-- Draco Meteor
-- Flash Cannon
-- Electro Shot
+- Nasty Plot
 - Protect
 
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
-Sassy Nature
-- Trick Room
-- Hyper Voice
+Slowbro @ Slowbronite
+Ability: Regenerator
+Modest Nature
+- Scald
 - Psychic
-- Helping Hand
+- Yawn
+- Protect
 
-Blastoise @ Blastoisinite
-Ability: Rain Dish
-Quiet Nature
-- Dark Pulse
-- Aura Sphere
-- Water Spout
+######################################################################
+TEAM 194 — stonestormvgc · #15 at 🍋Sitrus-Series🍋|Champions-MC|$50 to First|#75 (243 teams) · 7-3
+######################################################################
+Best team for Pairings: Baxcalibur + Golisopod
+
+Baxcalibur @ Baxcalibrite
+Ability: Thermal Exchange
+Adamant Nature
+- Glaive Rush
+- Swords Dance
+- Ice Shard
+- Protect
+
+Rillaboom @ Life Orb
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- U-turn
+- Grassy Glide
 - Fake Out
 
-######################################################################
-TEAM 140 — deadblonde · #25 at Maddo's Cup #12 | 100€ for the Winner | Reg M-C (388 teams) · 7-3
-######################################################################
-Best team for Pairings: Metagross + Pyroar
-
-Indeedee ♀ @ Rocky Helmet
-Ability: Psychic Surge
-Bold Nature
-- Psychic
-- Helping Hand
-- Follow Me
-- Trick Room
-
-Espathra @ Life Orb
-Ability: Speed Boost
+Sylveon @ Leftovers
+Ability: Pixilate
 Modest Nature
-- Expanding Force
-- Lumina Crash
-- Low Kick
+- Hyper Voice
+- Calm Mind
+- Draining Kiss
+- Detect
+
+Politoed @ Sitrus Berry
+Ability: Water Absorb
+Bold Nature
+- Weather Ball
+- Encore
+- Hypnosis
 - Protect
 
-Kingambit @ Chople Berry
-Ability: Defiant
+Incineroar @ Passho Berry
+Ability: Intimidate
+Impish Nature
+- Flare Blitz
+- Throat Chop
+- Fake Out
+- Parting Shot
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
 Adamant Nature
-- Kowtow Cleave
+- Leech Life
 - Iron Head
-- Sucker Punch
-- Low Kick
-
-Glimmora @ Focus Sash
-Ability: Toxic Debris
-Timid Nature
-- Power Gem
-- Sludge Bomb
-- Earth Power
-- Spiky Shield
-
-Pyroar @ Pyroarite
-Ability: Unnerve
-Timid Nature
-- Heat Wave
-- Scorching Sands
-- Overheat
-- Protect
-
-Metagross @ Metagrossite
-Ability: Clear Body
-Jolly Nature
-- Iron Head
-- Psychic Fangs
-- Body Press
+- First Impression
 - Protect
 
 ######################################################################
-TEAM 141 — jewald89124 · #12 at Penglin's Penguin Tournouá Laurels (10k in Prizes) (173 teams) · 6-3
+TEAM 195 — jewald89124 · #12 at Penglin's Penguin Tournouá Laurels (10k in Prizes) (173 teams) · 6-3
 ######################################################################
 Best team for Pairings: Mawile + Scrafty
 
@@ -7500,7 +10371,166 @@ Brave Nature
 - Swords Dance
 
 ######################################################################
-TEAM 142 — jajabe · #5 at Off Meta Fight Club #5 ($20 USD prize pool) (47 teams) · 4-1
+TEAM 196 — ecomcc · #5 at TARTAN TAKEDOWN #41! - [CHAMPIONS REG M-C!] (67 teams) · 6-3
+######################################################################
+Best team for Pairings: Camerupt + Salamence
+
+Salamence @ Salamencite
+Ability: Intimidate
+Timid Nature
+- Hyper Voice
+- Tailwind
+- Draco Meteor
+- Protect
+
+Farigiraf @ Sitrus Berry
+Ability: Armor Tail
+Relaxed Nature
+- Trick Room
+- Expanding Force
+- Thunderbolt
+- Helping Hand
+
+Camerupt @ Cameruptite
+Ability: Magma Armor
+Quiet Nature
+- Ancient Power
+- Earth Power
+- Heat Wave
+- Protect
+
+Primarina @ Grassy Seed
+Ability: Liquid Voice
+Modest Nature
+- Hyper Voice
+- Moonblast
+- Calm Mind
+- Protect
+
+Gholdengo @ Life Orb
+Ability: Good as Gold
+Timid Nature
+- Shadow Ball
+- Make It Rain
+- Protect
+- Nasty Plot
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- U-turn
+
+######################################################################
+TEAM 197 — izubrad · #1 at ⛩️Chadweezy95 VGC Champions Tournament Ep 16!⛩️ (33 teams) · 8-0
+######################################################################
+Best team for Pairings: Camerupt + Golisopod
+
+Farigiraf @ Sitrus Berry
+Ability: Armor Tail
+Relaxed Nature
+- Twin Beam
+- Thunderbolt
+- Helping Hand
+- Trick Room
+
+Camerupt @ Cameruptite
+Ability: Solid Rock
+Quiet Nature
+- Heat Wave
+- Earth Power
+- Ancient Power
+- Protect
+
+Incineroar @ Expert Belt
+Ability: Intimidate
+Adamant Nature
+- Fake Out
+- Close Combat
+- Flare Blitz
+- Throat Chop
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Brave Nature
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- U-turn
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Brave Nature
+- Leech Life
+- Iron Head
+- Swords Dance
+- Protect
+
+Conkeldurr @ Life Orb
+Ability: Sheer Force
+Brave Nature
+- Close Combat
+- Poison Jab
+- Rock Slide
+- Wide Guard
+
+######################################################################
+TEAM 198 — toichi_shinju1535 · #9 at Dragonspiral Tower Saturday Rumble #1 (32 teams) · 3-2
+######################################################################
+Best team for Pairings: Aerodactyl + Lucario-Z
+
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Timid Nature
+- Aura Sphere
+- Calm Mind
+- Flash Cannon
+- Protect
+
+Aerodactyl @ Aerodactylite
+Ability: Unnerve
+Jolly Nature
+- Rock Slide
+- Tailwind
+- Dual Wingbeat
+- Wide Guard
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Impish Nature
+- Flare Blitz
+- Throat Chop
+- Parting Shot
+- Fake Out
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Grassy Glide
+- U-turn
+- Fake Out
+- Wood Hammer
+
+Primarina @ Leftovers
+Ability: Liquid Voice
+Modest Nature
+- Hyper Voice
+- Moonblast
+- Calm Mind
+- Protect
+
+Sneasler @ Grassy Seed
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Dire Claw
+- Swords Dance
+- Protect
+
+######################################################################
+TEAM 199 — jajabe · #5 at Off Meta Fight Club #5 ($20 USD prize pool) (47 teams) · 4-1
 ######################################################################
 Best team for Megas: Abomasnow
 
@@ -7553,7 +10583,7 @@ Quiet Nature
 - Protect
 
 ######################################################################
-TEAM 143 — d34d · #5 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 4-1
+TEAM 200 — d34d · #5 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 4-1
 ######################################################################
 Best team for Pairings: Delphox + Gardevoir
 
@@ -7606,166 +10636,113 @@ Adamant Nature
 - Ice Spinner
 
 ######################################################################
-TEAM 144 — bylanxx · #9 at Off Meta Fight Club #7 (NEW Rules) (63 teams) · 4-1
+TEAM 201 — kardeas · #3 at Pokemon Dominicana - Champions League #13 (19 teams) · 4-1
 ######################################################################
-Best team for Pairings: Clefable + Tyranitar
+Best team for Pairings: Absol-Z + Metagross
 
-Arcanine @ Rocky Helmet
-Ability: Intimidate
-Timid Nature
-- Snarl
-- Will-O-Wisp
-- Extreme Speed
-- Burn Up
-
-Clefable @ Clefablite
-Ability: Cute Charm
-Calm Nature
-- Moonblast
-- Follow Me
-- Protect
-- Life Dew
-
-Excadrill @ Focus Sash
-Ability: Sand Rush
-Adamant Nature
-- High Horsepower
-- Rock Slide
-- Iron Head
-- Protect
-
-Rotom-Wash @ Sitrus Berry
-Ability: Levitate
-Bold Nature
-- Hydro Pump
-- Thunderbolt
-- Protect
-- Volt Switch
-
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
+Absol @ Absolite Z
+Ability: Justified
 Jolly Nature
-- Rock Slide
-- Knock Off
-- Dragon Dance
+- Close Combat
+- Shadow Claw
+- Psycho Cut
 - Protect
-
-Dragapult @ Life Orb
-Ability: Clear Body
-Timid Nature
-- Draco Meteor
-- Shadow Ball
-- Protect
-- Psychic Fangs
-
-######################################################################
-TEAM 145 — savagebruh · #6 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 4-1
-######################################################################
-Best team for Pairings: Eelektross + Metagross
-
-Eelektross @ Eelektrossite
-Ability: Levitate
-Modest Nature
-- Protect
-- Discharge
-- Thunder
-- Giga Drain
-
-Pelipper @ Sitrus Berry
-Ability: Drizzle
-Timid Nature
-- Hurricane
-- Wide Guard
-- Soak
-- Tailwind
-
-Garchomp @ Life Orb
-Ability: Rough Skin
-Jolly Nature
-- Protect
-- Dragon Claw
-- Earthquake
-- Rock Slide
 
 Metagross @ Metagrossite
 Ability: Clear Body
-Adamant Nature
-- Protect
+Jolly Nature
+- Iron Head
+- Psychic Fangs
 - Ice Punch
-- Psychic Fangs
-- Iron Head
-
-Tsareena @ Wide Lens
-Ability: Queenly Majesty
-Adamant Nature
-- Protect
-- Power Whip
-- Triple Axel
-- High Jump Kick
-
-Samurott-Hisui @ Choice Scarf
-Ability: Sharpness
-Jolly Nature
-- Night Slash
-- Aqua Jet
-- Aqua Cutter
-- Sacred Sword
-
-######################################################################
-TEAM 146 — chrono24 · #5 at 🏰FORT TOURNAMENTS  OFF META OCTOBER🏰 (21 teams) · 4-1
-######################################################################
-Best team for Pairings: Metagross + Sceptile
-
-Metagross @ Metagrossite
-Ability: Clear Body
-Jolly Nature
-- Iron Head
-- Psychic Fangs
-- Body Press
 - Protect
 
-Sceptile @ Sceptilite
-Ability: Unburden
+Indeedee @ Focus Sash
+Ability: Psychic Surge
 Timid Nature
-- Dragon Pulse
-- Leaf Storm
-- Earth Power
-- Detect
+- Expanding Force
+- Imprison
+- Trick Room
+- Protect
 
-Rotom-Heat @ Choice Scarf
-Ability: Levitate
+Whimsicott @ Fairy Feather
+Ability: Prankster
 Timid Nature
-- Overheat
-- Volt Switch
-- Discharge
-- Trick
-
-Primarina @ Leftovers
-Ability: Liquid Voice
-Modest Nature
-- Hyper Voice
 - Moonblast
-- Calm Mind
-- Protect
-
-Krookodile @ Focus Sash
-Ability: Intimidate
-Jolly Nature
-- High Horsepower
-- Rock Slide
-- Knock Off
-- Protect
-
-Talonflame @ Sharp Beak
-Ability: Gale Wings
-Jolly Nature
-- Dual Wingbeat
 - Tailwind
-- Taunt
+- Sunny Day
+- Helping Hand
+
+Sneasler @ Psychic Seed
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Rock Slide
+- Dire Claw
 - Protect
+
+Typhlosion-Hisui @ Choice Scarf
+Ability: Blaze
+Modest Nature
+- Eruption
+- Heat Wave
+- Shadow Ball
+- Overheat
 
 ######################################################################
-TEAM 147 — firemana · played ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (Final Qualifier) (36 teams) · 0-0
+TEAM 202 — th3cathat · #3 at X1 Remote Battle League 10ª Edição - Reg M-C (13 teams) · 4-1
+######################################################################
+Best team for Pairings: Lucario-Z + Swampert
+
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Timid Nature
+- Aura Sphere
+- Dark Pulse
+- Nasty Plot
+- Protect
+
+Rillaboom @ Sitrus Berry
+Ability: Grassy Surge
+Careful Nature
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- High Horsepower
+
+Pelipper @ Focus Sash
+Ability: Drizzle
+Modest Nature
+- Hurricane
+- Weather Ball
+- Wide Guard
+- Protect
+
+Swampert @ Swampertite
+Ability: Damp
+Adamant Nature
+- Wave Crash
+- High Horsepower
+- Ice Punch
+- Protect
+
+Archaludon @ Leftovers
+Ability: Stamina
+Modest Nature
+- Electro Shot
+- Dragon Pulse
+- Flash Cannon
+- Protect
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Impish Nature
+- Light Screen
+- Parting Shot
+- Reflect
+- Spirit Break
+
+######################################################################
+TEAM 203 — firemana · played ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (Final Qualifier) (36 teams) · 0-0
 ######################################################################
 Best team for Pairings: Dragonite + Mawile
 
@@ -7818,166 +10795,166 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 148 — stag_2402 · #6 at Off Meta Fight Club #4 ($40 USD prize pool) (80 teams) · 4-1
+TEAM 204 — treybaybay · #9 at Pokepal Smackdown #157 (Champions) (Reg M-C) (48 teams) · 4-1
 ######################################################################
-Best team for Pairings: Gengar + Sceptile
+Best team for Pairings: Golisopod + Lucario-Z
 
-Incineroar @ Charti Berry
-Ability: Intimidate
-Impish Nature
-- Protect
-- Flare Blitz
-- Parting Shot
-- Fake Out
-
-Rillaboom @ Eject Button
-Ability: Grassy Surge
-Sassy Nature
-- Protect
-- Grassy Glide
-- U-turn
-- Fake Out
-
-Gengar @ Gengarite
-Ability: Cursed Body
-Modest Nature
-- Protect
-- Shadow Ball
-- Disable
-- Perish Song
-
-Wigglytuff @ Leftovers
-Ability: Competitive
-Calm Nature
-- Protect
-- Encore
-- Moonblast
-- Perish Song
-
-Empoleon @ Chople Berry
-Ability: Competitive
-Calm Nature
-- Protect
-- Yawn
-- Flip Turn
-- Chilling Water
-
-Sceptile @ Sceptilite
-Ability: Overgrow
-Timid Nature
-- Detect
-- Shed Tail
-- Leaf Storm
-- Earth Power
-
-######################################################################
-TEAM 149 — poison57 · #2 at Ace Pokémon Invitational (6 teams) · 4-1
-######################################################################
-Best team for Pairings: Delphox + Scrafty
-
-Delphox @ Delphoxite
-Ability: Blaze
-Modest Nature
-- Heat Wave
-- Psyshock
-- Nasty Plot
-- Protect
-
-Indeedee ♀ @ Psychic Seed
-Ability: Psychic Surge
+Farigiraf @ Grassy Seed
+Ability: Armor Tail
 Relaxed Nature
-- Follow Me
-- Psychic
+- Expanding Force
+- Hyper Voice
+- Helping Hand
 - Trick Room
-- Protect
 
-Swampert @ Sitrus Berry
-Ability: Torrent
+Rillaboom @ Sitrus Berry
+Ability: Grassy Surge
 Adamant Nature
-- Earthquake
-- Flip Turn
-- Yawn
-- Protect
-
-Hydreigon @ Choice Scarf
-Ability: Levitate
-Modest Nature
-- Dark Pulse
-- Draco Meteor
-- Earth Power
-- Fire Blast
-
-Aegislash @ Leftovers
-Ability: Stance Change
-Brave Nature
-- Poltergeist
-- Iron Head
-- Shadow Sneak
-- King's Shield
-
-Scrafty @ Scraftinite
-Ability: Intimidate
-Adamant Nature
-- Knock Off
-- Close Combat
 - Fake Out
-- Detect
+- Wood Hammer
+- U-turn
+- Grassy Glide
 
-######################################################################
-TEAM 150 — paparott · #4 at ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (34 teams) · 5-3
-######################################################################
-Best team for Megas: Starmie
+Archaludon @ Leftovers
+Ability: Stamina
+Calm Nature
+- Protect
+- Dragon Pulse
+- Flash Cannon
+- Electro Shot
 
-Gengar @ Gengarite
-Ability: Cursed Body
+Politoed @ Life Orb
+Ability: Drizzle
 Modest Nature
-- Shadow Ball
-- Sludge Bomb
-- Perish Song
+- Protect
+- Weather Ball
+- Ice Beam
+- Earth Power
+
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Modest Nature
+- Protect
+- Aura Sphere
+- Flash Cannon
+- Dark Pulse
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Brave Nature
+- First Impression
+- Iron Head
+- Leech Life
+- Liquidation
+
+######################################################################
+TEAM 205 — hinox · #5 at Off Meta Fight Club #4 ($40 USD prize pool) (80 teams) · 4-1
+######################################################################
+Best team for Pairings: Lopunny + Salamence
+
+Goodra-Hisui @ Leftovers
+Ability: Shell Armor
+Bold Nature
+- Body Press
+- Shelter
+- Life Dew
 - Protect
 
-Tinkaton @ Grassy Seed
-Ability: Mold Breaker
+Lopunny @ Lopunnite
+Ability: Limber
 Jolly Nature
 - Fake Out
-- Gigaton Hammer
-- Encore
-- Play Rough
+- Close Combat
+- Triple Axel
+- Protect
 
 Incineroar @ Sitrus Berry
 Ability: Intimidate
-Relaxed Nature
+Impish Nature
 - Fake Out
-- Parting Shot
 - Flare Blitz
+- Darkest Lariat
+- Parting Shot
+
+Salamence @ Salamencite
+Ability: Intimidate
+Timid Nature
+- Hyper Voice
+- Draco Meteor
+- Tailwind
 - Protect
 
-Starmie @ Starminite
-Ability: Natural Cure
-Jolly Nature
-- Liquidation
-- Skill Swap
-- Ice Spinner
-- Zen Headbutt
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- U-turn
 
-Garchomp @ Choice Scarf
+Espathra @ Focus Sash
+Ability: Speed Boost
+Timid Nature
+- Lumina Crash
+- Calm Mind
+- Psych Up
+- Baton Pass
+
+######################################################################
+TEAM 206 — alistarvgc · #4 at 5º Torneio Liga CWB Pokémon Champions (16 teams) · 4-3
+######################################################################
+Best team for Pairings: Garchomp-Z + Raichu-X
+
+Raichu @ Raichunite X
+Ability: Lightning Rod
+Adamant Nature
+- Volt Tackle
+- Feint
+- Volt Switch
+- Fake Out
+
+Espathra @ Electric Seed
+Ability: Speed Boost
+Bold Nature
+- Lumina Crash
+- Baton Pass
+- Calm Mind
+- Protect
+
+Garchomp @ Garchompite Z
 Ability: Rough Skin
 Adamant Nature
-- Earthquake
+- Scale Shot
+- Swords Dance
+- Protect
 - Stomping Tantrum
-- Dragon Claw
-- Rock Slide
 
-Rillaboom @ Eject Button
-Ability: Grassy Surge
-Sassy Nature
-- Grassy Glide
-- U-turn
-- Fake Out
+Volcarona @ Rocky Helmet
+Ability: Flame Body
+Bold Nature
+- Rage Powder
+- Tailwind
+- Giga Drain
+- Overheat
+
+Archaludon @ Leftovers
+Ability: Stamina
+Modest Nature
+- Electro Shot
+- Dragon Pulse
+- Flash Cannon
+- Protect
+
+Pelipper @ Sitrus Berry
+Ability: Drizzle
+Timid Nature
+- Hurricane
+- Soak
+- Weather Ball
 - Protect
 
 ######################################################################
-TEAM 151 — om3gavgc · #4 at Off Meta Fight Club #7 (NEW Rules) (63 teams) · 5-2
+TEAM 207 — om3gavgc · #4 at Off Meta Fight Club #7 (NEW Rules) (63 teams) · 5-2
 ######################################################################
 Best team for Megas: Ampharos
 
@@ -8030,60 +11007,166 @@ Quiet Nature
 - Thunderbolt
 
 ######################################################################
-TEAM 152 — srroxaskun · #5 at Copa Oak Stadium #12 - MonoType - R$ 50 (64 teams) · 5-2
+TEAM 208 — lawrash · #13 at Intimidators Champions Challenge #42 REG M-C (71 teams) · 5-2
 ######################################################################
-Best team for Pairings: Drampa + Pyroar
+Best team for Pairings: Golisopod + Manectric
 
-Toucannon @ Life Orb
-Ability: Skill Link
+Golisopod @ Golisopite
+Ability: Emergency Exit
 Adamant Nature
-- Protect
-- Beak Blast
-- Bullet Seed
-- Rock Blast
+- Leech Life
+- Iron Head
+- Sucker Punch
+- Close Combat
 
-Indeedee ♀ @ Rocky Helmet
-Ability: Psychic Surge
-Relaxed Nature
-- Trick Room
-- Helping Hand
-- Psychic
-- Follow Me
-
-Zoroark-Hisui @ Choice Scarf
-Ability: Illusion
+Archaludon @ Leftovers
+Ability: Stamina
 Modest Nature
-- Hyper Voice
-- Bitter Malice
-- Snarl
-- Icy Wind
-
-Maushold @ Wide Lens
-Ability: Technician
-Jolly Nature
-- Sunny Day
-- Protect
-- Super Fang
-- Population Bomb
-
-Pyroar @ Pyroarite
-Ability: Unnerve
-Timid Nature
-- Protect
-- Heat Wave
-- Solar Beam
-- Fire Blast
-
-Drampa @ Drampanite
-Ability: Cloud Nine
-Quiet Nature
-- Protect
-- Calm Mind
-- Hyper Voice
+- Electro Shot
 - Dragon Pulse
+- Flash Cannon
+- Protect
+
+Pelipper @ Sitrus Berry
+Ability: Drizzle
+Bold Nature
+- Weather Ball
+- Tailwind
+- Hurricane
+- Protect
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- U-turn
+
+Annihilape @ Choice Scarf
+Ability: Defiant
+Adamant Nature
+- Close Combat
+- Rock Slide
+- U-turn
+- Phantom Force
+
+Manectric @ Manectite
+Ability: Lightning Rod
+Timid Nature
+- Volt Switch
+- Thunderbolt
+- Protect
+- Snarl
 
 ######################################################################
-TEAM 153 — orewa_dev · #3 at Shaymin Showdown (26 teams) · 5-2
+TEAM 209 — shaikhvgc786 · #3 at Off Meta Fight Club #7 (NEW Rules) (63 teams) · 5-2
+######################################################################
+Best team for Pairings: Absol-Z + Charizard-Y
+
+Incineroar @ Chople Berry
+Ability: Intimidate
+Adamant Nature
+- Fake Out
+- Parting Shot
+- Darkest Lariat
+- Flare Blitz
+
+Charizard @ Charizardite Y
+Ability: Blaze
+Modest Nature
+- Heat Wave
+- Weather Ball
+- Ancient Power
+- Protect
+
+Gourgeist @ Choice Scarf
+Ability: Insomnia
+Jolly Nature
+- Trick-or-Treat
+- Trick
+- Power Whip
+- Will-O-Wisp
+
+Absol @ Absolite Z
+Ability: Super Luck
+Jolly Nature
+- Shadow Claw
+- Night Slash
+- Protect
+- Focus Energy
+
+Clefable @ Rocky Helmet
+Ability: Cute Charm
+Bold Nature
+- Follow Me
+- Helping Hand
+- Moonblast
+- Protect
+
+Malamar @ Focus Sash
+Ability: Contrary
+Brave Nature
+- Trick Room
+- Knock Off
+- Superpower
+- Topsy-Turvy
+
+######################################################################
+TEAM 210 — semaphore · #20 at Pado's Dojo Reg M-C Pratice #4 🍥 (70 teams) · 3-0
+######################################################################
+Best team for Pairings: Absol-Z + Gengar
+
+Gengar @ Gengarite
+Ability: Cursed Body
+Modest Nature
+- Perish Song
+- Shadow Ball
+- Sludge Bomb
+- Protect
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Relaxed Nature
+- Fake Out
+- Flare Blitz
+- Parting Shot
+- Protect
+
+Rillaboom @ Occa Berry
+Ability: Grassy Surge
+Sassy Nature
+- Fake Out
+- Grassy Glide
+- U-turn
+- Protect
+
+Kommo-o @ Leftovers
+Ability: Bulletproof
+Modest Nature
+- Clanging Scales
+- Clangorous Soul
+- Aura Sphere
+- Protect
+
+Absol @ Absolite Z
+Ability: Justified
+Jolly Nature
+- Night Slash
+- Psycho Cut
+- Focus Energy
+- Detect
+
+Sneasler @ Grassy Seed
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Dire Claw
+- Rock Slide
+- Protect
+
+######################################################################
+TEAM 211 — orewa_dev · #3 at Shaymin Showdown (26 teams) · 5-2
 ######################################################################
 Best team for Pairings: Charizard-X + Floette
 
@@ -8136,7 +11219,7 @@ Adamant Nature
 - High Horsepower
 
 ######################################################################
-TEAM 154 — zoro_sola · #3 at Thalera Champions Cheese #18 - Só Evos Especiais (18 teams) · 5-2
+TEAM 212 — zoro_sola · #3 at Thalera Champions Cheese #18 - Só Evos Especiais (18 teams) · 5-2
 ######################################################################
 Best team for Pairings: Raichu-Y + Scovillain
 
@@ -8189,7 +11272,7 @@ Adamant Nature
 - Protect
 
 ######################################################################
-TEAM 155 — lztt · #7 at Copa Oak Stadium #12 - MonoType - R$ 50 (64 teams) · 5-2
+TEAM 213 — lztt · #7 at Copa Oak Stadium #12 - MonoType - R$ 50 (64 teams) · 5-2
 ######################################################################
 Best team for Pairings: Blastoise + Swampert
 
@@ -8242,7 +11325,166 @@ Calm Nature
 - Muddy Water
 
 ######################################################################
-TEAM 156 — dexter45 · #6 at Mid-Week Smoke #11 (42 teams) · 5-2
+TEAM 214 — nisanth · #6 at Alpensee Tour (Reg M-C, Swiss only) #74 (92 teams) · 5-2
+######################################################################
+Best team for Pairings: Drampa + Golisopod
+
+Indeedee ♀ @ Psychic Seed
+Ability: Psychic Surge
+Relaxed Nature
+- Psychic
+- Trick Room
+- Follow Me
+- Protect
+
+Hatterene @ Life Orb
+Ability: Magic Bounce
+Quiet Nature
+- Dazzling Gleam
+- Expanding Force
+- Trick Room
+- Protect
+
+Farigiraf @ Mental Herb
+Ability: Armor Tail
+Bold Nature
+- Psychic
+- Trick Room
+- Protect
+- Helping Hand
+
+Torkoal @ Charcoal
+Ability: Drought
+Quiet Nature
+- Eruption
+- Weather Ball
+- Earth Power
+- Protect
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Brave Nature
+- Sucker Punch
+- Leech Life
+- Iron Head
+- Protect
+
+Drampa @ Drampanite
+Ability: Cloud Nine
+Quiet Nature
+- Dragon Pulse
+- Hyper Voice
+- Earth Power
+- Protect
+
+######################################################################
+TEAM 215 — kotori · #4 at ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (M-C) (27 teams) · 5-2
+######################################################################
+Best team for Pairings: Baxcalibur + Lucario-Z
+
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Timid Nature
+- Aura Sphere
+- Calm Mind
+- Flash Cannon
+- Protect
+
+Basculegion-Male @ Kasib Berry
+Ability: Adaptability
+Adamant Nature
+- Wave Crash
+- Last Respects
+- Aqua Jet
+- Protect
+
+Ninetales-Alola @ Choice Scarf
+Ability: Snow Warning
+Timid Nature
+- Blizzard
+- Disable
+- Freeze-Dry
+- Icy Wind
+
+Incineroar @ Rocky Helmet
+Ability: Intimidate
+Relaxed Nature
+- Fake Out
+- Flare Blitz
+- Parting Shot
+- Helping Hand
+
+Rillaboom @ Eject Button
+Ability: Grassy Surge
+Careful Nature
+- Grassy Glide
+- Fake Out
+- U-turn
+- High Horsepower
+
+Baxcalibur @ Baxcalibrite
+Ability: Thermal Exchange
+Adamant Nature
+- Glaive Rush
+- Ice Shard
+- Swords Dance
+- Protect
+
+######################################################################
+TEAM 216 — yuwuna · #13 at Intimidators Champions Challenge #45 REG M-C (90 teams) · 5-2
+######################################################################
+Best team for Pairings: Absol-Z + Salamence
+
+Absol @ Absolite Z
+Ability: Justified
+Adamant Nature
+- Night Slash
+- Sucker Punch
+- Close Combat
+- Detect
+
+Salamence @ Salamencite
+Ability: Intimidate
+Timid Nature
+- Hyper Voice
+- Draco Meteor
+- Tailwind
+- Protect
+
+Sneasler @ Psychic Seed
+Ability: Unburden
+Jolly Nature
+- Close Combat
+- Dire Claw
+- Rock Tomb
+- Protect
+
+Indeedee ♀ @ Rocky Helmet
+Ability: Psychic Surge
+Relaxed Nature
+- Psychic
+- Helping Hand
+- Follow Me
+- Trick Room
+
+Armarouge @ Life Orb
+Ability: Flash Fire
+Modest Nature
+- Heat Wave
+- Expanding Force
+- Aura Sphere
+- Protect
+
+Gholdengo @ Sitrus Berry
+Ability: Good as Gold
+Modest Nature
+- Make It Rain
+- Shadow Ball
+- Nasty Plot
+- Protect
+
+######################################################################
+TEAM 217 — dexter45 · #6 at Mid-Week Smoke #11 (42 teams) · 5-2
 ######################################################################
 Best team for Pairings: Abomasnow + Camerupt
 
@@ -8295,7 +11537,7 @@ Quiet Nature
 - Protect
 
 ######################################################################
-TEAM 157 — paradice428 · #28 at Penglin's Penguin Tournouá Laurels (10k in Prizes) (173 teams) · 5-2
+TEAM 218 — paradice428 · #28 at Penglin's Penguin Tournouá Laurels (10k in Prizes) (173 teams) · 5-2
 ######################################################################
 Best team for Pairings: Blastoise + Metagross
 
@@ -8348,166 +11590,166 @@ Adamant Nature
 - Protect
 
 ######################################################################
-TEAM 158 — alistarvgc · #4 at Intimidators Champions Challenge #47 REG M-C (68 teams) · 6-2
+TEAM 219 — katsuya768 · #3 at Dragonspiral Tower Saturday Rumble #2 (30 teams) · 5-2
 ######################################################################
-Best team for Pairings: Meganium + Raichu-X
+Best team for Pairings: Golisopod + Scrafty
 
-Raichu @ Raichunite X
-Ability: Lightning Rod
-Jolly Nature
+Scrafty @ Scraftinite
+Ability: Intimidate
+Adamant Nature
+- Drain Punch
+- Throat Chop
 - Fake Out
-- Volt Tackle
-- Volt Switch
 - Protect
 
-Espathra @ Electric Seed
-Ability: Speed Boost
-Timid Nature
-- Lumina Crash
-- Baton Pass
+Slowking-Galar @ Colbur Berry
+Ability: Regenerator
+Quiet Nature
+- Protect
+- Sludge Bomb
+- Trick Room
+- Psychic
+
+Primarina @ Leftovers
+Ability: Liquid Voice
+Modest Nature
+- Hyper Voice
+- Moonblast
+- Protect
 - Calm Mind
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Grassy Glide
+- Wood Hammer
+- Fake Out
+- Brick Break
+
+Volcarona @ Charti Berry
+Ability: Flame Body
+Calm Nature
+- Flamethrower
+- Will-O-Wisp
+- Tailwind
+- Rage Powder
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- Iron Head
+- Leech Life
+- Swords Dance
 - Protect
 
-Meganium @ Meganiumite
-Ability: Leaf Guard
-Modest Nature
-- Synthesis
-- Solar Beam
-- Weather Ball
-- Protect
+######################################################################
+TEAM 220 — eeveeiynn · #11 at Talon's FIGHT CLUB #106 POKEMON CHAMPIONS REG M-C (110 teams) · 6-3
+######################################################################
+Best team for Pairings: Absol-Z + Raichu-Y
 
-Hydreigon @ Choice Scarf
-Ability: Levitate
+Absol @ Absolite Z
+Ability: Super Luck
+Jolly Nature
+- Detect
+- Night Slash
+- Psycho Cut
+- Will-O-Wisp
+
+Primarina @ Leftovers
+Ability: Liquid Voice
 Modest Nature
-- Earth Power
-- Dark Pulse
-- Snarl
-- Draco Meteor
+- Protect
+- Moonblast
+- Hyper Voice
+- Calm Mind
+
+Sneasler @ Grassy Seed
+Ability: Unburden
+Adamant Nature
+- Protect
+- Close Combat
+- Dire Claw
+- Rock Slide
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Grassy Glide
+- High Horsepower
+- Fake Out
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Impish Nature
+- Parting Shot
+- Flare Blitz
+- Throat Chop
+- Fake Out
+
+Raichu @ Raichunite Y
+Ability: Lightning Rod
+Timid Nature
+- Protect
+- Zap Cannon
+- Focus Blast
+- Substitute
+
+######################################################################
+TEAM 221 — gus_0z · #11 at Off Meta MAJOR ($140 USD Prize Pool) (117 teams) · 6-3
+######################################################################
+Best team for Pairings: Golisopod + Scovillain
 
 Archaludon @ Leftovers
 Ability: Stamina
-Modest Nature
+Calm Nature
 - Electro Shot
-- Dragon Pulse
 - Flash Cannon
+- Dragon Pulse
 - Protect
 
 Pelipper @ Sitrus Berry
 Ability: Drizzle
-Bold Nature
-- Hurricane
-- Weather Ball
-- Soak
-- Protect
-
-######################################################################
-TEAM 159 — scubbs · #3 at Corner Clash (Shiny Dnite Prize) (21 teams) · 5-2
-######################################################################
-Best team for Pairings: Eelektross + Staraptor
-
-Eelektross @ Eelektrossite
-Ability: Levitate
-Modest Nature
-- Discharge
-- Flamethrower
-- Dragon Pulse
-- Protect
-
-Talonflame @ Focus Sash
-Ability: Gale Wings
-Modest Nature
-- Heat Wave
-- Taunt
+Calm Nature
 - Protect
 - Tailwind
+- Weather Ball
+- Hurricane
 
-Staraptor @ Staraptite
-Ability: Reckless
+Golisopod @ Golisopite
+Ability: Emergency Exit
 Adamant Nature
-- Brave Bird
-- Close Combat
+- Swords Dance
+- Leech Life
+- Drill Run
 - Protect
-- Roost
 
-Garchomp @ Life Orb
-Ability: Rough Skin
-Jolly Nature
-- Dragon Claw
-- Earthquake
+Scovillain @ Scovillainite
+Ability: Moody
+Bold Nature
+- Overheat
+- Leech Seed
+- Rage Powder
 - Protect
-- Iron Head
 
-Sableye @ Light Clay
+Klefki @ Light Clay
 Ability: Prankster
-Calm Nature
-- Sunny Day
-- Encore
-- Light Screen
+Careful Nature
 - Reflect
+- Light Screen
+- Rain Dance
+- Foul Play
 
-Arcanine @ Sitrus Berry
-Ability: Intimidate
-Jolly Nature
-- Helping Hand
-- Flare Blitz
-- Snarl
-- Extreme Speed
-
-######################################################################
-TEAM 160 — cromo · #14 at Friday Fight Night 77! $50 Prize & Team Report (131 teams) · 6-3
-######################################################################
-Best team for Pairings: Camerupt + Drampa
-
-Farigiraf @ Mental Herb
-Ability: Armor Tail
-Quiet Nature
-- Trick Room
-- Helping Hand
-- Twin Beam
-- Hyper Voice
-
-Indeedee ♀ @ Focus Sash
-Ability: Psychic Surge
-Calm Nature
-- Trick Room
-- Follow Me
-- Psychic Terrain
-- Helping Hand
-
-Armarouge @ Life Orb
-Ability: Flash Fire
-Quiet Nature
-- Armor Cannon
-- Expanding Force
-- Trick Room
-- Wide Guard
-
-Camerupt @ Cameruptite
-Ability: Solid Rock
-Quiet Nature
-- Earth Power
-- Heat Wave
-- Ancient Power
-- Protect
-
-Drampa @ Drampanite
-Ability: Cloud Nine
-Quiet Nature
-- Flamethrower
-- Draco Meteor
-- Hyper Voice
-- Thunderbolt
-
-Kingambit @ Black Glasses
-Ability: Defiant
-Brave Nature
-- Sucker Punch
-- Iron Head
-- Protect
-- Kowtow Cleave
+Palafin @ Choice Scarf
+Ability: Zero to Hero
+Adamant Nature
+- Wave Crash
+- Jet Punch
+- Ice Punch
+- Flip Turn
 
 ######################################################################
-TEAM 161 — gurted · #14 at 🍋Sitrus-Series🍋|Champions-MC|#78 (128 teams) · 6-3
+TEAM 222 — gurted · #14 at 🍋Sitrus-Series🍋|Champions-MC|#78 (128 teams) · 6-3
 ######################################################################
 Best team for Pairings: Aerodactyl + Raichu-Y
 
@@ -8560,60 +11802,7 @@ Adamant Nature
 - Low Kick
 
 ######################################################################
-TEAM 162 — snorlaxpikachu1 · #8 at CHAMPIONS REG. M-C |👑CROWN FIGHT Bo3 TOUR #89👑 (131 teams) · 6-3
-######################################################################
-Best team for Pairings: Aerodactyl + Venusaur
-
-Grimmsnarl @ Light Clay
-Ability: Prankster
-Careful Nature
-- Spirit Break
-- Light Screen
-- Reflect
-- Parting Shot
-
-Aerodactyl @ Aerodactylite
-Ability: Unnerve
-Jolly Nature
-- Rock Slide
-- Dual Wingbeat
-- Tailwind
-- Rain Dance
-
-Archaludon @ Leftovers
-Ability: Stamina
-Calm Nature
-- Electro Shot
-- Dragon Pulse
-- Flash Cannon
-- Protect
-
-Milotic @ Sitrus Berry
-Ability: Competitive
-Calm Nature
-- Muddy Water
-- Coil
-- Hypnosis
-- Recover
-
-Venusaur @ Venusaurite
-Ability: Chlorophyll
-Calm Nature
-- Sludge Bomb
-- Earth Power
-- Leech Seed
-- Protect
-
-Garchomp @ Life Orb
-Ability: Rough Skin
-Modest Nature
-- Earth Power
-- Dragon Pulse
-- Flamethrower
-- Protect
-
-######################################################################
-TEAM 163 — army6670 · #1 at TAYO'S MONOTYPE TOUR #5- BO3 CTS - $30/15 (27 teams) · 6-3
+TEAM 223 — army6670 · #1 at TAYO'S MONOTYPE TOUR #5- BO3 CTS - $30/15 (27 teams) · 6-3
 ######################################################################
 Best team for Pairings: Drampa + Staraptor
 
@@ -8664,113 +11853,378 @@ Relaxed Nature
 - Protect
 
 ######################################################################
-TEAM 164 — kimius64 · #9 at Off Meta MAJOR ($140 USD Prize Pool) (117 teams) · 6-3
+TEAM 224 — jv69420 · #2 at Mid-Week Smoke #10 (55 teams) · 6-3
 ######################################################################
-Best team for Pairings: Gardevoir + Mawile
+Best team for Pairings: Chandelure + Metagross
 
-Indeedee ♀ @ Rocky Helmet
+Metagross @ Metagrossite
+Ability: Clear Body
+Jolly Nature
+- Steel Roller
+- Psychic Fangs
+- Body Press
+- Protect
+
+Indeedee ♀ @ Colbur Berry
 Ability: Psychic Surge
 Relaxed Nature
 - Follow Me
-- Psychic
-- Trick Room
 - Helping Hand
+- Trick Room
+- Psychic
 
-Sneasler @ Psychic Seed
-Ability: Unburden
-Adamant Nature
-- Swords Dance
-- Protect
-- Close Combat
-- Dire Claw
-
-Gardevoir @ Gardevoirite
-Ability: Trace
+Chandelure @ Chandelurite
+Ability: Flash Fire
 Modest Nature
-- Expanding Force
-- Hyper Voice
+- Heat Wave
+- Shadow Ball
 - Protect
-- Aura Sphere
+- Calm Mind
 
-Liepard @ Focus Sash
-Ability: Prankster
+Rillaboom @ Life Orb
+Ability: Grassy Surge
 Jolly Nature
-- Foul Play
-- taunt
-- Sunny Day
+- Wood Hammer
+- Superpower
+- U-turn
+- High Horsepower
+
+Basculegion-Male @ Choice Scarf
+Ability: Adaptability
+Jolly Nature
+- Flip Turn
+- Wave Crash
+- Last Respects
+- Aqua Jet
+
+Pawmot @ Focus Sash
+Ability: Iron Fist
+Jolly Nature
+- Double Shock
+- Close Combat
+- Ice Punch
+- Protect
+
+######################################################################
+TEAM 225 — tristran · #8 at Glory of Champions #1 - Regulation M-C (83 teams) · 6-3
+######################################################################
+Best team for Pairings: Pyroar + Salamence
+
+Pyroar @ Pyroarite
+Ability: Unnerve
+Timid Nature
+- Overheat
+- Heat Wave
+- Snarl
+- Protect
+
+Salamence @ Salamencite
+Ability: Intimidate
+Timid Nature
+- Hyper Voice
+- Draco Meteor
+- Tailwind
+- Protect
+
+Gholdengo @ Life Orb
+Ability: Good as Gold
+Modest Nature
+- Make It Rain
+- Shadow Ball
+- Protect
+- Nasty Plot
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
 - Fake Out
+- Grassy Glide
+- Wood Hammer
+- High Horsepower
+
+Mudsdale @ Sitrus Berry
+Ability: Inner Focus
+Adamant Nature
+- Earthquake
+- High Horsepower
+- Roar
+- Protect
+
+Hydreigon @ Choice Scarf
+Ability: Levitate
+Modest Nature
+- Draco Meteor
+- Dark Pulse
+- Snarl
+- Earth Power
+
+######################################################################
+TEAM 226 — raphael3655 · #5 at The Drywalls Series #23 (28 teams) · 6-1
+######################################################################
+Best team for Pairings: Gardevoir + Lopunny
+
+Lopunny @ Lopunnite
+Ability: Cute Charm
+Jolly Nature
+- Fake Out
+- Close Combat
+- Protect
+- Triple Axel
 
 Typhlosion-Hisui @ Choice Scarf
 Ability: Blaze
 Modest Nature
 - Eruption
-- Shadow Ball
 - Heat Wave
-- Overheat
+- Shadow Ball
+- Will-O-Wisp
 
-Mawile @ Mawilite
-Ability: Hyper Cutter
-Brave Nature
-- Swords Dance
-- Rock Slide
-- Play Rough
+Meowscarada @ Life Orb
+Ability: Protean
+Jolly Nature
+- Thunder Punch
+- Knock Off
+- Flower Trick
+- Triple Axel
+
+Gardevoir @ Gardevoirite
+Ability: Trace
+Timid Nature
+- Protect
+- Hyper Voice
+- Expanding Force
+- Calm Mind
+
+Indeedee ♀ @ Colbur Berry
+Ability: Psychic Surge
+Relaxed Nature
+- Helping Hand
+- Fake Out
+- Follow Me
+- Trick Room
+
+Whimsicott @ Focus Sash
+Ability: Prankster
+Modest Nature
+- Tailwind
+- Sunny Day
+- Moonblast
 - Protect
 
 ######################################################################
-TEAM 165 — joshawott · #14 at r/VGC Regulation M-C Kickoff Cup (165 teams) · 6-3
+TEAM 227 — jovencolo · #4 at Sunday Showdown #1 (36 teams) · 4-1
 ######################################################################
-Best team for Pairings: Charizard-X + Froslass
+Best team for Pairings: Gardevoir + Houndoom
 
-Froslass @ Froslassite
-Ability: Cursed Body
+Whimsicott @ Focus Sash
+Ability: Prankster
+Calm Nature
+- Protect
+- Sunny Day
+- Moonblast
+- Tailwind
+
+Houndoom @ Houndoominite
+Ability: Flash Fire
 Modest Nature
 - Protect
-- Blizzard
-- Shadow Ball
-- Aurora Veil
+- Scorching Sands
+- Dark Pulse
+- Heat Wave
 
-Charizard @ Charizardite X
-Ability: Blaze
-Adamant Nature
-- Protect
-- Flare Blitz
-- Dragon Claw
-- Dragon Dance
-
-Incineroar @ Passho Berry
-Ability: Intimidate
-Impish Nature
-- Fake Out
-- Flare Blitz
-- Throat Chop
-- Parting Shot
-
-Rillaboom @ Occa Berry
+Rillaboom @ Life Orb
 Ability: Grassy Surge
 Adamant Nature
 - Fake Out
-- Wood Hammer
-- Grassy Glide
 - U-turn
-
-Milotic @ Leftovers
-Ability: Competitive
-Bold Nature
-- Protect
-- Scald
-- Icy Wind
-- Hypnosis
-
-Chesnaught @ Sitrus Berry
-Ability: Bulletproof
-Jolly Nature
-- Spiky Shield
-- Drain Punch
 - Grassy Glide
-- Belly Drum
+- High Horsepower
+
+Garchomp @ Choice Scarf
+Ability: Rough Skin
+Adamant Nature
+- Stomping Tantrum
+- Iron Head
+- Dragon Claw
+- Rock Slide
+
+Gardevoir @ Gardevoirite
+Ability: Trace
+Modest Nature
+- Protect
+- Expanding Force
+- Mystical Fire
+- Hyper Voice
+
+Indeedee ♀ @ Sitrus Berry
+Ability: Psychic Surge
+Calm Nature
+- Trick Room
+- Helping Hand
+- Psychic
+- Follow Me
 
 ######################################################################
-TEAM 166 — henrique9379 · #2 at 🇧🇷 Hit Break #5 | Pokémon Champions (12 teams) · 4-2
+TEAM 228 — leonmagela · #8 at [BR] Copa Oak Stadium #9 - R$ 200 em Premiação (117 teams) · 7-3
+######################################################################
+Best team for Pairings: Glimmora + Lucario-Z
+
+Glimmora @ Glimmoranite
+Ability: Toxic Debris
+Timid Nature
+- Power Gem
+- Earth Power
+- Spiky Shield
+- Sludge Bomb
+
+Weavile @ Focus Sash
+Ability: Pickpocket
+Jolly Nature
+- Ice Spinner
+- Knock Off
+- Protect
+- Fake Out
+
+Volcarona @ Grassy Seed
+Ability: Flame Body
+Modest Nature
+- Heat Wave
+- Protect
+- Bug Buzz
+- Quiver Dance
+
+Rillaboom @ Coba Berry
+Ability: Grassy Surge
+Adamant Nature
+- High Horsepower
+- Grassy Glide
+- Fake Out
+- Wood Hammer
+
+Basculegion-Male @ Life Orb
+Ability: Adaptability
+Adamant Nature
+- Wave Crash
+- Aqua Jet
+- Last Respects
+- Protect
+
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Timid Nature
+- Detect
+- Aura Sphere
+- Flash Cannon
+- Nasty Plot
+
+######################################################################
+TEAM 229 — gundojuan · #3 at Chacho Cup #3 (18 teams) · 5-2
+######################################################################
+Best team for Pairings: Baxcalibur + Metagross
+
+Baxcalibur @ Baxcalibrite
+Ability: Thermal Exchange
+Adamant Nature
+- Glaive Rush
+- Ice Shard
+- Swords Dance
+- Protect
+
+Metagross @ Metagrossite
+Ability: Clear Body
+Adamant Nature
+- Iron Head
+- Psychic Fangs
+- Stomping Tantrum
+- Protect
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Grassy Glide
+- High Horsepower
+- Fake Out
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Careful Nature
+- Flare Blitz
+- Throat Chop
+- Parting Shot
+- Fake Out
+
+Basculegion-Male @ Choice Scarf
+Ability: Adaptability
+Jolly Nature
+- Wave Crash
+- Last Respects
+- Aqua Jet
+- Flip Turn
+
+Sneasler @ White Herb
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Dire Claw
+- Fake Out
+- Coaching
+
+######################################################################
+TEAM 230 — magentalamb · #10 at Tuesday Throwdowns #1 (30 teams) · 2-0
+######################################################################
+Best team for Pairings: Froslass + Lucario-Z
+
+Froslass @ Froslassite
+Ability: Cursed Body
+Timid Nature
+- Shadow Ball
+- Blizzard
+- Psych Up
+- Protect
+
+Volcarona @ Grassy Seed
+Ability: Flame Body
+Bold Nature
+- Heat Wave
+- Protect
+- Giga Drain
+- Quiver Dance
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Grassy Glide
+- Wood Hammer
+- High Horsepower
+- Fake Out
+
+Kommo-o @ Leftovers
+Ability: Soundproof
+Timid Nature
+- Protect
+- Aura Sphere
+- Clanging Scales
+- Clangorous Soul
+
+Sylveon @ Fairy Feather
+Ability: Pixilate
+Modest Nature
+- Moonblast
+- Detect
+- Hyper Voice
+- Psych Up
+
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Modest Nature
+- Aura Sphere
+- Flash Cannon
+- Detect
+- Psych Up
+
+######################################################################
+TEAM 231 — henrique9379 · #2 at 🇧🇷 Hit Break #5 | Pokémon Champions (12 teams) · 4-2
 ######################################################################
 Best team for Megas: Meowstic-Male
 
@@ -8823,7 +12277,7 @@ Adamant Nature
 - Protect
 
 ######################################################################
-TEAM 167 — someoneoffical · #4 at Corner Clash (Shiny Dnite Prize) (21 teams) · 5-2
+TEAM 232 — someoneoffical · #4 at Corner Clash (Shiny Dnite Prize) (21 teams) · 5-2
 ######################################################################
 Best team for Pairings: Sceptile + Tyranitar
 
@@ -8876,60 +12330,325 @@ Calm Nature
 - Struggle Bug
 
 ######################################################################
-TEAM 168 — act · #15 at PokeInstinct VGC #3 ($30 USD for the winner) (91 teams) · 6-3
+TEAM 233 — blastboi · #28 at London Corviknights VGC Weekly Tour 17! (64 teams) · 3-1
 ######################################################################
-Best team for Pairings: Lopunny + Venusaur
+Best team for Pairings: Delphox + Garchomp-Z
 
-Archaludon @ Leftovers
-Ability: Stamina
-Calm Nature
+Delphox @ Delphoxite
+Ability: Blaze
+Timid Nature
+- Protect
+- Nasty Plot
+- Heat Wave
+- Psychic
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Protect
 - Dragon Pulse
-- Electro Shot
-- Flash Cannon
+- Power Gem
+- Earth Power
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- High Horsepower
+
+Sneasler @ Grassy Seed
+Ability: Unburden
+Adamant Nature
+- Protect
+- Dire Claw
+- Close Combat
+- Throat Chop
+
+Clefable @ Rocky Helmet
+Ability: Unaware
+Calm Nature
+- Protect
+- Helping Hand
+- Follow Me
+- Moonblast
+
+Talonflame @ Expert Belt
+Ability: Gale Wings
+Adamant Nature
+- Protect
+- Tailwind
+- Flare Blitz
+- Dual Wingbeat
+
+######################################################################
+TEAM 234 — kingnoahc17 · #16 at Mudkip's Marsh Pit #5 (58 teams) · 5-3
+######################################################################
+Best team for Pairings: Camerupt + Staraptor
+
+Indeedee ♀ @ Colbur Berry
+Ability: Psychic Surge
+Bold Nature
+- Psychic
+- Follow Me
+- Trick Room
+- Helping Hand
+
+Hatterene @ Life Orb
+Ability: Magic Bounce
+Modest Nature
+- Dazzling Gleam
+- Expanding Force
+- Trick Room
+- Protect
+
+Camerupt @ Cameruptite
+Ability: Solid Rock
+Modest Nature
+- Eruption
+- Earth Power
+- Ancient Power
 - Protect
 
 Basculegion-Male @ Choice Scarf
 Ability: Adaptability
-Adamant Nature
-- Aqua Jet
-- Last Respects
-- Wave Crash
-- Flip Turn
-
-Pelipper @ Focus Sash
-Ability: Drizzle
-Timid Nature
-- Tailwind
-- Hurricane
-- Weather Ball
-- Wide Guard
-
-Sableye @ Sitrus Berry
-Ability: Prankster
-Relaxed Nature
-- Encore
-- Disable
-- Light Screen
-- Reflect
-
-Lopunny @ Lopunnite
-Ability: Cute Charm
 Jolly Nature
-- Fake Out
-- U-turn
-- Triple Axel
-- Close Combat
+- Wave Crash
+- Aqua Jet
+- Flip Turn
+- Last Respects
 
-Venusaur @ Venusaurite
-Ability: Chlorophyll
-Modest Nature
-- Earth Power
-- Giga Drain
+Kingambit @ Black Glasses
+Ability: Defiant
+Adamant Nature
+- Sucker Punch
+- Iron Head
+- Kowtow Cleave
+- Low Kick
+
+Staraptor @ Staraptite
+Ability: Intimidate
+Jolly Nature
+- Close Combat
 - Protect
-- Sludge Bomb
+- Tailwind
+- Brave Bird
 
 ######################################################################
-TEAM 169 — vgcdan · #22 at Friday Fight Night 77! $50 Prize & Team Report (131 teams) · 5-3
+TEAM 235 — davel3 · #34 at Maddo's Cup #12 | 100€ for the Winner | Reg M-C (388 teams) · 6-3
+######################################################################
+Best team for Pairings: Garchomp-Z + Staraptor
+
+Whimsicott @ Focus Sash
+Ability: Prankster
+Timid Nature
+- Moonblast
+- Tailwind
+- Charm
+- Protect
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Draco Meteor
+- Earth Power
+- Power Gem
+- Protect
+
+Gholdengo @ Life Orb
+Ability: Good as Gold
+Modest Nature
+- Shadow Ball
+- Make It Rain
+- Nasty Plot
+- Protect
+
+Kingambit @ Chople Berry
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Iron Head
+- Low Kick
+
+Staraptor @ Staraptite
+Ability: Intimidate
+Jolly Nature
+- Close Combat
+- Roost
+- Brave Bird
+- Protect
+
+Indeedee ♀ @ Colbur Berry
+Ability: Psychic Surge
+Calm Nature
+- Psychic
+- Follow Me
+- Helping Hand
+- Protect
+
+######################################################################
+TEAM 236 — stallcelth · #25 at 🍋Sitrus-Series🍋|Champions-MC|$50 to First|#75 (243 teams) · 5-3
+######################################################################
+Best team for Pairings: Baxcalibur + Delphox
+
+Baxcalibur @ Baxcalibrite
+Ability: Thermal Exchange
+Adamant Nature
+- Glaive Rush
+- Icicle Crash
+- Dragon Dance
+- Protect
+
+Ninetales-Alola @ Light Clay
+Ability: Snow Warning
+Timid Nature
+- Blizzard
+- Aurora Veil
+- Encore
+- Protect
+
+Sneasler @ Grassy Seed
+Ability: Unburden
+Jolly Nature
+- Dire Claw
+- Close Combat
+- Fake Out
+- Coaching
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- U-turn
+
+Delphox @ Delphoxite
+Ability: Blaze
+Timid Nature
+- Heat Wave
+- Psychic
+- Nasty Plot
+- Protect
+
+Kingambit @ Black Glasses
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Swords Dance
+- Protect
+
+######################################################################
+TEAM 237 — captainyoshi171 · #13 at Mudkip's Marsh Pit #5 (58 teams) · 5-3
+######################################################################
+Best team for Pairings: Eelektross + Golisopod
+
+Farigiraf @ Colbur Berry
+Ability: Armor Tail
+Quiet Nature
+- Trick Room
+- Psychic
+- Helping Hand
+- Hyper Voice
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Brave Nature
+- First Impression
+- Protect
+- Leech Life
+- Iron Head
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Adamant Nature
+- Fake Out
+- Flare Blitz
+- Darkest Lariat
+- Parting Shot
+
+Eelektross @ Eelektrossite
+Ability: Levitate
+Modest Nature
+- Thunderbolt
+- Protect
+- Dragon Pulse
+- Giga Drain
+
+Rillaboom @ Life Orb
+Ability: Grassy Surge
+Brave Nature
+- Fake Out
+- High Horsepower
+- Grassy Glide
+- Drum Beating
+
+Sylveon @ Fairy Feather
+Ability: Pixilate
+Modest Nature
+- Moonblast
+- Hyper Voice
+- Mystical Fire
+- Protect
+
+######################################################################
+TEAM 238 — haru1899 · #1 at WARTORTLE WEDNESDAYS #65 REG M-C BO3 OTS (17 teams) · 5-2
+######################################################################
+Best team for Pairings: Aerodactyl + Baxcalibur
+
+Aerodactyl @ Aerodactylite
+Ability: Rock Head
+Jolly Nature
+- Dual Wingbeat
+- Rock Slide
+- Tailwind
+- Wide Guard
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Careful Nature
+- Grassy Glide
+- Wood Hammer
+- Fake Out
+- U-turn
+
+Basculegion-Male @ Life Orb
+Ability: Adaptability
+Adamant Nature
+- Aqua Jet
+- Wave Crash
+- Protect
+- Last Respects
+
+Baxcalibur @ Baxcalibrite
+Ability: Thermal Exchange
+Adamant Nature
+- Glaive Rush
+- Ice Shard
+- Dragon Dance
+- Protect
+
+Kingambit @ Choice Scarf
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Iron Head
+- Low Kick
+
+Sneasler @ Grassy Seed
+Ability: Unburden
+Jolly Nature
+- Protect
+- Dire Claw
+- Close Combat
+- Fake Out
+
+######################################################################
+TEAM 239 — vgcdan · #22 at Friday Fight Night 77! $50 Prize & Team Report (131 teams) · 5-3
 ######################################################################
 Best team for Megas: Alakazam
 
@@ -8982,7 +12701,7 @@ Calm Nature
 - Rage Powder
 
 ######################################################################
-TEAM 170 — jdevis · #6 at ‼️ACHO CUP: VGC 🕹️💥 #1 | Premio 10€ 💸 (45 teams) · 5-3
+TEAM 240 — jdevis · #6 at ‼️ACHO CUP: VGC 🕹️💥 #1 | Premio 10€ 💸 (45 teams) · 5-3
 ######################################################################
 Best team for Pairings: Floette + Glimmora
 
@@ -9035,166 +12754,60 @@ Jolly Nature
 - Icy Wind
 
 ######################################################################
-TEAM 171 — milka · #4 at OTS Pokemon VGC Arena #2 (24 teams) · 5-3
+TEAM 241 — samurpo · #8 at Off Meta Fight Club #6 ($20 USD prize pool) (51 teams) · 5-3
 ######################################################################
-Best team for Pairings: Ampharos + Mawile
+Best team for Pairings: Absol-Z + Pyroar
 
-Torkoal @ Charcoal
-Ability: Drought
-Quiet Nature
-- Eruption
-- Heat Wave
-- Earth Power
-- Protect
-
-Incineroar @ Sitrus Berry
-Ability: Intimidate
-Careful Nature
-- Fake Out
-- Flare Blitz
-- Throat Chop
-- Parting Shot
-
-Farigiraf @ Colbur Berry
-Ability: Armor Tail
-Bold Nature
-- Twin Beam
-- Trick Room
-- Helping Hand
-- Protect
-
-Mawile @ Mawilite
-Ability: Intimidate
-Brave Nature
-- Play Rough
-- Sucker Punch
-- Swords Dance
-- Protect
-
-Sinistcha @ Occa Berry
-Ability: Hospitality
-Sassy Nature
-- Matcha Gotcha
-- Rage Powder
-- Trick Room
-- Protect
-
-Ampharos @ Ampharosite
-Ability: Static
-Quiet Nature
-- Thunderbolt
-- Dragon Pulse
-- Cotton Guard
-- Protect
-
-######################################################################
-TEAM 172 — smalls · #12 at ⛩️$20 VGC Champions Tournament Ep 34!⛩️ (105 teams) · 5-3
-######################################################################
-Best team for Pairings: Raichu-X + Venusaur
-
-Venusaur @ Venusaurite
-Ability: Chlorophyll
-Modest Nature
-- Sludge Bomb
-- Energy Ball
-- Earth Power
-- Protect
-
-Raichu @ Raichunite X
-Ability: Lightning Rod
+Absol @ Absolite Z
+Ability: Justified
 Jolly Nature
-- Volt Tackle
-- Volt Switch
-- Fake Out
+- Close Combat
+- Night Slash
+- Shadow Claw
 - Protect
 
-Archaludon @ Leftovers
-Ability: Stamina
-Calm Nature
-- Dragon Pulse
-- Electro Shot
-- Snarl
-- Protect
-
-Pelipper @ Damp Rock
-Ability: Drizzle
-Bold Nature
-- Hurricane
-- Helping Hand
-- Weather Ball
-- Wide Guard
-
-Grimmsnarl @ Light Clay
-Ability: Prankster
-Adamant Nature
-- Spirit Break
-- Parting Shot
-- Reflect
-- Light Screen
-
-Basculegion-Female @ Focus Sash
-Ability: Swift Swim
+Pyroar @ Pyroarite
+Ability: Unnerve
 Timid Nature
-- Muddy Water
-- Shadow Ball
-- Ice Beam
-- Protect
-
-######################################################################
-TEAM 173 — gamervision · #13 at 🍋Sitrus-Series🍋|Champions-MC|#77 (83 teams) · 5-3
-######################################################################
-Best team for Pairings: Blastoise + Charizard-Y
-
-Charizard @ Charizardite Y
-Ability: Solar Power
-Timid Nature
-- Weather Ball
 - Heat Wave
-- Ancient Power
-- Protect
-
-Typhlosion @ Choice Scarf
-Ability: Flash Fire
-Modest Nature
-- Eruption
-- Heat Wave
-- Solar Beam
-- Focus Blast
-
-Venusaur @ Focus Sash
-Ability: Chlorophyll
-Modest Nature
-- Leaf Storm
-- Sludge Bomb
-- Sleep Powder
+- Overheat
+- Sunny Day
 - Protect
 
 Indeedee ♀ @ Colbur Berry
 Ability: Psychic Surge
-Bold Nature
-- Psychic
+Sassy Nature
+- Trick Room
 - Follow Me
+- Psychic
 - Helping Hand
-- Protect
 
-Blastoise @ Blastoisinite
-Ability: Rain Dish
-Modest Nature
-- Water Spout
-- Dark Pulse
-- Shell Smash
+Wigglytuff @ Life Orb
+Ability: Competitive
+Quiet Nature
+- Moonblast
+- Hyper Voice
 - Protect
+- Expanding Force
 
-Politoed @ Sitrus Berry
-Ability: Drizzle
-Modest Nature
+Hawlucha @ Psychic Seed
+Ability: Unburden
+Adamant Nature
+- Coaching
+- Close Combat
+- Acrobatics
+- Taunt
+
+Torkoal @ Charcoal
+Ability: Drought
+Quiet Nature
 - Weather Ball
-- Ice Beam
-- Haze
+- Eruption
 - Protect
+- Helping Hand
 
 ######################################################################
-TEAM 174 — thyfabulous · #21 at VGC Trainer School; champions M/C #1 (147 teams) · 5-3
+TEAM 242 — thyfabulous · #21 at VGC Trainer School; champions M/C #1 (147 teams) · 5-3
 ######################################################################
 Best team for Pairings: Floette + Swampert
 
@@ -9247,113 +12860,113 @@ Relaxed Nature
 - Dragon Pulse
 
 ######################################################################
-TEAM 175 — boopmydoop · #15 at Tenki's Cart Weekly #121 - Reg M-C (78 teams) · 5-3
+TEAM 243 — shinymacaroni1 · #3 at ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (34 teams) · 5-3
 ######################################################################
-Best team for Pairings: Dragalge + Floette
+Best team for Pairings: Baxcalibur + Blastoise
 
-Dragalge @ Dragalgite
-Ability: Adaptability
-Modest Nature
-- Thunderbolt
-- Draco Meteor
-- Sludge Bomb
-- Protect
-
-Incineroar @ Sitrus Berry
+Squawkabilly @ Choice Scarf
 Ability: Intimidate
-Careful Nature
-- Fake Out
-- Flare Blitz
-- Throat Chop
+Jolly Nature
 - Parting Shot
+- Brave Bird
+- Final Gambit
+- Tailwind
 
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Fake Out
-- Wood Hammer
-- Grassy Glide
-- U-turn
-
-Floette @ Floettite
-Ability: Flower Veil
+Torkoal @ Charcoal
+Ability: Drought
 Modest Nature
+- Eruption
+- Heat Wave
+- Earth Power
 - Protect
-- Moonblast
+
+Indeedee ♀ @ Focus Sash
+Ability: Psychic Surge
+Relaxed Nature
+- Psychic
+- Helping Hand
+- Follow Me
+- Trick Room
+
+Hatterene @ Life Orb
+Ability: Magic Bounce
+Quiet Nature
 - Dazzling Gleam
 - Calm Mind
-
-Aegislash @ Focus Sash
-Ability: Stance Change
-Adamant Nature
-- King's Shield
-- Shadow Sneak
-- Iron Head
-- Sacred Sword
-
-Garchomp @ Choice Scarf
-Ability: Rough Skin
-Adamant Nature
-- Rock Slide
-- Dragon Claw
-- Stomping Tantrum
-- Poison Jab
-
-######################################################################
-TEAM 176 — thegreatestdad · #7 at Off Meta Fight Club #6 ($20 USD prize pool) (51 teams) · 5-3
-######################################################################
-Best team for Pairings: Scizor + Tyranitar
-
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
-Jolly Nature
-- Knock Off
-- Low Kick
-- Protect
-- Rock Slide
-
-Skeledirge @ Grassy Seed
-Ability: Unaware
-Sassy Nature
-- Torch Song
-- Shadow Ball
-- Slack Off
+- Expanding Force
 - Protect
 
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
+Baxcalibur @ Baxcalibrite
+Ability: Thermal Exchange
+Adamant Nature
+- Glaive Rush
+- Ice Shard
+- Swords Dance
+- Protect
+
+Blastoise @ Blastoisinite
+Ability: Rain Dish
+Timid Nature
+- Water Spout
+- Dark Pulse
+- Shell Smash
+- Protect
+
+######################################################################
+TEAM 244 — magicarplord · #4 at Road to Puebla (39 teams) · 5-2
+######################################################################
+Best team for Pairings: Camerupt + Meganium
+
+Meganium @ Meganiumite
+Ability: Leaf Guard
+Quiet Nature
+- Solar Beam
+- Dazzling Gleam
+- Protect
+- Weather Ball
+
+Camerupt @ Cameruptite
+Ability: Solid Rock
+Quiet Nature
+- Eruption
+- Protect
+- Earth Power
+- Ancient Power
+
+Farigiraf @ Colbur Berry
+Ability: Armor Tail
 Relaxed Nature
-- Wood Hammer
-- Grassy Glide
-- Fake Out
-- High Horsepower
+- Twin Beam
+- Helping Hand
+- Trick Room
+- Foul Play
 
-Sneasler @ White Herb
-Ability: Unburden
-Adamant Nature
-- Fake Out
-- Close Combat
-- Dire Claw
-- Rock Tomb
+Indeedee ♀ @ Psychic Seed
+Ability: Psychic Surge
+Relaxed Nature
+- Psychic
+- Protect
+- Trick Room
+- Follow Me
 
-Toxapex @ Leftovers
-Ability: Regenerator
-Bold Nature
-- Infestation
+Armarouge @ Life Orb
+Ability: Flash Fire
+Quiet Nature
+- Armor Cannon
 - Wide Guard
-- Baneful Bunker
-- Toxic
-
-Scizor @ Scizorite
-Ability: Technician
-Adamant Nature
-- Bug Bite
-- Bullet Punch
-- Dual Wingbeat
+- Expanding Force
 - Protect
 
+Milotic @ Leftovers
+Ability: Competitive
+Modest Nature
+- Muddy Water
+- Ice Beam
+- Hypnosis
+- Coil
+
 ######################################################################
-TEAM 177 — skyrute · #4 at 제4회 너클시티 챌린저스 [Hammerlocke Challengers] (35 teams) · 5-3
+TEAM 245 — skyrute · #4 at 제4회 너클시티 챌린저스 [Hammerlocke Challengers] (35 teams) · 5-3
 ######################################################################
 Best team for Pairings: Aerodactyl + Floette
 
@@ -9406,60 +13019,57 @@ Jolly Nature
 - Tailwind
 
 ######################################################################
-TEAM 178 — blazekick · #8 at [Shiny Salamence to 1st] The Grim Challenge #8 M-C (61 teams) · 5-3
+TEAM 246 — niceperson · #13 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 3-1
 ######################################################################
-Best team for Pairings: Blastoise + Tyranitar
+Best team for Megas: Audino
 
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
-Adamant Nature
-- Ice Punch
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Brave Nature
+- Leech Life
 - Protect
-- Rock Slide
-- Knock Off
-
-Excadrill @ Focus Sash
-Ability: Sand Rush
-Adamant Nature
-- Protect
-- Earthquake
-- High Horsepower
+- Bulk Up
 - Iron Head
 
-Sneasler @ Psychic Seed
-Ability: Unburden
-Jolly Nature
-- Coaching
-- Quick Guard
-- Close Combat
-- Dire Claw
-
-Blastoise @ Blastoisinite
-Ability: Mega Launcher
+Kommo-o @ Dragon Fang
+Ability: Soundproof
 Modest Nature
-- Shell Smash
-- Water Spout
-- Aura Sphere
+- Clanging Scales
+- Clangorous Soul
 - Protect
+- Flash Cannon
 
-Indeedee ♀ @ Colbur Berry
-Ability: Psychic Surge
+Incineroar @ Chople Berry
+Ability: Intimidate
+Sassy Nature
+- Flare Blitz
+- Protect
+- Parting Shot
+- Fake Out
+
+Audino @ Audinite
+Ability: Regenerator
 Relaxed Nature
-- Trick Room
-- Helping Hand
-- Heal Pulse
-- Follow Me
-
-Gardevoir @ Choice Scarf
-Ability: Telepathy
-Modest Nature
 - Dazzling Gleam
-- Moonblast
-- Expanding Force
-- Thunderbolt
+- Simple Beam
+- Protect
+- Life Dew
+
+Ditto @ Focus Sash
+Ability: Limber
+Timid Nature
+- Transform
+
+Oranguru @ Sitrus Berry
+Ability: Inner Focus
+Relaxed Nature
+- Instruct
+- Yawn
+- Psychic
+- Trick Room
 
 ######################################################################
-TEAM 179 — hidro17 · #18 at Off Meta Fight Club #4 ($40 USD prize pool) (80 teams) · 3-1
+TEAM 247 — hidro17 · #18 at Off Meta Fight Club #4 ($40 USD prize pool) (80 teams) · 3-1
 ######################################################################
 Best team for Megas: Scolipede
 
@@ -9512,57 +13122,60 @@ Calm Nature
 - Will-O-Wisp
 
 ######################################################################
-TEAM 180 — niceperson · #13 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 3-1
+TEAM 248 — marvvgc · played ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (29 teams) · 0-0
 ######################################################################
-Best team for Megas: Audino
+Best team for Pairings: Altaria + Gengar
 
-Golisopod @ Golisopite
-Ability: Emergency Exit
-Brave Nature
-- Leech Life
-- Protect
-- Bulk Up
-- Iron Head
-
-Kommo-o @ Dragon Fang
-Ability: Soundproof
+Gengar @ Gengarite
+Ability: Cursed Body
 Modest Nature
-- Clanging Scales
-- Clangorous Soul
+- Sludge Bomb
+- Shadow Ball
+- Perish Song
 - Protect
-- Flash Cannon
 
-Incineroar @ Chople Berry
+Incineroar @ Lum Berry
 Ability: Intimidate
 Sassy Nature
 - Flare Blitz
-- Protect
 - Parting Shot
+- Protect
 - Fake Out
 
-Audino @ Audinite
-Ability: Regenerator
-Relaxed Nature
-- Dazzling Gleam
-- Simple Beam
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Grassy Glide
+- U-turn
 - Protect
-- Life Dew
+- Fake Out
 
-Ditto @ Focus Sash
-Ability: Limber
-Timid Nature
-- Transform
+Volcarona @ Grassy Seed
+Ability: Flame Body
+Modest Nature
+- Flamethrower
+- Bug Buzz
+- Quiver Dance
+- Protect
 
-Oranguru @ Sitrus Berry
-Ability: Inner Focus
-Relaxed Nature
-- Instruct
-- Yawn
-- Psychic
-- Trick Room
+Altaria @ Altarianite
+Ability: Cloud Nine
+Modest Nature
+- Hyper Voice
+- Draco Meteor
+- Perish Song
+- Protect
+
+Palafin @ Mystic Water
+Ability: Zero to Hero
+Adamant Nature
+- Jet Punch
+- Wave Crash
+- Flip Turn
+- Protect
 
 ######################################################################
-TEAM 181 — gaethein · #5 at Circuito VGC #7 REG MC | Z2 Gaming (19 teams) · 3-1
+TEAM 249 — gaethein · #5 at Circuito VGC #7 REG MC | Z2 Gaming (19 teams) · 3-1
 ######################################################################
 Best team for Pairings: Floette + Tyranitar
 
@@ -9615,7 +13228,7 @@ Timid Nature
 - Protect
 
 ######################################################################
-TEAM 182 — gkmplx_leo · played M-C|LAST SEASON 2 TOUR👑CROWN FIGHT Bo3 TOUR #90👑 (71 teams) · 0-0
+TEAM 250 — gkmplx_leo · played M-C|LAST SEASON 2 TOUR👑CROWN FIGHT Bo3 TOUR #90👑 (71 teams) · 0-0
 ######################################################################
 Best team for Pairings: Swampert + Venusaur
 
@@ -9668,7 +13281,7 @@ Bold Nature
 - Protect
 
 ######################################################################
-TEAM 183 — atxblk · played ⛩️Chadweezy95 VGC Champions Tournament Ep 14!⛩️ (43 teams) · 0-0
+TEAM 251 — atxblk · played ⛩️Chadweezy95 VGC Champions Tournament Ep 14!⛩️ (43 teams) · 0-0
 ######################################################################
 Best team for Pairings: Glimmora + Raichu-Y
 
@@ -9721,269 +13334,325 @@ Timid Nature
 - Encore
 
 ######################################################################
-TEAM 184 — dsquared · #26 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 3-1
+TEAM 252 — speedyntj · #11 at Off Meta Fight Club #4 ($40 USD prize pool) (80 teams) · 3-1
 ######################################################################
-Best team for Pairings: Dragalge + Staraptor
+Best team for Pairings: Ampharos + Froslass
 
-Dragalge @ Dragalgite
-Ability: Adaptability
-Modest Nature
-- Dragon Pulse
-- Sludge Bomb
-- Flip Turn
-- Protect
-
-Staraptor @ Staraptite
-Ability: Intimidate
-Jolly Nature
-- Close Combat
-- Brave Bird
-- Tailwind
-- Protect
-
-Empoleon @ Chople Berry
-Ability: Competitive
-Bold Nature
-- Flash Cannon
-- Hydro Pump
-- Ice Beam
-- Protect
-
-Rillaboom @ Life Orb
-Ability: Grassy Surge
-Adamant Nature
-- Wood Hammer
-- High Horsepower
-- Grassy Glide
-- Fake Out
-
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
-Calm Nature
-- Psychic Noise
-- Helping Hand
+Spiritomb @ Roseli Berry
+Ability: Infiltrator
+Sassy Nature
 - Trick Room
+- Foul Play
+- Pain Split
 - Protect
 
-Ditto @ Focus Sash
-Ability: Imposter
-Hasty Nature
-- Transform
-
-######################################################################
-TEAM 185 — bleahey · #28 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 3-1
-######################################################################
-Best team for Pairings: Gengar + Mawile
-
-Kommo-o @ Leftovers
-Ability: Soundproof
-Timid Nature
-- Iron Defense
-- Body Press
-- Flamethrower
-- Protect
-
-Gengar @ Gengarite
-Ability: Cursed Body
-Timid Nature
-- Shadow Ball
-- Icy Wind
-- Perish Song
-- Trick Room
-
-Incineroar @ Sitrus Berry
+Incineroar @ Passho Berry
 Ability: Intimidate
 Impish Nature
-- Fake Out
+- Flare Blitz
 - Throat Chop
-- Protect
 - Parting Shot
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Brave Nature
 - Fake Out
-- Wood Hammer
-- Grassy Glide
-- U-turn
 
-Mawile @ Mawilite
-Ability: Intimidate
+Kingambit @ Black Glasses
+Ability: Defiant
 Adamant Nature
+- Kowtow Cleave
 - Iron Head
-- Play Rough
 - Sucker Punch
 - Protect
 
-Raichu-Alola @ Focus Sash
-Ability: Surge Surfer
+Ampharos @ Ampharosite
+Ability: Static
+Modest Nature
+- Thunderbolt
+- Dragon Pulse
+- Dazzling Gleam
+- Protect
+
+Tauros-Paldea-Aqua @ Life Orb
+Ability: Intimidate
+Jolly Nature
+- Wave Crash
+- Close Combat
+- Aqua Jet
+- Protect
+
+Froslass @ Froslassite
+Ability: Cursed Body
+Timid Nature
+- Blizzard
+- Shadow Ball
+- Protect
+- Thunderbolt
+
+######################################################################
+TEAM 253 — kaen_33 · #32 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 3-1
+######################################################################
+Best team for Pairings: Alakazam + Charizard-Y
+
+Alakazam @ Alakazite
+Ability: Inner Focus
+Modest Nature
+- Protect
+- Expanding Force
+- Skill Swap
+- Focus Blast
+
+Charizard @ Charizardite Y
+Ability: Blaze
+Modest Nature
+- Protect
+- Heat Wave
+- Weather Ball
+- Solar Beam
+
+Hydreigon @ Choice Scarf
+Ability: Levitate
+Modest Nature
+- Draco Meteor
+- Dark Pulse
+- Earth Power
+- Flamethrower
+
+Sneasler @ Psychic Seed
+Ability: Unburden
+Adamant Nature
+- Protect
+- Swords Dance
+- Close Combat
+- Acrobatics
+
+Indeedee @ Focus Sash
+Ability: Psychic Surge
+Timid Nature
+- Imprison
+- Trick Room
+- Expanding Force
+- Hyper Voice
+
+Chesnaught @ Sitrus Berry
+Ability: Bulletproof
+Bold Nature
+- Spiky Shield
+- Wide Guard
+- Body Press
+- Helping Hand
+
+######################################################################
+TEAM 254 — 2ciabatta5 · #3 at HeroicTitan’s VGC Battle Arena (37 teams) · 4-2
+######################################################################
+Best team for Pairings: Altaria + Raichu-Y
+
+Arcanine-Hisui @ Focus Sash
+Ability: Rock Head
+Jolly Nature
+- Extreme Speed
+- Flare Blitz
+- Head Smash
+- Protect
+
+Basculegion-Male @ Life Orb
+Ability: Adaptability
+Adamant Nature
+- Aqua Jet
+- Wave Crash
+- Last Respects
+- Protect
+
+Kingambit @ Chople Berry
+Ability: Defiant
+Adamant Nature
+- Sucker Punch
+- Kowtow Cleave
+- Iron Head
+- Protect
+
+Sneasler @ White Herb
+Ability: Unburden
+Jolly Nature
+- Fake Out
+- Dire Claw
+- Close Combat
+- Protect
+
+Raichu @ Raichunite Y
+Ability: Lightning Rod
 Timid Nature
 - Fake Out
-- Light Screen
-- Nuzzle
+- Focus Blast
+- Zap Cannon
 - Protect
 
-######################################################################
-TEAM 186 — esfdoggo · #14 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 3-1
-######################################################################
-Best team for Pairings: Scovillain + Swampert
-
-Pelipper @ Lum Berry
-Ability: Drizzle
-Mild Nature
-- Wide Guard
-- Ice Beam
-- Weather Ball
-- Tailwind
-
-Archaludon @ Leftovers
-Ability: Stamina
+Altaria @ Altarianite
+Ability: Cloud Nine
 Timid Nature
-- Electro Shot
-- Flash Cannon
-- Aura Sphere
-- Draco Meteor
-
-Swampert @ Swampertite
-Ability: Torrent
-Adamant Nature
-- Earthquake
-- Wave Crash
-- Protect
-- Ice Punch
-
-Zoroark-Hisui @ Focus Sash
-Ability: Illusion
-Naive Nature
-- Bitter Malice
-- Nasty Plot
 - Hyper Voice
-- Shadow Sneak
-
-Trevenant @ Sitrus Berry
-Ability: Harvest
-Careful Nature
-- Leech Seed
-- Trick Room
+- Tailwind
+- Dragon Pulse
 - Protect
-- Will-O-Wisp
 
-Scovillain @ Scovillainite
-Ability: Moody
+######################################################################
+TEAM 255 — darktuga · #5 at Thalera Champions Cheese #16 - Tigrinho Edition (18 teams) · 4-2
+######################################################################
+Best team for Pairings: Garchomp-Z + Salamence
+
+Aerodactyl @ Focus Sash
+Ability: Unnerve
+Jolly Nature
+- Giga Impact
+- Rock Slide
+- Dual Wingbeat
+- Heat Wave
+
+Salamence @ Salamencite
+Ability: Intimidate
 Modest Nature
-- Overheat
+- Heat Wave
+- Rock Slide
+- Hyper Beam
+- Hydro Pump
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Jolly Nature
+- Rock Slide
+- Dragon Rush
+- Thunder Fang
+- Iron Tail
+
+Greninja @ Choice Scarf
+Ability: Protean
+Adamant Nature
+- Rock Slide
+- Giga Impact
+- Gunk Shot
+- Skitter Smack
+
+Excadrill @ Life Orb
+Ability: Sand Rush
+Jolly Nature
+- Megahorn
+- Rock Slide
+- High Horsepower
+- Focus Blast
+
+Tyranitar @ Chople Berry
+Ability: Sand Stream
+Jolly Nature
+- Iron Tail
+- Rock Slide
+- Fire Fang
+- Ice Fang
+
+######################################################################
+TEAM 256 — newadi6 · #20 at VGC UmbreNews 15.09.2026 #32 - Champion (97 teams) · 4-2
+######################################################################
+Best team for Pairings: Blaziken + Golisopod
+
+Golisopod @ Golisopite
+Ability: Tough Claws
+Brave Nature
+- Leech Life
+- Iron Head
 - Protect
-- Giga Drain
-- Rage Powder
+- Swords Dance
 
-######################################################################
-TEAM 187 — lordzazle · #33 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 3-1
-######################################################################
-Best team for Pairings: Mawile + Scovillain
-
-Reuniclus @ Life Orb
-Ability: Magic Guard
-Quiet Nature
-- Energy Ball
-- Expanding Force
+Indeedee ♀ @ Colbur Berry
+Ability: Psychic Surge
+Sassy Nature
+- Follow Me
 - Trick Room
-- Shadow Ball
+- Helping Hand
+- Terrain Pulse
+
+Hatterene @ Life Orb
+Ability: Magic Bounce
+Quiet Nature
+- Expanding Force
+- Dazzling Gleam
+- Protect
+- Trick Room
+
+Milotic @ Sitrus Berry
+Ability: Competitive
+Quiet Nature
+- Scald
+- Ice Beam
+- Protect
+- Haze
 
 Torkoal @ Charcoal
 Ability: Drought
-Relaxed Nature
-- Body Press
-- Clear Smog
-- Eruption
-- Solar Beam
-
-Indeedee ♀ @ Mental Herb
-Ability: Psychic Surge
 Quiet Nature
-- Hyper Voice
-- Trick Room
-- Follow Me
-- Psychic
-
-Mawile @ Mawilite
-Ability: Intimidate
-Brave Nature
-- Rock Slide
-- Iron Head
-- Play Rough
-- Swords Dance
-
-Tyranitar @ Smooth Rock
-Ability: Sand Stream
-Brave Nature
-- Rock Slide
-- Low Kick
-- Knock Off
+- Eruption
+- Earth Power
+- Weather Ball
 - Protect
 
-Scovillain @ Scovillainite
-Ability: Moody
+Blaziken @ Blazikenite
+Ability: Speed Boost
+Adamant Nature
+- Close Combat
+- Rock Slide
+- Flare Blitz
+- Protect
+
+######################################################################
+TEAM 257 — betodmx · #9 at Sketch Academy Sunday Regulation M-C Tournament (61 teams) · 4-2
+######################################################################
+Best team for Pairings: Camerupt + Gardevoir
+
+Indeedee ♀ @ Psychic Seed
+Ability: Psychic Surge
+Relaxed Nature
+- Psyshock
+- Follow Me
+- Helping Hand
+- Trick Room
+
+Armarouge @ Life Orb
+Ability: Flash Fire
+Quiet Nature
+- Armor Cannon
+- Expanding Force
+- Trick Room
+- Wide Guard
+
+Grapploct @ Black Belt
+Ability: Technician
+Brave Nature
+- Storm Throw
+- Mach Punch
+- Payback
+- Detect
+
+Camerupt @ Cameruptite
+Ability: Solid Rock
 Quiet Nature
 - Flamethrower
-- Rage Powder
-- Giga Drain
-- Leech Seed
+- Protect
+- Earth Power
+- Ancient Power
+
+Kingambit @ Chople Berry
+Ability: Defiant
+Brave Nature
+- Kowtow Cleave
+- Sucker Punch
+- Iron Head
+- Protect
+
+Gardevoir @ Gardevoirite
+Ability: Trace
+Quiet Nature
+- Hyper Voice
+- Expanding Force
+- Trick Room
+- Thunderbolt
 
 ######################################################################
-TEAM 188 — special_k702 · #24 at Off Meta Fight Club #2 ($40 USD prize pool) (112 teams) · 3-1
-######################################################################
-Best team for Pairings: Scovillain + Staraptor
-
-Grimmsnarl @ Light Clay
-Ability: Prankster
-Careful Nature
-- Reflect
-- Light Screen
-- Spirit Break
-- Parting Shot
-
-Scovillain @ Scovillainite
-Ability: Moody
-Calm Nature
-- Rage Powder
-- Leech Seed
-- Overheat
-- Protect
-
-Politoed @ Mystic Water
-Ability: Drizzle
-Modest Nature
-- Muddy Water
-- Weather Ball
-- Ice Beam
-- Protect
-
-Espathra @ Mental Herb
-Ability: Speed Boost
-Timid Nature
-- Protect
-- Lumina Crash
-- Calm Mind
-- Baton Pass
-
-Goodra-Hisui @ Leftovers
-Ability: Shell Armor
-Modest Nature
-- Protect
-- Dragon Pulse
-- Flash Cannon
-- Thunder
-
-Staraptor @ Staraptite
-Ability: Intimidate
-Jolly Nature
-- Close Combat
-- Brave Bird
-- Roost
-- Protect
-
-######################################################################
-TEAM 189 — herdant · #13 at Sketch Academy Sunday Regulation M-C Tournament (61 teams) · 4-2
+TEAM 258 — herdant · #13 at Sketch Academy Sunday Regulation M-C Tournament (61 teams) · 4-2
 ######################################################################
 Best team for Pairings: Floette + Pyroar
 
@@ -10036,60 +13705,7 @@ Jolly Nature
 - Stomping Tantrum
 
 ######################################################################
-TEAM 190 — saydeki · #5 at Chaos League Sunday Slam #117 (42 teams) · 4-2
-######################################################################
-Best team for Pairings: Charizard-Y + Garchomp
-
-Charizard @ Charizardite Y
-Ability: Blaze
-Timid Nature
-- Ancient Power
-- Heat Wave
-- Weather Ball
-- Protect
-
-Garchomp @ Garchompite
-Ability: Rough Skin
-Adamant Nature
-- Stomping Tantrum
-- Dragon Claw
-- Rock Slide
-- Poison Jab
-
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
-Modest Nature
-- Expanding Force
-- Trick Room
-- Helping Hand
-- Thunderbolt
-
-Incineroar @ Chople Berry
-Ability: Intimidate
-Adamant Nature
-- Flare Blitz
-- Darkest Lariat
-- Parting Shot
-- Fake Out
-
-Whimsicott @ Focus Sash
-Ability: Prankster
-Timid Nature
-- Moonblast
-- Tailwind
-- Energy Ball
-- Protect
-
-Basculegion-Male @ Mystic Water
-Ability: Adaptability
-Adamant Nature
-- Wave Crash
-- Last Respects
-- Protect
-- Aqua Jet
-
-######################################################################
-TEAM 191 — whayron · #6 at Thalera Champions Cheese #17 - GEN 3 Edition (16 teams) · 4-2
+TEAM 259 — whayron · #6 at Thalera Champions Cheese #17 - GEN 3 Edition (16 teams) · 4-2
 ######################################################################
 Best team for Pairings: Gardevoir + Swampert
 
@@ -10142,7 +13758,7 @@ Jolly Nature
 - Bullet Punch
 
 ######################################################################
-TEAM 192 — glaciaty · #9 at X1 Remote Battle League 11ª Edição - Reg M-C (46 teams) · 4-2
+TEAM 260 — glaciaty · #9 at X1 Remote Battle League 11ª Edição - Reg M-C (46 teams) · 4-2
 ######################################################################
 Best team for Pairings: Pyroar + Raichu-Y
 
@@ -10195,219 +13811,113 @@ Adamant Nature
 - U-turn
 
 ######################################################################
-TEAM 193 — orewa_dev · #7 at 🏰FORT TOURNAMENTS  OFF META OCTOBER🏰 (21 teams) · 4-2
+TEAM 261 — trevorvgc · #2 at Thavorian’s Tubby tour (17 teams) · 4-2
 ######################################################################
-Best team for Pairings: Blaziken + Metagross
+Best team for Pairings: Dragonite + Meganium
 
-Blaziken @ Blazikenite
-Ability: Speed Boost
-Adamant Nature
-- Protect
-- Coaching
-- Close Combat
-- Flare Blitz
-
-Primarina @ Life Orb
-Ability: Liquid Voice
+Meganium @ Meganiumite
+Ability: Leaf Guard
 Modest Nature
+- Solar Beam
+- Weather Ball
+- Dazzling Gleam
 - Protect
-- Hyper Voice
-- Moonblast
-- Aqua Jet
 
-Pikachu @ Light Ball
-Ability: Lightning Rod
-Adamant Nature
-- Fake Out
-- Feint
-- Protect
-- Volt Tackle
-
-Metagross @ Metagrossite
-Ability: Clear Body
-Jolly Nature
-- Ice Punch
-- Protect
-- Iron Head
-- Psychic Fangs
-
-Hydreigon @ Choice Scarf
-Ability: Levitate
-Modest Nature
-- Snarl
-- Heat Wave
-- Dark Pulse
+Dragonite @ Dragoninite
+Ability: Inner Focus
+Timid Nature
 - Draco Meteor
+- Flamethrower
+- Tailwind
+- Protect
+
+Skeledirge @ Leftovers
+Ability: Unaware
+Relaxed Nature
+- Torch Song
+- Will-O-Wisp
+- Slack Off
+- Protect
+
+Overqwil @ Shuca Berry
+Ability: Intimidate
+Adamant Nature
+- Crunch
+- Icy Wind
+- Taunt
+- Poison Jab
+
+Rotom-Wash @ Sitrus Berry
+Ability: Levitate
+Bold Nature
+- Hydro Pump
+- Thunderbolt
+- Will-O-Wisp
+- Protect
 
 Mamoswine @ Focus Sash
 Ability: Oblivious
 Adamant Nature
-- Protect
-- Ice Shard
 - Earthquake
+- Icicle Crash
 - High Horsepower
+- Protect
 
 ######################################################################
-TEAM 194 — brocolli · #17 at Copa Oak Stadium #12 - MonoType - R$ 50 (64 teams) · 4-2
+TEAM 262 — almale · #8 at 𝗡𝗲𝗺𝗲 𝗪𝗲𝗲𝗸𝗹𝘆 𝗠-𝐂 𝗧𝗼𝘂𝗿 🏆 #𝟕𝟑 (46 teams) · 4-2
 ######################################################################
-Best team for Pairings: Drampa + Lopunny
+Best team for Pairings: Absol-Z + Glimmora
 
-Indeedee ♀ @ Colbur Berry
-Ability: Psychic Surge
-Bold Nature
-- Follow Me
-- Trick Room
-- Helping Hand
-- Psychic
-
-Lopunny @ Lopunnite
-Ability: Cute Charm
+Absol @ Absolite Z
+Ability: Justified
 Jolly Nature
-- Close Combat
-- Triple Axel
-- Thunder Punch
-- Fake Out
-
-Staraptor @ Choice Scarf
-Ability: Reckless
-Jolly Nature
-- Final Gambit
-- Brave Bird
-- Close Combat
-- U-turn
-
-Diggersby @ Life Orb
-Ability: Huge Power
-Brave Nature
-- Hammer Arm
-- High Horsepower
-- Facade
-- Protect
-
-Wyrdeer @ Psychic Seed
-Ability: Intimidate
-Quiet Nature
-- Expanding Force
-- Earth Power
-- Trick Room
-- Energy Ball
-
-Drampa @ Drampanite
-Ability: Cloud Nine
-Modest Nature
-- Hyper Voice
-- Dragon Pulse
-- Snarl
-- Protect
-
-######################################################################
-TEAM 195 — camuss · #11 at Copa Oak Stadium #12 - MonoType - R$ 50 (64 teams) · 4-2
-######################################################################
-Best team for Pairings: Metagross + Starmie
-
-Armarouge @ Psychic Seed
-Ability: Flash Fire
-Quiet Nature
-- Armor Cannon
-- Expanding Force
-- Trick Room
-- Wide Guard
-
-Indeedee ♀ @ Rocky Helmet
-Ability: Psychic Surge
-Relaxed Nature
-- Psychic
-- Trick Room
-- Helping Hand
-- Follow Me
-
-Metagross @ Metagrossite
-Ability: Clear Body
-Jolly Nature
-- Psychic Fangs
-- Stomping Tantrum
-- Steel Roller
-- Protect
-
-Starmie @ Starminite
-Ability: Natural Cure
-Adamant Nature
-- Liquidation
-- Grass Knot
-- Ice Spinner
-- Protect
-
-Hatterene @ Life Orb
-Ability: Magic Bounce
-Quiet Nature
-- Expanding Force
-- Dazzling Gleam
-- Trick Room
-- Protect
-
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
-Calm Nature
-- Psychic
-- Thunderbolt
-- Trick Room
-- Helping Hand
-
-######################################################################
-TEAM 196 — the_dragons · #21 at Copa Oak Stadium #12 - MonoType - R$ 50 (64 teams) · 4-2
-######################################################################
-Best team for Pairings: Starmie + Swampert
-
-Toxapex @ Leftovers
-Ability: Regenerator
-Careful Nature
-- Infestation
-- Liquidation
-- Toxic
-- Baneful Bunker
-
-Primarina @ Sitrus Berry
-Ability: Liquid Voice
-Modest Nature
-- Hyper Voice
-- Energy Ball
-- Moonblast
-- Protect
-
-Swampert @ Swampertite
-Ability: Torrent
-Adamant Nature
-- Ice Punch
-- Wave Crash
-- Earthquake
-- Protect
-
-Starmie @ Starminite
-Ability: Analytic
-Jolly Nature
+- Night Slash
 - Psycho Cut
-- Liquidation
-- Ice Spinner
-- Protect
+- Icy Wind
+- Detect
 
-Pelipper @ Focus Sash
-Ability: Drizzle
+Pawmot @ Focus Sash
+Ability: Iron Fist
+Jolly Nature
+- Double Shock
+- Close Combat
+- Fake Out
+- Revival Blessing
+
+Indeedee @ Choice Scarf
+Ability: Psychic Surge
 Modest Nature
+- Expanding Force
+- Trick
+- Mystical Fire
+- After You
+
+Talonflame @ Charcoal
+Ability: Gale Wings
+Adamant Nature
+- Flare Blitz
+- Dual Wingbeat
 - Tailwind
-- Hurricane
-- Weather Ball
 - Protect
 
-Basculegion-Male @ Choice Scarf
-Ability: Swift Swim
-Adamant Nature
-- Wave Crash
-- Flip Turn
-- Psychic Fangs
-- Last Respects
+Kommo-o @ Life Orb
+Ability: Soundproof
+Timid Nature
+- Clanging Scales
+- Clangorous Soul
+- Aura Sphere
+- Protect
+
+Glimmora @ Glimmoranite
+Ability: Toxic Debris
+Timid Nature
+- Power Gem
+- Sludge Bomb
+- Earth Power
+- Spiky Shield
 
 ######################################################################
-TEAM 197 — lorenzaooo · #80 at Maddo's Cup #12 | 100€ for the Winner | Reg M-C (388 teams) · 4-2
+TEAM 263 — lorenzaooo · #80 at Maddo's Cup #12 | 100€ for the Winner | Reg M-C (388 teams) · 4-2
 ######################################################################
 Best team for Pairings: Gengar + Metagross
 
@@ -10460,113 +13970,113 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 198 — guigames1000 · #5 at Thalera Champions Cheese #17 - GEN 3 Edition (16 teams) · 4-2
+TEAM 264 — izubrad · #12 at Pado's Dojo Reg M-C Pratice #1 🍥 (67 teams) · 4-2
 ######################################################################
-Best team for Pairings: Mawile + Sceptile
+Best team for Pairings: Aerodactyl + Golisopod
 
-Sceptile @ Sceptilite
-Ability: Overgrow
-Modest Nature
-- Dragon Pulse
-- Detect
-- Earth Power
-- Giga Drain
-
-Milotic @ Leftovers
-Ability: Competitive
-Bold Nature
-- Muddy Water
-- Protect
-- Hypnosis
-- Coil
-
-Sableye @ Sitrus Berry
-Ability: Prankster
-Sassy Nature
-- Reflect
-- Light Screen
-- Sunny Day
-- Foul Play
-
-Mawile @ Mawilite
-Ability: Intimidate
-Brave Nature
-- Grass Knot
-- Sucker Punch
-- Play Rough
-- Iron Head
-
-Blaziken @ Life Orb
-Ability: Speed Boost
+Aerodactyl @ Aerodactylite
+Ability: Unnerve
 Adamant Nature
 - Rock Slide
-- Flare Blitz
-- Close Combat
+- Aerial Ace
+- Tailwind
+- Protect
+
+Pelipper @ Focus Sash
+Ability: Drizzle
+Modest Nature
+- Hurricane
+- Weather Ball
+- Tailwind
+- Wide Guard
+
+Archaludon @ Leftovers
+Ability: Stamina
+Modest Nature
+- Electro Shot
+- Flash Cannon
+- Snarl
+- Protect
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Careful Nature
+- Foul Play
+- Reflect
+- Light Screen
+- Parting Shot
+
+Milotic @ Sitrus Berry
+Ability: Competitive
+Modest Nature
+- Muddy Water
+- Coil
+- Hypnosis
+- Recover
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- Leech Life
+- Iron Head
+- Liquidation
+- Protect
+
+######################################################################
+TEAM 265 — index_7 · #5 at The Drywalls Series #21 (69 teams) · 5-2
+######################################################################
+Best team for Pairings: Dragalge + Lucario-Z
+
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Timid Nature
+- Flash Cannon
+- Aura Sphere
+- Nasty Plot
 - Detect
 
-Medicham @ Focus Sash
-Ability: Pure Power
-Brave Nature
-- Coaching
-- Close Combat
-- Trick Room
-- Thunder Punch
-
-######################################################################
-TEAM 199 — maxdeesevgc · #44 at 🍋Sitrus-Series🍋|Champions-MC|$50 to First|#75 (243 teams) · 4-2
-######################################################################
-Best team for Pairings: Floette + Venusaur
-
-Pikachu @ Focus Sash
-Ability: Lightning Rod
-Jolly Nature
-- Fake Out
-- Nuzzle
-- Endeavor
-- Helping Hand
-
-Basculegion-Male @ Life Orb
-Ability: Swift Swim
-Adamant Nature
-- Wave Crash
-- Aqua Jet
-- Protect
-- Last Respects
-
-Pelipper @ Choice Scarf
-Ability: Drizzle
-Timid Nature
-- Weather Ball
-- Hurricane
-- Muddy Water
-- Icy Wind
-
-Floette @ Floettite
-Ability: Flower Veil
-Modest Nature
-- Calm Mind
-- Draining Kiss
-- Dazzling Gleam
+Dragalge @ Dragalgite
+Ability: Adaptability
+Sassy Nature
+- Draco Meteor
+- Sludge Bomb
+- Toxic
 - Protect
 
-Incineroar @ Passho Berry
+Incineroar @ Sitrus Berry
 Ability: Intimidate
 Careful Nature
+- Flare Blitz
+- Throat Chop
 - Fake Out
 - Parting Shot
-- Darkest Lariat
-- Will-O-Wisp
 
-Venusaur @ Venusaurite
-Ability: Chlorophyll
+Rillaboom @ Leftovers
+Ability: Grassy Surge
+Adamant Nature
+- Grassy Glide
+- High Horsepower
+- U-turn
+- Fake Out
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Sassy Nature
+- Spirit Break
+- Light Screen
+- Reflect
+- Parting Shot
+
+Gholdengo @ Life Orb
+Ability: Good as Gold
 Modest Nature
-- Giga Drain
-- Sludge Bomb
-- Earth Power
+- Make It Rain
+- Shadow Ball
+- Nasty Plot
 - Protect
 
 ######################################################################
-TEAM 200 — pokeopposition · #15 at Talon's FIGHT CLUB #105 POKEMON CHAMPIONS REG M-C (89 teams) · 6-3
+TEAM 266 — pokeopposition · #15 at Talon's FIGHT CLUB #105 POKEMON CHAMPIONS REG M-C (89 teams) · 6-3
 ######################################################################
 Best team for Pairings: Garchomp + Tyranitar
 
@@ -10619,7 +14129,7 @@ Adamant Nature
 - U-turn
 
 ######################################################################
-TEAM 201 — cobson · #5 at Alpensee Tour (Reg M-C) #77 (93 teams) · 7-3
+TEAM 267 — cobson · #5 at Alpensee Tour (Reg M-C) #77 (93 teams) · 7-3
 ######################################################################
 Best team for Megas: Lucario
 
@@ -10672,60 +14182,60 @@ Hasty Nature
 - Stone Edge
 
 ######################################################################
-TEAM 202 — karlin22 · #4 at Meeklosh's Fight Night Friday  | REG M-C (33 teams) · 4-3
+TEAM 268 — squidy_05 · #2 at reg M-C Puzzles Practise (10 teams) · 4-2
 ######################################################################
-Best team for Pairings: Floette + Scovillain
+Best team for Pairings: Glimmora + Meganium
 
-Goodra-Hisui @ Leftovers
-Ability: Shell Armor
-Careful Nature
-- Shelter
-- Body Press
-- Heavy Slam
-- Life Dew
+Glimmora @ Glimmoranite
+Ability: Toxic Debris
+Timid Nature
+- Power Gem
+- Sludge Bomb
+- Spiky Shield
+- Earth Power
 
-Sinistcha @ Sitrus Berry
-Ability: Hospitality
-Bold Nature
-- Rage Powder
+Archaludon @ Chople Berry
+Ability: Stamina
+Calm Nature
+- Electro Shot
+- Thunderbolt
+- Draco Meteor
 - Protect
-- Matcha Gotcha
-- Life Dew
 
-Grimmsnarl @ Light Clay
-Ability: Prankster
-Impish Nature
-- Reflect
-- Light Screen
-- Parting Shot
-- Spirit Break
-
-Scovillain @ Scovillainite
-Ability: Moody
-Bold Nature
-- Rage Powder
-- Protect
-- Leech Seed
-- Flamethrower
-
-Floette @ Floettite
-Ability: Flower Veil
+Pelipper @ Focus Sash
+Ability: Drizzle
 Modest Nature
-- Light of Ruin
-- Moonblast
-- Dazzling Gleam
+- Tailwind
+- Hurricane
+- Weather Ball
 - Protect
 
-Incineroar @ Rocky Helmet
-Ability: Intimidate
-Impish Nature
-- Darkest Lariat
-- Flare Blitz
+Indeedee ♀ @ Colbur Berry
+Ability: Psychic Surge
+Relaxed Nature
+- Psychic
+- Follow Me
+- Imprison
+- Trick Room
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Jolly Nature
+- Grassy Glide
+- Wood Hammer
 - Fake Out
-- Parting Shot
+- High Horsepower
+
+Meganium @ Meganiumite
+Ability: Overgrow
+Timid Nature
+- Weather Ball
+- Solar Beam
+- Earth Power
+- Protect
 
 ######################################################################
-TEAM 203 — paparott · #4 at ⛩️Chadweezy95 VGC Champions Tournament Ep 27!⛩️ (20 teams) · 4-3
+TEAM 269 — paparott · #4 at ⛩️Chadweezy95 VGC Champions Tournament Ep 27!⛩️ (20 teams) · 4-3
 ######################################################################
 Best team for Pairings: Meganium + Metagross
 
@@ -10778,7 +14288,7 @@ Jolly Nature
 - Throat Chop
 
 ######################################################################
-TEAM 204 — caybob2672 · #6 at ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (Final Qualifier) (36 teams) · 5-2
+TEAM 270 — caybob2672 · #6 at ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (Final Qualifier) (36 teams) · 5-2
 ######################################################################
 Best team for Megas: Emboar
 
@@ -10831,7 +14341,60 @@ Timid Nature
 - Protect
 
 ######################################################################
-TEAM 205 — nehek · #16 at Intimidators Champions Challenge #47 REG M-C (68 teams) · 4-2
+TEAM 271 — silverland · #5 at Reg M-C Qualifier for RookideeVGC Grand Tourney (44 teams) · 5-3
+######################################################################
+Best team for Pairings: Froslass + Hawlucha
+
+Snorlax @ Leftovers
+Ability: Thick Fat
+Relaxed Nature
+- Protect
+- Stockpile
+- Fissure
+- Smack Down
+
+Rillaboom @ Grassy Seed
+Ability: Grassy Surge
+Impish Nature
+- Grassy Glide
+- Stomping Tantrum
+- Fake Out
+- U-turn
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Relaxed Nature
+- Fake Out
+- Parting Shot
+- Flare Blitz
+- Throat Chop
+
+Hawlucha @ Hawluchanite
+Ability: Limber
+Jolly Nature
+- Coaching
+- Entrainment
+- Protect
+- Stone Edge
+
+Froslass @ Froslassite
+Ability: Snow Cloak
+Modest Nature
+- Blizzard
+- Shadow Ball
+- Aurora Veil
+- Protect
+
+Sinistcha @ Focus Sash
+Ability: Hospitality
+Modest Nature
+- Matcha Gotcha
+- Strength Sap
+- Rage Powder
+- Life Dew
+
+######################################################################
+TEAM 272 — nehek · #16 at Intimidators Champions Challenge #47 REG M-C (68 teams) · 4-2
 ######################################################################
 Best team for Megas: Absol
 
@@ -10884,7 +14447,60 @@ Naive Nature
 - Protect
 
 ######################################################################
-TEAM 206 — toshie · #62 at Make It Rain - VGC Tournament (266 teams) · 5-4
+TEAM 273 — kyler101 · #8 at London Corviknights VGC Weekly Tour 17! (64 teams) · 5-2
+######################################################################
+Best team for Pairings: Gardevoir + Raichu-X
+
+Gardevoir @ Gardevoirite
+Ability: Telepathy
+Modest Nature
+- Hyper Voice
+- Protect
+- Expanding Force
+- Moonblast
+
+Indeedee ♀ @ Rocky Helmet
+Ability: Psychic Surge
+Bold Nature
+- Follow Me
+- Helping Hand
+- Psychic
+- Trick Room
+
+Kingambit @ Focus Sash
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Protect
+- Iron Head
+
+Garchomp @ Choice Scarf
+Ability: Rough Skin
+Jolly Nature
+- Dragon Claw
+- Stomping Tantrum
+- Rock Slide
+- Earthquake
+
+Raichu @ Raichunite X
+Ability: Lightning Rod
+Jolly Nature
+- Volt Tackle
+- Fake Out
+- Volt Switch
+- Feint
+
+Volcarona @ Electric Seed
+Ability: Flame Body
+Modest Nature
+- Giga Drain
+- Heat Wave
+- Quiver Dance
+- Protect
+
+######################################################################
+TEAM 274 — toshie · #62 at Make It Rain - VGC Tournament (266 teams) · 5-4
 ######################################################################
 Best team for Pairings: Delphox + Mawile
 
@@ -10937,60 +14553,113 @@ Modest Nature
 - Protect
 
 ######################################################################
-TEAM 207 — tricki · #19 at Off Meta MAJOR ($140 USD Prize Pool) (117 teams) · 5-4
+TEAM 275 — snorlaxpikachu1 · #3 at Alpensee Tour (Reg M-C) #78 (82 teams) · 7-3
 ######################################################################
-Best team for Pairings: Froslass + Raichu-X
+Best team for Pairings: Audino + Slowbro
 
-Pikachu @ Light Ball
-Ability: Lightning Rod
-Timid Nature
-- Discharge
-- Alluring Voice
-- Rising Voltage
+Audino @ Audinite
+Ability: Regenerator
+Relaxed Nature
+- Simple Beam
+- Trick Room
+- Heal Pulse
 - Protect
 
-Raichu @ Raichunite X
-Ability: Lightning Rod
-Timid Nature
-- Rising Voltage
-- Discharge
+Incineroar @ Passho Berry
+Ability: Intimidate
+Sassy Nature
 - Fake Out
+- Throat Chop
+- Bulk Up
+- Parting Shot
+
+Swalot @ Leftovers
+Ability: Liquid Ooze
+Relaxed Nature
+- Toxic
+- Stockpile
+- Body Press
 - Protect
 
-Noivern @ Focus Sash
-Ability: Telepathy
-Modest Nature
-- Boomburst
-- Dragon Pulse
-- Air Cutter
-- Protect
-
-Froslass @ Froslassite
-Ability: Cursed Body
+Slowbro @ Slowbronite
+Ability: Oblivious
 Bold Nature
-- Blizzard
-- Shadow Ball
-- Draining Kiss
-- Protect
-
-Espathra @ Electric Seed
-Ability: Speed Boost
-Calm Nature
-- Lumina Crash
+- Stored Power
 - Calm Mind
-- Baton Pass
+- Iron Defense
+- Slack Off
+
+Raichu @ Light Clay
+Ability: Lightning Rod
+Impish Nature
+- Fake Out
+- Reflect
+- Light Screen
 - Protect
 
-Primarina @ Life Orb
-Ability: Liquid Voice
+Volcarona @ Sitrus Berry
+Ability: Flame Body
 Bold Nature
-- Hyper Voice
-- Moonblast
-- Energy Ball
+- Fiery Dance
+- Giga Drain
+- Quiver Dance
 - Protect
 
 ######################################################################
-TEAM 208 — cj__black98 · #28 at VGC UmbreNews 13.10.2026 #35 - Champion (92 teams) · 3-3
+TEAM 276 — gaergaeaf · #5 at HeroicTitan’s VGC Battle Arena (37 teams) · 4-3
+######################################################################
+Best team for Pairings: Garchomp-Z + Scolipede
+
+Scolipede @ Scolipite
+Ability: Speed Boost
+Jolly Nature
+- Leech Life
+- Rock Slide
+- Steel Roller
+- Protect
+
+Hatterene @ Life Orb
+Ability: Magic Bounce
+Quiet Nature
+- Dazzling Gleam
+- Magic Powder
+- Expanding Force
+- Trick Room
+
+Corviknight @ Psychic Seed
+Ability: Mirror Armor
+Careful Nature
+- Brave Bird
+- Power Trip
+- Bulk Up
+- Roost
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Earth Power
+- Fire Blast
+- Draco Meteor
+- Protect
+
+Indeedee ♀ @ Sitrus Berry
+Ability: Psychic Surge
+Relaxed Nature
+- Follow Me
+- Trick Room
+- Helping Hand
+- Psychic
+
+Sneasler @ Focus Sash
+Ability: Poison Touch
+Adamant Nature
+- Fake Out
+- Dire Claw
+- Close Combat
+- Coaching
+
+######################################################################
+TEAM 277 — cj__black98 · #28 at VGC UmbreNews 13.10.2026 #35 - Champion (92 teams) · 3-3
 ######################################################################
 Best team for Pairings: Raichu-Y + Swampert
 
@@ -11043,7 +14712,113 @@ Timid Nature
 - Fake Out
 
 ######################################################################
-TEAM 209 — grandtester · #12 at London Corviknights VGC Weekly Tour 15! (64 teams) · 4-3
+TEAM 278 — hashir123 · #1 at ⛩️Chadweezy95 VGC Champions Tournament Ep 24!⛩️ (17 teams) · 6-2
+######################################################################
+Best team for Pairings: Garchomp-Z + Swampert
+
+Pelipper @ Focus Sash
+Ability: Drizzle
+Modest Nature
+- Hurricane
+- Weather Ball
+- Wide Guard
+- Tailwind
+
+Sneasler @ White Herb
+Ability: Unburden
+Jolly Nature
+- Fake Out
+- Dire Claw
+- Close Combat
+- Protect
+
+Archaludon @ Sitrus Berry
+Ability: Stamina
+Modest Nature
+- Electro Shot
+- Dragon Pulse
+- Aura Sphere
+- Protect
+
+Gholdengo @ Life Orb
+Ability: Good as Gold
+Timid Nature
+- Make It Rain
+- Power Gem
+- Shadow Ball
+- Protect
+
+Swampert @ Swampertite
+Ability: Torrent
+Adamant Nature
+- Protect
+- Wave Crash
+- Ice Punch
+- High Horsepower
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Protect
+- Dragon Pulse
+- Power Gem
+- Earth Power
+
+######################################################################
+TEAM 279 — bpecina03 · #33 at 🍋Sitrus-Series🍋|Champions-MC|#78 (128 teams) · 4-3
+######################################################################
+Best team for Pairings: Dragonite + Glimmora
+
+Glimmora @ Glimmoranite
+Ability: Toxic Debris
+Timid Nature
+- Power Gem
+- Sludge Bomb
+- Earth Power
+- Spiky Shield
+
+Dragonite @ Dragoninite
+Ability: Inner Focus
+Timid Nature
+- Dragon Pulse
+- Heat Wave
+- Protect
+- Extreme Speed
+
+Volcarona @ Rocky Helmet
+Ability: Flame Body
+Bold Nature
+- Fiery Dance
+- Protect
+- Tailwind
+- Rage Powder
+
+Primarina @ Grassy Seed
+Ability: Liquid Voice
+Modest Nature
+- Hyper Voice
+- Moonblast
+- Calm Mind
+- Protect
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Fake Out
+- Grassy Glide
+- High Horsepower
+
+Kingambit @ Life Orb
+Ability: Defiant
+Adamant Nature
+- Kowtow Cleave
+- Iron Head
+- Protect
+- Sucker Punch
+
+######################################################################
+TEAM 280 — grandtester · #12 at London Corviknights VGC Weekly Tour 15! (64 teams) · 4-3
 ######################################################################
 Best team for Megas: Falinks
 
@@ -11096,113 +14871,219 @@ Adamant Nature
 - Lunge
 
 ######################################################################
-TEAM 210 — nealbeans · #8 at ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (M-C) (48 teams) · 4-3
+TEAM 281 — mattytaxes · #23 at Talon's FIGHT CLUB #101 POKEMON CHAMPIONS REG M-C (98 teams) · 4-3
 ######################################################################
-Best team for Pairings: Meganium + Swampert
+Best team for Pairings: Baxcalibur + Floette
 
-Pelipper @ Sitrus Berry
-Ability: Drizzle
-Modest Nature
-- Hurricane
-- Wide Guard
-- Weather Ball
-- Tailwind
-
-Swampert @ Swampertite
-Ability: Damp
-Jolly Nature
-- Wave Crash
-- Ice Punch
-- High Horsepower
-- Protect
-
-Grimmsnarl @ Light Clay
-Ability: Prankster
-Careful Nature
-- Foul Play
-- Parting Shot
-- Reflect
-- Light Screen
-
-Sneasler @ White Herb
-Ability: Unburden
+Baxcalibur @ Baxcalibrite
+Ability: Thermal Exchange
 Adamant Nature
-- Dire Claw
-- Fake Out
+- Glaive Rush
+- Ice Shard
+- Swords Dance
+- Protect
+
+Sneasler @ Grassy Seed
+Ability: Unburden
+Jolly Nature
 - Close Combat
-- Protect
-
-Archaludon @ Leftovers
-Ability: Stamina
-Calm Nature
-- Protect
-- Flash Cannon
-- Aura Sphere
-- Electro Shot
-
-Meganium @ Meganiumite
-Ability: Overgrow
-Modest Nature
-- Protect
-- Solar Beam
-- Dazzling Gleam
-- Weather Ball
-
-######################################################################
-TEAM 211 — programvoid · #27 at Alpensee Tour (Reg M-C) #77 (93 teams) · 4-3
-######################################################################
-Best team for Pairings: Raichu-Y + Sceptile
-
-Gholdengo @ Life Orb
-Ability: Good as Gold
-Modest Nature
-- Make It Rain
-- Shadow Ball
-- Nasty Plot
-- Protect
-
-Raichu @ Raichunite Y
-Ability: Lightning Rod
-Timid Nature
-- Zap Cannon
-- Focus Blast
+- Dire Claw
+- Coaching
 - Fake Out
-- Protect
 
-Sceptile @ Sceptilite
-Ability: Overgrow
-Timid Nature
-- Dragon Pulse
-- Energy Ball
-- Earth Power
-- Protect
-
-Basculegion-Male @ Focus Sash
+Basculegion-Male @ Mystic Water
 Ability: Adaptability
 Adamant Nature
-- Liquidation
 - Last Respects
 - Aqua Jet
+- Wave Crash
 - Protect
 
-Sneasler @ White Herb
-Ability: Unburden
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
 Adamant Nature
-- Dire Claw
-- Close Combat
-- Rock Slide
-- Protect
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- High Horsepower
 
 Incineroar @ Sitrus Berry
 Ability: Intimidate
 Impish Nature
+- Fake Out
 - Flare Blitz
 - Throat Chop
+- Parting Shot
+
+Floette @ Floettite
+Ability: Flower Veil
+Modest Nature
+- Moonblast
+- Dazzling Gleam
+- Calm Mind
+- Protect
+
+######################################################################
+TEAM 282 — bjd · #8 at ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (34 teams) · 4-3
+######################################################################
+Best team for Pairings: Lucario-Z + Staraptor
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Grassy Glide
+- Wood Hammer
+- High Horsepower
+- Fake Out
+
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Timid Nature
+- Detect
+- Aura Sphere
+- Flash Cannon
+- Calm Mind
+
+Altaria @ Haban Berry
+Ability: Cloud Nine
+Timid Nature
+- Hyper Voice
+- Tailwind
+- Perish Song
+- Protect
+
+Dragapult @ Life Orb
+Ability: Infiltrator
+Timid Nature
+- Draco Meteor
+- Shadow Ball
+- Will-O-Wisp
+- Protect
+
+Staraptor @ Staraptite
+Ability: Intimidate
+Jolly Nature
+- Close Combat
+- Brave Bird
+- Roost
+- Protect
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Adamant Nature
+- Flare Blitz
+- Darkest Lariat
 - Parting Shot
 - Fake Out
 
 ######################################################################
-TEAM 212 — courier · #19 at VGC Indigo League #2 (Prize: Eternal Floette) (105 teams) · 4-3
+TEAM 283 — iluxmh · #9 at VGC Reg M-C Ingame Tour #9 (Shiny Gyarados) (44 teams) · 4-3
+######################################################################
+Best team for Pairings: Floette + Raichu-X
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Grassy Glide
+- U-turn
+- Wood Hammer
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Impish Nature
+- Parting Shot
+- Fake Out
+- Flare Blitz
+- Snarl
+
+Volcarona @ Grassy Seed
+Ability: Flame Body
+Modest Nature
+- Protect
+- Quiver Dance
+- Heat Wave
+- Giga Drain
+
+Floette @ Floettite
+Ability: Flower Veil
+Modest Nature
+- Protect
+- Calm Mind
+- Draining Kiss
+- Dazzling Gleam
+
+Raichu @ Raichunite X
+Ability: Lightning Rod
+Jolly Nature
+- Protect
+- Fake Out
+- Feint
+- Volt Tackle
+
+Garchomp @ Choice Scarf
+Ability: Rough Skin
+Adamant Nature
+- Stomping Tantrum
+- Rock Slide
+- Dragon Claw
+- Rock Tomb
+
+######################################################################
+TEAM 284 — wobrangenau · played MetaVGC Arena #1 - Reg MC - Prizes: R$ 50 + Shiny (70 teams) · 0-0
+######################################################################
+Best team for Pairings: Garchomp-Z + Skarmory
+
+Milotic @ Sitrus Berry
+Ability: Competitive
+Modest Nature
+- Scald
+- Ice Beam
+- Protect
+- Recover
+
+Incineroar @ Rocky Helmet
+Ability: Intimidate
+Impish Nature
+- Fake Out
+- Flare Blitz
+- Throat Chop
+- Parting Shot
+
+Kingambit @ Life Orb
+Ability: Defiant
+Adamant Nature
+- Sucker Punch
+- Kowtow Cleave
+- Protect
+- Low Kick
+
+Skarmory @ Skarmorite
+Ability: Keen Eye
+Jolly Nature
+- Brave Bird
+- Iron Head
+- Protect
+- Swords Dance
+
+Glimmora @ Focus Sash
+Ability: Toxic Debris
+Timid Nature
+- Power Gem
+- Sludge Bomb
+- Spiky Shield
+- Earth Power
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Timid Nature
+- Draco Meteor
+- Power Gem
+- Protect
+- Earth Power
+
+######################################################################
+TEAM 285 — courier · #19 at VGC Indigo League #2 (Prize: Eternal Floette) (105 teams) · 4-3
 ######################################################################
 Best team for Pairings: Dragonite + Tyranitar
 
@@ -11255,113 +15136,60 @@ Adamant Nature
 - Ice Punch
 
 ######################################################################
-TEAM 213 — coban072 · #30 at Tenki's Cart Weekly #120 - Reg M-C (137 teams) · 4-3
+TEAM 286 — discerner · #34 at Coupe Critique Champions #4 - 100€ prize (128 teams) · 4-3
 ######################################################################
-Best team for Pairings: Charizard-Y + Sceptile
+Best team for Pairings: Chandelure + Salamence
 
-Sceptile @ Sceptilite
-Ability: Overgrow
-Timid Nature
-- Dragon Pulse
-- Energy Ball
-- Earth Power
-- Protect
-
-Sneasler @ Psychic Seed
-Ability: Unburden
-Adamant Nature
-- Dire Claw
-- Close Combat
-- Rock Slide
-- Protect
-
-Indeedee @ Focus Sash
-Ability: Psychic Surge
-Timid Nature
-- Expanding Force
-- Trick Room
-- Imprison
-- Protect
-
-Rotom-Heat @ Choice Scarf
-Ability: Levitate
-Timid Nature
-- Discharge
-- Overheat
-- Trick
-- Electroweb
-
-Charizard @ Charizardite Y
-Ability: Blaze
-Modest Nature
-- Weather Ball
-- Heat Wave
-- Solar Beam
-- Protect
-
-Gholdengo @ Life Orb
-Ability: Good as Gold
-Modest Nature
-- Make It Rain
-- Shadow Ball
-- Nasty Plot
-- Protect
-
-######################################################################
-TEAM 214 — noogazgiz · #26 at Talon's FIGHT CLUB #102 POKEMON CHAMPIONS REG M-C (91 teams) · 4-3
-######################################################################
-Best team for Pairings: Gardevoir + Metagross
-
-Indeedee ♀ @ Rocky Helmet
-Ability: Psychic Surge
-Bold Nature
-- Imprison
-- Follow Me
-- Helping Hand
-- Trick Room
-
-Gardevoir @ Gardevoirite
-Ability: Trace
-Modest Nature
-- Expanding Force
-- Hyper Voice
-- Trick Room
-- Protect
-
-Metagross @ Metagrossite
-Ability: Clear Body
-Jolly Nature
-- Steel Roller
-- Psychic Fangs
-- Stomping Tantrum
-- Protect
-
-Sneasler @ Psychic Seed
-Ability: Unburden
-Adamant Nature
-- Dire Claw
-- Close Combat
-- Rock Slide
-- Protect
-
-Armarouge @ Life Orb
+Chandelure @ Chandelurite
 Ability: Flash Fire
 Modest Nature
-- Armor Cannon
-- Expanding Force
-- Wide Guard
-- Trick Room
-
-Toxtricity-Low-Key @ Magnet
-Ability: Punk Rock
-Modest Nature
-- Overdrive
-- Sludge Bomb
-- Snarl
+- Heat Wave
+- Shadow Ball
+- Calm Mind
 - Protect
 
+Salamence @ Salamencite
+Ability: Intimidate
+Timid Nature
+- Hyper Voice
+- Flamethrower
+- Tailwind
+- Protect
+
+Rillaboom @ Life Orb
+Ability: Grassy Surge
+Brave Nature
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- U-turn
+
+Sneasler @ Grassy Seed
+Ability: Unburden
+Jolly Nature
+- Fake Out
+- Dire Claw
+- Close Combat
+- Protect
+
+Kingambit @ Focus Sash
+Ability: Defiant
+Adamant Nature
+- Iron Head
+- Sucker Punch
+- Swords Dance
+- Protect
+
+Clefable @ Sitrus Berry
+Ability: Unaware
+Bold Nature
+- Follow Me
+- Helping Hand
+- Moonblast
+- Icy Wind
+
 ######################################################################
-TEAM 215 — hidro17 · #28 at Talon's FIGHT CLUB #104 POKEMON CHAMPIONS REG M-C (97 teams) · 4-3
+TEAM 287 — hidro17 · #28 at Talon's FIGHT CLUB #104 POKEMON CHAMPIONS REG M-C (97 teams) · 4-3
 ######################################################################
 Best team for Pairings: Dragonite + Gardevoir
 
@@ -11414,537 +15242,272 @@ Adamant Nature
 - High Horsepower
 
 ######################################################################
-TEAM 216 — bongoravoli · #20 at VGC Trainer School; champions M/C #4 (115 teams) · 4-3
+TEAM 288 — herrblau · #34 at CHAMPIONS REG. M-C |👑CROWN FIGHT Bo3 TOUR #89👑 (131 teams) · 4-3
 ######################################################################
-Best team for Pairings: Meganium + Starmie
+Best team for Pairings: Garchomp-Z + Meganium
 
-Starmie @ Starminite
-Ability: Natural Cure
-Hasty Nature
-- Liquidation
-- Expanding Force
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
 - Protect
-- Ice Beam
+- Draco Meteor
+- Earth Power
+- Power Gem
 
-Indeedee ♀ @ Rocky Helmet
+Indeedee @ Choice Scarf
 Ability: Psychic Surge
-Relaxed Nature
-- Follow Me
-- Psychic
-- Trick Room
-- Helping Hand
+Modest Nature
+- Dazzling Gleam
+- Trick
+- Expanding Force
+- Mystical Fire
+
+Sneasler @ Psychic Seed
+Ability: Unburden
+Adamant Nature
+- Dire Claw
+- Rock Tomb
+- Protect
+- Close Combat
 
 Archaludon @ Leftovers
 Ability: Stamina
 Calm Nature
+- Snarl
 - Electro Shot
 - Dragon Pulse
 - Protect
-- Aura Sphere
-
-Pelipper @ Sitrus Berry
-Ability: Drizzle
-Bold Nature
-- Weather Ball
-- Hurricane
-- Wide Guard
-- Tailwind
-
-Sneasler @ Psychic Seed
-Ability: Unburden
-Jolly Nature
-- Fake Out
-- Dire Claw
-- Throat Chop
-- Close Combat
-
-Meganium @ Meganiumite
-Ability: Overgrow
-Modest Nature
-- Solar Beam
-- Dazzling Gleam
-- Protect
-- Weather Ball
-
-######################################################################
-TEAM 217 — cima93 · #27 at Rework Esport Champions Talent Cup 3 | 50€ CP M-C (107 teams) · 4-3
-######################################################################
-Best team for Pairings: Gengar + Tyranitar
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Wood Hammer
-- Grassy Glide
-- U-turn
-- Fake Out
-
-Volcarona @ Grassy Seed
-Ability: Flame Body
-Modest Nature
-- Flamethrower
-- Struggle Bug
-- Quiver Dance
-- Protect
-
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
-Adamant Nature
-- Rock Slide
-- Knock Off
-- Low Kick
-- Protect
-
-Garchomp @ Sitrus Berry
-Ability: Rough Skin
-Adamant Nature
-- Dragon Claw
-- Stomping Tantrum
-- Swords Dance
-- Protect
-
-Corviknight @ Leftovers
-Ability: Mirror Armor
-Adamant Nature
-- Iron Head
-- Brave Bird
-- Tailwind
-- Roost
-
-Gengar @ Gengarite
-Ability: Cursed Body
-Modest Nature
-- Sludge Bomb
-- Shadow Ball
-- Will-O-Wisp
-- Protect
-
-######################################################################
-TEAM 218 — count_snarky · #25 at Tenki's Cart Weekly #118 - Reg M-C (120 teams) · 4-3
-######################################################################
-Best team for Pairings: Scrafty + Skarmory
-
-Armarouge @ Colbur Berry
-Ability: Flash Fire
-Timid Nature
-- Armor Cannon
-- Heat Wave
-- Psychic
-- Protect
-
-Scrafty @ Scraftinite
-Ability: Intimidate
-Adamant Nature
-- Fake Out
-- Drain Punch
-- Crunch
-- Close Combat
-
-Sinistcha @ Sitrus Berry
-Ability: Hospitality
-Modest Nature
-- Matcha Gotcha
-- Protect
-- Shadow Ball
-- Rage Powder
-
-Weavile @ Wide Lens
-Ability: Pickpocket
-Jolly Nature
-- Knock Off
-- Fake Out
-- Ice Spinner
-- Triple Axel
-
-Rotom-Wash @ Leftovers
-Ability: Levitate
-Modest Nature
-- Hydro Pump
-- Electroweb
-- Will-O-Wisp
-- Thunderbolt
-
-Skarmory @ Skarmorite
-Ability: Sturdy
-Adamant Nature
-- Roost
-- Iron Head
-- Protect
-- Brave Bird
-
-######################################################################
-TEAM 219 — jacrepid · #25 at TARTAN TAKEDOWN #38! - [CHAMPIONS REG M-C!] (123 teams) · 4-3
-######################################################################
-Best team for Pairings: Delphox + Venusaur
-
-Venusaur @ Venusaurite
-Ability: Chlorophyll
-Modest Nature
-- Sludge Bomb
-- Protect
-- Giga Drain
-- Earth Power
-
-Delphox @ Delphoxite
-Ability: Blaze
-Timid Nature
-- Heat Wave
-- Psychic
-- Protect
-- Nasty Plot
-
-Kommo-o @ Leftovers
-Ability: Soundproof
-Modest Nature
-- Clangorous Soul
-- Aura Sphere
-- Protect
-- Clanging Scales
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Fake Out
-- Grassy Glide
-- Wood Hammer
-- High Horsepower
-
-Kingambit @ Focus Sash
-Ability: Defiant
-Adamant Nature
-- Kowtow Cleave
-- Sucker Punch
-- Iron Head
-- Low Kick
-
-Basculegion-Male @ Life Orb
-Ability: Adaptability
-Adamant Nature
-- Wave Crash
-- Aqua Jet
-- Last Respects
-- Protect
-
-######################################################################
-TEAM 220 — roge4d · played Intimidators Champions Challenge #43 REG M-C (99 teams) · 0-0
-######################################################################
-Best team for Pairings: Charizard-Y + Skarmory
-
-Charizard @ Charizardite Y
-Ability: Blaze
-Modest Nature
-- Heat Wave
-- Solar Beam
-- Weather Ball
-- Protect
-
-Skarmory @ Skarmorite
-Ability: Sturdy
-Adamant Nature
-- Iron Head
-- Brave Bird
-- Body Press
-- Tailwind
-
-Kingambit @ Chople Berry
-Ability: Defiant
-Adamant Nature
-- Kowtow Cleave
-- Sucker Punch
-- Iron Head
-- Protect
-
-Tsareena @ Focus Sash
-Ability: Queenly Majesty
-Adamant Nature
-- Protect
-- Trop Kick
-- Triple Axel
-- U-turn
-
-Basculegion-Male @ Life Orb
-Ability: Adaptability
-Adamant Nature
-- Wave Crash
-- Aqua Jet
-- Last Respects
-- Protect
-
-Glimmora @ Choice Scarf
-Ability: Toxic Debris
-Modest Nature
-- Power Gem
-- Sludge Bomb
-- Earth Power
-- Dazzling Gleam
-
-######################################################################
-TEAM 221 — manucoel · #8 at ⛩️Chadweezy95 VGC Champions Tournament Ep 12!⛩️ (23 teams) · 3-3
-######################################################################
-Best team for Pairings: Charizard-Y + Delphox
-
-Overqwil @ Leftovers
-Ability: Intimidate
-Careful Nature
-- Barb Barrage
-- Minimize
-- Stockpile
-- Protect
-
-Sneasler @ White Herb
-Ability: Unburden
-Jolly Nature
-- Fake Out
-- Protect
-- Dire Claw
-- Close Combat
-
-Sableye @ Sitrus Berry
-Ability: Prankster
-Sassy Nature
-- Light Screen
-- Sunny Day
-- Fake Out
-- Will-O-Wisp
-
-Delphox @ Delphoxite
-Ability: Blaze
-Timid Nature
-- Heat Wave
-- Psychic
-- Psych Up
-- Protect
-
-Garchomp @ Life Orb
-Ability: Rough Skin
-Jolly Nature
-- Rock Slide
-- Stomping Tantrum
-- Dragon Claw
-- Protect
-
-Charizard @ Charizardite Y
-Ability: Blaze
-Timid Nature
-- Protect
-- Heat Wave
-- Air Slash
-- Solar Beam
-
-######################################################################
-TEAM 222 — coban072 · #10 at VGC UmbreNews 13.10.2026 #35 - Champion (92 teams) · 5-2
-######################################################################
-Best team for Pairings: Sceptile + Staraptor
-
-Sceptile @ Sceptilite
-Ability: overgrow
-Timid Nature
-- Energy Ball
-- Dragon Pulse
-- Earth Power
-- Protect
-
-Rotom-Heat @ Choice Scarf
-Ability: Levitate
-Timid Nature
-- Discharge
-- Overheat
-- Trick
-- Electroweb
-
-Sneasler @ Psychic Seed
-Ability: Unburden
-Adamant Nature
-- Close Combat
-- Dire Claw
-- Rock Slide
-- Protect
-
-Indeedee @ Focus Sash
-Ability: Psychic Surge
-Timid Nature
-- Expanding Force
-- Trick Room
-- Imprison
-- Protect
-
-Gholdengo @ Life Orb
-Ability: Good as Gold
-Modest Nature
-- Make It Rain
-- Shadow Ball
-- Nasty Plot
-- Protect
-
-Staraptor @ Staraptite
-Ability: Intimidate
-Jolly Nature
-- Close Combat
-- Brave Bird
-- Tailwind
-- Protect
-
-######################################################################
-TEAM 223 — daviduv · #10 at ⛩️Chadweezy95 VGC Champions Tournament Ep 13!⛩️ (48 teams) · 3-2
-######################################################################
-Best team for Pairings: Dragonite + Venusaur
-
-Dragonite @ Dragoninite
-Ability: Multiscale
-Modest Nature
-- Protect
-- Dragon Pulse
-- Hurricane
-- Thunder
-
-Venusaur @ Venusaurite
-Ability: Chlorophyll
-Modest Nature
-- Protect
-- Sludge Bomb
-- Giga Drain
-- Earth Power
 
 Pelipper @ Focus Sash
 Ability: Drizzle
 Modest Nature
-- Protect
-- Weather Ball
 - Hurricane
+- Weather Ball
+- Wide Guard
 - Tailwind
 
-Archaludon @ Leftovers
-Ability: Stamina
+Meganium @ Meganiumite
+Ability: Overgrow
 Modest Nature
+- Weather Ball
 - Protect
-- Electro Shot
-- Dragon Pulse
-- Flash Cannon
-
-Grimmsnarl @ Light Clay
-Ability: Prankster
-Careful Nature
-- Reflect
-- Light Screen
-- Spirit Break
-- Parting Shot
-
-Basculegion-Male @ Choice Scarf
-Ability: Adaptability
-Jolly Nature
-- Wave Crash
-- Last Respects
-- Flip Turn
-- Aqua Jet
+- Dazzling Gleam
+- Solar Beam
 
 ######################################################################
-TEAM 224 — theoneskywalker · #2 at Chadweezy95 VGC Champions Tournament Ep 17!⛩️ (15 teams) · 3-2
+TEAM 289 — unseelie · #3 at Thavorian Trials 9 (23 teams) · 4-3
 ######################################################################
-Best team for Pairings: Charizard-X + Metagross
+Best team for Pairings: Baxcalibur + Staraptor
 
-Charizard @ Charizardite X
-Ability: Blaze
+Baxcalibur @ Baxcalibrite
+Ability: Thermal Exchange
 Adamant Nature
-- Dragon Claw
-- Flare Blitz
-- Dragon Dance
+- Glaive Rush
+- Stomping Tantrum
 - Protect
-
-Ninetales-Alola @ Light Clay
-Ability: Snow Warning
-Timid Nature
-- Blizzard
-- Moonblast
-- Freeze-Dry
-- Aurora Veil
+- Ice Shard
 
 Rillaboom @ Miracle Seed
 Ability: Grassy Surge
 Adamant Nature
+- Fake Out
+- U-turn
 - Wood Hammer
 - Grassy Glide
-- U-turn
-- Fake Out
+
+Ninetales-Alola @ Light Clay
+Ability: Snow Warning
+Timid Nature
+- Aurora Veil
+- Blizzard
+- Moonblast
+- Protect
 
 Incineroar @ Sitrus Berry
 Ability: Intimidate
-Careful Nature
+Adamant Nature
 - Flare Blitz
-- Darkest Lariat
-- Parting Shot
+- Throat Chop
 - Fake Out
+- Parting Shot
 
-Sneasler @ White Herb
+Staraptor @ Staraptite
+Ability: Intimidate
+Adamant Nature
+- Close Combat
+- Brave Bird
+- Roost
+- Protect
+
+Milotic @ Leftovers
+Ability: Competitive
+Bold Nature
+- Scald
+- Icy Wind
+- Life Dew
+- Recover
+
+######################################################################
+TEAM 290 — begonia17 · #22 at London Corviknights VGC Weekly Tour 16! (64 teams) · 3-4
+######################################################################
+Best team for Pairings: Meganium + Salamence
+
+Meganium @ Meganiumite
+Ability: Leaf Guard
+Modest Nature
+- Solar Beam
+- Dazzling Gleam
+- Weather Ball
+- Protect
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Impish Nature
+- Fake Out
+- Flare Blitz
+- Throat Chop
+- Parting Shot
+
+Basculegion-Male @ Life Orb
+Ability: Adaptability
+Adamant Nature
+- Aqua Jet
+- Wave Crash
+- Last Respects
+- Protect
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- High Horsepower
+- Wood Hammer
+- Grassy Glide
+
+Sneasler @ Grassy Seed
 Ability: Unburden
 Adamant Nature
 - Dire Claw
 - Close Combat
-- Fake Out
-- Protect
-
-Metagross @ Metagrossite
-Ability: Clear Body
-Adamant Nature
-- Meteor Mash
-- Psychic Fangs
-- Steel Roller
-- Protect
-
-######################################################################
-TEAM 225 — rjord · played Small Pokemon Cup Championships (37 teams) · 0-0
-######################################################################
-Best team for Pairings: Chandelure + Floette
-
-Chandelure @ Chandelurite
-Ability: Flash Fire
-Modest Nature
-- Protect
-- Heat Wave
-- Flamethrower
-- Shadow Ball
-
-Floette @ Floettite
-Ability: Flower Veil
-Timid Nature
-- Protect
-- Calm Mind
-- Dazzling Gleam
-- Draining Kiss
-
-Indeedee ♀ @ Psychic Seed
-Ability: Psychic Surge
-Bold Nature
-- Follow Me
-- Mystical Fire
-- Trick Room
-- Imprison
-
-Excadrill @ Choice Scarf
-Ability: Mold Breaker
-Jolly Nature
 - Rock Slide
-- Rock Tomb
-- High Horsepower
+- Protect
+
+Salamence @ Salamencite
+Ability: Intimidate
+Timid Nature
+- Draco Meteor
+- Hyper Voice
+- Tailwind
+- Protect
+
+######################################################################
+TEAM 291 — dr_shio · #16 at PWC - Battle in the Colosseum #26 (46 teams) · 3-2
+######################################################################
+Best team for Pairings: Golisopod + Tyranitar
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Brave Nature
+- Protect
+- Leech Life
+- Swords Dance
 - Iron Head
 
-Toxapex @ Leftovers
-Ability: Regenerator
-Relaxed Nature
-- Baneful Bunker
-- Infestation
-- Wide Guard
-- Toxic
+Indeedee ♀ @ Colbur Berry
+Ability: Own Tempo
+Sassy Nature
+- Protect
+- Trick Room
+- Psychic
+- Follow Me
 
-Sirfetch'd @ Leek
+Sinistcha @ Sitrus Berry
+Ability: Hospitality
+Bold Nature
+- Matcha Gotcha
+- Protect
+- Life Dew
+- Rage Powder
+
+Tyranitar @ Tyranitarite
+Ability: Sand Stream
+Impish Nature
+- Protect
+- Knock Off
+- Body Press
+- Iron Defense
+
+Garganacl @ Leftovers
+Ability: Purifying Salt
+Sassy Nature
+- Salt Cure
+- Protect
+- Rock Slide
+- Wide Guard
+
+Decidueye-Hisui @ Life Orb
 Ability: Scrappy
-Jolly Nature
-- Detect
-- Feint
-- Meteor Assault
-- Poison Jab
+Adamant Nature
+- Protect
+- Close Combat
+- Sucker Punch
+- U-turn
 
 ######################################################################
-TEAM 226 — markusme100 · #4 at Circuito VGC #7 REG MC | Z2 Gaming (19 teams) · 3-2
+TEAM 292 — dragonis · #9 at Gym Leader GAUNTLET (Monotype Tour) (46 teams) · 3-2
+######################################################################
+Best team for Pairings: Baxcalibur + Salamence
+
+Salamence @ Salamencite
+Ability: Intimidade
+Timid Nature
+- Draco Meteor
+- Hyper Voice
+- Tailwind
+- Protect
+
+Baxcalibur @ Baxcalibrite
+Ability: Thermal Exchange
+Adamant Nature
+- Glaive Rush
+- High Horsepower
+- Ice Shard
+- Protect
+
+Noivern @ Focus Sash
+Ability: Infiltrator
+Timid Nature
+- Tailwind
+- Protect
+- Draco Meteor
+- Air Slash
+
+Kommo-o @ Life Orb
+Ability: Soundproof
+Modest Nature
+- Clanging Scales
+- Aura Sphere
+- Flamethrower
+- Protect
+
+Archaludon @ Leftovers
+Ability: Stamina
+Modest Nature
+- Dragon Pulse
+- Flash Cannon
+- Snarl
+- Protect
+
+Goodra-Hisui @ Sitrus Berry
+Ability: Gooey
+Modest Nature
+- Steel Beam
+- Draco Meteor
+- Body Press
+- Protect
+
+######################################################################
+TEAM 293 — markusme100 · #4 at Circuito VGC #7 REG MC | Z2 Gaming (19 teams) · 3-2
 ######################################################################
 Best team for Pairings: Blastoise + Kangaskhan
 
@@ -11997,7 +15560,325 @@ Quiet Nature
 - Protect
 
 ######################################################################
-TEAM 227 — melty02 · #14 at Copa Oak Stadium #10 - MonoColor Challenge - R$ 50 (33 teams) · 3-2
+TEAM 294 — yeserin · #5 at Unknown Territory (21 teams) · 3-2
+######################################################################
+Best team for Pairings: Blaziken + Skarmory
+
+Swampert @ Swampertite
+Ability: Damp
+Adamant Nature
+- Earthquake
+- Ice Punch
+- Wave Crash
+- Protect
+
+Archaludon @ Life Orb
+Ability: Stalwart
+Modest Nature
+- Dragon Pulse
+- Electro Shot
+- Flash Cannon
+- Protect
+
+Pelipper @ Focus Sash
+Ability: Drizzle
+Modest Nature
+- Hurricane
+- Muddy Water
+- Wide Guard
+- Protect
+
+Tsareena @ Choice Scarf
+Ability: Queenly Majesty
+Jolly Nature
+- Power Whip
+- Triple Axel
+- U-turn
+- Zen Headbutt
+
+Skarmory @ Skarmorite
+Ability: Sturdy
+Jolly Nature
+- Brave Bird
+- Iron Head
+- Tailwind
+- Protect
+
+Blaziken @ Blazikenite
+Ability: Speed Boost
+Adamant Nature
+- Close Combat
+- Flare Blitz
+- Rock Slide
+- Protect
+
+######################################################################
+TEAM 295 — daviduv · #10 at ⛩️Chadweezy95 VGC Champions Tournament Ep 13!⛩️ (48 teams) · 3-2
+######################################################################
+Best team for Pairings: Dragonite + Venusaur
+
+Dragonite @ Dragoninite
+Ability: Multiscale
+Modest Nature
+- Protect
+- Dragon Pulse
+- Hurricane
+- Thunder
+
+Venusaur @ Venusaurite
+Ability: Chlorophyll
+Modest Nature
+- Protect
+- Sludge Bomb
+- Giga Drain
+- Earth Power
+
+Pelipper @ Focus Sash
+Ability: Drizzle
+Modest Nature
+- Protect
+- Weather Ball
+- Hurricane
+- Tailwind
+
+Archaludon @ Leftovers
+Ability: Stamina
+Modest Nature
+- Protect
+- Electro Shot
+- Dragon Pulse
+- Flash Cannon
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+Careful Nature
+- Reflect
+- Light Screen
+- Spirit Break
+- Parting Shot
+
+Basculegion-Male @ Choice Scarf
+Ability: Adaptability
+Jolly Nature
+- Wave Crash
+- Last Respects
+- Flip Turn
+- Aqua Jet
+
+######################################################################
+TEAM 296 — pabilisco81 · #6 at 🍬 CARAMELO RARO — WEEKLY #3 (30 teams) · 3-2
+######################################################################
+Best team for Pairings: Excadrill + Salamence
+
+Serperior @ Wide Lens
+Ability: Contrary
+Timid Nature
+- Leaf Storm
+- Dragon Pulse
+- Protect
+- Glare
+
+Salamence @ Salamencite
+Ability: Intimidate
+Hasty Nature
+- Hyper Voice
+- Double-Edge
+- Protect
+- Tailwind
+
+Milotic @ Sitrus Berry
+Ability: Competitive
+Modest Nature
+- Hydro Pump
+- Icy Wind
+- Life Dew
+- Coil
+
+Excadrill @ Excadrite
+Ability: Mold Breaker
+Jolly Nature
+- High Horsepower
+- Iron Head
+- Protect
+- Swords Dance
+
+Ceruledge @ Life Orb
+Ability: Flash Fire
+Adamant Nature
+- Shadow Sneak
+- Swords Dance
+- Bitter Blade
+- Protect
+
+Persian-Alola @ Black Glasses
+Ability: Fur Coat
+Timid Nature
+- Fake Out
+- Foul Play
+- Parting Shot
+- Icy Wind
+
+######################################################################
+TEAM 297 — theoneskywalker · #2 at Chadweezy95 VGC Champions Tournament Ep 17!⛩️ (15 teams) · 3-2
+######################################################################
+Best team for Pairings: Charizard-X + Metagross
+
+Charizard @ Charizardite X
+Ability: Blaze
+Adamant Nature
+- Dragon Claw
+- Flare Blitz
+- Dragon Dance
+- Protect
+
+Ninetales-Alola @ Light Clay
+Ability: Snow Warning
+Timid Nature
+- Blizzard
+- Moonblast
+- Freeze-Dry
+- Aurora Veil
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Grassy Glide
+- U-turn
+- Fake Out
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Careful Nature
+- Flare Blitz
+- Darkest Lariat
+- Parting Shot
+- Fake Out
+
+Sneasler @ White Herb
+Ability: Unburden
+Adamant Nature
+- Dire Claw
+- Close Combat
+- Fake Out
+- Protect
+
+Metagross @ Metagrossite
+Ability: Clear Body
+Adamant Nature
+- Meteor Mash
+- Psychic Fangs
+- Steel Roller
+- Protect
+
+######################################################################
+TEAM 298 — nycsquirtle · #4 at Thavorian’s Tubby tour (17 teams) · 3-2
+######################################################################
+Best team for Pairings: Baxcalibur + Camerupt
+
+Blastoise @ Blastoisinite
+Ability: Rain Dish
+Quiet Nature
+- Shell Smash
+- Water Spout
+- Dark Pulse
+- Aura Sphere
+
+Baxcalibur @ Baxcalibrite
+Ability: Thermal Exchange
+Brave Nature
+- Glaive Rush
+- Thunder Fang
+- Swords Dance
+- Icicle Spear
+
+Hydrapple @ Yache Berry
+Ability: Supersweet Syrup
+Quiet Nature
+- Fickle Beam
+- Giga Drain
+- Nasty Plot
+- Pollen Puff
+
+Camerupt @ Cameruptite
+Ability: Solid Rock
+Quiet Nature
+- Earth Power
+- Ancient Power
+- Eruption
+- Protect
+
+Slowking-Galar @ Bright Powder
+Ability: Regenerator
+Quiet Nature
+- Trick Room
+- Psychic Terrain
+- Expanding Force
+- Sludge Bomb
+
+Clefable @ Leftovers
+Ability: Magic Guard
+Sassy Nature
+- Follow Me
+- Cosmic Power
+- Life Dew
+- Moonblast
+
+######################################################################
+TEAM 299 — twenty9cent2 · #56 at Coupe Critique Champions #4 - 100€ prize (128 teams) · 3-2
+######################################################################
+Best team for Pairings: Froslass + Tyranitar
+
+Milotic @ Sitrus Berry
+Ability: Competitive
+Bold Nature
+- Scald
+- Life Dew
+- Ice Beam
+- Protect
+
+Venusaur @ Venusaurite
+Ability: Chlorophyll
+Modest Nature
+- Solar Beam
+- Sludge Bomb
+- Weather Ball
+- Protect
+
+Tyranitar @ Tyranitarite
+Ability: Sand Stream
+Brave Nature
+- Knock Off
+- Rock Slide
+- Low Kick
+- Protect
+
+Froslass @ Froslassite
+Ability: Cursed Body
+Timid Nature
+- Shadow Ball
+- Blizzard
+- Aurora Veil
+- Protect
+
+Torkoal @ Life Orb
+Ability: Drought
+Quiet Nature
+- Eruption
+- Earth Power
+- Weather Ball
+- Protect
+
+Excadrill @ Focus Sash
+Ability: Sand Rush
+Adamant Nature
+- Iron Head
+- Earthquake
+- Rock Tomb
+- Protect
+
+######################################################################
+TEAM 300 — melty02 · #14 at Copa Oak Stadium #10 - MonoColor Challenge - R$ 50 (33 teams) · 3-2
 ######################################################################
 Best team for Pairings: Froslass + Gardevoir
 
@@ -12050,749 +15931,113 @@ Brave Nature
 - First Impression
 
 ######################################################################
-TEAM 228 — yeserin · #5 at Unknown Territory (21 teams) · 3-2
+TEAM 301 — somehowfaded · #9 at Champions' Frontier #1 (22 teams) · 3-2
 ######################################################################
-Best team for Pairings: Skarmory + Swampert
-
-Swampert @ Swampertite
-Ability: Damp
-Adamant Nature
-- Earthquake
-- Ice Punch
-- Wave Crash
-- Protect
-
-Archaludon @ Life Orb
-Ability: Stalwart
-Modest Nature
-- Dragon Pulse
-- Electro Shot
-- Flash Cannon
-- Protect
-
-Pelipper @ Focus Sash
-Ability: Drizzle
-Modest Nature
-- Hurricane
-- Muddy Water
-- Wide Guard
-- Protect
-
-Tsareena @ Choice Scarf
-Ability: Queenly Majesty
-Jolly Nature
-- Power Whip
-- Triple Axel
-- U-turn
-- Zen Headbutt
-
-Skarmory @ Skarmorite
-Ability: Sturdy
-Jolly Nature
-- Brave Bird
-- Iron Head
-- Tailwind
-- Protect
+Best team for Pairings: Baxcalibur + Blaziken
 
 Blaziken @ Blazikenite
 Ability: Speed Boost
 Adamant Nature
-- Close Combat
+- Detect
 - Flare Blitz
-- Rock Slide
-- Protect
-
-######################################################################
-TEAM 229 — theonlyfizzo · #14 at London Corviknights VGC Weekly Tour 12! (Reg M-C) (46 teams) · 3-2
-######################################################################
-Best team for Pairings: Charizard-Y + Scrafty
-
-Aerodactyl @ Focus Sash
-Ability: Unnerve
-Jolly Nature
-- Protect
-- Dual Wingbeat
-- Rock Slide
-- Tailwind
-
-Garchomp @ Choice Scarf
-Ability: Rough Skin
-Jolly Nature
-- Protect
-- Earthquake
-- Stomping Tantrum
-- Dragon Claw
-
-Scrafty @ Scraftinite
-Ability: Intimidate
-Adamant Nature
-- Fake Out
-- Encore
 - Close Combat
-- Lash Out
+- Rock Slide
 
-Charizard @ Charizardite Y
-Ability: Blaze
-Modest Nature
-- Heat Wave
+Rillaboom @ Sitrus Berry
+Ability: Grassy Surge
+Careful Nature
+- High Horsepower
+- Fake Out
+- Grassy Glide
+- U-turn
+
+Ninetales-Alola @ Never-Melt Ice
+Ability: Snow Warning
+Timid Nature
 - Protect
-- Weather Ball
-- Solar Beam
+- Blizzard
+- Freeze-Dry
+- Aurora Veil
+
+Baxcalibur @ Baxcalibrite
+Ability: Thermal Exchange
+Adamant Nature
+- Protect
+- High Horsepower
+- Icicle Crash
+- Dragon Dance
+
+Empoleon @ Leftovers
+Ability: Competitive
+Modest Nature
+- Protect
+- Hydro Pump
+- Flash Cannon
+- Blizzard
 
 Farigiraf @ Colbur Berry
 Ability: Armor Tail
-Modest Nature
-- Trick Room
-- Imprison
-- Hyper Voice
-- Psychic
-
-Sylveon @ Fairy Feather
-Ability: Pixilate
-Modest Nature
-- Hyper Voice
-- Protect
-- Hyper Beam
-- Quick Attack
-
-######################################################################
-TEAM 230 — thegonglady · #4 at Hatterene Series Weekly #2 2027 - 6PM UTC - M-C (14 teams) · 3-2
-######################################################################
-Best team for Pairings: Charizard-Y + Kangaskhan
-
-Hatterene @ Life Orb
-Ability: Magic Bounce
-Quiet Nature
-- Psyshock
-- Expanding Force
-- Dazzling Gleam
-- Trick Room
-
-Kangaskhan @ Kangaskhanite
-Ability: Scrappy
-Brave Nature
-- Fake Out
-- Double-Edge
-- Ice Punch
-- Low Kick
-
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
 Sassy Nature
+- Protect
 - Twin Beam
-- Thunderbolt
-- Trick Room
 - Helping Hand
-
-Torkoal @ Charcoal
-Ability: Drought
-Quiet Nature
-- Eruption
-- Heat Wave
-- Weather Ball
-- Protect
-
-Charizard @ Charizardite Y
-Ability: Solar Power
-Modest Nature
-- Heat Wave
-- Overheat
-- Solar Beam
-- Protect
-
-Indeedee ♀ @ Rocky Helmet
-Ability: Psychic Surge
-Relaxed Nature
-- Psyshock
-- Follow Me
 - Trick Room
-- Healing Wish
 
 ######################################################################
-TEAM 231 — lastofthemojito · #11 at Tenki's Cart Weekly #122 - Reg M-C (71 teams) · 4-3
+TEAM 302 — manucoel · #8 at ⛩️Chadweezy95 VGC Champions Tournament Ep 12!⛩️ (23 teams) · 3-3
 ######################################################################
-Best team for Pairings: Charizard-Y + Scizor
-
-Grimmsnarl @ Light Clay
-Ability: Prankster
-Impish Nature
-- Spirit Break
-- Parting Shot
-- Reflect
-- Light Screen
-
-Archaludon @ Leftovers
-Ability: Stamina
-Timid Nature
-- Draco Meteor
-- Flash Cannon
-- Electro Shot
-- Protect
-
-Scizor @ Scizorite
-Ability: Technician
-Adamant Nature
-- Close Combat
-- Bullet Punch
-- Bug Bite
-- Protect
-
-Garchomp @ Choice Scarf
-Ability: Rough Skin
-Adamant Nature
-- Earthquake
-- Stomping Tantrum
-- Dragon Claw
-- Rock Slide
+Best team for Pairings: Charizard-Y + Delphox
 
 Charizard @ Charizardite Y
 Ability: Blaze
 Timid Nature
-- Ancient Power
-- Hurricane
-- Weather Ball
 - Protect
+- Heat Wave
+- Air Slash
+- Solar Beam
 
-Pelipper @ Sitrus Berry
-Ability: Drizzle
-Modest Nature
-- Tailwind
-- Hurricane
-- Weather Ball
-- Protect
-
-######################################################################
-TEAM 232 — 433 · #25 at HeroicTitan’s VGC Battle Arena (55 teams) · 2-2
-######################################################################
-Best team for Pairings: Eelektross + Floette
-
-Goodra-Hisui @ Leftovers
-Ability: Shell Armor
-Careful Nature
-- Heavy Slam
-- Body Press
-- Protect
-- Shelter
-
-Grimmsnarl @ Light Clay
-Ability: Prankster
-Impish Nature
-- Spirit Break
-- Reflect
-- Light Screen
-- Parting Shot
-
-Eelektross @ Eelektrossite
-Ability: Levitate
-Modest Nature
-- Thunderbolt
-- Protect
-- Flamethrower
-- Giga Drain
-
-Arcanine @ Rocky Helmet
-Ability: Intimidate
-Calm Nature
-- Flamethrower
-- Snarl
-- Protect
-- Will-O-Wisp
-
-Sinistcha @ Sitrus Berry
-Ability: Hospitality
-Bold Nature
-- Matcha Gotcha
-- Protect
-- Rage Powder
-- Life Dew
-
-Floette @ Floettite
-Ability: Flower Veil
-Modest Nature
-- Light of Ruin
-- Protect
-- Moonblast
-- Dazzling Gleam
-
-######################################################################
-TEAM 233 — narazerodx · #46 at ValkrixVGC Pokemon Champions League #03 (220 teams) · 4-4
-######################################################################
-Best team for Pairings: Blaziken + Venusaur
-
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
-Bold Nature
-- Helping Hand
-- Psychic
-- Thunderbolt
-- Trick Room
-
-Blaziken @ Blazikenite
-Ability: Speed Boost
-Adamant Nature
-- Close Combat
-- Detect
-- Flare Blitz
-- Rock Slide
-
-Basculegion-Male @ Life Orb
-Ability: Adaptability
-Adamant Nature
-- Protect
-- Wave Crash
-- Last Respects
-- Aqua Jet
-
-Venusaur @ Venusaurite
-Ability: Chlorophyll
-Modest Nature
-- Protect
-- Sludge Bomb
-- Earth Power
-- Giga Drain
-
-Kingambit @ Chople Berry
-Ability: Defiant
-Adamant Nature
-- Kowtow Cleave
-- Iron Head
-- Sucker Punch
-- Low Kick
-
-Ninetales-Alola @ Focus Sash
-Ability: Snow Warning
-Timid Nature
-- Blizzard
-- Aurora Veil
-- Encore
-- Protect
-
-######################################################################
-TEAM 234 — dulceyy · #49 at ValkrixVGC Pokemon Champions League #03 (220 teams) · 4-4
-######################################################################
-Best team for Pairings: Ampharos + Swampert
-
-Garchomp @ Choice Scarf
+Garchomp @ Life Orb
 Ability: Rough Skin
 Jolly Nature
+- Rock Slide
+- Stomping Tantrum
 - Dragon Claw
-- Earthquake
-- Stomping Tantrum
-- Fire Fang
-
-Ampharos @ Ampharosite
-Ability: Static
-Modest Nature
-- Thunder
 - Protect
-- Dazzling Gleam
-- Focus Blast
-
-Pelipper @ Damp Rock
-Ability: Drizzle
-Calm Nature
-- Protect
-- Hurricane
-- Tailwind
-- Chilling Water
-
-Incineroar @ Sitrus Berry
-Ability: Intimidate
-Impish Nature
-- Fake Out
-- Parting Shot
-- Throat Chop
-- Flare Blitz
-
-Swampert @ Swampertite
-Ability: Damp
-Adamant Nature
-- Protect
-- Wave Crash
-- Knock Off
-- Stomping Tantrum
-
-Gholdengo @ Life Orb
-Ability: Good as Gold
-Timid Nature
-- Protect
-- Shadow Ball
-- Nasty Plot
-- Make It Rain
-
-######################################################################
-TEAM 235 — stardast · #27 at ⛩️$30 VGC Champions Tournament Ep 33!⛩️ (123 teams) · 4-3
-######################################################################
-Best team for Pairings: Delphox + Eelektross
 
 Delphox @ Delphoxite
 Ability: Blaze
 Timid Nature
 - Heat Wave
 - Psychic
-- Nasty Plot
+- Psych Up
 - Protect
 
-Tyranitar @ Bright Powder
-Ability: Sand Stream
-Adamant Nature
-- Rock Slide
-- Knock Off
-- High Horsepower
-- Protect
-
-Krookodile @ Choice Scarf
-Ability: Intimidate
-Adamant Nature
-- Earthquake
-- Stomping Tantrum
-- Throat Chop
-- Outrage
-
-Houndstone @ Life Orb
-Ability: Sand Rush
-Adamant Nature
-- Last Respects
-- Poltergeist
-- Ally Switch
-- Protect
-
-Eelektross @ Eelektrossite
-Ability: Levitate
-Modest Nature
-- Thunderbolt
-- Flamethrower
-- Flash Cannon
-- Protect
+Sableye @ Sitrus Berry
+Ability: Prankster
+Sassy Nature
+- Light Screen
+- Sunny Day
+- Fake Out
+- Will-O-Wisp
 
 Sneasler @ White Herb
 Ability: Unburden
-Adamant Nature
-- Close Combat
-- Dire Claw
+Jolly Nature
 - Fake Out
-- Feint
-
-######################################################################
-TEAM 236 — mlstriker · #5 at Monotype Cup Championship (19 teams) · 3-3
-######################################################################
-Best team for Pairings: Skarmory + Staraptor
-
-Staraptor @ Staraptite
-Ability: Intimidate
-Jolly Nature
-- Brave Bird
+- Protect
+- Dire Claw
 - Close Combat
-- Tailwind
-- Roost
 
-Vivillon @ Focus Sash
-Ability: Compound Eyes
-Timid Nature
-- Sleep Powder
-- Hurricane
-- Rage Powder
-- Protect
-
-Skarmory @ Skarmorite
-Ability: Sturdy
-Jolly Nature
-- Brave Bird
-- Iron Head
-- Swords Dance
-- Roost
-
-Dragonite @ White Herb
-Ability: Multiscale
-Modest Nature
-- Extreme Speed
-- Draco Meteor
-- Flamethrower
-- Protect
-
-Gyarados @ Life Orb
-Ability: Intimidate
-Jolly Nature
-- Waterfall
-- Crunch
-- Dragon Dance
-- Protect
-
-Rotom-Fan @ Light Clay
-Ability: Levitate
-Timid Nature
-- Volt Switch
-- Electroweb
-- Reflect
-- Light Screen
-
-######################################################################
-TEAM 237 — tachyon112358 · played Sketch Academy Sunday Regulation M-C Tournament (61 teams) · 0-0
-######################################################################
-Best team for Pairings: Floette + Raichu-X
-
-Volcarona @ Grassy Seed
-Ability: Flame Body
-Modest Nature
-- Protect
-- Heat Wave
-- Giga Drain
-- Quiver Dance
-
-Incineroar @ Sitrus Berry
+Overqwil @ Leftovers
 Ability: Intimidate
 Careful Nature
-- Flare Blitz
-- Fake Out
-- Throat Chop
-- Parting Shot
-
-Raichu @ Raichunite X
-Ability: Lightning Rod
-Jolly Nature
-- Volt Switch
-- Volt Tackle
-- Fake Out
-- Encore
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Grassy Glide
-- Wood Hammer
-- Fake Out
-- U-turn
-
-Basculegion-Male @ Choice Scarf
-Ability: Adaptability
-Jolly Nature
-- Wave Crash
-- Last Respects
-- Flip Turn
-- Soak
-
-Floette @ Floettite
-Ability: Flower Veil
-Modest Nature
+- Barb Barrage
+- Minimize
+- Stockpile
 - Protect
-- Dazzling Gleam
-- Draining Kiss
-- Calm Mind
 
 ######################################################################
-TEAM 238 — athenalaw · #3 at Mamoswine Online 9-15-26 (17 teams) · 2-1
-######################################################################
-Best team for Pairings: Froslass + Metagross
-
-Metagross @ Metagrossite
-Ability: Clear Body
-Jolly Nature
-- Protect
-- Iron Head
-- Psychic Fangs
-- Rock Tomb
-
-Garchomp @ Life Orb
-Ability: Rough Skin
-Jolly Nature
-- Protect
-- Dragon Claw
-- Stomping Tantrum
-- Rock Slide
-
-Archaludon @ Leftovers
-Ability: Stamina
-Bold Nature
-- Protect
-- Electro Shot
-- Dragon Pulse
-- Flash Cannon
-
-Pelipper @ Focus Sash
-Ability: Drizzle
-Modest Nature
-- Protect
-- Hurricane
-- Weather Ball
-- Tailwind
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Grassy Glide
-- Wood Hammer
-- Fake Out
-- Protect
-
-Froslass @ Froslassite
-Ability: Cursed Body
-Timid Nature
-- Protect
-- Blizzard
-- Aurora Veil
-- Rain Dance
-
-######################################################################
-TEAM 239 — engiehacks · #29 at Off Meta Fight Club #6 ($20 USD prize pool) (51 teams) · 2-1
-######################################################################
-Best team for Pairings: Altaria + Tyranitar
-
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
-Jolly Nature
-- Knock Off
-- Low Kick
-- Rock Slide
-- Protect
-
-Excadrill @ Focus Sash
-Ability: Sand Rush
-Adamant Nature
-- Iron Head
-- Rock Slide
-- High Horsepower
-- Protect
-
-Sneasler @ White Herb
-Ability: Pressure
-Adamant Nature
-- Coaching
-- Protect
-- Close Combat
-- Dire Claw
-
-Altaria @ Altarianite
-Ability: Cloud Nine
-Modest Nature
-- Hyper Voice
-- Tailwind
-- Draco Meteor
-- Protect
-
-Empoleon @ Sitrus Berry
-Ability: Competitive
-Modest Nature
-- Hydro Pump
-- Ice Beam
-- Protect
-- Icy Wind
-
-Tsareena @ Choice Scarf
-Ability: Queenly Majesty
-Jolly Nature
-- U-turn
-- Low Kick
-- Power Whip
-- Triple Axel
-
-######################################################################
-TEAM 240 — awesomeazrien · played TARTAN TAKEDOWN #40! - [CHAMPIONS REG M-C!] (112 teams) · 0-0
-######################################################################
-Best team for Pairings: Froslass + Swampert
-
-Froslass @ Froslassite
-Ability: Cursed Body
-Timid Nature
-- Blizzard
-- Shadow Ball
-- Icy Wind
-- Protect
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Fake Out
-- Wood Hammer
-- Grassy Glide
-- High Horsepower
-
-Pelipper @ Focus Sash
-Ability: Drizzle
-Modest Nature
-- Hurricane
-- Weather Ball
-- Tailwind
-- Wide Guard
-
-Archaludon @ Leftovers
-Ability: Stamina
-Modest Nature
-- Electro Shot
-- Dragon Pulse
-- Aura Sphere
-- Protect
-
-Swampert @ Swampertite
-Ability: Damp
-Adamant Nature
-- Wave Crash
-- High Horsepower
-- Ice Punch
-- Protect
-
-Annihilape @ Choice Scarf
-Ability: Defiant
-Jolly Nature
-- U-turn
-- Close Combat
-- Shadow Claw
-- Rock Tomb
-
-######################################################################
-TEAM 241 — hari_om · #44 at Windwork Valley Tour | Qualifiers 2 🇮🇳 (156 teams) · 4-4
-######################################################################
-Best team for Pairings: Charizard-Y + Greninja
-
-Charizard @ Charizardite Y
-Ability: Blaze
-Timid Nature
-- Solar Beam
-- Heat Wave
-- Ancient Power
-- Protect
-
-Garchomp @ Sitrus Berry
-Ability: Rough Skin
-Jolly Nature
-- Earthquake
-- Rock Slide
-- Dragon Claw
-- Protect
-
-Sylveon @ Focus Sash
-Ability: Pixilate
-Modest Nature
-- Detect
-- Hyper Voice
-- Hyper Beam
-- Quick Attack
-
-Tinkaton @ Occa Berry
-Ability: Own Tempo
-Adamant Nature
-- Gigaton Hammer
-- Fake Out
-- Wood Hammer
-- Protect
-
-Tsareena @ Choice Scarf
-Ability: Queenly Majesty
-Jolly Nature
-- Trop Kick
-- High Jump Kick
-- Triple Axel
-- Zen Headbutt
-
-Greninja @ Greninjite
-Ability: Protean
-Timid Nature
-- Water Shuriken
-- Dark Pulse
-- Ice Beam
-- Extrasensory
-
-######################################################################
-TEAM 242 — nema95 · #21 at The Drywalls Series #22 (50 teams) · 3-3
+TEAM 303 — nema95 · #21 at The Drywalls Series #22 (50 teams) · 3-3
 ######################################################################
 Best team for Pairings: Sceptile + Swampert
 
@@ -12845,7 +16090,166 @@ Adamant Nature
 - High Horsepower
 
 ######################################################################
-TEAM 243 — eeveeiynn · #42 at Talon's FIGHT CLUB #104 POKEMON CHAMPIONS REG M-C (97 teams) · 3-3
+TEAM 304 — xil · #97 at Make It Rain - VGC Tournament (266 teams) · 4-5
+######################################################################
+Best team for Pairings: Dragalge + Golisopod
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Brave Nature
+- Leech Life
+- Iron Head
+- Close Combat
+- Protect
+
+Mimikyu @ Life Orb
+Ability: Disguise
+Jolly Nature
+- Shadow Claw
+- Play Rough
+- Trick Room
+- Swords Dance
+
+Pelipper @ Sitrus Berry
+Ability: Drizzle
+Modest Nature
+- Hurricane
+- Muddy Water
+- Wide Guard
+- Protect
+
+Dragalge @ Dragalgite
+Ability: Adaptability
+Relaxed Nature
+- Dragon Pulse
+- Sludge Bomb
+- Thunderbolt
+- Protect
+
+Arcanine-Hisui @ Focus Sash
+Ability: Rock Head
+Adamant Nature
+- Close Combat
+- Flare Blitz
+- Head Smash
+- Protect
+
+Rillaboom @ Grassy Seed
+Ability: Grassy Surge
+Sassy Nature
+- Wood Hammer
+- Grassy Glide
+- U-turn
+- Fake Out
+
+######################################################################
+TEAM 305 — vgcdan · #5 at Pokepal Smackdown #162 (Champions) (Reg M-C) (23 teams) · 3-2
+######################################################################
+Best team for Pairings: Alakazam + Golisopod
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- Leech Life
+- Protect
+- Iron Head
+- Swords Dance
+
+Politoed @ Sitrus Berry
+Ability: Drizzle
+Bold Nature
+- Weather Ball
+- Protect
+- Icy Wind
+- Helping Hand
+
+Basculegion-Female @ Focus Sash
+Ability: Swift Swim
+Modest Nature
+- Muddy Water
+- Protect
+- Ice Beam
+- Shadow Ball
+
+Archaludon @ Leftovers
+Ability: Stamina
+Bold Nature
+- Electro Shot
+- Protect
+- Aura Sphere
+- Dragon Pulse
+
+Indeedee ♀ @ Psychic Seed
+Ability: Psychic Surge
+Relaxed Nature
+- Psychic
+- Follow Me
+- Trick Room
+- Helping Hand
+
+Alakazam @ Alakazite
+Ability: Inner Focus
+Timid Nature
+- Expanding Force
+- Protect
+- Nasty Plot
+- Shadow Ball
+
+######################################################################
+TEAM 306 — acri1vgc · #38 at Talon's FIGHT CLUB #106 POKEMON CHAMPIONS REG M-C (110 teams) · 3-3
+######################################################################
+Best team for Pairings: Golisopod + Meganium
+
+Meganium @ Meganiumite
+Ability: Leaf Guard
+Modest Nature
+- Solar Beam
+- Protect
+- Dazzling Gleam
+- Weather Ball
+
+Liepard @ Roseli Berry
+Ability: Prankster
+Impish Nature
+- Encore
+- Knock Off
+- Copycat
+- Thunder Wave
+
+Pelipper @ Focus Sash
+Ability: Drizzle
+Modest Nature
+- Hurricane
+- Muddy Water
+- Wide Guard
+- Tailwind
+
+Sneasler @ White Herb
+Ability: Unburden
+Adamant Nature
+- Dire Claw
+- Fake Out
+- Close Combat
+- Rock Tomb
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Brave Nature
+- Drill Run
+- Protect
+- Iron Head
+- Leech Life
+
+Toxtricity @ Choice Scarf
+Ability: Punk Rock
+Timid Nature
+- Sludge Bomb
+- Hyper Voice
+- Psychic Noise
+- Overdrive
+
+######################################################################
+TEAM 307 — eeveeiynn · #42 at Talon's FIGHT CLUB #104 POKEMON CHAMPIONS REG M-C (97 teams) · 3-3
 ######################################################################
 Best team for Pairings: Blaziken + Raichu-Y
 
@@ -12898,60 +16302,60 @@ Timid Nature
 - Fake Out
 
 ######################################################################
-TEAM 244 — dbacks2001 · played ValkrixVGC Pokemon Champions League #06 (61 teams) · 0-0
+TEAM 308 — leo_kishibe · #22 at Intimidators Challenge Road to Recife (53 teams) · 3-3
 ######################################################################
-Best team for Pairings: Charizard-Y + Lopunny
+Best team for Pairings: Feraligatr + Raichu-Y
 
-Lopunny @ Lopunnite
-Ability: Limber
+Feraligatr @ Feraligite
+Ability: Sheer Force
+Jolly Nature
+- Protect
+- Body Slam
+- Liquidation
+- Swords Dance
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
 Adamant Nature
-- Close Combat
-- Protect
-- Triple Axel
-- After You
+- Wood Hammer
+- Fake Out
+- Grassy Glide
+- High Horsepower
 
-Archaludon @ Leftovers
-Ability: Stamina
-Modest Nature
-- Electro Shot
-- Dragon Pulse
-- Flash Cannon
-- Protect
-
-Pelipper @ Sitrus Berry
-Ability: Drizzle
-Modest Nature
-- Weather Ball
-- Hurricane
-- Wide Guard
+Volcarona @ Grassy Seed
+Ability: Flame Body
+Timid Nature
 - Tailwind
+- Fiery Dance
+- Struggle Bug
+- Rage Powder
 
-Charizard @ Charizardite Y
-Ability: Solar Power
-Modest Nature
-- Heat Wave
-- Weather Ball
+Ninetales-Alola @ Light Clay
+Ability: Snow Warning
+Timid Nature
 - Protect
-- Solar Beam
+- Encore
+- Blizzard
+- Aurora Veil
 
-Venusaur @ Focus Sash
-Ability: Chlorophyll
-Modest Nature
-- Sludge Bomb
-- Sleep Powder
+Raichu @ Raichunite Y
+Ability: Lightning Rod
+Timid Nature
 - Protect
-- Solar Beam
+- Fake Out
+- Focus Blast
+- Zap Cannon
 
-Basculegion-Female @ Choice Scarf
-Ability: Swift Swim
-Modest Nature
-- Ice Beam
-- Muddy Water
-- Shadow Ball
-- Flip Turn
+Kingambit @ Life Orb
+Ability: Defiant
+Adamant Nature
+- Protect
+- Iron Head
+- Sucker Punch
+- Kowtow Cleave
 
 ######################################################################
-TEAM 245 — puck · #21 at ValkrixVGC Pokemon Champions League #06 (61 teams) · 3-3
+TEAM 309 — puck · #21 at ValkrixVGC Pokemon Champions League #06 (61 teams) · 3-3
 ######################################################################
 Best team for Pairings: Drampa + Mawile
 
@@ -13004,166 +16408,7 @@ Quiet Nature
 - Earth Power
 
 ######################################################################
-TEAM 246 — kaige · #28 at CHAMPIONS REG. M-C |👑CROWN FIGHT Bo3 TOUR #88👑 (88 teams) · 3-3
-######################################################################
-Best team for Pairings: Altaria + Gengar
-
-Gengar @ Gengarite
-Ability: Cursed Body
-Timid Nature
-- Protect
-- Sludge Bomb
-- Shadow Ball
-- Perish Song
-
-Incineroar @ Sitrus Berry
-Ability: Intimidate
-Relaxed Nature
-- Protect
-- Flare Blitz
-- Fake Out
-- Parting Shot
-
-Rillaboom @ Eject Button
-Ability: Grassy Surge
-Sassy Nature
-- Protect
-- Grassy Glide
-- Fake Out
-- U-turn
-
-Kingambit @ Life Orb
-Ability: Defiant
-Adamant Nature
-- Protect
-- Kowtow Cleave
-- Sucker Punch
-- Swords Dance
-
-Sneasler @ Focus Sash
-Ability: Poison Touch
-Adamant Nature
-- Protect
-- Close Combat
-- Poison Jab
-- Fake Out
-
-Altaria @ Altarianite
-Ability: Cloud Nine
-Calm Nature
-- Protect
-- Hyper Voice
-- Draco Meteor
-- Perish Song
-
-######################################################################
-TEAM 247 — laleli · #16 at Tenki's Cart Weekly #122 - Reg M-C (71 teams) · 3-3
-######################################################################
-Best team for Pairings: Greninja + Swampert
-
-Archaludon @ Leftovers
-Ability: Stamina
-Bold Nature
-- Electro Shot
-- Aura Sphere
-- Dragon Pulse
-- Protect
-
-Pelipper @ Focus Sash
-Ability: Drizzle
-Timid Nature
-- Muddy Water
-- Icy Wind
-- Hurricane
-- Protect
-
-Tsareena @ Choice Scarf
-Ability: Queenly Majesty
-Jolly Nature
-- Triple Axel
-- Power Whip
-- Zen Headbutt
-- Aromatic Mist
-
-Greninja @ Greninjite
-Ability: Protean
-Mild Nature
-- Gunk Shot
-- Rock Slide
-- Ice Beam
-- Dark Pulse
-
-Talonflame @ Life Orb
-Ability: Gale Wings
-Jolly Nature
-- Dual Wingbeat
-- Protect
-- Will-O-Wisp
-- Tailwind
-
-Swampert @ Swampertite
-Ability: Damp
-Modest Nature
-- Protect
-- Ice Beam
-- Muddy Water
-- Earth Power
-
-######################################################################
-TEAM 248 — littlejohn · #22 at Tenki's Cart Weekly #122 - Reg M-C (71 teams) · 3-3
-######################################################################
-Best team for Pairings: Ampharos + Camerupt
-
-Ampharos @ Ampharosite
-Ability: Static
-Quiet Nature
-- Thunderbolt
-- Dragon Pulse
-- Power Gem
-- Protect
-
-Camerupt @ Cameruptite
-Ability: Solid Rock
-Quiet Nature
-- Eruption
-- Heat Wave
-- Earth Power
-- Protect
-
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
-Bold Nature
-- Psychic
-- Thunderbolt
-- Trick Room
-- Helping Hand
-
-Incineroar @ Shuca Berry
-Ability: Intimidate
-Careful Nature
-- Flare Blitz
-- Throat Chop
-- Fake Out
-- Parting Shot
-
-Grapploct @ Life Orb
-Ability: Technician
-Brave Nature
-- Storm Throw
-- Ice Punch
-- Protect
-- Mach Punch
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Grassy Glide
-- Wood Hammer
-- High Horsepower
-- Fake Out
-
-######################################################################
-TEAM 249 — raichu95lucario · #25 at Sketch Academy Sunday Regulation M-C Tournament (62 teams) · 3-3
+TEAM 310 — raichu95lucario · #25 at Sketch Academy Sunday Regulation M-C Tournament (62 teams) · 3-3
 ######################################################################
 Best team for Pairings: Gyarados + Raichu-Y
 
@@ -13216,219 +16461,113 @@ Jolly Nature
 - Dragon Dance
 
 ######################################################################
-TEAM 250 — lethal21 · #14 at Metal's Meteor Mash-Up #2 - TOP 4 TEAM GRAPHIC (67 teams) · 3-3
+TEAM 311 — bzzbzz47 · #25 at Trinity Championship 13 (Double Format) (60 teams) · 3-3
 ######################################################################
-Best team for Pairings: Delphox + Sceptile
+Best team for Pairings: Chandelure + Raichu-Y
+
+Gholdengo @ Choice Scarf
+Ability: Good as Gold
+Modest Nature
+- Hex
+- Trick
+- Power Gem
+- Rueed'or
+
+Raichu @ Raichunite Y
+Ability: Lightning Rod
+Timid Nature
+- Focus Blast
+- Protect
+- Fake Out
+- Zap Cannon
 
 Rillaboom @ Miracle Seed
 Ability: Grassy Surge
 Adamant Nature
 - Grassy Glide
 - Fake Out
-- Wood Hammer
 - High Horsepower
+- Wood Hammer
+
+Sableye @ Light Clay
+Ability: Prankster
+Calm Nature
+- Reflect
+- Light Screen
+- Will-O-Wisp
+- Tricherie
+
+Chandelure @ Chandelurite
+Ability: Flash Fire
+Bold Nature
+- Heat Wave
+- Hex
+- Trick Room
+- Protect
 
 Milotic @ Leftovers
 Ability: Competitive
-Calm Nature
-- Muddy Water
-- Coil
-- Recover
-- Icy Wind
-
-Sceptile @ Sceptilite
-Ability: Overgrow
-Timid Nature
-- Dragon Pulse
-- Earth Power
-- Detect
-- Energy Ball
-
-Rotom-Heat @ Choice Scarf
-Ability: Levitate
-Timid Nature
-- Overheat
-- Discharge
-- Electroweb
-- Volt Switch
-
-Gholdengo @ Life Orb
-Ability: Good as Gold
 Modest Nature
-- Make It Rain
-- Shadow Ball
+- Scald
+- Life Dew
+- Ice Beam
 - Protect
-- Nasty Plot
-
-Delphox @ Delphoxite
-Ability: Blaze
-Timid Nature
-- Heat Wave
-- Protect
-- Psychic
-- Calm Mind
 
 ######################################################################
-TEAM 251 — fds · #33 at Tenki's Cart Weekly #120 - Reg M-C (137 teams) · 3-3
+TEAM 312 — 138mysx · #12 at Pado's Dojo Reg M-C Pratice #3 🍥 (44 teams) · 3-3
 ######################################################################
-Best team for Pairings: Camerupt + Floette
+Best team for Pairings: Absol-Z + Staraptor
 
-Floette @ Floettite
-Ability: Flower Veil
-Bold Nature
-- Calm Mind
-- Draining Kiss
-- Dazzling Gleam
-- Protect
+Sylveon @ Life Orb
+Ability: Pixilate
+Modest Nature
+- Hyper Voice
+- Round
+- Quick Attack
+- Detect
 
 Incineroar @ Sitrus Berry
 Ability: Intimidate
 Impish Nature
 - Fake Out
-- Throat Chop
-- Parting Shot
 - Flare Blitz
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Fake Out
-- U-turn
-- Wood Hammer
-- Grassy Glide
-
-Sinistcha @ Focus Sash
-Ability: Hospitality
-Quiet Nature
-- Trick Room
-- Matcha Gotcha
-- Shadow Ball
-- Rage Powder
-
-Camerupt @ Cameruptite
-Ability: Solid Rock
-Quiet Nature
-- Heat Wave
-- Earth Power
-- Ancient Power
-- Protect
-
-Kingambit @ Black Belt
-Ability: Defiant
-Brave Nature
-- Kowtow Cleave
-- Sucker Punch
-- Iron Head
-- Protect
-
-######################################################################
-TEAM 252 — nuddelmann · #6 at 👻Mimikyu's Spooky Tourney🎃 | Prize: Shiny Gengar (17 teams) · 3-3
-######################################################################
-Best team for Pairings: Froslass + Scrafty
-
-Greninja @ Choice Scarf
-Ability: Protean
-Rash Nature
-- Blizzard
-- Extrasensory
-- Low Kick
-- Switcheroo
-
-Froslass @ Froslassite
-Ability: Snow Cloak
-Timid Nature
-- Blizzard
-- Aurora Veil
-- Shadow Ball
-- Protect
-
-Zoroark-Hisui @ Focus Sash
-Ability: Illusion
-Timid Nature
-- Bitter Malice
-- Icy Wind
-- Will-O-Wisp
-- Taunt
-
-Scrafty @ Scraftinite
-Ability: Moxie
-Adamant Nature
-- Knock Off
-- Bulk Up
-- Drain Punch
-- Protect
-
-Incineroar @ White Herb
-Ability: Intimidate
-Adamant Nature
-- Fake Out
+- Darkest Lariat
 - Parting Shot
-- Flare Blitz
+
+Absol @ Absolite Z
+Ability: Sharpness
+Jolly Nature
+- Night Slash
 - Close Combat
+- Round
+- Detect
 
-Mimikyu @ Sitrus Berry
-Ability: Disguise
-Jolly Nature
-- Play Rough
-- Shadow Claw
-- Swords Dance
+Milotic @ Sitrus Berry
+Ability: Marvel Scale
+Calm Nature
+- Scald
+- Ice Beam
+- Icy Wind
 - Protect
 
-######################################################################
-TEAM 253 — lojica1 · #7 at Sunday Sabong #4 (13 teams) · 3-3
-######################################################################
-Best team for Pairings: Chesnaught + Delphox
-
-Kingambit @ Occa Berry
-Ability: Defiant
+Sneasler @ White Herb
+Ability: Unburden
 Adamant Nature
-- Kowtow Cleave
-- Sucker Punch
-- Iron Head
-- Low Kick
+- Dire Claw
+- Close Combat
+- Rock Slide
+- Protect
 
-Glimmora @ Focus Sash
-Ability: Toxic Debris
-Modest Nature
-- Power Gem
-- Sludge Bomb
-- Earth Power
-- Spiky Shield
-
-Indeedee ♀ @ Rocky Helmet
-Ability: Psychic Surge
-Bold Nature
-- Follow Me
-- Trick Room
-- Helping Hand
-- Terrain Pulse
-
-Gliscor @ Psychic Seed
-Ability: Hyper Cutter
+Staraptor @ Staraptite
+Ability: Intimidate
 Jolly Nature
-- High Horsepower
-- Acrobatics
+- Brave Bird
+- Close Combat
 - Tailwind
 - Protect
 
-Chesnaught @ Chesnaughtite
-Ability: Bulletproof
-Careful Nature
-- Body Press
-- Wood Hammer
-- Spiky Shield
-- Wide Guard
-
-Delphox @ Delphoxite
-Ability: Blaze
-Timid Nature
-- Heat Wave
-- Expanding Force
-- Nasty Plot
-- Protect
-
 ######################################################################
-TEAM 254 — atom808 · #22 at Intimidators Champions Challenge #48 REG M-C (64 teams) · 3-3
+TEAM 313 — atom808 · #22 at Intimidators Champions Challenge #48 REG M-C (64 teams) · 3-3
 ######################################################################
 Best team for Pairings: Pyroar + Scrafty
 
@@ -13481,323 +16620,113 @@ Adamant Nature
 - Fake Out
 
 ######################################################################
-TEAM 255 — bigdaddy_notail · #28 at Trinity Championship 15 (Double Format) (69 teams) · 3-3
+TEAM 314 — fudorganvgc · #37 at The Drywalls Series #19 - M-C (89 teams) · 3-3
 ######################################################################
-Best team for Pairings: Kangaskhan + Tyranitar
+Best team for Pairings: Ampharos + Golisopod
 
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
-Sassy Nature
-- Trick Room
-- Imprison
+Armarouge @ Focus Sash
+Ability: Flash Fire
+Quiet Nature
 - Expanding Force
 - Protect
-
-Excadrill @ Focus Sash
-Ability: Sand Rush
-Adamant Nature
-- Rock Slide
-- High Horsepower
-- Iron Head
-- Protect
-
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
-Jolly Nature
-- Rock Slide
-- Knock Off
-- Low Kick
-- Protect
-
-Sylveon @ Fairy Feather
-Ability: Pixilate
-Modest Nature
-- Hyper Voice
-- Hyper Beam
-- Quick Attack
-- Detect
-
-Incineroar @ Life Orb
-Ability: Intimidate
-Brave Nature
-- Flare Blitz
-- Fake Out
-- Throat Chop
-- Parting Shot
-
-Kangaskhan @ Kangaskhanite
-Ability: Scrappy
-Brave Nature
-- Fake Out
-- Ice Punch
-- Double-Edge
-- Hammer Arm
-
-######################################################################
-TEAM 256 — raphad · #24 at Copa Oak Stadium #12 - MonoType - R$ 50 (64 teams) · 3-3
-######################################################################
-Best team for Pairings: Kangaskhan + Pyroar
-
-Arboliva @ Sitrus Berry
-Ability: Harvest
-Modest Nature
-- Giga Drain
-- Hyper Voice
-- Earth Power
-- Protect
-
-Diggersby @ Focus Sash
-Ability: Huge Power
-Jolly Nature
-- Earthquake
-- Giga Impact
-- Protect
-- High Horsepower
-
-Kangaskhan @ Kangaskhanite
-Ability: Scrappy
-Adamant Nature
-- Double-Edge
-- Protect
-- Drain Punch
-- Sucker Punch
-
-Indeedee ♀ @ Rocky Helmet
-Ability: Psychic Surge
-Calm Nature
-- Follow Me
-- Psychic
-- Protect
-- Helping Hand
-
-Squawkabilly @ Choice Scarf
-Ability: Intimidate
-Jolly Nature
-- Tailwind
-- Parting Shot
-- Brave Bird
-- Final Gambit
-
-Pyroar @ Pyroarite
-Ability: Unnerve
-Timid Nature
-- Overheat
 - Heat Wave
-- Protect
-- Flamethrower
+- Aura Sphere
 
-######################################################################
-TEAM 257 — thederpymooshroom · #40 at Off Meta MAJOR ($140 USD Prize Pool) (117 teams) · 3-3
-######################################################################
-Best team for Pairings: Kangaskhan + Metagross
-
-Kangaskhan @ Kangaskhanite
-Ability: Inner Focus
-Adamant Nature
-- Fake Out
-- Last Resort
-
-Metagross @ Metagrossite
-Ability: Clear Body
-Careful Nature
-- Bullet Punch
-- Psychic Fangs
-- Explosion
-- Protect
-
-Scizor @ Metal Coat
-Ability: Technician
-adamant Nature
-- Bullet Punch
-- Knock Off
-- Protect
-- U-turn
-
-Maushold @ Chople Berry
-Ability: Friend Guard
-Careful Nature
+Indeedee ♀ @ Colbur Berry
+Ability: Psychic Surge
+Relaxed Nature
 - Follow Me
+- Trick Room
+- Psychic
 - Helping Hand
-- Protect
-- Population Bomb
 
-Garchomp @ Life Orb
-Ability: Rough Skin
-Jolly Nature
-- Rock Slide
-- Stomping Tantrum
-- Dragon Claw
-- Protect
-
-Banette @ Focus Sash
-Ability: Cursed Body
-Calm Nature
-- Will-O-Wisp
-- Protect
-- Taunt
-- Foul Play
-
-######################################################################
-TEAM 258 — franzismad · #22 at Mid-Week Smoke #11 (42 teams) · 3-3
-######################################################################
-Best team for Pairings: Aerodactyl + Blaziken
-
-Blaziken @ Blazikenite
-Ability: Speed Boost
-Adamant Nature
-- Close Combat
-- Flare Blitz
-- Rock Slide
-- Detect
-
-Tyranitar @ Quick Claw
-Ability: Sand Stream
-Adamant Nature
-- Rock Slide
-- Knock Off
-- Low Kick
-- Protect
-
-Excadrill @ Focus Sash
-Ability: Sand Rush
-Adamant Nature
-- High Horsepower
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Brave Nature
 - Iron Head
-- Rock Slide
+- Leech Life
+- Sucker Punch
+- Swords Dance
+
+Farigiraf @ Life Orb
+Ability: Armor Tail
+Quiet Nature
+- Expanding Force
+- Hyper Voice
+- Trick Room
 - Protect
 
-Garchomp @ Choice Scarf
-Ability: Sand Veil
-Adamant Nature
-- Earthquake
-- Dragon Claw
-- Poison Jab
-- Rock Slide
+Gallade @ Psychic Seed
+Ability: Sharpness
+Brave Nature
+- Sacred Sword
+- Wide Guard
+- Psycho Cut
+- Trick Room
 
-Aerodactyl @ Aerodactylite
-Ability: Unnerve
-Jolly Nature
-- Rock Slide
-- Dual Wingbeat
+Ampharos @ Ampharosite
+Ability: Static
+Modest Nature
+- Thunderbolt
+- Dragon Pulse
+- Parabolic Charge
+- Protect
+
+######################################################################
+TEAM 315 — baovu123 · #13 at ⚔️Torre Lotta Cup #1⚔️ | Reg M-C | Premi/Prizes🏆 (52 teams) · 4-3
+######################################################################
+Best team for Pairings: Beedrill + Golisopod
+
+Pelipper @ Focus Sash
+Ability: Drizzle
+Modest Nature
+- Hurricane
+- Weather Ball
 - Tailwind
-- Whirlwind
+- Wide Guard
+
+Archaludon @ Leftovers
+Ability: Stamina
+Modest Nature
+- Electro Shot
+- Dark Pulse
+- Flash Cannon
+- Protect
+
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Adamant Nature
+- Leech Life
+- Iron Head
+- Sucker Punch
+- Protect
 
 Sneasler @ White Herb
 Ability: Unburden
 Jolly Nature
-- Close Combat
 - Dire Claw
+- Close Combat
 - Rock Slide
 - Fake Out
 
-######################################################################
-TEAM 259 — beemar · #33 at Amyverse VGC Champions Arena #11 ❤️ Cash Prize! (121 teams) · 3-3
-######################################################################
-Best team for Pairings: Staraptor + Venusaur
-
-Milotic @ Sitrus Berry
-Ability: Competitive
-Calm Nature
-- Scald
-- Icy Wind
-- Ice Beam
-- Protect
-
-Gholdengo @ Life Orb
-Ability: Good as Gold
-Modest Nature
-- Make It Rain
-- Shadow Ball
-- Nasty Plot
-- Protect
-
-Sinistcha @ Colbur Berry
-Ability: Hospitality
-Bold Nature
-- Matcha Gotcha
-- Trick Room
-- Protect
-- Rage Powder
-
-Staraptor @ Staraptite
-Ability: Intimidate
-Jolly Nature
-- Close Combat
-- Brave Bird
-- Tailwind
-- Protect
-
-Tyranitar @ Choice Scarf
-Ability: Sand Stream
-Jolly Nature
-- Rock Slide
-- Knock Off
-- High Horsepower
-- Low Kick
-
-Venusaur @ Venusaurite
-Ability: Chlorophyll
-Modest Nature
-- Sludge Bomb
-- Giga Drain
-- Earth Power
-- Protect
-
-######################################################################
-TEAM 260 — mars88 · #153 at Maddo's Cup #12 | 100€ for the Winner | Reg M-C (388 teams) · 3-3
-######################################################################
-Best team for Pairings: Metagross + Scovillain
-
-Scovillain @ Scovillainite
-Ability: Chlorophyll
-Calm Nature
-- Flamethrower
-- Leech Seed
-- Giga Drain
-- Rage Powder
-
-Tyranitar @ Scraftinite
-Ability: Sand Stream
+Rillaboom @ Sitrus Berry
+Ability: Grassy Surge
 Adamant Nature
-- Knock Off
+- Wood Hammer
+- Grassy Glide
 - High Horsepower
-- Rock Slide
-- Ice Punch
+- Fake Out
 
-Archaludon @ Leftovers
-Ability: Stamina
-Calm Nature
-- Protect
-- Electro Shot
-- Dragon Pulse
-- Flash Cannon
-
-Metagross @ Metagrossite
-Ability: Clear Body
+Beedrill @ Beedrillite
+Ability: Swarm
 Jolly Nature
-- Protect
-- Meteor Mash
-- Bullet Punch
-- Psychic Fangs
-
-Sableye @ Light Clay
-Ability: Prankster
-Careful Nature
-- Rain Dance
-- Reflect
-- Light Screen
-- Encore
-
-Pelipper @ Focus Sash
-Ability: Drizzle
-Bold Nature
-- Hurricane
-- Weather Ball
-- Tailwind
+- Poison Jab
+- Pollen Puff
+- Lunge
 - Protect
 
 ######################################################################
-TEAM 261 — enzostj221 · #8 at Reg M-C Qualifier for RookideeVGC Grand Tourney (44 teams) · 5-3
+TEAM 316 — enzostj221 · #8 at Reg M-C Qualifier for RookideeVGC Grand Tourney (44 teams) · 5-3
 ######################################################################
 Best team for Pairings: Greninja + Scizor
 
@@ -13850,7 +16779,7 @@ Jolly Nature
 - Rock Slide
 
 ######################################################################
-TEAM 262 — horusrz · #51 at Copa Mestre Pokémon #1 (116 teams) · 3-4
+TEAM 317 — horusrz · #51 at Copa Mestre Pokémon #1 (116 teams) · 3-4
 ######################################################################
 Best team for Megas: Medicham
 
@@ -13903,325 +16832,60 @@ Modest Nature
 - Dark Pulse
 
 ######################################################################
-TEAM 263 — marsh302 · #42 at PokeInstinct VGC #3 ($30 USD for the winner) (91 teams) · 3-4
+TEAM 318 — kundan_s · #64 at Off Meta Fight Club #2 ($40 USD prize pool) (112 teams) · 2-2
 ######################################################################
-Best team for Pairings: Floette + Sceptile
+Best team for Pairings: Salamence + Starmie
 
-Sceptile @ Sceptilite
-Ability: Overgrow
-Timid Nature
-- Energy Ball
-- Earth Power
-- Dragon Pulse
-- Detect
-
-Rotom-Heat @ Choice Scarf
-Ability: Levitate
-Timid Nature
-- Discharge
-- Volt Switch
-- Electroweb
-- Overheat
-
-Floette @ Floettite
-Ability: Flower Veil
-Timid Nature
-- Moonblast
+Farigiraf @ Life Orb
+Ability: Armor Tail
+Modest Nature
 - Protect
-- Light of Ruin
-- Dazzling Gleam
+- Ally Switch
+- Psychic
+- Thunderbolt
 
-Aerodactyl @ Focus Sash
-Ability: Unnerve
-Jolly Nature
-- Rock Slide
-- Wide Guard
-- Tailwind
-- Dual Wingbeat
-
-Garchomp @ Life Orb
-Ability: Rough Skin
-Jolly Nature
+Sneasler @ White Herb
+Ability: Unburden
+Adamant Nature
 - Protect
-- Dragon Claw
+- Throat Chop
+- Fake Out
+- Close Combat
+
+Basculegion-Male @ Choice Scarf
+Ability: Adaptability
+Adamant Nature
+- Flip Turn
+- Liquidation
+- Last Respects
+- Psychic Fangs
+
+Starmie @ Starminite
+Ability: Natural Cure
+Adamant Nature
+- Aqua Jet
+- Liquidation
+- Zen Headbutt
+- Ice Spinner
+
+Salamence @ Salamencite
+Ability: Intimidate
+Adamant Nature
+- Protect
+- Double-Edge
 - Rock Slide
 - Earthquake
 
-Basculegion-Male @ Mystic Water
-Ability: Adaptability
-Adamant Nature
-- Aqua Jet
-- Wave Crash
-- Last Respects
-- Protect
-
-######################################################################
-TEAM 264 — tsubasanova · #23 at London Corviknights VGC Weekly Tour 16! (64 teams) · 3-4
-######################################################################
-Best team for Pairings: Drampa + Metagross
-
-Metagross @ Metagrossite
-Ability: Clear Body
-Adamant Nature
-- Protect
-- Psychic Fangs
-- Meteor Mash
-- Hammer Arm
-
-Drampa @ Drampanite
-Ability: Cloud Nine
-Quiet Nature
-- Protect
-- Hyper Voice
-- Draco Meteor
-- Heat Wave
-
-Indeedee ♀ @ Psychic Seed
-Ability: Psychic Surge
-Bold Nature
-- Follow Me
-- Helping Hand
-- Trick Room
-- Dazzling Gleam
-
-Ninetales-Alola @ Never-Melt Ice
-Ability: Snow Warning
-Timid Nature
-- Blizzard
-- Dazzling Gleam
-- Aurora Veil
-- Protect
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Fake Out
-- Grassy Glide
-- Knock Off
-- U-turn
-
-Slowking-Galar @ Wide Lens
-Ability: Regenerator
-Quiet Nature
-- Expanding Force
-- Sludge Bomb
-- Focus Blast
-- Protect
-
-######################################################################
-TEAM 265 — blindfishptsd · #25 at The Drywalls Series #22 (50 teams) · 2-2
-######################################################################
-Best team for Pairings: Delphox + Kangaskhan
-
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
-Calm Nature
-- Psychic
-- Thunderbolt
-- Helping Hand
-- Trick Room
-
-Kangaskhan @ Kangaskhanite
-Ability: Scrappy
-Adamant Nature
-- Fake Out
-- Double-Edge
-- Crunch
-- Hammer Arm
-
-Delphox @ Delphoxite
-Ability: Blaze
-Timid Nature
-- Heat Wave
-- Psychic
-- Nasty Plot
-- Protect
-
-Kingambit @ Focus Sash
+Kingambit @ Chople Berry
 Ability: Defiant
 Adamant Nature
+- Sucker Punch
 - Kowtow Cleave
-- Sucker Punch
-- Iron Head
 - Low Kick
-
-Sylveon @ Fairy Feather
-Ability: Pixilate
-Modest Nature
-- Hyper Voice
-- Hyper Beam
-- Quick Attack
-- Detect
-
-Torkoal @ Charcoal
-Ability: Drought
-Quiet Nature
-- Eruption
-- Weather Ball
-- Earth Power
 - Protect
 
 ######################################################################
-TEAM 266 — zephyronthehoop · #12 at Mudkip's Marsh Pit #6 (40 teams) · 3-4
-######################################################################
-Best team for Pairings: Scizor + Staraptor
-
-Meowstic-Male @ Light Clay
-Ability: Prankster
-Calm Nature
-- Charm
-- Light Screen
-- Thunder Wave
-- Expanding Force
-
-Staraptor @ Staraptite
-Ability: Intimidate
-Serious Nature
-- Close Combat
-- Brave Bird
-- Roost
-- Protect
-
-Scizor @ Scizorite
-Ability: Technician
-Impish Nature
-- U-turn
-- Swords Dance
-- Protect
-- Bullet Punch
-
-Politoed @ Mystic Water
-Ability: Drizzle
-Serious Nature
-- Weather Ball
-- Muddy Water
-- Ice Beam
-- Protect
-
-Dragapult @ Focus Sash
-Ability: Infiltrator
-Timid Nature
-- Draco Meteor
-- Will-O-Wisp
-- Shadow Ball
-- Disable
-
-Indeedee @ Choice Scarf
-Ability: Psychic Surge
-Modest Nature
-- Expanding Force
-- Mystical Fire
-- Trick
-- Shadow Ball
-
-######################################################################
-TEAM 267 — mikawelt · #39 at PokeInstinct VGC #3 ($30 USD for the winner) (91 teams) · 3-4
-######################################################################
-Best team for Pairings: Dragonite + Scrafty
-
-Scrafty @ Scraftinite
-Ability: Intimidate
-Adamant Nature
-- Fake Out
-- Drain Punch
-- Throat Chop
-- Protect
-
-Rillaboom @ Grassy Seed
-Ability: Grassy Surge
-Jolly Nature
-- Drum Beating
-- Grassy Glide
-- Fake Out
-- High Horsepower
-
-Araquanid @ Sitrus Berry
-Ability: Water Bubble
-Brave Nature
-- Liquidation
-- Icy Wind
-- Protect
-- Wide Guard
-
-Gholdengo @ Leftovers
-Ability: Good as Gold
-Modest Nature
-- Make It Rain
-- Shadow Ball
-- Nasty Plot
-- Protect
-
-Arcanine-Hisui @ Focus Sash
-Ability: Rock Head
-Jolly Nature
-- Flare Blitz
-- Head Smash
-- Extreme Speed
-- Protect
-
-Dragonite @ Dragoninite
-Ability: Multiscale
-Modest Nature
-- Dragon Pulse
-- Flamethrower
-- Protect
-- Tailwind
-
-######################################################################
-TEAM 268 — alexnico · #25 at Intimidators Champions Challenge #42 REG M-C (71 teams) · 3-4
-######################################################################
-Best team for Pairings: Malamar + Mawile
-
-Indeedee ♀ @ Focus Sash
-Ability: Psychic Surge
-Quiet Nature
-- Follow Me
-- Helping Hand
-- Psychic Terrain
-- Hyper Voice
-
-Hatterene @ Life Orb
-Ability: Magic Bounce
-Quiet Nature
-- Protect
-- Dazzling Gleam
-- Psychic
-- Trick Room
-
-Mawile @ Mawilite
-Ability: Intimidate
-Brave Nature
-- Protect
-- Rock Slide
-- Iron Head
-- Sucker Punch
-
-Overqwil @ Bright Powder
-Ability: Intimidate
-Relaxed Nature
-- Throat Chop
-- Barb Barrage
-- Minimize
-- Swords Dance
-
-Farigiraf @ Colbur Berry
-Ability: Armor Tail
-Quiet Nature
-- Protect
-- Expanding Force
-- Thunderbolt
-- Trick Room
-
-Malamar @ Malamarite
-Ability: Contrary
-Relaxed Nature
-- Protect
-- Psych Up
-- Superpower
-- Psycho Cut
-
-######################################################################
-TEAM 269 — stringzzz · #7 at Thavorian’s Tubby tour (17 teams) · 2-2
+TEAM 319 — stringzzz · #7 at Thavorian’s Tubby tour (17 teams) · 2-2
 ######################################################################
 Best team for Megas: Victreebel
 
@@ -14274,378 +16938,113 @@ Timid Nature
 - Protect
 
 ######################################################################
-TEAM 270 — lawrencevgc · played ✨👑 King's Gambit #11 | Reg M-C 👑✨ (45 teams) · 0-0
+TEAM 320 — air_anna · #9 at Hatterene Series Weekly #2 2027 - 6PM UTC - M-C (14 teams) · 2-2
 ######################################################################
-Best team for Pairings: Raichu-Y + Venusaur
+Best team for Pairings: Excadrill + Tyranitar
 
-Venusaur @ Venusaurite
-Ability: Chlorophyll
+Hatterene @ Life Orb
+Ability: Magic Bounce
 Modest Nature
-- Giga Drain
-- Sludge Bomb
-- Weather Ball
 - Protect
-
-Incineroar @ Sitrus Berry
-Ability: Intimidate
-Careful Nature
-- Flare Blitz
-- Throat Chop
-- Parting Shot
-- Fake Out
-
-Tyranitar @ Life Orb
-Ability: Sand Stream
-Adamant Nature
-- Rock Slide
-- Knock Off
-- Low Kick
-- Protect
-
-Excadrill @ Focus Sash
-Ability: Sand Rush
-Adamant Nature
-- High Horsepower
-- Iron Head
-- Rock Slide
-- Protect
-
-Raichu @ Raichunite Y
-Ability: Lightning Rod
-Timid Nature
-- Zap Cannon
-- Focus Blast
-- Fake Out
-- Protect
-
-Grimmsnarl @ Light Clay
-Ability: Prankster
-Careful Nature
-- Spirit Break
-- Reflect
-- Light Screen
-- Parting Shot
-
-######################################################################
-TEAM 271 — srishanth · played ⛩️$30 VGC Champions Tournament Ep 33!⛩️ (123 teams) · 0-0
-######################################################################
-Best team for Pairings: Mawile + Tyranitar
-
-Armarouge @ Life Orb
-Ability: Flash Fire
-Quiet Nature
-- Armor Cannon
-- Protect
-- Expanding Force
 - Trick Room
+- Expanding Force
+- Dazzling Gleam
 
-Indeedee ♀ @ Colbur Berry
+Indeedee ♀ @ Rocky Helmet
 Ability: Psychic Surge
-Sassy Nature
-- Follow Me
+Relaxed Nature
 - Trick Room
 - Psychic
+- Follow Me
 - Helping Hand
+
+Sneasler @ Psychic Seed
+Ability: Unburden
+Adamant Nature
+- Close Combat
+- Dire Claw
+- Coaching
+- Protect
 
 Tyranitar @ Tyranitarite
 Ability: Sand Stream
 Adamant Nature
-- Rock Slide
+- Low Kick
 - Protect
-- Ice Punch
 - Knock Off
+- Rock Slide
 
-Excadrill @ Focus Sash
+Excadrill @ Excadrite
 Ability: Sand Rush
 Adamant Nature
+- Iron Head
+- Protect
 - High Horsepower
 - Rock Slide
-- Protect
-- Iron Head
 
-Mawile @ Mawilite
-Ability: Hyper Cutter
-Brave Nature
-- Play Rough
-- Protect
-- Iron Head
-- Sucker Punch
-
-Decidueye-Hisui @ Psychic Seed
-Ability: Scrappy
-Brave Nature
-- Close Combat
-- Protect
-- Coaching
-- Leaf Blade
-
-######################################################################
-TEAM 272 — fizzy14 · #20 at Off Meta Fight Club #7 (NEW Rules) (63 teams) · 2-2
-######################################################################
-Best team for Pairings: Blaziken + Gengar
-
-Gengar @ Gengarite
-Ability: Cursed Body
-Timid Nature
-- Sludge Bomb
+Skeledirge @ Leftovers
+Ability: Unaware
+Bold Nature
+- Torch Song
 - Shadow Ball
-- Substitute
+- Will-O-Wisp
 - Protect
 
-Rillaboom @ Life Orb
-Ability: Grassy Surge
-Adamant Nature
-- Wood Hammer
-- Grassy Glide
-- Superpower
+######################################################################
+TEAM 321 — eisikle · #15 at Off Meta Fight Club #5 ($20 USD prize pool) (47 teams) · 2-2
+######################################################################
+Best team for Pairings: Golisopod + Sceptile
+
+Pelipper @ Rocky Helmet
+Ability: Drizzle
+Modest Nature
+- Tailwind
+- Weather Ball
+- Wide Guard
+- Hurricane
+
+Raichu-Alola @ Focus Sash
+Ability: Surge Surfer
+Timid Nature
+- Discharge
+- Thunder
+- Psychic Noise
 - Fake Out
 
-Blaziken @ Blazikenite
-Ability: Speed Boost
-Adamant Nature
-- Close Combat
-- Flare Blitz
-- Rock Slide
-- Detect
-
-Hippowdon @ Leftovers
-Ability: Sand Stream
-Careful Nature
-- High Horsepower
-- Stone Edge
-- Yawn
+Sceptile @ Sceptilite
+Ability: Overgrow
+Timid Nature
+- Leaf Storm
+- Dragon Pulse
 - Protect
-
-Kingambit @ Black Glasses
-Ability: Defiant
-Adamant Nature
-- Kowtow Cleave
-- Sucker Punch
-- Swords Dance
-- Protect
-
-Pawmot @ Focus Sash
-Ability: Iron Fist
-Jolly Nature
-- Double Shock
-- Close Combat
-- Encore
-- Protect
-
-######################################################################
-TEAM 273 — joniaco · #20 at HeroicTitan’s VGC Battle Arena (49 teams) · 2-2
-######################################################################
-Best team for Pairings: Hawlucha + Raichu-Y
-
-Hawlucha @ Hawluchanite
-Ability: Limber
-Jolly Nature
-- Cross Chop
-- Brave Bird
-- Entrainment
-- Detect
-
-Snorlax @ Leftovers
-Ability: Thick Fat
-Relaxed Nature
-- Fissure
-- Smack Down
-- Stockpile
-- Protect
+- Earth Power
 
 Incineroar @ Sitrus Berry
 Ability: Intimidate
-Relaxed Nature
+Adamant Nature
 - Flare Blitz
+- Darkest Lariat
+- Fake Out
 - Parting Shot
-- Fake Out
-- Snarl
 
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Grassy Glide
-- Wood Hammer
-- High Horsepower
-- Fake Out
-
-Basculegion-Male @ Choice Scarf
-Ability: Adaptability
-Jolly Nature
-- Wave Crash
-- Last Respects
-- Flip Turn
-- Soak
-
-Raichu @ Raichunite Y
-Ability: Lightning Rod
-Timid Nature
-- Zap Cannon
-- Fake Out
-- Encore
-- Protect
-
-######################################################################
-TEAM 274 — popis · #8 at Matcha Gotcha's Tourney (PRIVATE) (15 teams) · 2-2
-######################################################################
-Best team for Pairings: Gengar + Venusaur
-
-Toxtricity-Low-Key @ Choice Scarf
-Ability: Punk Rock
-Modest Nature
-- Overdrive
-- Snarl
-- Boomburst
-- Volt Switch
-
-Overqwil @ Leftovers
-Ability: Intimidate
-Careful Nature
-- Aqua Jet
-- Barb Barrage
-- Throat Chop
-- Protect
-
-Salazzle @ Focus Sash
-Ability: Corrosion
-Timid Nature
-- Heat Wave
-- Taunt
-- Toxic
-- Fake Out
-
-Gengar @ Gengarite
-Ability: Cursed Body
-Timid Nature
-- Icy Wind
-- Shadow Ball
-- Protect
-- Sludge Bomb
-
-Venusaur @ Venusaurite
-Ability: Chlorophyll
-Modest Nature
-- Earth Power
-- Energy Ball
-- Protect
-- Leech Seed
-
-Sneasler @ Eject Button
-Ability: Unburden
-Jolly Nature
-- Close Combat
-- Coaching
-- Rock Slide
-- Protect
-
-######################################################################
-TEAM 275 — jcstarr · #9 at Matcha Gotcha's Tourney (PRIVATE) (15 teams) · 2-2
-######################################################################
-Best team for Pairings: Aerodactyl + Tyranitar
-
-Aerodactyl @ Aerodactylite
-Ability: Unnerve
-Jolly Nature
-- Wide Guard
-- Rock Slide
-- Tailwind
-- Dual Wingbeat
-
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
-Adamant Nature
-- Rock Slide
-- Knock Off
-- High Horsepower
-- Protect
-
-Glimmora @ Focus Sash
-Ability: Toxic Debris
-Modest Nature
-- Earth Power
-- Spiky Shield
-- Sludge Bomb
-- Power Gem
-
-Arcanine-Hisui @ Choice Scarf
-Ability: Rock Head
-Adamant Nature
-- Head Smash
-- Rock Slide
-- Flame Charge
-- Wild Charge
-
-Rampardos @ Life Orb
-Ability: Sheer Force
-Adamant Nature
-- Rock Slide
-- Thunder Punch
-- Fire Punch
-- Protect
-
-Lycanroc-Dusk @ Hard Stone
-Ability: Tough Claws
-Adamant Nature
-- Accelerock
-- Rock Slide
-- Close Combat
-- Protect
-
-######################################################################
-TEAM 276 — corako · #6 at Girls & They's Sunday Smackdown #2 (12 teams) · 2-2
-######################################################################
-Best team for Pairings: Glimmora + Gyarados
-
-Gyarados @ Gyaradosite
-Ability: Intimidate
-Adamant Nature
-- Waterfall
-- Crunch
-- Ice Fang
-- Protect
-
-Glimmora @ Glimmoranite
-Ability: Toxic Debris
-Modest Nature
-- Power Gem
-- Sludge Bomb
-- Earth Power
-- Protect
-
-Pelipper @ Sitrus Berry
-Ability: Drizzle
-Timid Nature
-- Weather Ball
-- Hurricane
-- Tailwind
-- Wide Guard
-
-Kingambit @ Life Orb
-Ability: Defiant
-Jolly Nature
-- Kowtow Cleave
-- Sucker Punch
+Golisopod @ Golisopite
+Ability: Emergency Exit
+Brave Nature
+- Leech Life
 - Iron Head
-- Protect
+- Swords Dance
+- Sucker Punch
 
-Salazzle @ Focus Sash
-Ability: Corrosion
+Empoleon @ Leftovers
+Ability: Competitive
 Modest Nature
-- Sludge Bomb
-- Heat Wave
-- Fake Out
+- Flash Cannon
+- Ice Beam
 - Protect
-
-Hydreigon @ Choice Scarf
-Ability: Levitate
-Modest Nature
-- Draco Meteor
-- Dragon Pulse
-- Dark Pulse
-- Earth Power
+- Hydro Pump
 
 ######################################################################
-TEAM 277 — stinkee · #53 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 2-2
+TEAM 322 — stinkee · #53 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 2-2
 ######################################################################
 Best team for Pairings: Delphox + Lopunny
 
@@ -14698,219 +17097,60 @@ Adamant Nature
 - Bounce
 
 ######################################################################
-TEAM 278 — icyyphoenix · #28 at Off Meta Fight Club #2 ($40 USD prize pool) (112 teams) · 2-2
+TEAM 323 — stormorigin · played Rework Esport Champions Talent Cup 3 | 50€ CP M-C (107 teams) · 0-0
 ######################################################################
-Best team for Pairings: Froslass + Lopunny
+Best team for Pairings: Absol-Z + Lucario-Z
 
-Garbodor @ Life Orb
-Ability: Weak Armor
+Lucario @ Lucarionite Z
+Ability: Steadfast
+Modest Nature
+- Aura Sphere
+- Flash Cannon
+- Detect
+- Terrain Pulse
+
+Absol @ Absolite Z
+Ability: Justified
 Adamant Nature
-- Gunk Shot
-- Rock Blast
-- Stomping Tantrum
-- Protect
-
-Talonflame @ Expert Belt
-Ability: Gale Wings
-Jolly Nature
-- Flare Blitz
-- Dual Wingbeat
-- Tailwind
-- Quick Guard
-
-Froslass @ Froslassite
-Ability: Cursed Body
-Timid Nature
-- Blizzard
-- Shadow Ball
-- Aurora Veil
-- Protect
-
-Lopunny @ Lopunnite
-Ability: Limber
-Jolly Nature
-- Close Combat
-- Triple Axel
-- Mach Punch
-- Fake Out
-
-Milotic @ Choice Scarf
-Ability: Competitive
-Timid Nature
-- Muddy Water
-- Blizzard
-- Ice Beam
-- Flip Turn
-
-Rillaboom @ Grassy Seed
-Ability: Grassy Surge
-Adamant Nature
-- Wood Hammer
-- Grassy Glide
-- High Horsepower
-- Fake Out
-
-######################################################################
-TEAM 279 — aurioh · #5 at Collective's Corner VGC: Truth and Ideals (9 teams) · 2-2
-######################################################################
-Best team for Pairings: Froslass + Mawile
-
-Mawile @ Mawilite
-Ability: Hyper Cutter
-Adamant Nature
-- Play Rough
-- Sucker Punch
-- Swords Dance
-- Protect
-
-Sinistcha @ Colbur Berry
-Ability: Hospitality
-Calm Nature
-- Matcha Gotcha
-- Rage Powder
-- Trick Room
-- Protect
-
-Aerodactyl @ Focus Sash
-Ability: Unnerve
-Jolly Nature
+- Detect
 - Rock Slide
-- Tailwind
-- Wide Guard
-- Protect
+- Shadow Claw
+- Night Slash
 
-Incineroar @ Sitrus Berry
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Jolly Nature
+- Grassy Glide
+- Wood Hammer
+- Fake Out
+- U-turn
+
+Farigiraf @ Grassy Seed
+Ability: Armor Tail
+Calm Nature
+- Thunderbolt
+- Psychic
+- Trick Room
+- Helping Hand
+
+Incineroar @ Rocky Helmet
 Ability: Intimidate
-Adamant Nature
+Careful Nature
 - Flare Blitz
 - Throat Chop
 - Fake Out
 - Parting Shot
 
-Sneasler @ White Herb
-Ability: Unburden
-Adamant Nature
-- Close Combat
-- Dire Claw
-- Fake Out
-- Protect
-
-Froslass @ Froslassite
-Ability: Cursed Body
-Timid Nature
-- Blizzard
-- Shadow Ball
-- Nasty Plot
-- Protect
-
-######################################################################
-TEAM 280 — tmelton323 · played Chaos League Sunday Slam #115 (20 teams) · 0-0
-######################################################################
-Best team for Pairings: Mawile + Staraptor
-
 Milotic @ Leftovers
 Ability: Competitive
-Modest Nature
+Bold Nature
 - Protect
 - Scald
-- Ice Beam
 - Icy Wind
-
-Mawile @ Mawilite
-Ability: Hyper Cutter
-Brave Nature
-- Protect
-- Iron Head
-- Play Rough
-- Knock Off
-
-Staraptor @ Staraptite
-Ability: Intimidate
-Jolly Nature
-- Protect
-- Close Combat
-- Brave Bird
-- Tailwind
-
-Arcanine-Hisui @ Focus Sash
-Ability: Rock Head
-Adamant Nature
-- Protect
-- Flare Blitz
-- Rock Slide
-- Extreme Speed
-
-Garchomp @ Life Orb
-Ability: Rough Skin
-Jolly Nature
-- Protect
-- Dragon Claw
-- Stomping Tantrum
-- Rock Slide
-
-Indeedee ♀ @ Sitrus Berry
-Ability: Psychic Surge
-Bold Nature
-- Follow Me
-- Psychic
-- Helping Hand
-- Trick Room
+- Ice Beam
 
 ######################################################################
-TEAM 281 — suiz · #34 at Off Meta Fight Club #4 ($40 USD prize pool) (80 teams) · 2-2
-######################################################################
-Best team for Pairings: Raichu-Y + Scizor
-
-Raichu @ Raichunite Y
-Ability: Lightning Rod
-Timid Nature
-- Zap Cannon
-- Fake Out
-- Grass Knot
-- Focus Blast
-
-Talonflame @ Sharp Beak
-Ability: Gale Wings
-Jolly Nature
-- Flare Blitz
-- Will-O-Wisp
-- Dual Wingbeat
-- Tailwind
-
-Kleavor @ Choice Scarf
-Ability: Sharpness
-Jolly Nature
-- Close Combat
-- Aerial Ace
-- X-Scissor
-- Stone Axe
-
-Scizor @ Scizorite
-Ability: Technician
-Adamant Nature
-- Protect
-- Bullet Punch
-- Bug Bite
-- Swords Dance
-
-Zoroark-Hisui @ Focus Sash
-Ability: Illusion
-Modest Nature
-- Detect
-- Shadow Ball
-- Flamethrower
-- Hyper Voice
-
-Samurott-Hisui @ Black Glasses
-Ability: Sharpness
-Adamant Nature
-- Detect
-- Ceaseless Edge
-- Sacred Sword
-- Aqua Cutter
-
-######################################################################
-TEAM 282 — spydyr · #37 at TARTAN TAKEDOWN #39! - [CHAMPIONS REG M-C!] (105 teams) · 2-5
+TEAM 324 — spydyr · #37 at TARTAN TAKEDOWN #39! - [CHAMPIONS REG M-C!] (105 teams) · 2-5
 ######################################################################
 Best team for Pairings: Glimmora + Scrafty
 
@@ -14963,60 +17203,113 @@ Brave Nature
 - Knock Off
 
 ######################################################################
-TEAM 283 — geean · #127 at Make It Rain - VGC Tournament (266 teams) · 3-6
+TEAM 325 — nirvana · #12 at GRAVEMINE CIRCUT #01 (M-C) (27 teams) · 0-5
 ######################################################################
-Best team for Pairings: Froslass + Sceptile
+Best team for Pairings: Absol-Z + Mawile
 
-Bellibolt @ Sitrus Berry
-Ability: Electromorphosis
-Modest Nature
-- Parabolic Charge
-- Soak
-- Protect
-- Weather Ball
-
-Sceptile @ Sceptilite
-Ability: Unburden
-Modest Nature
-- Leaf Storm
-- Dragon Pulse
-- Protect
-- Focus Blast
-
-Garchomp @ Rocky Helmet
-Ability: Rough Skin
+Absol @ Absolite Z
+Ability: Justified
 Jolly Nature
-- Rock Slide
-- Protect
-- Stomping Tantrum
-- Iron Head
+- Night Slash
+- Shadow Claw
+- Focus Energy
+- Detect
 
-Gyarados @ Life Orb
-Ability: Intimidate
-Adamant Nature
-- Waterfall
-- Protect
-- Thunder Wave
-- Temper Flare
+Indeedee ♀ @ Colbur Berry
+Ability: Psychic Surge
+Relaxed Nature
+- Terrain Pulse
+- Helping Hand
+- Follow Me
+- Trick Room
 
-Froslass @ Froslassite
-Ability: Cursed Body
+Whimsicott @ Focus Sash
+Ability: Prankster
 Timid Nature
-- Blizzard
-- Protect
-- Aurora Veil
-- Shadow Ball
+- Moonblast
+- Beat Up
+- Taunt
+- Tailwind
 
-Sneasler @ Focus Sash
+Mawile @ Mawilite
+Ability: Intimidate
+Brave Nature
+- Protect
+- Play Rough
+- Iron Head
+- Sucker Punch
+
+Sneasler @ Psychic Seed
 Ability: Unburden
 Adamant Nature
 - Close Combat
-- Fake Out
-- Taunt
 - Dire Claw
+- Fake Out
+- Throat Chop
+
+Incineroar @ Rocky Helmet
+Ability: Intimidate
+Careful Nature
+- Fake Out
+- Will-O-Wisp
+- Throat Chop
+- Parting Shot
 
 ######################################################################
-TEAM 284 — gulpindeez · #7 at WARTORTLE WEDNESDAYS #66 REG M-C BO3 OTS (17 teams) · 2-3
+TEAM 326 — silverland · #24 at HeroicTitan’s VGC Battle Arena (75 teams) · 3-3
+######################################################################
+Best team for Pairings: Chimecho + Hawlucha
+
+Snorlax @ Leftovers
+Ability: Thick Fat
+Relaxed Nature
+- Protect
+- Stockpile
+- Fissure
+- Smack Down
+
+Rillaboom @ Eject Button
+Ability: Grassy Surge
+Impish Nature
+- Grassy Glide
+- Stomping Tantrum
+- Fake Out
+- U-turn
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Relaxed Nature
+- Fake Out
+- Parting Shot
+- Flare Blitz
+- Throat Chop
+
+Hawlucha @ Hawluchanite
+Ability: Limber
+Jolly Nature
+- Brave Bird
+- Entrainment
+- Protect
+- Flying Press
+
+Chimecho @ Chimechite
+Ability: Levitate
+Relaxed Nature
+- Stored Power
+- Cosmic Power
+- Recover
+- Charge Beam
+
+Slowbro-Galar @ Grassy Seed
+Ability: Quick Draw
+Relaxed Nature
+- Psych Up
+- Body Press
+- Stored Power
+- Slack Off
+
+######################################################################
+TEAM 327 — gulpindeez · #7 at WARTORTLE WEDNESDAYS #66 REG M-C BO3 OTS (17 teams) · 2-3
 ######################################################################
 Best team for Megas: Sableye
 
@@ -15069,7 +17362,7 @@ Brave Nature
 - Protect
 
 ######################################################################
-TEAM 285 — wiserowlet · #4 at Fan format Regulation U (8 teams) · 2-3
+TEAM 328 — wiserowlet · #4 at Fan format Regulation U (8 teams) · 2-3
 ######################################################################
 Best team for Megas: Banette
 
@@ -15122,7 +17415,7 @@ Timid Nature
 - Protect
 
 ######################################################################
-TEAM 286 — kingbob3423 · #185 at Maddo's Cup #12 | 100€ for the Winner | Reg M-C (388 teams) · 2-3
+TEAM 329 — kingbob3423 · #185 at Maddo's Cup #12 | 100€ for the Winner | Reg M-C (388 teams) · 2-3
 ######################################################################
 Best team for Pairings: Mawile + Raichu-Y
 
@@ -15175,378 +17468,113 @@ Timid Nature
 - Protect
 
 ######################################################################
-TEAM 287 — najiminyay · #27 at ‼️ACHO CUP: VGC 🕹️💥 #2 | Premio 10€ 💸 (53 teams) · 2-3
+TEAM 330 — masonr · #21 at 𝗡𝗲𝗺𝗲 𝗪𝗲𝗲𝗸𝗹𝘆 𝗠-𝐂 𝗧𝗼𝘂𝗿 🏆 #𝟕𝟐 (40 teams) · 2-3
 ######################################################################
-Best team for Pairings: Aggron + Mawile
+Best team for Pairings: Blastoise + Lucario-Z
 
-Toxapex @ Leftovers
-Ability: Regenerator
-Sassy Nature
-- Baneful Bunker
-- Infestation
-- Recover
-- Toxic
+Lucario @ Lucarionite Z
+Ability: Inner Focus
+Timid Nature
+- Aura Sphere
+- Flash Cannon
+- Copycat
+- Detect
 
-Reuniclus @ Life Orb
-Ability: Magic Guard
+Gholdengo @ Choice Scarf
+Ability: Good as Gold
+Timid Nature
+- Make It Rain
+- Shadow Ball
+- Trick
+- Thunderbolt
+
+Slowking-Galar @ Sitrus Berry
+Ability: Curious Medicine
 Quiet Nature
-- Expanding Force
-- Trick Room
-- Focus Blast
-- Recover
-
-Indeedee ♀ @ Psychic Seed
-Ability: Psychic Surge
-Relaxed Nature
-- Psyshock
-- Helping Hand
-- Follow Me
-- Protect
-
-Zoroark-Hisui @ Focus Sash
-Ability: Illusion
-Modest Nature
-- Hyper Voice
-- Memento
-- Helping Hand
-- Bitter Malice
-
-Mawile @ Mawilite
-Ability: Intimidate
-Brave Nature
-- Play Rough
-- Iron Head
-- Rock Slide
-- Protect
-
-Aggron @ Aggronite
-Ability: Sturdy
-Relaxed Nature
-- Body Press
-- Metal Burst
-- Iron Defense
-- Heavy Slam
-
-######################################################################
-TEAM 288 — gunter_xdd · played Rework Esport Champions Talent Cup 3 | 50€ CP M-C (107 teams) · 0-0
-######################################################################
-Best team for Pairings: Blastoise + Mawile
-
-Rillaboom @ Rocky Helmet
-Ability: Overgrow
-Brave Nature
-- Fake Out
-- Wood Hammer
-- U-turn
-- Protect
-
-Hatterene @ Life Orb
-Ability: Healer
-Modest Nature
-- Expanding Force
-- Calm Mind
-- Dazzling Gleam
-- Protect
-
-Armarouge @ Wise Glasses
-Ability: Flash Fire
-Quiet Nature
-- Armor Cannon
-- Expanding Force
-- Dark Pulse
-- Protect
-
-Indeedee ♀ @ Focus Sash
-Ability: Own Tempo
-Bold Nature
+- Flamethrower
+- Sludge Bomb
 - Psychic
+- Protect
+
+Clefable @ Leftovers
+Ability: Unaware
+Calm Nature
 - Follow Me
-- Trick Room
+- Moonblast
+- Fake Tears
 - Helping Hand
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Fake Out
+- Grassy Glide
+- Wood Hammer
+- Taunt
 
 Blastoise @ Blastoisinite
 Ability: Torrent
-Quiet Nature
-- Water Spout
-- Fake Out
-- Hydro Pump
-- Protect
-
-Mawile @ Mawilite
-Ability: Hyper Cutter
-Adamant Nature
-- Iron Head
-- Play Rough
-- Sucker Punch
-- Protect
-
-######################################################################
-TEAM 289 — shaikhvgc786 · #28 at Off Meta Fight Club #6 ($20 USD prize pool) (51 teams) · 2-3
-######################################################################
-Best team for Pairings: Froslass + Meganium
-
-Froslass @ Froslassite
-Ability: Cursed Body
 Modest Nature
-- Blizzard
-- Frost Breath
+- Water Spout
+- Dragon Pulse
+- Dark Pulse
+- Protect
+
+######################################################################
+TEAM 331 — androidpaw · #16 at Unknown Territory (21 teams) · 2-3
+######################################################################
+Best team for Pairings: Baxcalibur + Glimmora
+
+Inteleon @ Mystic Water
+Ability: Sniper
+Timid Nature
+- Snipe Shot
+- Icy Wind
+- Muddy Water
+- Protect
+
+Rillaboom @ Sitrus Berry
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Grassy Glide
+- Fake Out
+- Stomping Tantrum
+
+Baxcalibur @ Baxcalibrite
+Ability: Thermal Exchange
+Adamant Nature
+- Ice Shard
+- Icicle Spear
+- Glaive Rush
+- Protect
+
+Gholdengo @ Grassy Seed
+Ability: Good as Gold
+Modest Nature
+- Nasty Plot
+- Make It Rain
 - Shadow Ball
 - Protect
 
-Maushold @ Focus Sash
-Ability: Friend Guard
+Glimmora @ Glimmoranite
+Ability: Toxic Debris
 Timid Nature
-- Helping Hand
-- Follow Me
-- Super Fang
+- Sludge Bomb
+- Power Gem
+- Earth Power
 - Protect
 
-Meganium @ Meganiumite
-Ability: Overgrow
-Modest Nature
-- Weather Ball
-- Solar Beam
-- Dazzling Gleam
-- Protect
-
-Gallade @ White Herb
-Ability: Sharpness
-Adamant Nature
-- Sacred Sword
-- Psycho Cut
-- Wide Guard
-- Protect
-
-Vivillon @ Choice Scarf
-Ability: Shield Dust
-Timid Nature
-- Sleep Powder
-- Tailwind
-- Hurricane
-- Pollen Puff
-
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
-Relaxed Nature
-- Trick Room
-- Psychic
-- Helping Hand
-- Protect
-
-######################################################################
-TEAM 290 — brunorcn · #11 at Thalera Champions Cheese #16 - Tigrinho Edition (18 teams) · 2-3
-######################################################################
-Best team for Pairings: Charizard-X + Tyranitar
-
-Charizard @ Charizardite X
-Ability: Blaze
-Adamant Nature
-- Heat Wave
-- Rock Slide
-- Scale Shot
-- Giga Impact
-
-Garchomp @ Life Orb
-Ability: Sand Veil
-Hasty Nature
-- Scale Shot
-- Mud Shot
-- Thunder Fang
-- Rock Slide
-
-Archaludon @ Leftovers
-Ability: Stamina
-Timid Nature
-- Thunder
-- Steel Beam
-- Giga Impact
-- Draco Meteor
-
-Swampert @ Rindo Berry
-Ability: Torrent
-Modest Nature
-- Icy Wind
-- Hydro Pump
-- Mud Shot
-- Focus Blast
-
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
+Arcanine-Hisui @ Focus Sash
+Ability: Rock Head
 Jolly Nature
-- Rock Slide
-- Ice Fang
-- Snarl
-- Fire Fang
-
-Venusaur @ Miracle Seed
-Ability: Overgrow
-Impish Nature
-- Power Whip
-- Leech Seed
-- Toxic
-- Sleep Powder
-
-######################################################################
-TEAM 291 — naruki · #81 at 🍋Sitrus-Series🍋|Champions-MC|#76 (177 teams) · 2-3
-######################################################################
-Best team for Pairings: Golurk + Mawile
-
-Mawile @ Mawilite
-Ability: Intimidate
-Sassy Nature
-- Play Rough
-- Iron Head
-- Protect
-- Thunder Punch
-
-Indeedee ♀ @ Psychic Seed
-Ability: Psychic Surge
-Sassy Nature
-- Follow Me
-- Helping Hand
-- Trick Room
-- Protect
-
-Hatterene @ Life Orb
-Ability: Magic Bounce
-Modest Nature
-- Trick Room
-- Expanding Force
-- Dazzling Gleam
-- Protect
-
-Torkoal @ Charcoal
-Ability: Drought
-Quiet Nature
-- Eruption
-- Protect
-- Heat Wave
-- Solar Beam
-
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
-Relaxed Nature
-- Psychic
-- Trick Room
-- Protect
-- Thunderbolt
-
-Golurk @ Golurkite
-Ability: Iron Fist
-Brave Nature
-- Poltergeist
-- Protect
-- Headlong Rush
-- Ice Punch
-
-######################################################################
-TEAM 292 — mr_14 · #78 at Alpensee Tour (Reg M-C) #75 (125 teams) · 2-3
-######################################################################
-Best team for Pairings: Blastoise + Staraptor
-
-Blastoise @ Blastoisinite
-Ability: Torrent
-Modest Nature
-- Water Spout
-- Dark Pulse
-- Shell Smash
-- Protect
-
-Whimsicott @ Focus Sash
-Ability: Prankster
-Timid Nature
-- Moonblast
-- Charm
-- Protect
-- Tailwind
-
-Kingambit @ Chople Berry
-Ability: Defiant
-Adamant Nature
-- Sucker Punch
-- Protect
-- Kowtow Cleave
-- Iron Head
-
-Politoed @ Sitrus Berry
-Ability: Drizzle
-Calm Nature
-- Weather Ball
-- Protect
-- Perish Song
-- Encore
-
-Garchomp @ Choice Scarf
-Ability: Rough Skin
-Jolly Nature
-- Dragon Claw
-- Poison Jab
-- Earthquake
-- Rock Slide
-
-Staraptor @ Staraptite
-Ability: Intimidate
-Adamant Nature
-- Roost
-- Protect
-- Close Combat
-- Brave Bird
-
-######################################################################
-TEAM 293 — cale · #13 at Thalera Champions Cheese #15 - Nova Reg M-C (24 teams) · 2-3
-######################################################################
-Best team for Pairings: Garchomp + Raichu-Y
-
-Charizard @ Charizardite Y
-Ability: Blaze
-Timid Nature
-- Heat Wave
-- Protect
-- Solar Beam
-- Air Slash
-
-Garchomp @ Garchompite
-Ability: Rough Skin
-Jolly Nature
-- Dragon Claw
-- Earthquake
-- Rock Slide
-- Protect
-
-Raichu @ Raichunite Y
-Ability: Lightning Rod
-Timid Nature
-- Zap Cannon
-- Focus Blast
-- Protect
-- Fake Out
-
-Azumarill @ Mystic Water
-Ability: Huge Power
-Adamant Nature
-- Ice Spinner
-- Liquidation
-- Aqua Jet
-- Play Rough
-
-Whimsicott @ Focus Sash
-Ability: Prankster
-Timid Nature
-- Moonblast
-- Protect
-- Tailwind
-- Trick Room
-
-Incineroar @ Sitrus Berry
-Ability: Intimidate
-Careful Nature
-- Fake Out
 - Flare Blitz
-- Throat Chop
-- Parting Shot
+- Head Smash
+- Extreme Speed
+- Protect
 
 ######################################################################
-TEAM 294 — inpakkenenwegwezen · #30 at VGC Trainer School; champions M/C #5 (64 teams) · 2-4
+TEAM 332 — inpakkenenwegwezen · #30 at VGC Trainer School; champions M/C #5 (64 teams) · 2-4
 ######################################################################
 Best team for Pairings: Raichu-X + Swampert
 
@@ -15599,2171 +17627,161 @@ Timid Nature
 - Volt Switch
 
 ######################################################################
-TEAM 295 — jobotvgc · #60 at ValkrixVGC Pokemon Champions League #05 (155 teams) · 2-4
+TEAM 333 — programvoid · #27 at Tenki's Cart Weekly #122 - Reg M-C (71 teams) · 2-4
 ######################################################################
-Best team for Pairings: Blastoise + Glimmora
+Best team for Pairings: Aerodactyl + Garchomp-Z
 
-Sneasler @ Grassy Seed
-Ability: Unburden
-Adamant Nature
-- Close Combat
-- Dire Claw
+Aerodactyl @ Aerodactylite
+Ability: Pressure
+Jolly Nature
+- Rock Slide
+- Dual Wingbeat
+- Tailwind
 - Protect
+
+Rillaboom @ Miracle Seed
+Ability: Grassy Surge
+Adamant Nature
+- Wood Hammer
+- Grassy Glide
+- High Horsepower
 - Fake Out
 
-Blastoise @ Blastoisinite
-Ability: Rain Dish
-Modest Nature
-- Water Spout
-- Dark Pulse
-- Protect
-- Ice Beam
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Adamant Nature
+- Flare Blitz
+- Snarl
+- Parting Shot
+- Fake Out
 
-Kommo-o @ Sitrus Berry
-Ability: Soundproof
-Timid Nature
-- Aura Sphere
-- Clanging Scales
-- Protect
-- Clangorous Soul
-
-Glimmora @ Glimmoranite
-Ability: Toxic Debris
+Primarina @ Mystic Water
+Ability: Liquid Voice
 Modest Nature
-- Ancient Power
-- Earth Power
-- Sludge Bomb
-- Spiky Shield
+- Hyper Voice
+- Moonblast
+- Calm Mind
+- Protect
 
 Gholdengo @ Life Orb
 Ability: Good as Gold
-Timid Nature
+Modest Nature
 - Make It Rain
 - Shadow Ball
 - Nasty Plot
+- Protect
+
+Garchomp @ Garchompite Z
+Ability: Rough Skin
+Modest Nature
+- Dragon Pulse
+- Earth Power
+- Flamethrower
+- Protect
+
+######################################################################
+TEAM 334 — mattytaxes · played CHAMPIONS REG. M-C |👑CROWN FIGHT Bo3 TOUR #85👑 (150 teams) · 0-0
+######################################################################
+Best team for Pairings: Baxcalibur + Charizard-Y
+
+Sneasler @ Grassy Seed
+Ability: Unburden
+Jolly Nature
+- Fake Out
+- Close Combat
+- Dire Claw
 - Protect
 
 Rillaboom @ Miracle Seed
 Ability: Grassy Surge
 Adamant Nature
 - Fake Out
-- Grassy Glide
 - Wood Hammer
+- Grassy Glide
 - U-turn
 
-######################################################################
-TEAM 296 — ben135783f · #36 at The Drywalls Series #22 (50 teams) · 1-1
-######################################################################
-Best team for Pairings: Metagross + Scrafty
-
-Scrafty @ Scraftinite
-Ability: Intimidate
+Baxcalibur @ Baxcalibrite
+Ability: Thermal Exchange
 Adamant Nature
-- Knock Off
-- Fake Out
-- Close Combat
-- Rock Tomb
-
-Metagross @ Metagrossite
-Ability: Clear Body
-Careful Nature
-- Stomping Tantrum
-- Iron Head
-- Psychic Fangs
-- Protect
-
-Gardevoir @ Choice Scarf
-Ability: Trace
-Timid Nature
-- Expanding Force
-- Psychic
-- Moonblast
-- Thunderbolt
-
-Garchomp @ Life Orb
-Ability: Rough Skin
-Jolly Nature
-- Dragon Claw
-- Stomping Tantrum
+- Glaive Rush
+- Ice Shard
 - Swords Dance
 - Protect
 
-Talonflame @ no item
-Ability: Flame Body
+Basculegion-Male @ Life Orb
+Ability: Adaptability
 Adamant Nature
-- Acrobatics
-- Tailwind
-- Flare Blitz
+- Wave Crash
+- Last Respects
+- Aqua Jet
 - Protect
-
-Indeedee ♀ @ Psychic Seed
-Ability: Psychic Surge
-Bold Nature
-- Fake Out
-- Trick Room
-- Imprison
-- Helping Hand
-
-######################################################################
-TEAM 297 — aethtcg · #125 at 🍋Sitrus-Series🍋|Champions-MC|#76 (177 teams) · 1-1
-######################################################################
-Best team for Pairings: Aerodactyl + Scovillain
 
 Incineroar @ Sitrus Berry
 Ability: Intimidate
 Careful Nature
+- Flare Blitz
+- Darkest Lariat
 - Fake Out
 - Parting Shot
-- Throat Chop
-- Flare Blitz
-
-Aerodactyl @ Aerodactylite
-Ability: Unnerve
-Jolly Nature
-- Rock Slide
-- Dual Wingbeat
-- Tailwind
-- Protect
-
-Scovillain @ Scovillainite
-Ability: Moody
-Bold Nature
-- Protect
-- Rage Powder
-- Flamethrower
-- Giga Drain
-
-Gholdengo @ Life Orb
-Ability: Good as Gold
-Timid Nature
-- Make It Rain
-- Shadow Ball
-- Focus Blast
-- Protect
-
-Grimmsnarl @ Light Clay
-Ability: Prankster
-Impish Nature
-- Fake Out
-- Spirit Break
-- Light Screen
-- Reflect
-
-Primarina @ Leftovers
-Ability: Liquid Voice
-Modest Nature
-- Hyper Voice
-- Moonblast
-- Calm Mind
-- Protect
-
-######################################################################
-TEAM 298 — mirko9311 · #40 at Glory of Champions #1 - Regulation M-C (83 teams) · 2-5
-######################################################################
-Best team for Pairings: Blastoise + Gengar
-
-Gengar @ Gengarite
-Ability: Cursed Body
-Modest Nature
-- Shadow Ball
-- Perish Song
-- Protect
-- Disable
-
-Rillaboom @ Sitrus Berry
-Ability: Grassy Surge
-Adamant Nature
-- Fake Out
-- Wood Hammer
-- Protect
-- U-turn
-
-Kommo-o @ Leftovers
-Ability: Soundproof
-Modest Nature
-- Protect
-- Clanging Scales
-- Clangorous Soul
-- Aura Sphere
-
-Blastoise @ Blastoisinite
-Ability: Rain Dish
-Modest Nature
-- Protect
-- Water Spout
-- Shell Smash
-- Dark Pulse
-
-Incineroar @ Passho Berry
-Ability: Intimidate
-Brave Nature
-- Fake Out
-- Protect
-- Throat Chop
-- Parting Shot
-
-Vivillon @ Choice Scarf
-Ability: Compound Eyes
-Timid Nature
-- Sleep Powder
-- Hurricane
-- Pollen Puff
-- Rage Powder
-
-######################################################################
-TEAM 299 — deathzoom · #209 at Maddo's Cup #12 | 100€ for the Winner | Reg M-C (388 teams) · 2-6
-######################################################################
-Best team for Pairings: Garchomp + Staraptor
-
-Staraptor @ Staraptite
-Ability: Intimidate
-Jolly Nature
-- Brave Bird
-- Close Combat
-- Tailwind
-- Protect
-
-Garchomp @ Garchompite
-Ability: Rough Skin
-Modest Nature
-- Dragon Pulse
-- Earth Power
-- Flamethrower
-- Protect
-
-Gholdengo @ Grassy Seed
-Ability: Good as Gold
-Timid Nature
-- Make It Rain
-- Nasty Plot
-- Shadow Ball
-- Protect
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Wood Hammer
-- Grassy Glide
-- Fake Out
-- Superpower
-
-Sylveon @ Fairy Feather
-Ability: Pixilate
-Modest Nature
-- Hyper Voice
-- Calm Mind
-- Hyper Beam
-- Protect
-
-Arcanine-Hisui @ Focus Sash
-Ability: Rock Head
-Jolly Nature
-- Flare Blitz
-- Head Smash
-- Extreme Speed
-- Protect
-
-######################################################################
-TEAM 300 — maya24490 · #9 at Hatterene Series Weekly #6 2027 - 6PM UTC - M-C (13 teams) · 1-2
-######################################################################
-Best team for Pairings: Kangaskhan + Mawile
-
-Grapploct @ Life Orb
-Ability: Technician
-Adamant Nature
-- Storm Throw
-- Mach Punch
-- Stomping Tantrum
-- Detect
-
-Kangaskhan @ Kangaskhanite
-Ability: Scrappy
-Adamant Nature
-- Double-Edge
-- Hammer Arm
-- Crunch
-- Fake Out
-
-Mawile @ Mawilite
-Ability: Hyper Cutter
-Adamant Nature
-- Iron Head
-- Play Rough
-- Sucker Punch
-- Protect
-
-Pelipper @ Damp Rock
-Ability: Drizzle
-Modest Nature
-- Weather Ball
-- Hurricane
-- Tailwind
-- Protect
-
-Archaludon @ Leftovers
-Ability: Stamina
-Modest Nature
-- Electro Shot
-- Flash Cannon
-- Dragon Pulse
-- Protect
-
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
-Relaxed Nature
-- Psychic
-- Rain Dance
-- Helping Hand
-- Trick Room
-
-######################################################################
-TEAM 301 — rodi · #46 at Off Meta Fight Club #7 (NEW Rules) (63 teams) · 1-2
-######################################################################
-Best team for Pairings: Blastoise + Froslass
-
-Glaceon @ Never-Melt Ice
-Ability: Snow Cloak
-Modest Nature
-- Blizzard
-- Detect
-- Shadow Ball
-- Freeze-Dry
-
-Ninetales-Alola @ Light Clay
-Ability: Snow Warning
-Timid Nature
-- Aurora Veil
-- Blizzard
-- Moonblast
-- Chilling Water
-
-Zoroark-Hisui @ Colbur Berry
-Ability: Illusion
-Mild Nature
-- Bitter Malice
-- Hyper Voice
-- Psychic
-- Taunt
-
-Lycanroc-Dusk @ Focus Sash
-Ability: Tough Claws
-Jolly Nature
-- Accelerock
-- Protect
-- Close Combat
-- Sucker Punch
-
-Blastoise @ Blastoisinite
-Ability: Torrent
-Bold Nature
-- Aura Sphere
-- Water Pulse
-- Protect
-- Fake Out
-
-Froslass @ Froslassite
-Ability: Cursed Body
-Timid Nature
-- Blizzard
-- Aurora Veil
-- Chilling Water
-- Shadow Ball
-
-######################################################################
-TEAM 302 — koczu · played VGC UmbreNews 13.10.2026 #35 - Champion (92 teams) · 0-0
-######################################################################
-Best team for Pairings: Aerodactyl + Delphox
-
-Delphox @ Delphoxite
-Ability: Blaze
-Timid Nature
-- Protect
-- Heat Wave
-- Nasty Plot
-- Psychic
-
-Sneasler @ White Herb
-Ability: Poison Touch
-Jolly Nature
-- Fake Out
-- Close Combat
-- Poison Jab
-- Protect
-
-Kommo-o @ Leftovers
-Ability: Bulletproof
-Modest Nature
-- Clanging Scales
-- Clangorous Soul
-- Aura Sphere
-- Protect
-
-Whimsicott @ Focus Sash
-Ability: Prankster
-Timid Nature
-- Tailwind
-- Moonblast
-- Encore
-- Sunny Day
-
-Kingambit @ Life Orb
-Ability: Defiant
-Adamant Nature
-- Sucker Punch
-- Kowtow Cleave
-- Protect
-- Iron Head
-
-Aerodactyl @ Aerodactylite
-Ability: Unnerve
-Jolly Nature
-- Rock Slide
-- Ice Fang
-- Dual Wingbeat
-- Wide Guard
-
-######################################################################
-TEAM 303 — unknownmagister · played Friday Fight Night 76! $25 Prize & Top 8 Graphic (127 teams) · 0-0
-######################################################################
-Best team for Pairings: Glimmora + Sceptile
-
-Sceptile @ Sceptilite
-Ability: Overgrow
-Timid Nature
-- Dragon Pulse
-- Earth Power
-- Detect
-- Leaf Storm
-
-Glimmora @ Glimmoranite
-Ability: Toxic Debris
-Modest Nature
-- Power Gem
-- Earth Power
-- Sludge Bomb
-- Spiky Shield
-
-Sneasler @ White Herb
-Ability: Unburden
-Jolly Nature
-- Close Combat
-- Protect
-- Dire Claw
-- Fake Out
-
-Volcarona @ Sitrus Berry
-Ability: Flame Body
-Timid Nature
-- Rage Powder
-- Tailwind
-- Overheat
-- Struggle Bug
-
-Gholdengo @ Life Orb
-Ability: Good as Gold
-Modest Nature
-- Make It Rain
-- Shadow Ball
-- Nasty Plot
-- Protect
-
-Rotom-Wash @ Choice Scarf
-Ability: Levitate
-Timid Nature
-- Discharge
-- Hydro Pump
-- Volt Switch
-- Electroweb
-
-######################################################################
-TEAM 304 — ibsan08 · #76 at Talon's FIGHT CLUB #105 POKEMON CHAMPIONS REG M-C (89 teams) · 0-1
-######################################################################
-Best team for Pairings: Charizard-X + Staraptor
-
-Torkoal @ Charcoal
-Ability: Drought
-Quiet Nature
-- Eruption
-- Weather Ball
-- Earth Power
-- Protect
-
-Staraptor @ Staraptite
-Ability: Intimidate
-Adamant Nature
-- Protect
-- Roost
-- Close Combat
-- Brave Bird
-
-Milotic @ Leftovers
-Ability: Competitive
-Modest Nature
-- Scald
-- Life Dew
-- Protect
-- Ice Beam
-
-Sinistcha @ Sitrus Berry
-Ability: Hospitality
-Sassy Nature
-- Matcha Gotcha
-- Life Dew
-- Rage Powder
-- Trick Room
-
-Indeedee ♀ @ Psychic Seed
-Ability: Psychic Surge
-Relaxed Nature
-- Trick Room
-- Helping Hand
-- Follow Me
-- Psychic
-
-Charizard @ Charizardite X
-Ability: Blaze
-Brave Nature
-- Swords Dance
-- Flare Blitz
-- Dragon Claw
-- Protect
-
-######################################################################
-TEAM 305 — motocamioneta · #81 at Off Meta MAJOR ($140 USD Prize Pool) (117 teams) · 1-2
-######################################################################
-Best team for Pairings: Malamar + Staraptor
-
-Rillaboom @ Leftovers
-Ability: Grassy Surge
-Adamant Nature
-- Wood Hammer
-- Stomping Tantrum
-- Grassy Glide
-- Fake Out
-
-Salazzle @ Life Orb
-Ability: Corrosion
-Modest Nature
-- Flamethrower
-- Toxic
-- Sludge Bomb
-- Protect
-
-Malamar @ Malamarite
-Ability: Contrary
-Careful Nature
-- Superpower
-- Throat Chop
-- Psycho Cut
-- Protect
-
-Kleavor @ Expert Belt
-Ability: Sharpness
-Adamant Nature
-- X-Scissor
-- Stone Axe
-- Quick Guard
-- Tailwind
-
-Grapploct @ Focus Sash
-Ability: Technician
-Adamant Nature
-- Octolock
-- Storm Throw
-- Feint
-- Detect
-
-Staraptor @ Staraptite
-Ability: Intimidate
-Jolly Nature
-- Brave Bird
-- Close Combat
-- Roost
-- Protect
-
-######################################################################
-TEAM 306 — godson · played VGC UmbreNews 22.09.2026 #33 - Champion (57 teams) · 0-0
-######################################################################
-Best team for Pairings: Glimmora + Tyranitar
-
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
-Adamant Nature
-- Rock Slide
-- Knock Off
-- Low Kick
-- Protect
-
-Excadrill @ Focus Sash
-Ability: Sand Rush
-Adamant Nature
-- Iron Head
-- High Horsepower
-- Rock Slide
-- Protect
-
-Indeedee @ Choice Scarf
-Ability: Psychic Surge
-Modest Nature
-- Expanding Force
-- Trick
-- Mystical Fire
-- Protect
-
-Milotic @ Leftovers
-Ability: Competitive
-Modest Nature
-- Muddy Water
-- Coil
-- Hypnosis
-- Protect
-
-Gholdengo @ Life Orb
-Ability: Good as Gold
-Timid Nature
-- Shadow Ball
-- Make It Rain
-- Nasty Plot
-- Protect
-
-Glimmora @ Glimmoranite
-Ability: Toxic Debris
-Timid Nature
-- Earth Power
-- Power Gem
-- Sludge Bomb
-- Spiky Shield
-
-######################################################################
-TEAM 307 — ascii_dawny · #17 at Corner Clash (Shiny Dnite Prize) (21 teams) · 1-3
-######################################################################
-Best team for Pairings: Aerodactyl + Eelektross
-
-Garchomp @ Life Orb
-Ability: Rough Skin
-Adamant Nature
-- Earthquake
-- Dragon Claw
-- Rock Slide
-- Protect
-
-Gholdengo @ Choice Scarf
-Ability: Good as Gold
-Timid Nature
-- Shadow Ball
-- Power Gem
-- Make It Rain
-- Dazzling Gleam
-
-Aerodactyl @ Aerodactylite
-Ability: Unnerve
-Jolly Nature
-- Rock Slide
-- Ice Fang
-- Dual Wingbeat
-- Tailwind
-
-Sylveon @ Fairy Feather
-Ability: Pixilate
-Modest Nature
-- Hyper Voice
-- Hyper Beam
-- Quick Attack
-- Detect
-
-Eelektross @ Eelektrossite
-Ability: Eelevate
-Modest Nature
-- Thunderbolt
-- Giga Drain
-- Flamethrower
-- Protect
-
-Arcanine-Hisui @ Focus Sash
-Ability: Rock Head
-Jolly Nature
-- Head Smash
-- Flare Blitz
-- Close Combat
-- Protect
-
-######################################################################
-TEAM 308 — chaudersauce · played ˗ˋˏ❤︎ˎˊ˗ Pomelo Late Night Tour (34 teams) · 0-0
-######################################################################
-Best team for Pairings: Delphox + Swampert
-
-Pawmot @ Life Orb
-Ability: Iron Fist
-Jolly Nature
-- Thunder Punch
-- Ice Punch
-- Brick Break
-- Protect
-
-Swampert @ Swampertite
-Ability: Torrent
-Adamant Nature
-- High Horsepower
-- Wave Crash
-- Rock Slide
-- Helping Hand
-
-Maushold @ Silk Scarf
-Ability: Technician
-Jolly Nature
-- Population Bomb
-- Helping Hand
-- Taunt
-- Thunder Wave
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Brave Nature
-- Fake Out
-- Knock Off
-- Wood Hammer
-- Grassy Glide
-
-Kingambit @ Focus Sash
-Ability: Defiant
-Adamant Nature
-- Protect
-- Sucker Punch
-- Kowtow Cleave
-- Iron Head
-
-Delphox @ Delphoxite
-Ability: Blaze
-Timid Nature
-- Heat Wave
-- Protect
-- Psychic
-- Dazzling Gleam
-
-######################################################################
-TEAM 309 — justwonder · #69 at 🍋Sitrus-Series🍋|Champions-MC|#79 (119 teams) · 1-3
-######################################################################
-Best team for Pairings: Scrafty + Tyranitar
-
-Armarouge @ Sitrus Berry
-Ability: Flash Fire
-Modest Nature
-- Heat Wave
-- Wide Guard
-- Trick Room
-- Expanding Force
-
-Primarina @ Life Orb
-Ability: Liquid Voice
-Modest Nature
-- Hyper Voice
-- Dazzling Gleam
-- Moonblast
-- Protect
-
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
-Brave Nature
-- Rock Slide
-- Knock Off
-- Ice Punch
-- Protect
-
-Scrafty @ Scraftinite
-Ability: Intimidate
-Adamant Nature
-- Knock Off
-- Drain Punch
-- Fake Out
-- Detect
-
-Indeedee ♀ @ Psychic Seed
-Ability: Psychic Surge
-Relaxed Nature
-- Trick Room
-- Follow Me
-- Helping Hand
-- Protect
-
-Decidueye-Hisui @ Scope Lens
-Ability: Scrappy
-Adamant Nature
-- Triple Arrows
-- Leaf Blade
-- Brave Bird
-- Protect
-
-######################################################################
-TEAM 310 — raibhay_123 · played Windwork Valley Tour | Qualifiers 2 🇮🇳 (156 teams) · 0-0
-######################################################################
-Best team for Pairings: Charizard-Y + Gyarados
-
-Gyarados @ Gyaradosite
-Ability: Intimidate
-Adamant Nature
-- Dragon Dance
-- Waterfall
-- Crunch
-- Protect
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Wood Hammer
-- Grassy Glide
-- Snarl
-- Fake Out
 
 Charizard @ Charizardite Y
 Ability: Blaze
 Modest Nature
-- Weather Ball
 - Heat Wave
+- Weather Ball
 - Ancient Power
 - Protect
 
-Pelipper @ Focus Sash
-Ability: Drizzle
-Bold Nature
-- Hurricane
-- Weather Ball
-- Protect
-- Tailwind
-
-Archaludon @ Leftovers
-Ability: Stamina
-Modest Nature
-- Electro Shot
-- Dragon Pulse
-- Flash Cannon
-- Protect
-
-Venusaur @ Life Orb
-Ability: Chlorophyll
-Modest Nature
-- Sludge Bomb
-- Earth Power
-- Giga Drain
-- Protect
-
 ######################################################################
-TEAM 311 — snakeart · played [BR] Copa Oak Stadium #9 - R$ 200 em Premiação (117 teams) · 0-0
+TEAM 335 — capijulian · played Prep Frankfurt Circuito VGC #8 REG MC | Z2 Gaming (74 teams) · 0-0
 ######################################################################
-Best team for Pairings: Scovillain + Venusaur
-
-Toxapex @ Binding Band
-Ability: Regenerator
-Sassy Nature
-- Haze
-- Baneful Bunker
-- Recover
-- Infestation
-
-Sableye @ Light Clay
-Ability: Prankster
-Sassy Nature
-- Light Screen
-- Reflect
-- Will-O-Wisp
-- Sunny Day
-
-Venusaur @ Venusaurite
-Ability: Overgrow
-Relaxed Nature
-- Toxic
-- Synthesis
-- Protect
-- Earth Power
-
-Garganacl @ Rocky Helmet
-Ability: Purifying Salt
-Sassy Nature
-- Wide Guard
-- Salt Cure
-- Protect
-- Recover
-
-Scovillain @ Scovillainite
-Ability: Moody
-Sassy Nature
-- Leech Seed
-- Flamethrower
-- Protect
-- Rage Powder
-
-Bellibolt @ Leftovers
-Ability: Electromorphosis
-Sassy Nature
-- Parabolic Charge
-- Protect
-- Soak
-- Slack Off
-
-######################################################################
-TEAM 312 — weiserfalken · played ValkrixVGC Pokemon Champions League #03 (220 teams) · 0-0
-######################################################################
-Best team for Pairings: Aerodactyl + Metagross
+Best team for Pairings: Alakazam + Mawile
 
 Indeedee ♀ @ Psychic Seed
 Ability: Psychic Surge
-Bold Nature
-- Follow Me
-- Psychic
-- Helping Hand
-- Light Screen
-
-Metagross @ Metagrossite
-Ability: Clear Body
-Adamant Nature
-- Psychic Fangs
-- Protect
-- Meteor Mash
-- Ice Punch
-
-Volcarona @ Sitrus Berry
-Ability: Flame Body
-Modest Nature
-- Quiver Dance
-- Fiery Dance
-- Giga Drain
-- Protect
-
-Grimmsnarl @ Light Clay
-Ability: Prankster
-Adamant Nature
-- Fake Out
-- Parting Shot
-- Spirit Break
-- Reflect
-
-Aerodactyl @ Aerodactylite
-Ability: Unnerve
-Adamant Nature
-- Rock Slide
-- Dual Wingbeat
-- Wide Guard
-- Ice Fang
-
-Pawmot @ Focus Sash
-Ability: Iron Fist
-Jolly Nature
-- Double Shock
-- Close Combat
-- Nuzzle
-- Encore
-
-######################################################################
-TEAM 313 — teddy_dance · played Reg M-C Qualifier for RookideeVGC Grand Tourney (44 teams) · 0-0
-######################################################################
-Best team for Pairings: Blaziken + Mawile
-
-Blaziken @ Blazikenite
-Ability: Speed Boost
-Adamant Nature
-- Flare Blitz
-- Close Combat
-- Rock Slide
-- Detect
-
-Sneasler @ Grassy Seed
-Ability: Unburden
-Adamant Nature
-- Fake Out
-- Dire Claw
-- Close Combat
-- Quick Guard
-
-Rillaboom @ Sitrus Berry
-Ability: Grassy Surge
-Jolly Nature
-- Grassy Glide
-- Fake Out
-- High Horsepower
-- Protect
-
-Primarina @ Life Orb
-Ability: Liquid Voice
-Modest Nature
-- Hyper Voice
-- Moonblast
-- Shadow Ball
-- Protect
-
-Oranguru @ Mental Herb
-Ability: Inner Focus
-Sassy Nature
-- Psychic
-- Instruct
-- Trick Room
-- Protect
-
-Mawile @ Mawilite
-Ability: Hyper Cutter
-Brave Nature
-- Play Rough
-- Iron Head
-- Sucker Punch
-- Protect
-
-######################################################################
-TEAM 314 — microlego · #81 at Off Meta Fight Club #2 ($40 USD prize pool) (112 teams) · 1-3
-######################################################################
-Best team for Pairings: Altaria + Chandelure
-
-Meowstic-Male @ Light Clay
-Ability: Prankster
-Impish Nature
-- Gravity
-- Fake Out
-- Reflect
-- Light Screen
-
-Maushold @ King's Rock
-Ability: Technician
-Jolly Nature
-- Population Bomb
-- Seed Bomb
-- Bite
-- Protect
-
-Altaria @ Altarianite
-Ability: Cloud Nine
-Modest Nature
-- Hyper Voice
-- Draco Meteor
-- Heat Wave
-- Hurricane
-
-Chandelure @ Chandelurite
-Ability: Flame Body
-Modest Nature
-- Calm Mind
-- Heat Wave
-- Energy Ball
-- Shadow Ball
-
-Flapple @ Choice Scarf
-Ability: Hustle
-Adamant Nature
-- Grav Apple
-- U-turn
-- Dual Wingbeat
-- Dragon Rush
-
-Samurott-Hisui @ Focus Sash
-Ability: Sharpness
-Jolly Nature
-- Night Slash
-- Sacred Sword
-- Aqua Cutter
-- Protect
-
-######################################################################
-TEAM 315 — cosmic_king · #16 at Monotype Cup Championship (19 teams) · 1-4
-######################################################################
-Best team for Pairings: Greninja + Tyranitar
-
-Hydreigon @ Choice Scarf
-Ability: Levitate
-Modest Nature
-- Draco Meteor
-- Dark Pulse
-- Heat Wave
-- Earth Power
-
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
-Adamant Nature
-- Rock Slide
-- Knock Off
-- Dragon Dance
-- Protect
-
-Grimmsnarl @ Leftovers
-Ability: Prankster
-Careful Nature
-- Fake Out
-- Spirit Break
-- Thunder punch
-- Parting Shot
-
-Greninja @ Greninjite
-Ability: Protean
-Timid Nature
-- Surf
-- Sludge wave
-- Ice beam
-- Protect
-
-Kingambit @ Focus Sash
-Ability: Defiant
-Adamant Nature
-- Sucker Punch
-- Iron Head
-- Low Kick
-- Kowtow cleave
-
-Incineroar @ Sitrus Berry
-Ability: Intimidate
-Sassy Nature
-- Fake Out
-- Flare Blitz
-- Throat Chop
-- Parting Shot
-
-######################################################################
-TEAM 316 — manugarde · #15 at Dragonspiral Tower Global Rumble (Reg M-C) (29 teams) · 1-4
-######################################################################
-Best team for Pairings: Aerodactyl + Garchomp
-
-Sinistcha @ Coba Berry
-Ability: Hospitality
-Calm Nature
-- Rage Powder
-- Matcha Gotcha
-- Imprison
-- Trick Room
-
-Rotom-Heat @ Sitrus Berry
-Ability: Levitate
-Modest Nature
-- Thunderbolt
-- Will-O-Wisp
-- Overheat
-- Protect
-
-Basculegion-Male @ Mystic Water
-Ability: Adaptability
-Jolly Nature
-- Wave Crash
-- Last Respects
-- Protect
-- Aqua Jet
-
-Aerodactyl @ Aerodactylite
-Ability: Unnerve
-Jolly Nature
-- Rock Slide
-- Dual Wingbeat
-- Tailwind
-- Protect
-
-Sneasler @ Focus Sash
-Ability: Poison Touch
-Jolly Nature
-- Poison Jab
-- Close Combat
-- Rock Slide
-- Fake Out
-
-Garchomp @ Garchompite
-Ability: Rough Skin
-Jolly Nature
-- Protect
-- Rock Slide
-- Earthquake
-- Dragon Claw
-
-######################################################################
-TEAM 317 — slash_check · #30 at Trinity Championship 16 (Double Format) (39 teams) · 1-4
-######################################################################
-Best team for Pairings: Dragonite + Scizor
-
-Skeledirge @ Leftovers
-Ability: Blaze
-Modest Nature
-- Torch Song
-- Earthquake
-- Shadow Ball
-- Overheat
-
-Scizor @ Scizorite
-Ability: Swarm
-Adamant Nature
-- Close Combat
-- Iron Head
-- Swords Dance
-- Bug Bite
-
-Morpeko @ Sitrus Berry
-Ability: Hunger Switch
-Bold Nature
-- Aura Wheel
-- Foul Play
-- Thunderbolt
-- Outrage
-
-Dragonite @ Dragoninite
-Ability: Multiscale
-Modest Nature
-- Draco Meteor
-- Fire Blast
-- Ice Beam
-- Extreme Speed
-
-Decidueye @ Choice Scarf
-Ability: Overgrow
-Lonely Nature
-- Psycho Cut
-- Spirit Shackle
-- Leaf Storm
-- Giga Impact
-
-Ditto @ Lum Berry
-Ability: Imposter
-Naive Nature
-- Transform
-
-######################################################################
-TEAM 318 — manoel · #63 at London Corviknights VGC Weekly Tour 17! (64 teams) · 0-3
-######################################################################
-Best team for Pairings: Gengar + Scrafty
-
-Gengar @ Gengarite
-Ability: Shadow Tag
-Timid Nature
-- Shadow Ball
-- Protect
-- Disable
-- Perish Song
-
-Politoed @ Leftovers
-Ability: Drizzle
-Calm Nature
-- Weather Ball
-- Protect
-- Perish Song
-- Encore
-
-Incineroar @ Passho Berry
-Ability: Intimidate
-Impish Nature
-- Flare Blitz
-- Parting Shot
-- Protect
-- Fake Out
-
-Scrafty @ Scraftinite
-Ability: Intimidate
-Jolly Nature
-- Drain Punch
-- Ice Punch
-- Knock Off
-- Fake Out
-
-Vivillon @ Focus Sash
-Ability: Compound Eyes
-Timid Nature
-- Hurricane
-- Sleep Powder
-- Rage Powder
-- Protect
-
-Tsareena @ Choice Scarf
-Ability: Queenly Majesty
-Jolly Nature
-- Power Whip
-- Triple Axel
-- U-turn
-- High Jump Kick
-
-######################################################################
-TEAM 319 — mloow · #61 at London Corviknights VGC Weekly Tour 17! (64 teams) · 0-2
-######################################################################
-Best team for Pairings: Mawile + Pyroar
-
-Vileplume @ Focus Sash
-Ability: Chlorophyll
-Modest Nature
-- Leaf Storm
-- After You
-- Sleep Powder
-- Protect
-
-Indeedee ♀ @ Rocky Helmet
-Ability: Psychic Surge
 Relaxed Nature
+- Trick Room
 - Follow Me
-- Psychic
 - Helping Hand
-- Trick Room
-
-Pyroar @ Pyroarite
-Ability: Unnerve
-Timid Nature
-- Heat Wave
-- Overheat
-- Taunt
-- Protect
-
-Gliscor @ Psychic Seed
-Ability: Hyper Cutter
-Adamant Nature
-- High Horsepower
-- Acrobatics
-- Tailwind
-- Protect
-
-Mawile @ Mawilite
-Ability: Hyper Cutter
-Adamant Nature
-- Iron Head
-- Play Rough
-- Rock Slide
-- Protect
-
-Torkoal @ Charcoal
-Ability: Drought
-Quiet Nature
-- Weather Ball
-- Eruption
-- Earth Power
-- Protect
-
-######################################################################
-TEAM 320 — bey_merchant · #22 at Shaymin Showdown (26 teams) · 0-1
-######################################################################
-Best team for Pairings: Delphox + Sableye
-
-Sableye @ Sablenite
-Ability: Prankster
-Sassy Nature
-- Psych Up
-- Recover
-- Night Shade
-- Foul Play
-
-Sinistcha @ Coba Berry
-Ability: Hospitality
-Quiet Nature
-- Rage Powder
-- Life Dew
-- Trick Room
-- Matcha Gotcha
-
-Klefki @ Sitrus Berry
-Ability: Prankster
-Bold Nature
-- Psych Up
-- Draining Kiss
-- Calm Mind
-- Substitute
-
-Delphox @ Delphoxite
-Ability: Blaze
-Timid Nature
-- Psych Up
-- Stored Power
-- Heat Wave
-- Protect
-
-Meowstic-Male @ Bright Powder
-Ability: Prankster
-Impish Nature
-- Light Screen
-- Skill Swap
-- Fake Out
-- Yawn
-
-Overqwil @ Leftovers
-Ability: Intimidate
-Careful Nature
-- Minimize
-- Stockpile
-- Barb Barrage
-- Protect
-
-######################################################################
-TEAM 321 — paparott · played Sketch Academy Sunday Regulation M-C Tournament (61 teams) · 0-0
-######################################################################
-Best team for Pairings: Camerupt + Sceptile
-
-Sceptile @ Sceptilite
-Ability: Overgrow
-Timid Nature
-- Leaf Storm
-- Dragon Pulse
-- Earth Power
-- Detect
-
-Bellibolt @ Shuca Berry
-Ability: Electromorphosis
-Modest Nature
-- Protect
-- Parabolic Charge
-- Volt Switch
-- Soak
-
-Rillaboom @ Miracle Seed
-Ability: Grassy Surge
-Adamant Nature
-- Wood Hammer
-- Grassy Glide
-- U-turn
-- Fake Out
-
-Basculegion-Male @ Choice Scarf
-Ability: Adaptability
-Jolly Nature
-- Aqua Jet
-- Wave Crash
-- Flip Turn
-- Last Respects
-
-Gholdengo @ Grassy Seed
-Ability: Good as Gold
-Modest Nature
-- Protect
-- Nasty Plot
-- Make It Rain
-- Shadow Ball
-
-Camerupt @ Cameruptite
-Ability: Solid Rock
-Quiet Nature
-- Protect
-- Heat Wave
-- Ancient Power
-- Earth Power
-
-######################################################################
-TEAM 322 — quietusunknown · played CHAMPIONS REG. M-C |👑CROWN FIGHT Bo3 TOUR #89👑 (131 teams) · 0-0
-######################################################################
-Best team for Pairings: Garchomp + Metagross
-
-Garchomp @ Garchompite
-Ability: Rough Skin
-Serious Nature
-- Draco Meteor
-- Earth Power
-- Power Gem
-- Protect
-
-Metagross @ Metagrossite
-Ability: Clear Body
-Serious Nature
-- Meteor Mash
-- Psychic Fangs
-- Stomping Tantrum
-- Protect
-
-Sneasler @ Grassy Seed
-Ability: Unburden
-Jolly Nature
-- Fake Out
-- Dire Claw
-- Close Combat
-- Protect
-
-Rillaboom @ Sitrus Berry
-Ability: Grassy Surge
-Serious Nature
-- Fake Out
-- Grassy Glide
-- Wood Hammer
-- U-turn
-
-Mimikyu @ Life Orb
-Ability: Disguise
-Adamant Nature
-- Play Rough
-- Shadow Claw
-- Drain Punch
-- Dazzling Gleam
-
-Whimsicott @ Focus Sash
-Ability: Prankster
-Timid Nature
-- Tailwind
-- Moonblast
-- Encore
-- Protect
-
-######################################################################
-TEAM 323 — flygonthemachine · played [100€ prize] The Grim Cup #1 Reg M-C (217 teams) · 0-0
-######################################################################
-Best team for Pairings: Aerodactyl + Kangaskhan
-
-Typhlosion-Hisui @ Choice Scarf
-Ability: Blaze
-Modest Nature
-- Eruption
-- Heat Wave
-- Shadow Ball
-- Overheat
-
-Indeedee ♀ @ Sitrus Berry
-Ability: Psychic Surge
-Bold Nature
-- Follow Me
-- Trick Room
 - Psychic
-- Helping Hand
-
-Dragapult @ Life Orb
-Ability: Clear Body
-Adamant Nature
-- Dragon Darts
-- Outrage
-- Phantom Force
-- U-turn
-
-Kangaskhan @ Kangaskhanite
-Ability: Inner Focus
-Adamant Nature
-- Drain Punch
-- Crunch
-- Double-Edge
-- Fake Out
-
-Torkoal @ Charcoal
-Ability: Drought
-Quiet Nature
-- Eruption
-- Weather Ball
-- Earth Power
-- Protect
-
-Aerodactyl @ Aerodactylite
-Ability: Unnerve
-Jolly Nature
-- Dual Wingbeat
-- Rock Slide
-- Wide Guard
-- Tailwind
-
-######################################################################
-TEAM 324 — r_haven · played Windwork Valley Tour | Qualifiers 2 🇮🇳 (156 teams) · 0-0
-######################################################################
-Best team for Pairings: Glimmora + Mawile
-
-Glimmora @ Glimmoranite
-Ability: Toxic Debris
-Timid Nature
-- Power Gem
-- Spiky Shield
-- Earth Power
-- Sludge Bomb
-
-Mawile @ Mawilite
-Ability: Hyper Cutter
-Brave Nature
-- Iron Head
-- Play Rough
-- Protect
-- Sucker Punch
-
-Farigiraf @ Colbur Berry
-Ability: Armor Tail
-Sassy Nature
-- Trick Room
-- Roar
-- Protect
-- Twin Beam
-
-Clawitzer @ Expert Belt
-Ability: Mega Launcher
-Quiet Nature
-- Aura Sphere
-- Dragon Pulse
-- Water Pulse
-- Protect
-
-Rotom-Mow @ Sitrus Berry
-Ability: Levitate
-Bold Nature
-- Leaf Storm
-- Volt Switch
-- Protect
-- Will-O-Wisp
 
 Armarouge @ Life Orb
 Ability: Flash Fire
-Quiet Nature
+Brave Nature
 - Armor Cannon
-- Psychic
-- Protect
-- Wide Guard
-
-######################################################################
-TEAM 325 — gloriwashere · played Meeklosh's Fight Night Friday  | REG M-C (42 teams) · 0-0
-######################################################################
-Best team for Pairings: Gengar + Scovillain
-
-Sableye @ Roseli Berry
-Ability: Prankster
-Calm Nature
-- Fake Out
-- Gravity
-- Quash
-- Foul Play
-
-Espathra @ Life Orb
-Ability: Speed Boost
-Timid Nature
-- Hypnosis
-- Lumina Crash
-- Hex
-- Protect
-
-Indeedee @ Focus Sash
-Ability: Inner Focus
-Modest Nature
-- Gravity
-- Expanding Force
-- Mystical Fire
-- Protect
-
-Gengar @ Gengarite
-Ability: Cursed Body
-Timid Nature
-- Hex
-- Sludge Bomb
-- Hypnosis
-- Protect
-
-Milotic @ Leftovers
-Ability: Competitive
-Calm Nature
-- Hypnosis
-- Ice Beam
-- Muddy Water
-- Protect
-
-Scovillain @ Scovillainite
-Ability: Moody
-Calm Nature
-- Leech Seed
-- Rage Powder
-- Giga Drain
-- Protect
-
-######################################################################
-TEAM 326 — gianasgenie67 · #75 at Off Meta Fight Club #4 ($40 USD prize pool) (80 teams) · 0-4
-######################################################################
-Best team for Pairings: Crabominable + Mawile
-
-Crabominable @ Crabominite
-Ability: Iron Fist
-Brave Nature
-- Protect
-- Drain Punch
-- Ice Hammer
-- Knock Off
-
-Araquanid @ Life Orb
-Ability: Water Bubble
-Careful Nature
-- Liquidation
-- Wide Guard
-- Leech Life
-- Sticky Web
-
-Incineroar @ Focus Sash
-Ability: Intimidate
-Jolly Nature
-- Fake Out
-- Parting Shot
-- Darkest Lariat
-- Flare Blitz
-
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
-Sassy Nature
-- Trick Room
-- Helping Hand
-- Thunderbolt
-- Psychic
-
-Ninetales-Alola @ Quick Claw
-Ability: Snow Warning
-Modest Nature
-- Blizzard
-- Moonblast
-- Aurora Veil
-- Disable
-
-Mawile @ Mawilite
-Ability: intimidate
-Adamant Nature
-- Play Rough
-- Iron Head
-- Protect
-- Sucker Punch
-
-######################################################################
-TEAM 327 — moklionty2 · #157 at Penglin's Penguin Tournouá Laurels (10k in Prizes) (173 teams) · 0-6
-######################################################################
-Best team for Pairings: Blaziken + Scrafty
-
-Scrafty @ Scraftinite
-Ability: Intimidate
-Careful Nature
-- Fake Out
-- Protect
-- Knock Off
-- Close Combat
-
-Blaziken @ Blazikenite
-Ability: Speed Boost
-Adamant Nature
-- Close Combat
-- Flare Blitz
-- Rock Slide
-- Detect
-
-Toxapex @ Leftovers
-Ability: Regenerator
-Bold Nature
-- Baneful Bunker
-- Toxic
-- Infestation
-- Wide Guard
-
-Rillaboom @ Sitrus Berry
-Ability: Grassy Surge
-Jolly Nature
-- Fake Out
-- Grassy Glide
-- High Horsepower
-- Protect
-
-Farigiraf @ Grassy Seed
-Ability: Armor Tail
-Quiet Nature
-- Thunderbolt
-- Psychic
-- Helping Hand
-- Protect
-
-Gholdengo @ Choice Scarf
-Ability: Good as Gold
-Modest Nature
-- Make It Rain
-- Shadow Ball
-- Trick
-- Protect
-
-######################################################################
-TEAM 328 — theoassir · #105 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 0-2
-######################################################################
-Best team for Pairings: Scovillain + Scrafty
-
-Rillaboom @ Leftovers
-Ability: Grassy Surge
-Adamant Nature
-- Grassy Glide
-- Knock Off
-- U-turn
-- Protect
-
-Scovillain @ Scovillainite
-Ability: Moody
-Modest Nature
-- Flamethrower
-- Rage Powder
-- Leech Seed
-- Giga Drain
-
-Sneasler @ White Herb
-Ability: Unburden
-Adamant Nature
-- Close Combat
-- Dire Claw
-- Fake Out
-- Rock Tomb
-
-Scrafty @ Scraftinite
-Ability: Intimidate
-Adamant Nature
-- Fake Out
-- Knock Off
-- Drain Punch
-
-Decidueye-Hisui @ Life Orb
-Ability: Scrappy
-Brave Nature
-- Triple Arrows
-- Brave Bird
-- Grassy Glide
-- Protect
-
-Rotom-Wash @ Sitrus Berry
-Ability: Levitate
-Timid Nature
-- Hydro Pump
-- Thunderbolt
-- Protect
-- Electroweb
-
-######################################################################
-TEAM 329 — tronkt · #112 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 0-4
-######################################################################
-Best team for Pairings: Glimmora + Scovillain
-
-Scovillain @ Scovillainite
-Ability: Spicy Spray
-Modest Nature
-- Protect
-- Fire Blast
-- Leech Seed
-- Rage Powder
-
-Rillaboom @ Terrain Extender
-Ability: Grassy Surge
-Careful Nature
-- Grassy Glide
-- Wood Hammer
-- Fake Out
-- U-turn
-
-Rotom-Wash @ Rocky Helmet
-Ability: Levitate
-Modest Nature
-- Hydro Pump
-- Thunderbolt
-- Will-O-Wisp
-- Volt Switch
-
-Glimmora @ Glimmoranite
-Ability: Adaptability
-Timid Nature
-- Power Gem
-- Sludge Bomb
-- Earth Power
-- Protect
-
-Weavile @ Grassy Seed
-Ability: Pickpocket
-Jolly Nature
-- Fake Out
-- Ice Spinner
-- Ice Shard
-- Throat Chop
-
-Kommo-o @ Choice Scarf
-Ability: Soundproof
-Jolly Nature
-- Dragon Claw
-- Drain Punch
-- Ice Punch
-- Iron Head
-
-######################################################################
-TEAM 330 — pomoco16 · #122 at Off Meta Fight Club #3 ($40 USD prize pool) (126 teams) · 0-1
-######################################################################
-Best team for Pairings: Garchomp + Mawile
-
-Garchomp @ Garchompite
-Ability: Rough Skin
-Modest Nature
-- Earth Power
-- Draco Meteor
-- Power Gem
-- Protect
-
-Tyranitar @ Chople Berry
-Ability: Sand Stream
-Brave Nature
-- Rock Slide
-- Knock Off
-- High Horsepower
-- Protect
-
-Excadrill @ Focus Sash
-Ability: Sand Rush
-Jolly Nature
-- High Horsepower
-- Iron Head
-- Rock Slide
-- Protect
-
-Indeedee ♀ @ Colbur Berry
-Ability: Psychic Surge
-Bold Nature
-- Psychic
-- Follow Me
-- Trick Room
-- Helping Hand
-
-Mawile @ Mawilite
-Ability: Intimidate
-Brave Nature
-- Play Rough
-- Iron Head
-- Rock Slide
-- Protect
-
-Hatterene @ Life Orb
-Ability: Magic Bounce
-Modest Nature
-- Dazzling Gleam
 - Expanding Force
 - Trick Room
 - Protect
 
-######################################################################
-TEAM 331 — ywise · #101 at Alpensee Tour (Reg M-C) #75 (125 teams) · 0-2
-######################################################################
-Best team for Pairings: Scizor + Scrafty
-
-Scrafty @ Scraftinite
-Ability: Intimidate
-Brave Nature
-- Close Combat
-- Knock Off
-- Iron Head
-- Fake Out
-
-Vileplume @ Focus Sash
+Venusaur @ Focus Sash
 Ability: Chlorophyll
 Timid Nature
 - Sludge Bomb
-- Sleep Powder
-- After You
+- proteccin
+- Earth Power
 - Leaf Storm
-
-Staraptor @ Choice Scarf
-Ability: Intimidate
-Jolly Nature
-- Brave Bird
-- Close Combat
-- U-turn
-- Final Gambit
-
-Farigiraf @ Sitrus Berry
-Ability: Armor Tail
-Sassy Nature
-- Protect
-- Twin Beam
-- Thunderbolt
-- Trick Room
 
 Torkoal @ Charcoal
 Ability: Drought
 Quiet Nature
 - Eruption
+- Solar Beam
 - Weather Ball
-- Heat Wave
 - Protect
 
-Scizor @ Scizorite
-Ability: Technician
-Adamant Nature
-- Defog
-- Bullet Punch
-- Bug Bite
+Alakazam @ Alakazite
+Ability: Inner Focus
+Timid Nature
+- Dazzling Gleam
 - Protect
+- Calm Mind
+- Expanding Force
 
-######################################################################
-TEAM 332 — 1_miraidonhater · #104 at VGC Reg M-C Ingame Tour #6 (Shiny Pawmot) (127 teams) · 0-2
-######################################################################
-Best team for Pairings: Floette + Gyarados
-
-Rillaboom @ Sitrus Berry
-Ability: Grassy Surge
-Adamant Nature
-- Fake Out
-- Grassy Glide
-- High Horsepower
-- U-turn
-
-Gyarados @ Gyaradosite
+Mawile @ Mawilite
 Ability: Intimidate
-Adamant Nature
-- Waterfall
-- Lash Out
-- Dragon Dance
-- Protect
-
-Volcarona @ Rocky Helmet
-Ability: Flame Body
-Bold Nature
-- Overheat
-- Rage Powder
-- Tailwind
-- Protect
-
-Gholdengo @ Life Orb
-Ability: Good as Gold
-Timid Nature
-- Make It Rain
-- Shadow Ball
-- Nasty Plot
-- Protect
-
-Sneasler @ Grassy Seed
-Ability: Unburden
-Adamant Nature
-- Dire Claw
-- Close Combat
-- Rock Slide
-- Protect
-
-Floette @ Floettite
-Ability: Flower Veil
-Timid Nature
-- Calm Mind
-- Moonblast
-- Dazzling Gleam
-- Protect
-
-######################################################################
-TEAM 333 — kaiob921 · played Sketch Academy Sunday Regulation M-C Tournament (80 teams) · 0-0
-######################################################################
-Best team for Pairings: Raichu-Y + Starmie
-
-Indeedee @ Life Orb
-Ability: Psychic Surge
-Mild Nature
-- Hyper Voice
-- Terrain Pulse
-- Calm Mind
-- Expanding Force
-
-Charizard @ Charizardite X
-Ability: Blaze
-Hasty Nature
-- Protect
-- Dragon Rush
-- Flare Blitz
-- Earthquake
-
-Kingambit @ Chople Berry
-Ability: Defiant
 Brave Nature
-- Kowtow Cleave
+- Iron Head
+- Play Rough
 - Sucker Punch
-- Iron Head
-- Swords Dance
-
-Whimsicott @ Focus Sash
-Ability: Prankster
-Timid Nature
-- Moonblast
-- Dazzling Gleam
-- Tailwind
 - Protect
-
-Raichu @ Raichunite Y
-Ability: Lightning Rod
-Hasty Nature
-- Focus Blast
-- Fake Out
-- Zap Cannon
-- Protect
-
-Starmie @ Starminite
-Ability: Analytic
-Careful Nature
-- Liquidation
-- Zen Headbutt
-- Protect
-- Trick Room
-
-######################################################################
-TEAM 334 — tcg_naturalist · #10 at BCS Champions Tournament #2 (10 teams) · 0-4
-######################################################################
-Best team for Pairings: Blaziken + Dragonite
-
-Kingambit @ Chople Berry
-Ability: Pressure
-Adamant Nature
-- Kowtow Cleave
-- Low Kick
-- Sucker Punch
-- Iron Head
-
-Dragonite @ Dragoninite
-Ability: Multiscale
-Timid Nature
-- Dragon Pulse
-- Heat Wave
-- Protect
-- Extreme Speed
-
-Garchomp @ Choice Scarf
-Ability: Rough Skin
-Jolly Nature
-- Earthquake
-- Dragon Claw
-- Rock Slide
-- Protect
-
-Basculegion-Male @ Life Orb
-Ability: Mold Breaker
-Jolly Nature
-- Last Respects
-- Protect
-- Aqua Jet
-- Wave Crash
-
-Blaziken @ Blazikenite
-Ability: Speed Boost
-Jolly Nature
-- Close Combat
-- Rock Slide
-- Protect
-- Flare Blitz
-
-Whimsicott @ Focus Sash
-Ability: Prankster
-Timid Nature
-- Moonblast
-- Giga Drain
-- Beat Up
-- Tailwind
-
-######################################################################
-TEAM 335 — iomtraxx · #237 at Make It Rain - VGC Tournament (266 teams) · 0-2
-######################################################################
-Best team for Pairings: Eelektross + Tyranitar
-
-Eelektross @ Eelektrossite
-Ability: Levitate
-Modest Nature
-- Giga Drain
-- Flame Thrower
-- Electro Web
-- Protect
-
-Sneasler @ White Herb
-Ability: Unburden
-Adamant Nature
-- Dire Claw
-- Close Combat
-- Throat Chop
-- Protect
-
-Tyranitar @ Tyranitarite
-Ability: Sand Stream
-Adamant Nature
-- Knock Off
-- Rock Slide
-- Dragon Dance
-- Protect
-
-Excadrill @ Focus Sash
-Ability: Sand Rush
-Adamant Nature
-- Rock Slide
-- Iron Head
-- High Horsepower
-- Protect
-
-Milotic @ Sitrus Berry
-Ability: Competitive
-Calm Nature
-- Scald
-- Weather Ball
-- Icy Wind
-- Protect
-
-Indeedee @ Choice Scarf
-Ability: Psychic Surge
-Timid Nature
-- Expanding Force
-- Dazzling Gleam
-- Trick
-- Mystical Fire
 

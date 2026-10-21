@@ -103,7 +103,7 @@ const MEGA_SPECIES = (() => {
     return new Set((w.DEX || []).filter(d => Array.isArray(d.mega) && d.mega.length).map(d => norm(d.name)));
   } catch { return new Set(); }
 })();
-const isStone = it => { if (!it) return false; it = it.trim(); if (it.toLowerCase() === "eviolite") return false; return /ite( [XY])?$/.test(it); };
+const isStone = it => { if (!it) return false; it = it.trim(); if (it.toLowerCase() === "eviolite") return false; return /ite([ -][XYZ])?$/.test(it); };   // Charizardite Y, Garchompite Z, ...
 
 // ---- discover M-B tournaments: pull the FULL VGC listing, then filter by DATE --------------------
 // We do NOT use Limitless's `format=M-B` tag: large M-B events (e.g. the St. Jude charity major) are
@@ -259,7 +259,7 @@ function aggregate(standingsList) {
         // Eternal Flower Floette + Floettite (incl. the 898-player major winner) gets silently dropped.
         const dn = toDexName(mon.id, mon.name);
         if (dn && MEGA_SPECIES.has(norm(dn)) && isStone(mon.item)) {
-          let label = dn; const m = String(mon.item).match(/ ([XY])$/); if (m) label += "-" + m[1];
+          let label = dn; const m = String(mon.item).match(/[ -]([XYZ])$/); if (m) label += "-" + m[1];
           const a = megas[label] || (megas[label] = blankAgg());
           fold(a, wins, losses, isCut, placing, fieldSize);
           if (a.teams > maxMegaTeams) maxMegaTeams = a.teams;

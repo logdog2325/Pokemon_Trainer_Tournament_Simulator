@@ -771,6 +771,13 @@ function boxResultCard(t,i){
     <button class="btn primary loadbox" data-i="${i}" style="width:100%;margin-top:10px">Load & tweak this team</button></div>`;
 }
 /* ---------------- MEGA TIER LIST (Limitless results, current regulation) ---------------- */
+// typing of the Mega form this row is about: Charizard Y is Fire/Flying, not Mega X's Fire/Dragon
+function megaTypes(m){
+  const megas=(m.entry&&m.entry.mega)||[]; if(!megas.length) return m.entry.types;
+  const v=String(m.variant||'').trim().toUpperCase();
+  const hit=v?megas.find(f=>String(f.label||'').toUpperCase().split(' ').pop()===v):null;
+  return ((hit||megas[0]).type)||m.entry.types;
+}
 const TIER_COL={S:"#ff7043",A:"#f7c948",B:"#5cc46b",C:"#4d8cf5",D:"#9aa0c8",F:"#6b6f86"};
 function renderMegas(){
   titleEl.textContent="Mega tier list"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
@@ -779,7 +786,7 @@ function renderMegas(){
   const wrCol=w=>w>=52?"var(--good)":w<=46?"var(--bad)":"var(--txt)";
   const byTier={}; list.forEach(m=>(byTier[m.tier]=byTier[m.tier]||[]).push(m));
   const rowFor=m=>`<div class="candrow" data-n="${m.base}">${m.entry?imgF(m.entry,0):''}
-    <div class="meta"><div class="nm">${m.entry?m.entry.label||m.base:m.base}${m.variant?' '+m.variant:''} ${m.entry?tbadges((m.entry.mega&&m.entry.mega[0]&&m.entry.mega[0].type)||m.entry.types):''}</div>
+    <div class="meta"><div class="nm">${m.entry?m.entry.label||m.base:m.base}${m.variant?' '+m.variant:''} ${m.entry?tbadges(megaTypes(m)):''}</div>
       <div class="brk">${m.teams} teams · ${m.top8} top-8 (${m.cutPct}%)${m.won?' · 🏆'+m.won+' won':''}</div></div>
     <div class="scorebadge"><b style="color:${wrCol(m.wr)}">${m.wr}%</b><small>win rate</small></div></div>`;
   app.innerHTML=`<div class="card"><b>Mega Evolutions by tournament results</b>
