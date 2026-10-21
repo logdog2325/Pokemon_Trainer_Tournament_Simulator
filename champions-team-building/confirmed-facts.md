@@ -54,3 +54,235 @@ species, 76 Mega-capable.
 
 ## Stat-point system (see ruleset)
 66 points total, 32 cap, no IVs, natures apply.
+
+---
+
+## Regulation M-C (2026-09-09 → 2026-12-02) — VERIFIED
+Source: serebii.net/pokemonchampions/rankedbattle/regulationm-c.shtml + per-species Champions Pokédex
+pages, scraped 2026-09-09. All 26 entries are now in `app/dex-data.js` (258 total).
+
+### New Pokémon (23 species / 26 dex entries)
+Wigglytuff · Persian + **Persian-Alola** · Farfetch'd · Mr. Mime · Swalot · **Salamence** · Gogoat ·
+**Golisopod** · **Rillaboom** · Cinderace · Inteleon · Thievul · Toxtricity + **Toxtricity-Low-Key** ·
+Grapploct · Perrserker · Sirfetch'd · **Pincurchin** · **Indeedee-Male** + **Indeedee-Female** ·
+Pawmot · Arboliva · Squawkabilly · Mabosstiff · **Baxcalibur**
+
+### New Megas (6) — the three Z-megas plus three more
+| Mega | Type | Ability | Base stats | Stone |
+|---|---|---|---|---|
+| Absol Z | Dark/Ghost | Sharpness | 65/154/60/75/60/151 | Absolite Z |
+| Garchomp Z | Dragon | Levitate | 108/130/85/141/85/151 | Garchompite Z |
+| Lucario Z | Fighting/Steel | Aura Guard | 70/100/70/164/70/151 | Lucarionite Z |
+| **Salamence** | Dragon/Flying | Aerilate | 95/145/130/120/90/120 | Salamencite |
+| **Golisopod** | **Bug/Steel** (was Bug/Water) | Tough Claws | 75/150/175/70/120/40 | Golisopite |
+| **Baxcalibur** | Dragon/Ice | Thermal Exchange | 115/175/117/105/101/87 | Baxcalibrite |
+
+- Mega Salamence's split is **Def +50 (80→130), SpD +10** — it megas into a *physical* wall, which is
+  why physical answers to it fail and special ones work.
+- **Aerilate is 1.2× in this gen** (nerfed from 1.3×) and converts *any* Normal move, including
+  special ones — Salamence is a mixed attacker (Hyper Voice as well as Double-Edge).
+
+### Terrain arrived (the headline change)
+Before M-C the only terrain ability in the whole dex was **Mega Raichu X (Electric Surge)**.
+M-C added all three of the missing setters at once:
+- **Psychic Surge** — Indeedee-Male (60/65/55/105/95/95, base 95 Spe) and Indeedee-Female
+  (70/55/65/95/105/85, base 85 Spe). Both are **Psychic/Normal**, so both are **immune to Ghost**.
+- **Grassy Surge** — Rillaboom (100/125/90/60/70/85)
+- **Electric Surge** — Pincurchin (48/101/95/91/85/15)
+- plus **Terrain Extender** and all four **Seeds**.
+
+Rules that matter and are easy to get wrong:
+1. Terrain only affects **grounded** Pokémon — no boost for the user, no protection for the target.
+   A Levitate mega (Delphox, Chimecho, **Garchomp Z**) gets *nothing* from a terrain team, and
+   Expanding Force stays 80 BP and single-target for it. Air Balloon un-grounds you too.
+2. **Psychic Terrain blocks every priority move aimed at a grounded target** — including your OWN
+   Fake Out, and Grassy Glide / Sucker Punch / Bullet Punch / Aqua Jet / Extreme Speed.
+   A psyspam team should not run Fake Out.
+3. Simultaneous entry: terrain abilities fire in **Speed order and the LAST one wins**, so the
+   *slower* setter takes the terrain on the lead. Mid-game it is whoever switches in last.
+   Terrain Extender lengthens your terrain; it does not defend it.
+4. Expanding Force: 80 → 120 BP **and** becomes a spread move in Psychic Terrain, **and** takes the
+   terrain's separate 1.3× Psychic boost on top. Rising Voltage 70→140, Psyblade 80→120 (Electric).
+5. **Fairy does not resist Fairy**, and Fighting is **4×** on Dark/Steel (Kingambit) and Rock/Dark
+   (Tyranitar) — Aura Sphere / Focus Blast are the psyspam answers to the Dark immunity, not
+   Pixilate Hyper Voice (only ~42-49% on Kingambit).
+
+### Notable abilities that came with the drop
+Grassy Surge · Psychic Surge · Electric Surge · Libero (Cinderace) · Aerilate (M-Salamence) ·
+Punk Rock (Toxtricity) · Steely Spirit (Perrserker) · Guard Dog + Stakeout (Mabosstiff) ·
+Fur Coat (Persian-Alola) · Thermal Exchange (Baxcalibur) · Sniper (Inteleon) · Seed Sower (Arboliva) ·
+Emergency Exit (Golisopod — a liability in doubles, it force-switches at 50%).
+
+### Not added (worth noting)
+**Weezing was left out**, so **Neutralizing Gas** is still absent — there is no ability-off switch for
+Surge/Intimidate/Protosynthesis in this format.
+
+---
+
+## Confirmed in play by Worlds 2026 team reports
+Sources: Wolfe Glick's report (59th, 5-3 Day 1) and the Hamann/Farzan/Koch report (one team,
+three players, **all three Day 2**). Full methodology extract in `top-player-methodology.md`.
+
+- **Mega Staraptor** — Contrary, Flying/Fighting. **Close Combat raises its Def and SpD**, so it is
+  a bulk-accumulating attack, not a drawback. Both teams ran it Jolly, max Speed, 0–1 Atk, rest
+  bulk, with Brave Bird / Close Combat / Tailwind / Protect.
+- **Mega Raichu Y** — No Guard. **Zap Cannon becomes 100% accurate, i.e. guaranteed paralysis**
+  (speed control that halves *them* and survives its setter fainting). Raichu's bulk is
+  **identical** base and Mega, so delaying Mega Evolution costs nothing defensively and keeps
+  Lightning Rod. No Guard also lets opponents never miss *against* it. Outsped by Aerodactyl and
+  Delphox, which is why it's played as support, not an attacker.
+- **Hisuian Arcanine** — Rock Head makes Head Smash recoil-free; **Extreme Speed's +2 priority
+  moves before Prankster**, which is how you deny a second Prankster Tailwind. Head Smash OHKOs any
+  Charizard and Arcanine outspeeds Modest ones.
+- **Basculegion-M** — Adaptability, Last Respects as an endgame move, Aqua Jet for the priority
+  package, and a Water resistance that makes it a reliable Sneasler switch-in.
+- **Gholdengo Power Gem** — 100% accurate Rock special move; with Life Orb it **always OHKOs
+  Charizard**, which Life Orb Garchomp's Rock Slide does not. Good as Gold blanks Sleep Powder,
+  Encore and Perish Song.
+- **Fairy Aura is field-wide and affects both sides** — both teams EV against "Whimsicott Moonblast
+  in Fairy Aura," confirming it boosts opposing Fairy moves too.
+- **Pelipper in Champions runs only Weather Ball and Hurricane**, so switching into it is always
+  safe; Tyranitar therefore shuts Rain down almost by existing.
+- **Sandstorm is 1/16 max HP and Rock types are immune** — Wolfe sits Staraptor at exactly 191 HP
+  because 192 takes 12 sand damage instead of 11.
+- Meta note (M-B): **Kingambit sets with only Dark moves + Swords Dance** were a trend. Tyranitar
+  crushes those on its Dark resistance and 150 base Mega Def — but note both reports instead ran
+  **Chople Berry + Low Kick** on their own Dark/Steel or Rock/Dark slot to win the Kingambit trade.
+
+---
+
+## Mega Evolution + entry abilities (Claude got this WRONG twice — user-corrected)
+
+**The rule:** an entry ability gained from Mega Evolution (Drought, Drizzle, Sand Stream, Snow
+Warning, Intimidate, Electric Surge) behaves like any other entry ability **once the Mega exists**.
+It fires on Mega Evolution, and it fires again on **every subsequent switch-in**.
+
+Consequences, all of which were mis-modelled at some point:
+1. **Base Charizard sets no weather.** Drought belongs to Mega Charizard Y, not to Charizard. So
+   Charizard does NOT race an opposing Drizzle/Sand Stream on the lead turn. There is no Speed
+   contest, because your setter is not on the field yet in any meaningful sense.
+   → *Wrong claim made: "Zard Y at 124 is faster than Pelipper so you always lose the weather war
+   and cannot build under it." The Speed table was answering a non-existent question.*
+2. **Mega Evolution resolves at the start of a turn of your choosing**, after both sides' switch-in
+   abilities have already fired. So the weather-setting turn is entirely the Mega user's choice.
+3. **Drought is NOT a one-shot.** After Mega Evolving, switching Mega Charizard Y out and back in
+   re-activates Drought. It is exactly as renewable as Pelipper's Drizzle.
+   → *Wrong claim made: "your Drought is a one-shot against their renewable Drizzle."*
+4. So the weather war is a **symmetric switching war: whoever enters last wins**, and each re-set
+   costs a turn of board presence. The winner is whoever can afford the switches.
+5. **Residual Speed factor, narrow:** if both sides switch in on the SAME turn, entry abilities fire
+   in Speed order and the *slower* one resolves last and wins. Mega Zard Y (124) loses that specific
+   exchange to most Pelipper spreads. Usually declinable.
+6. **Cost of delaying a Mega is species-specific.** Markus could hold Raichu back for free because
+   its bulk is identical in both forms. Charizard pays 109→159 SpA and 85→115 SpD for every turn it
+   waits, so the holding period is the dangerous part, and the answer is switching rather than
+   standing in it. Sand Stream is a true base-form ability on Tyranitar, so sand re-sets more cheaply
+   than sun does.
+
+> Same principle already recorded under Reg M-C for terrain: on simultaneous entry the SLOWER setter
+> takes the field. The generalisation is that entry abilities resolve in Speed order, last write wins,
+> and Mega Evolution is an extra, player-timed write.
+
+## Resist berries (added to the calculator 2026-09-28)
+All 18 type-resist berries halve **one** super-effective hit of their type and are then consumed.
+`Chilan Berry` is the exception: it halves Normal damage even though Normal is never
+super-effective. The berry keys off the move's **final** type, so an Aerilate/Pixilate-retyped
+Normal move is no longer caught by Chilan — it needs Coba/Roseli, and only if the new type is
+actually super-effective.
+
+Verified in `app/app.js`: Chople Berry takes Jolly max-Attack Unburden Sneasler's Close Combat on
+a 32 HP Adamant Kingambit from 170-202.9% (16/16 kill) down to 85-101.4% (1/16 kill). Adding
+16 points of Def on top makes it 0/16 against both Sneasler and Mega Golisopod, costing 17 Attack.
+
+`calcDamage` now also returns `rolls` (the 16-element damage array) and `koRolls` (how many of the
+16 reach the KO), so "15/16" answers can be read off directly instead of inferred from min/max.
+
+## Weight-based moves (fixed 2026-09-28)
+`Grass Knot` / `Low Kick` BP tiers are **20 / 40 / 60 / 80 / 100 / 120** at
+**<10 / 10 / 25 / 50 / 100 / 200 kg**. The app previously had two tiers wrong (50kg returned 60
+instead of 80, 25kg returned 40 instead of 60) — fixed, and `WEIGHT` in `app/app.js` now carries
+kg for the Reg M-C relevant species, derived automatically from the defender rather than needing
+`field.targetWeight` passed in. Species outside the table still return `{unknownBP:true}` rather
+than a wrong number.
+
+No Mega in the current set crosses a weight tier boundary relative to its base form, so the base
+figure is what the BP table needs.
+
+## Items that do NOT exist in Champions (user-corrected 2026-09-28)
+Claude built a Gliscor set around **Toxic Orb**, which is not in the format. Verified against
+`ITEMS` in `app/app.js`: the only "Orb" in Champions is **Life Orb**. Also absent:
+**Flame Orb, Black Sludge, Covert Cloak, Safety Goggles, Clear Amulet**.
+
+Consequences:
+- **Poison Heal and Guts have no self-activation route.** A Poison Heal Gliscor or a Guts attacker
+  can only turn its ability on if the opponent chooses to status it, so neither is a plan. On
+  Gliscor that leaves **Hyper Cutter** as the only live ability.
+- There is no item answer to powder moves (no Safety Goggles) or to Intimidate (no Clear Amulet) —
+  those jobs have to come from an ability (Clear Body, Hyper Cutter, Mirror Armor, Defiant,
+  Competitive) or not at all.
+
+This is Phase 0 of the build model: check `ITEMS` before designing around an item.
+
+## Z-Mega and Mega abilities added to the calculator (2026-09-29)
+- **Aura Guard** (Mega Lucario Z, Champions-original): halves damage from **physical contact** moves only (user-confirmed). Non-contact moves
+  (Earthquake, Rock Slide, every special move) are unaffected. Source: official Pokemon Champions account and Bulbapedia.
+  Correctness depends on `MF_CONTACT` in `app/app.js`, which is a hand-maintained list — extend it if a contact move is missing.
+- **Sand Force** (Mega Garchomp): Rock / Ground / Steel moves x1.3, **only in sand**. Garchomp does not set sand itself,
+  so the ability needs a partner setter (Tyranitar, Hippowdon). It was previously listed as a sand abuser but never
+  applied in the damage calc, which undercounted Mega Garchomp.
+- **Mewtwo is not in Champions** — not in the dex and not on any Reg M-C roster source. Only five species have two
+  Mega forms: Charizard (X/Y), Raichu (X/Y), Absol (Mega / Mega Z), Garchomp (Mega / Mega Z), Lucario (Mega / Mega Z).
+
+## Psyshock / Psystrike hit DEFENSE (calculator bug fixed 2026-09-29)
+Psyshock, Psystrike and Secret Sword are special moves that use the attacker's SpA against the target's **Defense**.
+The calculator was pricing them against SpD. Now fixed via `MF_HITS_DEF` in `app/app.js`: they use Def, Def stages,
+and snow's Ice Def boost, and they **ignore Assault Vest** and sand's Rock SpD boost. Example: Timid Indeedee-M's
+Psyshock into an Assault Vest Jolly Sneasler went from being priced like Psychic (137.6%) to 229.3%. Any earlier
+Psyshock number in this repo was too low against physically frail targets.
+
+## Contact list and board fixes (2026-09-29, found by the Rotom Judge runs)
+- **33 contact moves were missing from `MF_CONTACT`** in `app/app.js`, including Fake Out, Glaive Rush, Power Whip,
+  Darkest Lariat, Horn Leech, High Jump Kick, Headlong Rush, Aqua Step, Collision Course and Drill Run. Tough Claws
+  (Mega Metagross, Mega Charizard X, Mega Golisopod), Aura Guard and Fluffy all read that list, so those moves were
+  neither boosted nor reduced. The Lucario judge flagged Fake Out and Glaive Rush; the rest came from a full check.
+  **Bitter Malice** (special, no contact) was wrongly on the list and has been removed.
+- **Incineroar cannot learn Knock Off in Champions.** Its real Dark STAB is Darkest Lariat. The Rotom Judge threat board
+  had given it Knock Off; a builder agent caught it. `engine.js` now refuses to load if any board threat has a move
+  outside its Champions movepool.
+- The six Rotom Judge debates (2026-09-29) ran BEFORE these two fixes. Their Incineroar and contact-move numbers are
+  close but not exact. The fact sheets have been regenerated for future runs.
+
+## Protean / Libero STAB and 2-5 hit moves (calculator fixes, 2026-09-29)
+- **Protean and Libero never applied STAB** to off-type moves in the calculator. Now every attack from a Protean/Libero
+  user gets x1.5 STAB, because the user becomes the move's type. Under current rules the type change happens **once per
+  switch-in**, so a later attack of a different type gets no STAB; price that with `field.proteanSpent: true`.
+  Mega Greninja's no-item OHKOs on the Rotom Judge board went from 3 to 8 (physical) and 5 to 6 (special).
+  Cinderace (Libero) was undercounted the same way.
+- **2-5 hit moves** (Scale Shot, Bullet Seed, Water Shuriken, Rock Blast...) defaulted to 4 hits, the rounded mean. The
+  real distribution is 2 hits 35%, 3 hits 35%, 4 hits 15%, 5 hits 15%, so 70% of uses land 2 or 3. Default is now 3.
+  Earlier "Scale Shot KOs" in this repo that assumed 4 hits were optimistic.
+- **Champions' Greninja has the Gen 9 Battle Bond** (+1 Atk/SpA/Spe once after a KO), not the Gen 7 Ash transformation.
+  Gen 7 Ash-Greninja exists only as hypothetical data in `rotom-judge/hypothetical.js`.
+
+## Choice Band and Choice Specs are NOT in Champions (Claude's tooling suggested them, 2026-09-29)
+Only **Choice Scarf** exists. Claude's Rotom Judge tooling wrongly suggested Choice Band / Specs in three places: every
+fact sheet's footer ("Choice Band/Specs x1.5"), the advocates' prompt ("items like Life Orb, Choice Band"), and the
+Greninja matchup note ("Life Orb, Choice Specs, Focus Sash"). The Ash-Greninja advocate built its case on Choice Specs
+and lost points for it; the judge re-ran the case with Life Orb and still ruled for Ash. The other debates only
+mentioned the items to say a Mega can't hold them. No team held either item, because validate.js rejects anything
+outside ITEMS. All three suggestions are removed and every fact sheet regenerated.
+
+The damage items that DO exist: Life Orb (x1.3, 10% recoil), Expert Belt (x1.2 on super-effective hits), type items
+(x1.2, e.g. Charcoal, Mystic Water, Fairy Feather). A Mega Evolution holds its stone and gets none of them.
+
+## 2026-10 — Engine moved to Reg M-C; Indeedee movepools corrected
+- The offline sim now runs the official Showdown format **gen9championsvgc2026regmc** (upstream added it,
+  including Aura Guard). `champions-sim/validate-paste.mjs` validates any paste against it.
+- **Indeedee movepools were swapped in app/dex-data.js.** Per Showdown's Champions data:
+  **Follow Me is Indeedee-F only**; **Expanding Force is Indeedee-M only**. Both get Imprison, Trick Room,
+  Helping Hand, Psychic. Neither gets Ally Switch. Fixed from the Showdown learnsets.
+  (A Colbur Indeedee-M with Follow Me is NOT legal — the real Colbur Follow Me sets on Limitless are Indeedee-F.)
+- Opponent library rebuilt from **399 Reg M-C Limitless events / 18,673 teams** (refresh-top-teams.mjs now
+  takes --reg/--since/--until). 326 of 335 deduped teams pass the real M-C validator.
+- `movepool-audit-vs-showdown.txt` lists every app-vs-Showdown movepool difference still unreviewed
+  (many are form-mapping artifacts, e.g. base Rotom / Tauros / Lycanroc forms).

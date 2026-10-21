@@ -196,3 +196,31 @@ The real engine now runs **in the browser** (Web Worker), so the Team Builder ne
 ### ⏳ Remaining / nice-to-have
 - Optional: a difficulty toggle for the Arena AI.
 - iOS: the one-time Pages enablement (owner-only).
+
+## ✅ Step 5 — Reg M-C, search, matchup reports, human prior (2026-10)
+Modeled on the Smogon PS! Bot Projects write-ups (mikumiku37, Wolfe_Alt6767, Nessie123, RotomDotExe)
+and trickroom.dev. None of those bots are open source; this is our own version of the same ideas.
+
+- **Reg M-C engine.** All scripts use `gen9championsvgc2026regmc` (official Showdown, Aura Guard etc.).
+  `validate-paste.mjs` checks any paste against it. Opponent library = 326 M-C tournament teams.
+- **`search/sync-battle.js`** — drives Showdown's Battle object synchronously: copy a battle mid-game
+  (`toJSON`/`fromJSON` + fresh RNG), force choices, play out with GameplanBot. ~40 full games/s, ~19 ms
+  per copy+playout.
+- **`search/search.js`** — one-turn simultaneous-move search: top-K joint actions per side (GameplanBot
+  scores), every pair played out over several RNG seeds, payoff table solved by regret matching.
+  `bench.js`: search bot beats the plain bot **75% ± 13** in 40 mirror games (Wolfe's Sceptile team).
+- **`search/report-core.js` + `matchup-report.js`** — trickroom.dev-style head-to-head: favoured %
+  with a 95% range, best bring/leads for BOTH sides (90 plans each, screened then solved as a game),
+  Pokémon importance, turn-1 lines vs best play and vs what humans click.
+      node champions-sim/search/matchup-report.js <ours.txt> "meta:Swampert / Golisopod" [--quick]
+  Also in the app: Battle Lab → "Head-to-head report" card and a **Report** button on every matrix row
+  (runs in the browser worker; quick ≈ 30–60 s on a laptop).
+- **`human/`** — `fetch-replays.mjs` downloads public M-C ladder replays (1 req/s), `build-prior.mjs`
+  counts what players actually click per species (turn 1 vs later, protect repeats, double-targeting).
+  The search plays a best response to a 50/50 blend of game-theory play and this human prior.
+- **GameplanBot fixes:** Trick Room judged on the whole team's speed (and used to reverse enemy TR),
+  Imprison logic, ability immunities (Levitate, absorb abilities) and Lightning Rod / Storm Drain
+  redirection. Calibration still ~96% vs random.
+- Browser bundle builds with `keepNames` — battle copies rebuild objects by class name.
+
+Caveat: every number is bot-vs-bot. Directional, not perfect play.

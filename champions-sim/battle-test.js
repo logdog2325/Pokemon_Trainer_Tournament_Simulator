@@ -76,7 +76,7 @@ Timid Nature
 - Protect
 `;
 
-const FORMAT = 'gen9championsvgc2026regmb';
+const FORMAT = 'gen9championsvgc2026regmc';
 
 async function main() {
 	const team = Teams.import(teamA);

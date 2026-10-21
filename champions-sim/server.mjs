@@ -30,7 +30,7 @@ import { MY_TEAM, META } from './teams.mjs';
 import { autospread } from './autospread.mjs';
 import { optimize } from './optimizer.mjs';
 
-const FORMAT = 'gen9championsvgc2026regmb';
+const FORMAT = 'gen9championsvgc2026regmc';
 const PORT = process.env.PORT || 8790;
 const cdex = Dex.mod('champions');
 const APP_DIR = path.join(__dirname, '..', 'champions-team-building', 'app');

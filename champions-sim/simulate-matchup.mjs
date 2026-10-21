@@ -24,7 +24,7 @@ const { BattleStream, getPlayerStreams, Teams } = require(path.join(DIST, 'sim')
 const { RandomPlayerAI } = require(path.join(DIST, 'sim', 'tools', 'random-player-ai'));
 const { GameplanBot } = require(path.join(__dirname, 'gameplan-bot.js'));
 
-const FORMAT = 'gen9championsvgc2026regmb';
+const FORMAT = 'gen9championsvgc2026regmc';
 
 function makeBot(kind, stream, bs, side) {
 	return kind === 'smart' ? new GameplanBot(stream, { battle: bs, side }) : new RandomPlayerAI(stream);

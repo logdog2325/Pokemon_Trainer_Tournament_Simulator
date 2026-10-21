@@ -20,6 +20,11 @@ self.onmessage = async (e) => {
     } else if (m.type === 'optimize') {
       const result = await CS.optimize(m.paste, m.opponent, m.n, (done, total) => self.postMessage({ rid: m.rid, type: 'progress', done, total }));
       self.postMessage({ rid: m.rid, type: 'result', result });
+    } else if (m.type === 'report') {
+      const result = CS.report(m.paste, m.opponent, m.level, (stage, done, total) => self.postMessage({ rid: m.rid, type: 'progress', stage, done, total }));
+      self.postMessage({ rid: m.rid, type: 'result', result });
+    } else if (m.type === 'analyze') {
+      self.postMessage({ rid: m.rid, type: 'result', result: CS.analyze(battles[m.bid]) });
     } else if (m.type === 'battle:start') {
       battles[m.bid] = CS.startBattle(m.opponent, m.paste, (line) => self.postMessage({ type: 'battle:line', bid: m.bid, line }));
     } else if (m.type === 'battle:choose') {

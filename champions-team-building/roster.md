@@ -4,6 +4,15 @@ Source: **Serebii** (https://www.serebii.net/pokemonchampions/pokemon.shtml), fe
 This is authoritative. Base species + regional forms listed below; **Mega-capable** species
 flagged in the Mega list at the bottom (Megas are forms, not separate roster slots).
 
+> The live list is `app/dex-data.js` (258 entries as of Reg M-C) — prefer it over this file.
+
+## Added in Reg M-C (2026-09-09)
+Wigglytuff, Persian, Alolan Persian, Farfetch'd, Mr. Mime, Swalot, Salamence, Gogoat, Golisopod,
+Rillaboom, Cinderace, Inteleon, Thievul, Toxtricity (Amped & Low Key), Grapploct, Perrserker,
+Sirfetch'd, Pincurchin, Indeedee (Male & Female), Pawmot, Arboliva, Squawkabilly, Mabosstiff,
+Baxcalibur.
+New Megas: Absol Z, Garchomp Z, Lucario Z, Salamence, Golisopod, Baxcalibur.
+
 ## Base species & regional forms
 Venusaur, Charizard, Blastoise, Beedrill, Pidgeot, Arbok, Pikachu, Raichu, Alolan Raichu, Clefable,
 Ninetales, Alolan Ninetales, Vileplume, Arcanine, Hisuian Arcanine, Alakazam, Machamp, Victreebel,

@@ -1,0 +1,59 @@
+Greninja @ Greninjite
+Ability: Protean
+Level: 50
+EVs: 2 HP / 32 SpA / 32 Spe
+Timid Nature
+- Ice Beam
+- Dark Pulse
+- Hydro Pump
+- Protect
+
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+Level: 50
+EVs: 32 HP / 24 Atk / 10 Def
+Adamant Nature
+- Fake Out
+- Flare Blitz
+- Close Combat
+- Parting Shot
+
+Whimsicott @ Focus Sash
+Ability: Prankster
+Level: 50
+EVs: 32 HP / 2 Def / 32 Spe
+Timid Nature
+- Tailwind
+- Helping Hand
+- Moonblast
+- Encore
+
+Gholdengo @ Life Orb
+Ability: Good as Gold
+Level: 50
+EVs: 32 HP / 14 Def / 20 SpA
+Modest Nature
+- Make It Rain
+- Shadow Ball
+- Focus Blast
+- Protect
+
+Talonflame @ Sharp Beak
+Ability: Gale Wings
+Level: 50
+EVs: 2 HP / 32 Atk / 32 Spe
+Jolly Nature
+- Brave Bird
+- Flare Blitz
+- Tailwind
+- Taunt
+
+Weavile @ Never-Melt Ice
+Ability: Pickpocket
+Level: 50
+EVs: 2 HP / 32 Atk / 32 Spe
+Jolly Nature
+- Fake Out
+- Icicle Crash
+- Knock Off
+- Helping Hand

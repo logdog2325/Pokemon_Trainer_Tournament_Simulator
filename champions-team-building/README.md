@@ -1,7 +1,7 @@
 # Champions Team-Building Reference Pack
 
 A persistent knowledge base + process for building VGC teams in **Pokémon Champions**
-(Regulation M-B, 2026). This is the "memory" Claude reads at the start of a build,
+(Regulation M-C, 2026-09-09 → 2026-12-02). This is the "memory" Claude reads at the start of a build,
 since Claude's trained knowledge of Champions specifics is unreliable.
 
 ## Files
@@ -9,7 +9,7 @@ since Claude's trained knowledge of Champions specifics is unreliable.
 - **champions-ruleset.md** — the fixed rules every team must satisfy (Item Clause, Megas, stat points, etc.).
 - **confirmed-facts.md** — Champions-specific facts we've *verified* (Mega list, movepool/ability changes, corrections to bad web data). THE living memory — append as we learn.
 - **items.md** — the limited held-item pool (matters for Item Clause planning).
-- **roster.md** — the species list (seed; needs verification against the current 235).
+- **roster.md** — the species list (seed; the live list is `app/dex-data.js`, 258 entries at Reg M-C).
 
 ## How to use
 At the start of a new build, tell Claude: *"Read the Champions reference pack"* and name a Pokémon.
