@@ -89,6 +89,17 @@ select,input[type=number]{background:var(--card2);color:var(--txt);border:1px so
 <script src="sim/sim-client.js"></script>
 <script src="app.js"></script>
 <script src="ui.js"></script>
-<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}</script>
+<script>
+// Keep installed (home-screen) copies current: check for a new version on every launch and whenever
+// the app comes back to the foreground, and reload once when the new service worker takes over.
+if('serviceWorker' in navigator){
+  const hadController=!!navigator.serviceWorker.controller; let reloaded=false;
+  navigator.serviceWorker.addEventListener('controllerchange',()=>{ if(hadController&&!reloaded){ reloaded=true; location.reload(); } });
+  navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(reg=>{
+    reg.update().catch(()=>{});
+    document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible') reg.update().catch(()=>{}); });
+  }).catch(()=>{});
+}
+</script>
 </body>
 </html>

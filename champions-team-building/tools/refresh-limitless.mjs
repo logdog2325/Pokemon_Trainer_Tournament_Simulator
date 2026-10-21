@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-/* Weekly Limitless tournament-results refresh for Champions Reg M-B (VGC doubles).
+/* Weekly Limitless tournament-results refresh for Champions VGC doubles (default: current Reg M-C;
+ *  --reg M-B rebuilds the old regulation).
  *
  * Scrapes completed M-B tournaments from play.limitlesstcg.com and aggregates REAL competitive
  * results — usage, win rate, and top-cut appearances — per species AND per Mega Evolution, then
@@ -36,8 +37,12 @@ const CACHE_DIR = (() => { const i = process.argv.indexOf("--cache-dir"); return
 const BASE = "https://play.limitlesstcg.com";
 const MIN_EVENTS = 10;          // guard: a real 4-week M-B pull has dozens of events
 const MIN_TEAMS = 500;          // guard: ...and thousands of teams with decklists
-const MB_START = "2026-06-17";  // Reg M-B regulation start. Events before this date are Reg M-A
-                                // (also a Mega format), so a content check alone can't separate them.
+// Regulation window, by DATE: earlier regulations are also Mega formats, so a content check alone
+// can't separate them. M-B ran 2026-06-17 -> 2026-09-08; M-C started 2026-09-09.
+const argOf = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
+const REG = argOf("--reg", "M-C");
+const MB_START = argOf("--since", REG === "M-B" ? "2026-06-17" : "2026-09-09");   // window start (name kept for history)
+const REG_END = argOf("--until", REG === "M-B" ? "2026-09-08" : "9999-12-31");
 const PRIOR_GAMES = 50;         // win-rate shrinkage strength (pseudo-games at 50%)
 const UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36";
 const HEADERS = { "User-Agent": UA, "Accept": "application/json, text/html, */*" };
@@ -130,7 +135,7 @@ async function discover() {
     const rows = await getJSON(`${BASE}/api/tournaments?game=VGC&limit=1000`);
     for (const t of (Array.isArray(rows) ? rows : [])) {
       const date = String(t.date || "").slice(0, 10);
-      if (!t.id || date < MB_START) continue;
+      if (!t.id || date < MB_START || date > REG_END) continue;
       byId[t.id] = { id: t.id, date, players: +t.players || 0, name: t.name || "" };
     }
   } catch (e) { console.error("listing failed:", e.message); }
@@ -141,7 +146,7 @@ async function discover() {
     `${BASE}/tournaments/completed?game=VGC&format=all&platform=${p}&type=all&time=${t}&show=400`));
   for (const u of urls) {
     try { for (const t of parseListing(await getText(u)))
-      if (t.date >= MB_START && /^[a-f0-9]{16,}$/.test(t.id) && !byId[t.id]) byId[t.id] = t; }
+      if (t.date >= MB_START && t.date <= REG_END && /^[a-f0-9]{16,}$/.test(t.id) && !byId[t.id]) byId[t.id] = t; }
     catch (e) { if (DEBUG) console.error("listing failed:", u, e.message); }
     await sleep(800);
   }
@@ -367,8 +372,8 @@ async function main() {
     console.log(`aggregating ${standings.length} cached standings from ${CACHE_DIR}`);
   } else {
     const events = await discover();
-    if (!events.length) { console.error("no M-B tournaments discovered"); process.exit(1); }
-    console.log(`discovered ${events.length} M-B-dated tournaments — fetching standings`);
+    if (!events.length) { console.error(`no ${REG} tournaments discovered`); process.exit(1); }
+    console.log(`discovered ${events.length} ${REG}-dated tournaments — fetching standings`);
     // Champions guard: a Reg M-B (Champions) event has Mega stones; a same-dated official VGC
     // event (Reg H/I) has none. Keep only events where a meaningful share of mons hold a stone.
     const championsShare = s => { let st = 0, tot = 0;
@@ -395,9 +400,9 @@ async function main() {
   }
 
   const generated = process.env.DATA_DATE || new Date().toISOString().slice(0, 10);
-  const meta = { source: "play.limitlesstcg.com", format: "M-B", events, teams, generated,
-    note: "Champions Reg M-B VGC doubles — completed tournaments. wr=win rate, adjWr=shrunk, cut=top-cut entries, best=best finish." };
-  const header = "// Limitless tournament results — Pokemon Champions Reg M-B (VGC doubles).\n"
+  const meta = { source: "play.limitlesstcg.com", format: REG, events, teams, generated,
+    note: `Champions Reg ${REG} VGC doubles — completed tournaments. wr=win rate, adjWr=shrunk, cut=top-cut entries, best=best finish.` };
+  const header = `// Limitless tournament results — Pokemon Champions Reg ${REG} (VGC doubles).\n`
     + `// Auto-refreshed ${generated} from ${events} tournaments / ${teams} teams. Per species + per Mega: usage, win rate, top-cut.\n`;
   fs.writeFileSync(OUT, header + "window.RESULTS = " + JSON.stringify({ meta, mons, megas, pairs }) + ";\n");
   console.log(`wrote ${OUT} — ${Object.keys(mons).length} species, ${Object.keys(megas).length} megas, ${Object.keys(pairs).length} pairings`);
