@@ -286,3 +286,12 @@ The damage items that DO exist: Life Orb (x1.3, 10% recoil), Expert Belt (x1.2 o
   takes --reg/--since/--until). 326 of 335 deduped teams pass the real M-C validator.
 - `movepool-audit-vs-showdown.txt` lists every app-vs-Showdown movepool difference still unreviewed
   (many are form-mapping artifacts, e.g. base Rotom / Tauros / Lycanroc forms).
+
+## 2026-10 — Field control scoring (Reg M-C is a weather + terrain format)
+- `fieldControlBonus` (app.js) adds to synergy:
+  - +8 for the team's FIRST weather/terrain setter (mega abilities count), +5 for adding terrain to a
+    weather team or weather to a terrain team, −4 for a second, conflicting weather or terrain.
+  - Terrain setter ↔ grounded abuser: +9 (signature move + STAB, e.g. Expanding Force Espeon / Gardevoir /
+    Armarouge / Hatterene next to Indeedee), +5 for STAB-only; a setter gets +6/+4 per existing abuser (max 2).
+  - Levitate/Flying users (Mega Delphox, Garchomp Z, Rotom) get no terrain bonus — terrain doesn't touch them.
+- Terrain MOVES only count when actually on the set (setMovesOf falls back to the full movepool).

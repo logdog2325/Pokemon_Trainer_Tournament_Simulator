@@ -287,7 +287,7 @@ function candRow(c,danger){
   return `<div class="candrow" data-n="${e.name}">${img(e)}
     <div class="meta"><div class="nm">${e.name} ${tbadges(e.types)}</div>
       <div class="tags">${tags.slice(0,6).map(([t,c])=>`<span class="tag ${c}">${t}</span>`).join("")}</div>
-      <div class="brk">role-fit ${s.exe!=null?s.exe:'–'}/40 · typing ${s.typing}/25${s.synergy?' · synergy '+(s.synergy>0?'+':'')+s.synergy:''}${s.enab?' · core +'+s.enab:''}${s.chk?' · checks +'+s.chk:''}${s.proven?' · proven '+(s.proven>0?'+':'')+s.proven:''}${s.mate?' · core +'+s.mate:''}${s.spd<0?' · ⚠ off-speed '+s.spd:''}${cav?' · ⚠ caveat':''}</div></div>
+      <div class="brk">role-fit ${s.exe!=null?s.exe:'–'}/40 · typing ${s.typing}/25${s.synergy?' · synergy '+(s.synergy>0?'+':'')+s.synergy:''}${s.enab?' · core +'+s.enab:''}${s.chk?' · checks +'+s.chk:''}${s.proven?' · proven '+(s.proven>0?'+':'')+s.proven:''}${s.mate?' · core +'+s.mate:''}${s.field?' · field '+(s.field>0?'+':'')+s.field:''}${s.spd<0?' · ⚠ off-speed '+s.spd:''}${cav?' · ⚠ caveat':''}</div></div>
     <div class="scorebadge"><b style="color:${s.total>=70?'var(--good)':s.total>=55?'var(--txt)':'var(--mut)'}">${s.total}</b><small>fit</small></div></div>`;
 }
 function bindCands(){app.querySelectorAll(".candrow").forEach(r=>r.onclick=()=>{
