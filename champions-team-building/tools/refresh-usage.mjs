@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-/* Weekly Pikalytics usage refresh for Champions Reg M-B (doubles, battledataregmbs3).
+/* Weekly Pikalytics usage refresh for Champions VGC doubles (default Reg M-C: gen9championsvgc2026regmc;
+ *  pass --format battledataregmbs3 for the old Reg M-B in-game data).
  *
  * Scrapes the current usage data and regenerates app/usage-data.js in the SAME shape the app expects:
  *   window.USAGE_SETS = { "<DexName>": { moves, movePct, items, abilities, natures, spreads, teammates, wr, src, rank } }
@@ -27,9 +28,11 @@ import path from "node:path";
 const OUT = process.argv[2];
 const DEBUG = process.argv.includes("--debug");
 const LIMIT = (() => { const i = process.argv.indexOf("--limit"); return i > 0 ? parseInt(process.argv[i + 1], 10) : 0; })();
-const FORMAT = "battledataregmbs3";
+// Reg M-C (current): Pikalytics Showdown ladder data. Reg M-B used the in-game set "battledataregmbs3".
+const FORMAT = (() => { const i = process.argv.indexOf("--format"); return i > 0 ? process.argv[i + 1] : "gen9championsvgc2026regmc"; })();
+const REG_LABEL = /regmb/.test(FORMAT) ? "Reg M-B" : "Reg M-C";
 const BASE = "https://www.pikalytics.com";
-const MIN_MONS = 100;                       // guard: a real Reg M-B scrape has ~180+ ranked mons
+const MIN_MONS = 100;                       // guard: a real scrape has ~180+ ranked mons
 const REQ_DELAY = 900;                      // ms between requests (Pikalytics 429s if you go much faster)
 const MAX_RETRY = 4;
 const UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36";
@@ -217,7 +220,7 @@ async function main(){
   if(ok < MIN_MONS){ console.error(`ABORT: only ${ok} mons parsed — refusing to overwrite usage-data.js`); process.exit(1); }
 
   const stamp = new Date().toISOString().slice(0,10);
-  const header = "// Pikalytics usage data — Pokemon Champions Reg M-B S3 Ranked Battle Data (VGC doubles).\n"
+  const header = `// Pikalytics usage data — Pokemon Champions ${REG_LABEL} (${FORMAT}, VGC doubles).\n`
     + `// Auto-refreshed ${stamp} from server-rendered pages. Per-mon: rank (lower=more used), win rate,\n`
     + "// top moves/items/abilities/natures + Champions point spreads + teammates.\n";
   fs.writeFileSync(OUT, header + "window.USAGE_SETS = " + JSON.stringify(USAGE) + ";\n");

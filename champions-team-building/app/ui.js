@@ -74,7 +74,7 @@ function renderStart(){
     <button class="btn" id="imp" style="width:100%;margin-bottom:10px">📋 Import / paste a team</button>
     <button class="btn" id="labbtn" style="width:100%;margin-bottom:10px">🧪 Battle Lab — simulate matchups vs the meta</button>
     <button class="btn" id="arenabtn" style="width:100%;margin-bottom:10px">⚔️ Champions Arena — play a battle vs the AI</button>
-    <button class="btn" id="megabtn" style="width:100%;margin-bottom:10px">🏆 Mega tier list (Limitless M-B)</button>
+    <button class="btn" id="megabtn" style="width:100%;margin-bottom:10px">🏆 Mega tier list (Limitless Reg M-C)</button>
     <button class="btn" id="pairbtn" style="width:100%;margin-bottom:10px">🤝 Mega pairing tier list</button>
     <button class="btn" id="pfbtn" style="width:100%;margin-bottom:10px">🧩 Mega partner finder — who patches this Mega's holes</button>
     <input class="search" id="q" placeholder="Search ${E.DEX.length} Pokémon…" value="${STATE.q}">
@@ -174,7 +174,7 @@ function healthCard(team){
       <div class="muted" style="margin-top:2px"><b style="color:var(--good)">${m.checked} checked</b> · <b style="color:#ffd9a0">${m.neutral} soft</b> · <b style="color:${ucol}">${m.uncovered} uncovered</b> of ${m.total}${m.uncovered?` — <span style="color:var(--bad)">${m.uncoveredNames.slice(0,3).join(", ")}${m.uncoveredNames.length>3?"…":""}</span>`:""}</div>
       <div class="seg" style="margin-top:6px;flex-wrap:wrap">${ntog("key","Key 13")}${ntog(20,"Top 20")}${ntog(50,"Top 50")}</div>
       ${rows}</div>`;}
-  return `<div class="card"><div class="row"><div style="flex:1"><b>Team Health</b> ${arche}<div class="muted">Reg M-B synergy · live as you build</div></div>
+  return `<div class="card"><div class="row"><div style="flex:1"><b>Team Health</b> ${arche}<div class="muted">Reg M-C synergy · live as you build</div></div>
     <div class="scorebadge"><b style="font-size:30px;color:${col}">${h.score}</b><small>${h.grade}</small></div></div>
     ${muLine}
     ${h.flags.length?`<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px">${flags}</div>`:`<div class="muted good" style="margin-top:4px">No red flags ✓</div>`}</div>`;
@@ -394,7 +394,7 @@ function renderStress(){
       <div class="seg" style="margin-top:6px;flex-wrap:wrap">${ntog("key","Key threats")}${ntog(20,"Top 20 used")}${ntog(50,"Top 50 used")}</div>
       <div class="muted" style="margin-top:6px;font-size:11px">Speed mode (who outspeeds for offensive checks):</div>
       <div class="seg" style="margin-top:3px;flex-wrap:wrap">${mtog("none","No speed ctrl")}${mtog("tailwind","Tailwind")}${mtog("trickroom","Trick Room")}${mtog("both","Both")}</div>
-      <div class="muted" style="margin-top:6px;font-size:11px">${STATE.threatN==="key"?"Curated Reg M-B offensive threat list":"Top "+STATE.threatN+" most-used in Champions Reg M-B (Pikalytics doubles)"} · speed checks with ${modeLab}.</div>
+      <div class="muted" style="margin-top:6px;font-size:11px">${STATE.threatN==="key"?"Curated offensive threat list":"Top "+STATE.threatN+" most-used in Champions Reg M-C (Pikalytics doubles)"} · speed checks with ${modeLab}.</div>
       <div class="muted" style="margin-top:4px"><b style="color:var(--good)">${mu.checked} checked</b> · <b style="color:#ffd9a0">${mu.neutral} soft/neutral</b> · <b style="color:${mu.uncovered?'var(--bad)':'var(--good)'}">${mu.uncovered} uncovered</b> of ${mu.total}.${mu.uncovered?' Fix the ⚠️ rows — they run through you.':' No threat runs through your team ✓'}</div>
       <div style="margin-top:6px">${mu.rows.map(matchupRow).join("")}</div>
       <div class="muted" style="margin-top:6px;font-size:11px">✅ real check (walls + KOs, or outspeeds + OHKOs) · 🟡 soft (survives or trades, no clean KO) · ⚠️ uncovered. % = guaranteed (min-roll) damage. Use 🎯 Optimize → Full spread to EV a check.</div></div>
@@ -625,7 +625,7 @@ function renderSpreadMode(O,me,benches,opt,tog){
 function renderImport(){
   titleEl.textContent="Import team"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
   app.innerHTML=`
-    <div class="card"><b>Start from a proven Reg M-B skeleton</b>
+    <div class="card"><b>Start from a proven skeleton <span class="muted" style="font-size:11px">(cores proven in Reg M-B)</span></b>
       <div style="margin-top:8px">${SAMPLE_TEAMS.map((s,i)=>`<button class="btn" data-sample="${i}" style="width:100%;margin-bottom:6px;text-align:left">▸ ${s.name} <span class="muted">— ${s.note}</span></button>`).join("")}</div></div>
     <div class="card"><div class="muted">…or paste a Showdown export / pokepaste text — or a pokepast.es link — to load and analyse any team. Showdown EVs are converted to Champions points.</div>
       <textarea id="pastein" style="width:100%;height:160px;margin-top:10px;background:var(--card2);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:10px;font:12px/1.4 ui-monospace,monospace" placeholder="Tauros-Paldea-Aqua @ ...&#10;Ability: Intimidate&#10;- Close Combat&#10;...&#10;&#10;or  https://pokepast.es/abc123def456..."></textarea>
@@ -770,7 +770,14 @@ function boxResultCard(t,i){
     ${flags?`<div style="margin-top:6px">${flags}</div>`:'<div class="muted" style="font-size:12px;margin-top:6px">✓ No major structural gaps.</div>'}
     <button class="btn primary loadbox" data-i="${i}" style="width:100%;margin-top:10px">Load & tweak this team</button></div>`;
 }
-/* ---------------- MEGA TIER LIST (Limitless M-B results) ---------------- */
+/* ---------------- MEGA TIER LIST (Limitless results, current regulation) ---------------- */
+// typing of the Mega form this row is about: Charizard Y is Fire/Flying, not Mega X's Fire/Dragon
+function megaTypes(m){
+  const megas=(m.entry&&m.entry.mega)||[]; if(!megas.length) return m.entry.types;
+  const v=String(m.variant||'').trim().toUpperCase();
+  const hit=v?megas.find(f=>String(f.label||'').toUpperCase().split(' ').pop()===v):null;
+  return ((hit||megas[0]).type)||m.entry.types;
+}
 const TIER_COL={S:"#ff7043",A:"#f7c948",B:"#5cc46b",C:"#4d8cf5",D:"#9aa0c8",F:"#6b6f86"};
 function renderMegas(){
   titleEl.textContent="Mega tier list"; backBtn.classList.remove("hidden"); exportBtn.classList.add("hidden"); teambar.classList.add("hidden");
@@ -779,11 +786,11 @@ function renderMegas(){
   const wrCol=w=>w>=52?"var(--good)":w<=46?"var(--bad)":"var(--txt)";
   const byTier={}; list.forEach(m=>(byTier[m.tier]=byTier[m.tier]||[]).push(m));
   const rowFor=m=>`<div class="candrow" data-n="${m.base}">${m.entry?imgF(m.entry,0):''}
-    <div class="meta"><div class="nm">${m.entry?m.entry.label||m.base:m.base}${m.variant?' '+m.variant:''} ${m.entry?tbadges((m.entry.mega&&m.entry.mega[0]&&m.entry.mega[0].type)||m.entry.types):''}</div>
+    <div class="meta"><div class="nm">${m.entry?m.entry.label||m.base:m.base}${m.variant?' '+m.variant:''} ${m.entry?tbadges(megaTypes(m)):''}</div>
       <div class="brk">${m.teams} teams · ${m.top8} top-8 (${m.cutPct}%)${m.won?' · 🏆'+m.won+' won':''}</div></div>
     <div class="scorebadge"><b style="color:${wrCol(m.wr)}">${m.wr}%</b><small>win rate</small></div></div>`;
   app.innerHTML=`<div class="card"><b>Mega Evolutions by tournament results</b>
-      <div class="muted" style="margin-top:4px">Champions Reg M-B · ${meta.events||'?'} Limitless tournaments · ${meta.teams||'?'} teams · updated ${meta.generated||'?'}.
+      <div class="muted" style="margin-top:4px">Champions Reg ${meta.format||'M-C'} · ${meta.events||'?'} Limitless tournaments · ${meta.teams||'?'} teams · updated ${meta.generated||'?'}.
       Tier = adoption + shrunk win rate. Win rate is the team's record while running that Mega.</div></div>
     ${["S","A","B","C","D","F"].filter(t=>byTier[t]).map(t=>`<div class="card">
       <b style="color:${TIER_COL[t]}">${t} tier</b> <span class="muted">(${byTier[t].length})</span>
@@ -804,7 +811,7 @@ function renderPairs(){
       <div class="brk">${m.teams} teams · ${m.cutPct}% cut${m.won?' · 🏆'+m.won+' won':''}</div></div>
     <div class="scorebadge"><b style="color:${wrCol(m.wr)}">${m.wr}%</b><small>win rate</small></div></div>`;
   app.innerHTML=`<div class="card"><b>Mega pairings by tournament results</b>
-      <div class="muted" style="margin-top:4px">~half of M-B teams flex two Mega stones. This ranks how each duo performs together · ${meta.events||'?'} events · updated ${meta.generated||'?'}. Win rate of teams running both. Pairings on 5+ teams only (reliability floor).</div></div>
+      <div class="muted" style="margin-top:4px">~half of teams flex two Mega stones. This ranks how each duo performs together · ${meta.events||'?'} events · updated ${meta.generated||'?'}. Win rate of teams running both. Pairings on 5+ teams only (reliability floor).</div></div>
     ${["S","A","B","C","D","F"].filter(t=>byTier[t]).map(t=>`<div class="card">
       <b style="color:${TIER_COL[t]}">${t} tier</b> <span class="muted">(${byTier[t].length})</span>
       <div style="margin-top:6px">${byTier[t].map(rowFor).join("")}</div></div>`).join("")}`;

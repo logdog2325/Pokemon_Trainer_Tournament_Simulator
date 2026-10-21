@@ -443,7 +443,7 @@ function teammateSynergy(e,team){
 const _TIER_ORDER={S:0,A:1,B:2,C:3,D:4,F:5};
 function megaTierList(){
   return Object.entries(RES_MEGAS).map(([label,r])=>{
-    const m=label.match(/^(.*?)-([XY])$/), base=m?m[1]:label, variant=m?m[2]:null;
+    const m=label.match(/^(.*?)-([XYZ])$/), base=m?m[1]:label, variant=m?m[2]:null;
     return {label,base,variant,entry:byName[base]||null,tier:r.tier||"F",
       teams:r.teams,wr:r.wr,adjWr:r.adjWr,cut:r.cut,best:r.best,won:r.won||0,score:r.score,top8:r.top8,
       cutPct:(r.cutPct!=null?r.cutPct:(r.teams?Math.round(100*(r.top8||0)/r.teams):0))};
@@ -452,7 +452,7 @@ function megaTierList(){
 // Mega-pairing tier list (flex-mega duos): each entry resolves both megas to their base species.
 function megaPairList(){
   return Object.entries(RES_PAIRS).map(([label,r])=>{
-    const parts=label.split(" + ").map(p=>{const m=p.match(/^(.*?)-([XY])$/);const base=m?m[1]:p,variant=m?m[2]:null;return {label:p,base,variant,entry:byName[base]||null};});
+    const parts=label.split(" + ").map(p=>{const m=p.match(/^(.*?)-([XYZ])$/);const base=m?m[1]:p,variant=m?m[2]:null;return {label:p,base,variant,entry:byName[base]||null};});
     return {label,parts,tier:r.tier||"F",teams:r.teams,wr:r.wr,cut:r.cut,best:r.best,won:r.won||0,score:r.score,top8:r.top8,
       cutPct:(r.cutPct!=null?r.cutPct:(r.teams?Math.round(100*(r.top8||0)/r.teams):0))};
   }).sort((a,b)=>(_TIER_ORDER[a.tier]-_TIER_ORDER[b.tier])||((b.score||0)-(a.score||0))||(b.wr-a.wr));
@@ -1728,7 +1728,7 @@ function calcDamage(att,move,def,field){
 function dexLookup(species){
   if(!species) return null;
   if(byName[species]) return byName[species];
-  let s=species.replace(/-Mega(-[XY])?$/i,"").replace(/-Gmax$/i,"").trim();
+  let s=species.replace(/-Mega(-[XYZ])?$/i,"").replace(/-Gmax$/i,"").trim();
   if(byName[s]) return byName[s];
   const al={"-F":"-Female","-M":"-Male"};
   for(const k in al){ if(s.endsWith(k)&&byName[s.slice(0,-k.length)+al[k]]) return byName[s.slice(0,-k.length)+al[k]]; }
