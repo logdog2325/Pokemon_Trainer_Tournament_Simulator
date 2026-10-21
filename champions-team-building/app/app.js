@@ -828,6 +828,60 @@ function enablerBonus(e,team){
   if(eWeather&&team.some(m=>abuses(m.entry,eWeather)))b+=6;
   return Math.min(14,b);
 }
+/* ---------- field control (Reg M-C is a weather + terrain format) ----------
+   1) A weather or terrain SETTER is worth more when the team has no field control yet
+      (mega abilities count: Charizard Y Drought, Tyranitar Sand Stream, Raichu X Electric Surge…).
+   2) Terrain setter <-> grounded abuser: Psychic/Grassy/Electric Terrain boost that type's moves ×1.3
+      for GROUNDED users, and Expanding Force becomes a ×1.5 spread move under Psychic Terrain — so
+      Espeon / Gardevoir / Armarouge / Hatterene-style attackers pair with Indeedee, and vice versa.
+      Levitate / Flying users (Delphox, Garchomp Z, Rotom) get nothing, so they get no bonus. */
+const TERRAIN_TYPE={psychic:"Psychic",grassy:"Grass",electric:"Electric"};
+const TERRAIN_SIG={psychic:["Expanding Force"],grassy:["Grassy Glide"],electric:["Rising Voltage"]};
+function fieldSetsOf(abilities){
+  const out={weather:null,terrain:null};
+  for(const a of abilities||[]){ if(WEATHER_SET_ABIL[a]) out.weather=out.weather||WEATHER_SET_ABIL[a]; if(TERRAIN_ABIL[a]) out.terrain=out.terrain||TERRAIN_ABIL[a]; }
+  return out;
+}
+// grounded after Mega Evolution too (Mega Delphox gains Levitate)
+function entryGrounded(e){
+  if(e.types.includes("Flying")||(e.abilities||[]).length&&(e.abilities||[]).every(a=>a==="Levitate")) return false;
+  if((e.mega||[]).some(mg=>mg.ability==="Levitate"||(mg.type||[]).includes("Flying"))&&(e.megaStones||[]).length) return false;
+  return true;
+}
+// does this species cash in terrain T? grounded, attacks with the boosted type (STAB or signature move)
+function terrainAbuserEntry(e,T){
+  const ty=TERRAIN_TYPE[T]; if(!ty||!entryGrounded(e)) return 0;
+  const sig=(TERRAIN_SIG[T]||[]).some(m=>e.moves.includes(m));
+  const megaTypes=(e.mega||[]).flatMap(mg=>mg.type||[]);
+  const stab=e.types.includes(ty)||megaTypes.includes(ty);
+  const hasMoves=(e.moves||[]).some(m=>{const mi=(window.MOVES||{})[m];return mi&&mi.t===ty&&mi.bp>=60;})||sig;
+  if(!hasMoves) return 0;
+  return sig&&stab?2:(stab||sig)?1:0;      // 2 = signature + STAB (e.g. Expanding Force Espeon/Gardevoir/Armarouge)
+}
+function fieldControlBonus(e,team){
+  let b=0;
+  const memberAb=m=>(effOf(m).abilities||[]).concat(m.formIndex>=0?[]:(m.entry.mega||[]).filter(()=>m.set&&/ite\b|ite [XYZ]$/.test(m.set.item||"")).map(x=>x.ability));
+  const teamSets={weather:null,terrain:null};
+  for(const m of team){ const f=fieldSetsOf(memberAb(m)); teamSets.weather=teamSets.weather||f.weather; teamSets.terrain=teamSets.terrain||f.terrain; }
+  // a terrain MOVE counts only when it's really on the set (setMovesOf falls back to the whole movepool)
+  for(const m of team){ const mv4=(m.set&&m.set.moves)||[]; for(const mv of mv4) if(TERRAIN_MOVE[mv]) teamSets.terrain=teamSets.terrain||TERRAIN_MOVE[mv]; }
+  const eSets=fieldSetsOf((e.abilities||[]).concat((e.mega||[]).map(x=>x.ability)));
+  // 1) field control where the team has none
+  if(eSets.weather||eSets.terrain){
+    if(!teamSets.weather&&!teamSets.terrain) b+=8;                         // first field setter on the team
+    else if(eSets.terrain&&!teamSets.terrain) b+=5;                        // adds terrain to a weather team
+    else if(eSets.weather&&!teamSets.weather) b+=5;                        // adds weather to a terrain team
+    if(eSets.weather&&teamSets.weather&&eSets.weather!==teamSets.weather) b-=4;   // two weathers fight each other
+    if(eSets.terrain&&teamSets.terrain&&eSets.terrain!==teamSets.terrain) b-=4;
+  }
+  // 2) terrain setter <-> grounded abuser
+  if(teamSets.terrain){ const a=terrainAbuserEntry(e,teamSets.terrain); b+=a===2?9:a===1?5:0; }
+  if(eSets.terrain){
+    const ab=team.map(m=>terrainAbuserEntry(m.entry,eSets.terrain)).filter(Boolean).sort((x,y)=>y-x).slice(0,2);
+    b+=ab.reduce((s,a)=>s+(a===2?6:4),0);
+  }
+  return Math.max(-6,Math.min(14,b));
+}
 // does the candidate answer an M-B threat the team is currently weak to (resists a scary spread type the team stacks)?
 function threatAnswerBonus(e,team){
   if(team.length<2) return 0;
@@ -880,14 +934,15 @@ function scoreForSlot(e,team,slot){
   const chk=checkCoverageBonus(e,team,slot);   // damage-aware: patches an uncovered/soft top threat
   const proven=provenBonus(e);                  // tournament win rate vs the field (performance, not popularity)
   const mate=teammateSynergy(e,team);           // proven teammate cores (co-occurrence × pair win rate)
+  const field=fieldControlBonus(e,team);        // Reg M-C: weather/terrain setters + terrain abusers
   // Score is purely about fit: how well it executes the role + how it supports THIS team.
   // Raw usage/popularity is NOT a factor (`rank` is informational); win rate IS, because it measures
   // whether the Pokémon actually wins games in real M-B events — modest, sample-gated, capped at ±5.
   const teamFit=b.typing+Math.min(18,b.cov)+b.weather+leadCov+offCov;
-  const synergy=spd+enab+threat+intim+chk+proven+mate;   // Reg M-B synergy layer
+  const synergy=spd+enab+threat+intim+chk+proven+mate+field;   // synergy layer
   const total=Math.max(0,Math.min(100,Math.round(teamFit*0.62+exe+synergy)));
   const u=usageOf(e), res=resultsFor(e);
-  return {...b,exe,leadCov,offCov,spd,enab,threat,intim,chk,proven,mate,synergy,rank:u&&u.rank!=null?u.rank:null,
+  return {...b,exe,leadCov,offCov,spd,enab,threat,intim,chk,proven,mate,field,synergy,rank:u&&u.rank!=null?u.rank:null,
     wr:res?res.wr:null,adjWr:res?res.adjWr:null,cut:res?res.cut:null,best:res?res.best:null,resTeams:res?res.teams:null,total};
 }
 
@@ -1799,4 +1854,4 @@ function decodeTeam(str){
 }
 
 /* expose for ui.js */
-window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,teamSpeedLean,speedSetterPref,speedFit,flexSpeedRole,electricImmune,enablerBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread,RESULTS,resultsFor,megaResultsFor,provenBonus,teammateSynergy,megaTierList,megaPairList,megaKeyOf,provenTeamBonus,supportDensity,coverageProfile,speedProfile,megaPartnerFinder,allMegaAttackers,supportNeedsOf};
+window.ENGINE={DEX,byName,TYPES,CHART,effTable,weaknessesOf,bestDefAbility,detectRoles,teamWeakTally,teamNeeds,teamWeather,scoreCandidate,scoreForSlot,offense,isPhysical,statSum,has,effOf,SETUP,PIVOT,REDIR,SPEEDCTRL,DISRUPT,PRIORITY,HAZARD,SUPPORT,WEATHER_ABIL,NATURES,ITEMS,moveInfo,recommendSet,recommendMoves,planForLead,archetypeThreats,stressTest,itemClause,teamOffense,usageOf,metaSet,speedRows,memberSpeed,rawSpeed,metaBenchmarks,statAt,hpAt,finalStats,parsePaste,exportPaste,encodeTeam,decodeTeam,calcDamage,benchMember,teamHealth,ANTI_INTIM,teamSpeedMode,teamSpeedLean,speedSetterPref,speedFit,flexSpeedRole,electricImmune,enablerBonus,fieldControlBonus,threatAnswerBonus,threatAnswers,winConRealism,threatMatchups,metaThreatList,archetypeChecklist,optimizeOutspeed,optimizeSurvive,optimizeSpread,RESULTS,resultsFor,megaResultsFor,provenBonus,teammateSynergy,megaTierList,megaPairList,megaKeyOf,provenTeamBonus,supportDensity,coverageProfile,speedProfile,megaPartnerFinder,allMegaAttackers,supportNeedsOf};
