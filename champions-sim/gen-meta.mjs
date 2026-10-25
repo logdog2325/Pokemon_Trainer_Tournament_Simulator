@@ -65,7 +65,7 @@ const megaUsg = nm => (megasData[nm] || {}).teams || 0;
 // a Mega holder's tracked name matching RESULTS keys, e.g. "Charizard-Y", "Floette"
 function megaName(sp, item) {
   const it = cdex.items.get(item); if (!it.megaStone) return null;
-  const m = /\b([XY])$/.exec(item);
+  const m = /\b([XYZ])$/.exec(item);
   const cands = m ? [sp + '-' + m[1]] : [sp, sp.replace(/-.*$/, '')];
   for (const c of cands) if (megasData[c]) return c;
   return cands[0];
