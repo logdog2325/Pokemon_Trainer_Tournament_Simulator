@@ -41,6 +41,9 @@ cp    "$OFFICIAL/config/formats.ts"   "$FORK/config/formats.ts"   # ships the Ch
 cp -r "$OFFICIAL/data/."              "$FORK/data/"               # includes data/mods/champions + Z-A megas in base pokedex
 cp    "$OFFICIAL/package.json"        "$FORK/package.json"
 
+echo "==> 3b    apply official Champions balance patches (data/mods/champions)"
+for p in "$ROOT"/champions-sim/patches/balance-*.mjs; do node "$p"; done
+
 echo "==> 4/6  install deps (0.11.10 adds ts-chacha20 for the PRNG)"
 cd "$FORK"
 npm install --legacy-peer-deps

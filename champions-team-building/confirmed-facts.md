@@ -295,3 +295,19 @@ The damage items that DO exist: Life Orb (x1.3, 10% recoil), Expert Belt (x1.2 o
     Armarouge / Hatterene next to Indeedee), +5 for STAB-only; a setter gets +6/+4 per existing abuser (max 2).
   - Levitate/Flying users (Mega Delphox, Garchomp Z, Rotom) get no terrain bonus — terrain doesn't touch them.
 - Terrain MOVES only count when actually on the set (setMovesOf falls back to the full movepool).
+
+## 2026-12-02 — Official battle balance adjustments (simulator updated 2026-11-18)
+Source: [Pokémon HOME news — Battle Balance Adjustments](https://news.pokemon-home.com/en/page/877.html), applied at the
+2026-12-02 maintenance to **all regulations**. Implemented in `champions-sim/patches/balance-2026-12-02.mjs` (patches the
+Champions mod data; `setup-champions-engine.sh` applies it before every engine build) and checked by
+`champions-sim/patches/test-balance-2026-12-02.js`.
+- **Rock Slide** 90% → 95% accuracy, flinch 30% → 20%. **Screech** 85 → 100, **Steel Wing** 90 → 100 (keeps its 10% Def
+  boost), **Metal Sound** 85 → 100, **Frost Breath** 90 → 100 accuracy.
+- **New moves:** Psych Up (Alakazam, Starmie, Mr. Mime, Mawile, Altaria, Castform, Absol, Roserade, Weavile, all Rotom
+  forms, Liepard, Musharna, Audino, Cofagrigus, Slurpuff, Drampa, Annihilape) · Slack Off (Emboar) · Roost (Beedrill,
+  Hydreigon) · Tailwind (Emolga) · Wonder Room (Umbreon) · Play Rough (Vaporeon, Jolteon, Flareon, Espeon, Umbreon,
+  Leafeon, Glaceon). Added to the engine learnsets and the app dex.
+- **Flash Fire:** the Fire boost it grants now **persists after Mega Evolution** (e.g. Houndoom absorbs a Fire move, Mega
+  Evolves into Solar Power Mega Houndoom, and its Fire moves are still ×1.5).
+- **Stalwart:** its moves now also **ignore the target's Substitute** (on top of ignoring redirection) — relevant for
+  Stalwart Archaludon.
